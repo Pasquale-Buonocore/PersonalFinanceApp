@@ -1,5 +1,20 @@
 #:kivy 1.0.9
+#:include Constant.kv
+#:include ScreenMng.kv
 
+#:set DashboardScreenName 'Dashboard'
+#:set TransactionScreenName 'Transaction'
+#:set ETF-ETCScreenName 'ETF-ETC'
+#:set StocksScreenName 'Stock'
+#:set BondScreenName 'Bond'
+#:set CommodityScreenName 'Commodities'
+#:set CryptoScreenName 'Crypto'
+#:set StatisticsScreenName 'Statistics'
+#:set SettingScreenName 'Setting'
+
+##################
+# SETTING LAYOUT #
+##################
 <SettingLayout>:
     size_hint: 1, 0.04
 
@@ -20,46 +35,64 @@
     orientation: 'lr-tb'
     size_hint: 0.2, 1
 
-    Button:
+    CustomMenuButton:
         size_hint: 1, 0.1
-        text: 'Dashboard'
-    Button:
+        text: DashboardScreenName
+        on_release: self.move_screen(app,self.text)
+
+    CustomMenuButton:
         size_hint: 1, 0.1
-        text: 'Transaction'
-    Button:
+        text: TransactionScreenName
+        on_release: self.move_screen(app,self.text)
+
+    CustomMenuButton:
         size_hint: 1, 0.1
-        text: 'ETF - ETC'
-    Button:
+        text: ETFETCScreenName
+        on_release: self.move_screen(app,self.text)
+
+    CustomMenuButton:
         size_hint: 1, 0.1
-        text: 'Stocks'
-    Button:
+        text: StocksScreenName
+        on_release: self.move_screen(app,self.text)
+
+    CustomMenuButton:
         size_hint: 1, 0.1
-        text: 'Bond'
-    Button:
+        text: BondScreenName
+        on_release: self.move_screen(app,self.text)
+
+    CustomMenuButton:
         size_hint: 1, 0.1
-        text: 'Commodities'
-    Button:
+        text: CommodityScreenName
+        on_release: self.move_screen(app,self.text)
+
+    CustomMenuButton:
         size_hint: 1, 0.1
-        text: 'Crypto'
-    Button:
+        text: CryptoScreenName
+        on_release: self.move_screen(app,self.text)
+
+    CustomMenuButton:
         size_hint: 1, 0.1
-        text: 'Statistics'
-    Button:
+        text: StatisticsScreenName
+        on_release: self.move_screen(app,self.text)
+
+    CustomMenuButton:
         size_hint: 1, 0.1
-        text: 'Setting'
+        text: SettingScreenName
+        on_release: self.move_screen(app,self.text)
 
 <DataLayout>:
     size_hint: 0.8, 1
     Label:
         text: 'Data'
 
+############################################ 
 <MainLayout>:
     orientation: 'vertical'
     SettingLayout:
 
     MenuDataLayout:
         MenuLayout:
-        DataLayout:
+        ScreenManagerLayout:
 
 
     
