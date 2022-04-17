@@ -1,0 +1,72 @@
+#:kivy 1.0.9
+
+<SettingLayout>:
+    size_hint: 1, 0.04
+
+    Button:
+        size_hint: 0.1, 1
+        text: 'Info'
+    Button:
+        size_hint: 0.1, 1
+        text: 'Setting'
+    Button:
+        size_hint: 0.1,1
+        text: 'Save'
+
+<MenuDataLayout>:
+    orientation: 'horizontal'
+
+<MenuLayout>:
+    orientation: 'lr-tb'
+    size_hint: 0.2, 1
+
+    Button:
+        size_hint: 1, 0.1
+        text: 'Dashboard'
+    Button:
+        size_hint: 1, 0.1
+        text: 'Transaction'
+    Button:
+        size_hint: 1, 0.1
+        text: 'ETF - ETC'
+    Button:
+        size_hint: 1, 0.1
+        text: 'Stocks'
+    Button:
+        size_hint: 1, 0.1
+        text: 'Bond'
+    Button:
+        size_hint: 1, 0.1
+        text: 'Commodities'
+    Button:
+        size_hint: 1, 0.1
+        text: 'Crypto'
+    Button:
+        size_hint: 1, 0.1
+        text: 'Statistics'
+    Button:
+        size_hint: 1, 0.1
+        text: 'Setting'
+
+<DataLayout>:
+    size_hint: 0.8, 1
+    Label:
+        text: 'Data'
+
+<MainLayout>:
+    orientation: 'vertical'
+    SettingLayout:
+
+    MenuDataLayout:
+        MenuLayout:
+        DataLayout:
+
+
+    
+
+    
+
+        
+
+
+
