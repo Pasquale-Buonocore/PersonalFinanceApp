@@ -1,0 +1,17 @@
+#:kivy 1.0.9
+#:include ui/Constant.kv
+
+<TransactionScreen>:
+    name: TransactionScreenName
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            size_hint: 1, 0.1
+            text: TransactionScreenName + ' Panel'
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, 0.9
+            Label:
+                text: 'Transaction In'
+            Label:
+                text: 'Transaction Out'

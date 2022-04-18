@@ -1,0 +1,94 @@
+#:kivy 1.0.9
+#:include ui/Constant.kv
+
+<DashboardScreen>:
+    name: DashboardScreenName
+    BoxLayout:
+        orientation: 'vertical'
+
+        Label:
+            size_hint: 1, 0.05
+            text: DashboardScreenName + ' PANEL'
+
+        # Scroll View of Scroll View
+        ScrollView:
+            
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint: 1, None
+                height: self.minimum_height
+                padding: ("100dp", "10dp", "100dp", "10dp")
+                spacing: "20dp"
+                
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint: 1, None
+                    size: "100dp", "400dp"
+                    spacing: "20dp"
+
+                    Widget:
+                        size_hint: 0.5, 1
+                        background_color: 0,0,0,0
+                        canvas:
+                            Color:
+                                rgba: (1,1,1,1)
+                            RoundedRectangle:
+                                pos: self.pos
+                                size: self.size
+                                radius: [(40, 40), (40, 40), (40, 40), (40, 40)]
+                        Label:
+                            text: 'ciao'
+                            pos: root.pos
+                    Widget:
+                        size_hint: 0.5, 1
+                        canvas:
+                            Color:
+                                rgba: 1,1,0,1
+                            RoundedRectangle:
+                                pos: self.pos
+                                size: self.size
+                                radius: [(40, 40), (40, 40), (40, 40), (40, 40)]
+                        Label:
+                            text: 'ciao'
+                            pos: root.pos
+
+                Button:
+                    size_hint: 1, None
+                    size: "100dp", "100dp"
+                    text: 'A'
+                Button:
+                    size_hint: 1, None
+                    size: "100dp", "100dp"
+                    text: 'A'
+                Button:
+                    size_hint: 1, None
+                    size: "100dp", "100dp"
+                    text: 'A'
+                Button:
+                    size_hint: 1, None
+                    size: "100dp", "100dp"
+                    text: 'A'
+                Button:
+                    size_hint: 1, None
+                    size: "100dp", "100dp"
+                    text: 'A'
+                Button:
+                    size_hint: 1, None
+                    size: "100dp", "100dp"
+                    text: 'A'
+                Button:
+                    size_hint: 1, None
+                    size: "100dp", "100dp"
+                    text: 'A'
+                Button:
+                    size_hint: 1, None
+                    size: "100dp", "100dp"
+                    text: 'A'
+                Button:
+                    size_hint: 1, None
+                    size: "100dp", "100dp"
+                    text: 'A'
+                Button:
+                    size_hint: 1, None
+                    size: "100dp", "100dp"
+                    text: 'A'

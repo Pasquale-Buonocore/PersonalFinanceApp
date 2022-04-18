@@ -1,16 +1,6 @@
 #:kivy 1.0.9
-#:include Constant.kv
-#:include ScreenMng.kv
-
-#:set DashboardScreenName 'Dashboard'
-#:set TransactionScreenName 'Transaction'
-#:set ETF-ETCScreenName 'ETF-ETC'
-#:set StocksScreenName 'Stock'
-#:set BondScreenName 'Bond'
-#:set CommodityScreenName 'Commodities'
-#:set CryptoScreenName 'Crypto'
-#:set StatisticsScreenName 'Statistics'
-#:set SettingScreenName 'Setting'
+#:include ui/ScreenMng.kv
+#:include ui/Constant.kv
 
 ##################
 # SETTING LAYOUT #
@@ -18,15 +8,30 @@
 <SettingLayout>:
     size_hint: 1, 0.04
 
+    Label:
+        size_hint: 0.91, 1
+        text_size: root.width*0.91, None
+        halign: 'center'
+        
+        text: 'Welcome to your Personal Finance app'
+    
     Button:
-        size_hint: 0.1, 1
-        text: 'Info'
+        size_hint: 0.03, 1
+        pos_hint: 1, 1
+        text: '-'
+        on_release: root.minimize_window()
+    
     Button:
-        size_hint: 0.1, 1
-        text: 'Setting'
+        size_hint: 0.03, 1
+        pos_hint: 1, 1
+        text: 'O'
+        on_release: root.restore_window()
+
     Button:
-        size_hint: 0.1,1
-        text: 'Save'
+        size_hint: 0.03, 1
+        pos_hint: 1, 1
+        text: 'X'
+        on_release: app.stop()
 
 <MenuDataLayout>:
     orientation: 'horizontal'
@@ -34,49 +39,50 @@
 <MenuLayout>:
     orientation: 'lr-tb'
     size_hint: 0.2, 1
+    spacing: "10dp"
 
     CustomMenuButton:
-        size_hint: 1, 0.1
+        size_hint: 1, ButtonMenu_size_hint_y
         text: DashboardScreenName
         on_release: self.move_screen(app,self.text)
 
     CustomMenuButton:
-        size_hint: 1, 0.1
+        size_hint: 1, ButtonMenu_size_hint_y
         text: TransactionScreenName
         on_release: self.move_screen(app,self.text)
 
     CustomMenuButton:
-        size_hint: 1, 0.1
+        size_hint: 1, ButtonMenu_size_hint_y
         text: ETFETCScreenName
         on_release: self.move_screen(app,self.text)
 
     CustomMenuButton:
-        size_hint: 1, 0.1
+        size_hint: 1, ButtonMenu_size_hint_y
         text: StocksScreenName
         on_release: self.move_screen(app,self.text)
 
     CustomMenuButton:
-        size_hint: 1, 0.1
+        size_hint: 1, ButtonMenu_size_hint_y
         text: BondScreenName
         on_release: self.move_screen(app,self.text)
 
     CustomMenuButton:
-        size_hint: 1, 0.1
+        size_hint: 1, ButtonMenu_size_hint_y
         text: CommodityScreenName
         on_release: self.move_screen(app,self.text)
 
     CustomMenuButton:
-        size_hint: 1, 0.1
+        size_hint: 1, ButtonMenu_size_hint_y
         text: CryptoScreenName
         on_release: self.move_screen(app,self.text)
 
     CustomMenuButton:
-        size_hint: 1, 0.1
+        size_hint: 1, ButtonMenu_size_hint_y
         text: StatisticsScreenName
         on_release: self.move_screen(app,self.text)
 
     CustomMenuButton:
-        size_hint: 1, 0.1
+        size_hint: 1, ButtonMenu_size_hint_y
         text: SettingScreenName
         on_release: self.move_screen(app,self.text)
 
@@ -87,6 +93,12 @@
 
 ############################################ 
 <MainLayout>:
+    canvas:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'images/background.jpg'
+
     orientation: 'vertical'
     SettingLayout:
 
