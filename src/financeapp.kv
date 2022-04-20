@@ -1,11 +1,19 @@
 #:kivy 1.0.9
 #:include ui/ScreenMng.kv
-#:include ui/Constant.kv
+
+###########
+# CUSTOM  #
+###########
+<CustomMenuButton>:
+    id: 'CustomMenuButton'
+    background_color: 0,0,0,0
+    size_hint: 1, ButtonMenu_size_hint_y
 
 ##################
 # SETTING LAYOUT #
 ##################
 <SettingLayout>:
+    id: 'SettingLayout'
     size_hint: 1, 0.04
 
     Label:
@@ -34,74 +42,89 @@
         on_release: app.stop()
 
 <MenuDataLayout>:
+    id: 'MenuDataLayout'
     orientation: 'horizontal'
 
 <MenuLayout>:
+    id: 'MenuDataLayout'
+    canvas.before:
+        Color:
+            rgba: 0.2,.2,0.2,0.5
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+
     orientation: 'lr-tb'
     size_hint: 0.2, 1
     spacing: "10dp"
 
     CustomMenuButton:
-        size_hint: 1, ButtonMenu_size_hint_y
+        id: 'Dashboard_btn'
         text: DashboardScreenName
         on_release: self.move_screen(app,self.text)
 
     CustomMenuButton:
-        size_hint: 1, ButtonMenu_size_hint_y
+        id: 'Transaction_btn'
         text: TransactionScreenName
         on_release: self.move_screen(app,self.text)
 
     CustomMenuButton:
-        size_hint: 1, ButtonMenu_size_hint_y
+        id: 'ETF_btn'
         text: ETFETCScreenName
         on_release: self.move_screen(app,self.text)
 
     CustomMenuButton:
-        size_hint: 1, ButtonMenu_size_hint_y
+        id: 'Stock_btn'
         text: StocksScreenName
         on_release: self.move_screen(app,self.text)
 
     CustomMenuButton:
-        size_hint: 1, ButtonMenu_size_hint_y
+        id: 'Bond_btn'
         text: BondScreenName
         on_release: self.move_screen(app,self.text)
 
     CustomMenuButton:
-        size_hint: 1, ButtonMenu_size_hint_y
+        id: 'Commodity_btn'
         text: CommodityScreenName
         on_release: self.move_screen(app,self.text)
 
     CustomMenuButton:
-        size_hint: 1, ButtonMenu_size_hint_y
+        id: 'Crypto_btn'
         text: CryptoScreenName
         on_release: self.move_screen(app,self.text)
 
     CustomMenuButton:
-        size_hint: 1, ButtonMenu_size_hint_y
+        id: 'Statistics_btn'
         text: StatisticsScreenName
         on_release: self.move_screen(app,self.text)
 
     CustomMenuButton:
-        size_hint: 1, ButtonMenu_size_hint_y
+        id: 'Setting_btn'
         text: SettingScreenName
         on_release: self.move_screen(app,self.text)
 
+    CustomMenuButton:
+        id: 'Credit_btn'
+        text: CreditScreenName
+        on_release: self.move_screen(app,self.text)
+
 <DataLayout>:
+    id: 'DataLayout'
     size_hint: 0.8, 1
     Label:
         text: 'Data'
 
 ############################################ 
 <MainLayout>:
+    id: 'MainLayout'
+    orientation: 'vertical'
     canvas:
         Rectangle:
             pos: self.pos
             size: self.size
             source: 'images/background.jpg'
 
-    orientation: 'vertical'
     SettingLayout:
-
     MenuDataLayout:
         MenuLayout:
         ScreenManagerLayout:

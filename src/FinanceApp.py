@@ -10,10 +10,13 @@ kivy.require('1.0.9')
 from kivy.app import App
 from kivy.uix.button import Button
 from kivy.uix.widget import Widget
+from kivy.uix.label import Label
 from kivy.uix.stacklayout import StackLayout
 from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.gridlayout import GridLayout
 from kivy.uix.screenmanager import Screen, ScreenManager
 from kivy.core.window import Window
+import DatabaseMng as db_manager
 
 #-- maximize first, to get the screen size, minus any OS toolbars
 class WindowInfos():
@@ -26,6 +29,7 @@ class WindowInfos():
         self.top = (self.maxSize[1] - self.desiredSize_y)*0.5
 
 Win = WindowInfos()
+path_manager = db_manager.PathManager_Class()
 
 #-- set the actual window size, to be slightly smaller than full screen
 def SetWindowSize():
@@ -81,7 +85,53 @@ class ScreenManagerLayout(ScreenManager):
     pass
 
 class DashboardScreen(Screen):
-    pass
+    def __init__(self,**kwargs):
+        super().__init__(**kwargs)
+        # Initialize the manager of the json manager
+        self.InFlow_DBmanager = db_manager.JsonManager_Class(path_manager.database_path,path_manager.Inflow_path)
+
+    def Update_InFlowBoxLayout(self):
+        # Clear the Item inside the BoxLayout (Keep the first element only)
+        First_widget = self.ids["'InFlow_counts'"].children[-1]
+        self.ids["'InFlow_counts'"].clear_widgets()
+
+        # Add the first item again
+        self.ids["'InFlow_counts'"].add_widget(First_widget)
+
+        # Read the Json file
+        Items_dict = self.InFlow_DBmanager.ReadJson()
+
+        # Add Item in the Json to the 
+        for ItemName in Items_dict.keys():
+            self.ids["'InFlow_counts'"].add_widget(self.Define_InFlowItem(ItemName, Items_dict[ItemName]))
+
+    # Function that add an item in the IN FLOW Box Layout if it does not exist yet
+    def Add_Item_InFlow_BoxLayout(self):
+        # Open the popup to let the user add the desired Item
+        ItemName = 'Poste Italiane'
+        ItemDict = [0,0,0]
+
+        # Add the item to the Json File
+        self.InFlow_DBmanager.AddElement({ItemName:ItemDict})
+
+        # Update the BoxLayout
+        self.Update_InFlowBoxLayout()
+
+    def Define_InFlowItem(self, ItemName, ItemDict):
+        # Compute Item to Append according to the structure defined
+        Item = GridLayout(cols=5, rows = 1, padding = ("30dp", "0dp", "30dp", "0dp"), size_hint = [0.6, None], height = "20dp")
+        Item.add_widget(Label(text = ItemName))
+        Item.add_widget(Label(text = str(ItemDict[0])))
+        Item.add_widget(Label(text = str(ItemDict[1])))
+        Item.add_widget(Label(text = str(ItemDict[2])))
+
+        BoxLayoutItem = BoxLayout(orientation = 'horizontal')
+        BoxLayoutItem.add_widget(Button(text = 'M', size_hint = [0.25, 1]))
+        BoxLayoutItem.add_widget(Button(text = 'R', size_hint = [0.25, 1]))
+        Item.add_widget(BoxLayoutItem)
+
+        return Item
+            
 
 class TransactionScreen(Screen):
     pass
@@ -107,15 +157,17 @@ class StatisticsScreen(Screen):
 class SettingScreen(Screen):
     pass
 
+class CreditsScreen(Screen):
+    pass
+
 ############
 # MAIN APP #
 ############
 # With the build function we declare the root app
 class FinanceApp(App):
     def build(self):
-
         #-- center the window
         SetWindowSize()
-
         Window.borderless = True
+        # Window.resizable = False
         return MainLayout()

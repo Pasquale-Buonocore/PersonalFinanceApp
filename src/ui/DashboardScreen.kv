@@ -2,93 +2,101 @@
 #:include ui/Constant.kv
 
 <DashboardScreen>:
+    id: 'DashboardScreen'
     name: DashboardScreenName
-    BoxLayout:
-        orientation: 'vertical'
-
-        Label:
-            size_hint: 1, 0.05
-            text: DashboardScreenName + ' PANEL'
-
-        # Scroll View of Scroll View
-        ScrollView:
+    
+    # Scroll View
+    ScrollView:
+        id: 'MainScrollView'
+        # Box containing Box Layout
+        BoxLayout:
+            id: 'BoxLayout_lvl1'
+            orientation: 'vertical'
+            size_hint: 1, None
+            height: self.minimum_height
+            padding: ("50dp", "20dp", "50dp", "10dp")
+            spacing: "20dp"
             
+            ####################
+            # TITLE INCOME BOX #
+            ####################
+            Label:
+                text: 'ACTIVE STATUS'
+                size_hint: 1, None
+                height: "50dp"
+
+
+            #####################
+            # INCOME BOX LAYOUT #
+            #####################
             BoxLayout:
+                id: 'InFlow_counts'
                 orientation: 'vertical'
                 size_hint: 1, None
                 height: self.minimum_height
-                padding: ("100dp", "10dp", "100dp", "10dp")
-                spacing: "20dp"
+                spacing: "10dp"
+                padding: ("0dp", "20dp", "0dp", "20dp")
+                size: "100dp", "400dp"
+
+                canvas.before:
+                    Color:
+                        rgba: 0.2,.2,0.2,0.5
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [(40, 40), (40, 40), (40, 40), (40, 40)]
+            
+                GridLayout:
+                    size_hint: 0.6, None
+                    height: "20dp"
+                    padding: ("30dp", "0dp", "30dp", "0dp")
+                    cols: 5
+                    rows: 1
+
+                    Label: 
+                        text: 'Name'
+                    Label: 
+                        text: 'Initial value'
+                    Label: 
+                        text: 'End value'
+                    Label: 
+                        text: 'Difference'
+                    Button:
+                        text: 'Add item'
+                        on_release: root.Add_Item_InFlow_BoxLayout()
+                    
+
+            Label:
+                text: 'PASSIVE STATUS'
+                size_hint: 1, 0.1
+
+            BoxLayout:
+                orientation: 'vertical'
+                id: 'OutFlow_counts'
+                size_hint: 1, None
+                size: "100dp", "400dp"
+
+                canvas.before:
+                    Color:
+                        rgba: 0.2,.2,0.2,0.5
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [(40, 40), (40, 40), (40, 40), (40, 40)]
                 
-                BoxLayout:
-                    orientation: 'horizontal'
-                    size_hint: 1, None
-                    size: "100dp", "400dp"
-                    spacing: "20dp"
-
-                    Widget:
-                        size_hint: 0.5, 1
-                        background_color: 0,0,0,0
-                        canvas:
-                            Color:
-                                rgba: (1,1,1,1)
-                            RoundedRectangle:
-                                pos: self.pos
-                                size: self.size
-                                radius: [(40, 40), (40, 40), (40, 40), (40, 40)]
-                        Label:
-                            text: 'ciao'
-                            pos: root.pos
-                    Widget:
-                        size_hint: 0.5, 1
-                        canvas:
-                            Color:
-                                rgba: 1,1,0,1
-                            RoundedRectangle:
-                                pos: self.pos
-                                size: self.size
-                                radius: [(40, 40), (40, 40), (40, 40), (40, 40)]
-                        Label:
-                            text: 'ciao'
-                            pos: root.pos
-
-                Button:
-                    size_hint: 1, None
-                    size: "100dp", "100dp"
-                    text: 'A'
-                Button:
-                    size_hint: 1, None
-                    size: "100dp", "100dp"
-                    text: 'A'
-                Button:
-                    size_hint: 1, None
-                    size: "100dp", "100dp"
-                    text: 'A'
-                Button:
-                    size_hint: 1, None
-                    size: "100dp", "100dp"
-                    text: 'A'
-                Button:
-                    size_hint: 1, None
-                    size: "100dp", "100dp"
-                    text: 'A'
-                Button:
-                    size_hint: 1, None
-                    size: "100dp", "100dp"
-                    text: 'A'
-                Button:
-                    size_hint: 1, None
-                    size: "100dp", "100dp"
-                    text: 'A'
-                Button:
-                    size_hint: 1, None
-                    size: "100dp", "100dp"
-                    text: 'A'
-                Button:
-                    size_hint: 1, None
-                    size: "100dp", "100dp"
-                    text: 'A'
-                Button:
-                    size_hint: 1, None
-                    size: "100dp", "100dp"
-                    text: 'A'
+                GridLayout:
+                    size_hint: 1, 0.9
+                    padding: ("30dp", "0dp", "30dp", "0dp")
+                    cols: 3
+                    rows: 1
+                
+                    Label: 
+                        size_hint: 0.7,1
+                        text: 'Unicredit'
+                    Label: 
+                        size_hint: 0.15,1
+                        text: 'Unicredit'
+                    Label: 
+                        size_hint: 0.15,1
+                        text: 'Unicredit'
+                    
