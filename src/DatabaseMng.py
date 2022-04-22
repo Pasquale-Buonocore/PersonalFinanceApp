@@ -89,7 +89,7 @@ if __name__ == '__main__':
     PathManager = PathManager_Class()
     InFlow_obj = JsonManager_Class(PathManager.database_path, PathManager.Inflow_path)
     print(InFlow_obj.ReadJson())
-    InFlow_obj.AddElement({'Unicredit1':[0,0,0]})
+    InFlow_obj.AddElement({'Unicredit1':[0,0]})
     InFlow_obj.RemoveElement('Unicredit2')
     print(InFlow_obj.ReadJson())
 

@@ -34,6 +34,8 @@ path_manager = db_manager.PathManager_Class()
 #-- set the actual window size, to be slightly smaller than full screen
 def SetWindowSize():
     Window.size = (Win.desiredSize_x, Win.desiredSize_y)
+    Window.minimum_width = Win.desiredSize_x
+    Window.minimum_height =  Win.desiredSize_y
     Window.left = Win.left
     Window.top = Win.top
     
@@ -49,6 +51,34 @@ class CustomMenuButton(Button):
         print('Adding button to ScrollView')
         b1 = Button(text = 'B', size_hint = (1, None), size= ("100dp", "100dp"))
         App.root.children[0].children[0].screens[0].children[0].children[0].children[0].add_widget(b1)
+
+class ModifyButton(Button):
+    def __init__(self,**kwargs):
+        super().__init__(text = kwargs['text'], size_hint = kwargs['size_hint'])
+        self.ManagerOfItem = kwargs['item']
+        self.DBManager = kwargs['screen']
+
+    def on_release(self):
+        print('Modifying')
+
+class RemoveButton(Button):
+    def __init__(self,**kwargs):
+        super().__init__(text = kwargs['text'], size_hint = kwargs['size_hint'])
+        self.ManagerOfItem = kwargs['item']
+        self.ManagerOfScreen = kwargs['screen']
+        self.DBManager = kwargs['screen'].InFlow_DBmanager
+
+    def on_release(self):
+        # When the remove button is pressed, the item should be removed from the json.
+        # The UI shall be updated as well.
+
+        # Remove widget from the Json
+        self.DBManager.RemoveElement(self.ManagerOfItem)
+        
+
+        # Update the UI
+        self.ManagerOfScreen.Update_InFlowBoxLayout()
+        pass
 
 ##############################################
 # Contains the setting layout, Menu and Data #
@@ -87,8 +117,12 @@ class ScreenManagerLayout(ScreenManager):
 class DashboardScreen(Screen):
     def __init__(self,**kwargs):
         super().__init__(**kwargs)
+
         # Initialize the manager of the json manager
         self.InFlow_DBmanager = db_manager.JsonManager_Class(path_manager.database_path,path_manager.Inflow_path)
+
+        # Initilize the InFlowBoxLayout
+        # self.Update_InFlowBoxLayout()
 
     def Update_InFlowBoxLayout(self):
         # Clear the Item inside the BoxLayout (Keep the first element only)
@@ -109,7 +143,7 @@ class DashboardScreen(Screen):
     def Add_Item_InFlow_BoxLayout(self):
         # Open the popup to let the user add the desired Item
         ItemName = 'Poste Italiane'
-        ItemDict = [0,0,0]
+        ItemDict = [0,0]
 
         # Add the item to the Json File
         self.InFlow_DBmanager.AddElement({ItemName:ItemDict})
@@ -123,15 +157,16 @@ class DashboardScreen(Screen):
         Item.add_widget(Label(text = ItemName))
         Item.add_widget(Label(text = str(ItemDict[0])))
         Item.add_widget(Label(text = str(ItemDict[1])))
-        Item.add_widget(Label(text = str(ItemDict[2])))
+        Item.add_widget(Label(text = str(ItemDict[1]- ItemDict[0])))
 
         BoxLayoutItem = BoxLayout(orientation = 'horizontal')
-        BoxLayoutItem.add_widget(Button(text = 'M', size_hint = [0.25, 1]))
-        BoxLayoutItem.add_widget(Button(text = 'R', size_hint = [0.25, 1]))
+
+        BoxLayoutItem.add_widget(ModifyButton(text = 'M', size_hint = [0.25, 1] , item = ItemName, screen = self))
+        BoxLayoutItem.add_widget(RemoveButton(text = 'R', size_hint = [0.25, 1] , item = ItemName, screen = self))
+        
         Item.add_widget(BoxLayoutItem)
 
         return Item
-            
 
 class TransactionScreen(Screen):
     pass
@@ -168,6 +203,6 @@ class FinanceApp(App):
     def build(self):
         #-- center the window
         SetWindowSize()
-        Window.borderless = True
+        # Window.borderless = True
         # Window.resizable = False
         return MainLayout()
