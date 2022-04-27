@@ -18,8 +18,7 @@ class PathManager_Class():
 ###################
 # CUSTOM FUNCTION #
 ###################
-
-
+path_manager = PathManager_Class()
 
 ###########################
 # Initialize json manager #
@@ -34,7 +33,7 @@ class JsonManager_Class():
     # CLASS METHODS #
     #################
 
-    # Initialize the InFlow location json file
+    # Initialize the json file
     def Initialize_json(self):
         if not exists(self.database_path + self.json_path):
             self.SaveJsonFile(self.database_path + self.json_path, {})
@@ -48,7 +47,7 @@ class JsonManager_Class():
         with open(self.database_path + self.json_path, "w") as outfile:
             outfile.write(json_object)
 
-    # Add Element to the InFlow location json file
+    # Add Element to the json file
     def AddElement(self, dictionary):
         # Read json
         json_object = self.ReadJson()
@@ -60,8 +59,24 @@ class JsonManager_Class():
         
         # Save new json file
         self.SaveJsonFile(json_object)
-    
-    # Remove Element to the InFlow location json file
+
+    def SubstituteElement(self, Old_element, New_Item):
+        new_dict = {}
+
+        # Read json and iterate over it
+        json_object = self.ReadJson()
+        
+        for key in json_object:
+            if key in Old_element.keys():
+                new_dict.update(New_Item)
+            else:
+                new_dict.update({key:json_object[key]})
+        
+        # Save new json file
+        self.SaveJsonFile(new_dict)
+
+
+    # Remove Element to the json file
     def RemoveElement(self, Element):
         # Read json
         json_object = self.ReadJson()

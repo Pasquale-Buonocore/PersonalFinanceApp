@@ -17,6 +17,7 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.screenmanager import Screen, ScreenManager
 from kivy.core.window import Window
 import DatabaseMng as db_manager
+import CustomPopup as cst_popup
 
 #-- maximize first, to get the screen size, minus any OS toolbars
 class WindowInfos():
@@ -29,7 +30,6 @@ class WindowInfos():
         self.top = (self.maxSize[1] - self.desiredSize_y)*0.5
 
 Win = WindowInfos()
-path_manager = db_manager.PathManager_Class()
 
 #-- set the actual window size, to be slightly smaller than full screen
 def SetWindowSize():
@@ -59,7 +59,10 @@ class ModifyButton(Button):
         self.DBManager = kwargs['screen']
 
     def on_release(self):
-        print('Modifying')
+        # Initialize the popup
+        InFlowPopup = cst_popup.InFlowPopup('MODIFY ITEM POPUP', type ='M', itemToMod = self.ManagerOfItem)
+        # Open the Popup
+        InFlowPopup.open()
 
 class RemoveButton(Button):
     def __init__(self,**kwargs):
@@ -69,16 +72,10 @@ class RemoveButton(Button):
         self.DBManager = kwargs['screen'].InFlow_DBmanager
 
     def on_release(self):
-        # When the remove button is pressed, the item should be removed from the json.
-        # The UI shall be updated as well.
-
-        # Remove widget from the Json
-        self.DBManager.RemoveElement(self.ManagerOfItem)
-        
-
-        # Update the UI
-        self.ManagerOfScreen.Update_InFlowBoxLayout()
-        pass
+        # Check if the user truly want to remove the element.
+        RemovePopup = cst_popup.RemovingPopup(self.ManagerOfItem, self.ManagerOfScreen, self.DBManager)
+        # Open the popup
+        RemovePopup.open()
 
 ##############################################
 # Contains the setting layout, Menu and Data #
@@ -117,13 +114,11 @@ class ScreenManagerLayout(ScreenManager):
 class DashboardScreen(Screen):
     def __init__(self,**kwargs):
         super().__init__(**kwargs)
-
         # Initialize the manager of the json manager
-        self.InFlow_DBmanager = db_manager.JsonManager_Class(path_manager.database_path,path_manager.Inflow_path)
+        self.InFlow_DBmanager = db_manager.JsonManager_Class(db_manager.path_manager.database_path,db_manager.path_manager.Inflow_path)
 
-        # Initilize the InFlowBoxLayout
-        # self.Update_InFlowBoxLayout()
 
+    # Update the In Flow Box Layout
     def Update_InFlowBoxLayout(self):
         # Clear the Item inside the BoxLayout (Keep the first element only)
         First_widget = self.ids["'InFlow_counts'"].children[-1]
@@ -139,11 +134,18 @@ class DashboardScreen(Screen):
         for ItemName in Items_dict.keys():
             self.ids["'InFlow_counts'"].add_widget(self.Define_InFlowItem(ItemName, Items_dict[ItemName]))
 
+    # Function that open the popup
+    def OpenInFlowPopup(self):
+        # Initialize the popup
+        InFlowPopup = cst_popup.InFlowPopup('ADD ITEM POPUP',type = 'A')
+
+        # Open the Popup
+        InFlowPopup.open()
+
     # Function that add an item in the IN FLOW Box Layout if it does not exist yet
-    def Add_Item_InFlow_BoxLayout(self):
-        # Open the popup to let the user add the desired Item
-        ItemName = 'Poste Italiane'
-        ItemDict = [0,0]
+    def Add_Item_InFlow_BoxLayout(self, dict):
+        ItemName = dict.keys()
+        ItemDict = dict[ItemName]
 
         # Add the item to the Json File
         self.InFlow_DBmanager.AddElement({ItemName:ItemDict})
@@ -151,6 +153,7 @@ class DashboardScreen(Screen):
         # Update the BoxLayout
         self.Update_InFlowBoxLayout()
 
+    # Define Item to add in the InFlow Box
     def Define_InFlowItem(self, ItemName, ItemDict):
         # Compute Item to Append according to the structure defined
         Item = GridLayout(cols=5, rows = 1, padding = ("30dp", "0dp", "30dp", "0dp"), size_hint = [0.6, None], height = "20dp")
@@ -161,7 +164,7 @@ class DashboardScreen(Screen):
 
         BoxLayoutItem = BoxLayout(orientation = 'horizontal')
 
-        BoxLayoutItem.add_widget(ModifyButton(text = 'M', size_hint = [0.25, 1] , item = ItemName, screen = self))
+        BoxLayoutItem.add_widget(ModifyButton(text = 'M', size_hint = [0.25, 1] , item = {ItemName:ItemDict}, screen = self))
         BoxLayoutItem.add_widget(RemoveButton(text = 'R', size_hint = [0.25, 1] , item = ItemName, screen = self))
         
         Item.add_widget(BoxLayoutItem)
@@ -198,11 +201,17 @@ class CreditsScreen(Screen):
 ############
 # MAIN APP #
 ############
+
 # With the build function we declare the root app
 class FinanceApp(App):
+
     def build(self):
         #-- center the window
         SetWindowSize()
         # Window.borderless = True
         # Window.resizable = False
         return MainLayout()
+    
+    def on_start(self):
+        # Initialize the InFlow Table
+        self.root.children[0].children[0].children[0].Update_InFlowBoxLayout()

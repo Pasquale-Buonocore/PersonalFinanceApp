@@ -1,0 +1,126 @@
+#:kivy 1.0.9
+
+<WarningPopup>:
+    background_color: 0,0,0,0
+    separator_color: 0,0,0,0
+    separator_height: 0
+    title_align: 'center'
+
+    canvas.before:
+        Color:
+            rgba: 0.7,0.7,0.7,1
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [(40, 40), (40, 40), (40, 40), (40, 40)]
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: "30dp"
+        padding: ("0dp", "20dp", "0dp", "20dp")
+        
+        Label:
+            text: root.MessageToDisplay
+        Button:
+            text: 'OK'
+            size_hint: 0.5, 0.5
+            pos_hint: {"x":0.25}
+            on_release: root.dismiss()
+
+<RemovingPopup>:
+    background_color: 0,0,0,0
+    separator_color: 0,0,0,0
+    separator_height: 0
+    title_align: 'center'
+
+    canvas.before:
+        Color:
+            rgba: 0.7,0.7,0.7,1
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [(40, 40), (40, 40), (40, 40), (40, 40)]
+
+    BoxLayout:
+        orientation: 'vertical'
+        # spacing: "30dp"
+        # padding: ("0dp", "20dp", "0dp", "20dp")
+        
+        Label:
+            text: 'Do you really want to remove the element?\nThe operation is not reversable!'
+        BoxLayout:
+            orientation:'horizontal'
+            Button:
+                text: 'Remove it!'
+                size_hint: 0.5, 0.5
+                on_release: root.RemoveIt()
+            Button:
+                text: 'Cancel'
+                size_hint: 0.5, 0.5
+                on_release: root.dismiss()
+
+<InFlowPopup>:
+    background_color: 0,0,0,0
+    separator_color: 0,0,0,0
+    title_align: 'center'
+
+    canvas.before:
+        Color:
+            rgba: 0.7,0.7,0.7,1
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [(40, 40), (40, 40), (40, 40), (40, 40)]
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: "30dp"
+        padding: ("0dp", "20dp", "0dp", "20dp")
+
+        GridLayout:
+            # size_hint: 0.8, 0.5
+            # padding: ("30dp", "0dp", "30dp", "0dp")
+            cols: 2
+            rows: 3
+
+            # Location
+            Label:
+                id: Location_lbl
+                text: 'Location'
+            TextInput: 
+                id: Location_Input
+                size_hint: 1,0.5
+
+            # Value last month
+            Label:
+                id: LastMonth_lbl
+                text: 'Last month value'
+            TextInput: 
+                id: LastMonth_Input
+                size_hint: 1,0.5
+            
+            # Value last month
+            Label:
+                id: ThisMonth_lbl
+                text: 'This month value'
+            TextInput: 
+                id: ThisMonth_Input
+                size_hint: 1,0.5
+        
+        BoxLayout:
+            orientation: 'horizontal'
+
+            Button:
+                id:'Confirm'
+                text:'Confirm'
+                size_hint: 0.8, 0.5
+                on_release: root.Confirm(app)
+
+            Button:
+                id:'Cancel'
+                text:'Cancel'
+                size_hint: 0.8, 0.5
+                on_release: root.Cancel()
+         
+    
+

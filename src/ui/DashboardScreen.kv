@@ -46,6 +46,7 @@
                         radius: [(40, 40), (40, 40), (40, 40), (40, 40)]
             
                 GridLayout:
+                    id: InFlow_NameRow
                     size_hint: 0.6, None
                     height: "20dp"
                     padding: ("30dp", "0dp", "30dp", "0dp")
@@ -62,7 +63,8 @@
                         text: 'Difference'
                     Button:
                         text: 'Add item'
-                        on_release: root.Add_Item_InFlow_BoxLayout()
+                        on_release: root.OpenInFlowPopup()
+                
                     
 
             Label:
