@@ -1,5 +1,6 @@
 from kivy.lang import Builder
 from kivy.uix.popup import Popup
+from kivy.uix.dropdown import DropDown
 import DatabaseMng as db_manager
 
 # Designate Out .kv design file
@@ -11,18 +12,19 @@ class WarningPopup(Popup):
         super().__init__(title = title_str, size_hint=(0.25,0.3))
 
 class RemovingPopup(Popup):
-    def __init__(self, ManagerOfItem, ManagerOfScreen, DBManager, title_str = 'REMOVING WARNING'):
+    def __init__(self, ManagerOfItem, ManagerOfScreen, DBManager, UpdateFunction_str, title_str = 'REMOVING WARNING'):
         super().__init__(title = title_str, size_hint=(0.25,0.2))
         self.ManagerOfItem = ManagerOfItem
         self.ManagerOfScreen = ManagerOfScreen
         self.DBManager = DBManager
+        self.UpdateFunction_str = UpdateFunction_str
 
     def RemoveIt(self):
         # When the remove button is pressed, the item should be removed from the json. The UI shall be updated as well.
         # Remove widget from the Json
         self.DBManager.RemoveElement(self.ManagerOfItem)
         # Update the UI
-        self.ManagerOfScreen.Update_InFlowBoxLayout()
+        getattr(self.ManagerOfScreen, self.UpdateFunction_str)()
         # Close the popup
         self.dismiss()
 
@@ -31,7 +33,7 @@ class InFlowPopup(Popup):
         # Initialize the super class
         super().__init__(title = title_str, size_hint=(0.3,0.5))
         # Define inner attributes
-        self.type = type if type in ['A','M'] else'A'
+        self.type = type if type in ['A','M'] else 'A'
         # Save item to modify
         self.itemToMod = itemToMod
         # Fill the popup if the user need to modify a field
@@ -48,18 +50,18 @@ class InFlowPopup(Popup):
         string = ''
 
         # Retrive data "LOCATION INPUT" from Text Input - In empty do nothing
-        Location_Input = self.ids["Location_Input"].text.replace(" ", "")
-        if not Location_Input: string = string + 'ERROR: Empty location FIELD\n\n'
+        Location_Input = self.ids["Location_Input"].text.strip()
+        if not Location_Input: string = string + 'ERROR: Empty location FIELD\n'
 
         # Retrive data "LastMonth_Input" from Text Input - In empty do nothing
-        LastMonth_Input = self.ids["LastMonth_Input"].text.replace(" ", "")
-        if not LastMonth_Input: string = string + 'ERROR: Empty last month value FIELD\n\n'
-        if not LastMonth_Input.replace(".", "").isnumeric(): string = string + 'ERROR: last month must be numeric FIELD\n\n'
+        LastMonth_Input = self.ids["LastMonth_Input"].text.strip()
+        if not LastMonth_Input: string = string + 'ERROR: Empty last month value FIELD\n'
+        if not LastMonth_Input.replace(".", "").isnumeric(): string = string + 'ERROR: last month must be numeric FIELD\n'
 
         # Retrive data "ThisMonth_Input" from Text Input - In empty do nothing
-        ThisMonth_Input = self.ids["ThisMonth_Input"].text.replace(" ", "")
-        if not ThisMonth_Input: string = string + 'ERROR: Empty this month value FIELD'
-        if not ThisMonth_Input.replace(".", "").isnumeric(): string =string + 'ERROR: this month must be numeric FIELD\n\n'
+        ThisMonth_Input = self.ids["ThisMonth_Input"].text.strip()
+        if not ThisMonth_Input: string = string + 'ERROR: Empty this month value FIELD\n'
+        if not ThisMonth_Input.replace(".", "").isnumeric(): string =string + 'ERROR: this month must be numeric FIELD\n'
 
         if string:
             # If the error message is not empty, display an error
@@ -85,4 +87,128 @@ class InFlowPopup(Popup):
             self.dismiss()
 
     def Cancel(self):
+        self.dismiss()
+
+class ExpencesPopup(Popup):
+    def __init__(self, title_str, type, itemToMod = {}):
+        # Initialize the super class
+        super().__init__(title = title_str, size_hint=(0.3,0.5))
+        # Define inner attributes
+        self.type = type if type in ['A','M'] else 'A'
+        # Save item to modify
+        self.itemToMod = itemToMod
+        # Fill the popup if the user need to modify a field
+        if itemToMod: self.ModifyTextInput()
+
+    def ModifyTextInput(self):
+        # Modify text input if itemToMod is not empty
+        self.ids["ExpencesCategory"].text = list(self.itemToMod.keys())[0]
+        self.ids["Expences_ForeseenValue"].text = str(self.itemToMod[self.ids["ExpencesCategory"].text][0])
+        self.ids["Expences_ActualValue"].text = str(self.itemToMod[self.ids["ExpencesCategory"].text][1])
+
+    def Confirm(self, App):
+        # Keep the boolean error
+        string = ''
+
+        # Retrive data "ExpencesCategory" from Text Input - In empty do nothing
+        ExpencesCategory = self.ids["ExpencesCategory"].text.strip()
+        if not ExpencesCategory: string = string + 'ERROR: Empty category FIELD\n'
+
+        # Retrive data "Expences_ForeseenValue" from Text Input - In empty do nothing
+        Expences_ForeseenValue = self.ids["Expences_ForeseenValue"].text.strip()
+        if not Expences_ForeseenValue: string = string + 'ERROR: Empty Foreseen value FIELD\n'
+        if not Expences_ForeseenValue.replace(".", "").isnumeric(): string = string + 'ERROR: Foreseen value must be numeric FIELD\n'
+
+        # Retrive data "Expences_ActualValue" from Text Input - In empty do nothing
+        Expences_ActualValue = self.ids["Expences_ActualValue"].text.strip()
+        if not Expences_ActualValue: string = string + 'ERROR: Empty actual value FIELD\n'
+        if not Expences_ActualValue.replace(".", "").isnumeric(): string =string + 'ERROR: Actual value must be numeric FIELD\n'
+
+        if string:
+            # If the error message is not empty, display an error
+            Pop = WarningPopup('', string.upper())
+            Pop.open()
+        else:
+            # Instantiate Dashboard Screen and Json manager
+            Dashboard_Scr = App.root.children[0].children[0].children[0]
+            Json_mng = App.root.children[0].children[0].children[0].Expences_DBManager
+            New_Element = {ExpencesCategory:[float(Expences_ForeseenValue), float(Expences_ActualValue)]}
+            # If an item needs to be modified
+            if self.type == 'M':
+                # Substitute the actual item
+                Json_mng.SubstituteElement(Old_element = self.itemToMod, New_Item = New_Element)
+            else:
+                # Append new item
+                Json_mng.AddElement(New_Element)
+
+            # Update the Json and Update the Dashboard Screen
+            Dashboard_Scr.Update_ExpencesBoxLayout()
+
+            # Close the popup
+            self.dismiss()
+
+    def Cancel(self):
+        # Close the popup
+        self.dismiss()
+
+class EarningsPopup(Popup):
+    def __init__(self, title_str, type, itemToMod = {}):
+        # Initialize the super class
+        super().__init__(title = title_str, size_hint=(0.3,0.5))
+        # Define inner attributes
+        self.type = type if type in ['A','M'] else 'A'
+        # Save item to modify
+        self.itemToMod = itemToMod
+        # Fill the popup if the user need to modify a field
+        if itemToMod: self.ModifyTextInput()
+
+    def ModifyTextInput(self):
+        # Modify text input if itemToMod is not empty
+        self.ids["EarningsCategory"].text = list(self.itemToMod.keys())[0]
+        self.ids["Earnings_ForeseenValue"].text = str(self.itemToMod[self.ids["EarningsCategory"].text][0])
+        self.ids["Earnings_ActualValue"].text = str(self.itemToMod[self.ids["EarningsCategory"].text][1])
+
+    def Confirm(self, App):
+        # Keep the boolean error
+        string = ''
+
+        # Retrive data "EarningsCategory" from Text Input - In empty do nothing
+        EarningsCategory = self.ids["EarningsCategory"].text.strip()
+        if not EarningsCategory: string = string + 'ERROR: Empty category FIELD\n'
+
+        # Retrive data "Earnings_ForeseenValue" from Text Input - In empty do nothing
+        Earnings_ForeseenValue = self.ids["Earnings_ForeseenValue"].text.strip()
+        if not Earnings_ForeseenValue: string = string + 'ERROR: Empty foressen value FIELD\n'
+        if not Earnings_ForeseenValue.replace(".", "").isnumeric(): string = string + 'ERROR: Foreseen value must be numeric FIELD\n'
+
+        # Retrive data "Earnings_ActualValue" from Text Input - In empty do nothing
+        Earnings_ActualValue = self.ids["Earnings_ActualValue"].text.strip()
+        if not Earnings_ActualValue: string = string + 'ERROR: Empty actual value FIELD\n'
+        if not Earnings_ActualValue.replace(".", "").isnumeric(): string =string + 'ERROR: Actual value must be numeric FIELD\n'
+
+        if string:
+            # If the error message is not empty, display an error
+            Pop = WarningPopup('', string.upper())
+            Pop.open()
+        else:
+            # Instantiate Dashboard Screen and Json manager
+            Dashboard_Scr = App.root.children[0].children[0].children[0]
+            Json_mng = App.root.children[0].children[0].children[0].Earnings_DBManager
+            New_Element = {EarningsCategory:[float(Earnings_ForeseenValue), float(Earnings_ActualValue)]}
+            # If an item needs to be modified
+            if self.type == 'M':
+                # Substitute the actual item
+                Json_mng.SubstituteElement(Old_element = self.itemToMod, New_Item = New_Element)
+            else:
+                # Append new item
+                Json_mng.AddElement(New_Element)
+
+            # Update the Json and Update the Dashboard Screen
+            Dashboard_Scr.Update_EarningsBoxLayout()
+
+            # Close the popup
+            self.dismiss()
+
+    def Cancel(self):
+        # Close the popup
         self.dismiss()

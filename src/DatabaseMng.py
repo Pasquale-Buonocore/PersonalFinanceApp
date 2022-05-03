@@ -14,6 +14,8 @@ This file aims to initialize the json file in the database folder [If it does no
 class PathManager_Class():
     database_path = 'Database/'
     Inflow_path = 'InFlow_loc.json'
+    Income_path = 'Earnings.json'
+    Expences_path= 'Expences.json'
 
 ###################
 # CUSTOM FUNCTION #
@@ -60,6 +62,7 @@ class JsonManager_Class():
         # Save new json file
         self.SaveJsonFile(json_object)
 
+    # Substitute Element to the json file
     def SubstituteElement(self, Old_element, New_Item):
         new_dict = {}
 

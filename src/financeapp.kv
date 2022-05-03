@@ -5,7 +5,7 @@
 # CUSTOM  #
 ###########
 <CustomMenuButton>:
-    id: 'CustomMenuButton'
+    id: CustomMenuButton
     background_color: 0,0,0,0
     size_hint: 1, ButtonMenu_size_hint_y
 
@@ -13,7 +13,7 @@
 # SETTING LAYOUT #
 ##################
 <SettingLayout>:
-    id: 'SettingLayout'
+    id: SettingLayout
     size_hint: 1, 0.04
 
     Label:
@@ -42,14 +42,14 @@
         on_release: app.stop()
 
 <MenuDataLayout>:
-    id: 'MenuDataLayout'
+    id: MenuDataLayout
     orientation: 'horizontal'
 
 <MenuLayout>:
-    id: 'MenuDataLayout'
+    id: MenuDataLayout
     canvas.before:
         Color:
-            rgba: 0.2,.2,0.2,0.5
+            rgba: canvas_r,canvas_g,canvas_b,canvas_opacity
         RoundedRectangle:
             pos: self.pos
             size: self.size
@@ -59,64 +59,64 @@
     spacing: "10dp"
 
     CustomMenuButton:
-        id: 'Dashboard_btn'
+        id: Dashboard_btn
         text: DashboardScreenName
         on_release: self.move_screen(app,self.text)
 
     CustomMenuButton:
-        id: 'Transaction_btn'
+        id: Transaction_btn
         text: TransactionScreenName
         on_release: self.move_screen(app,self.text)
 
     CustomMenuButton:
-        id: 'ETF_btn'
+        id: ETF_btn
         text: ETFETCScreenName
         on_release: self.move_screen(app,self.text)
 
     CustomMenuButton:
-        id: 'Stock_btn'
+        id: Stock_btn
         text: StocksScreenName
         on_release: self.move_screen(app,self.text)
 
     CustomMenuButton:
-        id: 'Bond_btn'
+        id: Bond_btn
         text: BondScreenName
         on_release: self.move_screen(app,self.text)
 
     CustomMenuButton:
-        id: 'Commodity_btn'
+        id: Commodity_btn
         text: CommodityScreenName
         on_release: self.move_screen(app,self.text)
 
     CustomMenuButton:
-        id: 'Crypto_btn'
+        id: Crypto_btn
         text: CryptoScreenName
         on_release: self.move_screen(app,self.text)
 
     CustomMenuButton:
-        id: 'Statistics_btn'
+        id: Statistics_btn
         text: StatisticsScreenName
         on_release: self.move_screen(app,self.text)
 
     CustomMenuButton:
-        id: 'Setting_btn'
+        id: Setting_btn
         text: SettingScreenName
         on_release: self.move_screen(app,self.text)
 
     CustomMenuButton:
-        id: 'Credit_btn'
+        id: Credit_btn
         text: CreditScreenName
         on_release: self.move_screen(app,self.text)
 
 <DataLayout>:
-    id: 'DataLayout'
+    id: DataLayout
     size_hint: 0.8, 1
     Label:
         text: 'Data'
 
 ############################################ 
 <MainLayout>:
-    id: 'MainLayout'
+    id: MainLayout
     orientation: 'vertical'
     canvas:
         Rectangle:

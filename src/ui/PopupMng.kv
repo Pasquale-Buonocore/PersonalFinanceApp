@@ -4,7 +4,6 @@
     background_color: 0,0,0,0
     separator_color: 0,0,0,0
     separator_height: 0
-    title_align: 'center'
 
     canvas.before:
         Color:
@@ -111,16 +110,137 @@
             orientation: 'horizontal'
 
             Button:
-                id:'Confirm'
+                id:Confirm
                 text:'Confirm'
                 size_hint: 0.8, 0.5
                 on_release: root.Confirm(app)
 
             Button:
-                id:'Cancel'
+                id:Cancel
+                text:'Cancel'
+                size_hint: 0.8, 0.5
+                on_release: root.Cancel()
+
+<ExpencesPopup>:
+    background_color: 0,0,0,0
+    separator_color: 0,0,0,0
+    title_align: 'center'
+
+    canvas.before:
+        Color:
+            rgba: 0.7,0.7,0.7,1
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [(40, 40), (40, 40), (40, 40), (40, 40)]
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: "30dp"
+        padding: ("0dp", "20dp", "0dp", "20dp")
+
+        GridLayout:
+            cols: 2
+            rows: 3
+
+            # Location
+            Label:
+                id: ExpencesCategory_lbl
+                text: 'Expences Category'
+            TextInput: 
+                id: ExpencesCategory
+                size_hint: 1,0.5
+
+            # Value last month
+            Label:
+                id: Expences_ForeseenValue_lbl
+                text: 'Foreseen Value'
+            TextInput: 
+                id: Expences_ForeseenValue
+                size_hint: 1,0.5
+            
+            # Value last month
+            Label:
+                id: Expences_ActualValue_lbl
+                text: 'Actual Value'
+            TextInput: 
+                id: Expences_ActualValue
+                size_hint: 1,0.5
+        
+        BoxLayout:
+            orientation: 'horizontal'
+
+            Button:
+                id:Confirm
+                text:'Confirm'
+                size_hint: 0.8, 0.5
+                on_release: root.Confirm(app)
+
+            Button:
+                id:Cancel
                 text:'Cancel'
                 size_hint: 0.8, 0.5
                 on_release: root.Cancel()
          
-    
+<EarningsPopup>:
+    background_color: 0,0,0,0
+    separator_color: 0,0,0,0
+    title_align: 'center'
+
+    canvas.before:
+        Color:
+            rgba: 0.7,0.7,0.7,1
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [(40, 40), (40, 40), (40, 40), (40, 40)]
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: "30dp"
+        padding: ("0dp", "20dp", "0dp", "20dp")
+
+        GridLayout:
+            cols: 2
+            rows: 3
+
+            # Location
+            Label:
+                id: EarningsCategory_lbl
+                text: 'Earning Category'
+            TextInput: 
+                id: EarningsCategory
+                size_hint: 1,0.5
+
+            # Value last month
+            Label:
+                id: Earnings_ForeseenValue_lbl
+                text: 'Foreseen Value'
+            TextInput: 
+                id: Earnings_ForeseenValue
+                size_hint: 1,0.5
+            
+            # Value last month
+            Label:
+                id: Earnings_ActualValue_lbl
+                text: 'Actual Value'
+            TextInput: 
+                id: Earnings_ActualValue
+                size_hint: 1,0.5
+        
+        BoxLayout:
+            orientation: 'horizontal'
+
+            Button:
+                id:Confirm
+                text:'Confirm'
+                size_hint: 0.8, 0.5
+                on_release: root.Confirm(app)
+
+            Button:
+                id:Cancel
+                text:'Cancel'
+                size_hint: 0.8, 0.5
+                on_release: root.Cancel()
+         
 
