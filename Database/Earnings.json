@@ -1,6 +1,6 @@
 {
     "Busta paga": [
-        1700.0,
+        0.0,
         0.0
     ],
     "Risparmi": [
@@ -19,7 +19,7 @@
         0.0,
         0.0
     ],
-    "DeFi Anchor": [
+    "Ripetizioni": [
         0.0,
         0.0
     ],
@@ -38,5 +38,9 @@
     "De Fi Near": [
         0.0,
         0.0
+    ],
+    "De Fi Anchor": [
+        0.0,
+        10.0
     ]
 }

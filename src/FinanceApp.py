@@ -45,7 +45,10 @@ def SetWindowSize():
 class CustomMenuButton(Button):
     def move_screen(self, App, string):
         print('Moving to ' + string)
+        # Update current screen name
         App.root.children[0].children[0].current = string
+        # Update current screen
+        App.root.children[0].children[0].current_screen.UpdateScreen()
     
     def add_button(self, App):
         print('Adding button to ScrollView')
@@ -108,6 +111,20 @@ class DashboardScreen(Screen):
     def __init__(self,**kwargs):
         super().__init__(**kwargs)
         # Initialize the manager of the json manager
+        self.UpdateDB()
+    
+    # Function to call when the screen is changed to Dashboard
+    def UpdateScreen(self):
+        # Update DB for check
+        self.UpdateDB()
+
+        # Update the dashboard screen 
+        self.Update_InFlowBoxLayout()
+        self.Update_ExpencesBoxLayout()
+        self.Update_EarningsBoxLayout()
+
+    # Update the Dashboard databases
+    def UpdateDB(self):
         self.InFlow_DBmanager = db_manager.JsonManager_Class(db_manager.path_manager.database_path,db_manager.path_manager.Inflow_path)
         self.Expences_DBManager = db_manager.JsonManager_Class(db_manager.path_manager.database_path,db_manager.path_manager.Expences_path)
         self.Earnings_DBManager = db_manager.JsonManager_Class(db_manager.path_manager.database_path,db_manager.path_manager.Income_path)
@@ -226,9 +243,9 @@ class DashboardScreen(Screen):
     def Update_ExpencesGraph(self):
         pass
 
-    ######################
-    #    EEARNING BOX    #
-    ######################
+    #####################
+    #    EARNING BOX    #
+    #####################
 
     # Update the Earning Box Layout
     def Update_EarningsBoxLayout(self):
@@ -283,34 +300,41 @@ class DashboardScreen(Screen):
     def Update_EarningGraph(self):
         pass
 
-
-
 class TransactionScreen(Screen):
-    pass
+    def UpdateScreen(self):
+        pass
 
 class ETFScreen(Screen):
-    pass
+    def UpdateScreen(self):
+        pass
 
 class StocksScreen(Screen):
-    pass
+    def UpdateScreen(self):
+        pass
 
 class BondScreen(Screen):
-    pass
+    def UpdateScreen(self):
+        pass
 
 class CommoditiesScreen(Screen):
-    pass
+    def UpdateScreen(self):
+        pass
 
 class CryptoScreen(Screen):
-    pass
+    def UpdateScreen(self):
+        pass
 
 class StatisticsScreen(Screen):
-    pass
+    def UpdateScreen(self):
+        pass
 
 class SettingScreen(Screen):
-    pass
+    def UpdateScreen(self):
+        pass
 
 class CreditsScreen(Screen):
-    pass
+    def UpdateScreen(self):
+        pass
 
 ############
 # MAIN APP #
@@ -328,6 +352,4 @@ class FinanceApp(App):
     
     def on_start(self):
         # Initialize the Dashboard page
-        self.root.children[0].children[0].children[0].Update_InFlowBoxLayout()
-        self.root.children[0].children[0].children[0].Update_ExpencesBoxLayout()
-        self.root.children[0].children[0].children[0].Update_EarningsBoxLayout()
+        self.root.children[0].children[0].children[0].UpdateScreen()
