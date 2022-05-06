@@ -49,11 +49,6 @@ class CustomMenuButton(Button):
         App.root.children[0].children[0].current = string
         # Update current screen
         App.root.children[0].children[0].current_screen.UpdateScreen()
-    
-    def add_button(self, App):
-        print('Adding button to ScrollView')
-        b1 = Button(text = 'B', size_hint = (1, None), size= ("100dp", "100dp"))
-        App.root.children[0].children[0].screens[0].children[0].children[0].children[0].add_widget(b1)
 
 class ModifyButton(Button):
     def __init__(self,**kwargs):
@@ -111,23 +106,16 @@ class DashboardScreen(Screen):
     def __init__(self,**kwargs):
         super().__init__(**kwargs)
         # Initialize the manager of the json manager
-        self.UpdateDB()
+        self.InFlow_DBManager = db_manager.JsonManager_Class(db_manager.path_manager.database_path,db_manager.path_manager.Inflow_path)
+        self.Expences_DBManager = db_manager.JsonManager_Class(db_manager.path_manager.database_path,db_manager.path_manager.Expences_path)
+        self.Earnings_DBManager = db_manager.JsonManager_Class(db_manager.path_manager.database_path,db_manager.path_manager.Income_path)
     
     # Function to call when the screen is changed to Dashboard
     def UpdateScreen(self):
-        # Update DB for check
-        self.UpdateDB()
-
         # Update the dashboard screen 
         self.Update_InFlowBoxLayout()
         self.Update_ExpencesBoxLayout()
         self.Update_EarningsBoxLayout()
-
-    # Update the Dashboard databases
-    def UpdateDB(self):
-        self.InFlow_DBmanager = db_manager.JsonManager_Class(db_manager.path_manager.database_path,db_manager.path_manager.Inflow_path)
-        self.Expences_DBManager = db_manager.JsonManager_Class(db_manager.path_manager.database_path,db_manager.path_manager.Expences_path)
-        self.Earnings_DBManager = db_manager.JsonManager_Class(db_manager.path_manager.database_path,db_manager.path_manager.Income_path)
 
     ########################
     #      INFLOW BOX      #
@@ -143,7 +131,7 @@ class DashboardScreen(Screen):
         self.ids["InFlow_counts"].add_widget(First_widget)
 
         # Read the Json file
-        Items_dict = self.InFlow_DBmanager.ReadJson()
+        Items_dict = self.InFlow_DBManager.ReadJson()
 
         # Add Item in the Json to the 
         for ItemName in Items_dict.keys():
@@ -175,7 +163,7 @@ class DashboardScreen(Screen):
         BoxLayoutItem.add_widget(ModifyButton(text = 'M', size_hint = [0.25, 1], Popup = InFlow_ModifyPopup))
 
         # Removing Popup
-        InFlow_RemovePopup = cst_popup.RemovingPopup(ManagerOfItem = ItemName, ManagerOfScreen = self, DBManager = self.InFlow_DBmanager, UpdateFunction_str= 'Update_InFlowBoxLayout')
+        InFlow_RemovePopup = cst_popup.RemovingPopup(ManagerOfItem = ItemName, ManagerOfScreen = self, DBManager = self.InFlow_DBManager, UpdateFunction_str= 'Update_InFlowBoxLayout')
         BoxLayoutItem.add_widget(RemoveButton(text = 'R', size_hint = [0.25, 1] , Popup = InFlow_RemovePopup))
         
         Item.add_widget(BoxLayoutItem)
@@ -301,8 +289,85 @@ class DashboardScreen(Screen):
         pass
 
 class TransactionScreen(Screen):
+    def __init__(self,**kwargs):
+        super().__init__(**kwargs)
+        # Initialize the manager of the json manager
+        self.TransactionIn_DBManager = db_manager.JsonManagerList_Class(db_manager.path_manager.database_path,db_manager.path_manager.TransactionIn_path)
+        self.TransactionOut_DBManager = db_manager.JsonManagerList_Class(db_manager.path_manager.database_path,db_manager.path_manager.TransactionOut_path)
+
     def UpdateScreen(self):
+        self.Update_TransactionInBoxLayout()
+        self.Update_TransactionOutBoxLayout()
+
+    #############################
+    #    TRANSACTION IN  BOX    #
+    #############################
+
+    # Update the TransactionIn Box Layout
+    def Update_TransactionInBoxLayout(self):
+        # Clear the Item inside the BoxLayout (Keep the first element only)
+        First_widget = self.ids["TransactionIn"].children[-1]
+        self.ids["TransactionIn"].clear_widgets()
+
+        # Add the first item again
+        self.ids["TransactionIn"].add_widget(First_widget)
+
+        # Read the Json file
+        Items_dict = self.TransactionIn_DBManager.ReadJson()
+
+        # Add Item in the Json to the 
+        for ItemName in Items_dict.keys():
+            self.ids["TransactionIn"].add_widget(self.Define_TransactionInItem(ItemName, Items_dict[ItemName] ))
+
+        # Update the InFlowGraph
+        self.Update_TransactionInGraph()
+
+    # Function that opens the TransactionIn popup to add item
+    def Add_TransactionInItem(self):
+        # Initialize the popup
+        TransactionInPopup = cst_popup.TransactionInPopup('ADD ITEM POPUP',type = 'A')
+        # Open the Popup
+        TransactionInPopup.open()
+
+    # Define Item to add in the InFlow Box
+    def Define_TransactionInItem(self, ItemName, ItemDict):
+        # Compute Item to Append according to the structure defined
+        # Item = GridLayout(id = ItemName , cols=7, rows = 1, padding = ("30dp", "0dp", "30dp", "0dp"), size_hint = [1, None], height = "20dp")
+        Item = GridLayout(cols=7, rows = 1, padding = ("30dp", "0dp", "30dp", "0dp"), size_hint = [1, None], height = "20dp")
+        Item.add_widget(Label(text = str(ItemDict[0]), size_hint = [0.15,1])) # Data
+        Item.add_widget(Label(text = str(ItemDict[1]), size_hint = [0.15,1])) # Amount
+        Item.add_widget(Label(text = str(ItemDict[2]), size_hint = [0.15,1])) # Category
+        Item.add_widget(Label(text = str(ItemDict[3]), size_hint = [0.3,1])) # Description
+        Item.add_widget(Label(text = str(ItemDict[4]), size_hint = [0.15,1])) # Paid with       
+
+        BoxLayoutItem = BoxLayout(orientation = 'horizontal', size_hint = [0.1, 1])
+
+        # Modify Popup
+        TransactionIn_ModifyPopup = cst_popup.TransactionInPopup('MODIFY ITEM POPUP', type ='M', itemToMod = {ItemName:ItemDict})
+        BoxLayoutItem.add_widget(ModifyButton(text = 'M', size_hint = [0.25, 1], Popup = TransactionIn_ModifyPopup))
+
+        # Removing Popup
+        TransactionIn_RemovePopup = cst_popup.RemovingPopup(ManagerOfItem = ItemName, ManagerOfScreen = self, DBManager = self.TransactionIn_DBManager, RemoveFunction = 'RemoveElementFromList', UpdateFunction_str= 'Update_TransactionInBoxLayout')
+        BoxLayoutItem.add_widget(RemoveButton(text = 'R', size_hint = [0.25, 1] , Popup = TransactionIn_RemovePopup))
+        
+        Item.add_widget(BoxLayoutItem)
+
+        return Item
+
+    # Given the JsonFile, create a graph to display for the In flow graph
+    def Update_TransactionInGraph(self):
         pass
+
+    #############################
+    #    TRANSACTION OUT  BOX    #
+    #############################
+
+    # Update the TransactionIn Box Layout
+    def Update_TransactionOutBoxLayout(self):
+        pass
+
+
+
 
 class ETFScreen(Screen):
     def UpdateScreen(self):

@@ -12,17 +12,18 @@ class WarningPopup(Popup):
         super().__init__(title = title_str, size_hint=(0.25,0.3))
 
 class RemovingPopup(Popup):
-    def __init__(self, ManagerOfItem, ManagerOfScreen, DBManager, UpdateFunction_str, title_str = 'REMOVING WARNING'):
+    def __init__(self, ManagerOfItem, ManagerOfScreen, DBManager, UpdateFunction_str, RemoveFunction = 'RemoveElement',title_str = 'REMOVING WARNING'):
         super().__init__(title = title_str, size_hint=(0.25,0.2))
         self.ManagerOfItem = ManagerOfItem
         self.ManagerOfScreen = ManagerOfScreen
         self.DBManager = DBManager
         self.UpdateFunction_str = UpdateFunction_str
+        self.RemoveFunction_str = RemoveFunction
 
     def RemoveIt(self):
         # When the remove button is pressed, the item should be removed from the json. The UI shall be updated as well.
         # Remove widget from the Json
-        self.DBManager.RemoveElement(self.ManagerOfItem)
+        getattr(self.DBManager, self.RemoveFunction_str)(self.ManagerOfItem)
         # Update the UI
         getattr(self.ManagerOfScreen, self.UpdateFunction_str)()
         # Close the popup
@@ -70,7 +71,7 @@ class InFlowPopup(Popup):
         else:
             # Instantiate Dashboard Screen and Json manager
             Dashboard_Scr = App.root.children[0].children[0].children[0]
-            Json_mng = App.root.children[0].children[0].children[0].InFlow_DBmanager
+            Json_mng = App.root.children[0].children[0].children[0].InFlow_DBManager
             New_Element = {Location_Input:[float(LastMonth_Input), float(ThisMonth_Input)]}
             # If an item needs to be modified
             if self.type == 'M':
@@ -205,6 +206,81 @@ class EarningsPopup(Popup):
 
             # Update the Json and Update the Dashboard Screen
             Dashboard_Scr.Update_EarningsBoxLayout()
+
+            # Close the popup
+            self.dismiss()
+
+    def Cancel(self):
+        # Close the popup
+        self.dismiss()
+
+class TransactionInPopup(Popup):
+    def __init__(self, title_str, type, itemToMod = {}):
+        # Initialize the super class
+        super().__init__(title = title_str, size_hint=(0.3,0.5))
+        # Define inner attributes
+        self.type = type if type in ['A','M'] else 'A'
+        # Save item to modify
+        self.itemToMod = itemToMod
+        # Fill the popup if the user need to modify a field
+        if itemToMod: self.ModifyTextInput()
+
+    def ModifyTextInput(self):
+        # Modify text input if itemToMod is not empty
+        ItemName = list(self.itemToMod.keys())[0]
+        self.ids["DataValue"].text = str(self.itemToMod[ItemName][0])
+        self.ids["AmountValue"].text = str(self.itemToMod[ItemName][1])
+        self.ids["CategoryValue"].text = str(self.itemToMod[ItemName][2])
+        self.ids["PaidWith"].text = str(self.itemToMod[ItemName][4])
+        self.ids["DescriptionValue"].text = str(self.itemToMod[ItemName][3])
+        pass
+
+    def Confirm(self, App):
+        # Keep the boolean error
+        string = ''
+
+        # Retrive data "Data Category" from Text Input - In empty do nothing
+        DataValue = self.ids["DataValue"].text.strip()
+        if not DataValue: string = string + 'ERROR: Empty data FIELD\n'
+
+        # Retrive data "Amount Value" from Text Input - In empty do nothing
+        AmountValue = self.ids["AmountValue"].text.strip()
+        if not AmountValue: string = string + 'ERROR: Empty amount value FIELD\n'
+        if not AmountValue.replace(".", "").isnumeric(): string = string + 'ERROR: Amount value must be numeric FIELD\n'
+
+        # Retrive data "CategoryValue" from Text Input - In empty do nothing
+        CategoryValue = self.ids["CategoryValue"].text.strip()
+        if not CategoryValue: string = string + 'ERROR: Empty category FIELD\n'
+        
+        # Retrive data "PaidWith" from Text Input - In empty do nothing
+        PaidWith = self.ids["PaidWith"].text.strip()
+        if not PaidWith: string = string + 'ERROR: Empty Paid with FIELD\n'
+        
+        # Retrive data "DescriptionValue" from Text Input - In empty do nothing
+        DescriptionValue = self.ids["DescriptionValue"].text.strip()
+
+        if string:
+            # If the error message is not empty, display an error
+            Pop = WarningPopup('', string.upper())
+            Pop.open()
+        else:
+            # Instantiate Dashboard Screen and Json manager
+            Transaction_Scr = App.root.children[0].children[0].children[0]
+            Json_mng = App.root.children[0].children[0].children[0].TransactionIn_DBManager
+            New_Element = [DataValue, AmountValue, CategoryValue, DescriptionValue, PaidWith]
+
+            # If an item needs to be modified
+            if self.type == 'M':
+                # Substitute the actual item
+                Json_mng.SubstituteElementList(ItemNum = list(self.itemToMod.keys())[0], NewList = New_Element)
+                pass
+
+            else:
+                # Append new item
+                Json_mng.ConcatenateElementList(New_Element)
+
+            # Update the Json and Update the Dashboard Screen
+            Transaction_Scr.Update_TransactionInBoxLayout()
 
             # Close the popup
             self.dismiss()

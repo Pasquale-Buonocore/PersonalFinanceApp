@@ -2,16 +2,122 @@
 #:include ui/Constant.kv
 
 <TransactionScreen>:
+    id: TransactionScreenName
     name: TransactionScreenName
-    BoxLayout:
-        orientation: 'vertical'
-        Label:
-            size_hint: 1, 0.1
-            text: TransactionScreenName + ' Panel'
+    
+    # Scroll View Transaction
+    ScrollView:
+        id: TransactionScrollView
+
+        # Box containing Box Layout
         BoxLayout:
-            orientation: 'horizontal'
-            size_hint: 1, 0.9
+            id: Transaction_BoxLayout_lvl
+            orientation: 'vertical'
+            size_hint: 1, None
+            height: self.minimum_height
+            padding: ("50dp", "10dp", "50dp", "10dp")
+            spacing: "20dp"
+
             Label:
-                text: 'Transaction In'
+                text: TransactionScreenName + ' IN RESUME'
+                size_hint: 1, None
+                height: "50dp"    
+            
+            #############################
+            # TRANSACTION IN BOX LAYOUT #
+            #############################
+            BoxLayout:
+                orientation: 'vertical'
+                id: TransactionIn
+                size_hint: 1, None
+                height: self.minimum_height
+                spacing: "20dp"
+                padding: ("0dp", "20dp", "0dp", "20dp")
+
+                canvas.before:
+                    Color:
+                        rgba: canvas_r,canvas_g,canvas_b,canvas_opacity
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [(40, 40), (40, 40), (40, 40), (40, 40)]
+                
+                GridLayout:
+                    id: TransactionIn_NameRow
+                    size_hint: 1, None
+                    height: "20dp"
+                    padding: ("30dp", "0dp", "30dp", "0dp")
+                    cols: 6
+                    rows: 1
+
+                    Label: 
+                        text: 'Data'
+                        size_hint: 0.15, 1
+                    Label: 
+                        text: 'Amount'
+                        size_hint: 0.15, 1
+                    Label: 
+                        text: 'Category'
+                        size_hint: 0.15, 1
+                    Label: 
+                        text: 'Description'
+                        size_hint: 0.3, 1
+                    Label: 
+                        text: 'Paid from'
+                        size_hint: 0.15, 1
+                    Button:
+                        text: 'Add Item'
+                        size_hint: 0.1, 1
+                        on_release: root.Add_TransactionInItem()
+
             Label:
-                text: 'Transaction Out'
+                text: TransactionScreenName + ' OUT RESUME'
+                size_hint: 1, None
+                height: "50dp" 
+
+            ##############################
+            # TRANSACTION OUT BOX LAYOUT #
+            ##############################
+            BoxLayout:
+                orientation: 'vertical'
+                id: TransactionOut
+                size_hint: 1, None
+                height: self.minimum_height
+                spacing: "20dp"
+                padding: ("0dp", "20dp", "0dp", "20dp")
+
+                canvas.before:
+                    Color:
+                        rgba: canvas_r,canvas_g,canvas_b,canvas_opacity
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [(40, 40), (40, 40), (40, 40), (40, 40)]
+                
+                GridLayout:
+                    id: TransactionOut_NameRow
+                    size_hint: 1, None
+                    height: "20dp"
+                    padding: ("30dp", "0dp", "30dp", "0dp")
+                    cols: 6
+                    rows: 1
+
+                    Label: 
+                        text: 'Data'
+                        size_hint: 0.15, 1
+                    Label: 
+                        text: 'Amount'
+                        size_hint: 0.15, 1
+                    Label: 
+                        text: 'Category'
+                        size_hint: 0.15, 1
+                    Label: 
+                        text: 'Description'
+                        size_hint: 0.3, 1
+                    Label: 
+                        text: 'Paid from'
+                        size_hint: 0.15, 1
+                    Button:
+                        text: 'Add Item'
+                        size_hint: 0.1, 1
+                        on_release: root.Add_TransactionOutItem()

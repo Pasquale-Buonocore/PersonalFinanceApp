@@ -16,6 +16,8 @@ class PathManager_Class():
     Inflow_path = 'InFlow_loc.json'
     Income_path = 'Earnings.json'
     Expences_path= 'Expences.json'
+    TransactionIn_path = 'TransactionIn.json'
+    TransactionOut_path = 'TransactionOut.json'
 
 ###################
 # CUSTOM FUNCTION #
@@ -49,6 +51,15 @@ class JsonManager_Class():
         with open(self.database_path + self.json_path, "w") as outfile:
             outfile.write(json_object)
 
+    # Read and return the dictionary
+    def ReadJson(self):
+        # Opening and Read JSON file
+        with open(self.database_path + self.json_path, 'r') as openfile:
+            # Reading from json file
+            json_object = json.load(openfile)
+        # Return dictionary
+        return json_object
+
     # Add Element to the json file
     def AddElement(self, dictionary):
         # Read json
@@ -78,7 +89,6 @@ class JsonManager_Class():
         # Save new json file
         self.SaveJsonFile(new_dict)
 
-
     # Remove Element to the json file
     def RemoveElement(self, Element):
         # Read json
@@ -90,27 +100,122 @@ class JsonManager_Class():
 
         # Save new Json file
         self.SaveJsonFile(json_object)
-    
+
+class JsonManagerList_Class():
+    def __init__(self, database_path, json_file):
+        self.database_path = database_path
+        self.json_path = json_file
+        self.Initialize_json()
+        # If it is not empty:
+        # 1. Check if the indexes are correctly ordered
+        # 2. Save a new version of the json file if it has been previously corrupted
+        self.SaveJsonFile(self.ReadJson())
+
+    #################
+    # CLASS METHODS #
+    #################
+    def OrderList(self, json_object):
+        # Initialize variables
+        OutDict = {}
+        counter = 1
+
+        # Reorganize json
+        for key in json_object.keys():
+            OutDict.update({counter: json_object[key]})
+            counter = counter + 1
+
+        # Update counter
+        self.ElementCounter = counter -1 
+
+        return OutDict
+
+    # Initialize the json file
+    def Initialize_json(self):
+        if not exists(self.database_path + self.json_path):
+            self.SaveJsonFile(self.database_path + self.json_path, {})
+
+    # Save the json file
+    def SaveJsonFile(self, dictionary):
+         # Serializing json 
+        json_object = json.dumps(dictionary, indent = 4)
+
+        # Writing to sample.json
+        with open(self.database_path + self.json_path, "w") as outfile:
+            outfile.write(json_object)
+
     # Read and return the dictionary
     def ReadJson(self):
         # Opening and Read JSON file
         with open(self.database_path + self.json_path, 'r') as openfile:
             # Reading from json file
             json_object = json.load(openfile)
+
         # Return dictionary
-        return json_object
+        return self.OrderList(json_object)
+
+    # Initialize the internal counter as the number of item in the list
+    def InitializeCounter(self):
+        # Read json
+        json_object = self.ReadJson()
+        # Update the counter
+        return len(json_object)
+    
+    # Concatenate Element to the json file
+    def ConcatenateElementList(self, ElementList):
+        # Read json
+        json_object = self.ReadJson()
+
+        # Add Item independetly of the type
+        self.ElementCounter = self.ElementCounter + 1
+        json_object.update({self.ElementCounter : ElementList})
+
+        # Save new json file
+        self.SaveJsonFile(json_object)
+
+    # Substitute the element in a list
+    def SubstituteElementList(self, ItemNum, NewList):
+        # Read json
+        json_object = self.ReadJson()
+
+        if ItemNum in json_object.keys():
+            json_object[ItemNum] = NewList
+        
+        # Save Json
+        self.SaveJsonFile(json_object)
+
+    # Remove Element from the list
+    def RemoveElementFromList(self, ItemNum):
+        # Read json
+        json_object = self.ReadJson()
+
+        if ItemNum in json_object.keys():
+            json_object.pop(ItemNum)
+        
+        # Save Json
+        self.SaveJsonFile(self.OrderList(json_object))
+
 
 #########
 # TESTS #
 #########
+TEST_TYPE = 1 # 0 for dictionary, 1 for list
+
 if __name__ == '__main__':
     PathManager = PathManager_Class()
-    InFlow_obj = JsonManager_Class(PathManager.database_path, PathManager.Inflow_path)
-    print(InFlow_obj.ReadJson())
-    InFlow_obj.AddElement({'Unicredit1':[0,0]})
-    InFlow_obj.RemoveElement('Unicredit2')
-    print(InFlow_obj.ReadJson())
-
+    if TEST_TYPE == 0:
+        Manager = JsonManager_Class(PathManager.database_path, PathManager.Inflow_path)
+        print(Manager.ReadJson())
+        Manager.AddElement({'Unicredit1':[0,0]})
+        Manager.RemoveElement('Unicredit2')
+        print(Manager.ReadJson())
+    elif TEST_TYPE == 1:
+        Manager = JsonManagerList_Class(PathManager.database_path, PathManager.TransactionIn_path)
+        print(Manager.ReadJson())
+        Manager.ConcatenateElementList([0,0,0,0,0])
+        print(Manager.ReadJson())
+        Manager.RemoveElementFromList(3)
+        Manager.SubstituteElementList(2,[1,1,1,1,1])
+        print(Manager.ReadJson())
     
 
 
