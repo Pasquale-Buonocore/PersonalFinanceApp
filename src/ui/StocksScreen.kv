@@ -2,6 +2,73 @@
 #:include ui/Constant.kv
 
 <StocksScreen>:
+    id: StocksScreenName
     name: StocksScreenName
-    Label:
-        text: StocksScreenName
+    
+    # Scroll View Transaction
+    ScrollView:
+        id: StocksScrollView
+
+        # Box containing Box Layout
+        BoxLayout:
+            id: Stocks_BoxLayout_lvl
+            orientation: 'vertical'
+            size_hint: 1, None
+            height: self.minimum_height
+            padding: ("50dp", "10dp", "50dp", "10dp")
+            spacing: "20dp"
+
+            Label:
+                text: StocksScreenName + ' TRANSACTIONS'
+                size_hint: 1, None
+                height: "50dp"    
+            
+            #####################
+            # STOCKS BOX LAYOUT #
+            #####################
+            BoxLayout:
+                orientation: 'vertical'
+                id: Stocks_BoxLayout
+                size_hint: 1, None
+                height: self.minimum_height
+                spacing: "20dp"
+                padding: ("0dp", "20dp", "0dp", "20dp")
+
+                canvas.before:
+                    Color:
+                        rgba: canvas_r,canvas_g,canvas_b,canvas_opacity
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [(40, 40), (40, 40), (40, 40), (40, 40)]
+                
+                GridLayout:
+                    id: Stocks_NameRow
+                    size_hint: 1, None
+                    height: "20dp"
+                    padding: ("30dp", "0dp", "30dp", "0dp")
+                    cols: 7
+                    rows: 1
+
+                    Label: 
+                        text: 'Name'
+                        size_hint: 0.3, 1
+                    Label: 
+                        text: 'Symbol'
+                        size_hint: 0.12, 1
+                    Label: 
+                        text: 'Data'
+                        size_hint: 0.12, 1
+                    Label: 
+                        text: 'Type'
+                        size_hint: 0.12, 1
+                    Label: 
+                        text: 'Quantity'
+                        size_hint: 0.12, 1
+                    Label: 
+                        text: 'Price'
+                        size_hint: 0.12, 1
+                    Button:
+                        text: 'Add Item'
+                        size_hint: 0.1, 1
+                        on_release: root.Add_StocksInItem()

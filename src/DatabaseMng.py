@@ -18,6 +18,7 @@ class PathManager_Class():
     Expences_path= 'Expences.json'
     TransactionIn_path = 'TransactionIn.json'
     TransactionOut_path = 'TransactionOut.json'
+    ETF_ETC_path = 'ETF_ETC_path.json'
 
 ###################
 # CUSTOM FUNCTION #
@@ -132,7 +133,7 @@ class JsonManagerList_Class():
     # Initialize the json file
     def Initialize_json(self):
         if not exists(self.database_path + self.json_path):
-            self.SaveJsonFile(self.database_path + self.json_path, {})
+            self.SaveJsonFile({})
 
     # Save the json file
     def SaveJsonFile(self, dictionary):
