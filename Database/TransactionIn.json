@@ -1,9 +1,16 @@
 {
     "1": [
         "01/05/2022",
-        "1",
+        "100",
         "Busta paga",
         "Ricevuto stipendio",
         "Italsystem"
+    ],
+    "2": [
+        "02/05/2022",
+        "150",
+        "Regali",
+        "Ricevuto regalo da nonna",
+        "Contanti"
     ]
 }

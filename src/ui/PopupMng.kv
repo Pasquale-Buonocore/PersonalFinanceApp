@@ -321,3 +321,83 @@
                 text:'Cancel'
                 # size_hint: 0.8, 0.5
                 on_release: root.Cancel()
+
+
+<TransactionOutPopup>:
+    background_color: 0,0,0,0
+    separator_color: 0,0,0,0
+    title_align: 'center'
+
+    canvas.before:
+        Color:
+            rgba: 0.7,0.7,0.7,1
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [(40, 40), (40, 40), (40, 40), (40, 40)]
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: "30dp"
+        padding: ("0dp", "20dp", "0dp", "20dp")
+
+        GridLayout:
+            size_hint: 1, 0.8
+            cols: 2
+            rows: 5
+
+            # Data
+            Label:
+                id: Data_lbl
+                text: 'Data'
+            TextInput: 
+                id: DataValue
+                size_hint: 1,0.2
+
+            # Amount
+            Label:
+                id: Amount_lbl
+                text: 'Amount Value'
+            TextInput: 
+                id: AmountValue
+                size_hint: 1,0.2
+            
+            # Category
+            Label:
+                id: Category_lbl
+                text: 'Category'
+            TextInput: 
+                id: CategoryValue
+                size_hint: 1,0.2
+
+            # Paid from
+            Label:
+                id: PaidFrom_lbl
+                text: 'Paid with'
+            TextInput: 
+                id: PaidWith
+                size_hint: 1,0.2
+            
+            # Description
+            Label:
+                id: Description_lbl
+                text: 'Description'
+            TextInput: 
+                id: DescriptionValue
+                size_hint: 1,0.2
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, 0.2
+            
+            Button:
+                id: Confirm
+                text:'Confirm'
+                # size_hint: 0.8, 0.5
+                on_release: root.Confirm(app)
+
+            Button:
+                id: Cancel
+                text:'Cancel'
+                # size_hint: 0.8, 0.5
+                on_release: root.Cancel()
