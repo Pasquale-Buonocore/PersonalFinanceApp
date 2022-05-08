@@ -407,6 +407,430 @@
     background_color: 0,0,0,0
     separator_color: 0,0,0,0
     title_align: 'center'
+    separator_height: 0
+    title: ''
+
+    canvas.before:
+        Color:
+            rgba: 0.7,0.7,0.7,1
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [(40, 40), (40, 40), (40, 40), (40, 40)]
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: "30dp"
+        padding: ("0dp", "20dp", "0dp", "20dp")
+
+        BoxLayout:
+            orientation: 'horizontal'
+
+            Label:
+                text: 'Add Transaction'
+                size_hint: 0.9, 0.1
+            Button:
+                text: 'X'
+                size_hint: 0.1, 0.1
+                
+        GridLayout:
+            size_hint: 1, 0.9
+            cols: 2
+            rows: 8
+
+            # Asset Name
+            Label:
+                id: Name_lbl
+                text: 'Name'
+            TextInput: 
+                id: NameValue
+                size_hint: 1,0.11
+
+            # Symbol
+            Label:
+                id: Symbol_lbl
+                text: 'Symbol'
+            TextInput: 
+                id: SymbolValue
+                size_hint: 1,0.11
+            
+            # Data
+            Label:
+                id: Data_lbl
+                text: 'Data'
+            TextInput: 
+                id: DataValue
+                size_hint: 1,0.11
+
+            # Type
+            Label:
+                id: Type_lbl
+                text: 'Type'
+            TextInput: 
+                id: TypeValue
+                size_hint: 1,0.11
+
+            # Broker Name
+            Label:
+                id: Broker_lbl
+                text: 'Broker'
+            TextInput: 
+                id: BrokerValue
+                size_hint: 1,0.11
+
+            # Quantity
+            Label:
+                id: Quantity_lbl
+                text: 'Quantity'
+            TextInput: 
+                id: QuantityValue
+                size_hint: 1,0.11
+            
+            # Price
+            Label:
+                id: SinglePrice_lbl
+                text: 'Price Per Asset'
+            TextInput: 
+                id: SinglePriceValue
+                size_hint: 1,0.1
+            
+            # Total Price        
+            Label:
+                id: TotalPrice_lbl
+                text: 'Total Spent'
+            Label: 
+                id: TotalSpentValue
+                size_hint: 1,0.1
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, 0.1
+            
+            Button:
+                id: Confirm
+                text:'Confirm'
+                # size_hint: 0.8, 0.5
+                on_release: root.Confirm(app)
+
+            Button:
+                id: Cancel
+                text:'Cancel'
+                # size_hint: 0.8, 0.5
+                on_release: root.Cancel()
+
+<StocksPopup>:
+    background_color: 0,0,0,0
+    separator_color: 0,0,0,0
+    title_align: 'center'
+
+    canvas.before:
+        Color:
+            rgba: 0.7,0.7,0.7,1
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [(40, 40), (40, 40), (40, 40), (40, 40)]
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: "30dp"
+        padding: ("0dp", "20dp", "0dp", "20dp")
+
+        GridLayout:
+            size_hint: 1, 0.9
+            cols: 2
+            rows: 8
+
+            # Asset Name
+            Label:
+                id: Name_lbl
+                text: 'Name'
+            TextInput: 
+                id: NameValue
+                size_hint: 1,0.11
+
+            # Symbol
+            Label:
+                id: Symbol_lbl
+                text: 'Symbol'
+            TextInput: 
+                id: SymbolValue
+                size_hint: 1,0.11
+            
+            # Data
+            Label:
+                id: Data_lbl
+                text: 'Data'
+            TextInput: 
+                id: DataValue
+                size_hint: 1,0.11
+
+            # Type
+            Label:
+                id: Type_lbl
+                text: 'Type'
+            TextInput: 
+                id: TypeValue
+                size_hint: 1,0.11
+
+            # Broker Name
+            Label:
+                id: Broker_lbl
+                text: 'Broker'
+            TextInput: 
+                id: BrokerValue
+                size_hint: 1,0.11
+
+            # Quantity
+            Label:
+                id: Quantity_lbl
+                text: 'Quantity'
+            TextInput: 
+                id: QuantityValue
+                size_hint: 1,0.11
+            
+            # Price
+            Label:
+                id: SinglePrice_lbl
+                text: 'Price Per Asset'
+            TextInput: 
+                id: SinglePriceValue
+                size_hint: 1,0.1
+            
+            # Total Price        
+            Label:
+                id: TotalPrice_lbl
+                text: 'Total Spent'
+            Label: 
+                id: TotalSpentValue
+                size_hint: 1,0.1
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, 0.1
+            
+            Button:
+                id: Confirm
+                text:'Confirm'
+                # size_hint: 0.8, 0.5
+                on_release: root.Confirm(app)
+
+            Button:
+                id: Cancel
+                text:'Cancel'
+                # size_hint: 0.8, 0.5
+                on_release: root.Cancel()
+
+<BondsPopup>:
+    background_color: 0,0,0,0
+    separator_color: 0,0,0,0
+    title_align: 'center'
+
+    canvas.before:
+        Color:
+            rgba: 0.7,0.7,0.7,1
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [(40, 40), (40, 40), (40, 40), (40, 40)]
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: "30dp"
+        padding: ("0dp", "20dp", "0dp", "20dp")
+
+        GridLayout:
+            size_hint: 1, 0.9
+            cols: 2
+            rows: 8
+
+            # Asset Name
+            Label:
+                id: Name_lbl
+                text: 'Name'
+            TextInput: 
+                id: NameValue
+                size_hint: 1,0.11
+
+            # Symbol
+            Label:
+                id: Symbol_lbl
+                text: 'Symbol'
+            TextInput: 
+                id: SymbolValue
+                size_hint: 1,0.11
+            
+            # Data
+            Label:
+                id: Data_lbl
+                text: 'Data'
+            TextInput: 
+                id: DataValue
+                size_hint: 1,0.11
+
+            # Type
+            Label:
+                id: Type_lbl
+                text: 'Type'
+            TextInput: 
+                id: TypeValue
+                size_hint: 1,0.11
+
+            # Broker Name
+            Label:
+                id: Broker_lbl
+                text: 'Broker'
+            TextInput: 
+                id: BrokerValue
+                size_hint: 1,0.11
+
+            # Quantity
+            Label:
+                id: Quantity_lbl
+                text: 'Quantity'
+            TextInput: 
+                id: QuantityValue
+                size_hint: 1,0.11
+            
+            # Price
+            Label:
+                id: SinglePrice_lbl
+                text: 'Price Per Asset'
+            TextInput: 
+                id: SinglePriceValue
+                size_hint: 1,0.1
+            
+            # Total Price        
+            Label:
+                id: TotalPrice_lbl
+                text: 'Total Spent'
+            Label: 
+                id: TotalSpentValue
+                size_hint: 1,0.1
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, 0.1
+            
+            Button:
+                id: Confirm
+                text:'Confirm'
+                # size_hint: 0.8, 0.5
+                on_release: root.Confirm(app)
+
+            Button:
+                id: Cancel
+                text:'Cancel'
+                # size_hint: 0.8, 0.5
+                on_release: root.Cancel()
+
+<CommoditiesPopup>:
+    background_color: 0,0,0,0
+    separator_color: 0,0,0,0
+    title_align: 'center'
+
+    canvas.before:
+        Color:
+            rgba: 0.7,0.7,0.7,1
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [(40, 40), (40, 40), (40, 40), (40, 40)]
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: "30dp"
+        padding: ("0dp", "20dp", "0dp", "20dp")
+
+        GridLayout:
+            size_hint: 1, 0.9
+            cols: 2
+            rows: 8
+
+            # Asset Name
+            Label:
+                id: Name_lbl
+                text: 'Name'
+            TextInput: 
+                id: NameValue
+                size_hint: 1,0.11
+
+            # Symbol
+            Label:
+                id: Symbol_lbl
+                text: 'Symbol'
+            TextInput: 
+                id: SymbolValue
+                size_hint: 1,0.11
+            
+            # Data
+            Label:
+                id: Data_lbl
+                text: 'Data'
+            TextInput: 
+                id: DataValue
+                size_hint: 1,0.11
+
+            # Type
+            Label:
+                id: Type_lbl
+                text: 'Type'
+            TextInput: 
+                id: TypeValue
+                size_hint: 1,0.11
+
+            # Broker Name
+            Label:
+                id: Broker_lbl
+                text: 'Broker'
+            TextInput: 
+                id: BrokerValue
+                size_hint: 1,0.11
+
+            # Quantity
+            Label:
+                id: Quantity_lbl
+                text: 'Quantity'
+            TextInput: 
+                id: QuantityValue
+                size_hint: 1,0.11
+            
+            # Price
+            Label:
+                id: SinglePrice_lbl
+                text: 'Price Per Asset'
+            TextInput: 
+                id: SinglePriceValue
+                size_hint: 1,0.1
+            
+            # Total Price        
+            Label:
+                id: TotalPrice_lbl
+                text: 'Total Spent'
+            Label: 
+                id: TotalSpentValue
+                size_hint: 1,0.1
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, 0.1
+            
+            Button:
+                id: Confirm
+                text:'Confirm'
+                # size_hint: 0.8, 0.5
+                on_release: root.Confirm(app)
+
+            Button:
+                id: Cancel
+                text:'Cancel'
+                # size_hint: 0.8, 0.5
+                on_release: root.Cancel()
+
+<CryptoPopup>:
+    background_color: 0,0,0,0
+    separator_color: 0,0,0,0
+    title_align: 'center'
 
     canvas.before:
         Color:

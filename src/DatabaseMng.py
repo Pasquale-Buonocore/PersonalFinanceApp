@@ -18,7 +18,11 @@ class PathManager_Class():
     Expences_path= 'Expences.json'
     TransactionIn_path = 'TransactionIn.json'
     TransactionOut_path = 'TransactionOut.json'
-    ETF_ETC_path = 'ETF_ETC_path.json'
+    ETF_ETC_path = 'ETF_ETC.json'
+    Stocks_path = 'Stocks.json'
+    Bonds_path = 'Bonds.json'
+    Commodities_path = 'Commodities.json'
+    Crypto_path = 'Crypto.json'
 
 ###################
 # CUSTOM FUNCTION #

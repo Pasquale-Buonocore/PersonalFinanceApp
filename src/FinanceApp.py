@@ -458,7 +458,6 @@ class ETFScreen(Screen):
     # Define Item to add in the InFlow Box
     def Define_ETF_ETCItem(self, ItemName, ItemDict):
         # Compute Item to Append according to the structure defined
-        # Item = GridLayout(id = ItemName , cols=7, rows = 1, padding = ("30dp", "0dp", "30dp", "0dp"), size_hint = [1, None], height = "20dp")
         Item = GridLayout(cols= 8, rows = 1, padding = ("30dp", "0dp", "30dp", "0dp"), size_hint = [1, None], height = "20dp")
         Item.add_widget(Label(text = str(ItemDict[0]), size_hint = [0.3,1])) # Name
         Item.add_widget(Label(text = str(ItemDict[1]), size_hint = [0.1,1])) # Symbol
@@ -487,19 +486,279 @@ class ETFScreen(Screen):
         pass
 
 class StocksScreen(Screen):
+    def __init__(self,**kwargs):
+        super().__init__(**kwargs)
+        # Initialize the manager of the json manager
+        self.Stocks_DBManager = db_manager.JsonManagerList_Class(db_manager.path_manager.database_path,db_manager.path_manager.Stocks_path)
+        
     def UpdateScreen(self):
+        self.Update_StocksBoxLayout()
+
+    #####################
+    #    STOCKS  BOX    #
+    #####################
+
+    # Update the Stocks Box Layout
+    def Update_StocksBoxLayout(self):
+        # Clear the Item inside the BoxLayout (Keep the first element only)
+        First_widget = self.ids["Stocks"].children[-1]
+        self.ids["Stocks"].clear_widgets()
+
+        # Add the first item again
+        self.ids["Stocks"].add_widget(First_widget)
+
+        # Read the Json file
+        Items_dict = self.Stocks_DBManager.ReadJson()
+
+        # Add Item in the Json to the 
+        for ItemName in Items_dict.keys():
+            self.ids["Stocks"].add_widget(self.Define_StocksItem(ItemName, Items_dict[ItemName] ))
+
+        # Update the InFlowGraph
+        self.Update_StocksGraph()
+
+    # Function that opens the Stocks popup to add item
+    def Add_StocksItem(self):
+        # Initialize the popup
+        StocksPopup = cst_popup.StocksPopup('ADD ITEM POPUP',type = 'A')
+        # Open the Popup
+        StocksPopup.open()
+
+    # Define Item to add in the InFlow Box
+    def Define_StocksItem(self, ItemName, ItemDict):
+        # Compute Item to Append according to the structure defined
+        Item = GridLayout(cols= 8, rows = 1, padding = ("30dp", "0dp", "30dp", "0dp"), size_hint = [1, None], height = "20dp")
+        Item.add_widget(Label(text = str(ItemDict[0]), size_hint = [0.3,1])) # Name
+        Item.add_widget(Label(text = str(ItemDict[1]), size_hint = [0.1,1])) # Symbol
+        Item.add_widget(Label(text = str(ItemDict[2]), size_hint = [0.1,1])) # Data
+        Item.add_widget(Label(text = str(ItemDict[3]), size_hint = [0.1,1])) # Type
+        Item.add_widget(Label(text = str(ItemDict[4]), size_hint = [0.1,1])) # Broker
+        Item.add_widget(Label(text = str(ItemDict[5]), size_hint = [0.1,1]))  # Quantity
+        Item.add_widget(Label(text = str(ItemDict[7]), size_hint = [0.1,1])) # Total spend      
+
+        BoxLayoutItem = BoxLayout(orientation = 'horizontal', size_hint = [0.1, 1])
+
+        # Modify Popup
+        Stocks_ModifyPopup = cst_popup.StocksPopup('MODIFY ITEM POPUP', type ='M', itemToMod = {ItemName:ItemDict})
+        BoxLayoutItem.add_widget(ModifyButton(text = 'M', size_hint = [0.25, 1], Popup = Stocks_ModifyPopup))
+
+        # Removing Popup
+        Stocks_RemovePopup = cst_popup.RemovingPopup(ManagerOfItem = ItemName, ManagerOfScreen = self, DBManager = self.Stocks_DBManager, RemoveFunction = 'RemoveElementFromList', UpdateFunction_str= 'Update_StocksBoxLayout')
+        BoxLayoutItem.add_widget(RemoveButton(text = 'R', size_hint = [0.25, 1] , Popup = Stocks_RemovePopup))
+        
+        Item.add_widget(BoxLayoutItem)
+
+        return Item
+
+    # Given the JsonFile, create a graph to display for the In flow graph
+    def Update_StocksGraph(self):
         pass
 
 class BondScreen(Screen):
+    def __init__(self,**kwargs):
+        super().__init__(**kwargs)
+        # Initialize the manager of the json manager
+        self.Bonds_DBManager = db_manager.JsonManagerList_Class(db_manager.path_manager.database_path,db_manager.path_manager.Bonds_path)
+        
     def UpdateScreen(self):
+        self.Update_BondsBoxLayout()
+
+    ####################
+    #    BONDS  BOX    #
+    ####################
+
+    # Update the Bonds Box Layout
+    def Update_BondsBoxLayout(self):
+        # Clear the Item inside the BoxLayout (Keep the first element only)
+        First_widget = self.ids["Bonds"].children[-1]
+        self.ids["Bonds"].clear_widgets()
+
+        # Add the first item again
+        self.ids["Bonds"].add_widget(First_widget)
+
+        # Read the Json file
+        Items_dict = self.Bonds_DBManager.ReadJson()
+
+        # Add Item in the Json to the 
+        for ItemName in Items_dict.keys():
+            self.ids["Bonds"].add_widget(self.Define_BondsItem(ItemName, Items_dict[ItemName] ))
+
+        # Update the InFlowGraph
+        self.Update_BondsGraph()
+
+    # Function that opens the Bonds popup to add item
+    def Add_BondsItem(self):
+        # Initialize the popup
+        BondsPopup = cst_popup.BondsPopup('ADD ITEM POPUP',type = 'A')
+        # Open the Popup
+        BondsPopup.open()
+
+    # Define Item to add in the InFlow Box
+    def Define_BondsItem(self, ItemName, ItemDict):
+        # Compute Item to Append according to the structure defined
+        Item = GridLayout(cols= 8, rows = 1, padding = ("30dp", "0dp", "30dp", "0dp"), size_hint = [1, None], height = "20dp")
+        Item.add_widget(Label(text = str(ItemDict[0]), size_hint = [0.3,1])) # Name
+        Item.add_widget(Label(text = str(ItemDict[1]), size_hint = [0.1,1])) # Symbol
+        Item.add_widget(Label(text = str(ItemDict[2]), size_hint = [0.1,1])) # Data
+        Item.add_widget(Label(text = str(ItemDict[3]), size_hint = [0.1,1])) # Type
+        Item.add_widget(Label(text = str(ItemDict[4]), size_hint = [0.1,1])) # Broker
+        Item.add_widget(Label(text = str(ItemDict[5]), size_hint = [0.1,1]))  # Quantity
+        Item.add_widget(Label(text = str(ItemDict[7]), size_hint = [0.1,1])) # Total spend      
+
+        BoxLayoutItem = BoxLayout(orientation = 'horizontal', size_hint = [0.1, 1])
+
+        # Modify Popup
+        Bonds_ModifyPopup = cst_popup.BondsPopup('MODIFY ITEM POPUP', type ='M', itemToMod = {ItemName:ItemDict})
+        BoxLayoutItem.add_widget(ModifyButton(text = 'M', size_hint = [0.25, 1], Popup = Bonds_ModifyPopup))
+
+        # Removing Popup
+        Bonds_RemovePopup = cst_popup.RemovingPopup(ManagerOfItem = ItemName, ManagerOfScreen = self, DBManager = self.Bonds_DBManager, RemoveFunction = 'RemoveElementFromList', UpdateFunction_str= 'Update_BondsBoxLayout')
+        BoxLayoutItem.add_widget(RemoveButton(text = 'R', size_hint = [0.25, 1] , Popup = Bonds_RemovePopup))
+        
+        Item.add_widget(BoxLayoutItem)
+
+        return Item
+
+    # Given the JsonFile, create a graph to display for the In flow graph
+    def Update_BondsGraph(self):
         pass
 
 class CommoditiesScreen(Screen):
+    def __init__(self,**kwargs):
+        super().__init__(**kwargs)
+        # Initialize the manager of the json manager
+        self.Commodities_DBManager = db_manager.JsonManagerList_Class(db_manager.path_manager.database_path,db_manager.path_manager.Commodities_path)
+        
     def UpdateScreen(self):
+        self.Update_CommoditiesBoxLayout()
+
+    ##########################
+    #    COMMODITIES  BOX    #
+    ##########################
+
+    # Update the Commodities Box Layout
+    def Update_CommoditiesBoxLayout(self):
+        # Clear the Item inside the BoxLayout (Keep the first element only)
+        First_widget = self.ids["Commodities"].children[-1]
+        self.ids["Commodities"].clear_widgets()
+
+        # Add the first item again
+        self.ids["Commodities"].add_widget(First_widget)
+
+        # Read the Json file
+        Items_dict = self.Commodities_DBManager.ReadJson()
+
+        # Add Item in the Json to the 
+        for ItemName in Items_dict.keys():
+            self.ids["Commodities"].add_widget(self.Define_CommoditiesItem(ItemName, Items_dict[ItemName] ))
+
+        # Update the InFlowGraph
+        self.Update_CommoditiesGraph()
+
+    # Function that opens the Commodities popup to add item
+    def Add_CommoditiesItem(self):
+        # Initialize the popup
+        CommoditiesPopup = cst_popup.CommoditiesPopup('ADD ITEM POPUP',type = 'A')
+        # Open the Popup
+        CommoditiesPopup.open()
+
+    # Define Item to add in the InFlow Box
+    def Define_CommoditiesItem(self, ItemName, ItemDict):
+        # Compute Item to Append according to the structure defined
+        Item = GridLayout(cols= 8, rows = 1, padding = ("30dp", "0dp", "30dp", "0dp"), size_hint = [1, None], height = "20dp")
+        Item.add_widget(Label(text = str(ItemDict[0]), size_hint = [0.3,1])) # Name
+        Item.add_widget(Label(text = str(ItemDict[1]), size_hint = [0.1,1])) # Symbol
+        Item.add_widget(Label(text = str(ItemDict[2]), size_hint = [0.1,1])) # Data
+        Item.add_widget(Label(text = str(ItemDict[3]), size_hint = [0.1,1])) # Type
+        Item.add_widget(Label(text = str(ItemDict[4]), size_hint = [0.1,1])) # Broker
+        Item.add_widget(Label(text = str(ItemDict[5]), size_hint = [0.1,1]))  # Quantity
+        Item.add_widget(Label(text = str(ItemDict[7]), size_hint = [0.1,1])) # Total spend      
+
+        BoxLayoutItem = BoxLayout(orientation = 'horizontal', size_hint = [0.1, 1])
+
+        # Modify Popup
+        Commodities_ModifyPopup = cst_popup.CommoditiesPopup('MODIFY ITEM POPUP', type ='M', itemToMod = {ItemName:ItemDict})
+        BoxLayoutItem.add_widget(ModifyButton(text = 'M', size_hint = [0.25, 1], Popup = Commodities_ModifyPopup))
+
+        # Removing Popup
+        Commodities_RemovePopup = cst_popup.RemovingPopup(ManagerOfItem = ItemName, ManagerOfScreen = self, DBManager = self.Commodities_DBManager, RemoveFunction = 'RemoveElementFromList', UpdateFunction_str= 'Update_CommoditiesBoxLayout')
+        BoxLayoutItem.add_widget(RemoveButton(text = 'R', size_hint = [0.25, 1] , Popup = Commodities_RemovePopup))
+        
+        Item.add_widget(BoxLayoutItem)
+
+        return Item
+
+    # Given the JsonFile, create a graph to display for the In flow graph
+    def Update_CommoditiesGraph(self):
         pass
 
 class CryptoScreen(Screen):
+    def __init__(self,**kwargs):
+        super().__init__(**kwargs)
+        # Initialize the manager of the json manager
+        self.Crypto_DBManager = db_manager.JsonManagerList_Class(db_manager.path_manager.database_path,db_manager.path_manager.Crypto_path)
+        
     def UpdateScreen(self):
+        self.Update_CryptoBoxLayout()
+
+    ######################
+    #    ETF ETC  BOX    #
+    ######################
+
+    # Update the Crypto Box Layout
+    def Update_CryptoBoxLayout(self):
+        # Clear the Item inside the BoxLayout (Keep the first element only)
+        First_widget = self.ids["Crypto"].children[-1]
+        self.ids["Crypto"].clear_widgets()
+
+        # Add the first item again
+        self.ids["Crypto"].add_widget(First_widget)
+
+        # Read the Json file
+        Items_dict = self.Crypto_DBManager.ReadJson()
+
+        # Add Item in the Json to the 
+        for ItemName in Items_dict.keys():
+            self.ids["Crypto"].add_widget(self.Define_CryptoItem(ItemName, Items_dict[ItemName] ))
+
+        # Update the InFlowGraph
+        self.Update_CryptoGraph()
+
+    # Function that opens the Crypto popup to add item
+    def Add_CryptoItem(self):
+        # Initialize the popup
+        CryptoPopup = cst_popup.CryptoPopup('ADD ITEM POPUP',type = 'A')
+        # Open the Popup
+        CryptoPopup.open()
+
+    # Define Item to add in the InFlow Box
+    def Define_CryptoItem(self, ItemName, ItemDict):
+        # Compute Item to Append according to the structure defined
+        Item = GridLayout(cols= 8, rows = 1, padding = ("30dp", "0dp", "30dp", "0dp"), size_hint = [1, None], height = "20dp")
+        Item.add_widget(Label(text = str(ItemDict[0]), size_hint = [0.3,1])) # Name
+        Item.add_widget(Label(text = str(ItemDict[1]), size_hint = [0.1,1])) # Symbol
+        Item.add_widget(Label(text = str(ItemDict[2]), size_hint = [0.1,1])) # Data
+        Item.add_widget(Label(text = str(ItemDict[3]), size_hint = [0.1,1])) # Type
+        Item.add_widget(Label(text = str(ItemDict[4]), size_hint = [0.1,1])) # Broker
+        Item.add_widget(Label(text = str(ItemDict[5]), size_hint = [0.1,1]))  # Quantity
+        Item.add_widget(Label(text = str(ItemDict[7]), size_hint = [0.1,1])) # Total spend      
+
+        BoxLayoutItem = BoxLayout(orientation = 'horizontal', size_hint = [0.1, 1])
+
+        # Modify Popup
+        Crypto_ModifyPopup = cst_popup.CryptoPopup('MODIFY ITEM POPUP', type ='M', itemToMod = {ItemName:ItemDict})
+        BoxLayoutItem.add_widget(ModifyButton(text = 'M', size_hint = [0.25, 1], Popup = Crypto_ModifyPopup))
+
+        # Removing Popup
+        Crypto_RemovePopup = cst_popup.RemovingPopup(ManagerOfItem = ItemName, ManagerOfScreen = self, DBManager = self.Crypto_DBManager, RemoveFunction = 'RemoveElementFromList', UpdateFunction_str= 'Update_CryptoBoxLayout')
+        BoxLayoutItem.add_widget(RemoveButton(text = 'R', size_hint = [0.25, 1] , Popup = Crypto_RemovePopup))
+        
+        Item.add_widget(BoxLayoutItem)
+
+        return Item
+
+    # Given the JsonFile, create a graph to display for the In flow graph
+    def Update_CryptoGraph(self):
         pass
 
 class StatisticsScreen(Screen):

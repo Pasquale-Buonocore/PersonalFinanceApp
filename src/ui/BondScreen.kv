@@ -28,7 +28,7 @@
             ###################
             BoxLayout:
                 orientation: 'vertical'
-                id: Bond_BoxLayout
+                id: Bonds
                 size_hint: 1, None
                 height: self.minimum_height
                 spacing: "20dp"
@@ -43,11 +43,11 @@
                         radius: [(40, 40), (40, 40), (40, 40), (40, 40)]
                 
                 GridLayout:
-                    id: Bond_NameRow
+                    id: Bonds_NameRow
                     size_hint: 1, None
                     height: "20dp"
                     padding: ("30dp", "0dp", "30dp", "0dp")
-                    cols: 7
+                    cols: 8
                     rows: 1
 
                     Label: 
@@ -55,20 +55,23 @@
                         size_hint: 0.3, 1
                     Label: 
                         text: 'Symbol'
-                        size_hint: 0.12, 1
+                        size_hint: 0.1, 1
                     Label: 
                         text: 'Data'
-                        size_hint: 0.12, 1
+                        size_hint: 0.1, 1
                     Label: 
                         text: 'Type'
-                        size_hint: 0.12, 1
+                        size_hint: 0.1, 1
+                    Label: 
+                        text: 'Broker'
+                        size_hint: 0.1, 1
                     Label: 
                         text: 'Quantity'
-                        size_hint: 0.12, 1
+                        size_hint: 0.1, 1
                     Label: 
-                        text: 'Price'
-                        size_hint: 0.12, 1
+                        text: 'Total Spent'
+                        size_hint: 0.1, 1
                     Button:
                         text: 'Add Item'
                         size_hint: 0.1, 1
-                        on_release: root.Add_BondInItem()
+                        on_release: root.Add_BondsItem()
