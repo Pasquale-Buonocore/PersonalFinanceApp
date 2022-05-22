@@ -12,7 +12,10 @@ This file aims to initialize the json file in the database folder [If it does no
 # CONSTANST #
 #############
 class PathManager_Class():
+    ### Root path ###
     database_path = 'Database/'
+
+    ### Transaction path ###
     Inflow_path = 'InFlow_loc.json'
     Income_path = 'Earnings.json'
     Expences_path= 'Expences.json'
@@ -23,6 +26,10 @@ class PathManager_Class():
     Bonds_path = 'Bonds.json'
     Commodities_path = 'Commodities.json'
     Crypto_path = 'Crypto.json'
+    Category_path = 'Category.json'
+
+    ### Asset allocation resume ###
+    CryptoAssets_path = 'CryptoAssets.json'
 
 ###################
 # CUSTOM FUNCTION #
@@ -45,7 +52,7 @@ class JsonManager_Class():
     # Initialize the json file
     def Initialize_json(self):
         if not exists(self.database_path + self.json_path):
-            self.SaveJsonFile(self.database_path + self.json_path, {})
+            self.SaveJsonFile({})
 
     # Save the json file
     def SaveJsonFile(self, dictionary):
@@ -72,8 +79,8 @@ class JsonManager_Class():
             
         # Add items in dictionary if not already present
         for key in dictionary.keys():
-            if key not in json_object.keys():
-                json_object.update({key : dictionary[key]})
+            # if key not in json_object.keys():
+            json_object.update({key : dictionary[key]})
         
         # Save new json file
         self.SaveJsonFile(json_object)
@@ -198,7 +205,6 @@ class JsonManagerList_Class():
         
         # Save Json
         self.SaveJsonFile(self.OrderList(json_object))
-
 
 #########
 # TESTS #

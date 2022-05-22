@@ -30,6 +30,10 @@ class RemovingPopup(Popup):
         # Close the popup
         self.dismiss()
 
+###################
+# ADD TRANSACTION #
+###################
+
 class InFlowPopup(Popup):
     def __init__(self, title_str, type, itemToMod = {}):
         # Initialize the super class
@@ -365,10 +369,10 @@ class TransactionOutPopup(Popup):
         # Close the popup
         self.dismiss()
 
-class ETF_ETCPopup(ModalView):
+class ETF_ETCPopup(Popup):
     def __init__(self, title_str, type, itemToMod = {}):
         # Initialize the super class
-        super().__init__(title = '', size_hint=(0.3,0.5))
+        super().__init__(title = 'Add Transaction', size_hint=(0.3,0.7))
         # Define inner attributes
         self.type = type if type in ['A','M'] else 'A'
         # Save item to modify
@@ -793,6 +797,121 @@ class CryptoPopup(Popup):
 
             # Update the Json and Update the Dashboard Screen
             Crypto_Scr.Update_CryptoBoxLayout()
+
+            # Close the popup
+            self.dismiss()
+
+    def Cancel(self):
+        # Close the popup
+        self.dismiss()
+
+#############
+# ADD ASSET #
+#############
+class ETF_ETC_AddAssetPopup(Popup):
+    def __init__(self, type = 'A', itemToMod = {}):
+        # Initialize the super class
+        super().__init__(title = 'ADD ASSET CLASS', size_hint=(0.2,0.3))
+        # Define inner attributes
+        self.type = type if type in ['A','M'] else 'A'
+        # Save item to modify
+        self.itemToMod = itemToMod
+        # Fill the popup if the user need to modify a field
+        if itemToMod: self.ModifyTextInput()
+
+    def ModifyTextInput(self):
+        # Modify text input if itemToMod is not empty
+        self.ids["NameValue"].text = list(self.itemToMod.keys())[0]
+        self.ids["SymbolValue"].text = str(self.itemToMod[self.ids["Location_Input"].text][0])
+
+    def Confirm(self, App):
+        # Keep the boolean error
+        string = ''
+
+        # Retrive data "Name Value" from Text Input - In empty do nothing
+        NameValue = self.ids["NameValue"].text.strip()
+        if not NameValue: string = string + 'ERROR: Empty Name FIELD\n'
+
+        # Retrive data "Symbol Value" from Text Input - In empty do nothing
+        SymbolValue = self.ids["SymbolValue"].text.strip()
+        if not SymbolValue: string = string + 'ERROR: Empty last month value FIELD\n'
+        if not SymbolValue.replace(".", "").isnumeric(): string = string + 'ERROR: last month must be numeric FIELD\n'
+
+        if string:
+            # If the error message is not empty, display an error
+            Pop = WarningPopup('', string.upper())
+            Pop.open()
+        else:
+            # Instantiate Dashboard Screen and Json manager
+            ETF_ETC_Scr = App.root.children[0].children[0].children[0]
+            Json_mng = App.root.children[0].children[0].children[0].InFlow_DBManager
+            New_Element = {Location_Input:[float(LastMonth_Input), float(ThisMonth_Input)]}
+            # If an item needs to be modified
+            if self.type == 'M':
+                # Substitute the actual item
+                Json_mng.SubstituteElement(Old_element = self.itemToMod, New_Item = New_Element)
+            else:
+                # Append new item
+                Json_mng.AddElement(New_Element)
+
+            # Update the Json and Update the Dashboard Screen
+            Dashboard_Scr.Update_InFlowBoxLayout()
+
+            # Close the popup
+            self.dismiss()
+
+    def Cancel(self):
+        # Close the popup
+        self.dismiss()
+
+class Add_CryptoAssetsPopup(Popup):
+    def __init__(self, title = '', type = 'A', itemToMod = {}):
+        # Initialize the super class
+        super().__init__(title = title, size_hint=(0.2,0.3))
+        # Define inner attributes
+        self.type = type if type in ['A','M'] else 'A'
+        # Save item to modify
+        self.itemToMod = itemToMod
+        # Fill the popup if the user need to modify a field
+        if itemToMod: self.ModifyTextInput()
+
+    def ModifyTextInput(self):
+        # Modify text input if itemToMod is not empty
+        ItemName = list(self.itemToMod.keys())[0]
+        self.ids["NameValue"].text = ItemName
+        self.ids["SymbolValue"].text = str(self.itemToMod[ItemName][0])
+
+    def Confirm(self, App):
+        # Keep the boolean error
+        string = ''
+
+        # Retrive data "Name Value" from Text Input - In empty do nothing
+        NameValue = self.ids["NameValue"].text.strip()
+        if not NameValue: string = string + 'ERROR: Empty Name FIELD\n'
+
+        # Retrive data "Symbol Value" from Text Input - In empty do nothing
+        SymbolValue = self.ids["SymbolValue"].text.strip()
+        if not SymbolValue: string = string + 'ERROR: Empty last month value FIELD\n'
+
+        if string:
+            # If the error message is not empty, display an error
+            Pop = WarningPopup('', string.upper())
+            Pop.open()
+        else:
+            # Instantiate Dashboard Screen and Json manager
+            Crypto_Scr = App.root.children[0].children[0].children[0]
+            Json_mng = App.root.children[0].children[0].children[0].CryptoAssets_DBManager
+            New_Element = Crypto_Scr.Compute_CryptoAssetsList(NameValue, SymbolValue)
+            # If an item needs to be modified
+            if self.type == 'M':
+                # Substitute the actual item
+                Json_mng.SubstituteElement(Old_element = self.itemToMod, New_Item = New_Element)
+            else:
+                # Append new item
+                Json_mng.AddElement(New_Element)
+
+            # Update the Json and Update the Dashboard Screen
+            Crypto_Scr.Update_CryptoAssetsList()
 
             # Close the popup
             self.dismiss()

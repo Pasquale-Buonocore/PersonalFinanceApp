@@ -15,7 +15,10 @@ from kivy.uix.stacklayout import StackLayout
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.screenmanager import Screen, ScreenManager
+from kivy.properties import BooleanProperty
+from kivy.properties import StringProperty
 from kivy.core.window import Window
+from HoverClass import *
 import DatabaseMng as db_manager
 import CustomPopup as cst_popup
 
@@ -42,13 +45,38 @@ def SetWindowSize():
 #####################
 # CUSTOM DEFINITION #
 #####################
-class CustomMenuButton(Button):
+class CustomLabelMenu(Label):
+    # Define properties
+    SelectedStatus = BooleanProperty(False)
+
+class CustomMenuButton(Button, HoverBehavior):
+    # Define properties
+    SelectedStatus = BooleanProperty(False)
+    ImageName = StringProperty()
+
     def move_screen(self, App, string):
+        string = string.strip()
         print('Moving to ' + string)
         # Update current screen name
         App.root.children[0].children[0].current = string
         # Update current screen
         App.root.children[0].children[0].current_screen.UpdateScreen()
+
+        # Update button background button of all buttons
+        for element in App.root.children[0].children[1].children:
+            element.SelectedStatus = False
+            element.background_color = [0,0,0,0]
+
+        self.SelectedStatus = True
+        self.background_color = [0.2,0.2,1,1]
+    
+    def on_enter(self, *args):
+        self.background_color = [0.2,0.2,1,1]
+        
+    def on_leave(self, *args):
+        if not self.SelectedStatus:
+            self.background_color = [0,0,0,0]
+
 
 class ModifyButton(Button):
     def __init__(self,**kwargs):
@@ -448,6 +476,14 @@ class ETFScreen(Screen):
         # Update the InFlowGraph
         self.Update_ETF_ETCGraph()
 
+    # Function that opens a popup to add an asset to the category
+    def Add_ETF_ETCAssets(self):
+        # Initialize the popup
+        ETF_ETC_AddAssetPopup = cst_popup.ETF_ETC_AddAssetPopup()
+        # Open the Popup
+        ETF_ETC_AddAssetPopup.open()
+        pass
+
     # Function that opens the ETF_ETC popup to add item
     def Add_ETF_ETCItem(self):
         # Initialize the popup
@@ -697,14 +733,81 @@ class CryptoScreen(Screen):
         super().__init__(**kwargs)
         # Initialize the manager of the json manager
         self.Crypto_DBManager = db_manager.JsonManagerList_Class(db_manager.path_manager.database_path,db_manager.path_manager.Crypto_path)
+        self.CryptoAssets_DBManager = db_manager.JsonManager_Class(db_manager.path_manager.database_path,db_manager.path_manager.CryptoAssets_path)
         
     def UpdateScreen(self):
         self.Update_CryptoBoxLayout()
+        self.Update_CryptoAssetsList()
+        
+    #####################
+    #    CRYPTO  BOX    #
+    #####################
 
-    ######################
-    #    ETF ETC  BOX    #
-    ######################
+    ###################
+    # ASSE ALLOCATION #
+    ###################
 
+    # Function that opens a popup to add an asset to the category
+    def Add_CryptoAssets(self):
+        # Initialize the popup
+        Add_CryptoAssets = cst_popup.Add_CryptoAssetsPopup('ADD ASSET POPUP',type = 'A')
+        # Open the Popup
+        Add_CryptoAssets.open()
+
+    # Function that updates the Crypto Assets lvl
+    def Compute_CryptoAssetsList(self, NameValue, SymbolValue):
+        # Given the NameValue and SymbolValue, the functions pars all transaction returnings:
+        # Total Quantity, Buy Avarage price, Current Price, Market Value, Performances
+        TotalQuantity = 0
+        AvaragePrice = 0 
+        CurrentPrice = 0
+        MarketValue = 0
+        Performance = 0
+        return {NameValue:[SymbolValue, TotalQuantity, AvaragePrice, CurrentPrice, MarketValue, Performance]}
+    
+    def Update_CryptoAssetsList(self):
+        # Clear the Item inside the BoxLayout (Keep the first element only)
+        First_widget = self.ids["Crypto_Assets"].children[-1]
+        self.ids["Crypto_Assets"].clear_widgets()
+
+        # Add the first item again
+        self.ids["Crypto_Assets"].add_widget(First_widget)
+
+        # Read the Json file
+        Items_dict = self.CryptoAssets_DBManager.ReadJson()
+
+        # Add Item in the Json to the 
+        for ItemName in Items_dict.keys():
+            self.ids["Crypto_Assets"].add_widget(self.Define_CryptoAssetsItem(ItemName, Items_dict[ItemName]))
+
+    def Define_CryptoAssetsItem(self, ItemName, ItemDict):
+        # Compute Item to Append according to the structure defined
+        Item = GridLayout(cols= 8, rows = 1, padding = ("30dp", "0dp", "30dp", "0dp"), size_hint = [1, None], height = "20dp")
+        Item.add_widget(Label(text = ItemName, size_hint = [0.3,1])) # Name
+        Item.add_widget(Label(text = str(ItemDict[0]), size_hint = [0.1,1])) # Symbol
+        Item.add_widget(Label(text = str(ItemDict[1]), size_hint = [0.1,1])) # Quantity
+        Item.add_widget(Label(text = str(ItemDict[2]), size_hint = [0.1,1])) # Avarage price
+        Item.add_widget(Label(text = str(ItemDict[3]), size_hint = [0.1,1])) # Current Price
+        Item.add_widget(Label(text = str(ItemDict[4]), size_hint = [0.1,1])) # Market Value
+        Item.add_widget(Label(text = str(ItemDict[5]), size_hint = [0.1,1])) # Performance 
+        
+        BoxLayoutItem = BoxLayout(orientation = 'horizontal', size_hint = [0.1, 1])
+
+        # Modify Popup
+        Crypto_AssetModifyPopup = cst_popup.Add_CryptoAssetsPopup('MODIFY ASSET POPUP', type ='M', itemToMod = {ItemName:ItemDict})
+        BoxLayoutItem.add_widget(ModifyButton(text = 'M', size_hint = [0.25, 1], Popup = Crypto_AssetModifyPopup))
+
+        # Removing Popup
+        Crypto_RemovePopup = cst_popup.RemovingPopup(ManagerOfItem = ItemName, ManagerOfScreen = self, DBManager = self.CryptoAssets_DBManager, RemoveFunction = 'RemoveElement', UpdateFunction_str= 'Update_CryptoAssetsList')
+        BoxLayoutItem.add_widget(RemoveButton(text = 'R', size_hint = [0.25, 1] , Popup = Crypto_RemovePopup))
+        
+        Item.add_widget(BoxLayoutItem)
+
+        return Item
+
+    ################
+    # TRANSACTIONS #
+    ################
     # Update the Crypto Box Layout
     def Update_CryptoBoxLayout(self):
         # Clear the Item inside the BoxLayout (Keep the first element only)
@@ -781,6 +884,8 @@ class CreditsScreen(Screen):
 class FinanceApp(App):
 
     def build(self):
+        # Initialize the manager of the json manager
+        self.Category_DBManager = db_manager.JsonManager_Class(db_manager.path_manager.database_path,db_manager.path_manager.Category_path)
         #-- center the window
         SetWindowSize()
         # Window.borderless = True
@@ -790,3 +895,16 @@ class FinanceApp(App):
     def on_start(self):
         # Initialize the Dashboard page
         self.root.children[0].children[0].children[0].UpdateScreen()
+
+        # Set the Dashboard button selected
+        self.root.children[0].children[1].children[-2].SelectedStatus = True
+        self.root.children[0].children[1].children[-2].background_color = [0.2,0.2,1,1]
+
+        for element in self.root.children[0].children[1].children:
+            # Set Image for each class
+            ImageName = element.text.strip().lower()
+            # Update Image
+            element.ImageName = 'images/button/' + ImageName + '.png'
+            element.source = 'images/button/' + ImageName + '.png'
+            print(ImageName)
+

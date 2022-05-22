@@ -19,6 +19,74 @@
             spacing: "20dp"
 
             Label:
+                text: 'ASSET ALLOCATION'
+                size_hint: 1, None
+                height: "50dp" 
+
+            BoxLayout:
+                orientation: 'vertical'
+                id: Crypto_Assets
+                size_hint: 1, None
+                height: self.minimum_height
+                spacing: "20dp"
+                padding: ("0dp", "20dp", "0dp", "20dp")
+
+                canvas.before:
+                    Color:
+                        rgba: canvas_r,canvas_g,canvas_b,canvas_opacity
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [(40, 40), (40, 40), (40, 40), (40, 40)]
+                
+                GridLayout:
+                    id: Crypto_Assets_NameRow
+                    size_hint: 1, None
+                    height: "30dp"
+                    padding: ("30dp", "0dp", "30dp", "0dp")
+                    cols: 8
+                    rows: 1
+
+                    Label: 
+                        text: 'Name'
+                        size_hint: 0.3, 1
+                    Label: 
+                        text: 'Symbol'
+                        size_hint: 0.1, 1
+                    Label: 
+                        text: 'Quantity'
+                        size_hint: 0.1, 1
+                    Label: 
+                        text: 'Avarage price'
+                        size_hint: 0.1, 1
+                    Label: 
+                        text: 'Current Price'
+                        size_hint: 0.1, 1
+                    Label: 
+                        text: 'Market Value'
+                        size_hint: 0.1, 1
+                    Label: 
+                        text: 'Performance'
+                        size_hint: 0.1, 1
+
+                    Button:
+                        text: '+ Add Asset'
+                        size_hint: 0.1, 1
+                        background_color: 0,0,0,0
+                        on_release: root.Add_CryptoAssets()
+                        font_name: 'Candarab'
+                        font_size: 16
+                        canvas.before:
+                            Color:
+                                rgba: 0.1,0.1,0.9,0.7
+                            RoundedRectangle:
+                                pos: self.pos
+                                size: self.size
+                                radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+
+
+            Label:
                 text: CryptoScreenName + ' TRANSACTIONS'
                 size_hint: 1, None
                 height: "50dp"    

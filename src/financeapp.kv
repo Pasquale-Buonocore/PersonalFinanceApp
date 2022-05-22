@@ -4,8 +4,27 @@
 ###########
 # CUSTOM  #
 ###########
+<CustomLabelMenu>:
+    # Sizes
+    size_hint: 1, 0.03
+    text_size: root.width, None
+    size: self.texture_size
+    # Graphics
+    font_name: MenuLabelFond
+    font_size: MenuLabelSize
+    color: 0.6, 0.6, 0.6, 1
+
 <CustomMenuButton>:
-    id: CustomMenuButton
+    canvas.after:
+        Rectangle:
+            source: self.ImageName
+            pos: self.pos[0] + root.width/10, self.pos[1] + root.height/4
+            size: self.size[0]*0.12, self.size[1]*0.5
+
+    text_size: root.width, None
+    size: self.texture_size
+    font_name: MenuLabelFond
+    font_size: MenuLabelSize
     background_color: 0,0,0,0
     size_hint: 1, ButtonMenu_size_hint_y
 
@@ -56,56 +75,69 @@
 
     orientation: 'lr-tb'
     size_hint: 0.2, 1
+    padding: ["0dp", "20dp", "0dp", "0dp"]
     spacing: "10dp"
 
-    CustomMenuButton:
+    CustomLabelMenu:
+        text: MenuLabelSpace + 'MENU'
+    
+    CustomMenuButton:        
         id: Dashboard_btn
-        text: DashboardScreenName
+        text: MenuButtonSpace + DashboardScreenName
         on_release: self.move_screen(app,self.text)
 
     CustomMenuButton:
         id: Transaction_btn
-        text: TransactionScreenName
+        text: MenuButtonSpace + TransactionScreenName
         on_release: self.move_screen(app,self.text)
+
+    CustomLabelMenu:
+        text: MenuLabelSpace + 'INVESTMENT'
 
     CustomMenuButton:
         id: ETF_btn
-        text: ETFETCScreenName
+        text: MenuButtonSpace + ETFETCScreenName
         on_release: self.move_screen(app,self.text)
 
     CustomMenuButton:
         id: Stock_btn
-        text: StocksScreenName
+        text: MenuButtonSpace + StocksScreenName
         on_release: self.move_screen(app,self.text)
 
     CustomMenuButton:
         id: Bond_btn
-        text: BondScreenName
+        text: MenuButtonSpace + BondScreenName
         on_release: self.move_screen(app,self.text)
 
     CustomMenuButton:
         id: Commodity_btn
-        text: CommodityScreenName
+        text: MenuButtonSpace + CommodityScreenName
         on_release: self.move_screen(app,self.text)
 
     CustomMenuButton:
         id: Crypto_btn
-        text: CryptoScreenName
+        text: MenuButtonSpace + CryptoScreenName
         on_release: self.move_screen(app,self.text)
+
+    CustomLabelMenu:
+        text: MenuLabelSpace + 'STATISTIC'
 
     CustomMenuButton:
         id: Statistics_btn
-        text: StatisticsScreenName
+        text: MenuButtonSpace + StatisticsScreenName
         on_release: self.move_screen(app,self.text)
+
+    CustomLabelMenu:
+        text: 'SETTING'
 
     CustomMenuButton:
         id: Setting_btn
-        text: SettingScreenName
+        text: MenuButtonSpace + SettingScreenName
         on_release: self.move_screen(app,self.text)
 
     CustomMenuButton:
         id: Credit_btn
-        text: CreditScreenName
+        text: MenuButtonSpace + CreditScreenName
         on_release: self.move_screen(app,self.text)
 
 <DataLayout>:
@@ -122,7 +154,7 @@
         Rectangle:
             pos: self.pos
             size: self.size
-            source: 'images/background.jpg'
+            source: 'images/background/background.jpg'
 
     # SettingLayout:
     MenuDataLayout:
