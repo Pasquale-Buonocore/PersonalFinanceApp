@@ -60,11 +60,11 @@
         text: 'X'
         on_release: app.stop()
 
-<MenuDataLayout>:
+<MenuDataLayout@BoxLayout>:
     id: MenuDataLayout
     orientation: 'horizontal'
 
-<MenuLayout>:
+<MenuLayout@StackLayout>:
     id: MenuDataLayout
     canvas.before:
         Color:
@@ -140,11 +140,13 @@
         text: MenuButtonSpace + CreditScreenName
         on_release: self.move_screen(app,self.text)
 
-<DataLayout>:
+<DataLayout@BoxLayout>:
     id: DataLayout
     size_hint: 0.8, 1
     Label:
         text: 'Data'
+
+<ScreenManagerLayout@ScreenManager>:
 
 ############################################ 
 <MainLayout>:

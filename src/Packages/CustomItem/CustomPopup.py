@@ -1,7 +1,7 @@
 from kivy.lang import Builder
 from kivy.uix.popup import Popup
 from kivy.uix.dropdown import DropDown
-import DatabaseMng as db_manager
+import Packages.DatabaseMng.DatabaseMng as db_manager
 from kivy.uix.modalview import ModalView
 
 # Designate Out .kv design file
