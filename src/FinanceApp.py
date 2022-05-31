@@ -21,7 +21,7 @@ from Packages.Screens.Setting_screen import *
 from Packages.Screens.Statistics_screen import *
 from Packages.Screens.Stocks_screen import *
 from Packages.Screens.ETF_screen import *
-
+from Packages.Screens.Portfolio_screen import *
 
 #####################
 # IMPORTS FROM KIVY #
@@ -52,6 +52,13 @@ class SettingLayout(StackLayout):
     def restore_window(self):
         WinConf.SetWindowSize()
 
+#######################################
+# Function to call at window resizing #
+#######################################
+
+
+
+
 ############
 # MAIN APP #
 ############
@@ -63,8 +70,15 @@ class FinanceApp(App):
         #-- center the window
         WinConf.SetWindowSize()
 
+        # Bind function to window resizing
+        Window.bind(on_resize = self.UpdatePortfolioView)
+
         return MainLayout()
     
+    def UpdatePortfolioView(self, window, width, height):
+        if self.root.children[0].children[0].current == 'CRYPTO':
+            self.root.children[0].children[0].current_screen.UpdateListOfPortfolio()
+
     def on_start(self):
         # Initialize the Dashboard page
         self.root.children[0].children[0].children[0].UpdateScreen()

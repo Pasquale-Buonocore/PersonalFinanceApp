@@ -1,12 +1,50 @@
 {
-    "1": [
-        "Bitcoin",
-        "BTC",
-        "01/05/2022",
-        "BUY",
-        "Binance",
-        "0.005",
-        "34500",
-        172.5
-    ]
+      "MAIN PAC": {
+            "Assets": {
+                  "Bitcoin": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "Quantity": 0,
+                              "Symbol": "BTC",
+                              "AveragePrice": 0,
+                              "TotalValue": 0,
+                              "TotalProfit": 0
+                        }
+                  },
+                  "Elrond": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "Quantity": 0,
+                              "Symbol": "EGLD",
+                              "AveragePrice": 0,
+                              "TotalValue": 0,
+                              "TotalProfit": 0
+                        }
+                  }
+            },
+            "Statistics": {
+                  "Currency": "$",
+                  "TotalValue": 500,
+                  "NumberOfAssets": 1,
+                  "TotalProfit": -200
+            }
+      },
+      "AIRDROPS": {
+            "Assets": {},
+            "Statistics": {
+                  "Currency": "$",
+                  "TotalValue": 1000,
+                  "NumberOfAssets": 8,
+                  "TotalProfit": 230
+            }
+      },
+      "STABLE COINS": {
+            "Assets": {},
+            "Statistics": {
+                  "Currency": "$",
+                  "TotalValue": 1000,
+                  "NumberOfAssets": 2,
+                  "TotalProfit": 0
+            }
+      }
 }
