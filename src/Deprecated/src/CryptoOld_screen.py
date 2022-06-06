@@ -6,7 +6,7 @@ from kivy.uix.screenmanager import Screen
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
 
-class CryptoScreen(Screen):
+class PortfoliosScreen(Screen):
     def __init__(self,**kwargs):
         super().__init__(**kwargs)
         # Initialize the manager of the json manager

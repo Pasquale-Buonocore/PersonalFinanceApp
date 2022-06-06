@@ -1,5 +1,6 @@
 #:kivy 1.0.9
 #:include ui/ScreenMng.kv
+#:include ui/Constant.kv
 
 ###########
 # CUSTOM  #
@@ -9,7 +10,6 @@
     size_hint: 1, 0.03
     text_size: root.width, None
     size: self.texture_size
-    # Graphics
     font_name: MenuLabelFond
     font_size: MenuLabelSize
     color: 0.6, 0.6, 0.6, 1
@@ -97,27 +97,27 @@
     CustomMenuButton:
         id: ETF_btn
         text: MenuButtonSpace + ETFETCScreenName
-        on_release: self.move_screen(app,self.text)
+        on_release: self.move_screen(app, PortfolioScreenName)
 
     CustomMenuButton:
         id: Stock_btn
         text: MenuButtonSpace + StocksScreenName
-        on_release: self.move_screen(app,self.text)
+        on_release: self.move_screen(app, PortfolioScreenName)
 
     CustomMenuButton:
         id: Bond_btn
         text: MenuButtonSpace + BondScreenName
-        on_release: self.move_screen(app,self.text)
+        on_release: self.move_screen(app, PortfolioScreenName)
 
     CustomMenuButton:
         id: Commodity_btn
         text: MenuButtonSpace + CommodityScreenName
-        on_release: self.move_screen(app,self.text)
+        on_release: self.move_screen(app, PortfolioScreenName)
 
     CustomMenuButton:
         id: Crypto_btn
         text: MenuButtonSpace + CryptoScreenName
-        on_release: self.move_screen(app,self.text)
+        on_release: self.move_screen(app, PortfolioScreenName)
 
     CustomLabelMenu:
         text: MenuLabelSpace + 'STATISTIC'

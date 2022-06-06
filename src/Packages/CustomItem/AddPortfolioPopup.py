@@ -42,6 +42,7 @@ class AddPortfolioPopup(Popup):
         else:
             # Instantiate Screen and Json manager
             Dashboard_Scr = App.root.children[0].children[0].children[0]
+            
             Json_mng = App.root.children[0].children[0].children[0].InFlow_DBManager
             New_Element = {Location_Input:[float(LastMonth_Input), float(ThisMonth_Input)]}
             # If an item needs to be modified

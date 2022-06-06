@@ -13,27 +13,18 @@ import Packages.CustomItem.CustomPopup as cst_popup
 import Packages.CustomItem.CustomGraphicItem as cst_item
 from Packages.Screens.Dashboard_screen import *
 from Packages.Screens.Transaction_screen import *
-from Packages.Screens.Bond_screen import *
-from Packages.Screens.Commodities_screen import *
-from Packages.Screens.Credits_screen import *
-from Packages.Screens.Crypto_screen import *
+from Packages.Screens.Portfolio_screen import *
 from Packages.Screens.Setting_screen import *
 from Packages.Screens.Statistics_screen import *
-from Packages.Screens.Stocks_screen import *
-from Packages.Screens.ETF_screen import *
-from Packages.Screens.Portfolio_screen import *
-import time
+from Packages.Screens.Credits_screen import *
 
 #####################
 # IMPORTS FROM KIVY #
 #####################
 from kivy.uix.screenmanager import Screen, ScreenManager
 from kivy.uix.stacklayout import StackLayout
-from kivy.uix.gridlayout import GridLayout
 from kivy.uix.boxlayout import BoxLayout
 from kivy.core.window import Window
-from kivy.uix.button import Button
-from kivy.uix.label import Label
 from kivy.app import App
 
 ################################################
