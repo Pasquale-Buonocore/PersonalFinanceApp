@@ -1,0 +1,33 @@
+#:kivy 1.0.9
+
+<RemovingPopup>:
+    background_color: 0,0,0,0
+    separator_color: 0,0,0,0
+    separator_height: 0
+    title_align: 'center'
+
+    canvas.before:
+        Color:
+            rgba: 0.7,0.7,0.7,1
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [(40, 40), (40, 40), (40, 40), (40, 40)]
+
+    BoxLayout:
+        orientation: 'vertical'
+        # spacing: "30dp"
+        # padding: ("0dp", "20dp", "0dp", "20dp")
+        
+        Label:
+            text: 'Do you really want to remove the element?\nThe operation is not reversable!'
+        BoxLayout:
+            orientation:'horizontal'
+            Button:
+                text: 'Remove it!'
+                size_hint: 0.5, 0.5
+                on_release: root.RemoveIt()
+            Button:
+                text: 'Cancel'
+                size_hint: 0.5, 0.5
+                on_release: root.dismiss()

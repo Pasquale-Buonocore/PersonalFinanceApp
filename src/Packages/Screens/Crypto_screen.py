@@ -1,14 +1,10 @@
-import Packages.DatabaseMng.DatabaseMng as db_manager
-import Packages.CustomItem.CustomPopup as cst_popup
+import Packages.CustomItem.AddPortfolioPopup as PortfolioPopup
 import Packages.CustomItem.CustomGraphicItem as cst_item
-from kivy.uix.gridlayout import GridLayout
-from kivy.uix.screenmanager import Screen
-from kivy.uix.boxlayout import BoxLayout
+import Packages.DatabaseMng.DatabaseMng as db_manager
+import Packages.CustomItem.RemovingPopup as Rm_popup
 from kivy.uix.relativelayout import RelativeLayout
-from kivy.uix.floatlayout import FloatLayout
-from kivy.uix.label import Label
-from kivy.uix.button import Button
-from kivy.graphics import Color, RoundedRectangle
+from kivy.uix.screenmanager import Screen
+
 
 class CryptoScreen(Screen):
     def __init__(self,**kwargs):
@@ -19,7 +15,6 @@ class CryptoScreen(Screen):
 
     def UpdateScreen(self):
         self.UpdateListOfPortfolio()
-        pass
 
     #####################
     #    CRYPTO  BOX    #
@@ -27,14 +22,13 @@ class CryptoScreen(Screen):
 
     # Fill the Box Layout in Crypto Screen with a list of portfolios
     def UpdateListOfPortfolio(self):
-        print('ciao')
         # Store the first Item containing the screen name
         First_widget = self.ids[self.ScreenToUpdate].children[-1]
 
         # Store the BoxLayout containg the portfolios Relative layout
         Second_widget = self.ids[self.ScreenToUpdate].children[-2]
         Second_widget.clear_widgets()
-        
+
         # Clear the Item inside the BoxLayout (Keep the first element only)
         self.ids[self.ScreenToUpdate].clear_widgets()
 
@@ -124,12 +118,23 @@ class CryptoScreen(Screen):
         # Define remove button
         Btn_size = [GraphicToReturn.size[0]/2.5, GraphicToReturn.size[1]/2.5]
         box_pos_hint = {'x' : 0.9, 'y': 0.5 - (Btn_size[1]/(2*GraphicToReturn.size[1])) }
-        Box = cst_item.ModifyRemoveButtonBox(Btn_size = Btn_size, box_pos_hint = box_pos_hint)
+
+        ModifyPopup = PortfolioPopup.AddPortfolioPopup(title_str = 'ADD NEW PORTFOLIO', type = 'M', itemToMod = {PortfolioName : PortfolioDict_Stats})
+        # RemovePopup = Rm_popup.RemovingPopup(title_str = 'ADD NEW PORTFOLIO', type = 'M', itemToMod = {PortfolioName : PortfolioDict_Stats})
+
+        Box = cst_item.ModifyRemoveButtonBox(Btn_size = Btn_size, box_pos_hint = box_pos_hint, ModifyPopup = ModifyPopup, RemovePopup = ModifyPopup)
         GraphicToReturn.add_widget(Box)
 
         # Return relative layout
         return GraphicToReturn
-
+    
+    # When the Add New Portfolio button is pressed
+    def AddNewPortfolioPopup(self):
+        print('Open New Portfolio')
+        # Initialize the popup
+        AddPortfolioPop = PortfolioPopup.AddPortfolioPopup(title_str = 'ADD NEW PORTFOLIO', type = 'A')
+        # Open the Popup
+        AddPortfolioPop.open()
 
     ###################
     # ASSE ALLOCATION #

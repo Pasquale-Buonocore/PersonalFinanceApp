@@ -1,6 +1,8 @@
 import Packages.DatabaseMng.DatabaseMng as db_manager
 import Packages.CustomItem.CustomPopup as cst_popup
 import Packages.CustomItem.CustomGraphicItem as cst_item
+import Packages.CustomItem.WarningPopup as Wrn_popup
+import Packages.CustomItem.RemovingPopup as Rm_popup
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.screenmanager import Screen
 from kivy.uix.boxlayout import BoxLayout
@@ -67,7 +69,7 @@ class DashboardScreen(Screen):
         BoxLayoutItem.add_widget(cst_item.ModifyButton(text = 'M', size_hint = [0.25, 1], Popup = InFlow_ModifyPopup))
 
         # Removing Popup
-        InFlow_RemovePopup = cst_popup.RemovingPopup(ManagerOfItem = ItemName, ManagerOfScreen = self, DBManager = self.InFlow_DBManager, UpdateFunction_str= 'Update_InFlowBoxLayout')
+        InFlow_RemovePopup = Rm_popup.RemovingPopup(ManagerOfItem = ItemName, ManagerOfScreen = self, DBManager = self.InFlow_DBManager, UpdateFunction_str= 'Update_InFlowBoxLayout')
         BoxLayoutItem.add_widget(cst_item.RemoveButton(text = 'R', size_hint = [0.25, 1] , Popup = InFlow_RemovePopup))
         
         Item.add_widget(BoxLayoutItem)
@@ -124,7 +126,7 @@ class DashboardScreen(Screen):
         BoxLayoutItem.add_widget(cst_item.ModifyButton(text = 'M', size_hint = [0.25, 1], Popup = Expences_ModifyPopup))
 
         # Removing Popup
-        Expences_RemovePopup = cst_popup.RemovingPopup(ManagerOfItem = ItemName, ManagerOfScreen = self, DBManager = self.Expences_DBManager, UpdateFunction_str= 'Update_ExpencesBoxLayout')
+        Expences_RemovePopup = Rm_popup.RemovingPopup(ManagerOfItem = ItemName, ManagerOfScreen = self, DBManager = self.Expences_DBManager, UpdateFunction_str= 'Update_ExpencesBoxLayout')
         BoxLayoutItem.add_widget(cst_item.RemoveButton(text = 'R', size_hint = [0.25, 1] , Popup = Expences_RemovePopup))
         
         Item.add_widget(BoxLayoutItem)
@@ -181,7 +183,7 @@ class DashboardScreen(Screen):
         BoxLayoutItem.add_widget(cst_item.ModifyButton(text = 'M', size_hint = [0.25, 1], Popup = Earnings_ModifyPopup))
 
         # Removing Popup
-        Earnings_RemovePopup = cst_popup.RemovingPopup(ManagerOfItem = ItemName, ManagerOfScreen = self, DBManager = self.Earnings_DBManager, UpdateFunction_str= 'Update_EarningsBoxLayout')
+        Earnings_RemovePopup = Rm_popup.RemovingPopup(ManagerOfItem = ItemName, ManagerOfScreen = self, DBManager = self.Earnings_DBManager, UpdateFunction_str= 'Update_EarningsBoxLayout')
         BoxLayoutItem.add_widget(cst_item.RemoveButton(text = 'R', size_hint = [0.25, 1] , Popup = Earnings_RemovePopup))
         
         Item.add_widget(BoxLayoutItem)
