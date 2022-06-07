@@ -7,14 +7,32 @@ from kivy.uix.screenmanager import Screen
 
 
 class PortfolioScreen(Screen):
-    def __init__(self, **kwargs):
+    def __init__(self, ScreenName = 'CRYPTO', PortfolioJsonPath = db_manager.path_manager.Crypto_path , **kwargs):
+        # Call superclass
         super().__init__(**kwargs)
-        # Initialize the manager of the json manager
-        self.DBManager = db_manager.PortfoliosManager_Class(db_manager.path_manager.database_path, db_manager.path_manager.Crypto_path)
+
+        # Graphic element which will be updated time by time
         self.ScreenToUpdate = 'PortfolioHeader'
 
-    def UpdateScreen(self):
+        # Initialize the manager of the json manager
+        self.UpdateInternalData(ScreenName, PortfolioJsonPath)
+        
+    #########################
+    #    UPDATE FUNCTION    #
+    #########################
+
+    def UpdateScreen(self, ScreenName, PortfolioJsonPath):
+        self.UpdateInternalData(ScreenName = ScreenName, PortfolioJsonPath = PortfolioJsonPath)
         self.UpdateListOfPortfolio()
+
+    def UpdateInternalData(self, ScreenName, PortfolioJsonPath):
+        # Update signals
+        self.ScreenName = ScreenName
+        self.PortfolioJsonPath = PortfolioJsonPath
+        self.DBManager = db_manager.PortfoliosManager_Class(db_manager.path_manager.database_path, self.PortfolioJsonPath)
+
+        # Update graphic elements - Continuare da qui
+        if len(self.ids): self.ids[self.ScreenToUpdate].children[-1].children[1].text = ScreenName + ' DASHBOARD'
 
     #####################
     #    CRYPTO  BOX    #

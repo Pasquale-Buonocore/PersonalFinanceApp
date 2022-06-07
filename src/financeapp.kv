@@ -97,27 +97,27 @@
     CustomMenuButton:
         id: ETF_btn
         text: MenuButtonSpace + ETFETCScreenName
-        on_release: self.move_screen(app, PortfolioScreenName)
+        on_release: self.move_PortfolioScreen(app, self.text)
 
     CustomMenuButton:
         id: Stock_btn
         text: MenuButtonSpace + StocksScreenName
-        on_release: self.move_screen(app, PortfolioScreenName)
+        on_release: self.move_PortfolioScreen(app, self.text)
 
     CustomMenuButton:
         id: Bond_btn
         text: MenuButtonSpace + BondScreenName
-        on_release: self.move_screen(app, PortfolioScreenName)
+        on_release: self.move_PortfolioScreen(app, self.text)
 
     CustomMenuButton:
         id: Commodity_btn
         text: MenuButtonSpace + CommodityScreenName
-        on_release: self.move_screen(app, PortfolioScreenName)
+        on_release: self.move_PortfolioScreen(app, self.text)
 
     CustomMenuButton:
         id: Crypto_btn
         text: MenuButtonSpace + CryptoScreenName
-        on_release: self.move_screen(app, PortfolioScreenName)
+        on_release: self.move_PortfolioScreen(app, self.text)
 
     CustomLabelMenu:
         text: MenuLabelSpace + 'STATISTIC'

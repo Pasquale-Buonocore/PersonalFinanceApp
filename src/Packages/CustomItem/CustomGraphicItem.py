@@ -5,6 +5,7 @@ from kivy.uix.button import Button
 from kivy.uix.label import Label
 from kivy.uix.boxlayout import BoxLayout
 from kivy.graphics import Color, RoundedRectangle
+import Packages.DatabaseMng.DatabaseMng as db_manager
 
 #####################
 # CUSTOM DEFINITION #
@@ -18,14 +19,49 @@ class CustomMenuButton(Button, HoverBehavior):
     SelectedStatus = BooleanProperty(False)
     ImageName = StringProperty()
 
-    def move_screen(self, App, string):
-        string = string.strip()
-        print('Moving to ' + string)
+    # Function to call when moving among different portfolios
+    def move_PortfolioScreen(self, App, ScreenName):
+        # Define import input
+        ScreenName = ScreenName.strip()
+        PortfolioJsonPath = self.ReturnJsonPathGivenScreenName(ScreenName)
+
+        print('Moving to ' + ScreenName)
+        App.root.children[0].children[0].current = 'EMPTY'
         # Update current screen name
-        App.root.children[0].children[0].current = string
+        App.root.children[0].children[0].current = 'PORTFOLIO'
+        # Update current screen
+        App.root.children[0].children[0].current_screen.UpdateScreen(ScreenName, PortfolioJsonPath)
+
+        # Update button colors
+        self.UpdateButtonState(App = App)
+
+    # Function to call to move among different screen
+    def move_screen(self, App, ScreenName):
+        ScreenName = ScreenName.strip()
+        print('Moving to ' + ScreenName)
+        # Update current screen name
+        App.root.children[0].children[0].current = ScreenName
         # Update current screen
         App.root.children[0].children[0].current_screen.UpdateScreen()
 
+        # Update button colors
+        self.UpdateButtonState(App = App)
+
+    # Return the database to use according to the Screen selected
+    def ReturnJsonPathGivenScreenName(self, ScreenName):
+        if ScreenName == 'ETF - ETC':
+            return db_manager.path_manager.ETF_ETC_path
+        if ScreenName == 'STOCKS':
+            return db_manager.path_manager.Stocks_path
+        if ScreenName == 'BONDS':
+            return db_manager.path_manager.Bonds_path
+        if ScreenName == 'COMMODITIES':
+            return db_manager.path_manager.Commodities_path
+        if ScreenName == 'CRYPTO':
+            return db_manager.path_manager.Crypto_path
+        
+    # Update the button that has been pressed
+    def UpdateButtonState(self, App):
         # Update button background button of all buttons
         for element in App.root.children[0].children[1].children:
             element.SelectedStatus = False
@@ -33,7 +69,7 @@ class CustomMenuButton(Button, HoverBehavior):
 
         self.SelectedStatus = True
         self.background_color = [0.2,0.2,1,1]
-    
+
     def on_enter(self, *args):
         self.background_color = [0.2,0.2,1,1]
         

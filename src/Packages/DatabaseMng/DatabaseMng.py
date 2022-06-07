@@ -29,9 +29,6 @@ class PathManager_Class():
     Crypto_path = 'Crypto.json'
     Category_path = 'Category.json'
 
-    ### Asset allocation resume ###
-    CryptoAssets_path = 'CryptoAssets.json'
-
 ###################
 # CUSTOM FUNCTION #
 ###################

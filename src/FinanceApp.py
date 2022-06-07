@@ -17,6 +17,9 @@ from Packages.Screens.Portfolio_screen import *
 from Packages.Screens.Setting_screen import *
 from Packages.Screens.Statistics_screen import *
 from Packages.Screens.Credits_screen import *
+from Packages.Screens.Empty_screen import *
+from Packages.Screens.Assets_screen import *
+from Packages.Screens.AssetsTransaction_screen import *
 
 #####################
 # IMPORTS FROM KIVY #
@@ -77,9 +80,8 @@ class FinanceApp(App):
 
         # Set the menu button images
         for element in self.root.children[0].children[1].children:
-            # Set Image for each class
+            # Set Image for each class and update image
             ImageName = element.text.strip().lower()
-            # Update Image
             element.ImageName = 'images/button/' + ImageName + '.png'
             element.source = 'images/button/' + ImageName + '.png'
 
