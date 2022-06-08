@@ -28,8 +28,8 @@ class AddPortfolioPopup(Popup):
         string = ''
 
         # Retrive data "Portfolio Name" from Text Input - In empty do nothing
-        PortfolioValue = self.ids["PortfolioName"].text.strip().upper()
-        if not PortfolioValue: string = string + 'ERROR: Empty asset name FIELD'
+        PortfolioName = self.ids["PortfolioName"].text.strip().upper()
+        if not PortfolioName: string = string + 'ERROR: Empty asset name FIELD'
 
         # Retrive data "Currency Value" from Text Input - In empty do nothing
         CurrencySymbol = self.ids["CurrencyValue"].text.strip().upper()
@@ -41,21 +41,30 @@ class AddPortfolioPopup(Popup):
             Pop.open()
         else:
             # Instantiate Screen and Json manager
-            Dashboard_Scr = App.root.children[0].children[0].children[0]
+            ActualScreen = App.root.children[0].children[0].children[0]
+            DBManager = ActualScreen.DBManager
+
+            # Define Portfolio To Add
+            PortfolioToAdd = DBManager.InitializeNewPortfolio(PortfolioName,[CurrencySymbol,0,0,0])
             
-            Json_mng = App.root.children[0].children[0].children[0].InFlow_DBManager
-            New_Element = {Location_Input:[float(LastMonth_Input), float(ThisMonth_Input)]}
             # If an item needs to be modified
             if self.type == 'M':
                 # Substitute the actual item
-                Json_mng.SubstituteElement(Old_element = self.itemToMod, New_Item = New_Element)
+                DBManager.SubstitutePortfolio(PortfolioToAdd)
             else:
-                # Append new item
-                Json_mng.AddElement(New_Element)
+                # Check if the Portfolio already exists
+                PortfolioAlreadyPresent = list(DBManager.ReadJson().keys())
+                if PortfolioName in PortfolioAlreadyPresent:
+                    # Show a warning message
+                    string = 'The portfolio ' + PortfolioName + ' already exists.\n It cannot be added. Remove it first!'
+                    Pop = Wrn_popup.WarningPopup('WARNING WINDOW', string.upper())
+                    Pop.open()
+                else:
+                    # Append new item
+                    DBManager.AddPortfolio(PortfolioToAdd)
 
             # Update the Json and Update the Dashboard Screen
-            Dashboard_Scr.Update_InFlowBoxLayout()
-
+            ActualScreen.UpdateScreen(ActualScreen.ScreenName, ActualScreen.PortfolioJsonPath)
 
             # Close the popup
             self.dismiss()

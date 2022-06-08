@@ -1,6 +1,7 @@
 import Packages.DatabaseMng.DatabaseMng as db_manager
 import Packages.CustomItem.CustomPopup as cst_popup
 import Packages.CustomItem.CustomGraphicItem as cst_item
+import Packages.CustomItem.RemovingPopup as Rm_popup
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.screenmanager import Screen
 from kivy.uix.boxlayout import BoxLayout
@@ -65,7 +66,7 @@ class TransactionScreen(Screen):
         BoxLayoutItem.add_widget(cst_item.ModifyButton(text = 'M', size_hint = [0.25, 1], Popup = TransactionIn_ModifyPopup))
 
         # Removing Popup
-        TransactionIn_RemovePopup = cst_popup.RemovingPopup(ManagerOfItem = ItemName, ManagerOfScreen = self, DBManager = self.TransactionIn_DBManager, RemoveFunction = 'RemoveElementFromList', UpdateFunction_str= 'Update_TransactionInBoxLayout')
+        TransactionIn_RemovePopup = Rm_popup.RemovingPopup(ManagerOfItem = ItemName, ManagerOfScreen = self, DBManager = self.TransactionIn_DBManager, RemoveFunction = 'RemoveElementFromList', UpdateFunction_str= 'Update_TransactionInBoxLayout')
         BoxLayoutItem.add_widget(cst_item.RemoveButton(text = 'R', size_hint = [0.25, 1] , Popup = TransactionIn_RemovePopup))
         
         Item.add_widget(BoxLayoutItem)
@@ -123,7 +124,7 @@ class TransactionScreen(Screen):
         BoxLayoutItem.add_widget(cst_item.ModifyButton(text = 'M', size_hint = [0.25, 1], Popup = TransactionOut_ModifyPopup))
 
         # Removing Popup
-        TransactionOut_RemovePopup = cst_popup.RemovingPopup(ManagerOfItem = ItemName, ManagerOfScreen = self, DBManager = self.TransactionOut_DBManager, RemoveFunction = 'RemoveElementFromList', UpdateFunction_str= 'Update_TransactionOutBoxLayout')
+        TransactionOut_RemovePopup = Rm_popup.RemovingPopup(ManagerOfItem = ItemName, ManagerOfScreen = self, DBManager = self.TransactionOut_DBManager, RemoveFunction = 'RemoveElementFromList', UpdateFunction_str= 'Update_TransactionOutBoxLayout')
         BoxLayoutItem.add_widget(cst_item.RemoveButton(text = 'R', size_hint = [0.25, 1] , Popup = TransactionOut_RemovePopup))
         
         Item.add_widget(BoxLayoutItem)

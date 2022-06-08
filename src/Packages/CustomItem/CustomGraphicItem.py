@@ -5,7 +5,7 @@ from kivy.uix.button import Button
 from kivy.uix.label import Label
 from kivy.uix.boxlayout import BoxLayout
 from kivy.graphics import Color, RoundedRectangle
-import Packages.DatabaseMng.DatabaseMng as db_manager
+from Packages.CustomFunction.CustomFunction import ReturnJsonPathGivenScreenName
 
 #####################
 # CUSTOM DEFINITION #
@@ -23,7 +23,7 @@ class CustomMenuButton(Button, HoverBehavior):
     def move_PortfolioScreen(self, App, ScreenName):
         # Define import input
         ScreenName = ScreenName.strip()
-        PortfolioJsonPath = self.ReturnJsonPathGivenScreenName(ScreenName)
+        PortfolioJsonPath = ReturnJsonPathGivenScreenName(ScreenName)
 
         print('Moving to ' + ScreenName)
         App.root.children[0].children[0].current = 'EMPTY'
@@ -46,19 +46,6 @@ class CustomMenuButton(Button, HoverBehavior):
 
         # Update button colors
         self.UpdateButtonState(App = App)
-
-    # Return the database to use according to the Screen selected
-    def ReturnJsonPathGivenScreenName(self, ScreenName):
-        if ScreenName == 'ETF - ETC':
-            return db_manager.path_manager.ETF_ETC_path
-        if ScreenName == 'STOCKS':
-            return db_manager.path_manager.Stocks_path
-        if ScreenName == 'BONDS':
-            return db_manager.path_manager.Bonds_path
-        if ScreenName == 'COMMODITIES':
-            return db_manager.path_manager.Commodities_path
-        if ScreenName == 'CRYPTO':
-            return db_manager.path_manager.Crypto_path
         
     # Update the button that has been pressed
     def UpdateButtonState(self, App):
@@ -118,20 +105,34 @@ class PortfolioButton(Button, HoverBehavior):
     # Initialize function
     def __init__(self,**kwargs):
         super(Button, self).__init__(size_hint = [1, None], height = "120dp", background_color = [0,0,0,0])
-        canvas_size = [kwargs['size_x'], super().height]         
+        canvas_size = [kwargs['size_x'], super().height]       
+        self.FromScreenName = kwargs['FromScreenName']  
+        self.PortfolioName = kwargs['PortfolioName']
         with self.canvas.before:
             Color(0.1,0.1,0.1,0.8)
             self.shape = RoundedRectangle(size = canvas_size, radius = [(10, 10), (10, 10), (10, 10), (10, 10)])
 
     # At button release
     def on_release(self):
-        print('Pressing Button')
+        print('My father screen is ' + self.FromScreenName)
+        ScreenManager = self.parent.parent.parent.parent.parent.parent
+        ScreenManager.current = 'ASSETS'
+        ScreenManager.current_screen.UpdateScreen(FromScreenName = self.FromScreenName, PortfolioName = self.PortfolioName)
     
     def on_enter(self, *args):
         self.canvas.before.children[0].rgba = [0,0,0.3,0.8]
         
     def on_leave(self, *args):
         self.canvas.before.children[0].rgba = [0.1,0.1,0.1,0.8]
+
+class EmptyPortfolioButton(Button):
+    # Initialize function
+    def __init__(self,**kwargs):
+        super(Button, self).__init__(size_hint = [1, None], height = "120dp", background_color = [0,0,0,0])
+        canvas_size = [kwargs['size_x'], super().height]    
+        with self.canvas.before:
+            Color(0.1,0.1,0.1,0.8)
+            self.shape = RoundedRectangle(size = canvas_size, radius = [(10, 10), (10, 10), (10, 10), (10, 10)])
 
 class ModifyRemoveButtonBox(BoxLayout):
     def __init__(self, Btn_size, box_pos_hint, ModifyPopup = '', RemovePopup = ''):

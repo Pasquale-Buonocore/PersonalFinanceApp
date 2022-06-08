@@ -1,8 +1,6 @@
-from kivy.lang import Builder
+import Packages.CustomItem.WarningPopup as Wrn_popup
 from kivy.uix.popup import Popup
-from kivy.uix.dropdown import DropDown
-import Packages.DatabaseMng.DatabaseMng as db_manager
-from kivy.uix.modalview import ModalView
+from kivy.lang import Builder
 
 # Designate Out .kv design file
 Builder.load_file('ui/PopupMng.kv')
@@ -48,7 +46,7 @@ class InFlowPopup(Popup):
 
         if string:
             # If the error message is not empty, display an error
-            Pop = WarningPopup('', string.upper())
+            Pop = Wrn_popup.WarningPopup('', string.upper())
             Pop.open()
         else:
             # Instantiate Dashboard Screen and Json manager
@@ -109,7 +107,7 @@ class ExpencesPopup(Popup):
 
         if string:
             # If the error message is not empty, display an error
-            Pop = WarningPopup('', string.upper())
+            Pop = Wrn_popup.WarningPopup('', string.upper())
             Pop.open()
         else:
             # Instantiate Dashboard Screen and Json manager
@@ -171,7 +169,7 @@ class EarningsPopup(Popup):
 
         if string:
             # If the error message is not empty, display an error
-            Pop = WarningPopup('', string.upper())
+            Pop = Wrn_popup.WarningPopup('', string.upper())
             Pop.open()
         else:
             # Instantiate Dashboard Screen and Json manager
@@ -243,7 +241,7 @@ class TransactionInPopup(Popup):
 
         if string:
             # If the error message is not empty, display an error
-            Pop = WarningPopup('', string.upper())
+            Pop = Wrn_popup.WarningPopup('', string.upper())
             Pop.open()
         else:
             # Instantiate Dashboard Screen and Json manager
@@ -318,7 +316,7 @@ class TransactionOutPopup(Popup):
 
         if string:
             # If the error message is not empty, display an error
-            Pop = WarningPopup('', string.upper())
+            Pop = Wrn_popup.WarningPopup('', string.upper())
             Pop.open()
         else:
             # Instantiate Dashboard Screen and Json manager
@@ -346,502 +344,6 @@ class TransactionOutPopup(Popup):
         # Close the popup
         self.dismiss()
 
-class ETF_ETCPopup(Popup):
-    def __init__(self, title_str, type, itemToMod = {}):
-        # Initialize the super class
-        super().__init__(title = 'Add Transaction', size_hint=(0.3,0.7))
-        # Define inner attributes
-        self.type = type if type in ['A','M'] else 'A'
-        # Save item to modify
-        self.itemToMod = itemToMod
-        # Fill the popup if the user need to modify a field
-        if itemToMod: self.ModifyTextInput()
-
-    def ModifyTextInput(self):
-        # Modify text input if itemToMod is not empty
-        ItemName = list(self.itemToMod.keys())[0]
-        self.ids["NameValue"].text = str(self.itemToMod[ItemName][0])
-        self.ids["SymbolValue"].text = str(self.itemToMod[ItemName][1])
-        self.ids["DataValue"].text = str(self.itemToMod[ItemName][2])
-        self.ids["TypeValue"].text = str(self.itemToMod[ItemName][3])
-        self.ids["BrokerValue"].text = str(self.itemToMod[ItemName][4])
-        self.ids["QuantityValue"].text = str(self.itemToMod[ItemName][5])
-        self.ids["SinglePriceValue"].text = str(self.itemToMod[ItemName][6])
-
-
-    def Confirm(self, App):
-        # Keep the boolean error
-        string = ''
-
-        # Retrive data "Asset Name Value" from Text Input - In empty do nothing
-        NameValue = self.ids["NameValue"].text.strip()
-        if not NameValue: string = string + 'ERROR: Empty asset name FIELD\n'
-
-        # Retrive data "Symbol Value" from Text Input - In empty do nothing
-        SymbolValue = self.ids["SymbolValue"].text.strip()
-        if not SymbolValue: string = string + 'ERROR: Empty symbol value FIELD\n'
-
-        # Retrive data "DataValue" from Text Input - In empty do nothing
-        DataValue = self.ids["DataValue"].text.strip()
-        if not DataValue: string = string + 'ERROR: Empty data FIELD\n'
-        
-        # Retrive data "TypeValue" from Text Input - In empty do nothing
-        TypeValue = self.ids["TypeValue"].text.strip()
-        if not TypeValue: string = string + 'ERROR: Empty Type value FIELD\n'
-        
-        # Retrive data "BrokerValue" from Text Input - In empty do nothing
-        BrokerValue = self.ids["BrokerValue"].text.strip()
-        if not BrokerValue: string = string + 'ERROR: Empty Broker value FIELD\n'
-        
-        # Retrive data "QuantityValue" from Text Input - In empty do nothing
-        QuantityValue = self.ids["QuantityValue"].text.strip()
-        if not QuantityValue: string = string + 'ERROR: Empty Quantity value FIELD\n'
-        if not QuantityValue.replace(".", "").isnumeric(): string = string + 'ERROR: Quantity value must be numeric FIELD\n'
-
-        # Retrive data "SinglePriceValue" from Text Input - In empty do nothing
-        SinglePriceValue = self.ids["SinglePriceValue"].text.strip()
-        if not SinglePriceValue: string = string + 'ERROR: Empty single price value FIELD\n'
-        if not SinglePriceValue.replace(".", "").isnumeric(): string = string + 'ERROR: Single price value must be numeric FIELD\n'
-
-        if string:
-            # If the error message is not empty, display an error
-            Pop = WarningPopup('', string.upper())
-            Pop.open()
-        else:
-            # Compute total spent
-            Total_Spent = float(QuantityValue) * float(SinglePriceValue)
-
-            # Instantiate Dashboard Screen and Json manager
-            ETF_ETC_Scr = App.root.children[0].children[0].children[0]
-            Json_mng = App.root.children[0].children[0].children[0].ETF_ETC_DBManager
-            New_Element = [NameValue, SymbolValue, DataValue, TypeValue, BrokerValue, QuantityValue, SinglePriceValue, Total_Spent]
-
-            # If an item needs to be modified
-            if self.type == 'M':
-                # Substitute the actual item
-                Json_mng.SubstituteElementList(ItemNum = list(self.itemToMod.keys())[0], NewList = New_Element)
-            else:
-                # Append new item
-                Json_mng.ConcatenateElementList(New_Element)
-
-            # Update the Json and Update the Dashboard Screen
-            ETF_ETC_Scr.Update_ETF_ETCBoxLayout()
-
-            # Close the popup
-            self.dismiss()
-
-    def Cancel(self):
-        # Close the popup
-        self.dismiss()
-
-class StocksPopup(Popup):
-    def __init__(self, title_str, type, itemToMod = {}):
-        # Initialize the super class
-        super().__init__(title = title_str, size_hint=(0.3,0.5))
-        # Define inner attributes
-        self.type = type if type in ['A','M'] else 'A'
-        # Save item to modify
-        self.itemToMod = itemToMod
-        # Fill the popup if the user need to modify a field
-        if itemToMod: self.ModifyTextInput()
-
-    def ModifyTextInput(self):
-        # Modify text input if itemToMod is not empty
-        ItemName = list(self.itemToMod.keys())[0]
-        self.ids["NameValue"].text = str(self.itemToMod[ItemName][0])
-        self.ids["SymbolValue"].text = str(self.itemToMod[ItemName][1])
-        self.ids["DataValue"].text = str(self.itemToMod[ItemName][2])
-        self.ids["TypeValue"].text = str(self.itemToMod[ItemName][3])
-        self.ids["BrokerValue"].text = str(self.itemToMod[ItemName][4])
-        self.ids["QuantityValue"].text = str(self.itemToMod[ItemName][5])
-        self.ids["SinglePriceValue"].text = str(self.itemToMod[ItemName][6])
-
-    def Confirm(self, App):
-        # Keep the boolean error
-        string = ''
-
-        # Retrive data "Asset Name Value" from Text Input - In empty do nothing
-        NameValue = self.ids["NameValue"].text.strip()
-        if not NameValue: string = string + 'ERROR: Empty asset name FIELD\n'
-
-        # Retrive data "Symbol Value" from Text Input - In empty do nothing
-        SymbolValue = self.ids["SymbolValue"].text.strip()
-        if not SymbolValue: string = string + 'ERROR: Empty symbol value FIELD\n'
-
-        # Retrive data "DataValue" from Text Input - In empty do nothing
-        DataValue = self.ids["DataValue"].text.strip()
-        if not DataValue: string = string + 'ERROR: Empty data FIELD\n'
-        
-        # Retrive data "TypeValue" from Text Input - In empty do nothing
-        TypeValue = self.ids["TypeValue"].text.strip()
-        if not TypeValue: string = string + 'ERROR: Empty Type value FIELD\n'
-        
-        # Retrive data "BrokerValue" from Text Input - In empty do nothing
-        BrokerValue = self.ids["BrokerValue"].text.strip()
-        if not BrokerValue: string = string + 'ERROR: Empty Broker value FIELD\n'
-        
-        # Retrive data "QuantityValue" from Text Input - In empty do nothing
-        QuantityValue = self.ids["QuantityValue"].text.strip()
-        if not QuantityValue: string = string + 'ERROR: Empty Quantity value FIELD\n'
-        if not QuantityValue.replace(".", "").isnumeric(): string = string + 'ERROR: Quantity value must be numeric FIELD\n'
-
-        # Retrive data "SinglePriceValue" from Text Input - In empty do nothing
-        SinglePriceValue = self.ids["SinglePriceValue"].text.strip()
-        if not SinglePriceValue: string = string + 'ERROR: Empty single price value FIELD\n'
-        if not SinglePriceValue.replace(".", "").isnumeric(): string = string + 'ERROR: Single price value must be numeric FIELD\n'
-
-        if string:
-            # If the error message is not empty, display an error
-            Pop = WarningPopup('', string.upper())
-            Pop.open()
-        else:
-            # Compute total spent
-            Total_Spent = float(QuantityValue) * float(SinglePriceValue)
-
-            # Instantiate Dashboard Screen and Json manager
-            Stocks_Scr = App.root.children[0].children[0].children[0]
-            Json_mng = App.root.children[0].children[0].children[0].Stocks_DBManager
-            New_Element = [NameValue, SymbolValue, DataValue, TypeValue, BrokerValue, QuantityValue, SinglePriceValue, Total_Spent]
-
-            # If an item needs to be modified
-            if self.type == 'M':
-                # Substitute the actual item
-                Json_mng.SubstituteElementList(ItemNum = list(self.itemToMod.keys())[0], NewList = New_Element)
-            else:
-                # Append new item
-                Json_mng.ConcatenateElementList(New_Element)
-
-            # Update the Json and Update the Dashboard Screen
-            Stocks_Scr.Update_StocksBoxLayout()
-
-            # Close the popup
-            self.dismiss()
-
-    def Cancel(self):
-        # Close the popup
-        self.dismiss()
-
-class BondsPopup(Popup):
-    def __init__(self, title_str, type, itemToMod = {}):
-        # Initialize the super class
-        super().__init__(title = title_str, size_hint=(0.3,0.5))
-        # Define inner attributes
-        self.type = type if type in ['A','M'] else 'A'
-        # Save item to modify
-        self.itemToMod = itemToMod
-        # Fill the popup if the user need to modify a field
-        if itemToMod: self.ModifyTextInput()
-
-    def ModifyTextInput(self):
-        # Modify text input if itemToMod is not empty
-        ItemName = list(self.itemToMod.keys())[0]
-        self.ids["NameValue"].text = str(self.itemToMod[ItemName][0])
-        self.ids["SymbolValue"].text = str(self.itemToMod[ItemName][1])
-        self.ids["DataValue"].text = str(self.itemToMod[ItemName][2])
-        self.ids["TypeValue"].text = str(self.itemToMod[ItemName][3])
-        self.ids["BrokerValue"].text = str(self.itemToMod[ItemName][4])
-        self.ids["QuantityValue"].text = str(self.itemToMod[ItemName][5])
-        self.ids["SinglePriceValue"].text = str(self.itemToMod[ItemName][6])
-
-    def Confirm(self, App):
-        # Keep the boolean error
-        string = ''
-
-        # Retrive data "Asset Name Value" from Text Input - In empty do nothing
-        NameValue = self.ids["NameValue"].text.strip()
-        if not NameValue: string = string + 'ERROR: Empty asset name FIELD\n'
-
-        # Retrive data "Symbol Value" from Text Input - In empty do nothing
-        SymbolValue = self.ids["SymbolValue"].text.strip()
-        if not SymbolValue: string = string + 'ERROR: Empty symbol value FIELD\n'
-
-        # Retrive data "DataValue" from Text Input - In empty do nothing
-        DataValue = self.ids["DataValue"].text.strip()
-        if not DataValue: string = string + 'ERROR: Empty data FIELD\n'
-        
-        # Retrive data "TypeValue" from Text Input - In empty do nothing
-        TypeValue = self.ids["TypeValue"].text.strip()
-        if not TypeValue: string = string + 'ERROR: Empty Type value FIELD\n'
-        
-        # Retrive data "BrokerValue" from Text Input - In empty do nothing
-        BrokerValue = self.ids["BrokerValue"].text.strip()
-        if not BrokerValue: string = string + 'ERROR: Empty Broker value FIELD\n'
-        
-        # Retrive data "QuantityValue" from Text Input - In empty do nothing
-        QuantityValue = self.ids["QuantityValue"].text.strip()
-        if not QuantityValue: string = string + 'ERROR: Empty Quantity value FIELD\n'
-        if not QuantityValue.replace(".", "").isnumeric(): string = string + 'ERROR: Quantity value must be numeric FIELD\n'
-
-        # Retrive data "SinglePriceValue" from Text Input - In empty do nothing
-        SinglePriceValue = self.ids["SinglePriceValue"].text.strip()
-        if not SinglePriceValue: string = string + 'ERROR: Empty single price value FIELD\n'
-        if not SinglePriceValue.replace(".", "").isnumeric(): string = string + 'ERROR: Single price value must be numeric FIELD\n'
-
-        if string:
-            # If the error message is not empty, display an error
-            Pop = WarningPopup('', string.upper())
-            Pop.open()
-        else:
-            # Compute total spent
-            Total_Spent = float(QuantityValue) * float(SinglePriceValue)
-
-            # Instantiate Dashboard Screen and Json manager
-            Bonds_Scr = App.root.children[0].children[0].children[0]
-            Json_mng = App.root.children[0].children[0].children[0].Bonds_DBManager
-            New_Element = [NameValue, SymbolValue, DataValue, TypeValue, BrokerValue, QuantityValue, SinglePriceValue, Total_Spent]
-
-            # If an item needs to be modified
-            if self.type == 'M':
-                # Substitute the actual item
-                Json_mng.SubstituteElementList(ItemNum = list(self.itemToMod.keys())[0], NewList = New_Element)
-            else:
-                # Append new item
-                Json_mng.ConcatenateElementList(New_Element)
-
-            # Update the Json and Update the Dashboard Screen
-            Bonds_Scr.Update_BondsBoxLayout()
-
-            # Close the popup
-            self.dismiss()
-
-    def Cancel(self):
-        # Close the popup
-        self.dismiss()
-
-class CommoditiesPopup(Popup):
-    def __init__(self, title_str, type, itemToMod = {}):
-        # Initialize the super class
-        super().__init__(title = title_str, size_hint=(0.3,0.5))
-        # Define inner attributes
-        self.type = type if type in ['A','M'] else 'A'
-        # Save item to modify
-        self.itemToMod = itemToMod
-        # Fill the popup if the user need to modify a field
-        if itemToMod: self.ModifyTextInput()
-
-    def ModifyTextInput(self):
-        # Modify text input if itemToMod is not empty
-        ItemName = list(self.itemToMod.keys())[0]
-        self.ids["NameValue"].text = str(self.itemToMod[ItemName][0])
-        self.ids["SymbolValue"].text = str(self.itemToMod[ItemName][1])
-        self.ids["DataValue"].text = str(self.itemToMod[ItemName][2])
-        self.ids["TypeValue"].text = str(self.itemToMod[ItemName][3])
-        self.ids["BrokerValue"].text = str(self.itemToMod[ItemName][4])
-        self.ids["QuantityValue"].text = str(self.itemToMod[ItemName][5])
-        self.ids["SinglePriceValue"].text = str(self.itemToMod[ItemName][6])
-
-    def Confirm(self, App):
-        # Keep the boolean error
-        string = ''
-
-        # Retrive data "Asset Name Value" from Text Input - In empty do nothing
-        NameValue = self.ids["NameValue"].text.strip()
-        if not NameValue: string = string + 'ERROR: Empty asset name FIELD\n'
-
-        # Retrive data "Symbol Value" from Text Input - In empty do nothing
-        SymbolValue = self.ids["SymbolValue"].text.strip()
-        if not SymbolValue: string = string + 'ERROR: Empty symbol value FIELD\n'
-
-        # Retrive data "DataValue" from Text Input - In empty do nothing
-        DataValue = self.ids["DataValue"].text.strip()
-        if not DataValue: string = string + 'ERROR: Empty data FIELD\n'
-        
-        # Retrive data "TypeValue" from Text Input - In empty do nothing
-        TypeValue = self.ids["TypeValue"].text.strip()
-        if not TypeValue: string = string + 'ERROR: Empty Type value FIELD\n'
-        
-        # Retrive data "BrokerValue" from Text Input - In empty do nothing
-        BrokerValue = self.ids["BrokerValue"].text.strip()
-        if not BrokerValue: string = string + 'ERROR: Empty Broker value FIELD\n'
-        
-        # Retrive data "QuantityValue" from Text Input - In empty do nothing
-        QuantityValue = self.ids["QuantityValue"].text.strip()
-        if not QuantityValue: string = string + 'ERROR: Empty Quantity value FIELD\n'
-        if not QuantityValue.replace(".", "").isnumeric(): string = string + 'ERROR: Quantity value must be numeric FIELD\n'
-
-        # Retrive data "SinglePriceValue" from Text Input - In empty do nothing
-        SinglePriceValue = self.ids["SinglePriceValue"].text.strip()
-        if not SinglePriceValue: string = string + 'ERROR: Empty single price value FIELD\n'
-        if not SinglePriceValue.replace(".", "").isnumeric(): string = string + 'ERROR: Single price value must be numeric FIELD\n'
-
-        if string:
-            # If the error message is not empty, display an error
-            Pop = WarningPopup('', string.upper())
-            Pop.open()
-        else:
-            # Compute total spent
-            Total_Spent = float(QuantityValue) * float(SinglePriceValue)
-
-            # Instantiate Dashboard Screen and Json manager
-            Commodities_Scr = App.root.children[0].children[0].children[0]
-            Json_mng = App.root.children[0].children[0].children[0].Commodities_DBManager
-            New_Element = [NameValue, SymbolValue, DataValue, TypeValue, BrokerValue, QuantityValue, SinglePriceValue, Total_Spent]
-
-            # If an item needs to be modified
-            if self.type == 'M':
-                # Substitute the actual item
-                Json_mng.SubstituteElementList(ItemNum = list(self.itemToMod.keys())[0], NewList = New_Element)
-            else:
-                # Append new item
-                Json_mng.ConcatenateElementList(New_Element)
-
-            # Update the Json and Update the Dashboard Screen
-            Commodities_Scr.Update_CommoditiesBoxLayout()
-
-            # Close the popup
-            self.dismiss()
-
-    def Cancel(self):
-        # Close the popup
-        self.dismiss()
-
-class CryptoPopup(Popup):
-    def __init__(self, title_str, type, itemToMod = {}):
-        # Initialize the super class
-        super().__init__(title = title_str, size_hint=(0.3,0.5))
-        # Define inner attributes
-        self.type = type if type in ['A','M'] else 'A'
-        # Save item to modify
-        self.itemToMod = itemToMod
-        # Fill the popup if the user need to modify a field
-        if itemToMod: self.ModifyTextInput()
-
-    def ModifyTextInput(self):
-        # Modify text input if itemToMod is not empty
-        ItemName = list(self.itemToMod.keys())[0]
-        self.ids["NameValue"].text = str(self.itemToMod[ItemName][0])
-        self.ids["SymbolValue"].text = str(self.itemToMod[ItemName][1])
-        self.ids["DataValue"].text = str(self.itemToMod[ItemName][2])
-        self.ids["TypeValue"].text = str(self.itemToMod[ItemName][3])
-        self.ids["BrokerValue"].text = str(self.itemToMod[ItemName][4])
-        self.ids["QuantityValue"].text = str(self.itemToMod[ItemName][5])
-        self.ids["SinglePriceValue"].text = str(self.itemToMod[ItemName][6])
-
-    def Confirm(self, App):
-        # Keep the boolean error
-        string = ''
-
-        # Retrive data "Asset Name Value" from Text Input - In empty do nothing
-        NameValue = self.ids["NameValue"].text.strip()
-        if not NameValue: string = string + 'ERROR: Empty asset name FIELD\n'
-
-        # Retrive data "Symbol Value" from Text Input - In empty do nothing
-        SymbolValue = self.ids["SymbolValue"].text.strip()
-        if not SymbolValue: string = string + 'ERROR: Empty symbol value FIELD\n'
-
-        # Retrive data "DataValue" from Text Input - In empty do nothing
-        DataValue = self.ids["DataValue"].text.strip()
-        if not DataValue: string = string + 'ERROR: Empty data FIELD\n'
-        
-        # Retrive data "TypeValue" from Text Input - In empty do nothing
-        TypeValue = self.ids["TypeValue"].text.strip()
-        if not TypeValue: string = string + 'ERROR: Empty Type value FIELD\n'
-        
-        # Retrive data "BrokerValue" from Text Input - In empty do nothing
-        BrokerValue = self.ids["BrokerValue"].text.strip()
-        if not BrokerValue: string = string + 'ERROR: Empty Broker value FIELD\n'
-        
-        # Retrive data "QuantityValue" from Text Input - In empty do nothing
-        QuantityValue = self.ids["QuantityValue"].text.strip()
-        if not QuantityValue: string = string + 'ERROR: Empty Quantity value FIELD\n'
-        if not QuantityValue.replace(".", "").isnumeric(): string = string + 'ERROR: Quantity value must be numeric FIELD\n'
-
-        # Retrive data "SinglePriceValue" from Text Input - In empty do nothing
-        SinglePriceValue = self.ids["SinglePriceValue"].text.strip()
-        if not SinglePriceValue: string = string + 'ERROR: Empty single price value FIELD\n'
-        if not SinglePriceValue.replace(".", "").isnumeric(): string = string + 'ERROR: Single price value must be numeric FIELD\n'
-
-        if string:
-            # If the error message is not empty, display an error
-            Pop = WarningPopup('', string.upper())
-            Pop.open()
-        else:
-            # Compute total spent
-            Total_Spent = float(QuantityValue) * float(SinglePriceValue)
-
-            # Instantiate Dashboard Screen and Json manager
-            Crypto_Scr = App.root.children[0].children[0].children[0]
-            Json_mng = App.root.children[0].children[0].children[0].Crypto_DBManager
-            New_Element = [NameValue, SymbolValue, DataValue, TypeValue, BrokerValue, QuantityValue, SinglePriceValue, Total_Spent]
-
-            # If an item needs to be modified
-            if self.type == 'M':
-                # Substitute the actual item
-                Json_mng.SubstituteElementList(ItemNum = list(self.itemToMod.keys())[0], NewList = New_Element)
-            else:
-                # Append new item
-                Json_mng.ConcatenateElementList(New_Element)
-
-            # Update the Json and Update the Dashboard Screen
-            Crypto_Scr.Update_CryptoBoxLayout()
-
-            # Close the popup
-            self.dismiss()
-
-    def Cancel(self):
-        # Close the popup
-        self.dismiss()
-
-#############
-# ADD ASSET #
-#############
-class ETF_ETC_AddAssetPopup(Popup):
-    def __init__(self, type = 'A', itemToMod = {}):
-        # Initialize the super class
-        super().__init__(title = 'ADD ASSET CLASS', size_hint=(0.2,0.3))
-        # Define inner attributes
-        self.type = type if type in ['A','M'] else 'A'
-        # Save item to modify
-        self.itemToMod = itemToMod
-        # Fill the popup if the user need to modify a field
-        if itemToMod: self.ModifyTextInput()
-
-    def ModifyTextInput(self):
-        # Modify text input if itemToMod is not empty
-        self.ids["NameValue"].text = list(self.itemToMod.keys())[0]
-        self.ids["SymbolValue"].text = str(self.itemToMod[self.ids["Location_Input"].text][0])
-
-    def Confirm(self, App):
-        # Keep the boolean error
-        string = ''
-
-        # Retrive data "Name Value" from Text Input - In empty do nothing
-        NameValue = self.ids["NameValue"].text.strip()
-        if not NameValue: string = string + 'ERROR: Empty Name FIELD\n'
-
-        # Retrive data "Symbol Value" from Text Input - In empty do nothing
-        SymbolValue = self.ids["SymbolValue"].text.strip()
-        if not SymbolValue: string = string + 'ERROR: Empty last month value FIELD\n'
-        if not SymbolValue.replace(".", "").isnumeric(): string = string + 'ERROR: last month must be numeric FIELD\n'
-
-        if string:
-            # If the error message is not empty, display an error
-            Pop = WarningPopup('', string.upper())
-            Pop.open()
-        else:
-            # Instantiate Dashboard Screen and Json manager
-            ETF_ETC_Scr = App.root.children[0].children[0].children[0]
-            Json_mng = App.root.children[0].children[0].children[0].InFlow_DBManager
-            New_Element = {Location_Input:[float(LastMonth_Input), float(ThisMonth_Input)]}
-            # If an item needs to be modified
-            if self.type == 'M':
-                # Substitute the actual item
-                Json_mng.SubstituteElement(Old_element = self.itemToMod, New_Item = New_Element)
-            else:
-                # Append new item
-                Json_mng.AddElement(New_Element)
-
-            # Update the Json and Update the Dashboard Screen
-            Dashboard_Scr.Update_InFlowBoxLayout()
-
-            # Close the popup
-            self.dismiss()
-
-    def Cancel(self):
-        # Close the popup
-        self.dismiss()
-
-class Add_CryptoAssetsPopup(Popup):
     def __init__(self, title = '', type = 'A', itemToMod = {}):
         # Initialize the super class
         super().__init__(title = title, size_hint=(0.2,0.3))
@@ -872,7 +374,7 @@ class Add_CryptoAssetsPopup(Popup):
 
         if string:
             # If the error message is not empty, display an error
-            Pop = WarningPopup('', string.upper())
+            Pop = Wrn_popup.WarningPopup('', string.upper())
             Pop.open()
         else:
             # Instantiate Dashboard Screen and Json manager

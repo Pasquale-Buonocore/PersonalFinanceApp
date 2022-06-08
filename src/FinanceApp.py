@@ -18,8 +18,8 @@ from Packages.Screens.Setting_screen import *
 from Packages.Screens.Statistics_screen import *
 from Packages.Screens.Credits_screen import *
 from Packages.Screens.Empty_screen import *
-from Packages.Screens.Assets_screen import *
 from Packages.Screens.AssetsTransaction_screen import *
+from Packages.Screens.Assets_screen import *
 
 #####################
 # IMPORTS FROM KIVY #
