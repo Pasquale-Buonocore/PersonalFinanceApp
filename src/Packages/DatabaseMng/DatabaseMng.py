@@ -279,23 +279,23 @@ class PortfoliosManager_Class():
         self.SaveJsonFile(json_object)
 
     # Substitute Element to the json file - TESTED
-    def SubstitutePortfolio(self, NewPortfolioDict):
-        # Check if the portfolio in input is only one
-        if len(NewPortfolioDict.keys()) > 1:
-            print('It is adissible to add only one portfolio at the time.')
-            return
-
+    def ModifyPortfolio(self, OldPortfolioName, NewPortfolioName, NewPortfolioCurrency):
         # Define a new dict containg the new Json
         new_dict = {}
 
         # Read json and iterate over it
         json_object = self.ReadJson()
         
-        for OldPortfoliosKey in json_object.keys():
-            if list(NewPortfolioDict.keys())[0] == OldPortfoliosKey:
-                new_dict.update(NewPortfolioDict)
+        # Modify portfolio name and currency
+        OldPortfolio = json_object[OldPortfolioName]
+        OldPortfolio['Statistics']['Currency'] = NewPortfolioCurrency
+
+        # New dictionary in input
+        for PortfoliosKey in json_object.keys():
+            if PortfoliosKey == OldPortfolioName:
+                new_dict.update({NewPortfolioName : json_object[OldPortfolioName]})
             else:
-                new_dict.update({OldPortfoliosKey:json_object[OldPortfoliosKey]})
+                new_dict.update({PortfoliosKey:json_object[PortfoliosKey]})
         
         # Save new json file
         self.SaveJsonFile(new_dict)
@@ -343,26 +343,6 @@ class PortfoliosManager_Class():
     #####################
     # ASSETS MANAGEMENT #
     #####################
-
-    # Initialize New Asset: Given Asset Name and Symbol it return a precompiled dictionary - TESTED
-    def InitializeNewAsset(self, AssetName, AssetSymbol):
-        # List which will store all the transaction for such asset
-        AssetTransaction = {'Transactions' : {}}
-
-        # Dict which will store all the statistics of such asset
-        StatisticDict = {'Quantity': 0}
-        StatisticDict.update({'Symbol' : AssetSymbol})
-        StatisticDict.update({'AveragePrice' : 0})
-        StatisticDict.update({'TotalValue' : 0})
-        StatisticDict.update({'TotalProfit' : 0})
-        AssetStastitics = {'Statistics' : StatisticDict}
-
-        # Update NewAsset
-        NewAsset = {AssetName : {} }
-        NewAsset[AssetName].update(AssetTransaction)
-        NewAsset[AssetName].update(AssetStastitics)
-
-        return NewAsset
     
     # Add asset to portfolio, given the PortfolioName and the Asset Dictionary - TESTED
     def AddAssetToPortfolio(self, PortfolioName, AssetDictToAdd):
@@ -404,6 +384,29 @@ class PortfoliosManager_Class():
         # Save new json file
         self.SaveJsonFile(json_object)
     
+    # Initialize New Asset: Given Asset Name and Symbol it return a precompiled dictionary - TESTED
+    def InitializeNewAsset(self, AssetName, AssetSymbol):
+        # List which will store all the transaction for such asset
+        AssetTransaction = {'Transactions' : {}}
+
+        # Dict which will store all the statistics of such asset
+        StatisticDict = {'Quantity': 0}
+        StatisticDict.update({'Symbol' : AssetSymbol})
+        StatisticDict.update({'AveragePrice' : 0})
+        StatisticDict.update({'TotalValue' : 0})
+        StatisticDict.update({'TotalProfit' : 0})
+        AssetStastitics = {'Statistics' : StatisticDict}
+
+        # Update NewAsset
+        NewAsset = {AssetName : {} }
+        NewAsset[AssetName].update(AssetTransaction)
+        NewAsset[AssetName].update(AssetStastitics)
+
+        return NewAsset
+    ##########################
+    # TRANSACTION MANAGEMENT #
+    ##########################
+
     # Order the list of transaction
     def OrderTransactionList(self, TransactionDict):
         # Initialize variables

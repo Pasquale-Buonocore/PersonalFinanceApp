@@ -35,7 +35,9 @@ from kivy.app import App
 # Needed to be defined here, since used in App #
 ################################################
 class MainLayout(BoxLayout):
-    pass
+    def __init__(self,**kwargs):
+        super().__init__(**kwargs)
+        self.GLOBALS = {'ActiveScreen' : 'DASHBOARD'}
 
 ###################################
 # Contains the Setting bar on top #

@@ -1,6 +1,87 @@
 {
-      "MAIN PAC": {
-            "Assets": {},
+      "LONG TERM PAC": {
+            "Assets": {
+                  "BITCOIN": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "Quantity": 0,
+                              "Symbol": "BTC",
+                              "AveragePrice": 0,
+                              "TotalValue": 0,
+                              "TotalProfit": 0
+                        }
+                  },
+                  "ETHEREUM": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "Quantity": 0,
+                              "Symbol": "ETH",
+                              "AveragePrice": 0,
+                              "TotalValue": 0,
+                              "TotalProfit": 0
+                        }
+                  },
+                  "COSMOS": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "Quantity": 0,
+                              "Symbol": "ATOM",
+                              "AveragePrice": 0,
+                              "TotalValue": 0,
+                              "TotalProfit": 0
+                        }
+                  },
+                  "ELROND": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "Quantity": 0,
+                              "Symbol": "EGLD",
+                              "AveragePrice": 0,
+                              "TotalValue": 0,
+                              "TotalProfit": 0
+                        }
+                  },
+                  "POLKADOT": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "Quantity": 0,
+                              "Symbol": "DOT",
+                              "AveragePrice": 0,
+                              "TotalValue": 0,
+                              "TotalProfit": 0
+                        }
+                  },
+                  "THORCHAIN": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "Quantity": 0,
+                              "Symbol": "RUNE",
+                              "AveragePrice": 0,
+                              "TotalValue": 0,
+                              "TotalProfit": 0
+                        }
+                  },
+                  "NEAR PROTOCOL": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "Quantity": 0,
+                              "Symbol": "NEAR",
+                              "AveragePrice": 0,
+                              "TotalValue": 0,
+                              "TotalProfit": 0
+                        }
+                  },
+                  "AVALANCHE": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "Quantity": 0,
+                              "Symbol": "AVAX",
+                              "AveragePrice": 0,
+                              "TotalValue": 0,
+                              "TotalProfit": 0
+                        }
+                  }
+            },
             "Statistics": {
                   "Currency": "$",
                   "TotalValue": 0,
@@ -9,7 +90,48 @@
             }
       },
       "AIRDROPS": {
-            "Assets": {},
+            "Assets": {
+                  "EVMOS": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "Quantity": 0,
+                              "Symbol": "EVMOS",
+                              "AveragePrice": 0,
+                              "TotalValue": 0,
+                              "TotalProfit": 0
+                        }
+                  },
+                  "JUNO": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "Quantity": 0,
+                              "Symbol": "JUNO",
+                              "AveragePrice": 0,
+                              "TotalValue": 0,
+                              "TotalProfit": 0
+                        }
+                  },
+                  "SECRET": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "Quantity": 0,
+                              "Symbol": "SCRT",
+                              "AveragePrice": 0,
+                              "TotalValue": 0,
+                              "TotalProfit": 0
+                        }
+                  },
+                  "OSMOSIS": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "Quantity": 0,
+                              "Symbol": "OSMO",
+                              "AveragePrice": 0,
+                              "TotalValue": 0,
+                              "TotalProfit": 0
+                        }
+                  }
+            },
             "Statistics": {
                   "Currency": "$",
                   "TotalValue": 1000,
@@ -18,7 +140,28 @@
             }
       },
       "STABLE COINS": {
-            "Assets": {},
+            "Assets": {
+                  "TETHER": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "Quantity": 0,
+                              "Symbol": "USDT",
+                              "AveragePrice": 0,
+                              "TotalValue": 0,
+                              "TotalProfit": 0
+                        }
+                  },
+                  "USD CIRCLE": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "Quantity": 0,
+                              "Symbol": "UCDC",
+                              "AveragePrice": 0,
+                              "TotalValue": 0,
+                              "TotalProfit": 0
+                        }
+                  }
+            },
             "Statistics": {
                   "Currency": "$",
                   "TotalValue": 1000,

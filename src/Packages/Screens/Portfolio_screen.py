@@ -7,6 +7,7 @@ from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.screenmanager import Screen
 
 
+
 class PortfolioScreen(Screen):
     def __init__(self, ScreenName = 'CRYPTO', PortfolioJsonPath = db_manager.path_manager.Crypto_path , **kwargs):
         # Call superclass
@@ -33,11 +34,11 @@ class PortfolioScreen(Screen):
         # Update graphic elements - Continuare da qui
         if len(self.ids): self.ids[self.ScreenToUpdate].children[-1].children[1].text = ScreenName + ' DASHBOARD'
 
-    #####################
-    #    CRYPTO  BOX    #
-    #####################
+    ########################
+    #    PORTFOLIO  BOX    #
+    ########################
 
-    # Fill the Box Layout in Crypto Screen with a list of portfolios
+    # Fill the Box Layout in Portfolio Screen with a list of portfolios
     def UpdateListOfPortfolio(self):
         # Store the first Item containing the screen name
         First_widget = self.ids[self.ScreenToUpdate].children[-1]
@@ -174,7 +175,7 @@ class PortfolioScreen(Screen):
     
     # When the Add New Portfolio button is pressed
     def AddNewPortfolioPopup(self):
-        print('Open New Portfolio')
+        print('Add new Portfolio')
         # Initialize the popup
         AddPortfolioPop = AddPortfolioPopup.AddPortfolioPopup(title_str = 'ADD NEW PORTFOLIO', type = 'A')
         # Open the Popup
