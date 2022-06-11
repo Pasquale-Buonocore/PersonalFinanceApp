@@ -2,7 +2,40 @@
       "LONG TERM PAC": {
             "Assets": {
                   "BITCOIN": {
-                        "Transactions": {},
+                        "Transactions": {
+                              "1": {
+                                    "Type": "BUY",
+                                    "Date": "11/06/2022",
+                                    "Price": "29300",
+                                    "Amount": "0.0005",
+                                    "Fees": 0,
+                                    "Note": ""
+                              },
+                              "2": {
+                                    "Type": "SOLD",
+                                    "Date": "11/06/2022",
+                                    "Price": "30000",
+                                    "Amount": "0.01",
+                                    "Fees": 0,
+                                    "Note": ""
+                              },
+                              "3": {
+                                    "Type": "BUY",
+                                    "Date": "11/06/2022",
+                                    "Price": "30000",
+                                    "Amount": "0.1",
+                                    "Fees": 0,
+                                    "Note": ""
+                              },
+                              "4": {
+                                    "Type": "BUY",
+                                    "Date": "11/06/2021",
+                                    "Price": "30000",
+                                    "Amount": "0.1",
+                                    "Fees": 0,
+                                    "Note": ""
+                              }
+                        },
                         "Statistics": {
                               "Quantity": 0,
                               "Symbol": "BTC",
@@ -12,7 +45,16 @@
                         }
                   },
                   "ETHEREUM": {
-                        "Transactions": {},
+                        "Transactions": {
+                              "1": {
+                                    "Type": "BUY",
+                                    "Date": "11/06/2022",
+                                    "Price": "01500",
+                                    "Amount": "0.05",
+                                    "Fees": 0,
+                                    "Note": ""
+                              }
+                        },
                         "Statistics": {
                               "Quantity": 0,
                               "Symbol": "ETH",

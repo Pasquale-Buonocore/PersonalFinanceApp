@@ -293,7 +293,7 @@ class PortfoliosManager_Class():
         # New dictionary in input
         for PortfoliosKey in json_object.keys():
             if PortfoliosKey == OldPortfolioName:
-                new_dict.update({NewPortfolioName : json_object[OldPortfolioName]})
+                new_dict.update({NewPortfolioName : OldPortfolio})
             else:
                 new_dict.update({PortfoliosKey:json_object[PortfoliosKey]})
         
@@ -403,6 +403,30 @@ class PortfoliosManager_Class():
         NewAsset[AssetName].update(AssetStastitics)
 
         return NewAsset
+    
+    # Modify Asset in Portfolio
+    def ModifyAssetInPortfolio(self, PortfolioName, OldAssetName, AssetName, AssetSymbol):
+         # Define a new dict containg the new Json
+        new_dict = {}
+
+        # Read json and iterate over it
+        json_object = self.ReadJson()
+        
+        # Modify portfolio name and currency
+        OldAsset = json_object[PortfolioName]['Assets'][OldAssetName]
+        OldAsset['Statistics']['Symbol'] = AssetSymbol
+
+        # New dictionary in input
+        for AssetKey in json_object[PortfolioName]['Assets'].keys():
+            if AssetKey == OldAssetName:
+                new_dict.update({AssetName : OldAsset})
+            else:
+                new_dict.update({AssetKey:json_object[PortfolioName]['Assets'][AssetKey]})
+        
+        json_object[PortfolioName]['Assets'] = new_dict
+
+        # Save new json file
+        self.SaveJsonFile(json_object)
     ##########################
     # TRANSACTION MANAGEMENT #
     ##########################
@@ -424,17 +448,18 @@ class PortfoliosManager_Class():
     def GetTransactionCounter(self, PortfolioName, AssetName):
         # Read json and get the number opf transaction for such Asset
         json_object = self.ReadJson()
+
         # Update the counter
-        return len(json_object)
+        return len(json_object[PortfolioName]['Assets'][AssetName]['Transactions'])
     
     # Concatenate Element to the json file
-    def AddTransactionToAsset(self, PortfolioName, AssetName, TransactionList):
+    def AddTransactionToAsset(self, PortfolioName, AssetName, TransactionElement):
         # Read json
         json_object = self.ReadJson()
 
         # Add Item independetly of the type
-        self.ElementCounter = self.ElementCounter + 1
-        json_object.update({self.ElementCounter : TransactionList})
+        self.ElementCounter = self.GetTransactionCounter(PortfolioName, AssetName) + 1
+        json_object[PortfolioName]['Assets'][AssetName]['Transactions'].update({self.ElementCounter : TransactionElement})
 
         # Save new json file
         self.SaveJsonFile(json_object)
@@ -460,6 +485,20 @@ class PortfoliosManager_Class():
         
         # Save Json
         self.SaveJsonFile(self.OrderList(json_object))
+
+    # Initialize a Transaction
+    def InitializeTransaction(self, Type, Date, Price, Amount, Fees, Note):
+        # List which will store all the transaction for such asset
+        TransactionDict = {'Type' : Type}
+
+        # Dict which will store all the statistics of such asset
+        TransactionDict.update({'Date': Date })
+        TransactionDict.update({'Price' : Price})
+        TransactionDict.update({'Amount' : Amount})
+        TransactionDict.update({'Fees' : Fees})
+        TransactionDict.update({'Note' : Note})
+
+        return TransactionDict 
 
     # Compute asset statistics
     def UpdateAssetStatistics(self):

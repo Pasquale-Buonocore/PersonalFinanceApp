@@ -1,0 +1,214 @@
+#:kivy 1.0.9
+#:include ui/Constant.kv
+
+<AddAssetTransactionPopup>:
+    background_color: 0,0,0,0
+    separator_color: 0,0,0,0
+    title_align: 'center'
+    title_size: PopupTitleSize
+    title_font: PopupTitleFont 
+
+    canvas.before:
+        Color:
+            rgba: 0.5,0.5,0.5,1
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: "20dp"
+        padding: ("20dp", "10dp", "20dp", "10dp")
+        
+        BoxLayout:
+            size_hint: 1, 0.75
+            orientation: 'vertical'
+
+            RelativeLayout:
+                Label:
+                    pos_hint: {'x': -0.3, 'y' : 0.45}
+                    id: AssetName
+                    text: 'ASSET: '
+                    text_size: root.width, None
+                    size: self.texture_size
+                    font_name: PopupTitleFont
+                    font_size: PopupTitleSize
+                    halign: 'center'
+
+                Label:
+                    pos_hint: {'x': 0.3, 'y' : 0.45}
+                    id: SymbolName
+                    text: 'SYMBOL: '
+                    text_size: root.width, None
+                    size: self.texture_size
+                    font_name: PopupTitleFont
+                    font_size: PopupTitleSize
+                    halign: 'center'
+
+                Label:
+                    pos_hint: {'x':-0.3, 'y' : 0.3}
+                    id: Quantity_lbl
+                    text: 'Quantity'
+                    text_size: root.width, None
+                    size: self.texture_size
+                    font_name: PopupTitleFont
+                    font_size: PopupTitleSize
+                    halign: 'center'
+
+                TextInput: 
+                    id: QuantityValue
+                    pos_hint: {'x': 0.05, 'y' : 0.65}
+                    size_hint: 0.3, None
+                    height: self.minimum_height
+                    width: self.height
+                    multiline: 0
+                    background_color: 0.5,0.5,0.5,0.7
+                    foreground_color: 1,1,1,1
+                    cursor_color: 1,1,1,1
+                    font_name: PopupTitleFont
+                    font_size: PopupTitleSize
+                    halign: 'center'
+
+                # Asset Price
+                Label:
+                    id: Price_lbl
+                    text: 'Price'
+                    pos_hint: {'x': 0.3, 'y' : 0.3}
+                    text_size: root.width, None
+                    size: self.texture_size
+                    font_name: PopupTitleFont
+                    font_size: PopupTitleSize
+                    halign: 'center'
+
+                TextInput: 
+                    id: PriceValue
+                    pos_hint: {'x': 0.65, 'y' : 0.65}
+                    size_hint: 0.3, None
+                    height: self.minimum_height
+                    width: self.height
+                    multiline: 0
+                    background_color: 0.5,0.5,0.5,0.7
+                    foreground_color: 1,1,1,1
+                    cursor_color: 1,1,1,1
+                    font_name: PopupTitleFont
+                    font_size: PopupTitleSize
+                    halign: 'center'
+
+                # Transaction date
+                Label:
+                    id: Date_lbl
+                    text: 'Date '
+                    pos_hint: {'x':-0.3, 'y' : 0}
+                    text_size: root.width, None
+                    size: self.texture_size
+                    font_name: PopupTitleFont
+                    font_size: PopupTitleSize
+                    halign: 'center'
+
+                TextInput: 
+                    id: DateValue
+                    pos_hint: {'x': 0.05, 'y' : 0.35}
+                    size_hint: 0.3, None
+                    height: self.minimum_height
+                    width: self.height
+                    multiline: 0
+                    background_color: 0.5,0.5,0.5,0.7
+                    foreground_color: 1,1,1,1
+                    cursor_color: 1,1,1,1
+                    font_name: PopupTitleFont
+                    font_size: PopupTitleSize
+                    halign: 'center'
+                
+                # Type date
+                Label:
+                    id: Type_lbl
+                    text: 'Transaction type '
+                    pos_hint: {'x':0.3, 'y' : 0}
+                    text_size: root.width, None
+                    size: self.texture_size
+                    font_name: PopupTitleFont
+                    font_size: PopupTitleSize
+                    halign: 'center'
+
+                TextInput: 
+                    id: TypeValue
+                    pos_hint: {'x': 0.65, 'y' : 0.35}
+                    size_hint: 0.3, None
+                    height: self.minimum_height
+                    width: self.height
+                    multiline: 0
+                    background_color: 0.5,0.5,0.5,0.7
+                    foreground_color: 1,1,1,1
+                    cursor_color: 1,1,1,1
+                    font_name: PopupTitleFont
+                    font_size: PopupTitleSize
+                    halign: 'center'
+                    
+                BoxLayout:
+                    pos_hint: {'x': 0.5, 'y': 0}
+                    size_hint: 0.5, 0.1
+                    orientation: 'horizontal'
+
+                    Button:
+                        text: 'Fee'
+                        font_name: PopupTitleFont
+                        font_size: PopupInnerSize
+                        size_hint: 0.05, None
+                        on_release: print('Adding Fee')
+
+                    Button:
+                        text: 'Note'
+                        font_name: PopupTitleFont
+                        font_size: PopupInnerSize
+                        size_hint: 0.05, None
+                        on_release: print('Adding Note')
+                        
+                # Total spent date
+                Label:
+                    id: Date_lbl
+                    text: 'Total Spent:  '
+                    pos_hint: {'x':-0.3, 'y' : -0.3}
+                    text_size: root.width, None
+                    size: self.texture_size
+                    font_name: PopupTitleFont
+                    font_size: PopupTitleSize
+                    halign: 'center'
+            
+        BoxLayout:
+            orientation: 'vertical'
+            spacing: "10dp"
+            size_hint: 1, 0.25
+            pos_hint: {'x': 0, 'y': 1}
+
+            Button:
+                background_color: 0,0,0,0
+                canvas.before:
+                    Color:
+                        rgba: 0.1,0.1,0.9,0.7
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+                id: Confirm
+                font_name: PopupTitleFont
+                font_size: PopupInnerSize
+                text:'Add Transaction'
+                on_release: root.Confirm(app)
+
+            Button:
+                background_color: 0,0,0,0
+                canvas.before:
+                    Color:
+                        rgba: 0.9,0.1,0.1,0.7
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+                id: Cancel
+                font_name: PopupTitleFont
+                font_size: PopupInnerSize
+                text:'Cancel'
+                on_release: root.Cancel()

@@ -22,7 +22,7 @@ class AddAssetPopup(Popup):
     def ModifyTextInput(self):
         # Modify text input if itemToMod is not empty
         ItemName = list(self.itemToMod.keys())[0]
-        self.ids["SymbolValue"].text = str(self.itemToMod[ItemName]['Currency'])
+        self.ids["SymbolValue"].text = str(self.itemToMod[ItemName]['Symbol'])
         self.ids["AssetName"].text = ItemName
 
     def Confirm(self, App):
@@ -49,7 +49,7 @@ class AddAssetPopup(Popup):
             # If an item needs to be modified
             if self.type == 'M':
                 # Substitute the actual item
-                self.DBManager.SubstitutePortfolio(AssetToAdd)
+                self.DBManager.ModifyAssetInPortfolio(self.PortfolioName, list(self.itemToMod.keys())[0], AssetName, CurrencySymbol)
             else:
                 # Check if the Portfolio already exists
                 AssetAlreadyPresent = list(self.DBManager.ReadJson()[self.PortfolioName]['Assets'].keys())

@@ -27,8 +27,8 @@
                 padding: ("0dp", "30dp", "0dp", "20dp")
                 
                 Button:
-                    text: 'BACK'
-                    size_hint: 0.05, None
+                    text: 'BACK TO PORTFOLIOS'
+                    size_hint: 0.13, None
                     height: "40dp" 
                     background_color: 0,0,0,0
                     on_release: root.ReturnBack()
@@ -52,7 +52,7 @@
                 
                 Button:
                     text: 'ADD NEW ASSET'
-                    size_hint: 0.2, None
+                    size_hint: 0.12, None
                     height: "40dp" 
                     background_color: 0,0,0,0
                     on_release: root.AddNewAssetPopup()
@@ -67,7 +67,7 @@
                             radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
 
             BoxLayout:
-                id: PortfoliosContainer
+                id: AssetsContainer
                 orientation: 'vertical'
                 size_hint: 1, None
                 spacing: "20dp"

@@ -1,1 +1,22 @@
-{}
+{
+      "COMMODITY 1": {
+            "Assets": {
+                  "GOLD": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "Quantity": 0,
+                              "Symbol": "GLD",
+                              "AveragePrice": 0,
+                              "TotalValue": 0,
+                              "TotalProfit": 0
+                        }
+                  }
+            },
+            "Statistics": {
+                  "Currency": "$",
+                  "TotalValue": 0,
+                  "NumberOfAssets": 0,
+                  "TotalProfit": 0
+            }
+      }
+}

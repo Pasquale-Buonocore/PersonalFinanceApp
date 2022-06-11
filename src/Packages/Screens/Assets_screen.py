@@ -1,5 +1,5 @@
 from Packages.CustomFunction.CustomFunction import ReturnJsonPathGivenScreenName
-import Packages.CustomItem.RemovePortfolioPopup as RemovePortfolioPopup
+import Packages.CustomItem.RemoveAssetPopup as RemoveAssetPopup
 import Packages.CustomItem.AddAssetPopup as AddAssetPopup
 import Packages.CustomItem.CustomGraphicItem as cst_item
 import Packages.DatabaseMng.DatabaseMng as db_manager
@@ -97,7 +97,7 @@ class AssetsScreen(Screen):
         label_params.update({'font_name': 'Candarab'})
         label_params.update({'font_size': 20})
         label_params.update({'color': [1,1,1,1]})
-        GraphicToReturn.add_widget(cst_item.PortfolioLabel(lbl_parm = label_params))
+        GraphicToReturn.add_widget(cst_item.AssetLabel(lbl_parm = label_params))
 
         # Return relative layout
         return GraphicToReturn
@@ -127,79 +127,79 @@ class AssetsScreen(Screen):
         label_params.update({'pos_hint': {'x' : 0.025, 'y': -0.2}})
         label_params.update({'text': AssetName + ' [' + str(AssetDict_Stats['Symbol']) + ']'})
         label_params.update({'font_size': 23})
-        GraphicToReturn.add_widget(cst_item.PortfolioLabel(lbl_parm = label_params))
+        GraphicToReturn.add_widget(cst_item.AssetLabel(lbl_parm = label_params))
 
         # Add Quantity Asset Lbl
-        label_params.update({'pos_hint': {'x' : 0.25, 'y': 0.2}})
+        label_params.update({'pos_hint': {'x' : 0.35, 'y': 0.2}})
         label_params.update({'text': 'CUR PRICE'})
         label_params.update({'font_size': 20})
-        GraphicToReturn.add_widget(cst_item.PortfolioLabel(lbl_parm = label_params))
+        GraphicToReturn.add_widget(cst_item.AssetLabel(lbl_parm = label_params))
 
         # Add Quantity Value
-        label_params.update({'pos_hint': {'x' : 0.25, 'y': -0.2}})
+        label_params.update({'pos_hint': {'x' : 0.35, 'y': -0.2}})
         label_params.update({'text': '0' + Currency})
         label_params.update({'font_size': 25})
-        GraphicToReturn.add_widget(cst_item.PortfolioLabel(lbl_parm = label_params))
+        GraphicToReturn.add_widget(cst_item.AssetLabel(lbl_parm = label_params))
 
         # Add Quantity Asset Lbl
-        label_params.update({'pos_hint': {'x' : 0.40, 'y': 0.2}})
+        label_params.update({'pos_hint': {'x' : 0.45, 'y': 0.2}})
         label_params.update({'text': 'HOLDING'})
         label_params.update({'font_size': 20})
-        GraphicToReturn.add_widget(cst_item.PortfolioLabel(lbl_parm = label_params))
+        GraphicToReturn.add_widget(cst_item.AssetLabel(lbl_parm = label_params))
 
         # Add Quantity Value
-        label_params.update({'pos_hint': {'x' : 0.40, 'y': -0.2}})
+        label_params.update({'pos_hint': {'x' : 0.45, 'y': -0.2}})
         label_params.update({'text': str(AssetDict_Stats['Quantity'])})
         label_params.update({'font_size': 25})
-        GraphicToReturn.add_widget(cst_item.PortfolioLabel(lbl_parm = label_params))
+        GraphicToReturn.add_widget(cst_item.AssetLabel(lbl_parm = label_params))
 
         # Add Avarage Price lbl
         label_params.update({'pos_hint': {'x' : 0.55, 'y': 0.2}})
         label_params.update({'text': 'AVG PRICE'})
         label_params.update({'font_size': 20})
-        GraphicToReturn.add_widget(cst_item.PortfolioLabel(lbl_parm = label_params))
+        GraphicToReturn.add_widget(cst_item.AssetLabel(lbl_parm = label_params))
 
         # Add Avarage Price Value
         label_params.update({'pos_hint': {'x' : 0.55, 'y': -0.2}})
         label_params.update({'text': str(AssetDict_Stats['AveragePrice']) + Currency})
         label_params.update({'font_size': 25})
-        GraphicToReturn.add_widget(cst_item.PortfolioLabel(lbl_parm = label_params))
+        GraphicToReturn.add_widget(cst_item.AssetLabel(lbl_parm = label_params))
 
         # Add Total value lbl
-        label_params.update({'pos_hint': {'x' : 0.7, 'y': 0.2}})
+        label_params.update({'pos_hint': {'x' : 0.65, 'y': 0.2}})
         label_params.update({'text': 'TOTAL VALUE'})
         label_params.update({'font_size': 20})
-        GraphicToReturn.add_widget(cst_item.PortfolioLabel(lbl_parm = label_params))
+        GraphicToReturn.add_widget(cst_item.AssetLabel(lbl_parm = label_params))
 
         # Add Avarage Price Value
-        label_params.update({'pos_hint': {'x' : 0.7, 'y': -0.2}})
+        label_params.update({'pos_hint': {'x' : 0.65, 'y': -0.2}})
         label_params.update({'text': str(AssetDict_Stats['TotalValue']) + Currency})
         label_params.update({'font_size': 25})
-        GraphicToReturn.add_widget(cst_item.PortfolioLabel(lbl_parm = label_params))
+        GraphicToReturn.add_widget(cst_item.AssetLabel(lbl_parm = label_params))
 
         # Add Total value lbl
-        label_params.update({'pos_hint': {'x' : 0.85, 'y': 0.2}})
+        label_params.update({'pos_hint': {'x' : 0.75, 'y': 0.2}})
         label_params.update({'text': 'TOTAL PROFIT'})
         label_params.update({'font_size': 20})
-        GraphicToReturn.add_widget(cst_item.PortfolioLabel(lbl_parm = label_params))
+        GraphicToReturn.add_widget(cst_item.AssetLabel(lbl_parm = label_params))
 
         # Add Portfolio Asset
         color = [0,1,0,1] if AssetDict_Stats['TotalProfit'] >= 0 else [1,0,0,1]
-        label_params.update({'pos_hint': {'x' : 0.85, 'y': -0.2}})
+        label_params.update({'pos_hint': {'x' : 0.75, 'y': -0.2}})
         label_params.update({'text': str(AssetDict_Stats['TotalProfit']) + Currency})
         label_params.update({'font_size': 25})
         label_params.update({'color': color})
-        GraphicToReturn.add_widget(cst_item.PortfolioLabel(lbl_parm = label_params))
+        GraphicToReturn.add_widget(cst_item.AssetLabel(lbl_parm = label_params))
 
         # # Define remove button
-        # Btn_size = [GraphicToReturn.size[0]/2.5, GraphicToReturn.size[1]/2.5]
-        # box_pos_hint = {'x' : 0.9, 'y': 0.5 - (Btn_size[1]/(2*GraphicToReturn.size[1])) }
+        Btn_size = [GraphicToReturn.size[0]/2.5, GraphicToReturn.size[1]/2.5]
+        box_pos_hint = {'x' : 0.9, 'y': 0.5 - (Btn_size[1]/(2*GraphicToReturn.size[1])) }
 
-        # ModifyPopup = AddAssetPopup.AddAssetPopup(title_str = 'ADD NEW ASSETS', type = 'M', itemToMod = {AssetName : AssetDict_Stats})
-        # # RemovePopup = RemovePortfolioPopup.RemovePortfolioPopup('REMOVE PORTFOLIO', AssetName, self.DBManager, self)
+        ModifyPopup = AddAssetPopup.AddAssetPopup(title_str = 'MODIFY ASSET', type = 'M', Database = self.DBManager, PortfolioName = self.PortfolioName, itemToMod = {AssetName : AssetDict_Stats})
+        RemovePopup = RemoveAssetPopup.RemoveAssetPopup('REMOVE PORTFOLIO',self.PortfolioName, AssetName, self.DBManager, self, self.FromScreenName )
 
-        # Box = cst_item.ModifyRemoveButtonBox(Btn_size = Btn_size, box_pos_hint = box_pos_hint, ModifyPopup = ModifyPopup, RemovePopup = RemovePopup)
-        # GraphicToReturn.add_widget(Box)
+        Box = cst_item.ModifyRemoveButtonBox(Btn_size = Btn_size, box_pos_hint = box_pos_hint, ModifyPopup = ModifyPopup, RemovePopup = RemovePopup)
+        GraphicToReturn.add_widget(Box)
 
         # Return relative layout
         return GraphicToReturn
@@ -208,6 +208,6 @@ class AssetsScreen(Screen):
     def AddNewAssetPopup(self):
         print('Add new asset Popup')
         # Initialize the popup
-        AddAssetPop = AddAssetPopup.AddAssetPopup(title_str = 'ADD NEW ASSET', type = 'A', Database = self.DBManager, PortfolioName = self.PortfolioName )
+        AddAssetPop = AddAssetPopup.AddAssetPopup(title_str = 'ADD NEW ASSET', type = 'A', Database = self.DBManager, PortfolioName = self.PortfolioName)
         # Open the Popup
         AddAssetPop.open()

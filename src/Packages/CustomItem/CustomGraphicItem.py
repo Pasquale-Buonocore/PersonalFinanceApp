@@ -189,9 +189,43 @@ class AssetButton(Button, HoverBehavior):
     # At button release
     def on_release(self):
         print('Moving on transaction screen for the asset ' + self.AssetName + ' in the ' + self.PortfolioName + ' portfolio - ' + ' Screen: '+ self.FromScreenName)
-        # ScreenManager = self.parent.parent.parent.parent.parent.parent
-        # ScreenManager.current = 'ASSETS'
-        # ScreenManager.current_screen.UpdateScreen(FromScreenName = self.FromScreenName, PortfolioName = self.PortfolioName)
+        ScreenManager = self.parent.parent.parent.parent.parent.parent
+        ScreenManager.current = 'ASSETS TRANSACTION'
+        ScreenManager.current_screen.UpdateScreen(self.AssetName, self.PortfolioName, self.FromScreenName)
+    
+    def on_enter(self, *args):
+        self.canvas.before.children[0].rgba = [0,0,0.3,0.8]
+        
+    def on_leave(self, *args):
+        self.canvas.before.children[0].rgba = [0.1,0.1,0.1,0.8]
+
+#########################################
+# TRANSACTION CUSTOM ELEMENT DEFINITION #
+#########################################
+class TransactionLabel(Label):
+     def __init__(self, **kwargs):
+        # Call the superclass Label
+        super().__init__()
+
+        # Attention: The dict in input must have all key
+        lbl_parm = kwargs['lbl_parm']
+        self.text_size = lbl_parm['text_size']
+        self.size = self.texture_size
+        self.pos_hint = lbl_parm['pos_hint']
+        self.text = lbl_parm['text']
+        self.font_name = lbl_parm['font_name']
+        self.font_size = lbl_parm['font_size']
+        self.color = lbl_parm['color']
+
+class TransactionButton(Button, HoverBehavior):
+    # Initialize function
+    def __init__(self,**kwargs):
+        super(Button, self).__init__(size_hint = [1, None], height = kwargs['height'], background_color = [0,0,0,0])
+        canvas_size = [kwargs['size_x'], super().height]       
+
+        with self.canvas.before:
+            Color(0.1,0.1,0.1,0.8)
+            self.shape = RoundedRectangle(size = canvas_size, radius = [(0, 0), (0, 0), (0, 0), (0, 0)])
     
     def on_enter(self, *args):
         self.canvas.before.children[0].rgba = [0,0,0.3,0.8]

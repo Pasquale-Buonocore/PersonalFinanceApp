@@ -4,3 +4,137 @@
 <AssetsTransactionScreen>:
     id: AssetsTransactionScreenName
     name: AssetsTransactionScreenName
+
+    # Scroll View Transaction
+    ScrollView:
+        id: AssetsTransactionScrollView
+
+        # Box containing Box Layout
+        BoxLayout:
+            id: AssetsTransactionHeader
+            orientation: 'vertical'
+            size_hint: 1, None
+            height: self.minimum_height
+            padding: ("50dp", "10dp", "50dp", "10dp")
+            spacing: "20dp"
+
+            # First row box layout
+            BoxLayout:
+                id: FirstRow
+                orientation: 'horizontal'
+                size_hint: 1, None
+                height: self.minimum_height
+                padding: ("0dp", "30dp", "0dp", "20dp")
+                
+                Button:
+                    text: 'BACK TO ASSETS'
+                    size_hint: 0.1, None
+                    height: "40dp" 
+                    background_color: 0,0,0,0
+                    on_release: root.ReturnBack()
+                    font_name: 'Candarab'
+                    font_size: 16
+                    canvas.before:
+                        Color:
+                            rgba: 0.1,0.1,0.9,0.7                            
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+                Label:
+                    id: FirstRowLabel
+                    size_hint: 0.75, None
+                    font_name: 'Candarab'
+                    font_size: 28
+                    height: "40dp" 
+                    halign: 'left'
+                
+                Button:
+                    text: 'ADD NEW TRANSACTION'
+                    size_hint: 0.15, None
+                    height: "40dp" 
+                    background_color: 0,0,0,0
+                    on_release: root.AddNewAssetTransactionPopup()
+                    font_name: 'Candarab'
+                    font_size: 16
+                    canvas.before:
+                        Color:
+                            rgba: 0.1,0.1,0.9,0.7
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+            ##########################
+            # TRANSACTION BOX LAYOUT #
+            ##########################
+            # Second element containg the column titles
+            BoxLayout:
+                orientation: 'vertical'
+                id: TransactionBoxLayout
+                size_hint: 1, None
+                height: self.minimum_height
+                spacing: "20dp"
+                padding: ("0dp", "20dp", "0dp", "20dp")
+
+                canvas.before:
+                    Color:
+                        rgba: canvas_r,canvas_g,canvas_b,canvas_opacity
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [(20, 20), (20, 20), (20, 20), (20, 20)]
+                
+                GridLayout:
+                    id: Transaction_NameRow
+                    size_hint: 1, None
+                    height: "20dp"
+                    padding: ("30dp", "0dp", "30dp", "0dp")
+                    cols: 6
+                    rows: 1
+
+                    Label: 
+                        text: 'TYPE'
+                        size_hint: 0.2, 1
+                        font_name: PopupTitleFont
+                        font_size: 20
+                        
+                    Label: 
+                        text: 'PRICE'
+                        size_hint: 0.15, 1
+                        font_name: PopupTitleFont
+                        font_size: 20
+
+                    Label: 
+                        text: 'AMOUNT'
+                        size_hint: 0.15, 1
+                        font_name: PopupTitleFont
+                        font_size: 20
+
+
+                    Label: 
+                        text: 'FEES'
+                        size_hint: 0.1, 1
+                        font_name: PopupTitleFont
+                        font_size: 20
+
+                    Label: 
+                        text: 'NOTES'
+                        size_hint: 0.3, 1
+                        font_name: PopupTitleFont
+                        font_size: 20
+
+                    Label: 
+                        text: 'ACTIONS'
+                        size_hint: 0.1, 1
+                        font_name: PopupTitleFont
+                        font_size: 20
+            
+            BoxLayout:
+                id: AssetsContainer
+                orientation: 'vertical'
+                size_hint: 1, None
+                spacing: "0dp"
+                height: self.minimum_height
+            

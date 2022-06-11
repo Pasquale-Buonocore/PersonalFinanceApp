@@ -164,7 +164,7 @@ class PortfolioScreen(Screen):
         Btn_size = [GraphicToReturn.size[0]/2.5, GraphicToReturn.size[1]/2.5]
         box_pos_hint = {'x' : 0.9, 'y': 0.5 - (Btn_size[1]/(2*GraphicToReturn.size[1])) }
 
-        ModifyPopup = AddPortfolioPopup.AddPortfolioPopup(title_str = 'ADD NEW PORTFOLIO', type = 'M', itemToMod = {PortfolioName : PortfolioDict_Stats})
+        ModifyPopup = AddPortfolioPopup.AddPortfolioPopup(title_str = 'MODIFY PORTFOLIO', type = 'M', itemToMod = {PortfolioName : PortfolioDict_Stats})
         RemovePopup = RemovePortfolioPopup.RemovePortfolioPopup('REMOVE PORTFOLIO', PortfolioName, self.DBManager, self)
 
         Box = cst_item.ModifyRemoveButtonBox(Btn_size = Btn_size, box_pos_hint = box_pos_hint, ModifyPopup = ModifyPopup, RemovePopup = RemovePopup)
