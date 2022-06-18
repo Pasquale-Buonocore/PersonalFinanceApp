@@ -21,7 +21,8 @@ class AddAssetTransactionPopup(Popup):
 
         # Define inner attributes
         self.type = type if type in ['A','M'] else 'A'
-       
+        self.ids["Confirm"].text = "Modify Transaction" if type == 'M' else "Add Transaction"
+
         # Fill the popup if the user need to modify a field
         if ItemToMod: 
             # Save item to modify
@@ -77,10 +78,13 @@ class AddAssetTransactionPopup(Popup):
             # If an item needs to be modified
             if self.type == 'M':
                 # Substitute the actual item
-                self.DBManager.ModifyAssetInPortfolio(self.PortfolioName, list(self.itemToMod.keys())[0], AssetName, CurrencySymbol)
+                self.DBManager.ModifyTransactionToAsset(PortfolioName = self.PortfolioName, AssetName = self.AssetName, ItemIndex = self.ItemIndex, NewTransaction = TransactiontoAdd)
             else:
                 self.DBManager.AddTransactionToAsset(self.PortfolioName, self.AssetName, TransactiontoAdd)
 
+            # Update Asset Statistics
+            self.DBManager.UpdateAssetStatistics(self.PortfolioName, self.AssetName)
+            
             # Update the Json and Update the Dashboard Screen
             ActualScreen = App.root.children[0].children[0].current_screen
             ActualScreen.UpdateScreen(ActualScreen.AssetName, ActualScreen.PortfolioName, ActualScreen.FromScreenName)

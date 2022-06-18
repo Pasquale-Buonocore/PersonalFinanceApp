@@ -1,5 +1,7 @@
+from Packages.CustomFunction.GetCryptoValue import GetCryptoValue
 from os.path import exists
 import json
+
 """
 This file aims to initialize the json file in the database folder [If it does not exist already]
 # The database will be contains the following files:
@@ -392,6 +394,7 @@ class PortfoliosManager_Class():
         # Dict which will store all the statistics of such asset
         StatisticDict = {'Quantity': 0}
         StatisticDict.update({'Symbol' : AssetSymbol})
+        StatisticDict.update({'CurrentPrice' : 0})
         StatisticDict.update({'AveragePrice' : 0})
         StatisticDict.update({'TotalValue' : 0})
         StatisticDict.update({'TotalProfit' : 0})
@@ -465,26 +468,40 @@ class PortfoliosManager_Class():
         self.SaveJsonFile(json_object)
 
     # Modify a transaction in the list of transaction of a list
-    def ModifyTransactionToAsset(self, ItemNum, NewList):
+    def ModifyTransactionToAsset(self, PortfolioName = '', AssetName = '', ItemIndex = "0", NewTransaction = {}):
         # Read json
         json_object = self.ReadJson()
+        new_AssetTransaction = {}
+        new_Transactioncounter = 1
+        for TransactionNumber in json_object[PortfolioName]["Assets"][AssetName]["Transactions"].keys():
+            if TransactionNumber == ItemIndex:
+                new_AssetTransaction.update({str(new_Transactioncounter) : NewTransaction})
+            else:
+                new_AssetTransaction.update({str(new_Transactioncounter) : json_object[PortfolioName]["Assets"][AssetName]["Transactions"][TransactionNumber]})
+            
+            # Update transaction counter
+            new_Transactioncounter = new_Transactioncounter + 1
 
-        if ItemNum in json_object.keys():
-            json_object[ItemNum] = NewList
-        
         # Save Json
+        json_object[PortfolioName]["Assets"][AssetName]["Transactions"] = new_AssetTransaction
         self.SaveJsonFile(json_object)
 
     # Remove a transaction in the list of transaction of a list
-    def RemoveTransactionFromAssetList(self, ItemNum):
+    def RemoveTransactionFromAssetList(self, PortfolioName = '', AssetName = '', ItemIndex = "0"):
         # Read json
         json_object = self.ReadJson()
+        new_AssetTransaction = {}
+        new_Transactioncounter = 1
+        for TransactionNumber in json_object[PortfolioName]["Assets"][AssetName]["Transactions"].keys():
+            if TransactionNumber != ItemIndex:
+                new_AssetTransaction.update({str(new_Transactioncounter) : json_object[PortfolioName]["Assets"][AssetName]["Transactions"][TransactionNumber]})
+            
+            # Update transaction counter
+            new_Transactioncounter = new_Transactioncounter + 1
 
-        if ItemNum in json_object.keys():
-            json_object.pop(ItemNum)
-        
         # Save Json
-        self.SaveJsonFile(self.OrderList(json_object))
+        json_object[PortfolioName]["Assets"][AssetName]["Transactions"] = new_AssetTransaction
+        self.SaveJsonFile(json_object)
 
     # Initialize a Transaction
     def InitializeTransaction(self, Type, Date, Price, Amount, Fees, Note):
@@ -500,22 +517,88 @@ class PortfoliosManager_Class():
 
         return TransactionDict 
 
-    # Compute asset statistics
-    def UpdateAssetStatistics(self):
-        pass
+    def UpdateAllAssetStatistics(self, portfolio):
+        # Read json
+        json_object = self.ReadJson()
 
-    # Read statistic of an asset in portfolio
-    def ReadAssetStatistics(self):
-        pass
+        # Update
+        for AssetInPortfolio in  json_object[portfolio]['Assets']:
+            self.UpdateAssetStatistics(portfolio, AssetInPortfolio)
+
+    # Compute asset statistics - # To IMPROVE
+    def UpdateAssetStatistics(self, PortfolioName, AssetName):
+        # Read json and get the number opf transaction for such Asset
+        json_object = self.ReadJson()
+        AssetDictTransaction = json_object[PortfolioName]['Assets'][AssetName]['Transactions']
+        AssetDictStatistics = json_object[PortfolioName]['Assets'][AssetName]['Statistics']
+        
+        # Update Current Price
+        AssetDictStatistics['CurrentPrice'] = GetCryptoValue(AssetName)
+        AssetDictStatistics['Quantity']  = 0
+        AssetDictStatistics['AveragePrice']  = 0
+
+        for transactionIndex in AssetDictTransaction:
+            # Update Holding 
+
+            # If BUY -> SUM 
+            if AssetDictTransaction[transactionIndex]['Type'] == 'BUY':
+                AssetDictStatistics['Quantity'] += float(AssetDictTransaction[transactionIndex]['Amount'])
+                AssetDictStatistics['AveragePrice'] += float(AssetDictTransaction[transactionIndex]['Amount']) * float(AssetDictTransaction[transactionIndex]['Price'])
+            # If SELL -> SUBTRACT
+            else:
+                AssetDictStatistics['Quantity'] -= float(AssetDictTransaction[transactionIndex]['Amount'])
+                AssetDictStatistics['AveragePrice'] -= float(AssetDictTransaction[transactionIndex]['Amount']) * float(AssetDictTransaction[transactionIndex]['Price'])
+
+        # Update Total Value
+        AssetDictStatistics['Quantity'] = round(AssetDictStatistics['Quantity'], 4)
+        AssetDictStatistics['AveragePrice'] = round(AssetDictStatistics['AveragePrice'],2)
+        AssetDictStatistics['TotalValue'] = round(float(AssetDictStatistics['Quantity']) * float(AssetDictStatistics['CurrentPrice']),2)
+
+        # Update Avarage price
+        try:
+            AssetDictStatistics['AveragePrice'] = round(float(AssetDictStatistics['AveragePrice']) / float(AssetDictStatistics['Quantity']),2)
+            AssetDictStatistics['TotalProfit'] = round(AssetDictStatistics['TotalValue'] - ( float(AssetDictStatistics['Quantity']) * float(AssetDictStatistics['AveragePrice'])), 1)
+        except:
+            AssetDictStatistics['AveragePrice'] = 0
+            AssetDictStatistics['TotalProfit'] = 0        
+
+        # Update json_object
+        json_object[PortfolioName]['Assets'][AssetName]['Statistics'] = AssetDictStatistics
+        self.SaveJsonFile(json_object)
+
+        # Once the asset statistics are updated, update the portfolio statistics
+        self.UpdatePortfolioStatistics(PortfolioName)
     
     ###################################
     # PORTFOLIO STATISTICS MANAGEMENT #
     ################################### 
 
-    # Read Statistics of Portfolio
-    def ReadPortfolioStatistics(self):
-        pass
+    def UpdateAllPortfolioStatistics(self):
+        # Read json
+        json_object = self.ReadJson()
+
+        # Update
+        for Portfolio in  json_object.keys():
+            self.UpdatePortfolioStatistics(Portfolio)
 
     # Compute Portfolio statistics
-    def UpdatePortfolioStatistics(self):
-        pass
+    def UpdatePortfolioStatistics(self, Portfolio):
+        # Read json and get the number opf transaction for such Asset
+        json_object = self.ReadJson()
+        
+        # Update number of asset
+        json_object[Portfolio]['Statistics']['NumberOfAssets'] = len(json_object[Portfolio]['Assets'].keys())
+        json_object[Portfolio]['Statistics']['TotalValue'] = 0
+        json_object[Portfolio]['Statistics']['TotalProfit'] = 0
+
+        for asset in json_object[Portfolio]['Assets'].keys():
+            # Update total value
+            json_object[Portfolio]['Statistics']['TotalValue'] += json_object[Portfolio]['Assets'][asset]['Statistics']['TotalValue']
+            # Update total profit
+            json_object[Portfolio]['Statistics']['TotalProfit'] += json_object[Portfolio]['Assets'][asset]['Statistics']['TotalProfit']
+
+        json_object[Portfolio]['Statistics']['TotalValue'] = round(json_object[Portfolio]['Statistics']['TotalValue'], 2)
+        json_object[Portfolio]['Statistics']['TotalProfit'] = round(json_object[Portfolio]['Statistics']['TotalProfit'], 2)
+
+        self.SaveJsonFile(json_object)
+

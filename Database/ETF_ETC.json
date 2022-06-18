@@ -13,19 +13,20 @@
                               }
                         },
                         "Statistics": {
-                              "Quantity": 0,
+                              "Quantity": 11.0,
                               "Symbol": "EIMI",
-                              "AveragePrice": 0,
-                              "TotalValue": 0,
-                              "TotalProfit": 0
+                              "AveragePrice": 13.0,
+                              "TotalValue": 55.0,
+                              "TotalProfit": -88.0,
+                              "CurrentPrice": 5
                         }
                   }
             },
             "Statistics": {
                   "Currency": "$",
-                  "TotalValue": 0,
-                  "NumberOfAssets": 0,
-                  "TotalProfit": 0
+                  "TotalValue": 55.0,
+                  "NumberOfAssets": 1,
+                  "TotalProfit": -88.0
             }
       }
 }

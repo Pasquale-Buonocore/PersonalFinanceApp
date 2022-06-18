@@ -1,6 +1,6 @@
 from Packages.CustomFunction.CustomFunction import ReturnJsonPathGivenScreenName
 import Packages.CustomItem.AddAssetTransactionPopup as AddAssetTransactionPopup
-import Packages.CustomItem.RemoveAssetPopup as RemoveAssetPopup
+import Packages.CustomItem.RemoveTransactionPopup as RemoveTransactionPopup
 import Packages.CustomItem.CustomGraphicItem as cst_item
 import Packages.DatabaseMng.DatabaseMng as db_manager
 from kivy.uix.relativelayout import RelativeLayout
@@ -77,7 +77,7 @@ class AssetsTransactionScreen(Screen):
 
         if len(Transactions_json.keys()):
             # Add an item for each portfolio
-            for TransactionKey in Transactions_json.keys():
+            for TransactionKey in list(Transactions_json.keys())[::-1]:
                 # Compute the graphic element to Add given the AssetName and its statistics
                 self.ids[self.ScreenToUpdate].children[-3].add_widget(self.DefineFullTransaction(textsize = text_size, TransactionDict = Transactions_json[TransactionKey], Index = TransactionKey , Currency = Currency_str))
         else:
@@ -166,9 +166,9 @@ class AssetsTransactionScreen(Screen):
         box_pos_hint = {'x' : 0.9, 'y': 0.5 - (Btn_size[1]/(2*GraphicToReturn.size[1])) }
 
         ModifyPopup = AddAssetTransactionPopup.AddAssetTransactionPopup(title_str = 'MODIFY TRANSACTION', type = 'M', AssetName = self.AssetName, PortfolioName = self.PortfolioName, Database = self.DBManager, ItemToMod = {self.TransactionDictIndex: TransactionDict})
-        # RemovePopup = RemoveAssetPopup.RemoveAssetPopup('REMOVE PORTFOLIO',self.PortfolioName, AssetName, self.DBManager, self, self.FromScreenName )
+        RemovePopup = RemoveTransactionPopup.RemoveTransactionPopup(title_str = 'REMOVE TRANSACTION',PortfolioName = self.PortfolioName, AssetName = self.AssetName, TransactionIndex = Index, DBManager = self.DBManager, Screen = self, FromScreenName = self.FromScreenName )
 
-        Box = cst_item.ModifyRemoveButtonBox(Btn_size = Btn_size, box_pos_hint = box_pos_hint, ModifyPopup = ModifyPopup, RemovePopup = ModifyPopup)
+        Box = cst_item.ModifyRemoveButtonBox(Btn_size = Btn_size, box_pos_hint = box_pos_hint, ModifyPopup = ModifyPopup, RemovePopup = RemovePopup)
         GraphicToReturn.add_widget(Box)
 
         # Return relative layout

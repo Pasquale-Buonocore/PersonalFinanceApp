@@ -7,15 +7,16 @@
                               "Quantity": 0,
                               "Symbol": "GLD",
                               "AveragePrice": 0,
-                              "TotalValue": 0,
-                              "TotalProfit": 0
+                              "TotalValue": 0.0,
+                              "TotalProfit": 0,
+                              "CurrentPrice": 5
                         }
                   }
             },
             "Statistics": {
                   "Currency": "$",
-                  "TotalValue": 0,
-                  "NumberOfAssets": 0,
+                  "TotalValue": 0.0,
+                  "NumberOfAssets": 1,
                   "TotalProfit": 0
             }
       }

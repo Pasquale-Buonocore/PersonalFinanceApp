@@ -40,6 +40,8 @@ class PortfolioScreen(Screen):
 
     # Fill the Box Layout in Portfolio Screen with a list of portfolios
     def UpdateListOfPortfolio(self):
+        self.DBManager.UpdateAllPortfolioStatistics()
+
         # Store the first Item containing the screen name
         First_widget = self.ids[self.ScreenToUpdate].children[-1]
 

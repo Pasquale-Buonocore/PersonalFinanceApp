@@ -7,6 +7,10 @@ import Packages.CustomItem.RemovingPopup as Rm_popup
 from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.screenmanager import Screen
 
+# Import utility for graph
+from kivy.garden.matplotlib import FigureCanvasKivyAgg
+from matplotlib import pyplot as plt
+
 class AssetsScreen(Screen):
     
     def __init__(self, **kwargs):
@@ -30,7 +34,7 @@ class AssetsScreen(Screen):
         # Update the Label of the String
         self.ids['FirstRowLabel'].text = 'ASSETS IN ' + self.PortfolioName.upper() + ' PORTFOLIO [' + self.FromScreenName.upper() + ']'
 
-        # Update grahic elements
+        # Update graphic elements
         self.UpdateListOfAssets()
 
     # Function to call when "Back" button is pressed
@@ -39,13 +43,14 @@ class AssetsScreen(Screen):
         ScreenManager = self.parent
         ScreenManager.current = 'PORTFOLIO'
         ScreenManager.current_screen.UpdateScreen(ScreenName = self.FromScreenName, PortfolioJsonPath = ReturnJsonPathGivenScreenName(self.FromScreenName))
-
     #####################
     #    ASSETS  BOX    #
     #####################
 
     # Fill the Box Layout in Crypto Screen with a list of portfolios
     def UpdateListOfAssets(self):
+        self.DBManager.UpdateAllAssetStatistics(self.PortfolioName)
+
         # Store the first Item containing the screen name
         First_widget = self.ids[self.ScreenToUpdate].children[-1]
 
@@ -137,7 +142,7 @@ class AssetsScreen(Screen):
 
         # Add Quantity Value
         label_params.update({'pos_hint': {'x' : 0.35, 'y': -0.2}})
-        label_params.update({'text': '0' + Currency})
+        label_params.update({'text':  str(AssetDict_Stats['CurrentPrice']) + Currency})
         label_params.update({'font_size': 25})
         GraphicToReturn.add_widget(cst_item.AssetLabel(lbl_parm = label_params))
 
@@ -184,7 +189,7 @@ class AssetsScreen(Screen):
         GraphicToReturn.add_widget(cst_item.AssetLabel(lbl_parm = label_params))
 
         # Add Portfolio Asset
-        color = [0,1,0,1] if AssetDict_Stats['TotalProfit'] >= 0 else [1,0,0,1]
+        color = [0,1,0,1] if int(AssetDict_Stats['TotalProfit']) >= 0 else [1,0,0,1]
         label_params.update({'pos_hint': {'x' : 0.75, 'y': -0.2}})
         label_params.update({'text': str(AssetDict_Stats['TotalProfit']) + Currency})
         label_params.update({'font_size': 25})
