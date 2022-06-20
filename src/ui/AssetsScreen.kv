@@ -119,12 +119,180 @@
                             size:  self.size
 
                     BoxLayout:
-                        orientatio: 'vertical'
-                        id: PortfolioInfos
-                        size_hint: 0.5, 1
+                        orientation: 'vertical'
+                        size_hint: 0.5, None
+                        height: "500dp"
+                        padding: ("0dp", "0dp", "0dp", "0dp")
+                        spacing: "10dp"
 
-                        Label:
-                            text:'Ciao'
+                        # Scroll View dashboard
+                        ScrollView:
+                            id: DistributionTableScreenView
+                            size_hint: 1, 0.8
+
+                            # Box containing assets distribution
+                            BoxLayout:
+                                id: DistributionTableBoxLayout
+                                orientation: 'vertical'
+                                size_hint: 1, None
+                                height: self.minimum_height
+                                padding: ("30dp", "20dp", "20dp", "20dp")
+                                spacing: "0dp"
+                                
+                                # First children containg the table title
+                                BoxLayout:
+                                    orientation: 'vertical'
+                                    size_hint: 1, None
+                                    height: "40dp"
+
+                                    canvas:
+                                        Color:
+                                            rgba: 0.7, 0, 0, 0.5
+                                        RoundedRectangle:
+                                            pos: self.pos
+                                            size: self.size
+                                            radius: [(10, 10), (10, 10), (0, 0), (0, 0)]
+
+                                    Label:
+                                        id: TableName
+                                        size_hint: 1, None
+                                        font_name: 'Candarab'
+                                        font_size: 20
+                                        height: "40dp" 
+                                        text: 'ALLOCATION DISTRIRBUTION'
+                                
+                                BoxLayout:
+                                    id: AssetAllocationTable
+                                    orientation: 'vertical'
+                                    size_hint: 1, None
+                                    height: self.minimum_height
+                                    padding: ("20dp", "20dp", "20dp", "20dp")
+                                    spacing: "20dp"
+
+                                    canvas:
+                                        Color:
+                                            rgba: 0, 0, 0.7, 0.5
+                                        RoundedRectangle:
+                                            pos: self.pos
+                                            size: self.size
+                                            radius: [(0, 0), (0, 0), (10, 10), (10, 10)]
+
+                                    # Other children, one for each asset
+                                    BoxLayout:
+                                        orientation: 'horizontal'
+                                        size_hint: 1, None
+                                        height: "20dp"
+
+                                        Label:
+                                            size_hint: 0.4, None
+                                            text_size: self.width, None
+                                            size: self.texture_size
+                                            height: "20dp"
+                                            text: 'BTC'
+                                            halign: 'center'
+
+                                        Label:
+                                            size_hint: 0.3, None
+                                            text_size: self.width, None
+                                            size: self.texture_size
+                                            height: "20dp"
+                                            text: '35%'
+                                            halign: 'center'
+                                    
+                                        Label:
+                                            size_hint: 0.3, None
+                                            text_size: self.width, None
+                                            size: self.texture_size
+                                            height: "20dp"
+                                            text: '35%'
+                                            halign: 'center'
+
+                                    # Other children, one for each asset
+                                    BoxLayout:
+                                        orientation: 'horizontal'
+                                        size_hint: 1, None
+                                        height: "20dp"
+
+                                        Label:
+                                            size_hint: 0.4, None
+                                            text_size: self.width, None
+                                            size: self.texture_size
+                                            height: "20dp"
+                                            text: 'BTC'
+                                            halign: 'center'
+
+                                        Label:
+                                            size_hint: 0.3, None
+                                            text_size: self.width, None
+                                            size: self.texture_size
+                                            height: "20dp"
+                                            text: '35%'
+                                            halign: 'center'
+                                    
+                                        Label:
+                                            size_hint: 0.3, None
+                                            text_size: self.width, None
+                                            size: self.texture_size
+                                            height: "20dp"
+                                            text: '35%'
+                                            halign: 'center'
+
+                                    # Other children, one for each asset
+                                    BoxLayout:
+                                        orientation: 'horizontal'
+                                        size_hint: 1, None
+                                        height: "20dp"
+
+                                        Label:
+                                            size_hint: 0.4, None
+                                            text_size: self.width, None
+                                            size: self.texture_size
+                                            height: "20dp"
+                                            text: 'BTC'
+                                            halign: 'center'
+
+                                        Label:
+                                            size_hint: 0.3, None
+                                            text_size: self.width, None
+                                            size: self.texture_size
+                                            height: "20dp"
+                                            text: '35%'
+                                            halign: 'center'
+                                    
+                                        Label:
+                                            size_hint: 0.3, None
+                                            text_size: self.width, None
+                                            size: self.texture_size
+                                            height: "20dp"
+                                            text: '35%'
+                                            halign: 'center'
+                        
+                        BoxLayout:
+                            orientatation: 'horizontal'
+                            size_hint: 0.5, 0.2
+                            pos_hint: {'x' : 0.25}
+                            padding: ("20dp", "0dp", "20dp", "30dp")
+                            spacing: "40dp"
+
+                            Button:
+                                size_hint: 0.5, 0.7
+                                background_color: 0,0,1,0.7
+                                text: 'MODIFY\n ALLOCATION'
+                                halign: 'center'
+                                font_size: 15
+                            
+                            Button:
+                                size_hint: 0.5, 0.7
+                                background_color: 0,0,1,0.7
+                                text: 'REBALANCE\n POPUP'
+                                font_size: 15
+                                halign: 'center'
+
+                            
+
+    
+                        
+
                     
                 BoxLayout:
                     id: AssetLabel

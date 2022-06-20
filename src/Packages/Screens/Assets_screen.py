@@ -1,4 +1,5 @@
 from Packages.CustomFunction.CustomFunction import ReturnJsonPathGivenScreenName
+from Packages.CustomFunction.AssetInPortfolioGraph import UpdateDashboardAsset
 import Packages.CustomItem.RemoveAssetPopup as RemoveAssetPopup
 import Packages.CustomItem.AddAssetPopup as AddAssetPopup
 import Packages.CustomItem.CustomGraphicItem as cst_item
@@ -6,9 +7,7 @@ import Packages.DatabaseMng.DatabaseMng as db_manager
 import Packages.CustomItem.RemovingPopup as Rm_popup
 from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.screenmanager import Screen
-from kivy.uix.image import Image
-import os
-from Packages.CustomFunction.AssetInPortfolioGraph import UpdateDashboardAsset
+
 
 class AssetsScreen(Screen):
     
@@ -223,6 +222,10 @@ class AssetsScreen(Screen):
         AddAssetPop = AddAssetPopup.AddAssetPopup(title_str = 'ADD NEW ASSET', type = 'A', Database = self.DBManager, PortfolioName = self.PortfolioName)
         # Open the Popup
         AddAssetPop.open()
+
+    #######################
+    #    DASHBOARD BOX    #
+    #######################
 
     def UpdateGraph(self):
         JsonFile = self.DBManager.ReadJson()
