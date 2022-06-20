@@ -6,10 +6,9 @@ import Packages.DatabaseMng.DatabaseMng as db_manager
 import Packages.CustomItem.RemovingPopup as Rm_popup
 from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.screenmanager import Screen
-
-# Import utility for graph
-from kivy.garden.matplotlib import FigureCanvasKivyAgg
-from matplotlib import pyplot as plt
+from kivy.uix.image import Image
+import os
+from Packages.CustomFunction.AssetInPortfolioGraph import UpdateDashboardAsset
 
 class AssetsScreen(Screen):
     
@@ -37,12 +36,18 @@ class AssetsScreen(Screen):
         # Update graphic elements
         self.UpdateListOfAssets()
 
+        # Update graph and load it
+        self.UpdateGraph()
+        self.ids.GraphImage.source = 'images/Support/AssetsInPortfolio.png'
+        self.ids.GraphImage.reload()
+
     # Function to call when "Back" button is pressed
     def ReturnBack(self):
         print('Returnig back to ' + self.FromScreenName)
         ScreenManager = self.parent
         ScreenManager.current = 'PORTFOLIO'
         ScreenManager.current_screen.UpdateScreen(ScreenName = self.FromScreenName, PortfolioJsonPath = ReturnJsonPathGivenScreenName(self.FromScreenName))
+    
     #####################
     #    ASSETS  BOX    #
     #####################
@@ -53,10 +58,11 @@ class AssetsScreen(Screen):
 
         # Store the first Item containing the screen name
         First_widget = self.ids[self.ScreenToUpdate].children[-1]
+        Second_widget = self.ids[self.ScreenToUpdate].children[-2]
 
         # Store the BoxLayout containg the portfolios Relative layout
-        Second_widget = self.ids[self.ScreenToUpdate].children[-2]
-        Second_widget.clear_widgets()
+        Third_widget = self.ids[self.ScreenToUpdate].children[-3]
+        Third_widget.clear_widgets()
 
         # Clear the Item inside the BoxLayout (Keep the first element only)
         self.ids[self.ScreenToUpdate].clear_widgets()
@@ -64,6 +70,7 @@ class AssetsScreen(Screen):
         # Add the first and second item again
         self.ids[self.ScreenToUpdate].add_widget(First_widget)
         self.ids[self.ScreenToUpdate].add_widget(Second_widget)
+        self.ids[self.ScreenToUpdate].add_widget(Third_widget)
 
         # Then, for each portfolio in the json add a New Portfolio in the self.ids[self.ScreenToUpdate]
         Assets_json = self.DBManager.ReadJson()[self.PortfolioName]['Assets']
@@ -79,10 +86,10 @@ class AssetsScreen(Screen):
             # Add an item for each portfolio
             for asset in Assets_json.keys():
                 # Compute the graphic element to Add given the AssetName and its statistics
-                self.ids[self.ScreenToUpdate].children[-2].add_widget(self.DefineCryptoAsset(AssetName = asset, AssetDict_Stats = Assets_json[asset]['Statistics'], textsize = text_size, Currency = Currency_str))
+                self.ids[self.ScreenToUpdate].children[-3].add_widget(self.DefineCryptoAsset(AssetName = asset, AssetDict_Stats = Assets_json[asset]['Statistics'], textsize = text_size, Currency = Currency_str))
         else:
             # Add empty item
-            self.ids[self.ScreenToUpdate].children[-2].add_widget(self.DefineEmptyAsset(textsize = text_size))
+            self.ids[self.ScreenToUpdate].children[-3].add_widget(self.DefineEmptyAsset(textsize = text_size))
 
     # Define an empty assets with the "EMPTY" label inside
     def DefineEmptyAsset(self, textsize = 0):
@@ -216,3 +223,15 @@ class AssetsScreen(Screen):
         AddAssetPop = AddAssetPopup.AddAssetPopup(title_str = 'ADD NEW ASSET', type = 'A', Database = self.DBManager, PortfolioName = self.PortfolioName)
         # Open the Popup
         AddAssetPop.open()
+
+    def UpdateGraph(self):
+        JsonFile = self.DBManager.ReadJson()
+
+        ListOfAssets = list(JsonFile[self.PortfolioName]['Assets'].keys())
+        ListOfAssetsValue = []
+
+        for Asset in ListOfAssets:
+            ListOfAssetsValue.append(JsonFile[self.PortfolioName]['Assets'][Asset]['Statistics']['TotalValue'])
+
+        # Update image
+        UpdateDashboardAsset(ListOfAssets, ListOfAssetsValue)

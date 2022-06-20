@@ -2,31 +2,22 @@
       "LONG TERM PAC": {
             "Assets": {
                   "ISHARES CORE  EMERGING MARKET": {
-                        "Transactions": {
-                              "1": {
-                                    "Type": "BUY",
-                                    "Date": "11/06/2022",
-                                    "Price": "13",
-                                    "Amount": "11",
-                                    "Fees": 0,
-                                    "Note": ""
-                              }
-                        },
+                        "Transactions": {},
                         "Statistics": {
-                              "Quantity": 11.0,
+                              "Quantity": 0,
                               "Symbol": "EIMI",
-                              "AveragePrice": 13.0,
-                              "TotalValue": 55.0,
-                              "TotalProfit": -88.0,
+                              "AveragePrice": 0,
+                              "TotalValue": 0.0,
+                              "TotalProfit": 0,
                               "CurrentPrice": 5
                         }
                   }
             },
             "Statistics": {
                   "Currency": "$",
-                  "TotalValue": 55.0,
+                  "TotalValue": 0.0,
                   "NumberOfAssets": 1,
-                  "TotalProfit": -88.0
+                  "TotalProfit": 0
             }
       }
 }

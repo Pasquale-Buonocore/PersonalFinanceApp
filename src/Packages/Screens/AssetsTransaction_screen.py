@@ -6,7 +6,6 @@ import Packages.DatabaseMng.DatabaseMng as db_manager
 from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.screenmanager import Screen
 
-
 class AssetsTransactionScreen(Screen):
     
     def __init__(self, **kwargs):
@@ -33,6 +32,9 @@ class AssetsTransactionScreen(Screen):
         # Update Screen
         self.UpdateListOfTransaction()
 
+        # Update Dashboard
+        self.UpdateDashboard()
+
     def ReturnBack(self):
         # Return to Asset screen
         print('Returnig back to ' + self.PortfolioName + 'assets')
@@ -49,11 +51,12 @@ class AssetsTransactionScreen(Screen):
     def UpdateListOfTransaction(self):
         # Store the first Item and second Item containing:
         First_widget = self.ids[self.ScreenToUpdate].children[-1] # contains the first row of Return to Asset, Title, Add new Transaction
-        Second_widget = self.ids[self.ScreenToUpdate].children[-2] # Contains the label of title
+        Second_widget = self.ids[self.ScreenToUpdate].children[-2] # Contains dashboard
+        Third_widget = self.ids[self.ScreenToUpdate].children[-3] # Contains the label of title 
 
         # Store the BoxLayout containg the portfolios Relative layout
-        Third_widget = self.ids[self.ScreenToUpdate].children[-3]  
-        Third_widget.clear_widgets()
+        Fourth_widget = self.ids[self.ScreenToUpdate].children[-4]  
+        Fourth_widget.clear_widgets()
 
         # Clear the Item inside the BoxLayout (Keep the first element only)
         self.ids[self.ScreenToUpdate].clear_widgets()
@@ -62,6 +65,7 @@ class AssetsTransactionScreen(Screen):
         self.ids[self.ScreenToUpdate].add_widget(First_widget)
         self.ids[self.ScreenToUpdate].add_widget(Second_widget)
         self.ids[self.ScreenToUpdate].add_widget(Third_widget)
+        self.ids[self.ScreenToUpdate].add_widget(Fourth_widget)
 
         # Then, known the PortfolioName, AssetName and having the DB, let's get all transactions
         Transactions_json = self.DBManager.ReadJson()[self.PortfolioName]['Assets'][self.AssetName]['Transactions']
@@ -79,12 +83,33 @@ class AssetsTransactionScreen(Screen):
             # Add an item for each portfolio
             for TransactionKey in list(Transactions_json.keys())[::-1]:
                 # Compute the graphic element to Add given the AssetName and its statistics
-                self.ids[self.ScreenToUpdate].children[-3].add_widget(self.DefineFullTransaction(textsize = text_size, TransactionDict = Transactions_json[TransactionKey], Index = TransactionKey , Currency = Currency_str))
+                self.ids[self.ScreenToUpdate].children[0].add_widget(self.DefineFullTransaction(textsize = text_size, TransactionDict = Transactions_json[TransactionKey], Index = TransactionKey , Currency = Currency_str))
         else:
             # Add empty item
-            self.ids[self.ScreenToUpdate].children[-3].add_widget(self.DefineEmptyTransaction(textsize = text_size))
+            self.ids[self.ScreenToUpdate].children[0].add_widget(self.DefineEmptyTransaction(textsize = text_size))
 
+    # Update the dashboard
+    def UpdateDashboard(self):
+        Json = self.DBManager.ReadJson()
 
+        # Update asset name
+        self.ids.BalanceLabel.text = self.AssetName + '(' + Json[self.PortfolioName]['Assets'][self.AssetName]['Statistics']['Symbol'] + ') balance' 
+   
+        # Update total value
+        self.ids.TotalValue.text = str(Json[self.PortfolioName]['Assets'][self.AssetName]['Statistics']['TotalValue']) + Json[self.PortfolioName]['Statistics']['Currency']
+
+        # Update Quantity
+        self.ids.QuantityValue.text = str(Json[self.PortfolioName]['Assets'][self.AssetName]['Statistics']['Quantity'])
+
+        # Update Avarage Price
+        self.ids.AvarageBuyValue.text = str(Json[self.PortfolioName]['Assets'][self.AssetName]['Statistics']['AveragePrice']) + Json[self.PortfolioName]['Statistics']['Currency']
+
+        # Update Total Profit
+        Percentage = Json[self.PortfolioName]['Assets'][self.AssetName]['Statistics']['TotalProfit'] / (Json[self.PortfolioName]['Assets'][self.AssetName]['Statistics']['AveragePrice'] * Json[self.PortfolioName]['Assets'][self.AssetName]['Statistics']['Quantity']) * 100
+        color = [1,0,0,1] if Percentage < 0 else [0,1,0,1]
+        self.ids.TotalProfitValue.color = color
+        self.ids.TotalProfitValue.text = str(Json[self.PortfolioName]['Assets'][self.AssetName]['Statistics']['TotalProfit']) + Json[self.PortfolioName]['Statistics']['Currency'] + ' (' + str(round(Percentage,1)) + '%)'
+        
     # Define and empty transaction with "EMPTY" Label
     def DefineEmptyTransaction(self, textsize):
         # Get the necessary information from the AssetDictionary
@@ -166,7 +191,7 @@ class AssetsTransactionScreen(Screen):
         box_pos_hint = {'x' : 0.9, 'y': 0.5 - (Btn_size[1]/(2*GraphicToReturn.size[1])) }
 
         ModifyPopup = AddAssetTransactionPopup.AddAssetTransactionPopup(title_str = 'MODIFY TRANSACTION', type = 'M', AssetName = self.AssetName, PortfolioName = self.PortfolioName, Database = self.DBManager, ItemToMod = {self.TransactionDictIndex: TransactionDict})
-        RemovePopup = RemoveTransactionPopup.RemoveTransactionPopup(title_str = 'REMOVE TRANSACTION',PortfolioName = self.PortfolioName, AssetName = self.AssetName, TransactionIndex = Index, DBManager = self.DBManager, Screen = self, FromScreenName = self.FromScreenName )
+        RemovePopup = RemoveTransactionPopup.RemoveTransactionPopup(title_str = 'REMOVE TRANSACTION', PortfolioName = self.PortfolioName, AssetName = self.AssetName, TransactionIndex = Index, DBManager = self.DBManager, Screen = self, FromScreenName = self.FromScreenName )
 
         Box = cst_item.ModifyRemoveButtonBox(Btn_size = Btn_size, box_pos_hint = box_pos_hint, ModifyPopup = ModifyPopup, RemovePopup = RemovePopup)
         GraphicToReturn.add_widget(Box)

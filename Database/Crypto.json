@@ -18,31 +18,15 @@
                                     "Amount": "0.01",
                                     "Fees": 0,
                                     "Note": ""
-                              },
-                              "3": {
-                                    "Type": "BUY",
-                                    "Date": "11/06/2022",
-                                    "Price": "25000",
-                                    "Amount": "0.1",
-                                    "Fees": 0,
-                                    "Note": ""
-                              },
-                              "4": {
-                                    "Type": "BUY",
-                                    "Date": "15/06/2022",
-                                    "Price": "21000",
-                                    "Amount": "0.1",
-                                    "Fees": 0,
-                                    "Note": ""
                               }
                         },
                         "Statistics": {
                               "CurrentPrice": 20000,
-                              "Quantity": 0.24,
+                              "Quantity": 0.04,
                               "Symbol": "BTC",
-                              "AveragePrice": 24145.83,
-                              "TotalValue": 4800.0,
-                              "TotalProfit": -995.0
+                              "AveragePrice": 29875.0,
+                              "TotalValue": 800.0,
+                              "TotalProfit": -395.0
                         }
                   },
                   "ETHEREUM": {
@@ -82,25 +66,43 @@
                         }
                   },
                   "COSMOS": {
-                        "Transactions": {},
+                        "Transactions": {
+                              "1": {
+                                    "Type": "BUY",
+                                    "Date": "16/08/2022",
+                                    "Price": "5",
+                                    "Amount": "50",
+                                    "Fees": 0,
+                                    "Note": ""
+                              }
+                        },
                         "Statistics": {
                               "CurrentPrice": 5,
-                              "Quantity": 0,
+                              "Quantity": 50.0,
                               "Symbol": "ATOM",
-                              "AveragePrice": 0,
-                              "TotalValue": 0.0,
-                              "TotalProfit": 0
+                              "AveragePrice": 5.0,
+                              "TotalValue": 250.0,
+                              "TotalProfit": 0.0
                         }
                   },
                   "ELROND": {
-                        "Transactions": {},
+                        "Transactions": {
+                              "1": {
+                                    "Type": "BUY",
+                                    "Date": "16/08/2022",
+                                    "Price": "5",
+                                    "Amount": "50",
+                                    "Fees": 0,
+                                    "Note": ""
+                              }
+                        },
                         "Statistics": {
                               "CurrentPrice": 5,
-                              "Quantity": 0,
+                              "Quantity": 50.0,
                               "Symbol": "EGLD",
-                              "AveragePrice": 0,
-                              "TotalValue": 0.0,
-                              "TotalProfit": 0
+                              "AveragePrice": 5.0,
+                              "TotalValue": 250.0,
+                              "TotalProfit": 0.0
                         }
                   },
                   "POLKADOT": {
@@ -215,9 +217,9 @@
             },
             "Statistics": {
                   "Currency": "$",
-                  "TotalValue": 6028.88,
+                  "TotalValue": 2528.88,
                   "NumberOfAssets": 8,
-                  "TotalProfit": -608.9
+                  "TotalProfit": -8.9
             }
       },
       "AIRDROPS": {
@@ -239,15 +241,23 @@
                                     "Amount": "50",
                                     "Fees": 0,
                                     "Note": ""
+                              },
+                              "3": {
+                                    "Type": "BUY",
+                                    "Date": "19/06/2022",
+                                    "Price": "15",
+                                    "Amount": "5",
+                                    "Fees": 0,
+                                    "Note": ""
                               }
                         },
                         "Statistics": {
                               "CurrentPrice": 5,
-                              "Quantity": 135.0,
+                              "Quantity": 140.0,
                               "Symbol": "EVMOS",
-                              "AveragePrice": 1.82,
-                              "TotalValue": 675.0,
-                              "TotalProfit": 429.3
+                              "AveragePrice": 2.29,
+                              "TotalValue": 700.0,
+                              "TotalProfit": 379.4
                         }
                   },
                   "JUNO": {
@@ -321,9 +331,9 @@
             },
             "Statistics": {
                   "Currency": "$",
-                  "TotalValue": 1230.0,
+                  "TotalValue": 1255.0,
                   "NumberOfAssets": 4,
-                  "TotalProfit": 824.8
+                  "TotalProfit": 774.9
             }
       },
       "STABLE COINS": {
@@ -349,22 +359,31 @@
                         }
                   },
                   "USD CIRCLE": {
-                        "Transactions": {},
+                        "Transactions": {
+                              "1": {
+                                    "Type": "BUY",
+                                    "Date": "18/06/2022",
+                                    "Price": "1",
+                                    "Amount": "500",
+                                    "Fees": 0,
+                                    "Note": ""
+                              }
+                        },
                         "Statistics": {
                               "CurrentPrice": 5,
-                              "Quantity": 0,
+                              "Quantity": 500.0,
                               "Symbol": "UCDC",
-                              "AveragePrice": 0,
-                              "TotalValue": 0.0,
-                              "TotalProfit": 0
+                              "AveragePrice": 1.0,
+                              "TotalValue": 2500.0,
+                              "TotalProfit": 2000.0
                         }
                   }
             },
             "Statistics": {
                   "Currency": "$",
-                  "TotalValue": 500.0,
+                  "TotalValue": 3000.0,
                   "NumberOfAssets": 2,
-                  "TotalProfit": 400.0
+                  "TotalProfit": 2400.0
             }
       }
 }

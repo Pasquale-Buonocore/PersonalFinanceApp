@@ -3,8 +3,9 @@ from kivy.properties import BooleanProperty
 from kivy.properties import StringProperty
 from kivy.uix.button import Button
 from kivy.uix.label import Label
+from kivy.uix.widget import Widget
 from kivy.uix.boxlayout import BoxLayout
-from kivy.graphics import Color, RoundedRectangle
+from kivy.graphics import Color, RoundedRectangle, Rectangle
 from Packages.CustomFunction.CustomFunction import ReturnJsonPathGivenScreenName
 
 #####################
@@ -81,6 +82,15 @@ class RemoveButton(Button):
     def on_release(self):
         # Open the popup
         self.Popup.open()
+
+class Line(Button):
+    # Initialize function
+    def __init__(self,**kwargs):
+        super(Button, self).__init__(size_hint = [1, None], height = "3dp", background_color = [0,0,0,0])
+        canvas_size = [kwargs['size_x'], super().height]       
+        with self.canvas.before:
+            Color(1,1,1,1)
+            self.shape = Rectangle(size = canvas_size)
 
 #######################################
 # PORTFOLIO CUSTOM ELEMENT DEFINITION #

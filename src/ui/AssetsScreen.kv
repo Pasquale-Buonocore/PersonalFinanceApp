@@ -15,8 +15,8 @@
             orientation: 'vertical'
             size_hint: 1, None
             height: self.minimum_height
-            padding: ("50dp", "10dp", "50dp", "10dp")
-            spacing: "20dp"
+            padding: ("50dp", "0dp", "50dp", "20dp")
+            spacing: "0dp"
 
             # First row box layout
             BoxLayout:
@@ -27,7 +27,7 @@
                 padding: ("0dp", "30dp", "0dp", "20dp")
                 
                 Button:
-                    text: 'BACK TO PORTFOLIOS'
+                    text: 'BACK TO PORTFOLIO'
                     size_hint: 0.13, None
                     height: "40dp" 
                     background_color: 0,0,0,0
@@ -51,7 +51,7 @@
                     halign: 'left'
                 
                 Button:
-                    text: 'ADD NEW ASSET'
+                    text: '+ ADD NEW ASSET'
                     size_hint: 0.12, None
                     height: "40dp" 
                     background_color: 0,0,0,0
@@ -65,6 +65,84 @@
                             pos: self.pos
                             size: self.size
                             radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+            
+            ########################
+            # DASHBOARD BOX LAYOUT #
+            ########################
+            # Second element containg the column titles
+
+            BoxLayout:
+                orientation: 'vertical'
+                id: DashboardContainer
+                size_hint: 1, None
+                height: self.minimum_height
+                spacing: "20dp"
+                padding: ("0dp", "20dp", "0dp", "20dp")
+
+                BoxLayout:
+                    id: DashboardLabel
+                    size_hint: 1, None
+                    pos_hint: {'x' : 0.04}
+                    height: self.minimum_height
+                    padding: ("0dp", "0dp", "0dp", "0dp")
+
+                    Label:
+                        font_name: 'Candarab'
+                        font_size: 28
+                        text_size: root.width, None
+                        size: self.texture_size
+                        text:'Dashboard'
+
+                BoxLayout:
+                    orientation: 'horizontal'
+                    id: GraphCanvas
+                    size_hint: 1, None
+                    height: "500dp"
+                    spacing: "20dp"
+                    padding: ("0dp", "0dp", "0dp", "0dp")
+
+                    canvas:
+                        Color:
+                            rgba: canvas_r,canvas_g,canvas_b,canvas_opacity
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+                    
+                    BoxLayout:
+                        orientation: 'vertical'
+                        size_hint: 0.5, 1
+                        id: Graph
+
+                        Image:
+                            id: GraphImage
+                            size:  self.size
+
+                    BoxLayout:
+                        orientatio: 'vertical'
+                        id: PortfolioInfos
+                        size_hint: 0.5, 1
+
+                        Label:
+                            text:'Ciao'
+                    
+                BoxLayout:
+                    id: AssetLabel
+                    size_hint: 1, None
+                    pos_hint: {'x' : 0.04}
+                    height: self.minimum_height
+                    padding: ("0dp", "5dp", "0dp", "0dp")
+
+                    Label:
+                        font_name: 'Candarab'
+                        font_size: 28
+                        text_size: root.width, None
+                        size: self.texture_size
+                        text:'Assets'
+
+            #####################
+            # ASSETS BOX LAYOUT #
+            #####################
 
             BoxLayout:
                 id: AssetsContainer

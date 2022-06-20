@@ -16,7 +16,7 @@
             size_hint: 1, None
             height: self.minimum_height
             padding: ("50dp", "10dp", "50dp", "10dp")
-            spacing: "20dp"
+            spacing: "0dp"
 
             # First row box layout
             BoxLayout:
@@ -27,7 +27,7 @@
                 padding: ("0dp", "30dp", "0dp", "20dp")
                 
                 Button:
-                    text: 'BACK TO ASSETS'
+                    text: 'BACK TO ASSET'
                     size_hint: 0.1, None
                     height: "40dp" 
                     background_color: 0,0,0,0
@@ -51,7 +51,7 @@
                     halign: 'left'
                 
                 Button:
-                    text: 'ADD NEW TRANSACTION'
+                    text: '+ ADD NEW TRANSACTION'
                     size_hint: 0.15, None
                     height: "40dp" 
                     background_color: 0,0,0,0
@@ -66,10 +66,148 @@
                             size: self.size
                             radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
 
+            ########################
+            # DASHBOARD BOX LAYOUT #
+            ########################
+            # Second element containg the column titles
+
+            BoxLayout:
+                orientation: 'vertical'
+                id: DashboardContainer
+                size_hint: 1, None
+                height: self.minimum_height
+                spacing: "20dp"
+                padding: ("0dp", "20dp", "0dp", "20dp")
+
+                BoxLayout:
+                    id: DashboardLabel
+                    size_hint: 1, None
+                    pos_hint: {'x' : 0.04}
+                    height: self.minimum_height
+                    padding: ("0dp", "0dp", "0dp", "0dp")
+
+                    Label:
+                        font_name: 'Candarab'
+                        font_size: 28
+                        text_size: root.width, None
+                        size: self.texture_size
+                        text:'Dashboard'
+
+                BoxLayout:
+                    orientation: 'vertical'
+                    id: DashboardCanvas
+                    size_hint: 1, None
+                    height: "200dp"
+                    spacing: "20dp"
+                    padding: ("0dp", "0dp", "0dp", "0dp")
+
+                    canvas:
+                        Color:
+                            rgba: canvas_r,canvas_g,canvas_b,canvas_opacity
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+                    
+                    RelativeLayout:
+                        size_hint: 1, None
+                        height: "200dp"
+
+                        Label:
+                            id: BalanceLabel
+                            text_size: root.width, None
+                            size: self.texture_size
+                            font_name: 'Candara'
+                            font_size: 25
+                            pos_hint: {'x' : 0.06, 'y' : 0.3}
+                            text: 'Bitcoin (BTC) Balance'
+
+                        BoxLayout:
+                            orientation: 'horizontal'
+                            pos_hint: {'x' : 0.06, 'y' : 0.6}
+                            size_hint: 1, None
+                            height: self.minimum_height
+                                
+                            Label:
+                                id: TotalValue
+                                text_size: root.width, None
+                                size: self.texture_size
+                                font_name: 'Candarab'
+                                font_size: 30
+                                text: '1450$'
+
+                        Label:
+                            id: QuantityLabel
+                            pos_hint: {'x' : 0.06, 'y' : - 0.15}
+                            text_size: root.width, None
+                            size: self.texture_size
+                            font_name: 'Candara'
+                            font_size: 20
+                            text: 'Quantity'
+
+                        Label:
+                            id: AvarageBuyLabel
+                            pos_hint: {'x' : 0.16, 'y' : - 0.15}
+                            text_size: root.width, None
+                            size: self.texture_size
+                            font_name: 'Candara'
+                            font_size: 20
+                            text: 'Avg. buy price'
+
+                        Label:
+                            id: TotalProfitLabel
+                            pos_hint: {'x' : 0.3, 'y' : - 0.15}
+                            text_size: root.width, None
+                            size: self.texture_size
+                            font_name: 'Candara'
+                            font_size: 20
+                            text: 'Total profit / loss'
+
+                        Label:
+                            id: QuantityValue
+                            pos_hint: {'x' : 0.06, 'y' : - 0.35}
+                            text_size: root.width, None
+                            size: self.texture_size
+                            font_name: 'Candarab'
+                            font_size: 30
+                            text: '0.1'
+
+                        Label:
+                            id: AvarageBuyValue
+                            pos_hint: {'x' : 0.16, 'y' : - 0.35}
+                            text_size: root.width, None
+                            size: self.texture_size
+                            font_name: 'Candarab'
+                            font_size: 30
+                            text: '25623$'
+
+                        Label:
+                            id: TotalProfitValue
+                            pos_hint: {'x' : 0.3, 'y' : - 0.35}
+                            text_size: root.width, None
+                            size: self.texture_size
+                            font_name: 'Candarab'
+                            font_size: 30
+                            color: 1,0,0,1
+                            text: ' - 1685$ (-30%)'
+            
+                BoxLayout:
+                    id: AssetLabel
+                    size_hint: 1, None
+                    pos_hint: {'x' : 0.04}
+                    height: self.minimum_height
+                    padding: ("0dp", "5dp", "0dp", "0dp")
+
+                    Label:
+                        font_name: 'Candarab'
+                        font_size: 28
+                        text_size: root.width, None
+                        size: self.texture_size
+                        text:'Transactions'
+
             ##########################
             # TRANSACTION BOX LAYOUT #
             ##########################
-            # Second element containg the column titles
             BoxLayout:
                 orientation: 'vertical'
                 id: TransactionBoxLayout
@@ -80,17 +218,18 @@
 
                 canvas.before:
                     Color:
-                        rgba: canvas_r,canvas_g,canvas_b,canvas_opacity
+                        #rgba: canvas_r,canvas_g,canvas_b,canvas_opacity
+                        rgba: 0.4,0.4,0.4,0.8
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
-                        radius: [(20, 20), (20, 20), (20, 20), (20, 20)]
+                        radius: [(10, 10), (10, 10), (0, 0), (0, 0)]
                 
                 GridLayout:
                     id: Transaction_NameRow
                     size_hint: 1, None
                     height: "20dp"
-                    padding: ("30dp", "0dp", "30dp", "0dp")
+                    padding: ("30dp", "0dp", "0dp", "0dp")
                     cols: 6
                     rows: 1
 
@@ -111,7 +250,6 @@
                         size_hint: 0.15, 1
                         font_name: PopupTitleFont
                         font_size: 20
-
 
                     Label: 
                         text: 'FEES'
