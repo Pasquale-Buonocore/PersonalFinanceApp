@@ -6,7 +6,9 @@ import Packages.CustomItem.CustomGraphicItem as cst_item
 import Packages.DatabaseMng.DatabaseMng as db_manager
 import Packages.CustomItem.RemovingPopup as Rm_popup
 from kivy.uix.relativelayout import RelativeLayout
+from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import Screen
+from kivy.uix.label import Label
 
 
 class AssetsScreen(Screen):
@@ -34,6 +36,11 @@ class AssetsScreen(Screen):
 
         # Update graphic elements
         self.UpdateListOfAssets()
+
+        # Update allocation
+        self.DBManager.UpdatePortfolioDesiredAssetAllocation(self.PortfolioName)
+        self.DBManager.UpdatePortfolioActualAssetAllocation(self.PortfolioName)
+        self.UpdateAssetAllocationTable()
 
         # Update graph and load it
         self.UpdateGraph()
@@ -227,6 +234,7 @@ class AssetsScreen(Screen):
     #    DASHBOARD BOX    #
     #######################
 
+    # The function generates a picture of the allocation, which is the loaded in the GUI
     def UpdateGraph(self):
         JsonFile = self.DBManager.ReadJson()
 
@@ -238,3 +246,46 @@ class AssetsScreen(Screen):
 
         # Update image
         UpdateDashboardAsset(ListOfAssets, ListOfAssetsValue)
+
+    # The function updates the allocation table to compare the two allocation.
+    # Future allocation will allow the user to reallocate with or without additional capital
+    def UpdateAssetAllocationTable(self):
+        # AssetAllocationTable is the box whose children are the row of the table
+        Json_File = self.DBManager.ReadJson()
+
+        # Clear widget of BoxLayout
+        self.ids.AssetAllocationTable.clear_widgets()
+
+        for asset in Json_File[self.PortfolioName]['Assets'].keys():
+            # 1. AssetName, 2. DesiredAllocation, 3. ActualAllocation (Green if bigger, Red if lesser)
+
+            Box = BoxLayout(orientation = 'horizontal', size_hint = [1, None], height = "20dp")
+
+            # Asset Label
+            AssetLabel = Label(size_hint = [0.4, None], text = asset)
+            AssetLabel.text_size = [AssetLabel.width, None]
+            AssetLabel.size = AssetLabel.texture_size 
+            AssetLabel.height = "20dp"
+            AssetLabel.halign = 'center'
+
+            # Asset desired allocation Label
+            DesiredAllocationLabel = Label(size_hint = [0.3, None], text = str(Json_File[self.PortfolioName]['Statistics']['DesiredAssetAllocation'][asset]) + "%")
+            DesiredAllocationLabel.text_size = [DesiredAllocationLabel.width, None]
+            DesiredAllocationLabel.size = DesiredAllocationLabel.texture_size 
+            DesiredAllocationLabel.height = "20dp"
+            DesiredAllocationLabel.halign = 'center'
+
+            # Asset Actual allocation Label
+            ActualAllocationLabel = Label(size_hint = [0.3, None], text = str(Json_File[self.PortfolioName]['Statistics']['ActualAssetAllocation'][asset]) + "%")
+            ActualAllocationLabel.text_size = [ActualAllocationLabel.width, None]
+            ActualAllocationLabel.size = ActualAllocationLabel.texture_size 
+            ActualAllocationLabel.height = "20dp"
+            ActualAllocationLabel.halign = 'center'
+    
+            Box.add_widget(AssetLabel)
+            Box.add_widget(DesiredAllocationLabel)
+            Box.add_widget(ActualAllocationLabel)
+
+            self.ids.AssetAllocationTable.add_widget(Box)
+
+        

@@ -323,6 +323,8 @@ class PortfoliosManager_Class():
         StatisticDict.update({'TotalValue' : int(PortfolioInitList[1])})
         StatisticDict.update({'NumberOfAssets' : int(PortfolioInitList[2])})
         StatisticDict.update({'TotalProfit' : int(PortfolioInitList[3])})
+        StatisticDict.update({'ActualAssetAllocation' : {} })
+        StatisticDict.update({'DesiredAssetAllocation' : {} })
         Statistic = {'Statistics' : StatisticDict }
 
         # Initialize dictionary with the portfolio
@@ -430,6 +432,55 @@ class PortfoliosManager_Class():
 
         # Save new json file
         self.SaveJsonFile(json_object)
+    
+    def UpdatePortfolioActualAssetAllocation(self, PortfolioName):
+        # Read Json
+        JsonFile = self.ReadJson()
+
+        # Save the old statistics
+        NewStatistics = JsonFile[PortfolioName]['Statistics']
+        PortfolioTotalValue = NewStatistics['TotalValue']
+        NewStatistics['ActualAssetAllocation'] = {}
+
+        # For each asset, compute the actual % and the desired one.
+        for asset in JsonFile[PortfolioName]['Assets'].keys():
+            AssetStatistics = JsonFile[PortfolioName]['Assets'][asset]['Statistics']['TotalValue']
+            Percentage = round(AssetStatistics/(PortfolioTotalValue + 1) * 100, 1)
+            NewStatistics['ActualAssetAllocation'].update({asset : Percentage })        
+
+        # Save new json file
+        JsonFile[PortfolioName]['Statistics'] = NewStatistics
+        self.SaveJsonFile(JsonFile)
+    
+    def UpdatePortfolioDesiredAssetAllocation(self, PortfolioName, DictDesiredAllocation = {}):
+        # DictDesiredAllocation can be empty.
+        # DictDesiredAllocation contains the asset as key and the allocation  % as value
+        # The function has to be called also when a new asset is added in the portfolio and/or removed
+
+        # Read Json
+        JsonFile = self.ReadJson()
+
+        # Save the old statistic
+        NewStatistics = JsonFile[PortfolioName]['Statistics']
+        NewDesiredUpdate = {}
+
+        # Allocate for variable that are not in the dictionary yet
+        for asset in JsonFile[PortfolioName]['Assets'].keys():
+            if asset in JsonFile[PortfolioName]['Statistics']['DesiredAssetAllocation'].keys():
+                NewDesiredUpdate.update({asset : JsonFile[PortfolioName]['Statistics']['DesiredAssetAllocation'][asset]})
+            else:
+                NewDesiredUpdate.update({asset : 0})
+
+        # Update the current statistics
+        for AssetAllocationToMod in DictDesiredAllocation.keys():
+            NewDesiredUpdate.update({AssetAllocationToMod : DictDesiredAllocation[AssetAllocationToMod]})
+
+        # Save new json file
+        NewStatistics['DesiredAssetAllocation'] = NewDesiredUpdate
+        JsonFile[PortfolioName]['Statistics'] = NewStatistics
+        self.SaveJsonFile(JsonFile)
+
+
     ##########################
     # TRANSACTION MANAGEMENT #
     ##########################

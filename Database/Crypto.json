@@ -219,7 +219,27 @@
                   "Currency": "$",
                   "TotalValue": 2528.88,
                   "NumberOfAssets": 8,
-                  "TotalProfit": -8.9
+                  "TotalProfit": -8.9,
+                  "ActualAssetAllocation": {
+                        "BITCOIN": 31.6,
+                        "ETHEREUM": 43.5,
+                        "COSMOS": 9.9,
+                        "ELROND": 9.9,
+                        "POLKADOT": 0.0,
+                        "THORCHAIN": 0.0,
+                        "NEAR PROTOCOL": 5.1,
+                        "AVALANCHE": 0.0
+                  },
+                  "DesiredAssetAllocation": {
+                        "BITCOIN": 0,
+                        "ETHEREUM": 0,
+                        "COSMOS": 0,
+                        "ELROND": 0,
+                        "POLKADOT": 0,
+                        "THORCHAIN": 0,
+                        "NEAR PROTOCOL": 0,
+                        "AVALANCHE": 0
+                  }
             }
       },
       "AIRDROPS": {
@@ -333,7 +353,19 @@
                   "Currency": "$",
                   "TotalValue": 1255.0,
                   "NumberOfAssets": 4,
-                  "TotalProfit": 774.9
+                  "TotalProfit": 774.9,
+                  "ActualAssetAllocation": {
+                        "EVMOS": 55.7,
+                        "JUNO": 24.7,
+                        "SECRET": 10.7,
+                        "OSMOSIS": 8.8
+                  },
+                  "DesiredAssetAllocation": {
+                        "EVMOS": 0,
+                        "JUNO": 0,
+                        "SECRET": 0,
+                        "OSMOSIS": 0
+                  }
             }
       },
       "STABLE COINS": {
@@ -383,7 +415,15 @@
                   "Currency": "$",
                   "TotalValue": 3000.0,
                   "NumberOfAssets": 2,
-                  "TotalProfit": 2400.0
+                  "TotalProfit": 2400.0,
+                  "ActualAssetAllocation": {
+                        "TETHER": 16.7,
+                        "USD CIRCLE": 83.3
+                  },
+                  "DesiredAssetAllocation": {
+                        "TETHER": 0,
+                        "USD CIRCLE": 0
+                  }
             }
       }
 }

@@ -17,7 +17,13 @@
                   "Currency": "$",
                   "TotalValue": 0.0,
                   "NumberOfAssets": 1,
-                  "TotalProfit": 0
+                  "TotalProfit": 0,
+                  "ActualAssetAllocation": {
+                        "ISHARES CORE  EMERGING MARKET": 0.0
+                  },
+                  "DesiredAssetAllocation": {
+                        "ISHARES CORE  EMERGING MARKET": 0
+                  }
             }
       }
 }
