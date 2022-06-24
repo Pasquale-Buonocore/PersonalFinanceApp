@@ -27,8 +27,12 @@
                   "TotalValue": 5.0,
                   "NumberOfAssets": 1,
                   "TotalProfit": -2495.0,
-                  "ActualAssetAllocation": {},
-                  "DesiredAssetAllocation": {}
+                  "ActualAssetAllocation": {
+                        "GOLD": 83.3
+                  },
+                  "DesiredAssetAllocation": {
+                        "GOLD": 0
+                  }
             }
       }
 }

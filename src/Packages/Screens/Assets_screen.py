@@ -9,6 +9,9 @@ from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import Screen
 from kivy.uix.label import Label
+from kivy.uix.widget import Widget
+from kivy.uix.button import Button
+from kivy.graphics import Color, RoundedRectangle
 
 
 class AssetsScreen(Screen):
@@ -40,12 +43,14 @@ class AssetsScreen(Screen):
         # Update allocation
         self.DBManager.UpdatePortfolioDesiredAssetAllocation(self.PortfolioName)
         self.DBManager.UpdatePortfolioActualAssetAllocation(self.PortfolioName)
-        self.UpdateAssetAllocationTable()
 
         # Update graph and load it
-        self.UpdateGraph()
+        color = self.UpdateGraph()
         self.ids.GraphImage.source = 'images/Support/AssetsInPortfolio.png'
         self.ids.GraphImage.reload()
+
+        # Update table of allocation
+        self.UpdateAssetAllocationTable(color = color)
 
     # Function to call when "Back" button is pressed
     def ReturnBack(self):
@@ -245,24 +250,31 @@ class AssetsScreen(Screen):
             ListOfAssetsValue.append(JsonFile[self.PortfolioName]['Assets'][Asset]['Statistics']['TotalValue'])
 
         # Update image
-        UpdateDashboardAsset(ListOfAssets, ListOfAssetsValue)
+        return UpdateDashboardAsset(ListOfAssets, ListOfAssetsValue)
 
     # The function updates the allocation table to compare the two allocation.
     # Future allocation will allow the user to reallocate with or without additional capital
-    def UpdateAssetAllocationTable(self):
+    def UpdateAssetAllocationTable(self, color):
         # AssetAllocationTable is the box whose children are the row of the table
         Json_File = self.DBManager.ReadJson()
 
         # Clear widget of BoxLayout
         self.ids.AssetAllocationTable.clear_widgets()
 
+        # Define color for legend
+        ColorIndex = list(color.keys())
+        ColorIndex.reverse()
+
         for asset in Json_File[self.PortfolioName]['Assets'].keys():
             # 1. AssetName, 2. DesiredAllocation, 3. ActualAllocation (Green if bigger, Red if lesser)
 
             Box = BoxLayout(orientation = 'horizontal', size_hint = [1, None], height = "20dp")
 
+            # Graphic Color
+            ColoredCircle = Button(pos_hint = {'x': 0.5, 'y' : 0}, size_hint = [0.05, None], height = '20dp', background_color = color[ColorIndex.pop()], text = '')
+
             # Asset Label
-            AssetLabel = Label(size_hint = [0.4, None], text = asset)
+            AssetLabel = Label(size_hint = [0.35, None], text = asset)
             AssetLabel.text_size = [AssetLabel.width, None]
             AssetLabel.size = AssetLabel.texture_size 
             AssetLabel.height = "20dp"
@@ -282,6 +294,7 @@ class AssetsScreen(Screen):
             ActualAllocationLabel.height = "20dp"
             ActualAllocationLabel.halign = 'center'
     
+            Box.add_widget(ColoredCircle)
             Box.add_widget(AssetLabel)
             Box.add_widget(DesiredAllocationLabel)
             Box.add_widget(ActualAllocationLabel)

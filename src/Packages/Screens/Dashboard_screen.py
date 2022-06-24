@@ -29,6 +29,8 @@ class DashboardScreen(Screen):
 
     # Update the In Flow Box Layout
     def Update_InFlowBoxLayout(self):
+        return 
+
         # Clear the Item inside the BoxLayout (Keep the first element only)
         First_widget = self.ids["InFlow_counts"].children[-1]
         self.ids["InFlow_counts"].clear_widgets()
@@ -86,6 +88,8 @@ class DashboardScreen(Screen):
 
     # Update the Expences Box Layout
     def Update_ExpencesBoxLayout(self):
+        return 
+
         # Clear the Item inside the BoxLayout (Keep the first element only)
         First_widget = self.ids["Expenses"].children[-1]
         self.ids["Expenses"].clear_widgets()
@@ -143,6 +147,7 @@ class DashboardScreen(Screen):
 
     # Update the Earning Box Layout
     def Update_EarningsBoxLayout(self):
+        return 
         # Clear the Item inside the BoxLayout (Keep the first element only)
         First_widget = self.ids["Earnings"].children[-1]
         self.ids["Earnings"].clear_widgets()

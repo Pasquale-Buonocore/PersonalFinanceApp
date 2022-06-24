@@ -1,0 +1,186 @@
+#:kivy 1.0.9
+#:include ui/Constant.kv
+
+<DashboardScreen>:
+    id: DashboardScreen
+    name: DashboardScreenName
+    
+    # Scroll View
+    ScrollView:
+        id: MainScrollView
+
+        # Box containing Box Layout
+        BoxLayout:
+            id: BoxLayout_lvl1
+            orientation: 'vertical'
+            size_hint: 1, None
+            height: self.minimum_height
+            padding: ("50dp", "10dp", "50dp", "10dp")
+            spacing: "10dp"
+            
+            ####################
+            # TITLE INCOME BOX #
+            ####################
+            Label:
+                text: 'PORTFOLIO RESUME'
+                size_hint: 1, None
+                height: "50dp"
+
+            ########################
+            # PORTFOLIO BOX LAYOUT #
+            ########################
+            BoxLayout:
+                id: InFlow_MainBoxLayout
+                orientation: 'horizontal'
+                size_hint: 1, None
+                height: self.minimum_height
+                spacing: "10dp"
+
+                canvas.before:
+                    Color:
+                        rgba: canvas_r,canvas_g,canvas_b,canvas_opacity
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [(40, 40), (40, 40), (40, 40), (40, 40)]
+
+                # ITEM 1
+                BoxLayout:
+                    id: InFlow_counts
+                    orientation: 'vertical'
+                    size_hint: 0.6, None
+                    height: self.minimum_height
+                    spacing: ListSpacing
+                    padding: ("0dp", "20dp", "0dp", "20dp")
+                    size: "100dp", "400dp"
+                
+                    GridLayout:
+                        id: InFlow_NameRow
+                        size_hint: 1, None
+                        height: "20dp"
+                        padding: ("30dp", "0dp", "30dp", "0dp")
+                        cols: 5
+                        rows: 1
+
+                        Label: 
+                            text: 'Name'
+                        Label: 
+                            text: 'Initial value'
+                        Label: 
+                            text: 'End value'
+                        Label: 
+                            text: 'Difference'
+                        Button:
+                            text: 'Add item'
+                            on_release: root.Add_InFlowItem()
+                # ITEM 2
+                Image:
+                    id: InFlow_chart
+                    size_hint: 0.4, 1
+                    source: 'images/graph_example.png'
+
+            ###################################
+            # EXPENSES AND EARNING BOX LAYOUT #
+            ###################################
+
+            BoxLayout:
+                id: Expences&EarningLabel
+                orientation: 'horizontal'
+                size_hint: 1, None
+                height: self.minimum_height
+
+                Label:
+                    text: 'EXPENCES'
+                    size_hint: 1, None
+                    height: "50dp"
+
+                Label:
+                    text: 'EARNINGS'
+                    size_hint: 1, None
+                    height: "50dp"
+
+            StackLayout:
+                # orientation: 'horizontal'
+                id: Expenses&Earnings
+                size_hint: 1, None
+                height: self.minimum_height
+                spacing: "10dp"
+
+                #######################
+                # EXPENSES BOX LAYOUT #
+                #######################
+                BoxLayout:
+                    orientation: 'vertical'
+                    id: Expenses
+                    size_hint: 0.5, None
+                    height: self.minimum_height
+                    spacing: ListSpacing
+                    padding: ("0dp", "20dp", "0dp", "20dp")
+
+                    canvas.before:
+                        Color:
+                            rgba: canvas_r,canvas_g,canvas_b,canvas_opacity
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [(40, 40), (40, 40), (40, 40), (40, 40)]
+                    
+                    GridLayout:
+                        id: Expenses_NameRow
+                        size_hint: 1, None
+                        height: "20dp"
+                        padding: ("30dp", "0dp", "30dp", "0dp")
+                        cols: 5
+                        rows: 1
+
+                        Label: 
+                            text: 'Category'
+                        Label: 
+                            text: 'Allocated'
+                        Label: 
+                            text: 'Realized'
+                        Label: 
+                            text: 'Difference'
+                        Button:
+                            text: 'Add item'
+                            on_release: root.Add_ExpencesItem()
+
+                #######################
+                # EARNINGS BOX LAYOUT #
+                #######################
+                BoxLayout:
+                    orientation: 'vertical'
+                    id: Earnings
+                    size_hint: 0.5, None
+                    height: self.minimum_height
+                    spacing: ListSpacing
+                    padding: ("0dp", "20dp", "0dp", "20dp")
+
+                    canvas.before:
+                        Color:
+                            rgba: canvas_r,canvas_g,canvas_b,canvas_opacity
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [(40, 40), (40, 40), (40, 40), (40, 40)]
+                    
+                    GridLayout:
+                        id: Earning_NameRow
+                        size_hint: 1, None
+                        height: "20dp"
+                        padding: ("30dp", "0dp", "30dp", "0dp")
+                        cols: 5
+                        rows: 1
+
+                        Label: 
+                            text: 'Category'
+                        Label: 
+                            text: 'Allocated'
+                        Label: 
+                            text: 'Realized'
+                        Label: 
+                            text: 'Difference'
+                        Button:
+                            text: 'Add item'
+                            on_release: root.Add_EarningsItem()
+                    

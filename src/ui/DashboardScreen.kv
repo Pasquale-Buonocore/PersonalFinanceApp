@@ -11,176 +11,293 @@
 
         # Box containing Box Layout
         BoxLayout:
-            id: BoxLayout_lvl1
+            id: BoxLayout_lvl
             orientation: 'vertical'
             size_hint: 1, None
             height: self.minimum_height
-            padding: ("50dp", "10dp", "50dp", "10dp")
-            spacing: "10dp"
+            padding: ("50dp", "50dp", "50dp", "50dp")
+            spacing: "40dp"
             
-            ####################
-            # TITLE INCOME BOX #
-            ####################
             Label:
-                text: 'PORTFOLIO RESUME'
-                size_hint: 1, None
-                height: "50dp"
+                id: WelcomeBackMessage
+                text: 'Welcome back Pasquale!'
+                text_size: self.width, None
+                size: self.texture_size
+                font_name: 'Candarab'
+                font_size: 28
 
-            ########################
-            # PORTFOLIO BOX LAYOUT #
-            ########################
+            # First row containg Personal information and mounth resume
             BoxLayout:
-                id: InFlow_MainBoxLayout
                 orientation: 'horizontal'
+                id: FirstBoxLayout
                 size_hint: 1, None
-                height: self.minimum_height
-                spacing: "10dp"
+                height: "400dp"
+                spacing: "20dp"
+                padding: ("0dp", "0dp", "0dp", "0dp")
 
-                canvas.before:
+                # Box Layout containg personal information and welcome
+                BoxLayout:
+                    id: PersonalInfoContainer
+                    orientation: 'vertical'
+                    size_hint: 0.8, 1
+
+                    canvas:
+                        Color:
+                            rgba: canvas_r,canvas_g,canvas_b,canvas_opacity
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+                
+                # Box Layout containg the month resume
+                BoxLayout:
+                    id: IncomeOutcomeBoxLayout
+                    orientation: 'vertical'
+                    size_hint: 0.2, 1
+                    spacing: "20dp"
+
+                    BoxLayout:
+                        id: IncomeBoxLayout
+                        orientation: 'vertical'
+                        size_hint: 1, 0.25
+                        spacing: "10dp"
+                        canvas:
+                            Color:
+                                rgba: canvas_r,canvas_g,canvas_b,canvas_opacity
+                            RoundedRectangle:
+                                pos: self.pos
+                                size: self.size
+                                radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+                    BoxLayout:
+                        id: OutcomeBoxLayout
+                        orientation: 'vertical'
+                        size_hint: 1, 0.25
+                        spacing: "10dp"
+                        canvas:
+                            Color:
+                                rgba: canvas_r,canvas_g,canvas_b,canvas_opacity
+                            RoundedRectangle:
+                                pos: self.pos
+                                size: self.size
+                                radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+            Label:
+                text: 'Month variations'
+                text_size: self.width, None
+                size: self.texture_size
+                font_name: 'Candarab'
+                font_size: 28
+
+            # Second row containg Personal information and mounth resume
+            BoxLayout:
+                orientation: 'horizontal'
+                id: SecondBoxLayout
+                size_hint: 1, None
+                height: "200dp"
+                spacing: "20dp"
+                padding: ("0dp", "0dp", "0dp", "0dp")
+
+                BoxLayout:
+                    id: CashPerformance
+                    orientation: 'vertical'
+                    size_hint: 0.17, 1
+                    spacing: "10dp"
+                    canvas:
+                        Color:
+                            rgba: canvas_r,canvas_g,canvas_b,canvas_opacity
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+                BoxLayout:
+                    id: ETFPerformance
+                    orientation: 'vertical'
+                    size_hint: 0.17, 1
+                    spacing: "10dp"
+                    canvas:
+                        Color:
+                            rgba: canvas_r,canvas_g,canvas_b,canvas_opacity
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+                BoxLayout:
+                    id: StockPerformance
+                    orientation: 'vertical'
+                    size_hint: 0.17, 1
+                    spacing: "10dp"
+                    canvas:
+                        Color:
+                            rgba: canvas_r,canvas_g,canvas_b,canvas_opacity
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+                BoxLayout:
+                    id: BondPerformance
+                    orientation: 'vertical'
+                    size_hint: 0.17, 1
+                    spacing: "10dp"
+                    canvas:
+                        Color:
+                            rgba: canvas_r,canvas_g,canvas_b,canvas_opacity
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+                BoxLayout:
+                    id: CommodityPerformance
+                    orientation: 'vertical'
+                    size_hint: 0.17, 1
+                    spacing: "10dp"
+                    canvas:
+                        Color:
+                            rgba: canvas_r,canvas_g,canvas_b,canvas_opacity
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+                                        # Box Layout per space
+                    
+                    BoxLayout:
+                        size_hint: 1, 0.05
+        
+                    # Box Layout per image
+                    RelativeLayout:
+                        pos_hint: {'x': 0.6}
+                        size_hint: 0.2, 0.3
+
+                        Image:
+                            source: './images/button/commodities.png'
+                    
+                    # Box Layout per info
+                    BoxLayout:
+                        size_hint: 1, 0.4
+                        orientation: 'vertical'
+
+                        Label:
+                            pos_hint: {'x' : 0.1}
+                            text: 'COMMODITY'
+                            text_size: self.width, None
+                            size: self.texture_size
+                            font_name: 'Candarab'
+                            font_size: 20
+                            
+                        Label:
+                            pos_hint: {'x' : 0.1}
+                            text: ' - 356 $'
+                            color: 1,0,0,1
+                            text_size: self.width, None
+                            size: self.texture_size
+                            font_name: 'Candara'
+                            font_size: 35
+                            
+                    # Box Layout per space
+                    BoxLayout:
+                        size_hint: 1, 0.05
+
+
+                BoxLayout:
+                    id: CryptoPerformance
+                    orientation: 'vertical'
+                    size_hint: 0.17, 1
+                    spacing: "10dp"
+
+                    canvas:
+                        Color:
+                            rgba: canvas_r,canvas_g,canvas_b,canvas_opacity
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+                    # Box Layout per space
+                    BoxLayout:
+                        size_hint: 1, 0.05
+        
+                    # Box Layout per image
+                    RelativeLayout:
+                        pos_hint: {'x': 0.6}
+                        size_hint: 0.2, 0.3
+
+                        Image:
+                            source: './images/button/crypto.png'
+                    
+                    # Box Layout per info
+                    BoxLayout:
+                        size_hint: 1, 0.4
+                        orientation: 'vertical'
+
+                        Label:
+                            pos_hint: {'x' : 0.1}
+                            text: 'CRYPTO'
+                            text_size: self.width, None
+                            size: self.texture_size
+                            font_name: 'Candarab'
+                            font_size: 20
+                            
+                        Label:
+                            pos_hint: {'x' : 0.1}
+                            id: CryptoValue
+                            text: '2000 $'
+                            color: 0,1,0,1
+                            text_size: self.width, None
+                            size: self.texture_size
+                            font_name: 'Candara'
+                            font_size: 35
+
+                    # Box Layout per space
+                    BoxLayout:
+                        size_hint: 1, 0.05
+
+            Label:
+                text: 'Portfolio distribution'
+                text_size: self.width, None
+                size: self.texture_size
+                font_name: 'Candarab'
+                font_size: 28
+
+            BoxLayout:
+                orientation: 'horizontal'
+                id: FirstBoxLayout
+                size_hint: 1, None
+                height: "400dp"
+                spacing: "20dp"
+                padding: ("0dp", "0dp", "0dp", "0dp")
+
+                canvas:
                     Color:
                         rgba: canvas_r,canvas_g,canvas_b,canvas_opacity
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
-                        radius: [(40, 40), (40, 40), (40, 40), (40, 40)]
+                        radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
 
-                # ITEM 1
-                BoxLayout:
-                    id: InFlow_counts
-                    orientation: 'vertical'
-                    size_hint: 0.6, None
-                    height: self.minimum_height
-                    spacing: ListSpacing
-                    padding: ("0dp", "20dp", "0dp", "20dp")
-                    size: "100dp", "400dp"
-                
-                    GridLayout:
-                        id: InFlow_NameRow
-                        size_hint: 1, None
-                        height: "20dp"
-                        padding: ("30dp", "0dp", "30dp", "0dp")
-                        cols: 5
-                        rows: 1
-
-                        Label: 
-                            text: 'Name'
-                        Label: 
-                            text: 'Initial value'
-                        Label: 
-                            text: 'End value'
-                        Label: 
-                            text: 'Difference'
-                        Button:
-                            text: 'Add item'
-                            on_release: root.Add_InFlowItem()
-                # ITEM 2
-                Image:
-                    id: InFlow_chart
-                    size_hint: 0.4, 1
-                    source: 'images/graph_example.png'
-
-            ###################################
-            # EXPENSES AND EARNING BOX LAYOUT #
-            ###################################
-
+            Label:
+                text: 'Asset distribution'
+                text_size: self.width, None
+                size: self.texture_size
+                font_name: 'Candarab'
+                font_size: 28
+            
             BoxLayout:
-                id: Expences&EarningLabel
                 orientation: 'horizontal'
+                id: FirstBoxLayout
                 size_hint: 1, None
-                height: self.minimum_height
+                height: "400dp"
+                spacing: "20dp"
+                padding: ("0dp", "0dp", "0dp", "0dp")
 
-                Label:
-                    text: 'EXPENCES'
-                    size_hint: 1, None
-                    height: "50dp"
+                canvas:
+                    Color:
+                        rgba: canvas_r,canvas_g,canvas_b,canvas_opacity
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
 
-                Label:
-                    text: 'EARNINGS'
-                    size_hint: 1, None
-                    height: "50dp"
-
-            StackLayout:
-                # orientation: 'horizontal'
-                id: Expenses&Earnings
-                size_hint: 1, None
-                height: self.minimum_height
-                spacing: "10dp"
-
-                #######################
-                # EXPENSES BOX LAYOUT #
-                #######################
-                BoxLayout:
-                    orientation: 'vertical'
-                    id: Expenses
-                    size_hint: 0.5, None
-                    height: self.minimum_height
-                    spacing: ListSpacing
-                    padding: ("0dp", "20dp", "0dp", "20dp")
-
-                    canvas.before:
-                        Color:
-                            rgba: canvas_r,canvas_g,canvas_b,canvas_opacity
-                        RoundedRectangle:
-                            pos: self.pos
-                            size: self.size
-                            radius: [(40, 40), (40, 40), (40, 40), (40, 40)]
-                    
-                    GridLayout:
-                        id: Expenses_NameRow
-                        size_hint: 1, None
-                        height: "20dp"
-                        padding: ("30dp", "0dp", "30dp", "0dp")
-                        cols: 5
-                        rows: 1
-
-                        Label: 
-                            text: 'Category'
-                        Label: 
-                            text: 'Allocated'
-                        Label: 
-                            text: 'Realized'
-                        Label: 
-                            text: 'Difference'
-                        Button:
-                            text: 'Add item'
-                            on_release: root.Add_ExpencesItem()
-
-                #######################
-                # EARNINGS BOX LAYOUT #
-                #######################
-                BoxLayout:
-                    orientation: 'vertical'
-                    id: Earnings
-                    size_hint: 0.5, None
-                    height: self.minimum_height
-                    spacing: ListSpacing
-                    padding: ("0dp", "20dp", "0dp", "20dp")
-
-                    canvas.before:
-                        Color:
-                            rgba: canvas_r,canvas_g,canvas_b,canvas_opacity
-                        RoundedRectangle:
-                            pos: self.pos
-                            size: self.size
-                            radius: [(40, 40), (40, 40), (40, 40), (40, 40)]
-                    
-                    GridLayout:
-                        id: Earning_NameRow
-                        size_hint: 1, None
-                        height: "20dp"
-                        padding: ("30dp", "0dp", "30dp", "0dp")
-                        cols: 5
-                        rows: 1
-
-                        Label: 
-                            text: 'Category'
-                        Label: 
-                            text: 'Allocated'
-                        Label: 
-                            text: 'Realized'
-                        Label: 
-                            text: 'Difference'
-                        Button:
-                            text: 'Add item'
-                            on_release: root.Add_EarningsItem()
-                    

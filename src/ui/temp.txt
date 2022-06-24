@@ -1,0 +1,85 @@
+RelativeLayout:
+                        size_hint: 1, None
+                        height: "300dp"
+
+                        # Box Containg Image and Welcome Back
+                        BoxLayout:
+                            orientation:'horizontal'
+                            size_hint: 0.7, 
+                        Label:
+                            id: BalanceLabel
+                            text_size: root.width, None
+                            size: self.texture_size
+                            font_name: 'Candara'
+                            font_size: 25
+                            pos_hint: {'x' : 0.06, 'y' : 0.3}
+                            text: 'Bitcoin (BTC) Balance'
+
+                        BoxLayout:
+                            orientation: 'horizontal'
+                            pos_hint: {'x' : 0.06, 'y' : 0.6}
+                            size_hint: 1, None
+                            height: self.minimum_height
+                                
+                            Label:
+                                id: TotalValue
+                                text_size: root.width, None
+                                size: self.texture_size
+                                font_name: 'Candarab'
+                                font_size: 30
+                                text: '1450$'
+
+                        Label:
+                            id: QuantityLabel
+                            pos_hint: {'x' : 0.06, 'y' : - 0.15}
+                            text_size: root.width, None
+                            size: self.texture_size
+                            font_name: 'Candara'
+                            font_size: 20
+                            text: 'Quantity'
+
+                        Label:
+                            id: AvarageBuyLabel
+                            pos_hint: {'x' : 0.16, 'y' : - 0.15}
+                            text_size: root.width, None
+                            size: self.texture_size
+                            font_name: 'Candara'
+                            font_size: 20
+                            text: 'Avg. buy price'
+
+                        Label:
+                            id: TotalProfitLabel
+                            pos_hint: {'x' : 0.3, 'y' : - 0.15}
+                            text_size: root.width, None
+                            size: self.texture_size
+                            font_name: 'Candara'
+                            font_size: 20
+                            text: 'Total profit / loss'
+
+                        Label:
+                            id: QuantityValue
+                            pos_hint: {'x' : 0.06, 'y' : - 0.35}
+                            text_size: root.width, None
+                            size: self.texture_size
+                            font_name: 'Candarab'
+                            font_size: 30
+                            text: '0.1'
+
+                        Label:
+                            id: AvarageBuyValue
+                            pos_hint: {'x' : 0.16, 'y' : - 0.35}
+                            text_size: root.width, None
+                            size: self.texture_size
+                            font_name: 'Candarab'
+                            font_size: 30
+                            text: '25623$'
+
+                        Label:
+                            id: TotalProfitValue
+                            pos_hint: {'x' : 0.3, 'y' : - 0.35}
+                            text_size: root.width, None
+                            size: self.texture_size
+                            font_name: 'Candarab'
+                            font_size: 30
+                            color: 1,0,0,1
+                            text: ' - 1685$ (-30%)'

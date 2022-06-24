@@ -105,7 +105,7 @@ class AssetsTransactionScreen(Screen):
         self.ids.AvarageBuyValue.text = str(Json[self.PortfolioName]['Assets'][self.AssetName]['Statistics']['AveragePrice']) + Json[self.PortfolioName]['Statistics']['Currency']
 
         # Update Total Profit
-        Percentage = Json[self.PortfolioName]['Assets'][self.AssetName]['Statistics']['TotalProfit'] / (Json[self.PortfolioName]['Assets'][self.AssetName]['Statistics']['AveragePrice'] * Json[self.PortfolioName]['Assets'][self.AssetName]['Statistics']['Quantity']) * 100
+        Percentage = Json[self.PortfolioName]['Assets'][self.AssetName]['Statistics']['TotalProfit'] / ((Json[self.PortfolioName]['Assets'][self.AssetName]['Statistics']['AveragePrice'] * Json[self.PortfolioName]['Assets'][self.AssetName]['Statistics']['Quantity']) + 1) * 100
         color = [1,0,0,1] if Percentage < 0 else [0,1,0,1]
         self.ids.TotalProfitValue.color = color
         self.ids.TotalProfitValue.text = str(Json[self.PortfolioName]['Assets'][self.AssetName]['Statistics']['TotalProfit']) + Json[self.PortfolioName]['Statistics']['Currency'] + ' (' + str(round(Percentage,1)) + '%)'

@@ -25,10 +25,11 @@
                 size_hint: 1, None
                 height: self.minimum_height
                 padding: ("0dp", "30dp", "0dp", "20dp")
+                spacing: "5dp"
                 
                 Button:
                     text: 'BACK TO PORTFOLIO'
-                    size_hint: 0.13, None
+                    size_hint: 0.14, None
                     height: "40dp" 
                     background_color: 0,0,0,0
                     on_release: root.ReturnBack()
@@ -44,27 +45,44 @@
 
                 Label:
                     id: FirstRowLabel
-                    size_hint: 0.75, None
+                    size_hint: 0.6, None
                     font_name: 'Candarab'
                     font_size: 28
                     height: "40dp" 
                     halign: 'left'
-                
+
                 Button:
-                    text: '+ ADD NEW ASSET'
-                    size_hint: 0.12, None
+                    text: 'MODIFY ALLOCATION'
+                    size_hint: 0.13, None
                     height: "40dp" 
                     background_color: 0,0,0,0
-                    on_release: root.AddNewAssetPopup()
+                    on_release: root.ModifyAllocation()
                     font_name: 'Candarab'
                     font_size: 16
                     canvas.before:
                         Color:
-                            rgba: 0.1,0.1,0.9,0.7
+                            rgba: 0.1,0.1,0.9,0.7                            
                         RoundedRectangle:
                             pos: self.pos
                             size: self.size
                             radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+                
+                Button:
+                    text: 'REBALANCE POPUP'
+                    size_hint: 0.13, None
+                    height: "40dp" 
+                    background_color: 0,0,0,0
+                    on_release: root.ModifyAllocation()
+                    font_name: 'Candarab'
+                    font_size: 16
+                    canvas.before:
+                        Color:
+                            rgba: 0.1,0.1,0.9,0.7                            
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+                        
             
             ########################
             # DASHBOARD BOX LAYOUT #
@@ -84,7 +102,7 @@
                     size_hint: 1, None
                     pos_hint: {'x' : 0.04}
                     height: self.minimum_height
-                    padding: ("0dp", "0dp", "0dp", "0dp")
+                    padding: ("0dp", "0dp", "0dp", "20dp")
 
                     Label:
                         font_name: 'Candarab'
@@ -97,7 +115,7 @@
                     orientation: 'horizontal'
                     id: GraphCanvas
                     size_hint: 1, None
-                    height: "500dp"
+                    height: "400dp"
                     spacing: "20dp"
                     padding: ("0dp", "0dp", "0dp", "0dp")
 
@@ -121,14 +139,13 @@
                     BoxLayout:
                         orientation: 'vertical'
                         size_hint: 0.5, None
-                        height: "500dp"
+                        height: "400dp"
                         padding: ("0dp", "0dp", "0dp", "0dp")
                         spacing: "10dp"
 
                         # Scroll View dashboard
                         ScrollView:
                             id: DistributionTableScreenView
-                            size_hint: 1, 0.8
 
                             # Box containing assets distribution
                             BoxLayout:
@@ -141,25 +158,38 @@
                                 
                                 # First children containg the table title
                                 BoxLayout:
-                                    orientation: 'vertical'
+                                    orientation: 'horizontal'
                                     size_hint: 1, None
                                     height: "40dp"
 
-                                    canvas:
+                                    canvas.before:
                                         Color:
-                                            rgba: 0.7, 0, 0, 0.5
+                                            rgba: 0.1,0.1,0.9,0.7     
                                         RoundedRectangle:
                                             pos: self.pos
                                             size: self.size
-                                            radius: [(10, 10), (10, 10), (0, 0), (0, 0)]
+                                            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
 
                                     Label:
-                                        id: TableName
-                                        size_hint: 1, None
+                                        size_hint: 0.4, None
                                         font_name: 'Candarab'
                                         font_size: 20
                                         height: "40dp" 
-                                        text: 'ALLOCATION DISTRIRBUTION'
+                                        text: 'ASSET NAME'
+
+                                    Label:
+                                        size_hint: 0.3, None
+                                        font_name: 'Candarab'
+                                        font_size: 20
+                                        height: "40dp" 
+                                        text: 'DESIRED'
+
+                                    Label:
+                                        size_hint: 0.3, None
+                                        font_name: 'Candarab'
+                                        font_size: 20
+                                        height: "40dp" 
+                                        text: 'ACTUAL'
                                 
                                 BoxLayout:
                                     id: AssetAllocationTable
@@ -168,55 +198,40 @@
                                     height: self.minimum_height
                                     padding: ("20dp", "20dp", "20dp", "20dp")
                                     spacing: "20dp"
-
-                                    canvas:
-                                        Color:
-                                            rgba: 0, 0, 0.7, 0.5
-                                        RoundedRectangle:
-                                            pos: self.pos
-                                            size: self.size
-                                            radius: [(0, 0), (0, 0), (10, 10), (10, 10)]
                         
-                        BoxLayout:
-                            orientatation: 'horizontal'
-                            size_hint: 0.5, 0.2
-                            pos_hint: {'x' : 0.25}
-                            padding: ("20dp", "0dp", "20dp", "30dp")
-                            spacing: "40dp"
-
-                            Button:
-                                size_hint: 0.5, 0.7
-                                background_color: 0,0,1,0.7
-                                text: 'MODIFY\n ALLOCATION'
-                                halign: 'center'
-                                font_size: 15
-                            
-                            Button:
-                                size_hint: 0.5, 0.7
-                                background_color: 0,0,1,0.7
-                                text: 'REBALANCE\n POPUP'
-                                font_size: 15
-                                halign: 'center'
-
-                            
-
-    
-                        
-
-                    
                 BoxLayout:
                     id: AssetLabel
+                    orientation: 'horizontal'
                     size_hint: 1, None
-                    pos_hint: {'x' : 0.04}
                     height: self.minimum_height
-                    padding: ("0dp", "5dp", "0dp", "0dp")
+                    padding: ("0dp", "0dp", "0dp", "0dp")
 
-                    Label:
+                    BoxLayout:
+                        size_hint: 0.85, None
+                        height: 40
+                        orientation: 'vertical'
+
+                        Label:
+                            font_name: 'Candarab'
+                            font_size: 28
+                            pos_hint: {'x' : -0.46}
+                            text:'Assets'
+
+                    Button:
+                        text: 'ADD NEW ASSET'
+                        size_hint: 0.15, None
+                        height: "40dp" 
+                        background_color: 0,0,0,0
+                        on_release: root.AddNewAssetPopup()
                         font_name: 'Candarab'
-                        font_size: 28
-                        text_size: root.width, None
-                        size: self.texture_size
-                        text:'Assets'
+                        font_size: 16
+                        canvas.before:
+                            Color:
+                                rgba: 0.1,0.1,0.9,0.7
+                            RoundedRectangle:
+                                pos: self.pos
+                                size: self.size
+                                radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
 
             #####################
             # ASSETS BOX LAYOUT #

@@ -28,7 +28,7 @@
                 
                 Button:
                     text: 'BACK TO ASSET'
-                    size_hint: 0.1, None
+                    size_hint: 0.15, None
                     height: "40dp" 
                     background_color: 0,0,0,0
                     on_release: root.ReturnBack()
@@ -44,27 +44,11 @@
 
                 Label:
                     id: FirstRowLabel
-                    size_hint: 0.75, None
+                    size_hint: 0.85, None
                     font_name: 'Candarab'
                     font_size: 28
                     height: "40dp" 
                     halign: 'left'
-                
-                Button:
-                    text: '+ ADD NEW TRANSACTION'
-                    size_hint: 0.15, None
-                    height: "40dp" 
-                    background_color: 0,0,0,0
-                    on_release: root.AddNewAssetTransactionPopup()
-                    font_name: 'Candarab'
-                    font_size: 16
-                    canvas.before:
-                        Color:
-                            rgba: 0.1,0.1,0.9,0.7
-                        RoundedRectangle:
-                            pos: self.pos
-                            size: self.size
-                            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
 
             ########################
             # DASHBOARD BOX LAYOUT #
@@ -84,7 +68,7 @@
                     size_hint: 1, None
                     pos_hint: {'x' : 0.04}
                     height: self.minimum_height
-                    padding: ("0dp", "0dp", "0dp", "0dp")
+                    padding: ("0dp", "0dp", "0dp", "20dp")
 
                     Label:
                         font_name: 'Candarab'
@@ -194,16 +178,37 @@
                 BoxLayout:
                     id: AssetLabel
                     size_hint: 1, None
-                    pos_hint: {'x' : 0.04}
                     height: self.minimum_height
                     padding: ("0dp", "5dp", "0dp", "0dp")
 
-                    Label:
+                    BoxLayout:
+                        size_hint: 0.85, None
+                        height: 40
+                        orientation: 'vertical'
+
+                        Label:
+                            font_name: 'Candarab'
+                            font_size: 28
+                            pos_hint: {'x' : -0.43}
+                            text:'Transactions'
+                    
+                    Button:
+                        text: 'ADD NEW TRANSACTION'
+                        size_hint: 0.15, None
+                        height: "40dp" 
+                        background_color: 0,0,0,0
+                        on_release: root.AddNewAssetTransactionPopup()
                         font_name: 'Candarab'
-                        font_size: 28
-                        text_size: root.width, None
-                        size: self.texture_size
-                        text:'Transactions'
+                        font_size: 16
+                        canvas.before:
+                            Color:
+                                rgba: 0.1,0.1,0.9,0.7
+                            RoundedRectangle:
+                                pos: self.pos
+                                size: self.size
+                                radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+
 
             ##########################
             # TRANSACTION BOX LAYOUT #
@@ -219,7 +224,7 @@
                 canvas.before:
                     Color:
                         #rgba: canvas_r,canvas_g,canvas_b,canvas_opacity
-                        rgba: 0.4,0.4,0.4,0.8
+                        rgba: 0.1,0.1,0.9,0.7 
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
