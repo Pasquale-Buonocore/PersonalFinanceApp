@@ -3,7 +3,7 @@ from Packages.CustomFunction.AssetInPortfolioGraph import UpdateDashboardAsset
 import Packages.CustomItem.RemoveAssetPopup as RemoveAssetPopup
 import Packages.CustomItem.AddAssetPopup as AddAssetPopup
 import Packages.CustomItem.CustomGraphicItem as cst_item
-import Packages.DatabaseMng.DatabaseMng as db_manager
+import Packages.DatabaseMng.PortfolioManager as db_manager
 import Packages.CustomItem.RemovingPopup as Rm_popup
 from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.boxlayout import BoxLayout

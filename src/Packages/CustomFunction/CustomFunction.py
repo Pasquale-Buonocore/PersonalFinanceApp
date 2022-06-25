@@ -1,4 +1,4 @@
-import Packages.DatabaseMng.DatabaseMng as db_manager
+import Packages.DatabaseMng.PortfolioManager as db_manager
 
 # Return the database to use according to the Screen selected
 def ReturnJsonPathGivenScreenName(ScreenName):

@@ -8,11 +8,12 @@ kivy.require('1.0.9')
 # IMPORTS FROM CUSTOM LIB #
 ###########################
 import Packages.Configuration.WinConfiguration as WinConf
-import Packages.DatabaseMng.DatabaseMng as db_manager
+import Packages.DatabaseMng.PortfolioManager as db_manager
 import Packages.CustomItem.CustomPopup as cst_popup
 import Packages.CustomItem.CustomGraphicItem as cst_item
 from Packages.Screens.Dashboard_screen import *
 from Packages.Screens.Transaction_screen import *
+from Packages.Screens.TransactionList_screen import *
 from Packages.Screens.Portfolio_screen import *
 from Packages.Screens.Setting_screen import *
 from Packages.Screens.Statistics_screen import *
@@ -60,17 +61,7 @@ class FinanceApp(App):
         #-- center the window
         WinConf.SetWindowSize()
 
-        # Bind function to window resizing
-        Window.bind(on_resize = self.UpdatePortfolioView)
-
         return MainLayout()
-    
-    def UpdatePortfolioView(self, window, width, height):
-        if self.root.children[0].children[0].current == 'CRYPTO':
-            # Analysis has to continue!
-            # self.root.children[0].children[1].children[0].move_screen(self, 'CREDITS')
-            # self.root.children[0].children[1].children[5].move_screen(self, 'CRYPTO')
-            pass
 
     def on_start(self):
         # Initialize the Dashboard page

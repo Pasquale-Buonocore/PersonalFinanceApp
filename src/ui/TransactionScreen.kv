@@ -31,7 +31,7 @@
                 
                 Label:
                     id: TransactionInLabel
-                    size_hint: 0.6, None
+                    size_hint: 0.7, None
                     font_name: 'Candarab'
                     font_size: 25
                     height: "40dp" 
@@ -39,11 +39,11 @@
                     text: 'TRANSACTION IN'
                 
                 Button:
-                    text: 'VIEW TRANSACTION IN'
-                    size_hint: 0.2, None
+                    text: 'MODIFY CLASSES'
+                    size_hint: 0.15, None
                     height: "40dp" 
                     background_color: 0,0,0,0
-                    on_release: root.AddNewAssetPopup()
+                    on_release: root.MoveToTransactionScreen('IN')
                     font_name: 'Candarab'
                     font_size: 16
                     canvas.before:
@@ -55,11 +55,11 @@
                             radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
 
                 Button:
-                    text: 'ADD TRANSACTION IN'
-                    size_hint: 0.2, None
+                    text: 'VIEW TRANSACTION IN'
+                    size_hint: 0.15, None
                     height: "40dp" 
                     background_color: 0,0,0,0
-                    on_release: root.AddNewAssetPopup()
+                    on_release: root.MoveToTransactionScreen('IN')
                     font_name: 'Candarab'
                     font_size: 16
                     canvas.before:
@@ -115,14 +115,6 @@
                             size_hint: 1, None
                             height: "40dp"
 
-                            canvas.before:
-                                Color:
-                                    rgba: 0.1,0.1,0.9,0.7     
-                                RoundedRectangle:
-                                    pos: self.pos
-                                    size: self.size
-                                    radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
-
                             Label:
                                 size_hint: 0.4, None
                                 font_name: 'Candarab'
@@ -143,6 +135,19 @@
                                 font_size: 20
                                 height: "40dp" 
                                 text: 'ACTUAL'
+
+                                
+                        BoxLayout:
+                            orientation: 'vertical'
+                            size_hint: 1, None
+                            height: "2dp"
+
+                            canvas.before:
+                                Color:
+                                    rgba: 1,1,1,1     
+                                Rectangle:
+                                    pos: self.pos
+                                    size: self.size
                         
                         BoxLayout:
                             id: TransactionInTable
@@ -165,7 +170,7 @@
                 
                 Label:
                     id: TransactionOutLabel
-                    size_hint: 0.6, None
+                    size_hint: 0.7, None
                     font_name: 'Candarab'
                     font_size: 25
                     height: "40dp" 
@@ -173,11 +178,11 @@
                     text: 'TRANSACTION OUT'
                 
                 Button:
-                    text: 'VIEW TRANSACTION OUT'
-                    size_hint: 0.2, None
+                    text: 'MODIFY CLASSES'
+                    size_hint: 0.15, None
                     height: "40dp" 
                     background_color: 0,0,0,0
-                    on_release: root.AddNewAssetPopup()
+                    on_release: root.MoveToTransactionScreen('OUT')
                     font_name: 'Candarab'
                     font_size: 16
                     canvas.before:
@@ -189,11 +194,11 @@
                             radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
 
                 Button:
-                    text: 'ADD TRANSACTION OUT'
-                    size_hint: 0.2, None
+                    text: 'VIEW TRANSACTION OUT'
+                    size_hint: 0.15, None
                     height: "40dp" 
                     background_color: 0,0,0,0
-                    on_release: root.AddNewAssetPopup()
+                    on_release: root.MoveToTransactionScreen('OUT')
                     font_name: 'Candarab'
                     font_size: 16
                     canvas.before:
@@ -249,14 +254,6 @@
                             size_hint: 1, None
                             height: "40dp"
 
-                            canvas.before:
-                                Color:
-                                    rgba: 0.1,0.1,0.9,0.7     
-                                RoundedRectangle:
-                                    pos: self.pos
-                                    size: self.size
-                                    radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
-
                             Label:
                                 size_hint: 0.4, None
                                 font_name: 'Candarab'
@@ -278,6 +275,18 @@
                                 height: "40dp" 
                                 text: 'ACTUAL'
                         
+                        BoxLayout:
+                            orientation: 'vertical'
+                            size_hint: 1, None
+                            height: "2dp"
+
+                            canvas.before:
+                                Color:
+                                    rgba: 1,1,1,1     
+                                Rectangle:
+                                    pos: self.pos
+                                    size: self.size
+
                         BoxLayout:
                             id: TransactionOutTable
                             orientation: 'vertical'

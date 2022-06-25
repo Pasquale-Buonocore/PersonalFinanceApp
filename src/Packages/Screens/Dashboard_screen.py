@@ -1,4 +1,4 @@
-import Packages.DatabaseMng.DatabaseMng as db_manager
+import Packages.DatabaseMng.JsonManager as json_manager
 import Packages.CustomItem.CustomPopup as cst_popup
 import Packages.CustomItem.CustomGraphicItem as cst_item
 import Packages.CustomItem.WarningPopup as Wrn_popup
@@ -12,12 +12,18 @@ class DashboardScreen(Screen):
     def __init__(self,**kwargs):
         super().__init__(**kwargs)
         # Initialize the manager of the json manager
-        self.InFlow_DBManager = db_manager.JsonManager_Class(db_manager.path_manager.database_path,db_manager.path_manager.Inflow_path)
-        self.Expences_DBManager = db_manager.JsonManager_Class(db_manager.path_manager.database_path,db_manager.path_manager.Expences_path)
-        self.Earnings_DBManager = db_manager.JsonManager_Class(db_manager.path_manager.database_path,db_manager.path_manager.Income_path)
+        self.InFlow_DBManager = json_manager.JsonManager_Class(json_manager.path_manager.database_path,json_manager.path_manager.Inflow_path)
+        self.Expences_DBManager = json_manager.JsonManager_Class(json_manager.path_manager.database_path,json_manager.path_manager.Expences_path)
+        self.Earnings_DBManager = json_manager.JsonManager_Class(json_manager.path_manager.database_path,json_manager.path_manager.Income_path)
     
     # Function to call when the screen is changed to Dashboard
     def UpdateScreen(self):
+        self.ids.GraphPortfolioAllocation.source = 'images/Support/AssetsInPortfolio.png'
+        self.ids.GraphPortfolioAllocation.reload()
+
+        self.ids.GraphAssetAllocation.source = 'images/Support/AssetsInPortfolio.png'
+        self.ids.GraphAssetAllocation.reload()
+
         # Update the dashboard screen 
         self.Update_InFlowBoxLayout()
         self.Update_ExpencesBoxLayout()

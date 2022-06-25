@@ -2,7 +2,7 @@ from Packages.CustomFunction.CustomFunction import ReturnJsonPathGivenScreenName
 import Packages.CustomItem.AddAssetTransactionPopup as AddAssetTransactionPopup
 import Packages.CustomItem.RemoveTransactionPopup as RemoveTransactionPopup
 import Packages.CustomItem.CustomGraphicItem as cst_item
-import Packages.DatabaseMng.DatabaseMng as db_manager
+import Packages.DatabaseMng.PortfolioManager as db_manager
 from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.screenmanager import Screen
 

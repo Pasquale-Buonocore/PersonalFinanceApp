@@ -1,4 +1,4 @@
-import Packages.DatabaseMng.DatabaseMng as db_manager
+import Packages.DatabaseMng.PortfolioManager as db_manager
 import Packages.CustomItem.CustomPopup as cst_popup
 import Packages.CustomItem.CustomGraphicItem as cst_item
 from kivy.uix.gridlayout import GridLayout

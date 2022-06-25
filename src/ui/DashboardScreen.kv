@@ -17,14 +17,6 @@
             height: self.minimum_height
             padding: ("50dp", "50dp", "50dp", "50dp")
             spacing: "40dp"
-            
-            Label:
-                id: WelcomeBackMessage
-                text: 'Welcome back Pasquale!'
-                text_size: self.width, None
-                size: self.texture_size
-                font_name: 'Candarab'
-                font_size: 28
 
             # First row containg Personal information and mounth resume
             BoxLayout:
@@ -48,7 +40,49 @@
                             pos: self.pos
                             size: self.size
                             radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
-                
+                    
+                    BoxLayout:
+                        size_hint: 1, 0.1
+
+                    # Box Layout for picture and welcome
+                    BoxLayout:
+                        orientation: 'horizontal'
+                        size_hint: 1, 0.35
+
+                        BoxLayout: 
+                            size_hint: 0.05, 1
+
+                        Image:
+                            size_hint: 0.15, 1
+                            source: './images/profile/anonymus.png'
+
+                        Label:
+                            id: WelcomeBackMessage
+                            size_hint: 0.8, 1
+                            pos_hint: {'x' : 0.5}
+                            text: 'Welcome back Pasquale!'
+                            # text_size: self.width, None
+                            # size: self.texture_size
+                            font_name: 'Candarab'
+                            font_size: 28
+                            
+                    # Box Layout for comment
+                    BoxLayout:
+                        orientation: 'vertical'
+                        size_hint: 1, 0.25
+
+                        Label:
+                            # size_hint: 0.3, None
+                            font_name: 'Candara'
+                            font_size: 20
+                            height: "40dp" 
+                            text: 'Your portfolio has a total value of 5000€ and it has increased of 5% since last month.'
+
+                    # Box Layout for automation
+                    BoxLayout:
+                        orientation: 'vertical'
+                        size_hint: 1, 0.35
+
                 # Box Layout containg the month resume
                 BoxLayout:
                     id: IncomeOutcomeBoxLayout
@@ -69,6 +103,45 @@
                                 size: self.size
                                 radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
 
+                                            # Box Layout per space
+                        BoxLayout:
+                            size_hint: 1, 0.05
+            
+                        # Box Layout per image
+                        RelativeLayout:
+                            pos_hint: {'x': 0.6}
+                            size_hint: 0.2, 0.3
+
+                            Image:
+                                source: './images/button/income.png'
+                        
+                        # Box Layout per info
+                        BoxLayout:
+                            size_hint: 1, 0.4
+                            orientation: 'vertical'
+
+                            Label:
+                                pos_hint: {'x' : 0.1}
+                                text: 'TOTAL INCOME'
+                                text_size: self.width, None
+                                size: self.texture_size
+                                font_name: 'Candarab'
+                                font_size: 20
+                                
+                            Label:
+                                pos_hint: {'x' : 0.1}
+                                id: CryptoValue
+                                text: '2000 $'
+                                color: 0,1,0,1
+                                text_size: self.width, None
+                                size: self.texture_size
+                                font_name: 'Candara'
+                                font_size: 35
+
+                        # Box Layout per space
+                        BoxLayout:
+                            size_hint: 1, 0.05
+
                     BoxLayout:
                         id: OutcomeBoxLayout
                         orientation: 'vertical'
@@ -81,6 +154,45 @@
                                 pos: self.pos
                                 size: self.size
                                 radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+                        
+                        # Box Layout per space
+                        BoxLayout:
+                            size_hint: 1, 0.05
+            
+                        # Box Layout per image
+                        RelativeLayout:
+                            pos_hint: {'x': 0.6}
+                            size_hint: 0.2, 0.3
+
+                            Image:
+                                source: './images/button/outcome.png'
+                        
+                        # Box Layout per info
+                        BoxLayout:
+                            size_hint: 1, 0.4
+                            orientation: 'vertical'
+
+                            Label:
+                                pos_hint: {'x' : 0.1}
+                                text: 'TOTAL OUTCOME'
+                                text_size: self.width, None
+                                size: self.texture_size
+                                font_name: 'Candarab'
+                                font_size: 20
+                                
+                            Label:
+                                pos_hint: {'x' : 0.1}
+                                id: CryptoValue
+                                text: '1400 $'
+                                color: 0,1,0,1
+                                text_size: self.width, None
+                                size: self.texture_size
+                                font_name: 'Candara'
+                                font_size: 35
+
+                        # Box Layout per space
+                        BoxLayout:
+                            size_hint: 1, 0.05
 
             Label:
                 text: 'Month variations'
@@ -110,6 +222,45 @@
                             pos: self.pos
                             size: self.size
                             radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+                    
+                    # Box Layout per space
+                    BoxLayout:
+                        size_hint: 1, 0.05
+        
+                    # Box Layout per image
+                    RelativeLayout:
+                        pos_hint: {'x': 0.6}
+                        size_hint: 0.2, 0.3
+
+                        Image:
+                            source: './images/button/cash.png'
+                    
+                    # Box Layout per info
+                    BoxLayout:
+                        size_hint: 1, 0.4
+                        orientation: 'vertical'
+
+                        Label:
+                            pos_hint: {'x' : 0.1}
+                            text: 'CASH'
+                            text_size: self.width, None
+                            size: self.texture_size
+                            font_name: 'Candarab'
+                            font_size: 20
+                            
+                        Label:
+                            pos_hint: {'x' : 0.1}
+                            id: CryptoValue
+                            text: '100 $'
+                            color: 0,1,0,1
+                            text_size: self.width, None
+                            size: self.texture_size
+                            font_name: 'Candara'
+                            font_size: 35
+
+                    # Box Layout per space
+                    BoxLayout:
+                        size_hint: 1, 0.05
 
                 BoxLayout:
                     id: ETFPerformance
@@ -124,6 +275,43 @@
                             size: self.size
                             radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
 
+                    BoxLayout:
+                        size_hint: 1, 0.05
+        
+                    # Box Layout per image
+                    RelativeLayout:
+                        pos_hint: {'x': 0.6}
+                        size_hint: 0.2, 0.3
+
+                        Image:
+                            source: './images/button/etf - etc.png'
+                    
+                    # Box Layout per info
+                    BoxLayout:
+                        size_hint: 1, 0.4
+                        orientation: 'vertical'
+
+                        Label:
+                            pos_hint: {'x' : 0.1}
+                            text: 'ETF - ETC'
+                            text_size: self.width, None
+                            size: self.texture_size
+                            font_name: 'Candarab'
+                            font_size: 20
+                            
+                        Label:
+                            pos_hint: {'x' : 0.1}
+                            text: '800 $'
+                            color: 0,1,0,1
+                            text_size: self.width, None
+                            size: self.texture_size
+                            font_name: 'Candara'
+                            font_size: 35
+                            
+                    # Box Layout per space
+                    BoxLayout:
+                        size_hint: 1, 0.05
+
                 BoxLayout:
                     id: StockPerformance
                     orientation: 'vertical'
@@ -137,6 +325,44 @@
                             size: self.size
                             radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
 
+                    BoxLayout:
+                        size_hint: 1, 0.05
+        
+                    # Box Layout per image
+                    RelativeLayout:
+                        pos_hint: {'x': 0.6}
+                        size_hint: 0.2, 0.3
+
+                        Image:
+                            source: './images/button/stocks.png'
+                    
+                    # Box Layout per info
+                    BoxLayout:
+                        size_hint: 1, 0.4
+                        orientation: 'vertical'
+
+                        Label:
+                            pos_hint: {'x' : 0.1}
+                            text: 'STOCKS'
+                            text_size: self.width, None
+                            size: self.texture_size
+                            font_name: 'Candarab'
+                            font_size: 20
+                            
+                        Label:
+                            pos_hint: {'x' : 0.1}
+                            text: '1400 $'
+                            color: 0,1,0,1
+                            text_size: self.width, None
+                            size: self.texture_size
+                            font_name: 'Candara'
+                            font_size: 35
+                            
+                    # Box Layout per space
+                    BoxLayout:
+                        size_hint: 1, 0.05
+
+
                 BoxLayout:
                     id: BondPerformance
                     orientation: 'vertical'
@@ -149,6 +375,43 @@
                             pos: self.pos
                             size: self.size
                             radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+                    
+                    BoxLayout:
+                        size_hint: 1, 0.05
+        
+                    # Box Layout per image
+                    RelativeLayout:
+                        pos_hint: {'x': 0.6}
+                        size_hint: 0.2, 0.3
+
+                        Image:
+                            source: './images/button/bonds.png'
+                    
+                    # Box Layout per info
+                    BoxLayout:
+                        size_hint: 1, 0.4
+                        orientation: 'vertical'
+
+                        Label:
+                            pos_hint: {'x' : 0.1}
+                            text: 'BONDS'
+                            text_size: self.width, None
+                            size: self.texture_size
+                            font_name: 'Candarab'
+                            font_size: 20
+                            
+                        Label:
+                            pos_hint: {'x' : 0.1}
+                            text: '- 145 $'
+                            color: 1,0,0,1
+                            text_size: self.width, None
+                            size: self.texture_size
+                            font_name: 'Candara'
+                            font_size: 35
+                            
+                    # Box Layout per space
+                    BoxLayout:
+                        size_hint: 1, 0.05
 
                 BoxLayout:
                     id: CommodityPerformance
@@ -190,7 +453,7 @@
                             
                         Label:
                             pos_hint: {'x' : 0.1}
-                            text: ' - 356 $'
+                            text: '- 356 $'
                             color: 1,0,0,1
                             text_size: self.width, None
                             size: self.texture_size
@@ -278,6 +541,68 @@
                         size: self.size
                         radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
 
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint: 0.5, 1
+                    id: AssetAllocationBoxLayout
+
+                    Image:
+                        id: GraphPortfolioAllocation
+                        size:  self.size
+            
+                # Scroll View dashboard
+                ScrollView:
+                    id: AssetAllocationScreenView
+                    size_hint: 0.5, 1
+
+                    # Box containing assets distribution
+                    BoxLayout:
+                        id: AssetAllocationBoxInScrollView
+                        orientation: 'vertical'
+                        size_hint: 1, None
+                        height: self.minimum_height
+                        padding: ("20dp", "20dp", "20dp", "20dp")
+                        spacing: "0dp"
+                        
+                        # First children containg the table title
+                        BoxLayout:
+                            orientation: 'horizontal'
+                            size_hint: 1, None
+                            height: "40dp"
+
+                            Label:
+                                size_hint: 0.4, None
+                                font_name: 'Candarab'
+                                font_size: 20
+                                height: "40dp" 
+                                text: 'CLASS NAME'
+
+                            Label:
+                                size_hint: 0.3, None
+                                font_name: 'Candarab'
+                                font_size: 20
+                                height: "40dp" 
+                                text: 'LAST'
+
+                            Label:
+                                size_hint: 0.3, None
+                                font_name: 'Candarab'
+                                font_size: 20
+                                height: "40dp" 
+                                text: 'ACTUAL'
+
+                        BoxLayout:
+                            orientation: 'vertical'
+                            size_hint: 1, None
+                            height: "2dp"
+
+                            canvas.before:
+                                Color:
+                                    rgba: 1,1,1,1     
+                                Rectangle:
+                                    pos: self.pos
+                                    size: self.size
+
             Label:
                 text: 'Asset distribution'
                 text_size: self.width, None
@@ -300,4 +625,74 @@
                         pos: self.pos
                         size: self.size
                         radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+                
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint: 0.5, 1
+                    id: AssetAllocationBoxLayout
+
+                    Image:
+                        id: GraphAssetAllocation
+                        size:  self.size
+            
+                # Scroll View dashboard
+                ScrollView:
+                    id: AssetAllocationScreenView
+                    size_hint: 0.5, 1
+
+                    # Box containing assets distribution
+                    BoxLayout:
+                        id: AssetAllocationBoxInScrollView
+                        orientation: 'vertical'
+                        size_hint: 1, None
+                        height: self.minimum_height
+                        padding: ("20dp", "20dp", "20dp", "20dp")
+                        spacing: "0dp"
+                        
+                        # First children containg the table title
+                        BoxLayout:
+                            orientation: 'horizontal'
+                            size_hint: 1, None
+                            height: "40dp"
+
+                            Label:
+                                size_hint: 0.4, None
+                                font_name: 'Candarab'
+                                font_size: 20
+                                height: "40dp" 
+                                text: 'CLASS NAME'
+
+                            Label:
+                                size_hint: 0.3, None
+                                font_name: 'Candarab'
+                                font_size: 20
+                                height: "40dp" 
+                                text: 'LAST'
+
+                            Label:
+                                size_hint: 0.3, None
+                                font_name: 'Candarab'
+                                font_size: 20
+                                height: "40dp" 
+                                text: 'ACTUAL'
+
+                        BoxLayout:
+                            orientation: 'vertical'
+                            size_hint: 1, None
+                            height: "2dp"
+
+                            canvas.before:
+                                Color:
+                                    rgba: 1,1,1,1     
+                                Rectangle:
+                                    pos: self.pos
+                                    size: self.size
+                        
+                        BoxLayout:
+                            id: AssetAllocationTable
+                            orientation: 'vertical'
+                            size_hint: 1, None
+                            height: self.minimum_height
+                            padding: ("20dp", "20dp", "20dp", "20dp")
+                            spacing: "20dp"
 
