@@ -15,8 +15,6 @@ class TransactionScreen(Screen):
         self.TransactionOut_DBManager = jsonList_manager.JsonManagerList_Class(jsonList_manager.path_manager.database_path,jsonList_manager.path_manager.TransactionOut_path)
 
     def UpdateScreen(self):
-        # self.Update_TransactionInBoxLayout()
-        # self.Update_TransactionOutBoxLayout()
         self.ids.GraphTransactionOut.source = 'images/Support/AssetsInPortfolio.png'
         self.ids.GraphTransactionOut.reload()
 

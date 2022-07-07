@@ -11,10 +11,6 @@ from kivy.uix.label import Label
 class DashboardScreen(Screen):
     def __init__(self,**kwargs):
         super().__init__(**kwargs)
-        # Initialize the manager of the json manager
-        self.InFlow_DBManager = json_manager.JsonManager_Class(json_manager.path_manager.database_path,json_manager.path_manager.Inflow_path)
-        self.Expences_DBManager = json_manager.JsonManager_Class(json_manager.path_manager.database_path,json_manager.path_manager.Expences_path)
-        self.Earnings_DBManager = json_manager.JsonManager_Class(json_manager.path_manager.database_path,json_manager.path_manager.Income_path)
     
     # Function to call when the screen is changed to Dashboard
     def UpdateScreen(self):

@@ -1,5 +1,5 @@
 from Packages.CustomFunction.CustomFunction import ReturnJsonPathGivenScreenName
-from Packages.CustomFunction.AssetInPortfolioGraph import UpdateDashboardAsset
+from Packages.CustomFunction.AssetDistributionGraph import AssetDistributionGraph
 import Packages.CustomItem.RemoveAssetPopup as RemoveAssetPopup
 import Packages.CustomItem.AddAssetPopup as AddAssetPopup
 import Packages.CustomItem.CustomGraphicItem as cst_item
@@ -250,7 +250,7 @@ class AssetsScreen(Screen):
             ListOfAssetsValue.append(JsonFile[self.PortfolioName]['Assets'][Asset]['Statistics']['TotalValue'])
 
         # Update image
-        return UpdateDashboardAsset(ListOfAssets, ListOfAssetsValue)
+        return AssetDistributionGraph(ListOfAssets, ListOfAssetsValue, 'AssetsInPortfolio')
 
     # The function updates the allocation table to compare the two allocation.
     # Future allocation will allow the user to reallocate with or without additional capital

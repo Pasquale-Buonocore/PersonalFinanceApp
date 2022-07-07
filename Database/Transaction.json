@@ -1,0 +1,34 @@
+{
+      "IN": {
+            "Assets": {
+                  "Stipendio": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalAmount": 5
+                        }
+                  }
+            },
+            "Statistics": {
+                  "Currency": "\u20ac",
+                  "TotalValue": 0,
+                  "ActualAssetAllocation": {},
+                  "DesiredAssetAllocation": {}
+            }
+      },
+      "OUT": {
+            "Assets": {
+                  "Bollette": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalAmount": 10
+                        }
+                  }
+            },
+            "Statistics": {
+                  "Currency": "\u20ac",
+                  "TotalValue": 0,
+                  "ActualAssetAllocation": {},
+                  "DesiredAssetAllocation": {}
+            }
+      }
+}
