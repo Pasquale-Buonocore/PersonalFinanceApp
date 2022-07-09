@@ -16,7 +16,7 @@
             size_hint: 1, None
             height: self.minimum_height
             padding: ("50dp", "10dp", "50dp", "50dp")
-            spacing: "20dp"
+            spacing: "0dp"
 
             ##############################
             #      TRANSACTION LIST      #
@@ -26,7 +26,7 @@
                 orientation: 'horizontal'
                 size_hint: 1, None
                 height: self.minimum_height
-                padding: ("0dp", "20dp", "0dp", "0dp")
+                padding: ("0dp", "30dp", "0dp", "30dp")
                 spacing: "20dp"
 
                 Button:
@@ -59,7 +59,7 @@
                     size_hint: 0.15, None
                     height: "40dp" 
                     background_color: 0,0,0,0
-                    on_release: root.AddNewAssetPopup()
+                    on_release: root.OpenAddTransactionPopup()
                     font_name: 'Candarab'
                     font_size: 16
                     canvas.before:
@@ -69,3 +69,72 @@
                             pos: self.pos
                             size: self.size
                             radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+            ##########################
+            # TRANSACTION BOX LAYOUT #
+            ##########################
+            BoxLayout:
+                orientation: 'vertical'
+                id: TransactionBoxLayout
+                size_hint: 1, None
+                height: self.minimum_height
+                spacing: "20dp"
+                padding: ("0dp", "20dp", "0dp", "20dp")
+
+                canvas.before:
+                    Color:
+                        rgba: 0.1,0.1,0.9,0.7 
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [(10, 10), (10, 10), (0, 0), (0, 0)]
+                
+                BoxLayout:
+                    id: Transaction_NameRow
+                    orientation: 'horizontal'
+                    size_hint: 1, None
+                    height: "15dp"
+
+                    Label: 
+                        text: 'DATE'
+                        size_hint: 0.15, 1
+                        font_name: PopupTitleFont
+                        font_size: 15
+                        
+                    Label: 
+                        text: 'AMOUNT'
+                        size_hint: 0.15, 1
+                        font_name: PopupTitleFont
+                        font_size: 15
+
+                    Label: 
+                        text: 'DESCRIPTION'
+                        size_hint: 0.3, 1
+                        font_name: PopupTitleFont
+                        font_size: 15
+
+                    Label: 
+                        text: 'CATEGORY'
+                        size_hint: 0.15, 1
+                        font_name: PopupTitleFont
+                        font_size: 15
+
+                    Label: 
+                        text: 'PAID WITH'
+                        size_hint: 0.15, 1
+                        font_name: PopupTitleFont
+                        font_size: 15
+
+                    Label: 
+                        text: 'ACTIONS'
+                        size_hint: 0.1, 1
+                        font_name: PopupTitleFont
+                        font_size: 15
+            
+            BoxLayout:
+                id: AssetsTransactionHeader
+                orientation: 'vertical'
+                size_hint: 1, None
+                spacing: "0dp"
+                height: self.minimum_height
+            

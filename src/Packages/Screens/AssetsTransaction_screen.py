@@ -115,10 +115,10 @@ class AssetsTransactionScreen(Screen):
         # Get the necessary information from the AssetDictionary
         GraphicToReturn = RelativeLayout()
         GraphicToReturn.size_hint = [1, None]
-        GraphicToReturn.height = "120dp"
+        GraphicToReturn.height = "70dp"
 
         # Add the button with its canvas at base
-        GraphicToReturn.add_widget(cst_item.EmptyPortfolioButton(size_x = textsize))
+        GraphicToReturn.add_widget(cst_item.EmptyTransactionButton(size_x = textsize))
 
         # Add AssetName label - First initialize the dict
         label_params = {}

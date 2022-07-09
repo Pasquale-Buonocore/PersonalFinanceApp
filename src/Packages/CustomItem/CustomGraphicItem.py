@@ -144,6 +144,15 @@ class EmptyPortfolioButton(Button):
             Color(0.1,0.1,0.1,0.8)
             self.shape = RoundedRectangle(size = canvas_size, radius = [(10, 10), (10, 10), (10, 10), (10, 10)])
 
+class EmptyTransactionButton(Button):
+    # Initialize function
+    def __init__(self,**kwargs):
+        super(Button, self).__init__(size_hint = [1, None], height = "70dp", background_color = [0,0,0,0])
+        canvas_size = [kwargs['size_x'], super().height]    
+        with self.canvas.before:
+            Color(0.1,0.1,0.1,0.8)
+            self.shape = RoundedRectangle(size = canvas_size, radius = [(10, 10), (10, 10), (10, 10), (10, 10)])
+
 class ModifyRemoveButtonBox(BoxLayout):
     def __init__(self, Btn_size, box_pos_hint, ModifyPopup = '', RemovePopup = ''):
         super().__init__()

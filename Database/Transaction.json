@@ -5,7 +5,7 @@
                         "Transactions": {
                               "1": {
                                     "Date": "01/07/2022",
-                                    "Amount": "50",
+                                    "Amount": 50.0,
                                     "Currency": "\u20ac",
                                     "Category": "Stipendio",
                                     "Paid with": "UNICREDIT",
@@ -13,22 +13,13 @@
                               }
                         },
                         "Statistics": {
-                              "TotalAmount": 50
+                              "TotalAmount": 50.0
                         }
                   },
                   "Ripetizioni": {
-                        "Transactions": {
-                              "1": {
-                                    "Date": "01/07/2022",
-                                    "Amount": 30,
-                                    "Currency": "\u20ac",
-                                    "Category": "Ripetizioni",
-                                    "Paid with": "CONTANTI",
-                                    "Note": "RIPETIZIONI C++"
-                              }
-                        },
+                        "Transactions": {},
                         "Statistics": {
-                              "TotalAmount": 30
+                              "TotalAmount": 0.0
                         }
                   },
                   "Defi Elrond": {
@@ -40,11 +31,11 @@
             },
             "Statistics": {
                   "Currency": "\u20ac",
-                  "NumberOfTransaction": 2,
-                  "TotalValue": 90.0,
+                  "NumberOfTransaction": 1,
+                  "TotalValue": 60.0,
                   "ActualAssetAllocation": {
                         "Stipendio": 50.0,
-                        "Ripetizioni": 30.0,
+                        "Ripetizioni": 0.0,
                         "Defi Elrond": 10.0
                   },
                   "DesiredAssetAllocation": {

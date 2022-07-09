@@ -142,6 +142,7 @@ class PortfoliosManager_Class():
         Asset = {'Assets': {}}
 
         StatisticDict = {'Currency': str(PortfolioInitList[0])}
+        StatisticDict.update({'NumberOfTransaction' : int(0)})
         StatisticDict.update({'TotalValue' : int(PortfolioInitList[1])})
         StatisticDict.update({'ActualAssetAllocation' : {} })
         StatisticDict.update({'DesiredAssetAllocation' : {} })
@@ -405,18 +406,19 @@ class PortfoliosManager_Class():
         return TransactionDict 
 
     # Initialize transaction for the type income and outcome
-    def InitializeNewTransactionInOut(self):
+    def InitializeNewTransactionInOut(self, List):
 
         # Dict which will store all the statistics of such asset
-        TransactionDict = {'Date': ''}
-        TransactionDict.update({'Amout' : 0})
-        TransactionDict.update({'Currency' : 0})
-        TransactionDict.update({'Category' : 0})
-        TransactionDict.update({'Paid with' : 0})
-        TransactionDict.update({'Note' : 0})
+        TransactionDict = {'Date': List[0]}
+        TransactionDict.update({'Amount' : List[1]})
+        TransactionDict.update({'Currency' : List[2]})
+        TransactionDict.update({'Category' : List[3]})
+        TransactionDict.update({'Paid with' : List[4]})
+        TransactionDict.update({'Note' : List[5]})
 
         return TransactionDict
 
+    # Call the Update Asset Statistics for all asset
     def UpdateAllAssetStatistics(self, portfolio):
         # Read json
         json_object = self.ReadJson()
@@ -469,10 +471,31 @@ class PortfoliosManager_Class():
         # Once the asset statistics are updated, update the portfolio statistics
         self.UpdatePortfolioStatistics(PortfolioName)
     
+    # Update statistics for Asset in Transaction
+    def UpdateAssetInTransactionStatistics(self, PortfolioName, AssetName):
+        # Read json and get the number opf transaction for such Asset
+        json_object = self.ReadJson()
+        AssetDictTransaction = json_object[PortfolioName]['Assets'][AssetName]['Transactions']
+        AssetDictStatistics = json_object[PortfolioName]['Assets'][AssetName]['Statistics']
+
+        # Initialize Statistics Dict
+        AssetDictStatistics['TotalAmount'] = 0.0
+
+        # for all transaction in AssetName, update Total Amount
+        for transaction_num in AssetDictTransaction.keys():
+            AssetDictStatistics['TotalAmount'] += AssetDictTransaction[transaction_num]['Amount']
+
+        # Reupdates the asset statistics
+        json_object[PortfolioName]['Assets'][AssetName]['Statistics'] = AssetDictStatistics
+        self.SaveJsonFile(json_object)
+
+        self.UpdateTransactionPortfolio(PortfolioName)
+
     ###################################
     # PORTFOLIO STATISTICS MANAGEMENT #
     ################################### 
 
+    # Call the Update Portfolio Statistics for all asset
     def UpdateAllPortfolioStatistics(self):
         # Read json
         json_object = self.ReadJson()
@@ -502,3 +525,38 @@ class PortfoliosManager_Class():
 
         self.SaveJsonFile(json_object)
 
+    # Call the Update Portfolio Statistics for all transaction Portfolio
+    def UpdateAllTransactionPortfolioStatistics(self):
+        # Read json
+        json_object = self.ReadJson()
+
+        # Update
+        for Portfolio in  json_object.keys():
+            self.UpdateTransactionPortfolio(Portfolio)
+
+    # Update Portfolio of transaction
+    def UpdateTransactionPortfolio(self, Portfolio):
+        # Read json and get the number opf transaction for such Asset
+        json_object = self.ReadJson()
+
+        # I need to update:
+        # 1. Number of transaction
+        # 2. Total amount Spent/Earned
+        # 3. Update the actual allocation (not in %)
+        json_object[Portfolio]['Statistics']['NumberOfTransaction'] = 0
+        json_object[Portfolio]['Statistics']['TotalValue'] = 0
+        json_object[Portfolio]['Statistics']['ActualAssetAllocation'] = {}
+
+        for asset in json_object[Portfolio]['Assets'].keys():
+            # Update the total number of transaction
+            json_object[Portfolio]['Statistics']['NumberOfTransaction'] += int(len(json_object[Portfolio]['Assets'][asset]['Transactions']))
+
+            # Update the asset value to total value of the portfolio
+            json_object[Portfolio]['Statistics']['TotalValue'] += float(json_object[Portfolio]['Assets'][asset]['Statistics']['TotalAmount'])
+
+            # Append the total expence/earning for such category in the portfolio statistics
+            json_object[Portfolio]['Statistics']['ActualAssetAllocation'].update({asset : float(json_object[Portfolio]['Assets'][asset]['Statistics']['TotalAmount'])})
+
+            if asset not in json_object[Portfolio]['Statistics']['DesiredAssetAllocation'].keys(): json_object[Portfolio]['Statistics']['DesiredAssetAllocation'] .update({asset : 0})
+
+        self.SaveJsonFile(json_object)
