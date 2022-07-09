@@ -2,17 +2,56 @@
       "IN": {
             "Assets": {
                   "Stipendio": {
+                        "Transactions": {
+                              "1": {
+                                    "Date": "01/07/2022",
+                                    "Amount": "50",
+                                    "Currency": "\u20ac",
+                                    "Category": "Stipendio",
+                                    "Paid with": "UNICREDIT",
+                                    "Note": "STIPENDIO DA ITALSYSTEM"
+                              }
+                        },
+                        "Statistics": {
+                              "TotalAmount": 50
+                        }
+                  },
+                  "Ripetizioni": {
+                        "Transactions": {
+                              "1": {
+                                    "Date": "01/07/2022",
+                                    "Amount": 30,
+                                    "Currency": "\u20ac",
+                                    "Category": "Ripetizioni",
+                                    "Paid with": "CONTANTI",
+                                    "Note": "RIPETIZIONI C++"
+                              }
+                        },
+                        "Statistics": {
+                              "TotalAmount": 30
+                        }
+                  },
+                  "Defi Elrond": {
                         "Transactions": {},
                         "Statistics": {
-                              "TotalAmount": 5
+                              "TotalAmount": 10
                         }
                   }
             },
             "Statistics": {
                   "Currency": "\u20ac",
-                  "TotalValue": 0,
-                  "ActualAssetAllocation": {},
-                  "DesiredAssetAllocation": {}
+                  "NumberOfTransaction": 2,
+                  "TotalValue": 90.0,
+                  "ActualAssetAllocation": {
+                        "Stipendio": 50.0,
+                        "Ripetizioni": 30.0,
+                        "Defi Elrond": 10.0
+                  },
+                  "DesiredAssetAllocation": {
+                        "Stipendio": 0,
+                        "Ripetizioni": 0,
+                        "Defi Elrond": 0
+                  }
             }
       },
       "OUT": {
@@ -26,9 +65,14 @@
             },
             "Statistics": {
                   "Currency": "\u20ac",
-                  "TotalValue": 0,
-                  "ActualAssetAllocation": {},
-                  "DesiredAssetAllocation": {}
+                  "NumberOfTransaction": 0,
+                  "TotalValue": 10.0,
+                  "ActualAssetAllocation": {
+                        "Bollette": 10.0
+                  },
+                  "DesiredAssetAllocation": {
+                        "Bollette": 0
+                  }
             }
       }
 }
