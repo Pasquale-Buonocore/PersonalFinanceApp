@@ -15,7 +15,7 @@ class TransactionScreen(Screen):
         super().__init__(**kwargs)
 
         # Initialize the manager of the json manager
-        self.Transaction_DBManager = db_manager.PortfoliosManager_Class(db_manager.path_manager.database_path,db_manager.path_manager.Transaction_path)
+        self.DBManager = db_manager.PortfoliosManager_Class(db_manager.path_manager.database_path,db_manager.path_manager.Transaction_path)
         self.Image_path_manager = path_manager.PathImage_Class()
         self.CheckTransactionPortfolio()
 
@@ -25,10 +25,10 @@ class TransactionScreen(Screen):
 
     def UpdateScreen(self):
         # Update statistics for all portfolios
-        self.Transaction_DBManager.UpdateAllTransactionPortfolioStatistics()
+        self.DBManager.UpdateAllTransactionPortfolioStatistics()
 
         # Update graph for output and inpuy transaction
-        color_list = self.UpdateGraphs()
+        self.color_list = self.UpdateGraphs()
 
         # Assign the correct image of graphs
         self.ids.GraphTransactionIn.source = self.Image_path_manager.image_basepath + self.Image_path_manager.TransactionIn_imagepath + '.png'
@@ -39,7 +39,7 @@ class TransactionScreen(Screen):
         self.ids.GraphTransactionIn.reload()
 
         # Update tables
-        self.UpdateAssetAllocationTable(color_list = color_list)
+        self.UpdateAssetAllocationTable(color_list = self.color_list)
 
     ####################
     # CLASS MANAGEMENT #
@@ -49,29 +49,25 @@ class TransactionScreen(Screen):
     def CheckTransactionPortfolio(self):
         # Future update will consider the possibility to have multiple transaction portfolio
         for PortfolioName in ["IN", "OUT"]:
-            if PortfolioName not in self.Transaction_DBManager.ReadJson().keys():
-                NewPftl = self.Transaction_DBManager.InitializeTransactionPortfolio(PortfolioName, ['€', 0])
-                self.Transaction_DBManager.AddPortfolio(NewPftl)
+            if PortfolioName not in self.DBManager.ReadJson().keys():
+                NewPftl = self.DBManager.InitializeTransactionPortfolio(PortfolioName, ['€', 0])
+                self.DBManager.AddPortfolio(NewPftl)
 
     # Move to the transaction list
     def MoveToTransactionScreen(self, direction = 'IN'):
         ScreenManager = self.parent
         ScreenManager.current = 'TRANSACTION LIST'
-        ScreenManager.current_screen.UpdateScreen(portfolio = direction, Database = self.Transaction_DBManager)
+        ScreenManager.current_screen.UpdateScreen(portfolio = direction, Database = self.DBManager)
 
     # Open to popup which allows to see and modify the class of transaction
     def ModifyCategory(self, type = 'IN'):
         # Open the popup that will allow to Modify the category      
-        ModifyClassesPopup = trans_popup.TransactionCategoryListPopup(type)
+        ModifyClassesPopup = trans_popup.TransactionCategoryListPopup(transaction_type = type, DBManager = self.DBManager)
         ModifyClassesPopup.open()
-
-    # Populate allocation tables
-    def UpdateAllocationTables(self):
-        pass
 
     # Updates graph
     def UpdateGraphs(self):
-        Portfolios = self.Transaction_DBManager.ReadJson()
+        Portfolios = self.DBManager.ReadJson()
         color_list = []
         Image_path_list = [self.TransactionOutImagePath, self.TransactionInImagePath]
 
@@ -81,7 +77,7 @@ class TransactionScreen(Screen):
             ListOfAssetValuePass = []
 
             for Asset in ListOfAssetsPass:
-                ListOfAssetValuePass.append(Portfolios[type]['Assets'][Asset]['Statistics']['TotalAmount'])
+                ListOfAssetValuePass.append(Portfolios[type]['Assets'][Asset]['Statistics']['TotalValue'])
 
             color_list.append(AssetDistributionGraph(ListOfAssets = ListOfAssetsPass, ListOfAssetValue = ListOfAssetValuePass, image_name = Image_path_list.pop()))
 
@@ -91,7 +87,7 @@ class TransactionScreen(Screen):
     # The function updates the allocation table to compare the two allocation for both Transaction In and Transaction Out
     def UpdateAssetAllocationTable(self, color_list):
         # AssetAllocationTable is the box whose children are the row of the table
-        Json_File = self.Transaction_DBManager.ReadJson()
+        Json_File = self.DBManager.ReadJson()
 
         ColorToAppend = {'IN': color_list[0], 'OUT' : color_list[1]}
         TableToAppend = {'IN': 'TransactionInTable', 'OUT' : 'TransactionOutTable'}

@@ -96,40 +96,40 @@ class TransactionListScreen(Screen):
         # Add Date
         label_params = {}
         label_params.update({'text_size': [textsize, None]})
-        label_params.update({'pos_hint': {'x' : 0.05, 'y': 0.2}})
+        label_params.update({'pos_hint': {'x' : 0.045, 'y': 0}})
         label_params.update({'text': TransactionDict['Date'] })
         label_params.update({'font_name': 'Candarab'})
-        label_params.update({'font_size': 25})
+        label_params.update({'font_size': 20})
         label_params.update({'color': [1,1,1,1]})
         GraphicToReturn.add_widget(cst_item.TransactionLabel(lbl_parm = label_params))
 
         # Add Amount
-        label_params.update({'pos_hint': {'x' : 0.05, 'y': -0.2}})
+        label_params.update({'pos_hint': {'x' : 0.2, 'y': 0}})
         label_params.update({'text': str(TransactionDict['Amount']) + Currency})
-        label_params.update({'font_size': 25})
+        label_params.update({'font_size': 20})
         GraphicToReturn.add_widget(cst_item.TransactionLabel(lbl_parm = label_params))
 
         # Add Description
-        label_params.update({'pos_hint': {'x' : 0.25, 'y': 0}})
+        label_params.update({'pos_hint': {'x' : 0.36, 'y': 0}})
         label_params.update({'text': TransactionDict['Note']})
-        label_params.update({'font_size': 25})
+        label_params.update({'font_size': 20})
         GraphicToReturn.add_widget(cst_item.TransactionLabel(lbl_parm = label_params))
 
         # Add Category
-        label_params.update({'pos_hint': {'x' : 0.4, 'y': 0}})
+        label_params.update({'pos_hint': {'x' : 0.64, 'y': 0}})
         label_params.update({'text': TransactionDict['Category'] })
-        label_params.update({'font_size': 25})
+        label_params.update({'font_size': 20})
         GraphicToReturn.add_widget(cst_item.TransactionLabel(lbl_parm = label_params))
 
         # Add Paid with
-        label_params.update({'pos_hint': {'x' : 0.55, 'y': 0}})
+        label_params.update({'pos_hint': {'x' : 0.79, 'y': 0}})
         label_params.update({'text': str(TransactionDict['Paid with'])})
         label_params.update({'font_size': 20})
         GraphicToReturn.add_widget(cst_item.TransactionLabel(lbl_parm = label_params))
 
         # # Define remove button
         Btn_size = [GraphicToReturn.size[0]/2.5, GraphicToReturn.size[1]/2.5]
-        box_pos_hint = {'x' : 0.9, 'y': 0.5 - (Btn_size[1]/(2*GraphicToReturn.size[1])) }
+        box_pos_hint = {'x' : 0.92, 'y': 0.5 - (Btn_size[1]/(2*GraphicToReturn.size[1])) }
 
         ModifyPopup = TransInOut_Popup.AddTransactionInOutPopup(title_str = 'MODIFY TRANSACTION ' + self.portfolio, type = 'M', PortfolioName = self.portfolio, Database = self.DBManager, ItemToMod = {self.TransactionDictIndex: TransactionDict})
         RemovePopup = RemoveTransactionInOutPopup.RemoveTransactionInOutPopup(title_str = 'REMOVE TRANSACTION', PortfolioName = self.portfolio, AssetName = asset, TransactionIndex = Index, DBManager = self.DBManager, ManagerOfScreen = self )

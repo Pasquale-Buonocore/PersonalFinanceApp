@@ -34,4 +34,7 @@ def AssetDistributionGraph(ListOfAssets = [], ListOfAssetValue = [], image_name 
     plt.tight_layout()
     plt.savefig(PathManager.image_basepath + image_name + '.png', transparent = True)
 
+    fig.clear()
+    del fig
+
     return color

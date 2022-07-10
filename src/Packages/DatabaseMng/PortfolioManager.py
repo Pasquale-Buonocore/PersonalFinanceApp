@@ -236,7 +236,7 @@ class PortfoliosManager_Class():
         AssetTransaction = {'Transactions' : {}}
 
         # Dict which will store all the statistics of such asset
-        StatisticDict = {'TotalAmount': 0}
+        StatisticDict = {'TotalValue': 0}
         AssetStastitics = {'Statistics' : StatisticDict}
 
         # Update NewAsset
@@ -479,11 +479,11 @@ class PortfoliosManager_Class():
         AssetDictStatistics = json_object[PortfolioName]['Assets'][AssetName]['Statistics']
 
         # Initialize Statistics Dict
-        AssetDictStatistics['TotalAmount'] = 0.0
+        AssetDictStatistics['TotalValue'] = 0.0
 
         # for all transaction in AssetName, update Total Amount
         for transaction_num in AssetDictTransaction.keys():
-            AssetDictStatistics['TotalAmount'] += AssetDictTransaction[transaction_num]['Amount']
+            AssetDictStatistics['TotalValue'] += AssetDictTransaction[transaction_num]['Amount']
 
         # Reupdates the asset statistics
         json_object[PortfolioName]['Assets'][AssetName]['Statistics'] = AssetDictStatistics
@@ -552,10 +552,10 @@ class PortfoliosManager_Class():
             json_object[Portfolio]['Statistics']['NumberOfTransaction'] += int(len(json_object[Portfolio]['Assets'][asset]['Transactions']))
 
             # Update the asset value to total value of the portfolio
-            json_object[Portfolio]['Statistics']['TotalValue'] += float(json_object[Portfolio]['Assets'][asset]['Statistics']['TotalAmount'])
+            json_object[Portfolio]['Statistics']['TotalValue'] += float(json_object[Portfolio]['Assets'][asset]['Statistics']['TotalValue'])
 
             # Append the total expence/earning for such category in the portfolio statistics
-            json_object[Portfolio]['Statistics']['ActualAssetAllocation'].update({asset : float(json_object[Portfolio]['Assets'][asset]['Statistics']['TotalAmount'])})
+            json_object[Portfolio]['Statistics']['ActualAssetAllocation'].update({asset : float(json_object[Portfolio]['Assets'][asset]['Statistics']['TotalValue'])})
 
             if asset not in json_object[Portfolio]['Statistics']['DesiredAssetAllocation'].keys(): json_object[Portfolio]['Statistics']['DesiredAssetAllocation'] .update({asset : 0})
 

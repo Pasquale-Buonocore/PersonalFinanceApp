@@ -13,35 +13,44 @@
                               }
                         },
                         "Statistics": {
-                              "TotalAmount": 50.0
+                              "TotalValue": 50.0
                         }
                   },
                   "Ripetizioni": {
-                        "Transactions": {},
+                        "Transactions": {
+                              "1": {
+                                    "Date": "01/07/2022",
+                                    "Amount": 50.0,
+                                    "Currency": "\u20ac",
+                                    "Category": "Ripetizioni",
+                                    "Paid with": "CONTANTI",
+                                    "Note": "RIPETIZIONE MATEMATICA"
+                              }
+                        },
                         "Statistics": {
-                              "TotalAmount": 0.0
+                              "TotalValue": 50.0
                         }
                   },
                   "Defi Elrond": {
                         "Transactions": {},
                         "Statistics": {
-                              "TotalAmount": 10
+                              "TotalValue": 0
                         }
                   }
             },
             "Statistics": {
                   "Currency": "\u20ac",
-                  "NumberOfTransaction": 1,
-                  "TotalValue": 60.0,
+                  "NumberOfTransaction": 2,
+                  "TotalValue": 100.0,
                   "ActualAssetAllocation": {
                         "Stipendio": 50.0,
-                        "Ripetizioni": 0.0,
-                        "Defi Elrond": 10.0
+                        "Ripetizioni": 50.0,
+                        "Defi Elrond": 0.0
                   },
                   "DesiredAssetAllocation": {
-                        "Stipendio": 0,
-                        "Ripetizioni": 0,
-                        "Defi Elrond": 0
+                        "Stipendio": 1700,
+                        "Ripetizioni": 100,
+                        "Defi Elrond": 50
                   }
             }
       },
@@ -50,7 +59,31 @@
                   "Bollette": {
                         "Transactions": {},
                         "Statistics": {
-                              "TotalAmount": 10
+                              "TotalValue": 10
+                        }
+                  },
+                  "Benzina": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  },
+                  "Alimenti": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  },
+                  "Regali": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  },
+                  "Uscite Fuori": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
                         }
                   }
             },
@@ -59,10 +92,18 @@
                   "NumberOfTransaction": 0,
                   "TotalValue": 10.0,
                   "ActualAssetAllocation": {
-                        "Bollette": 10.0
+                        "Bollette": 10.0,
+                        "Benzina": 0.0,
+                        "Alimenti": 0.0,
+                        "Regali": 0.0,
+                        "Uscite Fuori": 0.0
                   },
                   "DesiredAssetAllocation": {
-                        "Bollette": 0
+                        "Bollette": 100,
+                        "Benzina": 120,
+                        "Alimenti": 5,
+                        "Regali": 50,
+                        "Uscite Fuori": 50
                   }
             }
       }

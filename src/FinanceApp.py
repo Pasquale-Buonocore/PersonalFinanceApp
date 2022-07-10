@@ -29,6 +29,7 @@ from kivy.uix.screenmanager import Screen, ScreenManager
 from kivy.uix.stacklayout import StackLayout
 from kivy.uix.boxlayout import BoxLayout
 from kivy.core.window import Window
+from kivymd.app import MDApp
 from kivy.app import App
 
 ################################################
@@ -55,7 +56,7 @@ class SettingLayout(StackLayout):
 ############
 
 # With the build function we declare the root app
-class FinanceApp(App):
+class FinanceApp(MDApp):
 
     def build(self):
         #-- center the window

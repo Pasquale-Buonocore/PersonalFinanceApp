@@ -45,21 +45,21 @@
                     Label:
                         size_hint: 0.4, None
                         font_name: 'Candarab'
-                        font_size: 15
+                        font_size: 20
                         height: "20dp" 
                         text: 'Name'
 
                     Label:
                         size_hint: 0.3, None
                         font_name: 'Candarab'
-                        font_size: 15
+                        font_size: 20
                         height: "20dp" 
                         text: 'Desired'
 
                     Label:
                         size_hint: 0.3, None
                         font_name: 'Candarab'
-                        font_size: 15
+                        font_size: 20
                         height: "20dp" 
                         text: 'Action'
                 
@@ -76,11 +76,11 @@
                             size: self.size
 
                 BoxLayout:
-                    id: ClassesTable
+                    id: ClassesTableElements
                     orientation: 'vertical'
                     size_hint: 1, None
                     height: self.minimum_height
-                    padding: ("20dp", "20dp", "20dp", "20dp")
+                    padding: ("0dp", "20dp", "0dp", "20dp")
                     spacing: "20dp"
 
         BoxLayout:
@@ -89,21 +89,41 @@
             size_hint: 1, 0.2
             pos_hint: {'x': 0, 'y': 1}
 
-            Button:
-                background_color: 0,0,0,0
-                canvas.before:
-                    Color:
-                        rgba: 0.1,0.1,0.9,0.7
-                    RoundedRectangle:
-                        pos: self.pos
-                        size: self.size
-                        radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+            BoxLayout:
+                orientation: 'horizontal'
+                spacing: "10dp"
+                
+                Button:
+                    background_color: 0,0,0,0
+                    canvas.before:
+                        Color:
+                            rgba: 0.1,0.1,0.9,0.7
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
 
-                id: Confirm
-                font_name: PopupTitleFont
-                font_size: PopupInnerSize
-                text:'Confirm'
-                on_release: root.Confirm(app)
+                    id: AddNewClass
+                    font_name: PopupTitleFont
+                    font_size: PopupInnerSize
+                    text:'Add New'
+                    on_release: root.AddNewClass()
+
+                Button:
+                    background_color: 0,0,0,0
+                    canvas.before:
+                        Color:
+                            rgba: 0.1,0.1,0.9,0.7
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+                    id: Confirm
+                    font_name: PopupTitleFont
+                    font_size: PopupInnerSize
+                    text:'Confirm'
+                    on_release: root.Confirm(app)
 
             Button:
                 background_color: 0,0,0,0
