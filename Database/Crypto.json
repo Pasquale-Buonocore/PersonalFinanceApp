@@ -1,5 +1,5 @@
 {
-      "LONG TERM PAC": {
+      "MAIN": {
             "Assets": {
                   "BITCOIN": {
                         "Transactions": {
@@ -242,7 +242,7 @@
                   }
             }
       },
-      "AIRDROPS": {
+      "COSMOS ECOSYSTEM": {
             "Assets": {
                   "EVMOS": {
                         "Transactions": {
@@ -368,7 +368,7 @@
                   }
             }
       },
-      "STABLE COINS": {
+      "STABLECOINS": {
             "Assets": {
                   "TETHER": {
                         "Transactions": {
@@ -423,6 +423,139 @@
                   "DesiredAssetAllocation": {
                         "TETHER": 0,
                         "USD CIRCLE": 0
+                  }
+            }
+      },
+      "GAMBLING": {
+            "Assets": {
+                  "CONSTELLATION": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "Quantity": 0,
+                              "Symbol": "DAG",
+                              "CurrentPrice": 5,
+                              "AveragePrice": 0,
+                              "TotalValue": 0.0,
+                              "TotalProfit": 0
+                        }
+                  },
+                  "VERASITY": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "Quantity": 0,
+                              "Symbol": "VRA",
+                              "CurrentPrice": 5,
+                              "AveragePrice": 0,
+                              "TotalValue": 0.0,
+                              "TotalProfit": 0
+                        }
+                  }
+            },
+            "Statistics": {
+                  "Currency": "$",
+                  "TotalValue": 0.0,
+                  "NumberOfAssets": 2,
+                  "TotalProfit": 0,
+                  "ActualAssetAllocation": {
+                        "CONSTELLATION": 0.0,
+                        "VERASITY": 0.0
+                  },
+                  "DesiredAssetAllocation": {
+                        "CONSTELLATION": 0,
+                        "VERASITY": 0
+                  }
+            }
+      },
+      "EXCHANGE": {
+            "Assets": {
+                  "BINANCE COIN": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "Quantity": 0,
+                              "Symbol": "BNB",
+                              "CurrentPrice": 5,
+                              "AveragePrice": 0,
+                              "TotalValue": 0.0,
+                              "TotalProfit": 0
+                        }
+                  },
+                  "FTX COIN": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "Quantity": 0,
+                              "Symbol": "FTX",
+                              "CurrentPrice": 5,
+                              "AveragePrice": 0,
+                              "TotalValue": 0.0,
+                              "TotalProfit": 0
+                        }
+                  }
+            },
+            "Statistics": {
+                  "Currency": "$",
+                  "TotalValue": 0.0,
+                  "NumberOfAssets": 2,
+                  "TotalProfit": 0,
+                  "ActualAssetAllocation": {
+                        "BINANCE COIN": 0.0,
+                        "FTX COIN": 0.0
+                  },
+                  "DesiredAssetAllocation": {
+                        "BINANCE COIN": 0,
+                        "FTX COIN": 0
+                  }
+            }
+      },
+      "WEB 3 INFRA": {
+            "Assets": {
+                  "FILECOIN": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "Quantity": 0,
+                              "Symbol": "FIL",
+                              "CurrentPrice": 5,
+                              "AveragePrice": 0,
+                              "TotalValue": 0.0,
+                              "TotalProfit": 0
+                        }
+                  },
+                  "HELIUM": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "Quantity": 0,
+                              "Symbol": "HNT",
+                              "CurrentPrice": 5,
+                              "AveragePrice": 0,
+                              "TotalValue": 0.0,
+                              "TotalProfit": 0
+                        }
+                  },
+                  "VECHAIN": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "Quantity": 0,
+                              "Symbol": "VET",
+                              "CurrentPrice": 5,
+                              "AveragePrice": 0,
+                              "TotalValue": 0.0,
+                              "TotalProfit": 0
+                        }
+                  }
+            },
+            "Statistics": {
+                  "Currency": "$",
+                  "TotalValue": 0.0,
+                  "NumberOfAssets": 3,
+                  "TotalProfit": 0,
+                  "ActualAssetAllocation": {
+                        "FILECOIN": 0.0,
+                        "HELIUM": 0.0,
+                        "VECHAIN": 0.0
+                  },
+                  "DesiredAssetAllocation": {
+                        "FILECOIN": 0,
+                        "HELIUM": 0,
+                        "VECHAIN": 0
                   }
             }
       }
