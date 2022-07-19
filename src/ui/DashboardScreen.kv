@@ -3,7 +3,7 @@
 
 <DashboardScreen>:
     id: DashboardScreen
-    name: DashboardScreenName
+    name: app.Configuration.GetElementValue('ScreenNameDictionary')["DashboardScreenName"]
     
     # Scroll View
     ScrollView:
@@ -15,8 +15,7 @@
             orientation: 'vertical'
             size_hint: 1, None
             height: self.minimum_height
-            padding: ("50dp", "50dp", "50dp", "50dp")
-            spacing: "40dp"
+            spacing: "20dp"
 
             # First row containg Personal information and mounth resume
             BoxLayout:
@@ -35,11 +34,11 @@
 
                     canvas:
                         Color:
-                            rgba: canvas_r,canvas_g,canvas_b,canvas_opacity
+                            rgba: app.Configuration.GetElementValue('CanvasBackgroundColor') 
                         RoundedRectangle:
                             pos: self.pos
                             size: self.size
-                            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+                            radius: [(app.Configuration.GetElementValue('DashboardBoxCanvasRadius'), app.Configuration.GetElementValue('DashboardBoxCanvasRadius')), ( app.Configuration.GetElementValue('DashboardBoxCanvasRadius'), app.Configuration.GetElementValue('DashboardBoxCanvasRadius')), ( app.Configuration.GetElementValue('DashboardBoxCanvasRadius'), app.Configuration.GetElementValue('DashboardBoxCanvasRadius')) ,( app.Configuration.GetElementValue('DashboardBoxCanvasRadius'), app.Configuration.GetElementValue('DashboardBoxCanvasRadius'))]
                     
                     BoxLayout:
                         size_hint: 1, 0.1
@@ -97,11 +96,11 @@
                         spacing: "10dp"
                         canvas:
                             Color:
-                                rgba: canvas_r,canvas_g,canvas_b,canvas_opacity
+                                rgba: app.Configuration.GetElementValue('CanvasBackgroundColor') 
                             RoundedRectangle:
                                 pos: self.pos
                                 size: self.size
-                                radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+                                radius: [(app.Configuration.GetElementValue('DashboardBoxCanvasRadius'), app.Configuration.GetElementValue('DashboardBoxCanvasRadius')), ( app.Configuration.GetElementValue('DashboardBoxCanvasRadius'), app.Configuration.GetElementValue('DashboardBoxCanvasRadius')), ( app.Configuration.GetElementValue('DashboardBoxCanvasRadius'), app.Configuration.GetElementValue('DashboardBoxCanvasRadius')) ,( app.Configuration.GetElementValue('DashboardBoxCanvasRadius'), app.Configuration.GetElementValue('DashboardBoxCanvasRadius'))]
 
                                             # Box Layout per space
                         BoxLayout:
@@ -149,11 +148,11 @@
                         spacing: "10dp"
                         canvas:
                             Color:
-                                rgba: canvas_r,canvas_g,canvas_b,canvas_opacity
+                                rgba: app.Configuration.GetElementValue('CanvasBackgroundColor') 
                             RoundedRectangle:
                                 pos: self.pos
                                 size: self.size
-                                radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+                                radius: [(app.Configuration.GetElementValue('DashboardBoxCanvasRadius'), app.Configuration.GetElementValue('DashboardBoxCanvasRadius')), ( app.Configuration.GetElementValue('DashboardBoxCanvasRadius'), app.Configuration.GetElementValue('DashboardBoxCanvasRadius')), ( app.Configuration.GetElementValue('DashboardBoxCanvasRadius'), app.Configuration.GetElementValue('DashboardBoxCanvasRadius')) ,( app.Configuration.GetElementValue('DashboardBoxCanvasRadius'), app.Configuration.GetElementValue('DashboardBoxCanvasRadius'))]
                         
                         # Box Layout per space
                         BoxLayout:
@@ -195,330 +194,6 @@
                             size_hint: 1, 0.05
 
             Label:
-                text: 'Month variations'
-                text_size: self.width, None
-                size: self.texture_size
-                font_name: 'Candarab'
-                font_size: 28
-
-            # Second row containg Personal information and mounth resume
-            BoxLayout:
-                orientation: 'horizontal'
-                id: SecondBoxLayout
-                size_hint: 1, None
-                height: "200dp"
-                spacing: "20dp"
-                padding: ("0dp", "0dp", "0dp", "0dp")
-
-                BoxLayout:
-                    id: CashPerformance
-                    orientation: 'vertical'
-                    size_hint: 0.17, 1
-                    spacing: "10dp"
-                    canvas:
-                        Color:
-                            rgba: canvas_r,canvas_g,canvas_b,canvas_opacity
-                        RoundedRectangle:
-                            pos: self.pos
-                            size: self.size
-                            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
-                    
-                    # Box Layout per space
-                    BoxLayout:
-                        size_hint: 1, 0.05
-        
-                    # Box Layout per image
-                    RelativeLayout:
-                        pos_hint: {'x': 0.6}
-                        size_hint: 0.2, 0.3
-
-                        Image:
-                            source: './images/button/cash.png'
-                    
-                    # Box Layout per info
-                    BoxLayout:
-                        size_hint: 1, 0.4
-                        orientation: 'vertical'
-
-                        Label:
-                            pos_hint: {'x' : 0.1}
-                            text: 'CASH'
-                            text_size: self.width, None
-                            size: self.texture_size
-                            font_name: 'Candarab'
-                            font_size: 20
-                            
-                        Label:
-                            pos_hint: {'x' : 0.1}
-                            id: CryptoValue
-                            text: '100 $'
-                            color: 0,1,0,1
-                            text_size: self.width, None
-                            size: self.texture_size
-                            font_name: 'Candara'
-                            font_size: 35
-
-                    # Box Layout per space
-                    BoxLayout:
-                        size_hint: 1, 0.05
-
-                BoxLayout:
-                    id: ETFPerformance
-                    orientation: 'vertical'
-                    size_hint: 0.17, 1
-                    spacing: "10dp"
-                    canvas:
-                        Color:
-                            rgba: canvas_r,canvas_g,canvas_b,canvas_opacity
-                        RoundedRectangle:
-                            pos: self.pos
-                            size: self.size
-                            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
-
-                    BoxLayout:
-                        size_hint: 1, 0.05
-        
-                    # Box Layout per image
-                    RelativeLayout:
-                        pos_hint: {'x': 0.6}
-                        size_hint: 0.2, 0.3
-
-                        Image:
-                            source: './images/button/etf - etc.png'
-                    
-                    # Box Layout per info
-                    BoxLayout:
-                        size_hint: 1, 0.4
-                        orientation: 'vertical'
-
-                        Label:
-                            pos_hint: {'x' : 0.1}
-                            text: 'ETF - ETC'
-                            text_size: self.width, None
-                            size: self.texture_size
-                            font_name: 'Candarab'
-                            font_size: 20
-                            
-                        Label:
-                            pos_hint: {'x' : 0.1}
-                            text: '800 $'
-                            color: 0,1,0,1
-                            text_size: self.width, None
-                            size: self.texture_size
-                            font_name: 'Candara'
-                            font_size: 35
-                            
-                    # Box Layout per space
-                    BoxLayout:
-                        size_hint: 1, 0.05
-
-                BoxLayout:
-                    id: StockPerformance
-                    orientation: 'vertical'
-                    size_hint: 0.17, 1
-                    spacing: "10dp"
-                    canvas:
-                        Color:
-                            rgba: canvas_r,canvas_g,canvas_b,canvas_opacity
-                        RoundedRectangle:
-                            pos: self.pos
-                            size: self.size
-                            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
-
-                    BoxLayout:
-                        size_hint: 1, 0.05
-        
-                    # Box Layout per image
-                    RelativeLayout:
-                        pos_hint: {'x': 0.6}
-                        size_hint: 0.2, 0.3
-
-                        Image:
-                            source: './images/button/stocks.png'
-                    
-                    # Box Layout per info
-                    BoxLayout:
-                        size_hint: 1, 0.4
-                        orientation: 'vertical'
-
-                        Label:
-                            pos_hint: {'x' : 0.1}
-                            text: 'STOCKS'
-                            text_size: self.width, None
-                            size: self.texture_size
-                            font_name: 'Candarab'
-                            font_size: 20
-                            
-                        Label:
-                            pos_hint: {'x' : 0.1}
-                            text: '1400 $'
-                            color: 0,1,0,1
-                            text_size: self.width, None
-                            size: self.texture_size
-                            font_name: 'Candara'
-                            font_size: 35
-                            
-                    # Box Layout per space
-                    BoxLayout:
-                        size_hint: 1, 0.05
-
-
-                BoxLayout:
-                    id: BondPerformance
-                    orientation: 'vertical'
-                    size_hint: 0.17, 1
-                    spacing: "10dp"
-                    canvas:
-                        Color:
-                            rgba: canvas_r,canvas_g,canvas_b,canvas_opacity
-                        RoundedRectangle:
-                            pos: self.pos
-                            size: self.size
-                            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
-                    
-                    BoxLayout:
-                        size_hint: 1, 0.05
-        
-                    # Box Layout per image
-                    RelativeLayout:
-                        pos_hint: {'x': 0.6}
-                        size_hint: 0.2, 0.3
-
-                        Image:
-                            source: './images/button/bonds.png'
-                    
-                    # Box Layout per info
-                    BoxLayout:
-                        size_hint: 1, 0.4
-                        orientation: 'vertical'
-
-                        Label:
-                            pos_hint: {'x' : 0.1}
-                            text: 'BONDS'
-                            text_size: self.width, None
-                            size: self.texture_size
-                            font_name: 'Candarab'
-                            font_size: 20
-                            
-                        Label:
-                            pos_hint: {'x' : 0.1}
-                            text: '- 145 $'
-                            color: 1,0,0,1
-                            text_size: self.width, None
-                            size: self.texture_size
-                            font_name: 'Candara'
-                            font_size: 35
-                            
-                    # Box Layout per space
-                    BoxLayout:
-                        size_hint: 1, 0.05
-
-                BoxLayout:
-                    id: CommodityPerformance
-                    orientation: 'vertical'
-                    size_hint: 0.17, 1
-                    spacing: "10dp"
-                    canvas:
-                        Color:
-                            rgba: canvas_r,canvas_g,canvas_b,canvas_opacity
-                        RoundedRectangle:
-                            pos: self.pos
-                            size: self.size
-                            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
-                                        # Box Layout per space
-                    
-                    BoxLayout:
-                        size_hint: 1, 0.05
-        
-                    # Box Layout per image
-                    RelativeLayout:
-                        pos_hint: {'x': 0.6}
-                        size_hint: 0.2, 0.3
-
-                        Image:
-                            source: './images/button/commodities.png'
-                    
-                    # Box Layout per info
-                    BoxLayout:
-                        size_hint: 1, 0.4
-                        orientation: 'vertical'
-
-                        Label:
-                            pos_hint: {'x' : 0.1}
-                            text: 'COMMODITY'
-                            text_size: self.width, None
-                            size: self.texture_size
-                            font_name: 'Candarab'
-                            font_size: 20
-                            
-                        Label:
-                            pos_hint: {'x' : 0.1}
-                            text: '- 356 $'
-                            color: 1,0,0,1
-                            text_size: self.width, None
-                            size: self.texture_size
-                            font_name: 'Candara'
-                            font_size: 35
-                            
-                    # Box Layout per space
-                    BoxLayout:
-                        size_hint: 1, 0.05
-
-
-                BoxLayout:
-                    id: CryptoPerformance
-                    orientation: 'vertical'
-                    size_hint: 0.17, 1
-                    spacing: "10dp"
-
-                    canvas:
-                        Color:
-                            rgba: canvas_r,canvas_g,canvas_b,canvas_opacity
-                        RoundedRectangle:
-                            pos: self.pos
-                            size: self.size
-                            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
-
-                    # Box Layout per space
-                    BoxLayout:
-                        size_hint: 1, 0.05
-        
-                    # Box Layout per image
-                    RelativeLayout:
-                        pos_hint: {'x': 0.6}
-                        size_hint: 0.2, 0.3
-
-                        Image:
-                            source: './images/button/crypto.png'
-                    
-                    # Box Layout per info
-                    BoxLayout:
-                        size_hint: 1, 0.4
-                        orientation: 'vertical'
-
-                        Label:
-                            pos_hint: {'x' : 0.1}
-                            text: 'CRYPTO'
-                            text_size: self.width, None
-                            size: self.texture_size
-                            font_name: 'Candarab'
-                            font_size: 20
-                            
-                        Label:
-                            pos_hint: {'x' : 0.1}
-                            id: CryptoValue
-                            text: '2000 $'
-                            color: 0,1,0,1
-                            text_size: self.width, None
-                            size: self.texture_size
-                            font_name: 'Candara'
-                            font_size: 35
-
-                    # Box Layout per space
-                    BoxLayout:
-                        size_hint: 1, 0.05
-
-            Label:
                 text: 'Portfolio distribution'
                 text_size: self.width, None
                 size: self.texture_size
@@ -535,11 +210,11 @@
 
                 canvas:
                     Color:
-                        rgba: canvas_r,canvas_g,canvas_b,canvas_opacity
+                        rgba: app.Configuration.GetElementValue('CanvasBackgroundColor') 
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
-                        radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+                        radius: [(app.Configuration.GetElementValue('DashboardBoxCanvasRadius'), app.Configuration.GetElementValue('DashboardBoxCanvasRadius')), ( app.Configuration.GetElementValue('DashboardBoxCanvasRadius'), app.Configuration.GetElementValue('DashboardBoxCanvasRadius')), ( app.Configuration.GetElementValue('DashboardBoxCanvasRadius'), app.Configuration.GetElementValue('DashboardBoxCanvasRadius')) ,( app.Configuration.GetElementValue('DashboardBoxCanvasRadius'), app.Configuration.GetElementValue('DashboardBoxCanvasRadius'))]
 
                 BoxLayout:
                     orientation: 'vertical'
@@ -620,11 +295,11 @@
 
                 canvas:
                     Color:
-                        rgba: canvas_r,canvas_g,canvas_b,canvas_opacity
+                        rgba: app.Configuration.GetElementValue('CanvasBackgroundColor') 
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
-                        radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+                        radius: [(app.Configuration.GetElementValue('DashboardBoxCanvasRadius'), app.Configuration.GetElementValue('DashboardBoxCanvasRadius')), ( app.Configuration.GetElementValue('DashboardBoxCanvasRadius'), app.Configuration.GetElementValue('DashboardBoxCanvasRadius')), ( app.Configuration.GetElementValue('DashboardBoxCanvasRadius'), app.Configuration.GetElementValue('DashboardBoxCanvasRadius')) ,( app.Configuration.GetElementValue('DashboardBoxCanvasRadius'), app.Configuration.GetElementValue('DashboardBoxCanvasRadius'))]
                 
                 BoxLayout:
                     orientation: 'vertical'

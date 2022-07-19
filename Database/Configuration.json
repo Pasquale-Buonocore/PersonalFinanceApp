@@ -1,24 +1,25 @@
 {
-    "WindowBackgroundColor": [
-        0,
-        0,
-        0.075,
-        1
-    ],
-    "CanvasBackgroundColor": [
-        0.05,
-        0.05,
-        0.13,
-        1
-    ],
-    "TransparentBackgroundColor": [
-        0,
-        0,
-        0,
-        0
-    ],
+    "WindowBackgroundColor": [0, 0, 0.1, 1],
+    "CanvasBackgroundColor": [0.05, 0.05, 0.2, 1],
+    "TransparentBackgroundColor": [0, 0, 0, 0],
+
     "LeftMenuTitleFontName": "Candara",
     "LeftMenuTitleFontSize": "14dp",
     "LeftMenuButtonFontName": "Candarab",
-    "LeftMenuButtonFontSize": "15dp"
+    "LeftMenuButtonFontSize": "15dp",
+
+    "MenuDataLayoutPadding": ["20dp","20dp","20dp","20dp"],
+    "MenuDataLayoutSpacing": "20dp",
+
+    "MenuLayoutSizeHint": [0.2, 1],
+    "MenuLayoutPadding": ["20dp","20dp","20dp","20dp"],
+    "MenuLayoutSpacing": "5dp",
+
+    "DataLayoutSizeHint": [0.8, 1],
+    "DataLayoutPadding": ["20dp","20dp","20dp","20dp"],
+    "DataLayoutSpacing": "5dp",
+
+    "MenuLayoutCanvasRadius": 30,
+    "ScreenNameDictionary": {"DashboardScreenName" : "DASHBOARD" },
+    "DashboardBoxCanvasRadius": 30
 }
