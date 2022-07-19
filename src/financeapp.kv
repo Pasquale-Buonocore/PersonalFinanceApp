@@ -6,13 +6,11 @@
 # CUSTOM  #
 ###########
 <CustomLabelMenu>:
-    # Sizes
     size_hint: 1, 0.03
     text_size: root.width, None
     size: self.texture_size
-    font_name: MenuLabelFond
-    font_size: MenuLabelSize
-    color: 0.6, 0.6, 0.6, 1
+    font_name: app.Configuration.GetElementValue('LeftMenuTitleFontName') 
+    font_size: app.Configuration.GetElementValue('LeftMenuTitleFontSize') 
 
 <CustomMenuButton>:
     canvas.after:
@@ -23,42 +21,14 @@
 
     text_size: root.width, None
     size: self.texture_size
-    font_name: MenuLabelFond
-    font_size: MenuLabelSize
-    background_color: 0,0,0,0
+    font_name: app.Configuration.GetElementValue('LeftMenuButtonFontName') 
+    font_size: app.Configuration.GetElementValue('LeftMenuButtonFontSize') 
+    background_color: app.Configuration.GetElementValue('TransparentBackgroundColor') 
     size_hint: 1, ButtonMenu_size_hint_y
 
 ##################
 # SETTING LAYOUT #
 ##################
-<SettingLayout>:
-    id: SettingLayout
-    size_hint: 1, 0.04
-
-    Label:
-        size_hint: 0.91, 1
-        text_size: root.width*0.91, None
-        halign: 'center'
-        
-        text: 'Welcome to your Personal Finance app'
-    
-    Button:
-        size_hint: 0.03, 1
-        pos_hint: 1, 1
-        text: '-'
-        on_release: root.minimize_window()
-    
-    Button:
-        size_hint: 0.03, 1
-        pos_hint: 1, 1
-        text: 'O'
-        on_release: root.restore_window()
-
-    Button:
-        size_hint: 0.03, 1
-        pos_hint: 1, 1
-        text: 'X'
-        on_release: app.stop()
 
 <MenuDataLayout@BoxLayout>:
     id: MenuDataLayout
@@ -68,7 +38,7 @@
     id: MenuDataLayout
     canvas.before:
         Color:
-            rgba: canvas_r,canvas_g,canvas_b,canvas_opacity
+            rgba: app.Configuration.GetElementValue('CanvasBackgroundColor') 
         RoundedRectangle:
             pos: self.pos
             size: self.size
@@ -153,12 +123,13 @@
     id: MainLayout
     orientation: 'vertical'
     canvas:
+        Color:
+            rgba: app.Configuration.GetElementValue('WindowBackgroundColor')
         Rectangle:
             pos: self.pos
             size: self.size
-            source: 'images/background/background.jpg'
+            # source: 'images/background/background.jpg'
 
-    # SettingLayout:
     MenuDataLayout:
         MenuLayout:
         ScreenManagerLayout:

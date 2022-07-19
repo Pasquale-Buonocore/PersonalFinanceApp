@@ -8,7 +8,8 @@ kivy.require('1.0.9')
 # IMPORTS FROM CUSTOM LIB #
 ###########################
 import Packages.Configuration.WinConfiguration as WinConf
-import Packages.DatabaseMng.PortfolioManager as db_manager
+from Packages.DatabaseMng.JsonManager import JsonManager_Class
+from Packages.DatabaseMng.PathManager import PathManager_Class
 import Packages.CustomItem.CustomPopup as cst_popup
 import Packages.CustomItem.CustomGraphicItem as cst_item
 from Packages.Screens.Dashboard_screen import *
@@ -39,17 +40,7 @@ from kivy.app import App
 class MainLayout(BoxLayout):
     def __init__(self,**kwargs):
         super().__init__(**kwargs)
-        self.GLOBALS = {'ActiveScreen' : 'DASHBOARD'}
-
-###################################
-# Contains the Setting bar on top #
-###################################
-class SettingLayout(StackLayout):
-    def minimize_window(self):
-        Window.minimize()
     
-    def restore_window(self):
-        WinConf.SetWindowSize()
 
 ############
 # MAIN APP #
@@ -61,6 +52,9 @@ class FinanceApp(MDApp):
     def build(self):
         #-- center the window
         WinConf.SetWindowSize()
+
+        # Define the App configuration Database
+        self.Configuration = JsonManager_Class(PathManager_Class.database_path, PathManager_Class.Configuration_path)
 
         return MainLayout()
 

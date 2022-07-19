@@ -13,6 +13,7 @@ class PathManager_Class():
     Commodities_path = 'Commodities.json'
     Crypto_path = 'Crypto.json'
     Category_path = 'Category.json'
+    Configuration_path = 'Configuration.json'
 
 class PathImage_Class():
     ### Root path ###

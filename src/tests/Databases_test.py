@@ -1,9 +1,12 @@
-from DatabaseMng import * 
+from Packages.DatabaseMng.JsonManager import JsonManager_Class
+from Packages.DatabaseMng.JsonManagerList import JsonManagerList_Class
+from Packages.DatabaseMng.PathManager import PathManager_Class
+from Packages.DatabaseMng.PortfolioManager import PortfoliosManager_Class
 
 #########
 # TESTS #
 #########
-TEST_TYPE = 2 # 0 for dictionary, 1 for list, 2 for Portfolios
+TEST_TYPE = 3 # 0 for dictionary, 1 for list, 2 for Portfolios
 
 if __name__ == '__main__':
     PathManager = PathManager_Class()
@@ -53,5 +56,8 @@ if __name__ == '__main__':
         # Manager.RemoveAssetFromPortfolio(PortfolioName = 'MAIN PAC', AssetName = 'Bitcoin')
 
         print('**** END ****')
+    elif TEST_TYPE == 3:
+        ConfigurationDB = JsonManager_Class(PathManager_Class.database_path, PathManager_Class.Configuration_path)
 
-
+        # AddElement 
+        ConfigurationDB.AddElement({'BackgroundColor': [0, 0, 100, 1]})

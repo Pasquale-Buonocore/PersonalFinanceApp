@@ -1,8 +1,6 @@
-from Packages.CustomFunction.GetCryptoValue import GetCryptoValue
 from Packages.DatabaseMng.PathManager import *
 from os.path import exists
 import json
-import os
 
 
 ###################
@@ -86,3 +84,10 @@ class JsonManager_Class():
 
         # Save new Json file
         self.SaveJsonFile(json_object)
+
+    # Given Element as key, it return the value
+    def GetElementValue(self, Element):
+        # Read json
+        json_object = self.ReadJson()
+
+        return json_object[Element] if Element in json_object.keys() else ''
