@@ -1,29 +1,6 @@
 #:kivy 1.0.9
 #:include ui/ScreenMng.kv
-
-###########
-# CUSTOM  #
-###########
-<CustomLabelMenu>:
-    size_hint: 1, 0.03
-    text_size: root.width, None
-    size: self.texture_size
-    font_name: app.Configuration.GetElementValue('LeftMenuTitleFontName') 
-    font_size: app.Configuration.GetElementValue('LeftMenuTitleFontSize') 
-
-<CustomMenuButton>:
-    canvas.after:
-        Rectangle:
-            source: self.ImageName
-            pos: self.pos[0] + root.width/10, self.pos[1] + root.height/4
-            size: self.size[0]*0.12, self.size[1]*0.5
-
-    text_size: root.width, None
-    size: self.texture_size
-    font_name: app.Configuration.GetElementValue('LeftMenuButtonFontName') 
-    font_size: app.Configuration.GetElementValue('LeftMenuButtonFontSize') 
-    background_color: app.Configuration.GetElementValue('TransparentBackgroundColor') 
-    size_hint: app.Configuration.GetElementValue('ButtonMenu_size_hint_xy') 
+#:include ui/MenuLayout.kv
 
 ##################
 # SETTING LAYOUT #
@@ -35,90 +12,11 @@
     padding: app.Configuration.GetElementValue('MenuDataLayoutPadding') 
     spacing: app.Configuration.GetElementValue('MenuDataLayoutSpacing') 
 
-<MenuLayout@StackLayout>:
-    id: MenuDataLayout
-    canvas.before:
-        Color:
-            rgba: app.Configuration.GetElementValue('CanvasBackgroundColor') 
-        RoundedRectangle:
-            pos: self.pos
-            size: self.size
-            radius: [(app.Configuration.GetElementValue('MenuLayoutCanvasRadius'), app.Configuration.GetElementValue('MenuLayoutCanvasRadius'))] *4
-
-    orientation: 'lr-tb'
-    size_hint: app.Configuration.GetElementValue('MenuLayoutSizeHint') 
-    padding: app.Configuration.GetElementValue('MenuLayoutPadding') 
-    spacing: app.Configuration.GetElementValue('MenuLayoutSpacing')
-
-    CustomLabelMenu:
-        text: app.Configuration.GetElementValue('MenuLabelSpace') + 'MENU'
-    
-    CustomMenuButton:        
-        id: Dashboard_btn
-        text: " " * app.Configuration.GetElementValue('MenuButtonSpaceNum') + app.Configuration.GetElementValue('ScreenNameDictionary')['DashboardScreenName']
-        on_release: self.move_screen(app, self.text)
-
-    CustomMenuButton:
-        id: Transaction_btn
-        text: " " * app.Configuration.GetElementValue('MenuButtonSpaceNum') + app.Configuration.GetElementValue('ScreenNameDictionary')['TransactionScreenName']
-        on_release: self.move_screen(app, self.text)
-
-    CustomLabelMenu:
-        text: app.Configuration.GetElementValue('MenuLabelSpace') + 'INVESTMENT'
-
-    CustomMenuButton:
-        id: ETF_btn
-        text: " " * app.Configuration.GetElementValue('MenuButtonSpaceNum') + app.Configuration.GetElementValue('ScreenNameDictionary')['ETFETCScreenName']
-        on_release: self.move_PortfolioScreen(app, self.text)
-
-    CustomMenuButton:
-        id: Stock_btn
-        text: " " * app.Configuration.GetElementValue('MenuButtonSpaceNum') + app.Configuration.GetElementValue('ScreenNameDictionary')['StocksScreenName'] 
-        on_release: self.move_PortfolioScreen(app, self.text)
-
-    CustomMenuButton:
-        id: Bond_btn
-        text: " " * app.Configuration.GetElementValue('MenuButtonSpaceNum') + app.Configuration.GetElementValue('ScreenNameDictionary')['BondScreenName']  
-        on_release: self.move_PortfolioScreen(app, self.text)
-
-    CustomMenuButton:
-        id: Commodity_btn
-        text: " " * app.Configuration.GetElementValue('MenuButtonSpaceNum') + app.Configuration.GetElementValue('ScreenNameDictionary')['CommodityScreenName']  
-        on_release: self.move_PortfolioScreen(app, self.text)
-
-    CustomMenuButton:
-        id: Crypto_btn
-        text: " " * app.Configuration.GetElementValue('MenuButtonSpaceNum') + app.Configuration.GetElementValue('ScreenNameDictionary')['CryptoScreenName'] 
-        on_release: self.move_PortfolioScreen(app, self.text)
-
-    CustomLabelMenu:
-        text: app.Configuration.GetElementValue('MenuLabelSpace') + 'STATISTIC'
-
-    CustomMenuButton:
-        id: Statistics_btn
-        text: " " * app.Configuration.GetElementValue('MenuButtonSpaceNum') +  app.Configuration.GetElementValue('ScreenNameDictionary')['StatisticsScreenName']
-        on_release: self.move_screen(app,self.text)
-
-    CustomLabelMenu:
-        text: app.Configuration.GetElementValue('MenuLabelSpace') + 'SETTING'
-
-    CustomMenuButton:
-        id: Setting_btn
-        text: " " * app.Configuration.GetElementValue('MenuButtonSpaceNum') + app.Configuration.GetElementValue('ScreenNameDictionary')['SettingScreenName']
-        on_release: self.move_screen(app,self.text)
-
-    CustomMenuButton:
-        id: Credit_btn
-        text: " " * app.Configuration.GetElementValue('MenuButtonSpaceNum') + app.Configuration.GetElementValue('ScreenNameDictionary')['CreditScreenName']
-        on_release: self.move_screen(app,self.text)
-
 <DataLayout@BoxLayout>:
     id: DataLayout
     size_hint: app.Configuration.GetElementValue('DataLayoutSizeHint') 
     Label:
         text: 'Data'
-
-<ScreenManagerLayout@ScreenManager>:
 
 ############################################ 
 <MainLayout>:

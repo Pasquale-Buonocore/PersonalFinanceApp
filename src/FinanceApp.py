@@ -22,6 +22,7 @@ from Packages.Screens.Credits_screen import *
 from Packages.Screens.Empty_screen import *
 from Packages.Screens.AssetsTransaction_screen import *
 from Packages.Screens.Assets_screen import *
+from Packages.Screens.MenuLayout import * 
 
 #####################
 # IMPORTS FROM KIVY #
@@ -41,7 +42,6 @@ class MainLayout(BoxLayout):
     def __init__(self,**kwargs):
         super().__init__(**kwargs)
     
-
 ############
 # MAIN APP #
 ############
@@ -63,11 +63,11 @@ class FinanceApp(MDApp):
         self.root.children[0].children[0].children[0].UpdateScreen()
 
         # Set the Dashboard button selected
-        self.root.children[0].children[1].children[-2].SelectedStatus = True
-        self.root.children[0].children[1].children[-2].background_color = self.Configuration.GetElementValue('MenuButtonSelectedBackgroundColor')
+        self.root.children[0].children[1].ids.Dashboard_btn.SelectedStatus = True
+        self.root.children[0].children[1].ids.Dashboard_btn.background_color = self.Configuration.GetElementValue('MenuButtonSelectedBackgroundColor')
 
         # Set the menu button images
-        for element in self.root.children[0].children[1].children:
+        for element in self.root.children[0].children[1].ids.MenuListOfButton.children:
             # Set Image for each class and update image
             ImageName = element.text.strip().lower()
             element.ImageName = 'images/button/' + ImageName + '.png'

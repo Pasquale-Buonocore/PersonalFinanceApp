@@ -1,4 +1,6 @@
 {
+    "ProfileInfo": {"Name" : "Pasquale Buonocore"},
+    "MonthYearInfo": {"Month" : 7, "Year" : 2022},
     "WindowBackgroundColor": [0.05, 0.05, 0.2, 1],
     "CanvasBackgroundColor": [0.15, 0.15, 0.3, 1],
     "TransparentBackgroundColor": [0, 0, 0, 0],
@@ -10,7 +12,9 @@
     "LeftMenuTitleFontName": "Candara",
     "LeftMenuTitleFontSize": "14dp",
     "LeftMenuButtonFontName": "Candarab",
-    "LeftMenuButtonFontSize": "15dp",
+    "LeftMenuButtonFontSize": "15dp",    
+    "ProfileNameFontName": "Candarab",
+    "ProfileNameFontSize": "20dp",
     "PopupTitleFontName": "Candarab",
     "PopupTitleFontSize": "22dp",
     "PopupInnerFontName": "Candara",
@@ -19,13 +23,16 @@
     "MenuDataLayoutPadding": ["20dp","20dp","20dp","20dp"],
     "MenuDataLayoutSpacing": "20dp",
 
-    "MenuLayoutSizeHint": [0.2, 1],
+    "MenuLayoutSizeHint": [0.23, 1],
     "MenuLayoutPadding": ["20dp","20dp","20dp","20dp"],
-    "MenuLayoutSpacing": "0dp",
+    "MenuLayoutSpacing": "20dp",
 
-    "DataLayoutSizeHint": [0.8, 1],
+    "DataLayoutSizeHint": [0.77, 1],
     "DataLayoutPadding": ["20dp","20dp","20dp","20dp"],
     "DataLayoutSpacing": "5dp",
+
+    "ProfileBoxLayoutSizeHint": [1, 0.3],
+    "MenuButtonBoxLayoutSizeHint": [1, 0.7],
 
     "MenuLayoutCanvasRadius": 30,
     "ScreenNameDictionary": {"DashboardScreenName" : "DASHBOARD",

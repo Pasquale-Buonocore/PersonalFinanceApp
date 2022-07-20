@@ -40,48 +40,7 @@
                             pos: self.pos
                             size: self.size
                             radius: [(app.Configuration.GetElementValue('DashboardBoxCanvasRadius'), app.Configuration.GetElementValue('DashboardBoxCanvasRadius'))] *4
-                    
-                    BoxLayout:
-                        size_hint: 1, 0.1
-
-                    # Box Layout for picture and welcome
-                    BoxLayout:
-                        orientation: 'horizontal'
-                        size_hint: 1, 0.35
-
-                        BoxLayout: 
-                            size_hint: 0.05, 1
-
-                        Image:
-                            size_hint: 0.15, 1
-                            source: './images/profile/anonymus.png'
-
-                        Label:
-                            id: WelcomeBackMessage
-                            size_hint: 0.8, 1
-                            pos_hint: {'x' : 0.5}
-                            text: 'Welcome back Pasquale!'
-                            # text_size: self.width, None
-                            # size: self.texture_size
-                            font_name: 'Candarab'
-                            font_size: 28
-                            
-                    # Box Layout for comment
-                    BoxLayout:
-                        orientation: 'vertical'
-                        size_hint: 1, 0.25
-
-                        Label:
-                            # size_hint: 0.3, None
-                            font_name: 'Candara'
-                            font_size: 20
-                            height: "40dp" 
-                            text: 'Your portfolio has a total value of 5000€ and it has increased of 5% since last month.'
-
-                    # Box Layout for automation
-                    BoxLayout:
-                        orientation: 'vertical'
-                        size_hint: 1, 0.35
+            
 
                 # Box Layout containg the month resume
                 BoxLayout:

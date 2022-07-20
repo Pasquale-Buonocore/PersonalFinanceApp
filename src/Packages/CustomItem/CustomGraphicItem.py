@@ -51,7 +51,7 @@ class CustomMenuButton(Button, HoverBehavior):
     # Update the button that has been pressed
     def UpdateButtonState(self, App):
         # Update button background button of all buttons
-        for element in App.root.children[0].children[1].children:
+        for element in App.root.children[0].children[1].ids.MenuListOfButton.children:
             element.SelectedStatus = False
             element.background_color = App.Configuration.GetElementValue('MenuButtonNotSelectedBackgroundColor') 
 
