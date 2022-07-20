@@ -1,7 +1,6 @@
 #:kivy 1.0.9
-#:include ui/Constant.kv
 
 <SettingScreen>:
-    name: SettingScreenName
+    name: app.Configuration.GetElementValue('ScreenNameDictionary')["SettingScreenName"] 
     Label:
-        text: SettingScreenName
+        text: app.Configuration.GetElementValue('ScreenNameDictionary')["SettingScreenName"] 

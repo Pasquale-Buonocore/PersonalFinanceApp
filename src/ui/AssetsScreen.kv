@@ -1,12 +1,13 @@
 #:kivy 1.0.9
-#:include ui/Constant.kv
 
 <AssetsScreen>:
     id: AssetsScreenName
-    name: AssetsScreenName
+    name: app.Configuration.GetElementValue('ScreenNameDictionary')["AssetsScreenName"]
 
     # Scroll View Transaction
     ScrollView:
+		bar_inactive_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
+        bar_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
         id: AssetsScrollView
 
         # Box containing Box Layout
@@ -121,7 +122,7 @@
 
                     canvas:
                         Color:
-                            rgba: canvas_r,canvas_g,canvas_b,canvas_opacity
+                            rgba: app.Configuration.GetElementValue('CanvasBackgroundColor') 
                         RoundedRectangle:
                             pos: self.pos
                             size: self.size

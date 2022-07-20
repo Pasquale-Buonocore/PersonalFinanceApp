@@ -1,12 +1,11 @@
 #:kivy 1.0.9
-#:include ui/Constant.kv
 
 <TransactionCategoryListPopup>:
     background_color: 0,0,0,0
     separator_color: 0,0,0,0
     title_align: 'center'
-    title_size: PopupTitleSize
-    title_font: PopupTitleFont 
+    title_size: app.Configuration.GetElementValue('PopupTitleFontSize')
+    title_font: app.Configuration.GetElementValue('PopupTitleFontName') 
 
     canvas.before:
         Color:
@@ -24,6 +23,8 @@
         
         # Scroll View dashboard
         ScrollView:
+			bar_inactive_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
+			bar_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
             id: ClassesScreenView
             size_hint: 1, 0.8
 
@@ -104,8 +105,8 @@
                             radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
 
                     id: AddNewClass
-                    font_name: PopupTitleFont
-                    font_size: PopupInnerSize
+                    font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+                    font_size: app.Configuration.GetElementValue('PopupInnerFontSize')
                     text:'Add New'
                     on_release: root.AddNewClass()
 
@@ -120,8 +121,8 @@
                             radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
 
                     id: Confirm
-                    font_name: PopupTitleFont
-                    font_size: PopupInnerSize
+                    font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+                    font_size: app.Configuration.GetElementValue('PopupInnerFontSize')
                     text:'Confirm'
                     on_release: root.Confirm(app)
 
@@ -136,7 +137,7 @@
                         radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
 
                 id: Cancel
-                font_name: PopupTitleFont
-                font_size: PopupInnerSize
+                font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+                font_size: app.Configuration.GetElementValue('PopupInnerFontSize')
                 text:'Cancel'
                 on_release: root.Cancel()

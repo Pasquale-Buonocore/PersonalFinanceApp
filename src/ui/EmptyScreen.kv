@@ -1,7 +1,6 @@
 #:kivy 1.0.9
-#:include ui/Constant.kv
 
 <EmptyScreen>:
-    name: 'EMPTY'
+    name: app.Configuration.GetElementValue('ScreenNameDictionary')["EmptyScreenName"]
     Label:
-        text: 'EMPTY'
+        text: app.Configuration.GetElementValue('ScreenNameDictionary')["EmptyScreenName"]

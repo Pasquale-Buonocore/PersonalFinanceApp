@@ -1,12 +1,13 @@
 #:kivy 1.0.9
-#:include ui/Constant.kv
 
 <TransactionListScreen>:
     id: TransactionListScreenName
-    name: TransactionListScreenName
+    name: app.Configuration.GetElementValue('ScreenNameDictionary')["TransactionListScreenName"] 
     
     # Scroll View Transaction
     ScrollView:
+		bar_inactive_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
+        bar_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
         id: TransactionScrollView
 
         # Box containing Box Layout
@@ -98,37 +99,37 @@
                     Label: 
                         text: 'DATE'
                         size_hint: 0.15, 1
-                        font_name: PopupTitleFont
+                        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
                         font_size: 15
                         
                     Label: 
                         text: 'AMOUNT'
                         size_hint: 0.15, 1
-                        font_name: PopupTitleFont
+                        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
                         font_size: 15
 
                     Label: 
                         text: 'DESCRIPTION'
                         size_hint: 0.3, 1
-                        font_name: PopupTitleFont
+                        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
                         font_size: 15
 
                     Label: 
                         text: 'CATEGORY'
                         size_hint: 0.15, 1
-                        font_name: PopupTitleFont
+                        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
                         font_size: 15
 
                     Label: 
                         text: 'PAID WITH'
                         size_hint: 0.15, 1
-                        font_name: PopupTitleFont
+                        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
                         font_size: 15
 
                     Label: 
                         text: 'ACTIONS'
                         size_hint: 0.1, 1
-                        font_name: PopupTitleFont
+                        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
                         font_size: 15
             
             BoxLayout:

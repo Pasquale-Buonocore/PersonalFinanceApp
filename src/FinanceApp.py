@@ -64,7 +64,7 @@ class FinanceApp(MDApp):
 
         # Set the Dashboard button selected
         self.root.children[0].children[1].children[-2].SelectedStatus = True
-        self.root.children[0].children[1].children[-2].background_color = [0.2,0.2,1,1]
+        self.root.children[0].children[1].children[-2].background_color = self.Configuration.GetElementValue('MenuButtonSelectedBackgroundColor')
 
         # Set the menu button images
         for element in self.root.children[0].children[1].children:

@@ -1,12 +1,13 @@
 #:kivy 1.0.9
-#:include ui/Constant.kv
 
 <PortfolioScreen>:
     id: PortfolioScreenName
-    name: PortfolioScreenName
+    name: app.Configuration.GetElementValue('ScreenNameDictionary')["PortfolioScreenName"]
     
     # Scroll View Transaction
     ScrollView:
+		bar_inactive_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
+        bar_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
         id: PortfolioScrollView
 
         # Box containing Box Layout

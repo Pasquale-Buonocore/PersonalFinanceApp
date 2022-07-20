@@ -53,17 +53,19 @@ class CustomMenuButton(Button, HoverBehavior):
         # Update button background button of all buttons
         for element in App.root.children[0].children[1].children:
             element.SelectedStatus = False
-            element.background_color = [0,0,0,0]
+            element.background_color = App.Configuration.GetElementValue('MenuButtonNotSelectedBackgroundColor') 
 
         self.SelectedStatus = True
-        self.background_color = [0.2,0.2,1,1]
+        self.background_color = App.Configuration.GetElementValue('MenuButtonSelectedBackgroundColor') 
 
     def on_enter(self, *args):
-        self.background_color = [0.2,0.2,1,1]
+        self.background_color = [0.7, 0.7, 0.7, 0.5]
+        # self.background_color = App.Configuration.GetElementValue('MenuButtonSelectedBackgroundColor') 
         
     def on_leave(self, *args):
         if not self.SelectedStatus:
-            self.background_color = [0,0,0,0]
+            self.background_color = [0, 0, 0, 0]
+            # self.background_color = App.Configuration.GetElementValue('MenuButtonNotSelectedBackgroundColor') 
 
 class ModifyButton(Button):
     def __init__(self,**kwargs):

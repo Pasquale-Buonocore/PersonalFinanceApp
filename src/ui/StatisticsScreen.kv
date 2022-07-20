@@ -1,7 +1,6 @@
 #:kivy 1.0.9
-#:include ui/Constant.kv
 
 <StatisticsScreen>:
-    name: StatisticsScreenName
+    name: app.Configuration.GetElementValue('ScreenNameDictionary')["StatisticsScreenName"]  
     Label:
-        text: StatisticsScreenName
+        text: app.Configuration.GetElementValue('ScreenNameDictionary')["StatisticsScreenName"]  

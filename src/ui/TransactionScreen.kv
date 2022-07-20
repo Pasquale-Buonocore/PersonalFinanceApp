@@ -1,12 +1,13 @@
 #:kivy 1.0.9
-#:include ui/Constant.kv
 
 <TransactionScreen>:
     id: TransactionScreenName
-    name: TransactionScreenName
+    name: app.Configuration.GetElementValue('ScreenNameDictionary')["TransactionScreenName"] 
     
     # Scroll View Transaction
     ScrollView:
+		bar_inactive_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
+        bar_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
         id: TransactionScrollView
 
         # Box containing Box Layout
@@ -80,7 +81,7 @@
 
                 canvas:
                     Color:
-                        rgba: canvas_r,canvas_g,canvas_b,canvas_opacity
+                        rgba: app.Configuration.GetElementValue('CanvasBackgroundColor') 
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
@@ -97,6 +98,8 @@
             
                 # Scroll View dashboard
                 ScrollView:
+					bar_inactive_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
+					bar_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
                     id: TransactionInScreenView
                     size_hint: 0.5, 1
 
@@ -219,7 +222,7 @@
 
                 canvas:
                     Color:
-                        rgba: canvas_r,canvas_g,canvas_b,canvas_opacity
+                        rgba: app.Configuration.GetElementValue('CanvasBackgroundColor') 
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
@@ -236,6 +239,8 @@
             
                 # Scroll View dashboard
                 ScrollView:
+					bar_inactive_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
+					bar_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
                     id: TransactionOutScreenView
                     size_hint: 0.5, 1
 

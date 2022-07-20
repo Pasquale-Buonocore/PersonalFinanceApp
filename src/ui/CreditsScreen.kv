@@ -1,7 +1,6 @@
 #:kivy 1.0.9
-#:include ui/Constant.kv
 
 <CreditsScreen>:
-    name: CreditScreenName
+    name: app.Configuration.GetElementValue('ScreenNameDictionary')["CreditScreenName"]
     Label:
-        text: CreditScreenName
+        text: app.Configuration.GetElementValue('ScreenNameDictionary')["CreditScreenName"]
