@@ -62,6 +62,7 @@ class FinanceApp(MDApp):
         # Initialize the Dashboard page
         self.root.children[0].children[0].children[0].UpdateScreen()
 
+        return
         # Set the Dashboard button selected
         self.root.children[0].children[1].ids.Dashboard_btn.SelectedStatus = True
         self.root.children[0].children[1].ids.Dashboard_btn.background_color = self.Configuration.GetElementValue('MenuButtonSelectedBackgroundColor')

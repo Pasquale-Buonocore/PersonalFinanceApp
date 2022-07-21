@@ -10,7 +10,23 @@
     font_name: app.Configuration.GetElementValue('LeftMenuTitleFontName') 
     font_size: app.Configuration.GetElementValue('LeftMenuTitleFontSize') 
 
-<CustomMenuButton>:
+<CustomMenuRectangleButton>:
+    canvas:
+        Rectangle:
+            source: self.ImageName
+            # pos: self.pos[0] + root.width/10, self.pos[1] + root.height/4
+            # size: self.size[0]*0.12, self.size[1]*0.45
+
+    text_size: root.width, None
+    size: self.texture_size
+    font_name: app.Configuration.GetElementValue('LeftMenuButtonFontName') 
+    font_size: app.Configuration.GetElementValue('LeftMenuButtonFontSize') 
+    background_color: app.Configuration.GetElementValue('TransparentBackgroundColor') 
+    size_hint: app.Configuration.GetElementValue('ButtonMenu_size_hint_xy') 
+
+<CustomMenuSquareButton>:
+    size: ["20dp", "20dp"]
+
     canvas:
         Rectangle:
             source: self.ImageName
@@ -39,6 +55,7 @@
             size: self.size
             radius: [(app.Configuration.GetElementValue('MenuLayoutCanvasRadius'), app.Configuration.GetElementValue('MenuLayoutCanvasRadius'))] *4
 
+    # Profile box
     BoxLayout:
         id: ProfileBoxLayout
         orientation: 'vertical'
@@ -59,164 +76,290 @@
             font_name: app.Configuration.GetElementValue('ProfileNameFontName')
             font_size: app.Configuration.GetElementValue('ProfileNameFontSize')
 
-        BoxLayout:
-            id: MonthSelectorBoxLayout_father
-            orientation: 'horizontal'
-            padding: ["20dp", "0dp", "20dp", "0dp"]
-            size_hint: 1, 0.1
+        GridLayout:
+            size_hint: 1, 0.3
+            rows: 1
+            cols: 2
 
+            # Month Year selectors
             BoxLayout:
-                id: MonthSelectorBoxLayout_son
-                orientation: 'horizontal'
+                orientation: 'vertical'
+                size_hint: 0.8, 1
+                spacing: "5dp"
 
-                Button:
-                    id: MonthSelection_MinusBtn
-                    size_hint: 0.1, 1
-                    background_color: app.Configuration.GetElementValue('TransparentBackgroundColor') 
-                    canvas.after:
-                        Color:
-                            rgba: 1, 1, 1, 0.5
-                        RoundedRectangle:
-                            pos: self.pos
-                            size: self.size
-                    font_name: app.Configuration.GetElementValue('ProfileNameFontName')
-                    font_size: app.Configuration.GetElementValue('ProfileNameFontSize')
-                    text: "<"
-                
-                Label:
-                    id: MonthStringValue
-                    size_hint: 0.6, 1
-                    text: 'November'
-                    halign: 'center'
-                    font_name: app.Configuration.GetElementValue('ProfileNameFontName')
-                    font_size: app.Configuration.GetElementValue('ProfileNameFontSize')
+                # MonthSelectorBoxLayout_father
+                BoxLayout:
+                    id: MonthSelectorBoxLayout_father
+                    orientation: 'horizontal'
+                    padding: ["20dp", "0dp", "20dp", "0dp"]
 
-                Button:
-                    id: MonthSelection_PlusBtn
-                    size_hint: 0.1, 1
-                    background_color: app.Configuration.GetElementValue('TransparentBackgroundColor') 
-                    canvas.after:
-                        Color:
-                            rgba: 1, 1, 1, 0.5
-                        RoundedRectangle:
-                            pos: self.pos
-                            size: self.size
-                    font_name: app.Configuration.GetElementValue('ProfileNameFontName')
-                    font_size: app.Configuration.GetElementValue('ProfileNameFontSize')
-                    text: ">"
 
-        BoxLayout:
-            id: YearSelectorBoxLayout_father
-            orientation: 'horizontal'
-            padding: ["20dp", "0dp", "20dp", "0dp"]
-            size_hint: 1, 0.1
+                    BoxLayout:
+                        id: MonthSelectorBoxLayout_son
+                        orientation: 'horizontal'
 
-            BoxLayout:
-                id: YearSelectorBoxLayout_son
-                orientation: 'horizontal'
+                        Button:
+                            id: MonthSelection_MinusBtn
+                            size_hint: 0.2, 1
+                            background_color: app.Configuration.GetElementValue('TransparentBackgroundColor') 
+                            canvas.before:
+                                Color:
+                                    rgba: app.Configuration.GetElementValue('WindowBackgroundColor')
+                                RoundedRectangle:
+                                    pos: self.pos
+                                    size: self.size
+                            font_name: app.Configuration.GetElementValue('ProfileNameFontName')
+                            font_size: app.Configuration.GetElementValue('ProfileNameFontSize')
+                            text: "<"
+                        
+                        Label:
+                            id: MonthStringValue
+                            size_hint: 0.6, 1
+                            text: 'September'
+                            halign: 'center'
+                            font_name: app.Configuration.GetElementValue('ProfileNameFontName')
+                            font_size: app.Configuration.GetElementValue('ProfileNameFontSize')
 
-                Button:
-                    id: YearSelection_MinusBtn
-                    size_hint: 0.1, 1
-                    background_color: app.Configuration.GetElementValue('TransparentBackgroundColor') 
-                    canvas.after:
-                        Color:
-                            rgba: 1, 1, 1, 0.5
-                        RoundedRectangle:
-                            pos: self.pos
-                            size: self.size
-                    font_name: app.Configuration.GetElementValue('ProfileNameFontName')
-                    font_size: app.Configuration.GetElementValue('ProfileNameFontSize')
-                    text: "<"
-                
-                Label:
-                    id: YearStringValue
-                    size_hint: 0.6, 1
-                    text: '2022'
-                    halign: 'center'
-                    font_name: app.Configuration.GetElementValue('ProfileNameFontName')
-                    font_size: app.Configuration.GetElementValue('ProfileNameFontSize')
+                        Button:
+                            id: MonthSelection_PlusBtn
+                            size_hint: 0.2, 1
+                            background_color: app.Configuration.GetElementValue('TransparentBackgroundColor') 
+                            canvas.before:
+                                Color:
+                                    rgba: app.Configuration.GetElementValue('WindowBackgroundColor')
+                                RoundedRectangle:
+                                    pos: self.pos
+                                    size: self.size
+                            font_name: app.Configuration.GetElementValue('ProfileNameFontName')
+                            font_size: app.Configuration.GetElementValue('ProfileNameFontSize')
+                            text: ">"
+                # YearSelectorBoxLayout_father
+                BoxLayout:
+                    id: YearSelectorBoxLayout_father
+                    orientation: 'horizontal'
+                    padding: ["20dp", "0dp", "20dp", "0dp"]
 
-                Button:
-                    id: YearSelection_PlusBtn
-                    size_hint: 0.1, 1
-                    background_color: app.Configuration.GetElementValue('TransparentBackgroundColor') 
-                    canvas.after:
-                        Color:
-                            rgba: 1, 1, 1, 0.5
-                        RoundedRectangle:
-                            pos: self.pos
-                            size: self.size
-                    font_name: app.Configuration.GetElementValue('ProfileNameFontName')
-                    font_size: app.Configuration.GetElementValue('ProfileNameFontSize')
-                    text: ">"
+                    BoxLayout:
+                        id: YearSelectorBoxLayout_son
+                        orientation: 'horizontal'
+
+                        Button:
+                            id: YearSelection_MinusBtn
+                            size_hint: 0.2, 1
+                            background_color: app.Configuration.GetElementValue('TransparentBackgroundColor') 
+                            canvas.before:
+                                Color:
+                                    rgba: app.Configuration.GetElementValue('WindowBackgroundColor')
+                                RoundedRectangle:
+                                    pos: self.pos
+                                    size: self.size
+                            font_name: app.Configuration.GetElementValue('ProfileNameFontName')
+                            font_size: app.Configuration.GetElementValue('ProfileNameFontSize')
+                            text: "<"
+                        
+                        Label:
+                            id: YearStringValue
+                            size_hint: 0.6, 1
+                            text: '2022'
+                            halign: 'center'
+                            font_name: app.Configuration.GetElementValue('ProfileNameFontName')
+                            font_size: app.Configuration.GetElementValue('ProfileNameFontSize')
+
+                        Button:
+                            id: YearSelection_PlusBtn
+                            size_hint: 0.2, 1
+                            background_color: app.Configuration.GetElementValue('TransparentBackgroundColor') 
+                            canvas.before:
+                                Color:
+                                    rgba: app.Configuration.GetElementValue('WindowBackgroundColor')
+                                RoundedRectangle:
+                                    pos: self.pos
+                                    size: self.size
+                            font_name: app.Configuration.GetElementValue('ProfileNameFontName')
+                            font_size: app.Configuration.GetElementValue('ProfileNameFontSize')
+                            text: ">"
             
-        Button:
-            text: 'Load month'
-            size_hint: 0.5, 0.1
-            pos_hint: {'x' : 0.25}
-            background_color: app.Configuration.GetElementValue('TransparentBackgroundColor') 
-            font_name: app.Configuration.GetElementValue('ProfileNameFontName')
-            font_size: app.Configuration.GetElementValue('ProfileNameFontSize')
-            canvas.before:
-                Color:
-                    rgba: app.Configuration.GetElementValue('WindowBackgroundColor') 
-                RoundedRectangle:
-                    pos: self.pos
-                    size: self.size
-
-
+            # Load month button
+            BoxLayout:
+                size_hint: 0.2, 1
+                padding: ["0dp","12dp","12dp","12dp"]
+                Button:
+                    background_color: app.Configuration.GetElementValue('TransparentBackgroundColor') 
+                    font_name: app.Configuration.GetElementValue('ProfileNameFontName')
+                    font_size: app.Configuration.GetElementValue('ProfileNameFontSize')
+                    canvas.before:
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            source: './images/button/ReloadMonth.png'
+    # Space padding
     BoxLayout:
+        size_hint: app.Configuration.GetElementValue('ProfilePaddingSizeHint') 
+        canvas.before:
+            Color:
+                rgba: app.Configuration.GetElementValue('WindowBackgroundColor') 
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+
+    # Menu button box
+    GridLayout:
         id: MenuListOfButton
-        orientation: 'vertical'
+        # orientation: 'vertical'
+        cols: 2
+        rows: 5
         size_hint: app.Configuration.GetElementValue('MenuButtonBoxLayoutSizeHint')
 
-        CustomMenuButton:        
-            id: Dashboard_btn
-            text: " " * app.Configuration.GetElementValue('MenuButtonSpaceNum') + app.Configuration.GetElementValue('ScreenNameDictionary')['DashboardScreenName']
-            on_release: self.move_screen(app, self.text)
+        spacing: "15dp" 
+        padding: ["15dp","0dp","15dp","0dp"]
 
-        CustomMenuButton:
-            id: Transaction_btn
-            text: " " * app.Configuration.GetElementValue('MenuButtonSpaceNum') + app.Configuration.GetElementValue('ScreenNameDictionary')['TransactionScreenName']
-            on_release: self.move_screen(app, self.text)
+        RelativeLayout:
+            Button:
+                font_name: app.Configuration.GetElementValue('ProfileNameFontName')
+                font_size: app.Configuration.GetElementValue('ProfileNameFontSize')
+                background_color: [1,0,0,0]
+                canvas:
+                    Color:
+                        rgba: app.Configuration.GetElementValue('WindowBackgroundColor')
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
 
-        CustomMenuButton:
-            id: ETF_btn
-            text: " " * app.Configuration.GetElementValue('MenuButtonSpaceNum') + app.Configuration.GetElementValue('ScreenNameDictionary')['ETFETCScreenName']
-            on_release: self.move_PortfolioScreen(app, self.text)
+            BoxLayout:
+                orientation: 'vertical'
+                padding: ["0dp","10dp","0dp","10dp"]
+                spacing: "10dp"
 
-        CustomMenuButton:
-            id: Stock_btn
-            text: " " * app.Configuration.GetElementValue('MenuButtonSpaceNum') + app.Configuration.GetElementValue('ScreenNameDictionary')['StocksScreenName'] 
-            on_release: self.move_PortfolioScreen(app, self.text)
+                BoxLayout:
+                    size_hint: 1, 0.6
 
-        CustomMenuButton:
-            id: Bond_btn
-            text: " " * app.Configuration.GetElementValue('MenuButtonSpaceNum') + app.Configuration.GetElementValue('ScreenNameDictionary')['BondScreenName']  
-            on_release: self.move_PortfolioScreen(app, self.text)
+                    Image:
+                        pos: self.pos
+                        size: self.size
+                        source: './images/button/Dashboard.png'
 
-        CustomMenuButton:
-            id: Commodity_btn
-            text: " " * app.Configuration.GetElementValue('MenuButtonSpaceNum') + app.Configuration.GetElementValue('ScreenNameDictionary')['CommodityScreenName']  
-            on_release: self.move_PortfolioScreen(app, self.text)
+                BoxLayout:
+                    id: OctopusPictureLabel
+                    size_hint: 1, 0.4
 
-        CustomMenuButton:
-            id: Crypto_btn
-            text: " " * app.Configuration.GetElementValue('MenuButtonSpaceNum') + app.Configuration.GetElementValue('ScreenNameDictionary')['CryptoScreenName'] 
-            on_release: self.move_PortfolioScreen(app, self.text)
+                    Label:
+                        text: 'Dashboard'
+                        halign: 'center'
+                        font_name: app.Configuration.GetElementValue('ProfileNameFontName')
+                        font_size: app.Configuration.GetElementValue('LeftMenuButtonFontSize')
 
-        CustomMenuButton:
-            id: Statistics_btn
-            text: " " * app.Configuration.GetElementValue('MenuButtonSpaceNum') +  app.Configuration.GetElementValue('ScreenNameDictionary')['StatisticsScreenName']
-            on_release: self.move_screen(app,self.text)
+        Button:
+            text: '2'
 
-        CustomMenuButton:
-            id: Setting_btn
-            text: " " * app.Configuration.GetElementValue('MenuButtonSpaceNum') + app.Configuration.GetElementValue('ScreenNameDictionary')['SettingScreenName']
-            on_release: self.move_screen(app,self.text)
+        Button:
+            text: '1'
 
-        CustomMenuButton:
-            id: Credit_btn
-            text: " " * app.Configuration.GetElementValue('MenuButtonSpaceNum') + app.Configuration.GetElementValue('ScreenNameDictionary')['CreditScreenName']
-            on_release: self.move_screen(app,self.text)
+        Button:
+            text: '2'
+
+        Button:
+            text: '1'
+
+        Button:
+            text: '2'
+
+        Button:
+            text: '1'
+
+        Button:
+            text: '2'
+
+        Button:
+            text: '1'
+
+        Button:
+            text: '2'
+
+    # Space padding
+    BoxLayout:
+        size_hint: app.Configuration.GetElementValue('ProfilePaddingSizeHint') 
+        canvas.before:
+            Color:
+                rgba: app.Configuration.GetElementValue('WindowBackgroundColor') 
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+
+    # App infos and name
+    BoxLayout:
+        size_hint: app.Configuration.GetElementValue('AppProfileBoxLayoutSizeHint')
+        orientation: 'horizontal'
+
+        BoxLayout:
+            id: OctopusPicture
+            size_hint: 0.4, 0.5
+            pos_hint: {'y': 0.55}
+
+            Image:
+                pos: self.pos
+                size: self.size
+                source: './images/button/OctopusFinancePurple.png'
+
+        BoxLayout:
+            id: OctopusPictureLabel
+            size_hint: 0.6, 0.5
+            pos_hint: {'y': 0.55}
+
+            Label:
+                id: AppName
+                text: 'Octopus Finance'
+                halign: 'center'
+                font_name: app.Configuration.GetElementValue('ProfileNameFontName')
+                font_size: app.Configuration.GetElementValue('ProfileNameFontSize')
+        
+        
+
+        # CustomMenuRectangleButton:        
+        #     id: Dashboard_btn
+        #     text: " " * app.Configuration.GetElementValue('MenuButtonSpaceNum') + app.Configuration.GetElementValue('ScreenNameDictionary')['DashboardScreenName']
+        #     on_release: self.move_screen(app, self.text)
+
+        # CustomMenuRectangleButton:
+        #     id: Transaction_btn
+        #     text: " " * app.Configuration.GetElementValue('MenuButtonSpaceNum') + app.Configuration.GetElementValue('ScreenNameDictionary')['TransactionScreenName']
+        #     on_release: self.move_screen(app, self.text)
+
+        # CustomMenuRectangleButton:
+        #     id: ETF_btn
+        #     text: " " * app.Configuration.GetElementValue('MenuButtonSpaceNum') + app.Configuration.GetElementValue('ScreenNameDictionary')['ETFETCScreenName']
+        #     on_release: self.move_PortfolioScreen(app, self.text)
+
+        # CustomMenuRectangleButton:
+        #     id: Stock_btn
+        #     text: " " * app.Configuration.GetElementValue('MenuButtonSpaceNum') + app.Configuration.GetElementValue('ScreenNameDictionary')['StocksScreenName'] 
+        #     on_release: self.move_PortfolioScreen(app, self.text)
+
+        # CustomMenuRectangleButton:
+        #     id: Bond_btn
+        #     text: " " * app.Configuration.GetElementValue('MenuButtonSpaceNum') + app.Configuration.GetElementValue('ScreenNameDictionary')['BondScreenName']  
+        #     on_release: self.move_PortfolioScreen(app, self.text)
+
+        # CustomMenuRectangleButton:
+        #     id: Commodity_btn
+        #     text: " " * app.Configuration.GetElementValue('MenuButtonSpaceNum') + app.Configuration.GetElementValue('ScreenNameDictionary')['CommodityScreenName']  
+        #     on_release: self.move_PortfolioScreen(app, self.text)
+
+        # CustomMenuRectangleButton:
+        #     id: Crypto_btn
+        #     text: " " * app.Configuration.GetElementValue('MenuButtonSpaceNum') + app.Configuration.GetElementValue('ScreenNameDictionary')['CryptoScreenName'] 
+        #     on_release: self.move_PortfolioScreen(app, self.text)
+
+        # CustomMenuRectangleButton:
+        #     id: Statistics_btn
+        #     text: " " * app.Configuration.GetElementValue('MenuButtonSpaceNum') +  app.Configuration.GetElementValue('ScreenNameDictionary')['StatisticsScreenName']
+        #     on_release: self.move_screen(app,self.text)
+
+        # CustomMenuRectangleButton:
+        #     id: Setting_btn
+        #     text: " " * app.Configuration.GetElementValue('MenuButtonSpaceNum') + app.Configuration.GetElementValue('ScreenNameDictionary')['SettingScreenName']
+        #     on_release: self.move_screen(app,self.text)
+
+        # CustomMenuRectangleButton:
+        #     id: Credit_btn
+        #     text: " " * app.Configuration.GetElementValue('MenuButtonSpaceNum') + app.Configuration.GetElementValue('ScreenNameDictionary')['CreditScreenName']
+        #     on_release: self.move_screen(app,self.text)

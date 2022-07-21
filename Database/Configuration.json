@@ -24,7 +24,7 @@
     "MenuDataLayoutSpacing": "20dp",
 
     "MenuLayoutSizeHint": [0.23, 1],
-    "MenuLayoutPadding": ["20dp","20dp","20dp","20dp"],
+    "MenuLayoutPadding": ["20dp","20dp","20dp","40dp"],
     "MenuLayoutSpacing": "20dp",
 
     "DataLayoutSizeHint": [0.77, 1],
@@ -32,7 +32,9 @@
     "DataLayoutSpacing": "5dp",
 
     "ProfileBoxLayoutSizeHint": [1, 0.3],
-    "MenuButtonBoxLayoutSizeHint": [1, 0.7],
+    "ProfilePaddingSizeHint": [1, 0.01],
+    "MenuButtonBoxLayoutSizeHint": [1, 0.54],
+    "AppProfileBoxLayoutSizeHint": [1, 0.15],
 
     "MenuLayoutCanvasRadius": 30,
     "ScreenNameDictionary": {"DashboardScreenName" : "DASHBOARD",

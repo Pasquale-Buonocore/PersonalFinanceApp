@@ -3,6 +3,7 @@ from kivy.properties import BooleanProperty
 from kivy.properties import StringProperty
 from kivy.uix.button import Button
 from kivy.uix.label import Label
+from kivy.uix.relativelayout import RelativeLayout
 from Packages.CustomFunction.CustomFunction import ReturnJsonPathGivenScreenName
 from Packages.DatabaseMng.JsonManager import JsonManager_Class
 from Packages.DatabaseMng.PathManager import PathManager_Class
@@ -16,7 +17,7 @@ class CustomLabelMenu(Label):
     # Define properties
     SelectedStatus = BooleanProperty(False)
 
-class CustomMenuButton(Button, HoverBehavior):
+class CustomMenuRectangleButton(Button, HoverBehavior):
     # Define properties
     Configuration = JsonManager_Class(PathManager_Class.database_path, PathManager_Class.Configuration_path)
     SelectedStatus = BooleanProperty(False)
@@ -66,6 +67,9 @@ class CustomMenuButton(Button, HoverBehavior):
     def on_leave(self, *args):
         if not self.SelectedStatus:
             self.background_color = self.Configuration.GetElementValue('MenuButtonNotSelectedBackgroundColor') 
+
+class CustomMenuSquareButton(RelativeLayout, HoverBehavior):
+    pass
 
 class ModifyButton(Button):
     def __init__(self,**kwargs):
