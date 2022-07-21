@@ -11,7 +11,7 @@
     font_size: app.Configuration.GetElementValue('LeftMenuTitleFontSize') 
 
 <CustomMenuButton>:
-    canvas.after:
+    canvas:
         Rectangle:
             source: self.ImageName
             pos: self.pos[0] + root.width/10, self.pos[1] + root.height/4
@@ -31,7 +31,7 @@
     padding: app.Configuration.GetElementValue('MenuLayoutPadding') 
     spacing: app.Configuration.GetElementValue('MenuLayoutSpacing')
     
-    canvas.before:
+    canvas:
         Color:
             rgba: app.Configuration.GetElementValue('CanvasBackgroundColor') 
         RoundedRectangle:

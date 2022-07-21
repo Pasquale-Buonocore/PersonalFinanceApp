@@ -3,10 +3,11 @@ from kivy.properties import BooleanProperty
 from kivy.properties import StringProperty
 from kivy.uix.button import Button
 from kivy.uix.label import Label
-from kivy.uix.widget import Widget
-from kivy.uix.boxlayout import BoxLayout
-from kivy.graphics import Color, RoundedRectangle, Rectangle
 from Packages.CustomFunction.CustomFunction import ReturnJsonPathGivenScreenName
+from Packages.DatabaseMng.JsonManager import JsonManager_Class
+from Packages.DatabaseMng.PathManager import PathManager_Class
+from kivy.graphics import Color, RoundedRectangle, Rectangle
+from kivy.uix.boxlayout import BoxLayout
 
 #####################
 # CUSTOM DEFINITION #
@@ -17,6 +18,7 @@ class CustomLabelMenu(Label):
 
 class CustomMenuButton(Button, HoverBehavior):
     # Define properties
+    Configuration = JsonManager_Class(PathManager_Class.database_path, PathManager_Class.Configuration_path)
     SelectedStatus = BooleanProperty(False)
     ImageName = StringProperty()
 
@@ -53,19 +55,17 @@ class CustomMenuButton(Button, HoverBehavior):
         # Update button background button of all buttons
         for element in App.root.children[0].children[1].ids.MenuListOfButton.children:
             element.SelectedStatus = False
-            element.background_color = App.Configuration.GetElementValue('MenuButtonNotSelectedBackgroundColor') 
+            element.background_color = self.Configuration.GetElementValue('MenuButtonNotSelectedBackgroundColor') 
 
         self.SelectedStatus = True
-        self.background_color = App.Configuration.GetElementValue('MenuButtonSelectedBackgroundColor') 
+        self.background_color = self.Configuration.GetElementValue('MenuButtonSelectedBackgroundColor') 
 
     def on_enter(self, *args):
-        self.background_color = [0.7, 0.7, 0.7, 0.5]
-        # self.background_color = App.Configuration.GetElementValue('MenuButtonSelectedBackgroundColor') 
+        self.background_color = self.Configuration.GetElementValue('MenuButtonSelectedBackgroundColor') 
         
     def on_leave(self, *args):
         if not self.SelectedStatus:
-            self.background_color = [0, 0, 0, 0]
-            # self.background_color = App.Configuration.GetElementValue('MenuButtonNotSelectedBackgroundColor') 
+            self.background_color = self.Configuration.GetElementValue('MenuButtonNotSelectedBackgroundColor') 
 
 class ModifyButton(Button):
     def __init__(self,**kwargs):

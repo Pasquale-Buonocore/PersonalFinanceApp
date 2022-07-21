@@ -4,6 +4,8 @@ import Packages.CustomItem.RemoveAssetPopup as RemoveAssetPopup
 import Packages.CustomItem.AddAssetPopup as AddAssetPopup
 import Packages.CustomItem.CustomGraphicItem as cst_item
 import Packages.DatabaseMng.PortfolioManager as db_manager
+from Packages.DatabaseMng.JsonManager import JsonManager_Class
+from Packages.DatabaseMng.PathManager import PathManager_Class
 import Packages.CustomItem.RemovingPopup as Rm_popup
 from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.boxlayout import BoxLayout
@@ -33,7 +35,8 @@ class AssetsScreen(Screen):
         self.PortfolioName = PortfolioName # contains the portfolio that has been clicked in the FromScreen 
         self.PortfolioJsonPath = ReturnJsonPathGivenScreenName(self.FromScreenName)
         self.DBManager = db_manager.PortfoliosManager_Class(db_manager.path_manager.database_path, self.PortfolioJsonPath)
-        
+        self.Configuration = JsonManager_Class(PathManager_Class.database_path, PathManager_Class.Configuration_path)
+
         # Update the Label of the String
         self.ids['FirstRowLabel'].text = 'ASSETS IN ' + self.PortfolioName.upper() + ' PORTFOLIO [' + self.FromScreenName.upper() + ']'
 
