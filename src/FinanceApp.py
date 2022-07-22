@@ -10,8 +10,6 @@ kivy.require('1.0.9')
 import Packages.Configuration.WinConfiguration as WinConf
 from Packages.DatabaseMng.JsonManager import JsonManager_Class
 from Packages.DatabaseMng.PathManager import PathManager_Class
-import Packages.CustomItem.CustomPopup as cst_popup
-import Packages.CustomItem.CustomGraphicItem as cst_item
 from Packages.Screens.Dashboard_screen import *
 from Packages.Screens.Transaction_screen import *
 from Packages.Screens.TransactionList_screen import *
@@ -27,12 +25,9 @@ from Packages.Screens.MenuLayout import *
 #####################
 # IMPORTS FROM KIVY #
 #####################
-from kivy.uix.screenmanager import Screen, ScreenManager
-from kivy.uix.stacklayout import StackLayout
 from kivy.uix.boxlayout import BoxLayout
 from kivy.core.window import Window
 from kivymd.app import MDApp
-from kivy.app import App
 
 ################################################
 # Contains the setting layout, Menu and Data   #
@@ -62,15 +57,8 @@ class FinanceApp(MDApp):
         # Initialize the Dashboard page
         self.root.children[0].children[0].children[0].UpdateScreen()
 
-        return
         # Set the Dashboard button selected
         self.root.children[0].children[1].ids.Dashboard_btn.SelectedStatus = True
-        self.root.children[0].children[1].ids.Dashboard_btn.background_color = self.Configuration.GetElementValue('MenuButtonSelectedBackgroundColor')
+        self.root.children[0].children[1].ids.Dashboard_btn.BackgroundColor= self.Configuration.GetElementValue('MenuButtonSelectedBackgroundColor')
 
-        # Set the menu button images
-        for element in self.root.children[0].children[1].ids.MenuListOfButton.children:
-            # Set Image for each class and update image
-            ImageName = element.text.strip().lower()
-            element.ImageName = 'images/button/' + ImageName + '.png'
-            element.source = 'images/button/' + ImageName + '.png'
 

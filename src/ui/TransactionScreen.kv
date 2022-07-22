@@ -23,61 +23,9 @@
             #      TRANSACTION IN      #
             ############################
             BoxLayout:
-                id: TransactionInRow
-                orientation: 'horizontal'
-                size_hint: 1, None
-                height: self.minimum_height
-                padding: ("0dp", "20dp", "0dp", "0dp")
-                spacing: "20dp"
-                
-                Label:
-                    id: TransactionInLabel
-                    size_hint: 0.7, None
-                    font_name: 'Candarab'
-                    font_size: 25
-                    height: "40dp" 
-                    halign: 'left'
-                    text: 'TRANSACTION IN'
-                
-                Button:
-                    text: 'MODIFY CLASSES'
-                    size_hint: 0.15, None
-                    height: "40dp" 
-                    background_color: 0,0,0,0
-                    on_release: root.ModifyCategory('IN')
-                    font_name: 'Candarab'
-                    font_size: 16
-                    canvas.before:
-                        Color:
-                            rgba: 0.1,0.1,0.9,0.7
-                        RoundedRectangle:
-                            pos: self.pos
-                            size: self.size
-                            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
-
-                Button:
-                    text: 'VIEW TRANSACTION IN'
-                    size_hint: 0.15, None
-                    height: "40dp" 
-                    background_color: 0,0,0,0
-                    on_release: root.MoveToTransactionScreen('IN')
-                    font_name: 'Candarab'
-                    font_size: 16
-                    canvas.before:
-                        Color:
-                            rgba: 0.1,0.1,0.9,0.7
-                        RoundedRectangle:
-                            pos: self.pos
-                            size: self.size
-                            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
-
-            BoxLayout:
-                orientation: 'horizontal'
-                id: TransactionInGraphCanvas
-                size_hint: 1, None
-                height: "400dp"
-                spacing: "20dp"
-                padding: ("0dp", "0dp", "0dp", "0dp")
+                id: TransactionIdMainBoxLayout
+                orientation: 'vertical'
+                size_hint: 1, 0.5
 
                 canvas:
                     Color:
@@ -86,80 +34,137 @@
                         pos: self.pos
                         size: self.size
                         radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
-                
+
                 BoxLayout:
-                    orientation: 'vertical'
-                    size_hint: 0.5, 1
-                    id: TransactionInGraphBoxLayout
+                    id: TransactionInRow
+                    orientation: 'horizontal'
+                    size_hint: 1, None
+                    height: self.minimum_height
+                    padding: ("0dp", "20dp", "0dp", "0dp")
+                    spacing: "20dp"
+                    
+                    Label:
+                        id: TransactionInLabel
+                        size_hint: 0.7, None
+                        font_name: 'Candarab'
+                        font_size: 25
+                        height: "40dp" 
+                        halign: 'left'
+                        text: 'TRANSACTION IN'
+                    
+                    Button:
+                        text: 'MODIFY CLASSES'
+                        size_hint: 0.15, None
+                        height: "40dp" 
+                        background_color: 0,0,0,0
+                        on_release: root.ModifyCategory('IN')
+                        font_name: 'Candarab'
+                        font_size: 16
+                        canvas.before:
+                            Color:
+                                rgba: 0.1,0.1,0.9,0.7
+                            RoundedRectangle:
+                                pos: self.pos
+                                size: self.size
+                                radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
 
-                    Image:
-                        id: GraphTransactionIn
-                        nocache: True
-                        size:  self.size
-            
-                # Scroll View dashboard
-                ScrollView:
-					bar_inactive_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
-					bar_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
-                    id: TransactionInScreenView
-                    size_hint: 0.5, 1
+                    Button:
+                        text: 'VIEW TRANSACTION IN'
+                        size_hint: 0.15, None
+                        height: "40dp" 
+                        background_color: 0,0,0,0
+                        on_release: root.MoveToTransactionScreen('IN')
+                        font_name: 'Candarab'
+                        font_size: 16
+                        canvas.before:
+                            Color:
+                                rgba: 0.1,0.1,0.9,0.7
+                            RoundedRectangle:
+                                pos: self.pos
+                                size: self.size
+                                radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
 
-                    # Box containing assets distribution
+                BoxLayout:
+                    orientation: 'horizontal'
+                    id: TransactionInGraphCanvas
+                    size_hint: 1, None
+                    height: "400dp"
+                    spacing: "20dp"
+                    padding: ("0dp", "0dp", "0dp", "0dp")
+                    
                     BoxLayout:
-                        id: TransactionInBoxInScrollView
                         orientation: 'vertical'
-                        size_hint: 1, None
-                        height: self.minimum_height
-                        padding: ("20dp", "20dp", "20dp", "20dp")
-                        spacing: "0dp"
-                        
-                        # First children containg the table title
+                        size_hint: 0.5, 1
+                        id: TransactionInGraphBoxLayout
+
+                        Image:
+                            id: GraphTransactionIn
+                            nocache: True
+                            size:  self.size
+                
+                    # Scroll View dashboard
+                    ScrollView:
+                        bar_inactive_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
+                        bar_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
+                        id: TransactionInScreenView
+                        size_hint: 0.5, 1
+
+                        # Box containing assets distribution
                         BoxLayout:
-                            orientation: 'horizontal'
-                            size_hint: 1, None
-                            height: "40dp"
-
-                            Label:
-                                size_hint: 0.4, None
-                                font_name: 'Candarab'
-                                font_size: 17
-                                height: "40dp" 
-                                text: 'CLASS NAME'
-
-                            Label:
-                                size_hint: 0.3, None
-                                font_name: 'Candarab'
-                                font_size: 17
-                                height: "40dp" 
-                                text: 'DESIRED'
-
-                            Label:
-                                size_hint: 0.3, None
-                                font_name: 'Candarab'
-                                font_size: 17
-                                height: "40dp" 
-                                text: 'ACTUAL'
-
-                                
-                        BoxLayout:
-                            orientation: 'vertical'
-                            size_hint: 1, None
-                            height: "2dp"
-
-                            canvas.before:
-                                Color:
-                                    rgba: 1,1,1,1     
-                                Rectangle:
-                                    pos: self.pos
-                                    size: self.size
-                        
-                        BoxLayout:
-                            id: TransactionInTable
+                            id: TransactionInBoxInScrollView
                             orientation: 'vertical'
                             size_hint: 1, None
                             height: self.minimum_height
                             padding: ("20dp", "20dp", "20dp", "20dp")
-                            spacing: "20dp"
+                            spacing: "0dp"
+                            
+                            # First children containg the table title
+                            BoxLayout:
+                                orientation: 'horizontal'
+                                size_hint: 1, None
+                                height: "40dp"
+
+                                Label:
+                                    size_hint: 0.4, None
+                                    font_name: 'Candarab'
+                                    font_size: 17
+                                    height: "40dp" 
+                                    text: 'CLASS NAME'
+
+                                Label:
+                                    size_hint: 0.3, None
+                                    font_name: 'Candarab'
+                                    font_size: 17
+                                    height: "40dp" 
+                                    text: 'DESIRED'
+
+                                Label:
+                                    size_hint: 0.3, None
+                                    font_name: 'Candarab'
+                                    font_size: 17
+                                    height: "40dp" 
+                                    text: 'ACTUAL'
+
+                                    
+                            BoxLayout:
+                                orientation: 'vertical'
+                                size_hint: 1, None
+                                height: "2dp"
+
+                                canvas.before:
+                                    Color:
+                                        rgba: 1,1,1,1     
+                                    Rectangle:
+                                        pos: self.pos
+                                        size: self.size
+                            
+                            BoxLayout:
+                                id: TransactionInTable
+                                orientation: 'vertical'
+                                size_hint: 1, None
+                                height: self.minimum_height
+                                padding: ("20dp", "20dp", "20dp", "20dp")
+                                spacing: "20dp"
 
             #############################
             #      TRANSACTION OUT      #
