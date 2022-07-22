@@ -1,6 +1,6 @@
 from Packages.CustomItem.HoverClass import *
 from kivy.properties import BooleanProperty
-from kivy.properties import StringProperty
+from kivy.properties import StringProperty, ColorProperty
 from kivy.uix.button import Button
 from kivy.uix.label import Label
 from kivy.uix.relativelayout import RelativeLayout
@@ -17,9 +17,11 @@ class CustomLabelMenu(Label):
     # Define properties
     SelectedStatus = BooleanProperty(False)
 
-class CustomMenuRectangleButton(Button, HoverBehavior):
+class CustomMenuSquareButton(RelativeLayout, HoverBehavior):
     # Define properties
     Configuration = JsonManager_Class(PathManager_Class.database_path, PathManager_Class.Configuration_path)
+    BackgroundColor = ColorProperty(Configuration.GetElementValue('TransparentBackgroundColor'))
+    LabelString = StringProperty('Investment')
     SelectedStatus = BooleanProperty(False)
     ImageName = StringProperty()
 
@@ -62,14 +64,13 @@ class CustomMenuRectangleButton(Button, HoverBehavior):
         self.background_color = self.Configuration.GetElementValue('MenuButtonSelectedBackgroundColor') 
 
     def on_enter(self, *args):
+        print('Ciao')
         self.background_color = self.Configuration.GetElementValue('MenuButtonSelectedBackgroundColor') 
         
     def on_leave(self, *args):
+        print('Ciao')
         if not self.SelectedStatus:
             self.background_color = self.Configuration.GetElementValue('MenuButtonNotSelectedBackgroundColor') 
-
-class CustomMenuSquareButton(RelativeLayout, HoverBehavior):
-    pass
 
 class ModifyButton(Button):
     def __init__(self,**kwargs):

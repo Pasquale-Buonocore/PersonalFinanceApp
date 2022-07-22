@@ -10,7 +10,7 @@
     font_name: app.Configuration.GetElementValue('LeftMenuTitleFontName') 
     font_size: app.Configuration.GetElementValue('LeftMenuTitleFontSize') 
 
-<CustomMenuRectangleButton>:
+<CustomMenuRectangleButton@Button>:
     canvas:
         Rectangle:
             source: self.ImageName
@@ -25,20 +25,41 @@
     size_hint: app.Configuration.GetElementValue('ButtonMenu_size_hint_xy') 
 
 <CustomMenuSquareButton>:
-    size: ["20dp", "20dp"]
+    Button:
+        id: ButtonToPress
+        font_name: app.Configuration.GetElementValue('ProfileNameFontName')
+        font_size: app.Configuration.GetElementValue('ProfileNameFontSize')
+        background_color: [1,0,0,0]
+        canvas:
+            Color:
+                rgba: root.BackgroundColor
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
 
-    canvas:
-        Rectangle:
-            source: self.ImageName
-            pos: self.pos[0] + root.width/10, self.pos[1] + root.height/4
-            size: self.size[0]*0.12, self.size[1]*0.45
+    BoxLayout:
+        orientation: 'vertical'
+        padding: ["0dp","10dp","0dp","10dp"]
+        spacing: "10dp"
 
-    text_size: root.width, None
-    size: self.texture_size
-    font_name: app.Configuration.GetElementValue('LeftMenuButtonFontName') 
-    font_size: app.Configuration.GetElementValue('LeftMenuButtonFontSize') 
-    background_color: app.Configuration.GetElementValue('TransparentBackgroundColor') 
-    size_hint: app.Configuration.GetElementValue('ButtonMenu_size_hint_xy') 
+        BoxLayout:
+            size_hint: 1, 0.6
+
+            Image:
+                pos: self.pos
+                size: self.size
+                source: './images/button/Dashboard.png'
+
+        BoxLayout:
+            id: OctopusPictureLabel
+            size_hint: 1, 0.4
+
+            Label:
+                id: ButtonLabel
+                text: root.LabelString
+                halign: 'center'
+                font_name: app.Configuration.GetElementValue('ProfileNameFontName')
+                font_size: app.Configuration.GetElementValue('LeftMenuButtonFontSize')
 
 <MenuLayout>:
     id: MenuDataLayout
@@ -248,8 +269,10 @@
                         font_name: app.Configuration.GetElementValue('ProfileNameFontName')
                         font_size: app.Configuration.GetElementValue('LeftMenuButtonFontSize')
 
-        Button:
-            text: '2'
+
+        CustomMenuSquareButton:
+            # root.LabelString : 'Dio Cane'
+            #self.ButtonLabel.text: 'investment'
 
         Button:
             text: '1'
