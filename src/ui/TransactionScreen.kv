@@ -44,7 +44,7 @@
                     text: 'TRANSACTION IN'
                 
                 Button:
-                    text: 'MODIFY CLASSES'
+                    text: 'MODIFY CATEGORY'
                     size_hint: 0.15, 1
                     background_color: 0,0,0,0
                     on_release: root.ModifyCategory('IN')
@@ -52,14 +52,14 @@
                     font_size: 16
                     canvas.before:
                         Color:
-                            rgba: 0.1,0.1,0.9,0.7
+                            rgba: app.Configuration.GetElementValue('MenuButtonSelectedBackgroundColor') 
                         RoundedRectangle:
                             pos: self.pos
                             size: self.size
                             radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
 
                 Button:
-                    text: 'VIEW TRANSACTION IN'
+                    text: 'VIEW TRANSACTIONS'
                     size_hint: 0.15, 1
                     background_color: 0,0,0,0
                     on_release: root.MoveToTransactionScreen('IN')
@@ -67,7 +67,7 @@
                     font_size: 16
                     canvas.before:
                         Color:
-                            rgba: 0.1,0.1,0.9,0.7
+                            rgba: app.Configuration.GetElementValue('MenuButtonSelectedBackgroundColor') 
                         RoundedRectangle:
                             pos: self.pos
                             size: self.size
@@ -187,7 +187,7 @@
                     text: 'TRANSACTION OUT'
                 
                 Button:
-                    text: 'MODIFY CLASSES'
+                    text: 'MODIFY CATEGORY'
                     size_hint: 0.15, 1
                     background_color: 0,0,0,0
                     on_release: root.ModifyCategory('OUT')
@@ -195,14 +195,14 @@
                     font_size: 16
                     canvas.before:
                         Color:
-                            rgba: 0.1,0.1,0.9,0.7
+                            rgba: app.Configuration.GetElementValue('MenuButtonSelectedBackgroundColor') 
                         RoundedRectangle:
                             pos: self.pos
                             size: self.size
                             radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
 
                 Button:
-                    text: 'VIEW TRANSACTION OUT'
+                    text: 'VIEW TRANSACTIONS'
                     size_hint: 0.15, 1
                     background_color: 0,0,0,0
                     on_release: root.MoveToTransactionScreen('OUT')
@@ -210,7 +210,7 @@
                     font_size: 16
                     canvas.before:
                         Color:
-                            rgba: 0.1,0.1,0.9,0.7
+                            rgba: app.Configuration.GetElementValue('MenuButtonSelectedBackgroundColor') 
                         RoundedRectangle:
                             pos: self.pos
                             size: self.size

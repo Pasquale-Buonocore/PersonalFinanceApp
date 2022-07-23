@@ -1,14 +1,12 @@
-import Packages.DatabaseMng.JsonManagerList as jsonList_manager
-import Packages.CustomItem.AddTransactionInOutPopup as TransInOut_Popup
 import Packages.CustomItem.RemoveTransactionInOutPopup as RemoveTransactionInOutPopup
-import Packages.CustomItem.CustomPopup as cst_popup
+import Packages.CustomItem.AddTransactionInOutPopup as TransInOut_Popup
+from Packages.DatabaseMng.JsonManager import JsonManager_Class
+from Packages.DatabaseMng.PathManager import PathManager_Class
 import Packages.CustomItem.CustomGraphicItem as cst_item
-import Packages.CustomItem.RemovingPopup as Rm_popup
-from kivy.uix.gridlayout import GridLayout
+from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.screenmanager import Screen
 from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.relativelayout import RelativeLayout
-from kivy.uix.label import Label
+
 
 class TransactionListScreen(Screen):
     def __init__(self,**kwargs):
@@ -19,6 +17,7 @@ class TransactionListScreen(Screen):
     
     # Function to call when moving towards that page
     def UpdateScreen(self, portfolio, Database):
+        self.Configuration = JsonManager_Class(PathManager_Class.database_path, PathManager_Class.Configuration_path)
         self.ids.TransactionListLabel.text = 'TRANSACTION ' + portfolio.upper()
         self.DBManager = Database
         self.portfolio = portfolio
@@ -82,11 +81,11 @@ class TransactionListScreen(Screen):
          # Get the necessary information from the AssetDictionary
         GraphicToReturn = RelativeLayout()
         GraphicToReturn.size_hint = [1, None]
-        GraphicToReturn.height = "80dp"
+        GraphicToReturn.height = "70dp"
 
         BoxLayoutToAdd = BoxLayout()
         BoxLayoutToAdd.size_hint = [1, None]
-        BoxLayoutToAdd.height = "80dp"
+        BoxLayoutToAdd.height = "70dp"
         BoxLayoutToAdd.orientation = "horizontal"
         
 
@@ -98,33 +97,29 @@ class TransactionListScreen(Screen):
         label_params.update({'text_size': [textsize, None]})
         label_params.update({'pos_hint': {'x' : 0.045, 'y': 0}})
         label_params.update({'text': TransactionDict['Date'] })
-        label_params.update({'font_name': 'Candarab'})
-        label_params.update({'font_size': 20})
+        label_params.update({'font_name': self.Configuration.GetElementValue('ElementInListFontName')})
+        label_params.update({'font_size': self.Configuration.GetElementValue('ElementInListFontSize')})
         label_params.update({'color': [1,1,1,1]})
         GraphicToReturn.add_widget(cst_item.TransactionLabel(lbl_parm = label_params))
 
         # Add Amount
         label_params.update({'pos_hint': {'x' : 0.2, 'y': 0}})
         label_params.update({'text': str(TransactionDict['Amount']) + Currency})
-        label_params.update({'font_size': 20})
         GraphicToReturn.add_widget(cst_item.TransactionLabel(lbl_parm = label_params))
 
         # Add Description
         label_params.update({'pos_hint': {'x' : 0.36, 'y': 0}})
         label_params.update({'text': TransactionDict['Note']})
-        label_params.update({'font_size': 20})
         GraphicToReturn.add_widget(cst_item.TransactionLabel(lbl_parm = label_params))
 
         # Add Category
         label_params.update({'pos_hint': {'x' : 0.64, 'y': 0}})
         label_params.update({'text': TransactionDict['Category'] })
-        label_params.update({'font_size': 20})
         GraphicToReturn.add_widget(cst_item.TransactionLabel(lbl_parm = label_params))
 
         # Add Paid with
         label_params.update({'pos_hint': {'x' : 0.79, 'y': 0}})
         label_params.update({'text': str(TransactionDict['Paid with'])})
-        label_params.update({'font_size': 20})
         GraphicToReturn.add_widget(cst_item.TransactionLabel(lbl_parm = label_params))
 
         # # Define remove button

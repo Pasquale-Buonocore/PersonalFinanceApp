@@ -9,6 +9,8 @@
     "MenuButtonNotSelectedBackgroundColor": [0, 0, 0, 0],
     "ScrollViewBarBackgroundColor": [0, 0, 0, 0],
 
+    "ElementInListFontName": "Candarab",
+    "ElementInListFontSize": "17dp",
     "LeftMenuTitleFontName": "Candara",
     "LeftMenuTitleFontSize": "15dp",
     "LeftMenuButtonFontName": "Candarab",

@@ -36,6 +36,12 @@
                         "Statistics": {
                               "TotalValue": 0
                         }
+                  },
+                  "De Fi Cosmos": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
                   }
             },
             "Statistics": {
@@ -45,12 +51,14 @@
                   "ActualAssetAllocation": {
                         "Stipendio": 50.0,
                         "Ripetizioni": 50.0,
-                        "Defi Elrond": 0.0
+                        "Defi Elrond": 0.0,
+                        "De Fi Cosmos": 0.0
                   },
                   "DesiredAssetAllocation": {
                         "Stipendio": 0,
                         "Ripetizioni": 100,
-                        "Defi Elrond": 50
+                        "Defi Elrond": 50,
+                        "De Fi Cosmos": 10
                   }
             }
       },

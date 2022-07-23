@@ -1,8 +1,9 @@
-import Packages.CustomItem.AddPortfolioPopup as AddPortfolioPopup
 import Packages.CustomItem.RemovePortfolioPopup as RemovePortfolioPopup
-import Packages.CustomItem.CustomGraphicItem as cst_item
+import Packages.CustomItem.AddPortfolioPopup as AddPortfolioPopup
+from Packages.DatabaseMng.JsonManager import JsonManager_Class
+from Packages.DatabaseMng.PathManager import PathManager_Class
 import Packages.DatabaseMng.PortfolioManager as db_manager
-import Packages.CustomItem.RemovingPopup as Rm_popup
+import Packages.CustomItem.CustomGraphicItem as cst_item
 from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.screenmanager import Screen
 
@@ -21,6 +22,7 @@ class PortfolioScreen(Screen):
     #########################
 
     def UpdateScreen(self, ScreenName, PortfolioJsonPath):
+        self.Configuration = JsonManager_Class(PathManager_Class.database_path, PathManager_Class.Configuration_path)
         self.UpdateInternalData(ScreenName = ScreenName, PortfolioJsonPath = PortfolioJsonPath)
         self.UpdateListOfPortfolio()
 

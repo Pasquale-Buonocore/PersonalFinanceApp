@@ -2,8 +2,6 @@ from Packages.CustomFunction.AssetDistributionGraph import AssetDistributionGrap
 import Packages.CustomItem.TransactionCategoryListPopup as trans_popup
 import Packages.DatabaseMng.PortfolioManager as db_manager
 import Packages.DatabaseMng.PathManager as path_manager
-import Packages.CustomItem.CustomGraphicItem as cst_item
-import Packages.CustomItem.RemovingPopup as Rm_popup
 from kivy.uix.screenmanager import Screen
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button

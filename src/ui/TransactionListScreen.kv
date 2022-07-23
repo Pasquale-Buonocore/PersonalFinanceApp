@@ -16,7 +16,7 @@
             orientation: 'vertical'
             size_hint: 1, None
             height: self.minimum_height
-            padding: ("50dp", "10dp", "50dp", "50dp")
+            padding: ("0dp", "0dp", "0dp", "0dp")
             spacing: "0dp"
 
             ##############################
@@ -27,20 +27,20 @@
                 orientation: 'horizontal'
                 size_hint: 1, None
                 height: self.minimum_height
-                padding: ("0dp", "30dp", "0dp", "30dp")
+                padding: ("0dp", "0dp", "0dp", "20dp")
                 spacing: "20dp"
 
                 Button:
                     text: 'RETURN TO TRANSACTION'
                     size_hint: 0.15, None
-                    height: "40dp" 
+                    height: "45dp" 
                     background_color: 0,0,0,0
                     on_release: root.ReturnBack()
                     font_name: 'Candarab'
                     font_size: 16
                     canvas.before:
                         Color:
-                            rgba: 0.1,0.1,0.9,0.7
+                            rgba: app.Configuration.GetElementValue('CanvasBackgroundColor') 
                         RoundedRectangle:
                             pos: self.pos
                             size: self.size
@@ -51,21 +51,21 @@
                     size_hint: 0.6, None
                     font_name: 'Candarab'
                     font_size: 25
-                    height: "40dp" 
+                    height: "45dp" 
                     halign: 'left'
                     text: 'TRANSACTION IN'
 
                 Button:
                     text: 'ADD TRANSACTION'
                     size_hint: 0.15, None
-                    height: "40dp" 
+                    height: "45dp" 
                     background_color: 0,0,0,0
                     on_release: root.OpenAddTransactionPopup()
                     font_name: 'Candarab'
                     font_size: 16
                     canvas.before:
                         Color:
-                            rgba: 0.1,0.1,0.9,0.7
+                            rgba: app.Configuration.GetElementValue('CanvasBackgroundColor') 
                         RoundedRectangle:
                             pos: self.pos
                             size: self.size
@@ -84,7 +84,7 @@
 
                 canvas.before:
                     Color:
-                        rgba: 0.1,0.1,0.9,0.7 
+                        rgba: app.Configuration.GetElementValue('CanvasBackgroundColor') 
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
@@ -100,37 +100,37 @@
                         text: 'DATE'
                         size_hint: 0.15, 1
                         font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                        font_size: 15
+                        font_size: app.Configuration.GetElementValue('ElementInListFontSize')
                         
                     Label: 
                         text: 'AMOUNT'
                         size_hint: 0.15, 1
                         font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                        font_size: 15
+                        font_size: app.Configuration.GetElementValue('ElementInListFontSize')
 
                     Label: 
                         text: 'DESCRIPTION'
                         size_hint: 0.3, 1
                         font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                        font_size: 15
+                        font_size: app.Configuration.GetElementValue('ElementInListFontSize')
 
                     Label: 
                         text: 'CATEGORY'
                         size_hint: 0.15, 1
                         font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                        font_size: 15
+                        font_size: app.Configuration.GetElementValue('ElementInListFontSize')
 
                     Label: 
                         text: 'PAID WITH'
                         size_hint: 0.15, 1
                         font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                        font_size: 15
+                        font_size: app.Configuration.GetElementValue('ElementInListFontSize')
 
                     Label: 
                         text: 'ACTIONS'
                         size_hint: 0.1, 1
                         font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                        font_size: 15
+                        font_size: app.Configuration.GetElementValue('ElementInListFontSize')
             
             BoxLayout:
                 id: AssetsTransactionHeader

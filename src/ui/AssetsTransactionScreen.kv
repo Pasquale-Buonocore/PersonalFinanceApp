@@ -16,7 +16,7 @@
             orientation: 'vertical'
             size_hint: 1, None
             height: self.minimum_height
-            padding: ("50dp", "10dp", "50dp", "10dp")
+            padding: ("0dp", "0dp", "0dp", "0dp")
             spacing: "0dp"
 
             # First row box layout
@@ -25,7 +25,7 @@
                 orientation: 'horizontal'
                 size_hint: 1, None
                 height: self.minimum_height
-                padding: ("0dp", "30dp", "0dp", "20dp")
+                padding: ("0dp", "0dp", "0dp", "20dp")
                 
                 Button:
                     text: 'BACK TO ASSET'
@@ -37,7 +37,7 @@
                     font_size: 16
                     canvas.before:
                         Color:
-                            rgba: 0.1,0.1,0.9,0.7                            
+                            rgba: app.Configuration.GetElementValue('CanvasBackgroundColor')                              
                         RoundedRectangle:
                             pos: self.pos
                             size: self.size
@@ -203,7 +203,7 @@
                         font_size: 16
                         canvas.before:
                             Color:
-                                rgba: 0.1,0.1,0.9,0.7
+                                rgba: app.Configuration.GetElementValue('CanvasBackgroundColor')  
                             RoundedRectangle:
                                 pos: self.pos
                                 size: self.size
@@ -223,7 +223,7 @@
                 canvas.before:
                     Color:
                         #rgba: app.Configuration.GetElementValue('CanvasBackgroundColor') 
-                        rgba: 0.1,0.1,0.9,0.7 
+                        rgba: app.Configuration.GetElementValue('CanvasBackgroundColor')   
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
