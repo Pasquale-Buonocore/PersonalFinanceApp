@@ -14,6 +14,7 @@ class PathManager_Class():
     Crypto_path = 'Crypto.json'
     Category_path = 'Category.json'
     Configuration_path = 'Configuration.json'
+    Accounts_path = 'Accounts.json'
 
 class PathImage_Class():
     ### Root path ###

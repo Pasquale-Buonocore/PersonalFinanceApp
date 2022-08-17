@@ -8,7 +8,6 @@
     "MenuButtonSelectedBackgroundColor": [0.05, 0.05, 0.2, 1],
     "MenuButtonNotSelectedBackgroundColor": [0, 0, 0, 0],
     "ScrollViewBarBackgroundColor": [0, 0, 0, 0],
-
     "ElementInListFontName": "Candarab",
     "ElementInListFontSize": "17dp",
     "LeftMenuTitleFontName": "Candara",
@@ -21,44 +20,37 @@
     "PopupTitleFontSize": "20dp",
     "PopupInnerFontName": "Candara",
     "PopupInnerFontSize": "20dp",
-
     "MenuDataLayoutPadding": ["20dp","20dp","20dp","20dp"],
     "MenuDataLayoutSpacing": "20dp",
-
     "MenuLayoutSizeHint": [0.23, 1],
     "MenuLayoutPadding": ["20dp","20dp","20dp","40dp"],
     "MenuLayoutSpacing": "20dp",
-
     "DataLayoutSizeHint": [0.77, 1],
     "DataLayoutPadding": ["20dp","20dp","20dp","20dp"],
     "DataLayoutSpacing": "5dp",
-
     "ProfileBoxLayoutSizeHint": [1, 0.3],
     "ProfilePaddingSizeHint": [1, 0.005],
     "MenuButtonBoxLayoutSizeHint": [1, 0.55],
     "AppProfileBoxLayoutSizeHint": [1, 0.15],
-
     "MenuLayoutCanvasRadius": 30,
-    "ScreenNameDictionary": {"DashboardScreenName" : "DASHBOARD",
-                            "TransactionScreenName": "TRANSACTION",
-                            "TransactionListScreenName": "TRANSACTION LIST",
-                            "ETFETCScreenName": "ETF - ETC",
-                            "StocksScreenName": "STOCKS",
-                            "BondScreenName": "BONDS",
-                            "CommodityScreenName": "COMMODITIES",
-                            "CryptoScreenName": "CRYPTO",
-                            "StatisticsScreenName": "STATISTICS",
-                            "SettingScreenName": "SETTINGS",
-                            "CreditScreenName": "CREDITS",
-                            "PortfolioScreenName": "PORTFOLIO",
-                            "AssetsScreenName": "ASSETS",
-                            "EmptyScreenName": "EMPTY",
-                            "AssetsTransactionScreenName": "ASSETS TRANSACTION"},
-
     "DashboardBoxCanvasRadius": 30,
-
     "ButtonMenu_size_hint_xy": [1, 0.07],
     "MenuLabelSpace": "    ",
-    "MenuButtonSpaceNum": 30
-
+    "MenuButtonSpaceNum": 30,
+    "DefaultCurrency":"$",
+    "ScreenNameDictionary": {"DashboardScreenName" : "DASHBOARD",
+        "TransactionScreenName": "TRANSACTION",
+        "TransactionListScreenName": "TRANSACTION LIST",
+        "ETFETCScreenName": "ETF - ETC",
+        "StocksScreenName": "STOCKS",
+        "BondScreenName": "BONDS",
+        "CommodityScreenName": "COMMODITIES",
+        "CryptoScreenName": "CRYPTO",
+        "StatisticsScreenName": "STATISTICS",
+        "SettingScreenName": "SETTINGS",
+        "CreditScreenName": "CREDITS",
+        "PortfolioScreenName": "PORTFOLIO",
+        "AssetsScreenName": "ASSETS",
+        "EmptyScreenName": "EMPTY",
+        "AssetsTransactionScreenName": "ASSETS TRANSACTION"}
 }

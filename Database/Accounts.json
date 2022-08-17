@@ -1,0 +1,47 @@
+{
+      "Unicredit Bank": {
+            "SubAccount": {
+                  "Cash": {
+                        "USD": {
+                              "Amount": 200,
+                              "Currency": "$"
+                        },
+                        "EURO": {
+                              "Amount": 150,
+                              "Currency": "\u20ac"
+                        },
+                        "RUBLO": {
+                              "Amount": 1900,
+                              "Currency": "R"
+                        }
+                  },
+                  "Assets": {
+                        "APPL Stock": {
+                              "Amount": 5,
+                              "TotalValue": 1300,
+                              "Symbol": "APPL",
+                              "Currency": "$"
+                        }
+                  }
+            },
+            "Statistics": {
+                  "Category": "Bank Account",
+                  "LastMonthSubAccount": {
+                        "Cash": {
+                              "USD": {
+                                    "Amount": 200,
+                                    "Currency": "$"
+                              },
+                              "EURO": {
+                                    "Amount": 150,
+                                    "Currency": "\u20ac"
+                              }
+                        },
+                        "Assets": {}
+                  },
+                  "LastMonthValue": 350,
+                  "ActualMonthValue": 350,
+                  "Currency": "\u20ac"
+            }
+      }
+}

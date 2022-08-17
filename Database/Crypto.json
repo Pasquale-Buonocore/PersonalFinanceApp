@@ -449,20 +449,59 @@
                               "TotalValue": 0.0,
                               "TotalProfit": 0
                         }
+                  },
+                  "ALPHA ZERO": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "Quantity": 0,
+                              "Symbol": "AZERO",
+                              "CurrentPrice": 5,
+                              "AveragePrice": 0,
+                              "TotalValue": 0.0,
+                              "TotalProfit": 0
+                        }
+                  },
+                  "CELESTIA": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "Quantity": 0,
+                              "Symbol": "CLST",
+                              "CurrentPrice": 5,
+                              "AveragePrice": 0,
+                              "TotalValue": 0.0,
+                              "TotalProfit": 0
+                        }
+                  },
+                  "CASPER": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "Quantity": 0,
+                              "Symbol": "CSPR",
+                              "CurrentPrice": 5,
+                              "AveragePrice": 0,
+                              "TotalValue": 0.0,
+                              "TotalProfit": 0
+                        }
                   }
             },
             "Statistics": {
                   "Currency": "$",
                   "TotalValue": 0.0,
-                  "NumberOfAssets": 2,
+                  "NumberOfAssets": 5,
                   "TotalProfit": 0,
                   "ActualAssetAllocation": {
                         "CONSTELLATION": 0.0,
-                        "VERASITY": 0.0
+                        "VERASITY": 0.0,
+                        "ALPHA ZERO": 0.0,
+                        "CELESTIA": 0.0,
+                        "CASPER": 0.0
                   },
                   "DesiredAssetAllocation": {
                         "CONSTELLATION": 0,
-                        "VERASITY": 0
+                        "VERASITY": 0,
+                        "ALPHA ZERO": 0,
+                        "CELESTIA": 0,
+                        "CASPER": 0
                   }
             }
       },
@@ -503,59 +542,6 @@
                   "DesiredAssetAllocation": {
                         "BINANCE COIN": 0,
                         "FTX COIN": 0
-                  }
-            }
-      },
-      "WEB 3 INFRA": {
-            "Assets": {
-                  "FILECOIN": {
-                        "Transactions": {},
-                        "Statistics": {
-                              "Quantity": 0,
-                              "Symbol": "FIL",
-                              "CurrentPrice": 5,
-                              "AveragePrice": 0,
-                              "TotalValue": 0.0,
-                              "TotalProfit": 0
-                        }
-                  },
-                  "HELIUM": {
-                        "Transactions": {},
-                        "Statistics": {
-                              "Quantity": 0,
-                              "Symbol": "HNT",
-                              "CurrentPrice": 5,
-                              "AveragePrice": 0,
-                              "TotalValue": 0.0,
-                              "TotalProfit": 0
-                        }
-                  },
-                  "VECHAIN": {
-                        "Transactions": {},
-                        "Statistics": {
-                              "Quantity": 0,
-                              "Symbol": "VET",
-                              "CurrentPrice": 5,
-                              "AveragePrice": 0,
-                              "TotalValue": 0.0,
-                              "TotalProfit": 0
-                        }
-                  }
-            },
-            "Statistics": {
-                  "Currency": "$",
-                  "TotalValue": 0.0,
-                  "NumberOfAssets": 3,
-                  "TotalProfit": 0,
-                  "ActualAssetAllocation": {
-                        "FILECOIN": 0.0,
-                        "HELIUM": 0.0,
-                        "VECHAIN": 0.0
-                  },
-                  "DesiredAssetAllocation": {
-                        "FILECOIN": 0,
-                        "HELIUM": 0,
-                        "VECHAIN": 0
                   }
             }
       }
