@@ -34,6 +34,7 @@
     "AppProfileBoxLayoutSizeHint": [1, 0.15],
     "MenuLayoutCanvasRadius": 30,
     "DashboardBoxCanvasRadius": 30,
+    "AccountRowBoxCanvasRadius": 10,
     "ButtonMenu_size_hint_xy": [1, 0.07],
     "MenuLabelSpace": "    ",
     "MenuButtonSpaceNum": 30,

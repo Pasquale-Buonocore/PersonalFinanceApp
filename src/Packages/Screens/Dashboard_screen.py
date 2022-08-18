@@ -4,23 +4,38 @@ import Packages.CustomItem.CustomGraphicItem as cst_item
 import Packages.CustomItem.WarningPopup as Wrn_popup
 import Packages.CustomItem.RemovingPopup as Rm_popup
 from kivy.uix.gridlayout import GridLayout
+from kivy.properties import StringProperty
 from kivy.uix.screenmanager import Screen
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
+from kivy.uix.relativelayout import RelativeLayout
+from Packages.DatabaseMng.AccountsManager import AccountsManager_Class
+from Packages.DatabaseMng.PathManager import PathManager_Class
+from Packages.DatabaseMng.JsonManager import JsonManager_Class
+from Packages.CustomItem.AccountRowBoxLayout import AccountRowBoxLayout, AccountRowBoxLayout_Title, AddNewAccountBoxLayout, AccountRowExpandedBoxLayout
 
 class DashboardScreen(Screen):
+    image_source = StringProperty('images/Support/AssetsInPortfolio.png')
+
     def __init__(self,**kwargs):
         super().__init__(**kwargs)
-    
+        # Initialize internal data
+        self.AccountsBoxLayout = 'AccountsBoxLayout'
+        
     # Function to call when the screen is changed to Dashboard
     def UpdateScreen(self):
+        # Update the database of accounts
+        self.Configuration = JsonManager_Class(PathManager_Class.database_path, PathManager_Class.Configuration_path)
+        self.DBManager = AccountsManager_Class(PathManager_Class.database_path, PathManager_Class.Accounts_path)
+
         self.ids.GraphPortfolioAllocation.source = 'images/Support/AssetsInPortfolio.png'
         self.ids.GraphPortfolioAllocation.reload()
 
         self.ids.GraphAssetAllocation.source = 'images/Support/AssetsInPortfolio.png'
         self.ids.GraphAssetAllocation.reload()
 
-        # Update the dashboard screen 
+        # Update the dashboard screen
+        self.Update_AccountBoxLayout()
         self.Update_InFlowBoxLayout()
         self.Update_ExpencesBoxLayout()
         self.Update_EarningsBoxLayout()
@@ -90,7 +105,7 @@ class DashboardScreen(Screen):
 
     # Update the Expences Box Layout
     def Update_ExpencesBoxLayout(self):
-        return 
+        return
 
         # Clear the Item inside the BoxLayout (Keep the first element only)
         First_widget = self.ids["Expenses"].children[-1]
@@ -200,3 +215,59 @@ class DashboardScreen(Screen):
     # Given the JsonFile, create a graph to display for the Earnings graph
     def Update_EarningGraph(self):
         pass
+
+    #######################
+    # ACCOUNTS MANAGEMENT #
+    #######################
+    
+    # Update the list of accounts
+    def Update_AccountBoxLayout(self):
+        json_file = self.DBManager.ReadJson()
+
+        # Clear the Item inside the BoxLayout (Keep the first element only)
+        self.ids[self.AccountsBoxLayout].clear_widgets()
+        
+        InfoDict = {'Currency': ''}
+        InfoDict.update({'AccountName' : 'ACCOUNT NAME'})
+        InfoDict.update({'Category' : 'CATEGORY'})
+        InfoDict.update({'LastMonthValue' : 'LAST MONTH VALUE'})
+        InfoDict.update({'ActualMonthValue' : 'CURRENT VALUE'})
+        InfoDict.update({'ValueDifference' : 'DIFFERENCE'})
+        InfoDict.update({'RowHeight': "20dp"})
+
+        # Append to the account list
+        self.ids[self.AccountsBoxLayout].add_widget(AccountRowBoxLayout_Title(kwargs = InfoDict))
+
+        for account in json_file.keys():
+            InfoDict = {'Currency': json_file[account]['Statistics']['Currency']}
+            InfoDict.update({'AccountName' : account})
+            InfoDict.update({'Category' : json_file[account]['Statistics']['Category']})
+            InfoDict.update({'LastMonthValue' : json_file[account]['Statistics']['LastMonthValue']})
+            InfoDict.update({'ActualMonthValue' : json_file[account]['Statistics']['ActualMonthValue']})
+            InfoDict.update({'ValueDifference' : float(InfoDict['ActualMonthValue']) - float(InfoDict['LastMonthValue'])})
+            InfoDict.update({'RowHeight': "40dp"})
+
+            # Append to the account list
+            self.ids[self.AccountsBoxLayout].add_widget(AccountRowBoxLayout(kwargs = InfoDict))
+
+        self.ids[self.AccountsBoxLayout].add_widget(AddNewAccountBoxLayout())
+
+    def UpdateExpandedAccountList(self):
+        ListOfWidget = self.ids[self.AccountsBoxLayout].children.copy()
+        ListOfWidget.reverse()
+
+        self.ids[self.AccountsBoxLayout].clear_widgets()
+
+        for children in ListOfWidget:
+            if hasattr(children, 'RowExpansion'): continue
+
+            self.ids[self.AccountsBoxLayout].add_widget(children)
+            if children.ToExpand:
+                self.ids[self.AccountsBoxLayout].add_widget(AccountRowExpandedBoxLayout())
+
+
+    # At the "Add Transaction" or Modify Transaction 
+    def OpenAddTransactionPopup(self):
+        # Define Popup and open it
+        Popup = TransInOut_Popup.AddTransactionInOutPopup(title_str = 'ADD TRANSACTION ' + self.portfolio, type = 'A', PortfolioName = self.portfolio, Database = self.DBManager)
+        Popup.open()

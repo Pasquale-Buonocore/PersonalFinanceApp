@@ -43,5 +43,39 @@
                   "ActualMonthValue": 350,
                   "Currency": "\u20ac"
             }
+      },
+      "Binance Exchange": {
+            "SubAccount": {
+                  "Cash": {
+                        "USD": {
+                              "Amount": 200,
+                              "Currency": "$"
+                        },
+                        "EURO": {
+                              "Amount": 150,
+                              "Currency": "\u20ac"
+                        }
+                  },
+                  "Assets": {}
+            },
+            "Statistics": {
+                  "Category": "Crypto Exchange",
+                  "LastMonthSubAccount": {
+                        "Cash": {
+                              "USD": {
+                                    "Amount": 200,
+                                    "Currency": "$"
+                              },
+                              "EURO": {
+                                    "Amount": 150,
+                                    "Currency": "\u20ac"
+                              }
+                        },
+                        "Assets": {}
+                  },
+                  "LastMonthValue": 450,
+                  "ActualMonthValue": 150,
+                  "Currency": "\u20ac"
+            }
       }
 }

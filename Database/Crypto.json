@@ -450,7 +450,7 @@
                               "TotalProfit": 0
                         }
                   },
-                  "ALPHA ZERO": {
+                  "ALEPH ZERO": {
                         "Transactions": {},
                         "Statistics": {
                               "Quantity": 0,
@@ -492,14 +492,14 @@
                   "ActualAssetAllocation": {
                         "CONSTELLATION": 0.0,
                         "VERASITY": 0.0,
-                        "ALPHA ZERO": 0.0,
+                        "ALEPH ZERO": 0.0,
                         "CELESTIA": 0.0,
                         "CASPER": 0.0
                   },
                   "DesiredAssetAllocation": {
                         "CONSTELLATION": 0,
                         "VERASITY": 0,
-                        "ALPHA ZERO": 0,
+                        "ALEPH ZERO": 0,
                         "CELESTIA": 0,
                         "CASPER": 0
                   }

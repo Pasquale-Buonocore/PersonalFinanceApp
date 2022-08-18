@@ -152,108 +152,51 @@
                         # Box Layout per space
                         BoxLayout:
                             size_hint: 1, 0.05
-
-            Label:
-                text: 'Portfolio distribution'
-                text_size: self.width, None
-                size: self.texture_size
-                font_name: 'Candarab'
-                font_size: 28
-
+            # Box containg accounts and platforms
             BoxLayout:
-                orientation: 'horizontal'
-                id: FirstBoxLayout
+                orientation: 'vertical'
+                id: AccountGridLayouts
                 size_hint: 1, None
-                height: "400dp"
+                height: self.minimum_height
                 spacing: "20dp"
-                padding: ("0dp", "0dp", "0dp", "0dp")
 
-                canvas:
+                canvas.before:
                     Color:
                         rgba: app.Configuration.GetElementValue('CanvasBackgroundColor') 
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
                         radius: [(app.Configuration.GetElementValue('DashboardBoxCanvasRadius'), app.Configuration.GetElementValue('DashboardBoxCanvasRadius'))] *4
-
+                
                 BoxLayout:
+                    id: CanvasLabelIdentifier
                     orientation: 'vertical'
-                    size_hint: 0.5, 1
-                    id: AssetAllocationBoxLayout
+                    size_hint: 1, None
+                    height: "30dp"
+                    padding: ("25dp","25dp","0dp","0dp")
 
-                    Image:
-                        id: GraphPortfolioAllocation
-                        size:  self.size
+                    Label:
+                        text: 'ACCOUNT AND PLATFORMS'
+                        text_size: self.width, None
+                        size: self.texture_size
+                        font_name: 'Candarab'
+                        font_size: 22
+                
+                BoxLayout:
+                    id: AccountsBoxLayout
+                    orientation: 'vertical'
+                    size_hint: 1, None
+                    height: self.minimum_height
+                    spacing: "10dp"
+                    padding: ("20dp","10dp","20dp","25dp")
             
-                # Scroll View dashboard
-                ScrollView:
-                    bar_inactive_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
-                    bar_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
-                    id: AssetAllocationScreenView
-                    size_hint: 0.5, 1
-
-                    # Box containing assets distribution
-                    BoxLayout:
-                        id: AssetAllocationBoxInScrollView
-                        orientation: 'vertical'
-                        size_hint: 1, None
-                        height: self.minimum_height
-                        padding: ("20dp", "20dp", "20dp", "20dp")
-                        spacing: "0dp"
-                        
-                        # First children containg the table title
-                        BoxLayout:
-                            orientation: 'horizontal'
-                            size_hint: 1, None
-                            height: "40dp"
-
-                            Label:
-                                size_hint: 0.4, None
-                                font_name: 'Candarab'
-                                font_size: 20
-                                height: "40dp" 
-                                text: 'CLASS NAME'
-
-                            Label:
-                                size_hint: 0.3, None
-                                font_name: 'Candarab'
-                                font_size: 20
-                                height: "40dp" 
-                                text: 'LAST'
-
-                            Label:
-                                size_hint: 0.3, None
-                                font_name: 'Candarab'
-                                font_size: 20
-                                height: "40dp" 
-                                text: 'ACTUAL'
-
-                        BoxLayout:
-                            orientation: 'vertical'
-                            size_hint: 1, None
-                            height: "2dp"
-
-                            canvas.before:
-                                Color:
-                                    rgba: 1,1,1,1     
-                                Rectangle:
-                                    pos: self.pos
-                                    size: self.size
-
-            Label:
-                text: 'Asset distribution'
-                text_size: self.width, None
-                size: self.texture_size
-                font_name: 'Candarab'
-                font_size: 28
-            
+            # Box Layout containg the Portfolio Distribution
             BoxLayout:
-                orientation: 'horizontal'
-                id: FirstBoxLayout
+                orientation: 'vertical'
+                id: AccountGridLayouts
                 size_hint: 1, None
-                height: "400dp"
+                height: self.minimum_height
                 spacing: "20dp"
-                padding: ("0dp", "0dp", "0dp", "0dp")
 
                 canvas:
                     Color:
@@ -264,74 +207,198 @@
                         radius: [(app.Configuration.GetElementValue('DashboardBoxCanvasRadius'), app.Configuration.GetElementValue('DashboardBoxCanvasRadius'))] *4
                 
                 BoxLayout:
+                    id: CanvasLabelIdentifier
                     orientation: 'vertical'
-                    size_hint: 0.5, 1
-                    id: AssetAllocationBoxLayout
+                    size_hint: 1, None
+                    height: "30dp"
+                    padding: ("25dp","25dp","0dp","0dp")
 
-                    Image:
-                        id: GraphAssetAllocation
-                        size:  self.size
-            
-                # Scroll View dashboard
-                ScrollView:
-                    bar_inactive_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
-                    bar_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
-                    id: AssetAllocationScreenView
-                    size_hint: 0.5, 1
+                    Label:
+                        text: 'PORTFOLIO DISTRIBUTION'
+                        text_size: self.width, None
+                        size: self.texture_size
+                        font_name: 'Candarab'
+                        font_size: 22
+                
+                BoxLayout:
+                    orientation: 'horizontal'
+                    id: FirstBoxLayout
+                    size_hint: 1, None
+                    height: "400dp"
+                    spacing: "20dp"
+                    padding: ("0dp", "0dp", "0dp", "0dp")
 
-                    # Box containing assets distribution
                     BoxLayout:
-                        id: AssetAllocationBoxInScrollView
                         orientation: 'vertical'
-                        size_hint: 1, None
-                        height: self.minimum_height
-                        padding: ("20dp", "20dp", "20dp", "20dp")
-                        spacing: "0dp"
-                        
-                        # First children containg the table title
+                        size_hint: 0.4, 1
+                        id: AssetAllocationBoxLayout
+
+                        Image:
+                            id: GraphPortfolioAllocation
+                            size:  self.size                
+                
+                    # Scroll View dashboard
+                    ScrollView:
+                        bar_inactive_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
+                        bar_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
+                        id: AssetAllocationScreenView
+                        size_hint: 0.6, 1
+
+                        # Box containing assets distribution
                         BoxLayout:
-                            orientation: 'horizontal'
-                            size_hint: 1, None
-                            height: "40dp"
-
-                            Label:
-                                size_hint: 0.4, None
-                                font_name: 'Candarab'
-                                font_size: 20
-                                height: "40dp" 
-                                text: 'CLASS NAME'
-
-                            Label:
-                                size_hint: 0.3, None
-                                font_name: 'Candarab'
-                                font_size: 20
-                                height: "40dp" 
-                                text: 'LAST'
-
-                            Label:
-                                size_hint: 0.3, None
-                                font_name: 'Candarab'
-                                font_size: 20
-                                height: "40dp" 
-                                text: 'ACTUAL'
-
-                        BoxLayout:
-                            orientation: 'vertical'
-                            size_hint: 1, None
-                            height: "2dp"
-
-                            canvas.before:
-                                Color:
-                                    rgba: 1,1,1,1     
-                                Rectangle:
-                                    pos: self.pos
-                                    size: self.size
-                        
-                        BoxLayout:
-                            id: AssetAllocationTable
+                            id: AssetAllocationBoxInScrollView
                             orientation: 'vertical'
                             size_hint: 1, None
                             height: self.minimum_height
                             padding: ("20dp", "20dp", "20dp", "20dp")
-                            spacing: "20dp"
+                            spacing: "0dp"
+                            
+                            # First children containg the table title
+                            BoxLayout:
+                                orientation: 'horizontal'
+                                size_hint: 1, None
+                                height: "40dp"
 
+                                Label:
+                                    size_hint: 0.4, None
+                                    font_name: 'Candarab'
+                                    font_size: 20
+                                    height: "40dp" 
+                                    text: 'CLASS NAME'
+
+                                Label:
+                                    size_hint: 0.3, None
+                                    font_name: 'Candarab'
+                                    font_size: 20
+                                    height: "40dp" 
+                                    text: 'LAST'
+
+                                Label:
+                                    size_hint: 0.3, None
+                                    font_name: 'Candarab'
+                                    font_size: 20
+                                    height: "40dp" 
+                                    text: 'ACTUAL'
+
+                            BoxLayout:
+                                orientation: 'vertical'
+                                size_hint: 1, None
+                                height: "2dp"
+
+                                canvas.before:
+                                    Color:
+                                        rgba: 1,1,1,1     
+                                    Rectangle:
+                                        pos: self.pos
+                                        size: self.size
+
+
+            # Box Layout containg the Portfolio Distribution
+            BoxLayout:
+                orientation: 'vertical'
+                id: AssetDistributionBoxLayout
+                size_hint: 1, None
+                height: self.minimum_height
+                spacing: "20dp"
+
+                canvas:
+                    Color:
+                        rgba: app.Configuration.GetElementValue('CanvasBackgroundColor') 
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [(app.Configuration.GetElementValue('DashboardBoxCanvasRadius'), app.Configuration.GetElementValue('DashboardBoxCanvasRadius'))] *4
+                
+                BoxLayout:
+                    id: CanvasLabelIdentifier
+                    orientation: 'vertical'
+                    size_hint: 1, None
+                    height: "30dp"
+                    padding: ("25dp","25dp","0dp","0dp")
+
+                    Label:
+                        text: 'ASSET DISTRIBUTION'
+                        text_size: self.width, None
+                        size: self.texture_size
+                        font_name: 'Candarab'
+                        font_size: 22
+            
+                BoxLayout:
+                    orientation: 'horizontal'
+                    id: FirstBoxLayout
+                    size_hint: 1, None
+                    height: "400dp"
+                    spacing: "20dp"
+                    padding: ("0dp", "0dp", "0dp", "0dp")
+                    
+                    BoxLayout:
+                        orientation: 'vertical'
+                        size_hint: 0.4, 1
+                        id: AssetAllocationBoxLayout
+
+                        Image:
+                            id: GraphAssetAllocation
+                            size:  self.size
+                
+                    # Scroll View dashboard
+                    ScrollView:
+                        bar_inactive_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
+                        bar_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
+                        id: AssetAllocationScreenView
+                        size_hint: 0.6, 1
+
+                        # Box containing assets distribution
+                        BoxLayout:
+                            id: AssetAllocationBoxInScrollView
+                            orientation: 'vertical'
+                            size_hint: 1, None
+                            height: self.minimum_height
+                            padding: ("20dp", "20dp", "20dp", "20dp")
+                            spacing: "0dp"
+                            
+                            # First children containg the table title
+                            BoxLayout:
+                                orientation: 'horizontal'
+                                size_hint: 1, None
+                                height: "40dp"
+
+                                Label:
+                                    size_hint: 0.4, None
+                                    font_name: 'Candarab'
+                                    font_size: 20
+                                    height: "40dp" 
+                                    text: 'CLASS NAME'
+
+                                Label:
+                                    size_hint: 0.3, None
+                                    font_name: 'Candarab'
+                                    font_size: 20
+                                    height: "40dp" 
+                                    text: 'LAST'
+
+                                Label:
+                                    size_hint: 0.3, None
+                                    font_name: 'Candarab'
+                                    font_size: 20
+                                    height: "40dp" 
+                                    text: 'ACTUAL'
+
+                            BoxLayout:
+                                orientation: 'vertical'
+                                size_hint: 1, None
+                                height: "2dp"
+
+                                canvas.before:
+                                    Color:
+                                        rgba: 1,1,1,1     
+                                    Rectangle:
+                                        pos: self.pos
+                                        size: self.size
+                            
+                            BoxLayout:
+                                id: AssetAllocationTable
+                                orientation: 'vertical'
+                                size_hint: 1, None
+                                height: self.minimum_height
+                                padding: ("20dp", "20dp", "20dp", "20dp")
+                                spacing: "20dp"

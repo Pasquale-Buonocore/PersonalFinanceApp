@@ -135,7 +135,6 @@ class TransactionListScreen(Screen):
         # Return relative layout
         return GraphicToReturn
                  
-
     # At the "Add Transaction" or Modify Transaction 
     def OpenAddTransactionPopup(self):
         # Define Popup and open it

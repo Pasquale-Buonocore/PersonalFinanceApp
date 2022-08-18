@@ -1,0 +1,132 @@
+#:kivy 1.0.9
+
+<AccountRowExpandedBoxLayout>:
+    orientation: 'horizontal'
+    size_hint: 1, None
+    height: "100dp"
+    
+    Label:
+        text: 'Loading informations...'
+
+<AccountRowBoxLayout>:
+    orientation: 'horizontal'
+    size_hint: 1, None
+    height: root.RowHeight
+
+    canvas:
+        Color:
+            rgba: app.Configuration.GetElementValue('WindowBackgroundColor') 
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [(app.Configuration.GetElementValue('AccountRowBoxCanvasRadius'), app.Configuration.GetElementValue('AccountRowBoxCanvasRadius'))] *4
+                
+
+    Label: 
+        text: root.AccountName
+        size_hint: 0.225, 1
+        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration.GetElementValue('ElementInListFontSize')
+        
+    Label: 
+        text: root.Category
+        size_hint: 0.225, 1
+        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration.GetElementValue('ElementInListFontSize')
+
+    Label: 
+        text: root.LastMonthValue
+        size_hint: 0.15, 1
+        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration.GetElementValue('ElementInListFontSize')
+
+    Label: 
+        text: root.ActualMonthValue
+        size_hint: 0.15, 1
+        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration.GetElementValue('ElementInListFontSize')
+
+    Label: 
+        text: root.DifferenceValue
+        size_hint: 0.15, 1
+        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration.GetElementValue('ElementInListFontSize')
+
+    BoxLayout:
+        size_hint: 0.1, 0.5
+        pos_hint: {'y': 0.25}
+        orientation: 'horizontal'
+
+        BoxLayout:
+            size_hint: 0.25, 1
+
+        Button: 
+            text: '<'
+            size_hint: 0.5, 1
+            on_release: root.ExpandAccount()
+            font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+            font_size: app.Configuration.GetElementValue('ElementInListFontSize')
+        
+        BoxLayout:
+            size_hint: 0.25, 1
+
+
+<AccountRowBoxLayout_Title>:
+    orientation: 'horizontal'
+    size_hint: 1, None
+    height: root.RowHeight
+
+    Label: 
+        text: root.AccountName
+        size_hint: 0.225, 1
+        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration.GetElementValue('ElementInListFontSize')
+        
+    Label: 
+        text: root.Category
+        size_hint: 0.225, 1
+        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration.GetElementValue('ElementInListFontSize')
+
+    Label: 
+        text: root.LastMonthValue
+        size_hint: 0.15, 1
+        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration.GetElementValue('ElementInListFontSize')
+
+    Label: 
+        text: root.ActualMonthValue
+        size_hint: 0.15, 1
+        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration.GetElementValue('ElementInListFontSize')
+
+    Label: 
+        text: root.DifferenceValue
+        size_hint: 0.15, 1
+        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration.GetElementValue('ElementInListFontSize')
+
+    Label: 
+        text: ''
+        size_hint: 0.1, 1
+        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration.GetElementValue('ElementInListFontSize')
+
+<AddNewAccountBoxLayout>:
+    orientation: 'horizontal'
+    size_hint: 1, None
+    height: "40dp"
+
+    BoxLayout:
+        size_hint: 0.4, 1
+
+    Button:
+        size_hint: 0.2, 1
+        on_release: root.AddAccount()
+        text: 'ADD NEW ACCOUNT'
+
+    BoxLayout:
+        size_hint: 0.4, 1
+
+
+    
