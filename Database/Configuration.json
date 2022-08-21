@@ -7,6 +7,8 @@
     "MenuButtonMovingBackgroundColor": [0.05, 0.05, 0.2, 1],
     "MenuButtonSelectedBackgroundColor": [0.05, 0.05, 0.2, 1],
     "MenuButtonNotSelectedBackgroundColor": [0, 0, 0, 0],
+    "DateFeeNoteBtnSelectedBackgroundColor": [0.05, 0.05, 0.2, 1],
+    "DateFeeNoteBtnNotSelectedBackgroundColor": [0.1,0.1,0.1,0.7],
     "ScrollViewBarBackgroundColor": [0, 0, 0, 0],
     "ElementInListFontName": "Candarab",
     "ElementInListFontSize": "17dp",
@@ -18,6 +20,7 @@
     "ProfileNameFontSize": "20dp",
     "PopupTitleFontName": "Candarab",
     "PopupTitleFontSize": "20dp",
+    "PopupTextFieldFontSize": "23dp",
     "PopupInnerFontName": "Candara",
     "PopupInnerFontSize": "20dp",
     "MenuDataLayoutPadding": ["20dp","20dp","20dp","20dp"],
@@ -53,5 +56,8 @@
         "PortfolioScreenName": "PORTFOLIO",
         "AssetsScreenName": "ASSETS",
         "EmptyScreenName": "EMPTY",
-        "AssetsTransactionScreenName": "ASSETS TRANSACTION"}
+        "AssetsTransactionScreenName": "ASSETS TRANSACTION"},
+    "AssetTransactionPopupScreenDictionary": {"BUY" : "BuySellScreen",
+        "SELL": "BuySellScreen",
+        "SWAP": "SwapScreen"}
 }

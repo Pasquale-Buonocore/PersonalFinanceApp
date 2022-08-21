@@ -264,10 +264,3 @@ class DashboardScreen(Screen):
             self.ids[self.AccountsBoxLayout].add_widget(children)
             if children.ToExpand:
                 self.ids[self.AccountsBoxLayout].add_widget(AccountRowExpandedBoxLayout())
-
-
-    # At the "Add Transaction" or Modify Transaction 
-    def OpenAddTransactionPopup(self):
-        # Define Popup and open it
-        Popup = TransInOut_Popup.AddTransactionInOutPopup(title_str = 'ADD TRANSACTION ' + self.portfolio, type = 'A', PortfolioName = self.portfolio, Database = self.DBManager)
-        Popup.open()

@@ -1,0 +1,17 @@
+#:kivy 1.0.9
+
+###########
+# CUSTOM  #
+###########
+
+<CustomMenuSquareButton>:
+    id: ButtonToPress
+    font_name: app.Configuration.GetElementValue('ProfileNameFontName')
+    font_size: app.Configuration.GetElementValue('ProfileNameFontSize')
+    background_color: app.Configuration.GetElementValue('TransparentBackgroundColor') 
+    canvas:
+        Color:
+            rgba: root.BackgroundColor
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size

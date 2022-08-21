@@ -1,0 +1,13 @@
+#:kivy 1.0.9
+
+<AddNotePopup>:
+    background_color: 0,0,0,0
+    
+    # Canvas for the poup background background
+    canvas.before:
+        Color:
+            rgba: 0.5,0.5,0.5,1
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]

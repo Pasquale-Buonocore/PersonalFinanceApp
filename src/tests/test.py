@@ -7,7 +7,7 @@ from kivymd.app import MDApp
 from kivymd.uix.menu import MDDropdownMenu
 
 # Designate Out .kv design file
-Builder.load_file('./test.kv')
+# Builder.load_file('./test.kv')
 
 KV = '''
 <IconListItem>

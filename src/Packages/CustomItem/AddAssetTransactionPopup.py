@@ -1,14 +1,15 @@
 from kivy.lang import Builder
 from kivy.uix.popup import Popup
+from kivy.uix.modalview import ModalView
 import Packages.CustomItem.WarningPopup as Wrn_popup
 
 # Designate Out .kv design file
 Builder.load_file('Packages/CustomItem/ui/AddAssetTransactionPopup.kv')
 
-class AddAssetTransactionPopup(Popup):
-    def __init__(self, title_str, type = 'A', AssetName = '', PortfolioName = '', Database = '', ItemToMod = {}):
+class AddAssetTransactionPopup(ModalView):
+    def __init__(self, title_str = '', type = 'A', AssetName = '', PortfolioName = '', Database = '', ItemToMod = {}):
         # Initialize the super class
-        super().__init__(title = title_str, size_hint = (0.4,0.6))
+        super().__init__( size_hint = (0.4,0.6))
         # Save important infos
         self.DBManager = Database
         self.PortfolioName = PortfolioName
