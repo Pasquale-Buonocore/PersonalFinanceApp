@@ -15,32 +15,28 @@
     # Principal container
     BoxLayout:
         orientation: 'vertical'
-        spacing: "10dp"
-        padding: ("15dp","15dp","15dp","15dp")
+        spacing: "15dp"
+        padding: ("20dp","20dp","20dp","20dp")
 
         # Horizontal container with return back button and Title
         BoxLayout:
             orientation: 'horizontal'
-            size_hint: 1, 0.2
-            
-            canvas.before:
-                Color:
-                    rgba: 0,1,0.3,0.7
-                RoundedRectangle:
-                    pos: self.pos
-                    size: self.size
-                    radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+            size_hint: 1, 0.25
+            spacing: "20dp"
 
             Button:
                 id: ReturnBackButton
-                size_hint: 0.05, 1
-                
+                size_hint: 0.15, 1
+                background_color: [0,0,0,0]
                 text: '<'
+                on_release: root.Cancel()
+                font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+                font_size: app.Configuration.GetElementValue('PopupTextFieldFontSize')
 
                 # Canvas for the poup background background
                 canvas.before:
                     Color:
-                        rgba: 0.3,0.3,0.3,0.7
+                        rgba: 0.1,0.1,0.1,0.7
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
@@ -48,26 +44,26 @@
             
             BoxLayout:
                 orientation: 'horizontal'
-                size_hint: 0.95, 1
+                size_hint: 0.85, 1
 
                 Label:
                     text: 'Add fee'
                     text_size: self.width, None
                     size: self.texture_size
                     halign: 'left'
-                    font_name: 'Candarab'
-                    font_size: 20
+                    font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+                    font_size: app.Configuration.GetElementValue('PopupTextFieldFontSize')
         
         # Box Layout containg the Text Input to add the Fees
         BoxLayout:
-            size_hint: 1, 0.8
             orientation: 'horizontal'
             spacing: "0dp"
+            size_hint: 1, 0.4
 
             # Canvas for the poup background background
             canvas.before:
                 Color:
-                    rgba: 1,0.3,0.3,0.7
+                    rgba: 0.1,0.1,0.1,0.7
                 RoundedRectangle:
                     pos: self.pos
                     size: self.size
@@ -80,19 +76,37 @@
                 size_hint: 0.1, 1
                 text_size: self.width, None
                 size: self.texture_size
-                halign: 'left'
+                halign: 'center'
                 font_name: app.Configuration.GetElementValue('PopupTitleFontName')
                 font_size: app.Configuration.GetElementValue('PopupTextFieldFontSize')
 
-            # Value to insert
             TextInput: 
                 id: FeeValue
-                size_hint: 0.9, None
-                height: self.minimum_height
                 multiline: 0
+                text: root.fee_str
+                pos_hint: {'y': - 0.25}
                 background_color: 0,0,0,0
                 foreground_color: 1,1,1,1
                 cursor_color: 1,1,1,1
                 font_name: app.Configuration.GetElementValue('PopupTitleFontName')
                 font_size: app.Configuration.GetElementValue('PopupTextFieldFontSize')
                 halign: 'left'
+                valign: 'center'
+        
+        Button:
+            size_hint: 1, 0.35
+            background_color: 0,0,0,0
+            canvas.before:
+                Color:
+                    rgba: 0.1,0.1,0.9,0.7
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+            id: Confirm
+            font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+            font_size: app.Configuration.GetElementValue('PopupInnerFontSize')
+            text:'Confirm'
+            on_release: root.Confirm()        
+

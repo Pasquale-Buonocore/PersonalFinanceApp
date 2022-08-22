@@ -30,7 +30,7 @@
             size: self.size
 
 <CustomDateFeeDateSquareButton>:
-    id: DateFeeNoteButtonì
+    id: DateFeeNoteButton
     font_name: app.Configuration.GetElementValue('ProfileNameFontName')
     font_size: app.Configuration.GetElementValue('ProfileNameFontSize')
     background_color: app.Configuration.GetElementValue('TransparentBackgroundColor') 
@@ -293,7 +293,7 @@
                     size_hint: 0.175, 1
 
                     CustomDateFeeDateSquareButton:
-                        on_release: self.OpeningAddFee()
+                        on_release: self.OpeningAddFee(root.parent.parent.parent.fee)
                     
                     BoxLayout:
                         id: FeeBoxLayoutButton
@@ -326,7 +326,7 @@
                     size_hint: 0.175, 1
 
                     CustomDateFeeDateSquareButton:
-                        on_release: self.OpeningAddNote()
+                        on_release: self.OpeningAddNote(root.parent.parent.parent.note)
                     
                     BoxLayout:
                         id: NoteBoxLayoutButton

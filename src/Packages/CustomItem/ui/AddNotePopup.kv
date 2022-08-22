@@ -11,3 +11,88 @@
             pos: self.pos
             size: self.size
             radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+    # Principal container
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: "15dp"
+        padding: ("20dp","20dp","20dp","20dp")
+
+        # Horizontal container with return back button and Title
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, 0.17
+            spacing: "20dp"
+
+            Button:
+                id: ReturnBackButton
+                size_hint: 0.15, 1
+                background_color: [0,0,0,0]
+                text: '<'
+                on_release: root.Cancel()
+                font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+                font_size: app.Configuration.GetElementValue('PopupTextFieldFontSize')
+
+                # Canvas for the poup background background
+                canvas.before:
+                    Color:
+                        rgba: 0.1,0.1,0.1,0.7
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+            
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint: 0.85, 1
+
+                Label:
+                    text: 'Add note'
+                    text_size: self.width, None
+                    size: self.texture_size
+                    halign: 'left'
+                    font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+                    font_size: app.Configuration.GetElementValue('PopupTextFieldFontSize')
+    
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, 0.6
+            
+            # Canvas for the poup background background
+            canvas.before:
+                Color:
+                    rgba: 0.1,0.1,0.1,0.7
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+            
+            TextInput: 
+                id: NoteValue
+                multiline: 1
+                text: root.note_str
+                background_color: 0,0,0,0
+                foreground_color: 1,1,1,1
+                cursor_color: 1,1,1,1
+                font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+                font_size: app.Configuration.GetElementValue('AddNotedFontSize')
+                halign: 'left'
+                valign: 'center'
+        
+        Button:
+            size_hint: 1, 0.22
+            background_color: 0,0,0,0
+            canvas.before:
+                Color:
+                    rgba: 0.1,0.1,0.9,0.7
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+            id: Confirm
+            font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+            font_size: app.Configuration.GetElementValue('PopupInnerFontSize')
+            text:'Confirm'
+            on_release: root.Confirm()        
+

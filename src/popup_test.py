@@ -83,17 +83,18 @@ class CustomDateFeeDateSquareButton(Button, HoverBehavior):
     BackgroundColor = ColorProperty(Configuration.GetElementValue('DateFeeNoteBtnNotSelectedBackgroundColor'))
     SelectedStatus = BooleanProperty(False)
     
+    
     def OpenDatePicker(self):
         print('Opening Date Picker')
 
-    def OpeningAddFee(self):
+    def OpeningAddFee(self, fee_str):
         # Define Popup
-        Popup = AddFeePopup()
+        Popup = AddFeePopup(fee_str)
         Popup.open()
     
-    def OpeningAddNote(self):
+    def OpeningAddNote(self, note_str):
         # Define Popup
-        Popup = AddNotePopup()
+        Popup = AddNotePopup(note_str)
         Popup.open()
 
     # Change Background color at entry
@@ -109,6 +110,8 @@ class AddAssetTransactionPopup(ModalView):
     def __init__(self, title_str = ''): 
         # Setting internal attributes
         self.title = title_str
+        self.fee = '0.0'
+        self.note = ''
 
         # Initialize the super class
         super().__init__(size_hint = (0.35,0.7))
@@ -116,6 +119,9 @@ class AddAssetTransactionPopup(ModalView):
         # Modify BUY button as selected one
         self.ids['BUY_BTN'].SelectedStatus = True
         self.ids['BUY_BTN'].BackgroundColor = self.ids['BUY_BTN'].Configuration.GetElementValue('MenuButtonSelectedBackgroundColor')
+
+    def Cancel(self):
+        self.dismiss()
 
 class BuySellScreen(Screen):
     pass
