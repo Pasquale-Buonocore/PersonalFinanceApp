@@ -129,7 +129,7 @@
                             font_name: app.Configuration.GetElementValue('PopupTitleFontName')
                             font_size: app.Configuration.GetElementValue('PopupTextFieldFontSize')
                             halign: 'center'
-                
+                                            
                 # Quantity and Price per coin box layout
                 BoxLayout: 
                     orientation: 'horizontal'
@@ -151,8 +151,9 @@
 
                         TextInput: 
                             id: QuantityValue
+                            on_text: root.compute_value_spent()
                             size_hint: 0.6, 1
-                            pos_hint: {'x': 0.2}
+                            pos_hint: {'x': 0.2, 'y': - 0.25}
                             text: '0.0'
                             multiline: 0
                             background_color: 0.1,0.1,0.1,0.7
@@ -161,6 +162,7 @@
                             font_name: app.Configuration.GetElementValue('PopupTitleFontName')
                             font_size: app.Configuration.GetElementValue('PopupTextFieldFontSize')
                             halign: 'center'
+                            valign: 'center'
 
 
                     # Price per Coin BoxLayout
@@ -170,6 +172,7 @@
                         padding: ("0dp","2dp","0dp","5dp")
 
                         Label:
+                            id: PricePerCoinStr
                             text: 'Price Per Coin'
                             text_size: self.width, None
                             size: self.texture_size
@@ -178,7 +181,8 @@
                             font_size: 20
 
                         TextInput: 
-                            id: PriceValue
+                            id: PricePerCoinValue
+                            on_text: root.compute_value_spent()
                             size_hint: 0.6, 1
                             pos_hint: {'x': 0.2}
                             multiline: 0
@@ -254,12 +258,13 @@
                 size_hint: 1, 0.125
                 orientation: 'horizontal' 
                 spacing: "10dp"
-            
+
+                # Date Picker
                 RelativeLayout:
                     size_hint: 0.25, 1
 
                     CustomDateFeeDateSquareButton:
-                        on_release: self.OpenDatePicker()
+                        on_release: self.show_date_picker(root.parent.parent.parent.date)
                         
                     # Date Button
                     BoxLayout:
@@ -270,7 +275,7 @@
                         padding: ("10dp","0dp","10dp","0dp")
 
                         BoxLayout:
-                            size_hint: 0.3, 1
+                            size_hint: 0.25, 1
 
                             Image:
                                 size_hint: 0.5, 0.5
@@ -280,8 +285,9 @@
                                 source: './images/button/Date.png'
 
                         Label:
+                            id: DateTextstr
                             text: '20 August 2022'
-                            size_hint: 0.7, 1
+                            size_hint: 0.75, 1
                             text_size: self.width, None
                             size: self.texture_size
                             font_name: 'Candarab'
@@ -372,7 +378,7 @@
 
                 Label:
                     id: TotalSpentLabel
-                    text: 'Total Spent:'
+                    text: 'Total Spent: $'
                     size_hint: 0.35, 1
                     text_size: self.width, None
                     size: self.texture_size
@@ -381,7 +387,8 @@
                     font_size: 20
                 
                 Label:
-                    text: '$ 0.00'
+                    id: TotalSpentValue
+                    text: '0.00'
                     size_hint: 0.65, 1
                     text_size: self.width, None
                     size: self.texture_size
@@ -494,7 +501,7 @@
                 font_name: app.Configuration.GetElementValue('PopupTitleFontName')
                 font_size: app.Configuration.GetElementValue('PopupInnerFontSize')
                 text:'Add Transaction'
-                on_release: root.Confirm(app)
+                on_release: root.AddTransaction(app)
 
             Button:
                 background_color: 0,0,0,0

@@ -19,6 +19,8 @@ from kivy.uix.boxlayout import BoxLayout
 from Packages.CustomItem.HoverClass import *
 from kivy.uix.button import Button
 from kivy.properties import ColorProperty
+from Packages.CustomItem.DataPickerItem import MDDatePicker
+import datetime as dt
 
 # Designate Out .kv design file
 Builder.load_file('popup_test.kv')
@@ -83,20 +85,40 @@ class CustomDateFeeDateSquareButton(Button, HoverBehavior):
     BackgroundColor = ColorProperty(Configuration.GetElementValue('DateFeeNoteBtnNotSelectedBackgroundColor'))
     SelectedStatus = BooleanProperty(False)
     
-    
-    def OpenDatePicker(self):
-        print('Opening Date Picker')
+    ###############
+    # DATE PICKER #
+    ###############
+     
+    # Click OK
+    def on_save(self, instance, value, date_range):
+        self.parent.parent.parent.parent.parent.parent.parent.parent.date = dt.datetime(value.year, value.month, value.day)
+        self.parent.parent.parent.parent.parent.ids['DateTextstr'].text = dt.date(value.year, value.month, value.day).strftime("%d %B %Y")
+        
+    # Show Data Picker
+    def show_date_picker(self, date_str):
+        date_dialog = MDDatePicker(mode="picker", primary_color= [0.1,0.1,0.9,0.7], selector_color = [0.1,0.1,0.9,0.7], text_button_color = [0.1,0.1,0.9,0.7])
+        date_dialog.bind(on_save = self.on_save)
+        date_dialog.open()
 
+    ###############
+    # FEES PICKER #
+    ###############
     def OpeningAddFee(self, fee_str):
         # Define Popup
         Popup = AddFeePopup(fee_str)
         Popup.open()
     
+    ###############
+    # NOTE PICKER #
+    ###############
     def OpeningAddNote(self, note_str):
         # Define Popup
         Popup = AddNotePopup(note_str)
         Popup.open()
 
+    ###############
+    # HOVER BEHAVIOUR PICKER #
+    ###############
     # Change Background color at entry
     def on_enter(self, *args):
         self.BackgroundColor = self.Configuration.GetElementValue('DateFeeNoteBtnSelectedBackgroundColor') 
@@ -112,7 +134,9 @@ class AddAssetTransactionPopup(ModalView):
         self.title = title_str
         self.fee = '0.0'
         self.note = ''
-
+        self.date = dt.datetime.now()
+        self.Currency = '$'
+        
         # Initialize the super class
         super().__init__(size_hint = (0.35,0.7))
 
@@ -120,11 +144,50 @@ class AddAssetTransactionPopup(ModalView):
         self.ids['BUY_BTN'].SelectedStatus = True
         self.ids['BUY_BTN'].BackgroundColor = self.ids['BUY_BTN'].Configuration.GetElementValue('MenuButtonSelectedBackgroundColor')
 
+        # Set the current date on the button
+        self.ids['ScreenManagerSection'].current_screen.ids['DateTextstr'].text = dt.date(self.date.year, self.date.month, self.date.day).strftime("%d %B %Y")
+
+        # Set the asset and symbol according to the page the popup was opened
+        self.ids['ScreenManagerSection'].current_screen.ids['AssetValue'].text = 'Bitcoin'
+        self.ids['ScreenManagerSection'].current_screen.ids['SymbolValue'].text = 'BTC'
+        self.ids['ScreenManagerSection'].current_screen.ids['PricePerCoinStr'].text = 'Price Per Coin [' + self.Currency + ']'
+
+    # Function to call when the Cancel button is pressed
     def Cancel(self):
+        self.dismiss()
+    
+    # Function to call to add the transaction to portfolio
+    def AddTransaction(self, DBManager):
+        print('Adding Transactions...')
         self.dismiss()
 
 class BuySellScreen(Screen):
-    pass
+
+    def compute_value_spent(self):
+        # Initialize Values
+        Quantity = 0.0
+        PricePerCoin = 0.0
+        skipComputation = 0
+        if self.ids['QuantityValue'].text == '' or self.ids['PricePerCoinValue'].text == '': return
+
+        # Extract Quantity 
+        if ('%s' % self.ids['QuantityValue'].text).replace('.','').replace(',','').isnumeric():
+            Quantity = float(self.ids['QuantityValue'].text.replace(',','.'))
+        else:
+            self.ids['QuantityValue'].text = '0.0'
+            skipComputation = 1
+
+        # Extract Prince Per Coint
+        if ('%s' % self.ids['PricePerCoinValue'].text).replace('.','').replace(',','').isnumeric():
+            PricePerCoin = float(self.ids['PricePerCoinValue'].text.replace(',','.'))
+        else:
+            self.ids['PricePerCoinValue'].text = '0.0'
+            skipComputation = 1
+
+        # Compute 
+        if skipComputation: return
+    
+        self.ids['TotalSpentValue'].text = str(round((Quantity * PricePerCoin), 2))
 
 class SwapScreen(Screen):
     pass
