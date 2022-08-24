@@ -1,0 +1,28 @@
+#:kivy 1.0.9
+
+<CustomBorderButton>:
+    size_hint: root.button_size_hint
+    size: root.button_size
+    padding: root.border_size
+
+    canvas.before:
+        Color:
+            rgba: root.canvas_background_color_border
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius : root.radius 
+    
+    RelativeLayout:
+        BoxLayout:
+            canvas.after:
+                Color:
+                    rgba: root.canvas_background_color
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius : root.radius
+        Button:
+            id: ButtonToPress
+            background_color: [0, 0, 0, 0]
+            text: root.text

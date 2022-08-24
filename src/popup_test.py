@@ -19,12 +19,12 @@ from kivy.uix.boxlayout import BoxLayout
 from Packages.CustomItem.HoverClass import *
 from kivy.uix.button import Button
 from kivy.properties import ColorProperty
+from Packages.CustomItem.CustomDropDown import CustomDropDown
 from Packages.CustomItem.DataPickerItem import MDDatePicker
 import datetime as dt
 
 # Designate Out .kv design file
 Builder.load_file('popup_test.kv')
-
 
 class Widgets(Widget):
     def btn(self):
@@ -129,13 +129,13 @@ class CustomDateFeeDateSquareButton(Button, HoverBehavior):
             self.BackgroundColor = self.Configuration.GetElementValue('DateFeeNoteBtnNotSelectedBackgroundColor') 
 
 class AddAssetTransactionPopup(ModalView):
-    def __init__(self, title_str = ''): 
+    def __init__(self, title_str = '', Currency = '$'): 
         # Setting internal attributes
         self.title = title_str
+        self.Currency = Currency
         self.fee = '0.0'
         self.note = ''
         self.date = dt.datetime.now()
-        self.Currency = '$'
         
         # Initialize the super class
         super().__init__(size_hint = (0.35,0.7))
@@ -151,6 +151,13 @@ class AddAssetTransactionPopup(ModalView):
         self.ids['ScreenManagerSection'].current_screen.ids['AssetValue'].text = 'Bitcoin'
         self.ids['ScreenManagerSection'].current_screen.ids['SymbolValue'].text = 'BTC'
         self.ids['ScreenManagerSection'].current_screen.ids['PricePerCoinStr'].text = 'Price Per Coin [' + self.Currency + ']'
+
+        Accounts = ['Unicredit Accounts', 'Ledger' , 'DeGiro']
+        # Populate the DropDown PayingWith selection
+        self.ids['ScreenManagerSection'].current_screen.ids['PayingAccountBoxLayout'].add_widget(CustomDropDown(ListOfButtons = Accounts).ReturnDropDownButton())
+        # Populate the DropDown Storing selection
+
+        # add_widget(CustomDropDown(ListOfButtons = Accounts).ReturnDropDownButton())
 
     # Function to call when the Cancel button is pressed
     def Cancel(self):

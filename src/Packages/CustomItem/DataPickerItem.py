@@ -776,14 +776,7 @@ class MDDatePicker(BaseDialogPicker):
     _start_range_date = 0
     _end_range_date = 0
 
-    def __init__(
-        self,
-        year=None,
-        month=None,
-        day=None,
-        firstweekday=0,
-        **kwargs,
-    ):
+    def __init__(self, year=None, month=None, day=None, firstweekday=0, **kwargs,):
         self.today = date.today()
         self.calendar = calendar.Calendar(firstweekday)
         self.sel_year = year if year else self.today.year

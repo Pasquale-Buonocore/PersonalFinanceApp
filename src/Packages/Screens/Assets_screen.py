@@ -17,7 +17,6 @@ from kivy.graphics import Color, RoundedRectangle
 
 
 class AssetsScreen(Screen):
-    
     def __init__(self, **kwargs):
         # Call superclass
         super().__init__(**kwargs)

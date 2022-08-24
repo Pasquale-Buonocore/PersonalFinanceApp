@@ -90,10 +90,14 @@ class Line(Button):
     def __init__(self,**kwargs):
         super(Button, self).__init__(size_hint = [1, None], height = "3dp", background_color = [0,0,0,0])
         canvas_size = [kwargs['size_x'], super().height]       
-        with self.canvas.before:
+        with self.canvas.after:
             Color(1,1,1,1)
             self.shape = Rectangle(size = canvas_size)
 
+class LineBoxLayout(BoxLayout):
+    def __init__(self,**kwargs):
+        super().__init__(size_hint = [1, None], height = "0dp")
+        
 #######################################
 # PORTFOLIO CUSTOM ELEMENT DEFINITION #
 #######################################

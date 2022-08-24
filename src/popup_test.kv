@@ -200,6 +200,7 @@
 
                     # Paying with BoxLayout
                     BoxLayout:
+                        id: PayingAccountBoxLayout
                         orientation: 'vertical'
                         size_hint: 0.5, 1
                         padding: ("0dp","2dp","0dp","5dp")
@@ -212,18 +213,18 @@
                             halign: 'center'
                             font_size: 20
 
-                        TextInput: 
-                            id: PayingAccountValue
-                            readonly : True
-                            multiline: 0
-                            size_hint: 0.6, 1
-                            pos_hint: {'x': 0.2}
-                            background_color: 0.1,0.1,0.1,0.7
-                            foreground_color: 1,1,1,1
-                            cursor_color: 1,1,1,1
-                            font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                            font_size: app.Configuration.GetElementValue('PopupTextFieldFontSize')
-                            halign: 'center'
+                        # TextInput: 
+                        #     id: PayingAccountValue
+                        #     readonly : True
+                        #     multiline: 0
+                        #     size_hint: 0.6, 1
+                        #     pos_hint: {'x': 0.2}
+                        #     background_color: 0.1,0.1,0.1,0.7
+                        #     foreground_color: 1,1,1,1
+                        #     cursor_color: 1,1,1,1
+                        #     font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+                        #     font_size: app.Configuration.GetElementValue('PopupTextFieldFontSize')
+                        #     halign: 'center'
                     
                     # Storing Box Layout
                     BoxLayout:
