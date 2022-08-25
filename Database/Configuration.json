@@ -8,7 +8,7 @@
     "MenuButtonSelectedBackgroundColor": [0.05, 0.05, 0.2, 1],
     "MenuButtonNotSelectedBackgroundColor": [0, 0, 0, 0],
     "DateFeeNoteBtnSelectedBackgroundColor": [0.05, 0.05, 0.2, 1],
-    "DateFeeNoteBtnNotSelectedBackgroundColor": [0.1,0.1,0.1,0.7],
+    "DateFeeNoteBtnNotSelectedBackgroundColor": [0.1,0.1,0.1,1],
     "ScrollViewBarBackgroundColor": [0, 0, 0, 0],
     "ElementInListFontName": "Candarab",
     "ElementInListFontSize": "17dp",

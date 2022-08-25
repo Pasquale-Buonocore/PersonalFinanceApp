@@ -3,7 +3,7 @@ from kivy.uix.popup import Popup
 from kivy.lang import Builder
 
 # Designate Out .kv design file
-Builder.load_file('ui/PopupMng.kv')
+Builder.load_file('Packages/CustomItem/ui/PopupMng.kv')
 
 ###################
 # ADD TRANSACTION #

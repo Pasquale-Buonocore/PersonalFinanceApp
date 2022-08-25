@@ -67,7 +67,7 @@
             # Box Layout containg Asset, Account ect
             BoxLayout:
                 id: AssetSymbolBoxLayout
-                size_hint: 1, 0.7
+                size_hint: 1, 0.75
                 orientation: 'vertical'
                 padding: ("15dp","0dp","15dp","10dp")
                 
@@ -213,18 +213,9 @@
                             halign: 'center'
                             font_size: 20
 
-                        # TextInput: 
-                        #     id: PayingAccountValue
-                        #     readonly : True
-                        #     multiline: 0
-                        #     size_hint: 0.6, 1
-                        #     pos_hint: {'x': 0.2}
-                        #     background_color: 0.1,0.1,0.1,0.7
-                        #     foreground_color: 1,1,1,1
-                        #     cursor_color: 1,1,1,1
-                        #     font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                        #     font_size: app.Configuration.GetElementValue('PopupTextFieldFontSize')
-                        #     halign: 'center'
+                        Button:
+                            text: 'Open Select account'
+                            on_release: root.open_select_account_popup()
                     
                     # Storing Box Layout
                     BoxLayout:
@@ -365,7 +356,7 @@
             BoxLayout:
                 id: TotalSpentBoxLayoutButton
                 orientation: 'horizontal'
-                size_hint: 1, 0.175
+                size_hint: 1, 0.125
                 background_color: app.Configuration.GetElementValue('TransparentBackgroundColor') 
                 spacing: "0dp"
                 padding: ("10dp","0dp","10dp","0dp")

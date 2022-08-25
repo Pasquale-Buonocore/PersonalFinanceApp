@@ -1,12 +1,6 @@
-import kivy
-from kivy.app import App
 from kivymd.app import MDApp
 from kivy.uix.widget import Widget
-from kivy.properties import ObjectProperty
-from kivy.uix.label import Label
 from kivy.uix.floatlayout import FloatLayout
-from kivy.uix.popup import Popup
-from numpy import asscalar
 from kivy.uix.modalview import ModalView
 from Packages.DatabaseMng.JsonManager import JsonManager_Class
 from Packages.DatabaseMng.PathManager import PathManager_Class
@@ -15,12 +9,11 @@ from Packages.CustomItem.AddNotePopup import AddNotePopup
 from kivy.core.window import Window
 from kivy.lang import Builder
 from kivy.uix.screenmanager import Screen
-from kivy.uix.boxlayout import BoxLayout
 from Packages.CustomItem.HoverClass import *
 from kivy.uix.button import Button
 from kivy.properties import ColorProperty
-from Packages.CustomItem.CustomDropDown import CustomDropDown
 from Packages.CustomItem.DataPickerItem import MDDatePicker
+from Packages.CustomItem.SelectAccountPopup import SelectAccountPopup
 import datetime as dt
 
 # Designate Out .kv design file
@@ -152,12 +145,10 @@ class AddAssetTransactionPopup(ModalView):
         self.ids['ScreenManagerSection'].current_screen.ids['SymbolValue'].text = 'BTC'
         self.ids['ScreenManagerSection'].current_screen.ids['PricePerCoinStr'].text = 'Price Per Coin [' + self.Currency + ']'
 
+        # Define dropdown list of buttons
         Accounts = ['Unicredit Accounts', 'Ledger' , 'DeGiro']
-        # Populate the DropDown PayingWith selection
-        self.ids['ScreenManagerSection'].current_screen.ids['PayingAccountBoxLayout'].add_widget(CustomDropDown(ListOfButtons = Accounts).ReturnDropDownButton())
-        # Populate the DropDown Storing selection
 
-        # add_widget(CustomDropDown(ListOfButtons = Accounts).ReturnDropDownButton())
+
 
     # Function to call when the Cancel button is pressed
     def Cancel(self):
@@ -169,6 +160,10 @@ class AddAssetTransactionPopup(ModalView):
         self.dismiss()
 
 class BuySellScreen(Screen):
+
+    def open_select_account_popup(self):
+        Popup = SelectAccountPopup(title_str = 'SELECT PAYING ACCOUNT')
+        Popup.open()
 
     def compute_value_spent(self):
         # Initialize Values

@@ -1,0 +1,28 @@
+#:kivy 1.0.9
+#:import FallOutTransition kivy.uix.screenmanager.FallOutTransition
+#:include Packages/Screens/ui/DashboardScreen.kv
+#:include Packages/Screens/ui/TransactionScreen.kv
+#:include Packages/Screens/ui/PortfolioScreen.kv
+#:include Packages/Screens/ui/StatisticsScreen.kv
+#:include Packages/Screens/ui/SettingScreen.kv
+#:include Packages/Screens/ui/CreditsScreen.kv
+#:include Packages/Screens/ui/EmptyScreen.kv
+#:include Packages/Screens/ui/AssetsScreen.kv
+#:include Packages/Screens/ui/AssetsTransactionScreen.kv
+#:include Packages/Screens/ui/TransactionListScreen.kv
+
+
+##############################
+# SCREENS and SCREEN MANAGER #
+##############################
+<ScreenManagerLayout@ScreenManager>:
+    DashboardScreen:
+    TransactionScreen:
+    TransactionListScreen:
+    PortfolioScreen:
+    StatisticsScreen:
+    SettingScreen:
+    CreditsScreen:
+    EmptyScreen:
+    AssetsScreen:
+    AssetsTransactionScreen:

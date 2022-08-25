@@ -1,0 +1,123 @@
+#:kivy 1.0.9
+
+<SelectAccountPopup>:
+    background_color: 0,0,0,0
+    
+    # Canvas for the poup background background
+    canvas.before:
+        Color:
+            rgba: 0.5,0.5,0.5,1
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+    # Main Box Layout
+    BoxLayout:
+        orientation: 'vertical'
+        padding: ("30dp","30dp","30dp","30dp")
+        spacing: "20dp"
+
+        # First row with title and X button - y: 0.075
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, 0.075
+
+            BoxLayout:
+                id: CanvasLabelIdentifier
+                orientation: 'horizontal'
+
+                Label:
+                    text: root.title
+                    text_size: self.width, None
+                    size: self.texture_size
+                    halign: 'center'
+                    font_name: 'Candarab'
+                    font_size: 25
+
+        # BoxLayout containting Account, SubAccount, Currency - y: 0,825
+        BoxLayout:
+            orientation:'vertical'
+            size_hint: 1, 0.775
+            padding: ("0dp","10dp","0dp","10dp")
+
+            # Select Account box layout 
+            BoxLayout:
+                id: SelectAccountBoxLayout
+                orientation: 'horizontal'
+
+                Label:
+                    size_hint: 0.4, 1
+                    text: 'Account:'
+                    text_size: self.width, None
+                    size: self.texture_size
+                    halign: 'left'
+                    font_name: 'Candarab'
+                    font_size: 20
+            
+            # Select SubAccount box layout 
+            BoxLayout:
+                id: SelectSubAccountBoxLayout
+                orientation: 'horizontal'
+
+                Label:
+                    size_hint: 0.4, 1
+                    text: 'SubAccount:'
+                    text_size: self.width, None
+                    size: self.texture_size
+                    halign: 'left'
+                    font_name: 'Candarab'
+                    font_size: 20
+            
+            # Select Currency box layout 
+            BoxLayout:
+                id: SelectCurrencyBoxLayout
+                orientation: 'horizontal'
+
+                Label:
+                    size_hint: 0.4, 1
+                    text: 'Currency:'
+                    text_size: self.width, None
+                    size: self.texture_size
+                    halign: 'left'
+                    font_name: 'Candarab'
+                    font_size: 20
+
+        # Box Layout containg the Confirmation button - y : 0.1
+        BoxLayout:
+            orientation: 'horizontal'
+            spacing: "10dp"
+            size_hint: 1, 0.15
+            pos_hint: {'x': 0, 'y': 1}
+
+            Button:
+                background_color: 0,0,0,0
+                canvas.before:
+                    Color:
+                        rgba: 0.1,0.1,0.9,0.7
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+                id: Confirm
+                font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+                font_size: app.Configuration.GetElementValue('PopupInnerFontSize')
+                text:'Confirm Account'
+                on_release: root.ConfirmAccount()
+
+            Button:
+                background_color: 0,0,0,0
+                canvas.before:
+                    Color:
+                        rgba: 0.9,0.1,0.1,0.7
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+                id: Cancel
+                font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+                font_size: app.Configuration.GetElementValue('PopupInnerFontSize')
+                text:'Cancel'
+                on_release: root.Cancel()

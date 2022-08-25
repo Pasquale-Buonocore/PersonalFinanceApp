@@ -8,7 +8,7 @@ Builder.load_file('Packages/CustomItem/ui/AddAssetTransactionPopup.kv')
 
 class AddAssetTransactionPopup(ModalView):
     def __init__(self, title_str = '', type = 'A', AssetName = '', PortfolioName = '', Database = '', ItemToMod = {}):
-        # Initialize the super class
+        # Initialize the super class 
         super().__init__( size_hint = (0.4,0.6))
         # Save important infos
         self.DBManager = Database

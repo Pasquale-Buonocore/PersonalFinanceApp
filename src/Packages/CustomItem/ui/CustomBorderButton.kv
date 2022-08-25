@@ -4,6 +4,7 @@
     size_hint: root.button_size_hint
     size: root.button_size
     padding: root.border_size
+    pos_hint: root.pos_hint
 
     canvas.before:
         Color:
@@ -26,3 +27,5 @@
             id: ButtonToPress
             background_color: [0, 0, 0, 0]
             text: root.text
+            font_size: root.font_size
+            font_name: root.font_name
