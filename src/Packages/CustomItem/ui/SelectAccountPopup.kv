@@ -1,5 +1,17 @@
 #:kivy 1.0.9
 
+<CustomScrollViewButton>:
+    id: ButtonToPress
+    font_name: app.Configuration.GetElementValue('ProfileNameFontName')
+    font_size: app.Configuration.GetElementValue('ProfileNameFontSize')
+    background_color: app.Configuration.GetElementValue('TransparentBackgroundColor') 
+    canvas.before:
+        Color:
+            rgba: root.BackgroundColor
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+
 <SelectAccountPopup>:
     background_color: 0,0,0,0
     
@@ -15,13 +27,13 @@
     # Main Box Layout
     BoxLayout:
         orientation: 'vertical'
-        padding: ("30dp","30dp","30dp","30dp")
-        spacing: "20dp"
+        padding: ("30dp","20dp","30dp","20dp")
+        spacing: "10dp"
 
-        # First row with title and X button - y: 0.075
+        # First row with title and X button - y: 0.05
         BoxLayout:
             orientation: 'horizontal'
-            size_hint: 1, 0.075
+            size_hint: 1, 0.05
 
             BoxLayout:
                 id: CanvasLabelIdentifier
@@ -35,59 +47,130 @@
                     font_name: 'Candarab'
                     font_size: 25
 
-        # BoxLayout containting Account, SubAccount, Currency - y: 0,825
+        # BoxLayout containting Account, SubAccount, Currency - y: 0.78
         BoxLayout:
-            orientation:'vertical'
-            size_hint: 1, 0.775
-            padding: ("0dp","10dp","0dp","10dp")
+            orientation:'horizontal'
+            size_hint: 1, 0.78
+            spacing: "10dp"
+            padding: ("0dp","0dp","0dp","10dp")
 
             # Select Account box layout 
             BoxLayout:
                 id: SelectAccountBoxLayout
-                orientation: 'horizontal'
+                orientation: 'vertical'
 
                 Label:
-                    size_hint: 0.4, 1
-                    text: 'Account:'
+                    size_hint: 1, 0.2
+                    text: 'Account'
                     text_size: self.width, None
                     size: self.texture_size
-                    halign: 'left'
+                    halign: 'center'
                     font_name: 'Candarab'
                     font_size: 20
+                
+                ScrollView:
+                    id: SelectAccountScrollView
+                    size_hint: 1, 0.8
+                    bar_inactive_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
+                    bar_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
+
+                    canvas.before:
+                        Color:
+                            rgba: 0.3, 0.3, 0.3, 1
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+                    # Box containing Buttons
+                    BoxLayout:
+                        id: SelectAccountScrollViewBoxLayout
+                        orientation: 'vertical'
+                        size_hint: 1, None
+                        height: self.minimum_height
+                        padding: ("10dp", "10dp", "10dp", "10dp")
+                        spacing: "0dp" 
             
             # Select SubAccount box layout 
             BoxLayout:
                 id: SelectSubAccountBoxLayout
-                orientation: 'horizontal'
+                orientation: 'vertical'
 
                 Label:
-                    size_hint: 0.4, 1
-                    text: 'SubAccount:'
+                    size_hint: 1, 0.2
+                    text: 'SubAccount'
                     text_size: self.width, None
                     size: self.texture_size
-                    halign: 'left'
+                    halign: 'center'
                     font_name: 'Candarab'
                     font_size: 20
+                
+                ScrollView:
+                    size_hint: 1, 0.8
+                    bar_inactive_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
+                    bar_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
+                    id: SelectSubAccountScrollView
+
+                    canvas.before:
+                        Color:
+                            rgba: 0.3, 0.3, 0.3, 1
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+                    # Box containing Box Layout
+                    BoxLayout:
+                        id: SelectSubAccountScrollViewBoxLayout
+                        orientation: 'vertical'
+                        size_hint: 1, None
+                        height: self.minimum_height
+                        padding: ("10dp", "10dp", "10dp", "10dp")
+                        spacing: "0dp" 
+
             
             # Select Currency box layout 
             BoxLayout:
                 id: SelectCurrencyBoxLayout
-                orientation: 'horizontal'
+                orientation: 'vertical'
 
                 Label:
-                    size_hint: 0.4, 1
-                    text: 'Currency:'
+                    size_hint: 1, 0.2
+                    text: 'Currency'
                     text_size: self.width, None
                     size: self.texture_size
-                    halign: 'left'
+                    halign: 'center'
                     font_name: 'Candarab'
                     font_size: 20
 
-        # Box Layout containg the Confirmation button - y : 0.1
+                ScrollView:
+                    size_hint: 1, 0.8
+                    bar_inactive_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
+                    bar_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
+                    id: SelectCurrencyScrollView
+
+                    canvas.before:
+                        Color:
+                            rgba: 0.3, 0.3, 0.3, 1
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+                    # Box containing Box Layout
+                    BoxLayout:
+                        id: SelectCurrencyScrollViewBoxLayout
+                        orientation: 'vertical'
+                        size_hint: 1, None
+                        height: self.minimum_height
+                        padding: ("10dp", "10dp", "10dp", "10dp")
+                        spacing: "0dp" 
+
+        # Box Layout containg the Confirmation button - y : 0.17
         BoxLayout:
             orientation: 'horizontal'
             spacing: "10dp"
-            size_hint: 1, 0.15
+            size_hint: 1, 0.17
             pos_hint: {'x': 0, 'y': 1}
 
             Button:
@@ -103,7 +186,8 @@
                 id: Confirm
                 font_name: app.Configuration.GetElementValue('PopupTitleFontName')
                 font_size: app.Configuration.GetElementValue('PopupInnerFontSize')
-                text:'Confirm Account'
+                text: 'Confirm Account'
+                disabled: True
                 on_release: root.ConfirmAccount()
 
             Button:

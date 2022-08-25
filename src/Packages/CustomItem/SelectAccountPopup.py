@@ -1,93 +1,163 @@
 from Packages.DatabaseMng.AccountsManager import AccountsManager_Class
 from Packages.DatabaseMng.PathManager import PathManager_Class
 from Packages.DatabaseMng.JsonManager import JsonManager_Class
-from Packages.CustomItem.CustomDropDown import CustomDropDown
 from kivy.uix.modalview import ModalView
+from Packages.CustomItem.HoverClass import HoverBehavior
+from kivy.properties import BooleanProperty, ColorProperty
+from kivy.uix.button import Button
 from kivy.lang import Builder
 
 # Designate Out .kv design file
 Builder.load_file('Packages/CustomItem/ui/SelectAccountPopup.kv')
 
-class SelectAccountPopup(ModalView):
+class CustomScrollViewButton(Button, HoverBehavior):
+    Configuration = JsonManager_Class(PathManager_Class.database_path, PathManager_Class.Configuration_path)
+    BackgroundColor = ColorProperty(Configuration.GetElementValue('MenuButtonNotSelectedBackgroundColor'))
+    SelectedStatus = BooleanProperty(False)
 
-    def __init__(self, title_str = '', SelectedAccount = {}):
+    def __init__(self, text = '', ScrollViewBoxLayoutID = ''):
+        self.ScrollViewBoxLayoutID = ScrollViewBoxLayoutID
+        super().__init__(size_hint =[1, None], height = "35dp", text = text)
+
+    # on button push, the app should behave according to which button has been pressed
+    def on_release(self):
+        # Change current screen
+        if self.ScrollViewBoxLayoutID == 'SelectAccountScrollViewBoxLayout':
+            # If Account:
+            # 1. Update the SubAccount ScrollView and the Currency ScrollView
+            # 2. Update the button current state
+            self.parent.parent.parent.parent.parent.parent.UpdateSubAccountScrollViewCurrencyScrollView(AccountName = self.text)
+        
+        if self.ScrollViewBoxLayoutID == 'SelectSubAccountScrollViewBoxLayout':
+            # If SubAccount:
+            # 1. Update the Currency ScrollView
+            # 2. Update the button current state
+            self.parent.parent.parent.parent.parent.parent.UpdateCurrencyScrollView(SubAccountName = self.text)
+            
+        if self.ScrollViewBoxLayoutID == 'SelectCurrencyScrollViewBoxLayout':
+            # If Currency:
+            # 1. Update the Currency
+            # 2. Update the button current state
+            self.parent.parent.parent.parent.parent.parent.UpdateSelectedCurrency(Currency = self.text)
+            
+        # Update button state
+        self.UpdateButtonState()
+
+    # Update the button that has been pressed
+    def UpdateButtonState(self):
+        # Update button background button of all buttons
+        for element in self.parent.children:
+            element.SelectedStatus = False
+            element.BackgroundColor = self.Configuration.GetElementValue('MenuButtonNotSelectedBackgroundColor') 
+
+        self.SelectedStatus = True
+        self.BackgroundColor = self.Configuration.GetElementValue('MenuButtonSelectedBackgroundColor') 
+
+    # Change Background color at entry
+    def on_enter(self, *args):
+        self.BackgroundColor = self.Configuration.GetElementValue('MenuButtonSelectedBackgroundColor') 
+    
+    # Change Background color at leaving
+    def on_leave(self, *args):
+        if not self.SelectedStatus:
+            self.BackgroundColor = self.Configuration.GetElementValue('MenuButtonNotSelectedBackgroundColor') 
+
+class SelectAccountPopup(ModalView):
+    ##################
+    # INITIALIZATION #
+    ##################
+    def __init__(self, title_str = '', SelectedAccount = {}, PortfolioCurrency = '$', type = 'storing'):
         self.Configuration = JsonManager_Class(PathManager_Class.database_path, PathManager_Class.Configuration_path)
         self.DBManager = AccountsManager_Class(PathManager_Class.database_path, PathManager_Class.Accounts_path)
         self.AvailableAccounts = list(self.DBManager.ReadJson().keys())
         self.AvailableSubAccounts = list(self.DBManager.ReadJson()[self.AvailableAccounts[0]]["SubAccount"].keys())
+        self.AccountScrollViewBoxLayout = 'SelectAccountScrollViewBoxLayout'
+        self.SubAccountScrollViewBoxLayout = 'SelectSubAccountScrollViewBoxLayout'
+        self.CurrencyScrollViewBoxLayout = 'SelectCurrencyScrollViewBoxLayout'
         self.title = title_str
-        if SelectedAccount: self.SelectedAccount = SelectedAccount
+        self.SelectedAccount = SelectedAccount if SelectedAccount else {}
+        self.PortfolioCurrency = PortfolioCurrency
+        self.type = type
 
-        super().__init__(size_hint = (0.2,0.4))
+        super().__init__(size_hint = (0.4,0.4))
 
         # Initialize popup
         self.InitializePopup()
     
+    def InitializePopup(self):
+        # Populate the DropDown Account selection 
+        self.PopulateScrollView(ScrollViewId = self.AccountScrollViewBoxLayout, ScrollViewButtonList = self.AvailableAccounts)
+        self.SelectedAccount.update({'Account': self.AvailableAccounts[0]})
+
+        # Populate the DropDown SubAccount selection and DropDown Currencies selection
+        self.UpdateSubAccountScrollViewCurrencyScrollView(AccountName = self.AvailableAccounts[0])
+
+    ##########################
+    # SCROLL VIEW MANAGEMENT #
+    ##########################
+
+    def PopulateScrollView(self, ScrollViewId, ScrollViewButtonList):
+        # First clear it 
+        self.ids[ScrollViewId].clear_widgets()
+        # Then populate
+        for button_name in ScrollViewButtonList:
+            self.ids[ScrollViewId].add_widget(CustomScrollViewButton(text = button_name, ScrollViewBoxLayoutID = ScrollViewId))
+        
+        if len(self.ids[ScrollViewId].children):
+            self.ids[ScrollViewId].children[-1].SelectedStatus = True
+            self.ids[ScrollViewId].children[-1].BackgroundColor = self.Configuration.GetElementValue('MenuButtonSelectedBackgroundColor')
+    
+    def UpdateSubAccountScrollViewCurrencyScrollView(self, AccountName):
+        # Update the Selected Account
+        self.SelectedAccount.update({'Account': AccountName})
+
+        # Update the SubAccountScrollView
+        self.PopulateScrollView(ScrollViewId = self.SubAccountScrollViewBoxLayout, ScrollViewButtonList = list(self.DBManager.ReadJson()[AccountName]["SubAccount"].keys()))
+        
+        # Update the CurrencyScrollView
+        self.UpdateCurrencyScrollView(SubAccountName = list(self.DBManager.ReadJson()[AccountName]["SubAccount"].keys())[0])
+
+    def UpdateCurrencyScrollView(self, SubAccountName):
+        # Update the selected SubAccount
+        self.SelectedAccount.update({'SubAccount': SubAccountName})
+
+        # Update the Currency ScrollView
+        # if the type the user is choosing the paying account, only currencies of the portfolio can be used 
+        if self.type == 'paying' and SubAccountName == 'Assets':
+            self.ids['Confirm'].disabled = True
+            ListOfCurrencies = []
+            self.PopulateScrollView(ScrollViewId = self.CurrencyScrollViewBoxLayout, ScrollViewButtonList = ListOfCurrencies)
+            return
+
+        CurrencyesFromDB = self.DBManager.ReadJson()[self.SelectedAccount['Account']]["SubAccount"][self.SelectedAccount['SubAccount']]
+        ListOfCurrencies = list(CurrencyesFromDB.keys())
+        
+        if SubAccountName == 'Cash':
+            # Show all the currencies that are self.PortfolioCurrency Equivalent
+            for currency in list(CurrencyesFromDB.keys()):
+                if not (CurrencyesFromDB[currency]['Currency'] == self.PortfolioCurrency):
+                    ListOfCurrencies.remove(currency)
+
+        self.PopulateScrollView(ScrollViewId = self.CurrencyScrollViewBoxLayout, ScrollViewButtonList = ListOfCurrencies)
+        self.SelectedAccount.update({'Currency': ListOfCurrencies[0]})
+        print('A button in SelectSubAccountScrollViewBoxLayout has been pushed')
+
+        print(self.SelectedAccount)
+        self.ids['Confirm'].disabled = False
+
+    def UpdateSelectedCurrency(self, Currency):
+        # Update the selected SubAccount
+        self.SelectedAccount.update({'Currency': Currency})
+        print('A button in SelectCurrencyScrollViewBoxLayout has been pushed')
+        print(self.SelectedAccount)
+
+    #####################
+    # CLOSING FUNCTIONS #
+    #####################
     def Cancel(self):
         # Close popup at the end
         self.dismiss()
     
-    # When pressing ok, the popup will save in the object that call it, the selected account (if verify is ok)
     def ConfirmAccount(self):
-
-        # Verify if all field are correctly selected
-        self.VerifySelection()
-
         # Close popup at the end
         self.dismiss()
-    
-    def VerifySelection(self):
-        pass
-    
-    def InitializePopup(self):
-
-        # Populate the DropDown PayingWith Account selection 
-        self.ids['SelectAccountBoxLayout'].add_widget(self.DefineGeneralDropDown(self.AvailableAccounts))
-
-        # Populate the DropDown PayingWith SubAccount selection 
-        self.ids['SelectSubAccountBoxLayout'].add_widget(self.DefineGeneralDropDown(self.AvailableSubAccounts))
-
-        # Populate Currency only if the sub account is not Asset
-        self.populate_currency()
-
-    # Initialize and return the account selection according to the account saved in DB
-    def DefineGeneralDropDown(self, AvailableAccount):
-        # Define external button properties
-        ExternalButtonProperties = {'text' : AvailableAccount[0]}
-        ExternalButtonProperties.update({'button_size_hint': [1, 1]})
-        ExternalButtonProperties.update({'canvas_background_color' : self.Configuration.GetElementValue('DateFeeNoteBtnNotSelectedBackgroundColor')})
-        ExternalButtonProperties.update({'canvas_background_color_on_enter' : self.Configuration.GetElementValue('DateFeeNoteBtnSelectedBackgroundColor')})
-        ExternalButtonProperties.update({'radius' : [(10,10), (10,10), (10,10), (10,10)]})
-        ExternalButtonProperties.update({'button_size_hint' : [0.6, 0.7]})
-        ExternalButtonProperties.update({'pos_hint' : {'y' : 0.15}})
-        ExternalButtonProperties.update({'font_name' : self.Configuration.GetElementValue('PopupTitleFontName')})
-        ExternalButtonProperties.update({'font_size' : "17dp"})
-
-        # Define internal button properties
-        InternalButtonProperties = {}
-        InternalButtonProperties.update({'button_size_hint': [1, None]})
-        InternalButtonProperties.update({'button_size' : [1, 40]})
-        InternalButtonProperties.update({'canvas_background_color': self.Configuration.GetElementValue('DateFeeNoteBtnNotSelectedBackgroundColor')})
-        InternalButtonProperties.update({'canvas_background_color_on_enter' : self.Configuration.GetElementValue('DateFeeNoteBtnSelectedBackgroundColor')})
-        InternalButtonProperties.update({'font_name' : self.Configuration.GetElementValue('PopupTitleFontName')})
-        InternalButtonProperties.update({'font_size' : "17dp"})
-
-        return CustomDropDown(ListOfButtons = AvailableAccount, ExternalButtonProperties = ExternalButtonProperties, InternalButtonProperties = InternalButtonProperties).ReturnDropDownButton()
-
-    def populate_currency(self):
-        self.ids['SelectCurrencyBoxLayout'].opacity = 0
-
-        if self.ids['SelectSubAccountBoxLayout'].children[0].text == 'Asset': return
-
-        # Retrieve Currenct Account and SubAccount
-        Account = self.ids['SelectAccountBoxLayout'].children[0].text
-        SubAccount = self.ids['SelectSubAccountBoxLayout'].children[0].text
-        Currency = list(self.DBManager.ReadJson()[Account]['SubAccount'][SubAccount].keys())
-
-        if not Currency:
-            self.ids['SelectCurrencyBoxLayout'].add_widget(self.DefineGeneralDropDown(['Not available currencies\n Add them and return']))
-            return
-        
-        self.ids['SelectCurrencyBoxLayout'].add_widget(self.DefineGeneralDropDown(Currency))
-        self.ids['SelectCurrencyBoxLayout'].opacity = 1
-        

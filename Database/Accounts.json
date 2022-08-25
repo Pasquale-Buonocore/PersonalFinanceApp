@@ -6,6 +6,14 @@
                               "Amount": 200,
                               "Currency": "$"
                         },
+                        "USDT": {
+                              "Amount": 200,
+                              "Currency": "$"
+                        },
+                        "USDC": {
+                              "Amount": 200,
+                              "Currency": "$"
+                        },
                         "EURO": {
                               "Amount": 150,
                               "Currency": "\u20ac"
@@ -47,7 +55,11 @@
       "Binance Exchange": {
             "SubAccount": {
                   "Cash": {
-                        "USD": {
+                        "DAI": {
+                              "Amount": 200,
+                              "Currency": "$"
+                        },
+                        "USDC": {
                               "Amount": 200,
                               "Currency": "$"
                         },
@@ -56,7 +68,13 @@
                               "Currency": "\u20ac"
                         }
                   },
-                  "Assets": {}
+                  "Assets": {                        
+                        "Bitcoin": {
+                              "Amount": 5,
+                              "TotalValue": 1300,
+                              "Symbol": "APPL",
+                              "Currency": "$"
+                  }}
             },
             "Statistics": {
                   "Category": "Crypto Exchange",

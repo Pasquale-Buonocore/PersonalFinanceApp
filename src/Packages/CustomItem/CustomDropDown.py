@@ -21,7 +21,30 @@ class CustomDropDown():
         font_name: font name of the text displayed over the button. default: Arial
         font_size: font size of the text displayed over the button default: 15
         pos_hint: {'x': value_x, 'y': value_y}
+        
+        Example of usage
+        # Define external button properties
+        ExternalButtonProperties = {'text' : AvailableAccount[0]}
+        ExternalButtonProperties.update({'button_size_hint': [1, 1]})
+        ExternalButtonProperties.update({'canvas_background_color' : self.Configuration.GetElementValue('DateFeeNoteBtnNotSelectedBackgroundColor')})
+        ExternalButtonProperties.update({'canvas_background_color_on_enter' : self.Configuration.GetElementValue('DateFeeNoteBtnSelectedBackgroundColor')})
+        ExternalButtonProperties.update({'radius' : [(10,10), (10,10), (10,10), (10,10)]})
+        ExternalButtonProperties.update({'button_size_hint' : [0.6, 0.7]})
+        ExternalButtonProperties.update({'pos_hint' : {'y' : 0.15}})
+        ExternalButtonProperties.update({'font_name' : self.Configuration.GetElementValue('PopupTitleFontName')})
+        ExternalButtonProperties.update({'font_size' : "17dp"})
 
+        # Define internal button properties
+        InternalButtonProperties = {}
+        InternalButtonProperties.update({'button_size_hint': [1, None]})
+        InternalButtonProperties.update({'button_size' : [1, 40]})
+        InternalButtonProperties.update({'canvas_background_color': self.Configuration.GetElementValue('DateFeeNoteBtnNotSelectedBackgroundColor')})
+        InternalButtonProperties.update({'canvas_background_color_on_enter' : self.Configuration.GetElementValue('DateFeeNoteBtnSelectedBackgroundColor')})
+        InternalButtonProperties.update({'font_name' : self.Configuration.GetElementValue('PopupTitleFontName')})
+        InternalButtonProperties.update({'font_size' : "17dp"})
+
+        CustomDropDown(ListOfButtons = AvailableAccount, ExternalButtonProperties = ExternalButtonProperties, InternalButtonProperties = InternalButtonProperties).ReturnDropDownButton()
+        
         """
 
         self.ExternalButtonProperties = ExternalButtonProperties
@@ -45,7 +68,7 @@ class CustomDropDown():
         
             # then add the button inside the dropdown
             dropdown.add_widget(btn)
-            # dropdown.add_widget(LineBoxLayout())
+            dropdown.add_widget(LineBoxLayout())
 
         # create a big main button
         mainbutton = CustomBorderButton(self.ExternalButtonProperties)

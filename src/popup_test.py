@@ -148,8 +148,6 @@ class AddAssetTransactionPopup(ModalView):
         # Define dropdown list of buttons
         Accounts = ['Unicredit Accounts', 'Ledger' , 'DeGiro']
 
-
-
     # Function to call when the Cancel button is pressed
     def Cancel(self):
         self.dismiss()
