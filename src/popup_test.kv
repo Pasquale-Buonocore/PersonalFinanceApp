@@ -64,17 +64,17 @@
             size_hint: 1, 1
             spacing: "10dp"
 
-            # Box Layout containg Asset, Account ect
+            # Box Layout containg Asset, Account ect - y: 0.5
             BoxLayout:
                 id: AssetSymbolBoxLayout
-                size_hint: 1, 0.75
+                size_hint: 1, 0.5
                 orientation: 'vertical'
                 padding: ("15dp","0dp","15dp","10dp")
                 
                 # Asset and Symbol BoxLayout
                 BoxLayout: 
                     orientation: 'horizontal'
-                    size_hint: 1, 0.33
+                    size_hint: 1, 0.5
 
                     # Asset BoxLayout
                     BoxLayout:
@@ -133,7 +133,7 @@
                 # Quantity and Price per coin box layout
                 BoxLayout: 
                     orientation: 'horizontal'
-                    size_hint: 1, 0.33
+                    size_hint: 1, 0.5
 
                     # Quantity BoxLayout
                     BoxLayout:
@@ -193,58 +193,58 @@
                             font_size: app.Configuration.GetElementValue('PopupTextFieldFontSize')
                             halign: 'center'
 
-                # Paying with and storing box layout
-                BoxLayout: 
-                    orientation: 'horizontal'
-                    size_hint: 1, 0.33
+            # Paying with BoxLayout - y: 0.125
+            BoxLayout:
+                id: PayingAccountBoxLayout
+                orientation: 'horizontal'
+                size_hint: 1, 0.125
 
-                    # Paying with BoxLayout
-                    BoxLayout:
-                        id: PayingAccountBoxLayout
-                        orientation: 'vertical'
-                        size_hint: 0.5, 1
-                        padding: ("0dp","2dp","0dp","5dp")
+                Label:
+                    size_hint: 0.3, 1
+                    text: 'Paying Account'
+                    text_size: self.width, None
+                    size: self.texture_size
+                    font_name: 'Candarab'
+                    halign: 'center'
+                    font_size: 20
 
-                        Label:
-                            text: 'Paying Account'
-                            text_size: self.width, None
-                            size: self.texture_size
-                            font_name: 'Candarab'
-                            halign: 'center'
-                            font_size: 20
+                CustomDateFeeDateSquareButton:
+                    id: PayingAccountString
+                    size_hint: 0.7, 1
+                    on_release: root.open_select_account_popup('SELECT PAYING ACCOUNT', 'paying')
+                    text: '---'
+                    text_size: self.width, None
+                    size: self.texture_size
+                    font_name: 'Candarab'
+                    halign: 'center'
+                    font_size: 20
+                        
+            # Storing Box Layout - y: 0.125
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint: 1, 0.125
 
-                        Button:
-                            text: 'Open Select account'
-                            on_release: root.open_select_account_popup('SELECT PAYING ACCOUNT', 'paying')
-                    
-                    # Storing Box Layout
-                    BoxLayout:
-                        orientation: 'vertical'
-                        size_hint: 0.5, 1
-                        padding: ("0dp","2dp","0dp","5dp")
+                Label:
+                    size_hint: 0.3, 1
+                    text: 'Storing Account'
+                    text_size: self.width, None
+                    size: self.texture_size
+                    font_name: 'Candarab'
+                    halign: 'center'
+                    font_size: 20
 
-                        Label:
-                            text: 'Storing Account'
-                            text_size: self.width, None
-                            size: self.texture_size
-                            font_name: 'Candarab'
-                            halign: 'center'
-                            font_size: 20
+                CustomDateFeeDateSquareButton:
+                    id: StoringAccountString
+                    size_hint: 0.7, 1
+                    on_release: root.open_select_account_popup('SELECT STORING ACCOUNT', 'storing')
+                    text: '---'
+                    text_size: self.width, None
+                    size: self.texture_size
+                    font_name: 'Candarab'
+                    halign: 'center'
+                    font_size: 20
 
-                        TextInput: 
-                            id: StoringAccountValue
-                            readonly : True
-                            multiline: 0
-                            size_hint: 0.6, 1
-                            pos_hint: {'x': 0.2}
-                            background_color: 0.1,0.1,0.1,0.7
-                            foreground_color: 1,1,1,1
-                            cursor_color: 1,1,1,1
-                            font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                            font_size: app.Configuration.GetElementValue('PopupTextFieldFontSize')
-                            halign: 'center'
-
-            # Box Containg date buttons, fees and notes
+            # Box Containg date buttons, fees and notes - y: 0.125
             BoxLayout:
                 id: DateFeeNoteButtonsBoxLayout
                 size_hint: 1, 0.125
@@ -352,7 +352,7 @@
                             halign: 'center'
                             font_size: 20    
                 
-            # TotalSpent Canvas
+            # TotalSpent Canvas - y: 0.125
             BoxLayout:
                 id: TotalSpentBoxLayoutButton
                 orientation: 'horizontal'
@@ -363,7 +363,7 @@
 
                 canvas:
                     Color:
-                        rgba: 0.1,0.1,0.1,0.7
+                        rgba: app.Configuration.GetElementValue('DateFeeNoteBtnNotSelectedBackgroundColor')
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size

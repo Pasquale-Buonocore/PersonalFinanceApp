@@ -62,10 +62,6 @@
                         "USDC": {
                               "Amount": 200,
                               "Currency": "$"
-                        },
-                        "EURO": {
-                              "Amount": 150,
-                              "Currency": "\u20ac"
                         }
                   },
                   "Assets": {                        

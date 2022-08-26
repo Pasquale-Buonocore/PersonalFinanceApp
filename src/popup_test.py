@@ -109,9 +109,9 @@ class CustomDateFeeDateSquareButton(Button, HoverBehavior):
         Popup = AddNotePopup(note_str)
         Popup.open()
 
-    ###############
+    ##########################
     # HOVER BEHAVIOUR PICKER #
-    ###############
+    ##########################
     # Change Background color at entry
     def on_enter(self, *args):
         self.BackgroundColor = self.Configuration.GetElementValue('DateFeeNoteBtnSelectedBackgroundColor') 
@@ -122,11 +122,13 @@ class CustomDateFeeDateSquareButton(Button, HoverBehavior):
             self.BackgroundColor = self.Configuration.GetElementValue('DateFeeNoteBtnNotSelectedBackgroundColor') 
 
 class AddAssetTransactionPopup(ModalView):
-    def __init__(self, title_str = '', AssetToTransact = 'Bitcoin', Currency = '€'): 
+    def __init__(self, title_str = '', AssetToTransact = 'Bitcoin', Currency = '$'): 
         # Setting internal attributes
         self.title = title_str
         self.Currency = Currency
         self.AssetToTransact = AssetToTransact
+        self.SelectedPayingAccount = {}
+        self.SelectedStoringAccount = {}
         self.fee = '0.0'
         self.note = ''
         self.date = dt.datetime.now()

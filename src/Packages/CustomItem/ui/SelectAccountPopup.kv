@@ -50,9 +50,9 @@
         # BoxLayout containting Account, SubAccount, Currency - y: 0.78
         BoxLayout:
             orientation:'horizontal'
-            size_hint: 1, 0.78
+            size_hint: 1, 0.68
             spacing: "10dp"
-            padding: ("0dp","0dp","0dp","10dp")
+            padding: ("0dp","0dp","0dp","0dp")
 
             # Select Account box layout 
             BoxLayout:
@@ -166,6 +166,21 @@
                         padding: ("10dp", "10dp", "10dp", "10dp")
                         spacing: "0dp" 
 
+        # Box Layout containg a string of message
+        BoxLayout:
+            size_hint: 1, 0.1
+            id: MessageBoxLayout
+            orientation: 'vertical'
+
+            Label:
+                id: update_message
+                size_hint: 1, 0.2
+                text: 'Selecting an account...'
+                text_size: self.width, None
+                size: self.texture_size
+                halign: 'left'
+                font_name: 'Candarab'
+                font_size: 17
         # Box Layout containg the Confirmation button - y : 0.17
         BoxLayout:
             orientation: 'horizontal'
