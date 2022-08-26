@@ -1,4 +1,4 @@
-import Packages.CustomItem.WarningPopup as Wrn_popup
+import Packages.CustomItem.Popup.WarningPopup as Wrn_popup
 from kivy.uix.popup import Popup
 from kivy.lang import Builder
 import re

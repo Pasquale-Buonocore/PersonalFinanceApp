@@ -2,7 +2,7 @@ from Packages.CustomFunction.CustomFunction import ReturnJsonPathGivenScreenName
 from Packages.DatabaseMng.JsonManager import JsonManager_Class
 from Packages.DatabaseMng.PathManager import PathManager_Class
 from kivy.graphics import Color, RoundedRectangle, Rectangle
-from Packages.CustomItem.HoverClass import *
+from Packages.CustomFunction.HoverClass import *
 from kivy.properties import BooleanProperty
 from kivy.properties import ColorProperty
 from kivy.uix.boxlayout import BoxLayout

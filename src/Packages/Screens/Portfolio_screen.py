@@ -1,5 +1,5 @@
-import Packages.CustomItem.RemovePortfolioPopup as RemovePortfolioPopup
-import Packages.CustomItem.AddPortfolioPopup as AddPortfolioPopup
+import Packages.CustomItem.Popup.RemovePortfolioPopup as RemovePortfolioPopup
+import Packages.CustomItem.Popup.AddPortfolioPopup as AddPortfolioPopup
 from Packages.DatabaseMng.JsonManager import JsonManager_Class
 from Packages.DatabaseMng.PathManager import PathManager_Class
 import Packages.DatabaseMng.PortfolioManager as db_manager

@@ -1,4 +1,4 @@
-from Packages.CustomItem.CustomBorderButton import CustomBorderButton
+from Packages.CustomItem.Buttons.CustomBorderButton import CustomBorderButton
 from Packages.CustomItem.CustomGraphicItem import LineBoxLayout
 from kivy.uix.dropdown import DropDown
 

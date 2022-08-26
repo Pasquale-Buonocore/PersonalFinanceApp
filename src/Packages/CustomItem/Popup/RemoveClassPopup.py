@@ -1,6 +1,6 @@
 from kivy.lang import Builder
 from kivy.uix.popup import Popup
-import Packages.CustomItem.WarningPopup as Wrn_popup
+import Packages.CustomItem.Popup.WarningPopup as Wrn_popup
 
 # Designate Out .kv design file
 Builder.load_file('Packages/CustomItem/ui/RemoveClassPopup.kv')

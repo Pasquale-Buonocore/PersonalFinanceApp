@@ -6,7 +6,7 @@ from kivy.uix.button import Button
 from kivy.lang import Builder
 
 # Designate Out .kv design file
-Builder.load_file('Packages/CustomItem/ui/AccountRowBoxLayout.kv')
+Builder.load_file('Packages/CustomItem/ui/AccountsListManagement.kv')
 
 # class to use for each row of the account list
 class AccountRowBoxLayout(BoxLayout):

@@ -1,8 +1,8 @@
 import Packages.DatabaseMng.JsonManager as json_manager
 import Packages.CustomItem.CustomPopup as cst_popup
 import Packages.CustomItem.CustomGraphicItem as cst_item
-import Packages.CustomItem.WarningPopup as Wrn_popup
-import Packages.CustomItem.RemovingPopup as Rm_popup
+import Packages.CustomItem.Popup.WarningPopup as Wrn_popup
+import Packages.CustomItem.Popup.RemovingPopup as Rm_popup
 from kivy.uix.gridlayout import GridLayout
 from kivy.properties import StringProperty
 from kivy.uix.screenmanager import Screen
@@ -12,7 +12,7 @@ from kivy.uix.relativelayout import RelativeLayout
 from Packages.DatabaseMng.AccountsManager import AccountsManager_Class
 from Packages.DatabaseMng.PathManager import PathManager_Class
 from Packages.DatabaseMng.JsonManager import JsonManager_Class
-from Packages.CustomItem.AccountRowBoxLayout import AccountRowBoxLayout, AccountRowBoxLayout_Title, AddNewAccountBoxLayout, AccountRowExpandedBoxLayout
+from Packages.CustomItem.Lists.AccountsListManagement import AccountRowBoxLayout, AccountRowBoxLayout_Title, AddNewAccountBoxLayout, AccountRowExpandedBoxLayout
 
 class DashboardScreen(Screen):
     image_source = StringProperty('images/Support/AssetsInPortfolio.png')

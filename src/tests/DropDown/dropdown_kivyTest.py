@@ -5,9 +5,9 @@ from kivy.app import App
 from kivymd.app import MDApp
     
 # Importing Drop-down from the module to use in the program
-from Packages.CustomItem.CustomDropDown import CustomDropDown
+from Packages.CustomItem.DropDown.CustomDropDown import CustomDropDown
 from kivy.uix.relativelayout import RelativeLayout
-from Packages.CustomItem.HoverClass import *
+from Packages.CustomFunction.HoverClass import *
 
  
 # another way used to run kivy app

@@ -1,6 +1,6 @@
 from Packages.DatabaseMng.JsonManager import JsonManager_Class
 from Packages.DatabaseMng.PathManager import PathManager_Class
-from Packages.CustomItem.HoverClass import *
+from Packages.CustomFunction.HoverClass import *
 from kivy.properties import ColorProperty
 from kivy.uix.boxlayout import BoxLayout
 from kivy.lang import Builder

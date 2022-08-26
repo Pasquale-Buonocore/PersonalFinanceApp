@@ -1,5 +1,5 @@
-import Packages.CustomItem.AddTransactionClassPopup as AddClass_popup
-import Packages.CustomItem.RemoveClassPopup as rm_class
+import Packages.CustomItem.Popup.AddTransactionClassPopup as AddClass_popup
+import Packages.CustomItem.Popup.RemoveClassPopup as rm_class
 import Packages.CustomItem.CustomGraphicItem as cst_item
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.textinput import TextInput

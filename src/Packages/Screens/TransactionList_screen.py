@@ -1,5 +1,5 @@
-import Packages.CustomItem.RemoveTransactionInOutPopup as RemoveTransactionInOutPopup
-import Packages.CustomItem.AddTransactionInOutPopup as TransInOut_Popup
+import Packages.CustomItem.Popup.RemoveTransactionInOutPopup as RemoveTransactionInOutPopup
+import Packages.CustomItem.Popup.AddTransactionInOutPopup as TransInOut_Popup
 from Packages.DatabaseMng.JsonManager import JsonManager_Class
 from Packages.DatabaseMng.PathManager import PathManager_Class
 import Packages.CustomItem.CustomGraphicItem as cst_item

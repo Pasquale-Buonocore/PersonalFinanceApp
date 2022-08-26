@@ -1,16 +1,14 @@
 from kivy.lang import Builder
 from kivy.uix.popup import Popup
-import Packages.CustomItem.WarningPopup as Wrn_popup
+import Packages.CustomItem.Popup.WarningPopup as Wrn_popup
 
 # Designate Out .kv design file
-Builder.load_file('Packages/CustomItem/ui/AddAssetPopup.kv')
+Builder.load_file('Packages/CustomItem/ui/AddPortfolioPopup.kv')
 
-class AddAssetPopup(Popup):
-    def __init__(self, title_str, type, Database, PortfolioName,  itemToMod = {}):
+class AddPortfolioPopup(Popup):
+    def __init__(self, title_str, type, itemToMod = {}):
         # Initialize the super class
         super().__init__(title = title_str, size_hint = (0.3,0.5))
-        self.PortfolioName = PortfolioName
-        self.DBManager = Database
 
         # Define inner attributes
         self.type = type if type in ['A','M'] else 'A'
@@ -22,19 +20,19 @@ class AddAssetPopup(Popup):
     def ModifyTextInput(self):
         # Modify text input if itemToMod is not empty
         ItemName = list(self.itemToMod.keys())[0]
-        self.ids["SymbolValue"].text = str(self.itemToMod[ItemName]['Symbol'])
-        self.ids["AssetName"].text = ItemName
+        self.ids["CurrencyValue"].text = str(self.itemToMod[ItemName]['Currency'])
+        self.ids["PortfolioName"].text = ItemName
 
     def Confirm(self, App):
         # Keep the boolean error
         string = ''
 
-        # Retrive data "Asset Name" from Text Input - In empty do nothing
-        AssetName = self.ids["AssetName"].text.strip().upper()
-        if not AssetName: string = string + 'ERROR: Empty asset name FIELD'
+        # Retrive data "Portfolio Name" from Text Input - In empty do nothing
+        PortfolioName = self.ids["PortfolioName"].text.strip().upper()
+        if not PortfolioName: string = string + 'ERROR: Empty asset name FIELD'
 
         # Retrive data "Currency Value" from Text Input - In empty do nothing
-        CurrencySymbol = self.ids["SymbolValue"].text.strip().upper()
+        CurrencySymbol = self.ids["CurrencyValue"].text.strip().upper()
         if not CurrencySymbol: string = string + '\nERROR: Empty symbol value FIELD'
 
         if string:
@@ -42,29 +40,31 @@ class AddAssetPopup(Popup):
             Pop = Wrn_popup.WarningPopup('WARNING WINDOW', string.upper())
             Pop.open()
         else:
+            # Instantiate Screen and Json manager
+            ActualScreen = App.root.children[0].children[0].children[0]
+            DBManager = ActualScreen.DBManager
 
-            # Define Asset To Add
-            AssetToAdd = self.DBManager.InitializeNewAsset(AssetName, CurrencySymbol)
+            # Define Portfolio To Add
+            PortfolioToAdd = DBManager.InitializeNewPortfolio(PortfolioName,[CurrencySymbol,0,0,0])
             
             # If an item needs to be modified
             if self.type == 'M':
                 # Substitute the actual item
-                self.DBManager.ModifyAssetInPortfolio(self.PortfolioName, list(self.itemToMod.keys())[0], AssetName, CurrencySymbol)
+                DBManager.ModifyPortfolio(list(self.itemToMod.keys())[0], PortfolioName, CurrencySymbol)
             else:
                 # Check if the Portfolio already exists
-                AssetAlreadyPresent = list(self.DBManager.ReadJson()[self.PortfolioName]['Assets'].keys())
-                if AssetName in AssetAlreadyPresent:
+                PortfolioAlreadyPresent = list(DBManager.ReadJson().keys())
+                if PortfolioName in PortfolioAlreadyPresent:
                     # Show a warning message
-                    string = 'The asset ' + AssetName + ' already exists.\n It cannot be added. Remove it first!'
+                    string = 'The portfolio ' + PortfolioName + ' already exists.\n It cannot be added. Remove it first!'
                     Pop = Wrn_popup.WarningPopup('WARNING WINDOW', string.upper())
                     Pop.open()
                 else:
                     # Append new item
-                    self.DBManager.AddAssetToPortfolio(self.PortfolioName, AssetToAdd)
+                    DBManager.AddPortfolio(PortfolioToAdd)
 
             # Update the Json and Update the Dashboard Screen
-            ActualScreen = App.root.children[0].children[0].current_screen
-            ActualScreen.UpdateScreen(ActualScreen.FromScreenName, ActualScreen.PortfolioName)
+            ActualScreen.UpdateScreen(ActualScreen.ScreenName, ActualScreen.PortfolioJsonPath)
 
             # Close the popup
             self.dismiss()

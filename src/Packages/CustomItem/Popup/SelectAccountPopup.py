@@ -2,7 +2,7 @@ from Packages.DatabaseMng.AccountsManager import AccountsManager_Class
 from Packages.DatabaseMng.PathManager import PathManager_Class
 from Packages.DatabaseMng.JsonManager import JsonManager_Class
 from kivy.uix.modalview import ModalView
-from Packages.CustomItem.HoverClass import HoverBehavior
+from Packages.CustomFunction.HoverClass import HoverBehavior
 from kivy.properties import BooleanProperty, ColorProperty
 from kivy.uix.button import Button
 from kivy.lang import Builder

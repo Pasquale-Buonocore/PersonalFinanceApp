@@ -1,5 +1,5 @@
 from Packages.CustomFunction.AssetDistributionGraph import AssetDistributionGraph
-import Packages.CustomItem.TransactionCategoryListPopup as trans_popup
+import Packages.CustomItem.Popup.TransactionCategoryListPopup as trans_popup
 import Packages.DatabaseMng.PortfolioManager as db_manager
 import Packages.DatabaseMng.PathManager as path_manager
 from kivy.uix.screenmanager import Screen
