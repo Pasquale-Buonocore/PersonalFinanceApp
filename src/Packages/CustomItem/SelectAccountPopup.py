@@ -66,7 +66,7 @@ class SelectAccountPopup(ModalView):
     ##################
     # INITIALIZATION #
     ##################
-    def __init__(self, title_str = '', SelectedAccount = {}, PortfolioCurrency = '$', type = 'storing'):
+    def __init__(self, title_str = '', CurrentAsset = 'Bitcoin', PortfolioCurrency = '$', type = 'paying'):
         self.Configuration = JsonManager_Class(PathManager_Class.database_path, PathManager_Class.Configuration_path)
         self.DBManager = AccountsManager_Class(PathManager_Class.database_path, PathManager_Class.Accounts_path)
         self.AvailableAccounts = list(self.DBManager.ReadJson().keys())
@@ -75,7 +75,8 @@ class SelectAccountPopup(ModalView):
         self.SubAccountScrollViewBoxLayout = 'SelectSubAccountScrollViewBoxLayout'
         self.CurrencyScrollViewBoxLayout = 'SelectCurrencyScrollViewBoxLayout'
         self.title = title_str
-        self.SelectedAccount = SelectedAccount if SelectedAccount else {}
+        self.CurrentAsset = CurrentAsset
+        self.SelectedAccount = {}
         self.PortfolioCurrency = PortfolioCurrency
         self.type = type
 
@@ -118,10 +119,15 @@ class SelectAccountPopup(ModalView):
         self.UpdateCurrencyScrollView(SubAccountName = list(self.DBManager.ReadJson()[AccountName]["SubAccount"].keys())[0])
 
     def UpdateCurrencyScrollView(self, SubAccountName):
-        # Update the selected SubAccount
+        
+        ##################################
+        # Update the selected SubAccount #
+        ##################################
         self.SelectedAccount.update({'SubAccount': SubAccountName})
 
-        # Update the Currency ScrollView
+        ##################################
+        # Update the Currency ScrollView #
+        ##################################
         # if the type the user is choosing the paying account, only currencies of the portfolio can be used 
         if self.type == 'paying' and SubAccountName == 'Assets':
             self.ids['Confirm'].disabled = True
@@ -129,13 +135,13 @@ class SelectAccountPopup(ModalView):
             self.PopulateScrollView(ScrollViewId = self.CurrencyScrollViewBoxLayout, ScrollViewButtonList = ListOfCurrencies)
             return
 
-        CurrencyesFromDB = self.DBManager.ReadJson()[self.SelectedAccount['Account']]["SubAccount"][self.SelectedAccount['SubAccount']]
-        ListOfCurrencies = list(CurrencyesFromDB.keys())
+        CurrenciesFromDB = self.DBManager.ReadJson()[self.SelectedAccount['Account']]["SubAccount"][self.SelectedAccount['SubAccount']]
+        ListOfCurrencies = list(CurrenciesFromDB.keys())
         
         if SubAccountName == 'Cash':
             # Show all the currencies that are self.PortfolioCurrency Equivalent
-            for currency in list(CurrencyesFromDB.keys()):
-                if not (CurrencyesFromDB[currency]['Currency'] == self.PortfolioCurrency):
+            for currency in list(CurrenciesFromDB.keys()):
+                if not (CurrenciesFromDB[currency]['Currency'] == self.PortfolioCurrency):
                     ListOfCurrencies.remove(currency)
 
         self.PopulateScrollView(ScrollViewId = self.CurrencyScrollViewBoxLayout, ScrollViewButtonList = ListOfCurrencies)

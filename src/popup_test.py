@@ -122,10 +122,11 @@ class CustomDateFeeDateSquareButton(Button, HoverBehavior):
             self.BackgroundColor = self.Configuration.GetElementValue('DateFeeNoteBtnNotSelectedBackgroundColor') 
 
 class AddAssetTransactionPopup(ModalView):
-    def __init__(self, title_str = '', Currency = '$'): 
+    def __init__(self, title_str = '', AssetToTransact = 'Bitcoin', Currency = '€'): 
         # Setting internal attributes
         self.title = title_str
         self.Currency = Currency
+        self.AssetToTransact = AssetToTransact
         self.fee = '0.0'
         self.note = ''
         self.date = dt.datetime.now()
@@ -159,8 +160,9 @@ class AddAssetTransactionPopup(ModalView):
 
 class BuySellScreen(Screen):
 
-    def open_select_account_popup(self):
-        Popup = SelectAccountPopup(title_str = 'SELECT PAYING ACCOUNT')
+    def open_select_account_popup(self, title_str, type_str):
+
+        Popup = SelectAccountPopup(title_str = title_str, CurrentAsset = self.parent.parent.parent.AssetToTransact, PortfolioCurrency = self.parent.parent.parent.Currency, type = type_str)
         Popup.open()
 
     def compute_value_spent(self):
