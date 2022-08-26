@@ -178,11 +178,11 @@ class SelectAccountPopup(ModalView):
     def ConfirmAccount(self):
         # Save the SelectedAccount in the Popup
         if self.type == 'paying':
-            self.parent.children[1].ids['ScreenManagerSection'].current_screen.ids['PayingAccountString'].text = self.SelectedAccount['Account'] + '/' + self.SelectedAccount['SubAccount'] + '/' +self.SelectedAccount['Currency']
+            self.parent.children[1].ids['ScreenManagerSection'].current_screen.ids['PayingAccountString'].text = self.SelectedAccount['Account'] + ' - ' + self.SelectedAccount['SubAccount'] + ' - ' +self.SelectedAccount['Currency']
             self.parent.children[1].SelectedPayingAccount = self.SelectedAccount
         elif self.type == 'storing':
             self.parent.children[1].SelectedStoringAccount = self.SelectedAccount
-            self.parent.children[1].ids['ScreenManagerSection'].current_screen.ids['StoringAccountString'].text = self.SelectedAccount['Account'] + '/' + self.SelectedAccount['SubAccount'] + '/' +self.SelectedAccount['Currency']
+            self.parent.children[1].ids['ScreenManagerSection'].current_screen.ids['StoringAccountString'].text = self.SelectedAccount['Account'] + ' - ' + self.SelectedAccount['SubAccount'] + ' - ' +self.SelectedAccount['Currency']
         
         # Close popup at the end
         self.dismiss()

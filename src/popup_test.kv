@@ -64,82 +64,55 @@
             size_hint: 1, 1
             spacing: "10dp"
 
-            # Box Layout containg Asset, Account ect - y: 0.5
+            # Box Layout containg Asset, Account ect - y: 0.45
             BoxLayout:
                 id: AssetSymbolBoxLayout
-                size_hint: 1, 0.5
+                size_hint: 1, 0.45
                 orientation: 'vertical'
-                padding: ("15dp","0dp","15dp","10dp")
+                padding: ("10dp","10dp","10dp","10dp")
                 
-                # Asset and Symbol BoxLayout
-                BoxLayout: 
-                    orientation: 'horizontal'
-                    size_hint: 1, 0.5
+                # Asset and Symbol container
+                RelativeLayout:
+                    size_hint: 0.6, 0.35
+                    pos_hint: {'x' : 0.2}
 
-                    # Asset BoxLayout
+                    CustomDateFeeDateSquareButton:
+                        
+                    # Asset And Button BoxLayout
                     BoxLayout:
-                        orientation: 'vertical'
-                        size_hint: 0.5, 1
-                        padding: ("0dp","2dp","0dp","5dp")
+                        orientation: 'horizontal'
+                        background_color: app.Configuration.GetElementValue('TransparentBackgroundColor') 
+                        # padding: ("0dp","0dp","0dp","0dp")
+
+                        BoxLayout:
+                            size_hint: 0.25, 1
+
+                            Image:
+                                # size_hint: 0.5, 0.5
+                                # pos_hint: {'x' : 0.25, 'y' : 0.25}
+                                id: ButtonImage
+                                size:  self.size
+                                source: './images/crypto/bitcoin.png'
 
                         Label:
-                            text: 'Asset'
+                            id: AssetSymbolstr
+                            text: '20 August 2022'
+                            size_hint: 0.75, 1
                             text_size: self.width, None
                             size: self.texture_size
                             font_name: 'Candarab'
                             halign: 'center'
                             font_size: 20
-
-                        TextInput: 
-                            id: AssetValue
-                            readonly : True
-                            size_hint: 0.6, 1
-                            pos_hint: {'x': 0.2}
-                            multiline: 0
-                            background_color: 0.1,0.1,0.1,0.7
-                            foreground_color: 1,1,1,1
-                            cursor_color: 1,1,1,1
-                            font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                            font_size: app.Configuration.GetElementValue('PopupTextFieldFontSize')
-                            halign: 'center'
-
-                    # Symbol BoxLayout
-                    BoxLayout:
-                        orientation: 'vertical'
-                        size_hint: 0.5, 1
-                        padding: ("0dp","2dp","0dp","5dp")
-
-                        Label:
-                            text: 'Symbol'
-                            text_size: self.width, None
-                            size: self.texture_size
-                            font_name: 'Candarab'
-                            halign: 'center'
-                            font_size: 20
-
-                        TextInput: 
-                            id: SymbolValue
-                            readonly : True
-                            size_hint: 0.6, 1
-                            pos_hint: {'x': 0.2}
-                            multiline: 0
-                            background_color: 0.1,0.1,0.1,0.7
-                            foreground_color: 1,1,1,1
-                            cursor_color: 1,1,1,1
-                            font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                            font_size: app.Configuration.GetElementValue('PopupTextFieldFontSize')
-                            halign: 'center'
                                             
                 # Quantity and Price per coin box layout
                 BoxLayout: 
                     orientation: 'horizontal'
-                    size_hint: 1, 0.5
+                    size_hint: 1, 0.65
 
                     # Quantity BoxLayout
                     BoxLayout:
                         orientation: 'vertical'
                         size_hint: 0.5, 1
-                        padding: ("0dp","2dp","0dp","5dp")
 
                         Label:
                             text: 'Quantity'
@@ -149,27 +122,42 @@
                             halign: 'center'
                             font_size: 20
 
-                        TextInput: 
-                            id: QuantityValue
-                            on_text: root.compute_value_spent()
-                            size_hint: 0.6, 1
-                            pos_hint: {'x': 0.2, 'y': - 0.25}
-                            text: '0.0'
-                            multiline: 0
-                            background_color: 0.1,0.1,0.1,0.7
-                            foreground_color: 1,1,1,1
-                            cursor_color: 1,1,1,1
-                            font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                            font_size: app.Configuration.GetElementValue('PopupTextFieldFontSize')
-                            halign: 'center'
-                            valign: 'center'
+                        # Box Layout containg the Text Input to add the Quantity
+                        BoxLayout:
+                            orientation: 'horizontal'
+                            spacing: "0dp"
+                            size_hint: 0.8 , 1
+                            pos_hint: {'x': 0.1}
+                            padding: ("0dp","0dp","0dp","0dp")
+
+                            # Canvas for the poup background background
+                            canvas.before:
+                                Color:
+                                    rgba: app.Configuration.GetElementValue('DateFeeNoteBtnNotSelectedBackgroundColor')
+                                RoundedRectangle:
+                                    pos: self.pos
+                                    size: self.size
+                                    radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+                            TextInput: 
+                                id: QuantityValue
+                                multiline: 0
+                                on_text: root.compute_value_spent()
+                                text: '0.0'
+                                pos_hint: {'y': - 0.18}
+                                background_color: 0,0,0,0
+                                foreground_color: 1,1,1,1
+                                cursor_color: 1,1,1,1
+                                font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+                                font_size: app.Configuration.GetElementValue('PopupTextFieldFontSize')
+                                halign: 'center'
+                                valign: 'center'
 
 
                     # Price per Coin BoxLayout
                     BoxLayout:
                         orientation: 'vertical'
                         size_hint: 0.5, 1
-                        padding: ("0dp","2dp","0dp","5dp")
 
                         Label:
                             id: PricePerCoinStr
@@ -180,24 +168,59 @@
                             halign: 'center'
                             font_size: 20
 
-                        TextInput: 
-                            id: PricePerCoinValue
-                            on_text: root.compute_value_spent()
-                            size_hint: 0.6, 1
-                            pos_hint: {'x': 0.2}
-                            multiline: 0
-                            background_color: 0.1,0.1,0.1,0.7
-                            foreground_color: 1,1,1,1
-                            cursor_color: 1,1,1,1
-                            font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                            font_size: app.Configuration.GetElementValue('PopupTextFieldFontSize')
-                            halign: 'center'
+                        # Box Layout containg the Text Input to add the Fees
+                        BoxLayout:
+                            orientation: 'horizontal'
+                            spacing: "0dp"
+                            size_hint: 0.8, 1
+                            pos_hint: {'x': 0.1}
+                            padding: ("0dp","0dp","0dp","0dp")
 
-            # Paying with BoxLayout - y: 0.125
+                            # Canvas for the poup background background
+                            canvas.before:
+                                Color:
+                                    rgba: app.Configuration.GetElementValue('DateFeeNoteBtnNotSelectedBackgroundColor')
+                                RoundedRectangle:
+                                    pos: self.pos
+                                    size: self.size
+                                    radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+                            BoxLayout:
+                                orientation: 'vertical'
+                                padding: ("10dp", "0dp", "0dp", "0dp")
+                                size_hint: 0.1, 1
+
+                                # Label with currency
+                                Label:
+                                    id: CurrencyValue
+                                    text: '$'
+                                    text_size: self.width, None
+                                    size: self.texture_size
+                                    halign: 'center'
+                                    font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+                                    font_size: app.Configuration.GetElementValue('PopupTextFieldFontSize')
+                            
+                            TextInput: 
+                                id: PricePerCoinValue
+                                multiline: 0
+                                text: '0.0'
+                                on_text: root.compute_value_spent()
+                                size_hint: 0.9, 1
+                                pos_hint: {'y': - 0.18}
+                                background_color: 0,0,0,0
+                                foreground_color: 1,1,1,1
+                                cursor_color: 1,1,1,1
+                                font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+                                font_size: app.Configuration.GetElementValue('PopupTextFieldFontSize')
+                                halign: 'center'
+                                valign: 'center'
+
+            # Paying with BoxLayout - y: 0.1375
             BoxLayout:
                 id: PayingAccountBoxLayout
                 orientation: 'horizontal'
-                size_hint: 1, 0.125
+                size_hint: 1, 0.1375
+                padding: ("0dp","0dp","10dp","0dp")
 
                 Label:
                     size_hint: 0.3, 1
@@ -219,10 +242,11 @@
                     halign: 'center'
                     font_size: 20
                         
-            # Storing Box Layout - y: 0.125
+            # Storing Box Layout - y: 0.1375
             BoxLayout:
                 orientation: 'horizontal'
-                size_hint: 1, 0.125
+                size_hint: 1, 0.1375
+                padding: ("0dp","0dp","10dp","0dp")
 
                 Label:
                     size_hint: 0.3, 1
@@ -244,10 +268,10 @@
                     halign: 'center'
                     font_size: 20
 
-            # Box Containg date buttons, fees and notes - y: 0.125
+            # Box Containg date buttons, fees and notes - y: 0.1375
             BoxLayout:
                 id: DateFeeNoteButtonsBoxLayout
-                size_hint: 1, 0.125
+                size_hint: 1, 0.1375
                 orientation: 'horizontal' 
                 spacing: "10dp"
 
@@ -288,7 +312,7 @@
 
                 # Fee Button
                 RelativeLayout:
-                    size_hint: 0.175, 1
+                    size_hint: 0.15, 1
 
                     CustomDateFeeDateSquareButton:
                         on_release: self.OpeningAddFee(root.parent.parent.parent.fee)
@@ -321,7 +345,7 @@
 
                 # Note Button
                 RelativeLayout:
-                    size_hint: 0.175, 1
+                    size_hint: 0.15, 1
 
                     CustomDateFeeDateSquareButton:
                         on_release: self.OpeningAddNote(root.parent.parent.parent.note)
@@ -352,11 +376,11 @@
                             halign: 'center'
                             font_size: 20    
                 
-            # TotalSpent Canvas - y: 0.125
+            # TotalSpent Canvas - y: 0.1375
             BoxLayout:
                 id: TotalSpentBoxLayoutButton
                 orientation: 'horizontal'
-                size_hint: 1, 0.125
+                size_hint: 1, 0.1375
                 background_color: app.Configuration.GetElementValue('TransparentBackgroundColor') 
                 spacing: "0dp"
                 padding: ("10dp","0dp","10dp","0dp")
@@ -370,7 +394,7 @@
 
                 Label:
                     id: TotalSpentLabel
-                    text: 'Total Spent: $'
+                    text: 'Total Spent:'
                     size_hint: 0.35, 1
                     text_size: self.width, None
                     size: self.texture_size
@@ -380,7 +404,7 @@
                 
                 Label:
                     id: TotalSpentValue
-                    text: '0.00'
+                    text: '0.0'
                     size_hint: 0.65, 1
                     text_size: self.width, None
                     size: self.texture_size

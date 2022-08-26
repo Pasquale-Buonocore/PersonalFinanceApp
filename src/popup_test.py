@@ -134,19 +134,19 @@ class AddAssetTransactionPopup(ModalView):
         self.date = dt.datetime.now()
         
         # Initialize the super class
-        super().__init__(size_hint = (0.35,0.7))
+        super().__init__(size_hint = (0.33,0.7))
 
         # Modify BUY button as selected one
         self.ids['BUY_BTN'].SelectedStatus = True
         self.ids['BUY_BTN'].BackgroundColor = self.ids['BUY_BTN'].Configuration.GetElementValue('MenuButtonSelectedBackgroundColor')
 
         # Set the current date on the button
+        self.ids['ScreenManagerSection'].current_screen.ids['AssetSymbolstr'].text = 'BITCOIN - BTC'
         self.ids['ScreenManagerSection'].current_screen.ids['DateTextstr'].text = dt.date(self.date.year, self.date.month, self.date.day).strftime("%d %B %Y")
 
         # Set the asset and symbol according to the page the popup was opened
-        self.ids['ScreenManagerSection'].current_screen.ids['AssetValue'].text = 'Bitcoin'
-        self.ids['ScreenManagerSection'].current_screen.ids['SymbolValue'].text = 'BTC'
-        self.ids['ScreenManagerSection'].current_screen.ids['PricePerCoinStr'].text = 'Price Per Coin [' + self.Currency + ']'
+        self.ids['ScreenManagerSection'].current_screen.ids['PricePerCoinStr'].text = 'Price Per Coin'
+        self.ids['ScreenManagerSection'].current_screen.ids['TotalSpentValue'].text = self.Currency + '0.0'
 
         # Define dropdown list of buttons
         Accounts = ['Unicredit Accounts', 'Ledger' , 'DeGiro']
@@ -176,22 +176,38 @@ class BuySellScreen(Screen):
 
         # Extract Quantity 
         if ('%s' % self.ids['QuantityValue'].text).replace('.','').replace(',','').isnumeric():
-            Quantity = float(self.ids['QuantityValue'].text.replace(',','.'))
+            # Check correctness
+            Quantity = self.ids['QuantityValue'].text.replace(',','.')
+
+            counter = Quantity.count('.')
+            while counter > 1:
+                Quantity = Quantity.replace('.','',1)
+                counter = Quantity.count('.')
+                self.ids['QuantityValue'].text = Quantity
+    
+            Quantity = float(Quantity)
         else:
             self.ids['QuantityValue'].text = '0.0'
             skipComputation = 1
 
         # Extract Prince Per Coint
         if ('%s' % self.ids['PricePerCoinValue'].text).replace('.','').replace(',','').isnumeric():
-            PricePerCoin = float(self.ids['PricePerCoinValue'].text.replace(',','.'))
+            PricePerCoin = self.ids['PricePerCoinValue'].text.replace(',','.')
+
+            counter = PricePerCoin.count('.')
+            while counter > 1:
+                PricePerCoin = PricePerCoin.replace('.','',1)
+                counter = PricePerCoin.count('.')
+                self.ids['PricePerCoinValue'].text = PricePerCoin
+            PricePerCoin = float(PricePerCoin)
         else:
-            self.ids['PricePerCoinValue'].text = '0.0'
+            self.ids['PricePerCoinValue'].text = '0.0' + self.parent.parent.parent.Currency
             skipComputation = 1
 
         # Compute 
         if skipComputation: return
     
-        self.ids['TotalSpentValue'].text = str(round((Quantity * PricePerCoin), 2))
+        self.ids['TotalSpentValue'].text = self.parent.parent.parent.Currency + str(round((Quantity * PricePerCoin), 5)) 
 
 class SwapScreen(Screen):
     pass
