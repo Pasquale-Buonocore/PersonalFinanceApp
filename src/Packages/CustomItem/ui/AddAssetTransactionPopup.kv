@@ -34,7 +34,7 @@
 
         canvas:
             Color:
-                rgba: 0.3,0.3,0.3,0.7
+                rgba: app.Configuration.GetElementValue('CanvasBackgroundColor')
             RoundedRectangle:
                 pos: self.pos
                 size: self.size
@@ -116,7 +116,7 @@
                             # Canvas for the poup background background
                             canvas.before:
                                 Color:
-                                    rgba: app.Configuration.GetElementValue('DateFeeNoteBtnNotSelectedBackgroundColor')
+                                    rgba: app.Configuration.GetElementValue('WindowBackgroundColor')
                                 RoundedRectangle:
                                     pos: self.pos
                                     size: self.size
@@ -161,7 +161,7 @@
                             # Canvas for the poup background background
                             canvas.before:
                                 Color:
-                                    rgba: app.Configuration.GetElementValue('DateFeeNoteBtnNotSelectedBackgroundColor')
+                                    rgba: app.Configuration.GetElementValue('WindowBackgroundColor')
                                 RoundedRectangle:
                                     pos: self.pos
                                     size: self.size
@@ -262,7 +262,7 @@
                     size_hint: 0.25, 1
 
                     CustomDateFeeDateSquareButton:
-                        on_release: self.show_date_picker(root.parent.parent.parent.date)
+                        on_release: self.show_date_picker(root.parent.parent.parent.parent.date)
                         
                     # Date Button
                     BoxLayout:
@@ -297,7 +297,7 @@
                     size_hint: 0.15, 1
 
                     CustomDateFeeDateSquareButton:
-                        on_release: self.OpeningAddFee(root.parent.parent.parent.fee)
+                        on_release: self.OpeningAddFee(root.parent.parent.parent.parent.fee)
                     
                     BoxLayout:
                         id: FeeBoxLayoutButton
@@ -330,7 +330,7 @@
                     size_hint: 0.15, 1
 
                     CustomDateFeeDateSquareButton:
-                        on_release: self.OpeningAddNote(root.parent.parent.parent.note)
+                        on_release: self.OpeningAddNote(root.parent.parent.parent.parent.note)
                     
                     BoxLayout:
                         id: NoteBoxLayoutButton
@@ -369,7 +369,7 @@
 
                 canvas:
                     Color:
-                        rgba: app.Configuration.GetElementValue('DateFeeNoteBtnNotSelectedBackgroundColor')
+                        rgba: app.Configuration.GetElementValue('WindowBackgroundColor')
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
@@ -402,118 +402,130 @@
 <AddAssetTransactionPopup>:
     background_color: 0,0,0,0
     overlay_color: 0,0,0,0
+    padding: app.Configuration.GetElementValue('PopupBorderWidth')
     
     # Canvas for the poup background background
     canvas.before:
         Color:
-            rgba: 0.5,0.5,0.5,1
+            rgba: [1,1,1,1]
         RoundedRectangle:
             pos: self.pos
             size: self.size
             radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
     
-    # Main Box Layout
     BoxLayout:
         orientation: 'vertical'
-        padding: ("30dp","30dp","30dp","30dp")
-        spacing: "20dp"
 
-        # First row with title and X button - y: 0.075
-        BoxLayout:
-            orientation: 'horizontal'
-            size_hint: 1, 0.075
+        canvas.before:
+            Color:
+                rgba: app.Configuration.GetElementValue('WindowBackgroundColor')
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
 
-            BoxLayout:
-                id: CanvasLabelIdentifier
-                orientation: 'horizontal'
-
-                Label:
-                    text: root.title
-                    text_size: self.width, None
-                    size: self.texture_size
-                    halign: 'center'
-                    font_name: 'Candarab'
-                    font_size: 25
-    
-        # Popup of button to select a Screen - y: 0.075
+        # Main Box Layout
         BoxLayout:
             orientation: 'vertical'
-            padding: ("80dp","0dp","80dp","0dp")
-            size_hint: 1, 0.075
+            padding: ("30dp","30dp","30dp","30dp")
+            spacing: "20dp"
 
+            # First row with title and X button - y: 0.075
             BoxLayout:
-                id: BuySellSwapButtons
                 orientation: 'horizontal'
-                size_hint: 1, 0.5
-                padding: ("5dp","5dp","5dp","5dp")
-                spacing: "15dp"
+                size_hint: 1, 0.075
 
-                canvas.before:
-                    Color:
-                        rgba: 0.3,0.3,0.3,0.7
-                    RoundedRectangle:
-                        pos: self.pos
-                        size: self.size
-                        radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+                BoxLayout:
+                    id: CanvasLabelIdentifier
+                    orientation: 'horizontal'
 
-                CustomTransactionMenuSquareButton:
-                    id: BUY_BTN
-                    text: 'BUY'
-                    on_release: self.move_transaction_screen(root)
+                    Label:
+                        text: root.title
+                        text_size: self.width, None
+                        size: self.texture_size
+                        halign: 'center'
+                        font_name: 'Candarab'
+                        font_size: 25
+        
+            # Popup of button to select a Screen - y: 0.075
+            BoxLayout:
+                orientation: 'vertical'
+                padding: ("80dp","0dp","80dp","0dp")
+                size_hint: 1, 0.075
 
-                CustomTransactionMenuSquareButton:
-                    id: SELL_BTN
-                    text: 'SELL'
-                    on_release: self.move_transaction_screen(root)
-                
-                CustomTransactionMenuSquareButton:
-                    id: SWAP_BTN
-                    text: 'SWAP'
-                    on_release: self.move_transaction_screen(root)
+                BoxLayout:
+                    id: BuySellSwapButtons
+                    orientation: 'horizontal'
+                    size_hint: 1, 0.5
+                    padding: ("5dp","5dp","5dp","5dp")
+                    spacing: "15dp"
 
-        # Screen Containg the action according to the user push - y : 0.75
-        ScreenManager:
-            id: ScreenManagerSection
-            size_hint: 1, 0.75
+                    canvas.before:
+                        Color:
+                            rgba: app.Configuration.GetElementValue('CanvasBackgroundColor')
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
 
-            BuySellScreen:
-            SwapScreen:
-                
-        # Box Layout containg the Confirmation button - y : 0.1
-        BoxLayout:
-            orientation: 'horizontal'
-            spacing: "10dp"
-            size_hint: 1, 0.1
-            pos_hint: {'x': 0, 'y': 1}
+                    CustomTransactionMenuSquareButton:
+                        id: BUY_BTN
+                        text: 'BUY'
+                        on_release: self.move_transaction_screen(root)
 
-            Button:
-                background_color: 0,0,0,0
-                canvas.before:
-                    Color:
-                        rgba: 0.1,0.1,0.9,0.7
-                    RoundedRectangle:
-                        pos: self.pos
-                        size: self.size
-                        radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+                    CustomTransactionMenuSquareButton:
+                        id: SELL_BTN
+                        text: 'SELL'
+                        on_release: self.move_transaction_screen(root)
+                    
+                    CustomTransactionMenuSquareButton:
+                        id: SWAP_BTN
+                        text: 'SWAP'
+                        on_release: self.move_transaction_screen(root)
 
-                id: Confirm
-                font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                font_size: app.Configuration.GetElementValue('PopupInnerFontSize')
-                text:'Add Transaction'
-                on_release: root.AddTransaction(app)
+            # Screen Containg the action according to the user push - y : 0.75
+            ScreenManager:
+                id: ScreenManagerSection
+                size_hint: 1, 0.75
 
-            Button:
-                background_color: 0,0,0,0
-                canvas.before:
-                    Color:
-                        rgba: 0.9,0.1,0.1,0.7
-                    RoundedRectangle:
-                        pos: self.pos
-                        size: self.size
-                        radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+                BuySellScreen:
+                SwapScreen:
+                    
+            # Box Layout containg the Confirmation button - y : 0.1
+            BoxLayout:
+                orientation: 'horizontal'
+                spacing: "10dp"
+                size_hint: 1, 0.1
+                pos_hint: {'x': 0, 'y': 1}
 
-                id: Cancel
-                font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                font_size: app.Configuration.GetElementValue('PopupInnerFontSize')
-                text:'Cancel'
-                on_release: root.Cancel()
+                Button:
+                    background_color: 0,0,0,0
+                    canvas.before:
+                        Color:
+                            rgba: app.Configuration.GetElementValue('ConfirmationBtnBackgroundColor')
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+                    id: Confirm
+                    font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+                    font_size: app.Configuration.GetElementValue('PopupInnerFontSize')
+                    text:'Add Transaction'
+                    on_release: root.AddTransaction(app)
+
+                Button:
+                    background_color: 0,0,0,0
+                    canvas.before:
+                        Color:
+                            rgba: app.Configuration.GetElementValue('CancelBtnBackgroundColor')
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+                    id: Cancel
+                    font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+                    font_size: app.Configuration.GetElementValue('PopupInnerFontSize')
+                    text:'Cancel'
+                    on_release: root.Cancel()

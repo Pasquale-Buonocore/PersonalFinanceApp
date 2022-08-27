@@ -46,7 +46,8 @@ class FinanceApp(MDApp):
 
     def build(self):
         #-- center the window
-        WinConf.SetWindowSize()
+        # WinConf.SetWindowSize()
+        Window.maximize()
 
         # Define the App configuration Database
         self.Configuration = JsonManager_Class(PathManager_Class.database_path, PathManager_Class.Configuration_path)

@@ -46,23 +46,23 @@ class CustomTransactionMenuSquareButton(Button, HoverBehavior):
         # Update button background button of all buttons
         for element in root.ids['BuySellSwapButtons'].children:
             element.SelectedStatus = False
-            element.BackgroundColor = self.Configuration.GetElementValue('MenuButtonNotSelectedBackgroundColor') 
+            element.BackgroundColor = self.Configuration.GetElementValue('CanvasBackgroundColor') 
 
         self.SelectedStatus = True
-        self.BackgroundColor = self.Configuration.GetElementValue('MenuButtonSelectedBackgroundColor') 
+        self.BackgroundColor = self.Configuration.GetElementValue('WindowBackgroundColor') 
 
     # Change Background color at entry
     def on_enter(self, *args):
-        self.BackgroundColor = self.Configuration.GetElementValue('MenuButtonSelectedBackgroundColor') 
+        self.BackgroundColor = self.Configuration.GetElementValue('WindowBackgroundColor') 
     
     # Change Background color at leaving
     def on_leave(self, *args):
         if not self.SelectedStatus:
-            self.BackgroundColor = self.Configuration.GetElementValue('MenuButtonNotSelectedBackgroundColor') 
+            self.BackgroundColor = self.Configuration.GetElementValue('CanvasBackgroundColor') 
 
 class CustomDateFeeDateSquareButton(Button, HoverBehavior):
     Configuration = JsonManager_Class(PathManager_Class.database_path, PathManager_Class.Configuration_path)
-    BackgroundColor = ColorProperty(Configuration.GetElementValue('DateFeeNoteBtnNotSelectedBackgroundColor'))
+    BackgroundColor = ColorProperty(Configuration.GetElementValue('WindowBackgroundColor'))
     SelectedStatus = BooleanProperty(False)
     
     ###############
@@ -71,12 +71,12 @@ class CustomDateFeeDateSquareButton(Button, HoverBehavior):
      
     # Click OK
     def on_save(self, instance, value, date_range):
-        self.parent.parent.parent.parent.parent.parent.parent.parent.date = dt.datetime(value.year, value.month, value.day)
+        self.parent.parent.parent.parent.parent.parent.parent.parent.parent.date = dt.datetime(value.year, value.month, value.day)
         self.parent.parent.parent.parent.parent.ids['DateTextstr'].text = dt.date(value.year, value.month, value.day).strftime("%d %B %Y")
         
     # Show Data Picker
     def show_date_picker(self, date_str):
-        date_dialog = CustomMDDatePicker(mode="picker", primary_color= [0.1,0.1,0.9,0.7], selector_color = [0.1,0.1,0.9,0.7], text_button_color = [0.1,0.1,0.9,0.7])
+        date_dialog = CustomMDDatePicker(mode="picker", primary_color= self.Configuration.GetElementValue('WindowBackgroundColor') , selector_color = [0.1,0.1,0.9,0.7], text_button_color = [0.1,0.1,0.9,0.7])
         date_dialog.bind(on_save = self.on_save)
         date_dialog.open()
 
@@ -101,12 +101,12 @@ class CustomDateFeeDateSquareButton(Button, HoverBehavior):
     ##########################
     # Change Background color at entry
     def on_enter(self, *args):
-        self.BackgroundColor = self.Configuration.GetElementValue('DateFeeNoteBtnSelectedBackgroundColor') 
+        self.BackgroundColor = self.Configuration.GetElementValue('LightCanvasBackgroundColor') 
     
     # Change Background color at leaving
     def on_leave(self, *args):
         if not self.SelectedStatus:
-            self.BackgroundColor = self.Configuration.GetElementValue('DateFeeNoteBtnNotSelectedBackgroundColor') 
+            self.BackgroundColor = self.Configuration.GetElementValue('WindowBackgroundColor') 
 
 ###############
 # POPUP CLASS #
@@ -131,7 +131,7 @@ class AddAssetTransactionPopup(ModalView):
 
         # Modify BUY button as selected one
         self.ids['BUY_BTN'].SelectedStatus = True
-        self.ids['BUY_BTN'].BackgroundColor = self.ids['BUY_BTN'].Configuration.GetElementValue('MenuButtonSelectedBackgroundColor')
+        self.ids['BUY_BTN'].BackgroundColor = self.ids['BUY_BTN'].Configuration.GetElementValue('WindowBackgroundColor')
 
         # Set the current date on the button
         self.ids['ScreenManagerSection'].current_screen.ids['DateTextstr'].text = dt.date(self.date.year, self.date.month, self.date.day).strftime("%d %B %Y")
@@ -243,7 +243,7 @@ class BuySellScreen(Screen):
 
     def open_select_account_popup(self, title_str, type_str):
 
-        Popup = SelectAccountPopup(title_str = title_str, CurrentAsset = self.parent.parent.parent.AssetName, PortfolioCurrency = self.parent.parent.parent.Currency, type = type_str)
+        Popup = SelectAccountPopup(title_str = title_str, CurrentAsset = self.parent.parent.parent.parent.AssetName, PortfolioCurrency = self.parent.parent.parent.parent.Currency, type = type_str)
         Popup.open()
 
     def compute_value_spent(self):
@@ -280,13 +280,13 @@ class BuySellScreen(Screen):
                 self.ids['PricePerCoinValue'].text = PricePerCoin
             PricePerCoin = float(PricePerCoin)
         else:
-            self.ids['PricePerCoinValue'].text = '0.0' + self.parent.parent.parent.Currency
+            self.ids['PricePerCoinValue'].text = '0.0' + self.parent.parent.parent.parent.Currency
             skipComputation = 1
 
         # Compute 
         if skipComputation: return
     
-        self.ids['TotalSpentValue'].text = self.parent.parent.parent.Currency + str(round((Quantity * PricePerCoin), 5)) 
+        self.ids['TotalSpentValue'].text = self.parent.parent.parent.parent.Currency + str(round((Quantity * PricePerCoin), 5)) 
 
 class SwapScreen(Screen):
     pass
