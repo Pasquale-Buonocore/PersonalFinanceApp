@@ -8,7 +8,7 @@
 #:import images_path kivymd.images_path
 
 
-<DatePickerBaseTooltip>
+<CustomDatePickerBaseTooltip>
     on_enter:
         self.tooltip_text = "" if self.owner \
         and self.owner._input_date_dialog_open \
@@ -16,10 +16,10 @@
         else self.hint_text
 
 
-<DatePickerIconTooltipButton>
+<CustomDatePickerIconTooltipButton>
 
 
-<MDDatePicker>
+<CustomMDDatePicker>
     _calendar_layout: _calendar_layout
     size_hint: None, None
     size:
@@ -142,7 +142,7 @@
             canvas.after:
                 PopMatrix
 
-            SelectYearList:
+            CustomSelectYearList:
                 cols: 3
                 default_size: dp(170), dp(36)
                 default_size_hint: 1, None
@@ -186,7 +186,7 @@
                 app.theme_cls.text_color \
                 if not root.text_color else root.text_color
 
-        DatePickerIconTooltipButton:
+        CustomDatePickerIconTooltipButton:
             id: triangle
             owner: root
             icon: "menu-down"
@@ -206,7 +206,7 @@
                 if not root.text_color else root.text_color
             md_bg_color_disabled: 0, 0, 0, 0
 
-        DatePickerIconTooltipButton:
+        CustomDatePickerIconTooltipButton:
             id: chevron_left
             owner: root
             icon: "chevron-left"
@@ -225,7 +225,7 @@
                 app.theme_cls.text_color \
                 if not root.text_color else root.text_color
 
-        DatePickerIconTooltipButton:
+        CustomDatePickerIconTooltipButton:
             id: chevron_right
             owner: root
             icon: "chevron-right"
@@ -306,7 +306,7 @@
                 if not root.text_button_color else root.text_button_color
 
 
-<DatePickerDaySelectableItem>
+<CustomDatePickerDaySelectableItem>
     size_hint: None, None
     size:
         (dp(42), dp(42)) \
@@ -460,7 +460,7 @@
             )
 
 
-<DatePickerWeekdayLabel>
+<CustomDatePickerWeekdayLabel>
     font_style: "Caption"
     theme_text_color: "Custom"
     size_hint: None, None
@@ -477,7 +477,7 @@
         if not root.owner.text_weekday_color else root.owner.text_weekday_color
 
 
-<DatePickerYearSelectableItem>
+<CustomDatePickerYearSelectableItem>
     font_style: "Caption"
     size_hint_x: None
     valign: "middle"
@@ -497,7 +497,7 @@
             radius: [root.height / 2, ]
 
 
-<DatePickerDatePickerEnterDataFieldContainer>
+<CustomDatePickerDatePickerEnterDataFieldContainer>
     adaptive_height: True
     size_hint_x: None
     spacing: dp(8)
@@ -514,7 +514,7 @@
         else dp(168) + dp(24)
 
 
-<DatePickerEnterDataField>
+<CustomDatePickerEnterDataField>
     mode: "fill"
     opacity: 0
     hint_text: "dd/mm/yyyy"

@@ -1,6 +1,6 @@
 from kivy.lang import Builder
 from kivymd.app import MDApp
-from Packages.CustomItem.DataPicker.DataPickerItem import MDDatePicker
+from Packages.CustomItem.DataPicker.CustomDataPickerItem import CustomMDDatePicker
 import datetime as dt
 
 class MainApp(MDApp):
@@ -15,7 +15,7 @@ class MainApp(MDApp):
 
 	def show_date_picker(self, date):
 		#date_dialog = MDDatePicker(year=2000, month=2, day=14)
-		date_dialog = MDDatePicker(mode="picker", primary_color= [0.3, 0.3, 0.5, 1], year = date.year, month = date.month, day = date.day)
+		date_dialog = CustomMDDatePicker(mode="picker", primary_color= [0.3, 0.3, 0.5, 1], year = date.year, month = date.month, day = date.day)
 		date_dialog.bind(on_save=self.on_save)
 		date_dialog.open()
 	

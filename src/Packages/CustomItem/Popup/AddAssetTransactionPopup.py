@@ -12,7 +12,7 @@ from kivy.uix.screenmanager import Screen
 from Packages.CustomFunction.HoverClass import *
 from kivy.uix.button import Button
 from kivy.properties import ColorProperty
-# from Packages.CustomItem.DataPickerItem import MDDatePicker
+from Packages.CustomItem.DataPicker.CustomDataPickerItem import CustomMDDatePicker
 from Packages.CustomItem.Popup.SelectAccountPopup import SelectAccountPopup
 import datetime as dt
 
@@ -76,8 +76,7 @@ class CustomDateFeeDateSquareButton(Button, HoverBehavior):
         
     # Show Data Picker
     def show_date_picker(self, date_str):
-        return 
-        date_dialog = MDDatePicker(mode="picker", primary_color= [0.1,0.1,0.9,0.7], selector_color = [0.1,0.1,0.9,0.7], text_button_color = [0.1,0.1,0.9,0.7])
+        date_dialog = CustomMDDatePicker(mode="picker", primary_color= [0.1,0.1,0.9,0.7], selector_color = [0.1,0.1,0.9,0.7], text_button_color = [0.1,0.1,0.9,0.7])
         date_dialog.bind(on_save = self.on_save)
         date_dialog.open()
 

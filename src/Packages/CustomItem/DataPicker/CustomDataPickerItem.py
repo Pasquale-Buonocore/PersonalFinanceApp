@@ -1,5 +1,5 @@
 """
-MDDatePicker
+CustomMDDatePicker
 ------------
 Usage
 -----
@@ -9,13 +9,13 @@ Usage
     from kivy.lang import Builder
 
     from kivymd.app import MDApp
-    from kivymd.uix.picker import MDDatePicker
+    from kivymd.uix.picker import CustomMDDatePicker
 
     KV = '''
     MDFloatLayout:
 
         MDToolbar:
-            title: "MDDatePicker"
+            title: "CustomMDDatePicker"
             pos_hint: {"top": 1}
             elevation: 10
 
@@ -34,7 +34,7 @@ Usage
             '''
             Events called when the "OK" dialog box button is clicked.
 
-            :type instance: <kivymd.uix.picker.MDDatePicker object>;
+            :type instance: <kivymd.uix.picker.CustomMDDatePicker object>;
 
             :param value: selected date;
             :type value: <class 'datetime.date'>;
@@ -49,7 +49,7 @@ Usage
             '''Events called when the "CANCEL" dialog box button is clicked.'''
 
         def show_date_picker(self):
-            date_dialog = MDDatePicker()
+            date_dialog = CustomMDDatePicker()
             date_dialog.bind(on_save=self.on_save, on_cancel=self.on_cancel)
             date_dialog.open()
 
@@ -57,7 +57,7 @@ Usage
     Test().run()
 
 
-.. image:: https://github.com/HeaTTheatR/KivyMD-data/raw/master/gallery/kivymddoc/MDDatePicker.gif
+.. image:: https://github.com/HeaTTheatR/KivyMD-data/raw/master/gallery/kivymddoc/CustomMDDatePicker.gif
     :align: center
 
 Open date dialog with the specified date
@@ -66,7 +66,7 @@ Open date dialog with the specified date
 .. code-block:: python
 
     def show_date_picker(self):
-        date_dialog = MDDatePicker(year=1983, month=4, day=12)
+        date_dialog = CustomMDDatePicker(year=1983, month=4, day=12)
         date_dialog.open()
 
 You can set the time interval from and to the set date. All days of the week
@@ -75,7 +75,7 @@ that are not included in this range will have the status `disabled`.
 .. code-block:: python
 
     def show_date_picker(self):
-        date_dialog = MDDatePicker(
+        date_dialog = CustomMDDatePicker(
             min_date=datetime.date(2021, 2, 15),
             max_date=datetime.date(2021, 3, 27),
         )
@@ -90,13 +90,13 @@ Select year
 .. warning:: The list of years when opening is not automatically set
     to the current year.
 
-You can set the range of years using the :attr:`~kivymd.uix.picker.MDDatePicker.min_year` and
-:attr:`~kivymd.uix.picker.MDDatePicker.max_year` attributes:
+You can set the range of years using the :attr:`~kivymd.uix.picker.CustomMDDatePicker.min_year` and
+:attr:`~kivymd.uix.picker.CustomMDDatePicker.max_year` attributes:
 
 .. code-block:: python
 
     def show_date_picker(self):
-        date_dialog = MDDatePicker(min_year=2021, max_year=2030)
+        date_dialog = CustomMDDatePicker(min_year=2021, max_year=2030)
         date_dialog.open()
 
 Set and select a date range
@@ -105,14 +105,14 @@ Set and select a date range
 .. code-block:: python
 
     def show_date_picker(self):
-        date_dialog = MDDatePicker(mode="range")
+        date_dialog = CustomMDDatePicker(mode="range")
         date_dialog.open()
 
 .. image:: https://github.com/HeaTTheatR/KivyMD-data/raw/master/gallery/kivymddoc/set-select-range-date.gif
     :align: center
 """
 
-__all__ = ("MDDatePicker", "MDThemePicker", "BaseDialogPicker")
+__all__ = ("CustomMDDatePicker", "MDThemePicker", "CustomBaseDialogPicker")
 
 import calendar
 import datetime
@@ -122,8 +122,6 @@ from datetime import date
 from kivy import Logger
 from kivy.animation import Animation
 from kivy.clock import Clock
-from kivy.event import EventDispatcher
-from kivy.factory import Factory
 from kivy.lang import Builder
 from kivy.metrics import dp
 from kivy.properties import (
@@ -140,10 +138,6 @@ from kivy.uix.behaviors import ButtonBehavior, FocusBehavior
 from kivy.uix.recyclegridlayout import RecycleGridLayout
 from kivy.uix.recycleview.layout import LayoutSelectionBehavior
 from kivy.uix.recycleview.views import RecycleDataViewBehavior
-from kivy.utils import get_color_from_hex
-from kivy.vector import Vector
-
-from kivymd.color_definitions import colors, palette
 from kivymd.theming import ThemableBehavior
 from kivymd.toast import toast
 from kivymd.uix.behaviors import (
@@ -158,11 +152,11 @@ from kivymd.uix.label import MDLabel
 from kivymd.uix.textfield import MDTextField
 from kivymd.uix.tooltip import MDTooltip
 
-Builder.load_file('Packages/CustomItem/ui/DataPickerItem.kv')
+Builder.load_file('Packages/CustomItem/ui/CustomDataPickerItem.kv')
 
-class BaseDialogPicker(BaseDialog, FakeRectangularElevationBehavior, SpecificBackgroundColorBehavior,):
+class CustomBaseDialogPicker(BaseDialog, FakeRectangularElevationBehavior, SpecificBackgroundColorBehavior,):
     """
-    Base class for :attr:`~kivymd.uix.picker.MDDatePicker` and
+    Base class for :attr:`~kivymd.uix.picker.CustomMDDatePicker` and
     :attr:`~kivymd.uix.picker.MDTimePicker` classes.
 
     :Events:
@@ -202,7 +196,7 @@ class BaseDialogPicker(BaseDialog, FakeRectangularElevationBehavior, SpecificBac
 
     .. code-block:: python
 
-        MDDatePicker(primary_color=get_color_from_hex("#72225b")
+        CustomMDDatePicker(primary_color=get_color_from_hex("#72225b")
 
     .. image:: https://github.com/HeaTTheatR/KivyMD-data/raw/master/gallery/kivymddoc/primary-color-date.png
         :align: center
@@ -217,7 +211,7 @@ class BaseDialogPicker(BaseDialog, FakeRectangularElevationBehavior, SpecificBac
 
     .. code-block:: python
 
-        MDDatePicker(
+        CustomMDDatePicker(
             primary_color=get_color_from_hex("#72225b"),
             accent_color=get_color_from_hex("#5d1a4a"),
         )
@@ -235,7 +229,7 @@ class BaseDialogPicker(BaseDialog, FakeRectangularElevationBehavior, SpecificBac
 
     .. code-block:: python
 
-        MDDatePicker(
+        CustomMDDatePicker(
             primary_color=get_color_from_hex("#72225b"),
             accent_color=get_color_from_hex("#5d1a4a"),
             selector_color=get_color_from_hex("#e93f39"),
@@ -254,7 +248,7 @@ class BaseDialogPicker(BaseDialog, FakeRectangularElevationBehavior, SpecificBac
 
     .. code-block:: python
 
-        MDDatePicker(
+        CustomMDDatePicker(
             primary_color=get_color_from_hex("#72225b"),
             accent_color=get_color_from_hex("#5d1a4a"),
             selector_color=get_color_from_hex("#e93f39"),
@@ -274,7 +268,7 @@ class BaseDialogPicker(BaseDialog, FakeRectangularElevationBehavior, SpecificBac
 
     .. code-block:: python
 
-        MDDatePicker(
+        CustomMDDatePicker(
             primary_color=get_color_from_hex("#72225b"),
             accent_color=get_color_from_hex("#5d1a4a"),
             selector_color=get_color_from_hex("#e93f39"),
@@ -295,7 +289,7 @@ class BaseDialogPicker(BaseDialog, FakeRectangularElevationBehavior, SpecificBac
 
     .. code-block:: python
 
-        MDDatePicker(
+        CustomMDDatePicker(
             primary_color=get_color_from_hex("#72225b"),
             accent_color=get_color_from_hex("#5d1a4a"),
             selector_color=get_color_from_hex("#e93f39"),
@@ -317,7 +311,7 @@ class BaseDialogPicker(BaseDialog, FakeRectangularElevationBehavior, SpecificBac
 
     .. code-block:: python
 
-        MDDatePicker(
+        CustomMDDatePicker(
             primary_color=get_color_from_hex("#72225b"),
             accent_color=get_color_from_hex("#5d1a4a"),
             selector_color=get_color_from_hex("#e93f39"),
@@ -340,7 +334,7 @@ class BaseDialogPicker(BaseDialog, FakeRectangularElevationBehavior, SpecificBac
 
     .. code-block:: python
 
-        MDDatePicker(
+        CustomMDDatePicker(
             primary_color=get_color_from_hex("#72225b"),
             accent_color=get_color_from_hex("#5d1a4a"),
             selector_color=get_color_from_hex("#e93f39"),
@@ -365,7 +359,7 @@ class BaseDialogPicker(BaseDialog, FakeRectangularElevationBehavior, SpecificBac
 
     .. code-block:: python
 
-        MDDatePicker(
+        CustomMDDatePicker(
             primary_color=get_color_from_hex("#72225b"),
             accent_color=get_color_from_hex("#5d1a4a"),
             selector_color=get_color_from_hex("#e93f39"),
@@ -389,7 +383,7 @@ class BaseDialogPicker(BaseDialog, FakeRectangularElevationBehavior, SpecificBac
 
     .. code-block:: python
 
-        MDDatePicker(
+        CustomMDDatePicker(
             primary_color=get_color_from_hex("#72225b"),
             accent_color=get_color_from_hex("#5d1a4a"),
             selector_color=get_color_from_hex("#e93f39"),
@@ -425,24 +419,24 @@ class BaseDialogPicker(BaseDialog, FakeRectangularElevationBehavior, SpecificBac
         self.dismiss()
 
 
-class DatePickerBaseTooltip(MDTooltip):
+class CustomDatePickerBaseTooltip(MDTooltip):
     owner = ObjectProperty()
     hint_text = StringProperty()
 
 
-class DatePickerIconTooltipButton(MDIconButton, DatePickerBaseTooltip):
+class CustomDatePickerIconTooltipButton(MDIconButton, CustomDatePickerBaseTooltip):
     pass
 
 
-class DatePickerWeekdayLabel(MDLabel, DatePickerBaseTooltip):
+class CustomDatePickerWeekdayLabel(MDLabel, CustomDatePickerBaseTooltip):
     pass
 
 
-class DatePickerTypeDateError(Exception):
+class CustomDatePickerTypeDateError(Exception):
     pass
 
 
-class DatePickerEnterDataField(MDTextField):
+class CustomDatePickerEnterDataField(MDTextField):
     """Implements date input in 01/01/2021 format."""
 
     owner = ObjectProperty()
@@ -547,17 +541,15 @@ class DatePickerEnterDataField(MDTextField):
             Clock.schedule_once(lambda x: set_pos_cursor(len(self.text)), 0.1)
 
 
-class DatePickerDatePickerEnterDataFieldContainer(MDBoxLayout):
+class CustomDatePickerDatePickerEnterDataFieldContainer(MDBoxLayout):
     owner = ObjectProperty()
 
 
-class SelectYearList(FocusBehavior, LayoutSelectionBehavior, RecycleGridLayout):
+class CustomSelectYearList(FocusBehavior, LayoutSelectionBehavior, RecycleGridLayout):
     """A class that implements a list for choosing a year."""
 
 
-class DatePickerDaySelectableItem(
-    ThemableBehavior, CircularRippleBehavior, ButtonBehavior, AnchorLayout
-):
+class CustomDatePickerDaySelectableItem(ThemableBehavior, CircularRippleBehavior, ButtonBehavior, AnchorLayout):
     """A class that implements a list for choosing a day."""
 
     text = StringProperty()
@@ -614,7 +606,7 @@ class DatePickerDaySelectableItem(
             self.owner.set_selected_widget(self)
 
 
-class DatePickerYearSelectableItem(RecycleDataViewBehavior, MDLabel):
+class CustomDatePickerYearSelectableItem(RecycleDataViewBehavior, MDLabel):
     """Implements an item for a pick list of the year."""
 
     index = None
@@ -661,9 +653,9 @@ class DatePickerYearSelectableItem(RecycleDataViewBehavior, MDLabel):
             self.text_color = (0, 0, 0, 1)
 
 
-# TODO: Add the feature to embed the `MDDatePicker` class in other layouts
+# TODO: Add the feature to embed the `CustomMDDatePicker` class in other layouts
 #  and not use it as a modal dialog.
-class MDDatePicker(BaseDialogPicker):
+class CustomMDDatePicker(CustomBaseDialogPicker):
     text_weekday_color = ColorProperty(None)
     """
     Text color of weekday names.
@@ -793,11 +785,11 @@ class MDDatePicker(BaseDialogPicker):
 
         if self.max_date and self.min_date:
             if self.min_date and not isinstance(self.min_date, date):
-                raise DatePickerTypeDateError(
+                raise CustomDatePickerTypeDateError(
                     "'min_date' must be of class <class 'datetime.date'>"
                 )
             if self.max_date and not isinstance(self.max_date, date):
-                raise DatePickerTypeDateError(
+                raise CustomDatePickerTypeDateError(
                     "'max_date' must be of class <class 'datetime.date'>"
                 )
             self.compare_date_range()
@@ -897,7 +889,7 @@ class MDDatePicker(BaseDialogPicker):
         self._input_date_dialog_open = True
 
         self._enter_data_field_container = (
-            DatePickerDatePickerEnterDataFieldContainer(owner=self)
+            CustomDatePickerDatePickerEnterDataFieldContainer(owner=self)
         )
         self._enter_data_field = self.get_field()
         if self.min_date and self.max_date:
@@ -1007,7 +999,7 @@ class MDDatePicker(BaseDialogPicker):
         # TODO: Add behavior if the minimum date range exceeds the maximum
         #  date range. Use toast?
         if self.max_date <= self.min_date:
-            raise DatePickerTypeDateError(
+            raise CustomDatePickerTypeDateError(
                 "`max_date` value cannot be less than or equal "
                 "to 'min_date' value"
             )
@@ -1071,7 +1063,7 @@ class MDDatePicker(BaseDialogPicker):
                     self._calendar_list[idx].is_today = dates[idx] == self.today
                 # The marked date widget has a True value in the `is_selected`
                 # attribute. In the KV file it is checked if the date widget
-                # (DatePickerDaySelectableItem) has the `is_selected = False`
+                # (CustomDatePickerDaySelectableItem) has the `is_selected = False`
                 # attribute value, then the date widget is not highlighted.
                 if (
                     0
@@ -1107,7 +1099,7 @@ class MDDatePicker(BaseDialogPicker):
     def get_field(self):
         """Creates and returns a text field object used to enter dates."""
 
-        field = DatePickerEnterDataField(owner=self)
+        field = CustomDatePickerEnterDataField(owner=self)
         field.color_mode = "custom"
         field.line_color_focus = (
             self.theme_cls.primary_color
@@ -1282,7 +1274,7 @@ class MDDatePicker(BaseDialogPicker):
                     "text": str(number_year),
                     "index": i,
                     "selectable": True,
-                    "viewclass": "DatePickerYearSelectableItem",
+                    "viewclass": "CustomDatePickerYearSelectableItem",
                 }
             )
 
@@ -1290,7 +1282,7 @@ class MDDatePicker(BaseDialogPicker):
         calendar_list = []
 
         for day in self.calendar.iterweekdays():
-            weekday_label = DatePickerWeekdayLabel(
+            weekday_label = CustomDatePickerWeekdayLabel(
                 text=calendar.day_name[day][0].upper(),
                 owner=self,
                 hint_text=calendar.day_name[day],
@@ -1298,7 +1290,7 @@ class MDDatePicker(BaseDialogPicker):
             weekday_label.font_name = self.font_name
             self._calendar_layout.add_widget(weekday_label)
         for i, j in enumerate(range(6 * 7)):  # 6 weeks, 7 days a week
-            day_selectable_item = DatePickerDaySelectableItem(
+            day_selectable_item = CustomDatePickerDaySelectableItem(
                 index=i,
                 owner=self,
                 current_month=int(self.month),
