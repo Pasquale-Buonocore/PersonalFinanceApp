@@ -47,10 +47,10 @@
             size_hint: 1, 1
             spacing: "10dp"
 
-            # Box Layout containg Asset, Account ect - y: 0.45
+            # Box Layout containg Asset, Account ect - y: 0.4
             BoxLayout:
                 id: AssetSymbolBoxLayout
-                size_hint: 1, 0.45
+                size_hint: 1, 0.4
                 orientation: 'vertical'
                 padding: ("10dp","10dp","10dp","10dp")
                 
@@ -357,7 +357,7 @@
                             font_name: 'Candarab'
                             halign: 'center'
                             font_size: 20    
-                
+    
             # TotalSpent Canvas - y: 0.1375
             BoxLayout:
                 id: TotalSpentBoxLayoutButton
@@ -394,6 +394,29 @@
                     halign: 'center'
                     font_size: 25            
             
+            # Box Layout for the taxable event switching
+            BoxLayout:
+                id: SwitchingBoxLayout
+                orientation: 'horizontal'
+                size_hint: 1, 0.05
+                padding: ("10dp","0dp","0dp","0dp")
+                spacing: "5dp"
+
+                MDCheckbox:
+                    id: SwitchValue
+                    size_hint: 0.1, 1
+                    active: False
+                    disabled: True
+
+                Label:
+                    text: 'Taxable event'
+                    size_hint: 0.9, 1
+                    text_size: self.width, None
+                    size: self.texture_size
+                    font_name: 'Candarab'
+                    halign: 'left'
+                    font_size: 18
+
 <SwapScreen>:
     name: app.Configuration.GetElementValue('AssetTransactionPopupScreenDictionary')["SWAP"] 
     Label:

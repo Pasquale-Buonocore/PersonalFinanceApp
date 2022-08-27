@@ -15,6 +15,7 @@ from kivy.properties import ColorProperty
 from Packages.CustomItem.DataPicker.CustomDataPickerItem import CustomMDDatePicker
 from Packages.CustomItem.Popup.SelectAccountPopup import SelectAccountPopup
 import datetime as dt
+from kivymd.uix.selectioncontrol import MDSwitch
 
 # Designate Out .kv design file
 Builder.load_file('Packages/CustomItem/ui/AddAssetTransactionPopup.kv')
@@ -35,8 +36,12 @@ class CustomTransactionMenuSquareButton(Button, HoverBehavior):
 
         if self.text == "BUY":
             root.ids.ScreenManagerSection.current_screen.ids.TotalSpentLabel.text = 'Total Spent:'
+            root.ids.ScreenManagerSection.current_screen.ids.SwitchValue.active = False
+            root.ids.ScreenManagerSection.current_screen.ids.SwitchValue.disabled = True
         elif self.text == "SELL":
             root.ids.ScreenManagerSection.current_screen.ids.TotalSpentLabel.text = 'Total Received:'
+            root.ids.ScreenManagerSection.current_screen.ids.SwitchValue.active = False
+            root.ids.ScreenManagerSection.current_screen.ids.SwitchValue.disabled = False
 
         # Update button state
         self.UpdateButtonState(root)
@@ -45,7 +50,7 @@ class CustomTransactionMenuSquareButton(Button, HoverBehavior):
     def UpdateButtonState(self, root):
         # Update button background button of all buttons
         for element in root.ids['BuySellSwapButtons'].children:
-            element.SelectedStatus = False
+            element.SelectedStatus = False 
             element.BackgroundColor = self.Configuration.GetElementValue('CanvasBackgroundColor') 
 
         self.SelectedStatus = True
@@ -127,7 +132,7 @@ class AddAssetTransactionPopup(ModalView):
         self.date = dt.datetime.now()
         
         # Initialize the super class
-        super().__init__(size_hint = (0.33,0.7))
+        super().__init__(size_hint = (0.33,0.75))
 
         # Modify BUY button as selected one
         self.ids['BUY_BTN'].SelectedStatus = True

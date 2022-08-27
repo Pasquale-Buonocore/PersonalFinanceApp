@@ -1,0 +1,2 @@
+class TextInputCanvas():
+    pass

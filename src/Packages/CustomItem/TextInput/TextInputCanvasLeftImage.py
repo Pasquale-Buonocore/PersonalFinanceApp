@@ -1,0 +1,2 @@
+class TextInputCanvasLeftImage():
+    pass
