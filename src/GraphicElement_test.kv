@@ -1,0 +1,26 @@
+#:kivy 1.0.9
+
+<Widgets>:
+    orientation: 'vertical'
+
+    Button:
+        text: "You pressed the button"
+        size_hint: 0.5, 0.5
+        pos_hint: {"x":0.1, "y":0.1}
+
+    TextInputCanvas:
+        size_hint: 0.5, 0.5
+        text: 'Peppino'
+        font_size: 20
+        canvas_color: 1,0,1,1
+
+<P>:
+    Label:
+        text: "You pressed the button"
+        size_hint: 0.6, 0.2
+        pos_hint: {"x":0.2, "top":1}
+
+    Button:
+        text: "You pressed the button"
+        size_hint: 0.8, 0.2
+        pos_hint: {"x":0.1, "y":0.1}

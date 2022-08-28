@@ -1,0 +1,26 @@
+#:kivy 1.0.9
+
+<TextInputCanvas>:
+    RelativeLayout:      
+        # Canvas for the poup background background
+        canvas.before:
+            Color:
+                rgba: [1,0,0,1]
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+        TextInput: 
+            id: FeeValue
+            multiline: 0
+            text: 'DIO CANE'
+            size_hint: 1, None
+            height: self.minimum_height
+            pos: [ 0, root.height/2 - self.height/2]
+            background_color: 0,0,0,0
+            foreground_color: 1,1,1,1
+            cursor_color: 1,1,1,1
+            font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+            font_size: root.font_size
+            halign: 'center'

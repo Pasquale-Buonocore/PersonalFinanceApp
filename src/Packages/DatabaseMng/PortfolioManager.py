@@ -29,6 +29,27 @@ class PortfoliosManager_Class():
 
         - Statistics (which will be used to fill the dashboard at each page opening)
 
+    How is the transaction dictionary composed?
+    - Transactions: {
+        "1":{
+                Date: ---,
+                PricePerCoin: ---,
+                Amount: ---,
+                Fees: ---,
+                Note: ---,
+                Status: { Open: Amount - Position closed 
+                          Closed: { "1": {
+                                    Date: ---,
+                                    PricePerCoin: ---,
+                                    Amount: ---,
+                                    Fees: ---,
+                                    Note: ---
+                        }
+
+                    }
+                }
+            }
+        }
     There might be more than one portfolio
     """
 
@@ -127,6 +148,7 @@ class PortfoliosManager_Class():
         StatisticDict.update({'TotalValue' : int(PortfolioInitList[1])})
         StatisticDict.update({'NumberOfAssets' : int(PortfolioInitList[2])})
         StatisticDict.update({'TotalProfit' : int(PortfolioInitList[3])})
+        StatisticDict.update({'ToCountInAllocation': True})
         StatisticDict.update({'ActualAssetAllocation' : {} })
         StatisticDict.update({'DesiredAssetAllocation' : {} })
         Statistic = {'Statistics' : StatisticDict }
@@ -394,14 +416,16 @@ class PortfoliosManager_Class():
     # Initialize a Transaction
     def InitializeTransaction(self, Type, Date, Price, Amount, Fees, Note):
         # List which will store all the transaction for such asset
-        TransactionDict = {'Type' : Type}
+        TransactionDict = {'Date': Date }
 
         # Dict which will store all the statistics of such asset
-        TransactionDict.update({'Date': Date })
-        TransactionDict.update({'Price' : Price})
+        TransactionDict.update({'PricePerCoin' : Price})
         TransactionDict.update({'Amount' : Amount})
         TransactionDict.update({'Fees' : Fees})
         TransactionDict.update({'Note' : Note})
+
+        # Initialize Status to consider Open and Closed position
+        TransactionDict.update({'Status' : {'Open' : Amount, 'Closed' : {'Transactions' : {}}}})
 
         return TransactionDict 
 
