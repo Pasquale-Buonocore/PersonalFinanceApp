@@ -1,4 +1,3 @@
-from kivy.lang import Builder
 from kivy.uix.modalview import ModalView
 import Packages.CustomItem.Popup.WarningPopup as Wrn_popup
 from kivy.uix.modalview import ModalView
@@ -6,7 +5,6 @@ from Packages.DatabaseMng.JsonManager import JsonManager_Class
 from Packages.DatabaseMng.PathManager import PathManager_Class
 from Packages.CustomItem.Popup.AddFeePopup import AddFeePopup
 from Packages.CustomItem.Popup.AddNotePopup import AddNotePopup
-from kivy.core.window import Window
 from kivy.lang import Builder
 from kivy.uix.screenmanager import Screen
 from Packages.CustomFunction.HoverClass import *
@@ -15,7 +13,7 @@ from kivy.properties import ColorProperty
 from Packages.CustomItem.DataPicker.CustomDataPickerItem import CustomMDDatePicker
 from Packages.CustomItem.Popup.SelectAccountPopup import SelectAccountPopup
 import datetime as dt
-from kivymd.uix.selectioncontrol import MDSwitch
+from kivymd.app import MDApp
 
 # Designate Out .kv design file
 Builder.load_file('Packages/CustomItem/ui/AddAssetTransactionPopup.kv')
@@ -138,9 +136,12 @@ class AddAssetTransactionPopup(ModalView):
         self.ids['BUY_BTN'].SelectedStatus = True
         self.ids['BUY_BTN'].BackgroundColor = self.ids['BUY_BTN'].Configuration.GetElementValue('WindowBackgroundColor')
 
+        # Set the Asset and Symbol to transact
+        self.ids['ScreenManagerSection'].current_screen.ids['AssetSymbolstr'].text = self.AssetName
+
         # Set the current date on the button
         self.ids['ScreenManagerSection'].current_screen.ids['DateTextstr'].text = dt.date(self.date.year, self.date.month, self.date.day).strftime("%d %B %Y")
-
+        
         # Set the asset and symbol according to the page the popup was opened
         self.ids['ScreenManagerSection'].current_screen.ids['PricePerCoinStr'].text = 'Price Per Coin'
         self.ids['ScreenManagerSection'].current_screen.ids['TotalSpentValue'].text = self.Currency + '0.0'
@@ -150,7 +151,7 @@ class AddAssetTransactionPopup(ModalView):
         self.ids["Confirm"].text = "Modify Transaction" if type == 'M' else "Add Transaction"
 
         # Define dropdown list of buttons
-        Accounts = ['Unicredit Accounts', 'Ledger' , 'DeGiro']
+        # Accounts_dict = MDApp.get_running_app().Accounts_DB.ReadJson()
 
         # Update Asset Name and Symbol
         self.UpdateAssetNameSymbol()
@@ -195,54 +196,67 @@ class AddAssetTransactionPopup(ModalView):
     def AddTransaction(self, App):
         # Keep the boolean error
         string = ''
-        return
 
         # Retrive data "Type Name" from Text Input - In empty do nothing
-        TypeValue = self.ids["TypeValue"].text.strip().upper()
+        TypeValue = ''
+        if self.ids.SELL_BTN.SelectedStatus:  TypeValue = 'SELL'
+        if self.ids.BUY_BTN.SelectedStatus:  TypeValue = 'BUY'
         if not TypeValue: string = string + 'ERROR: Empty type value FIELD'
 
-        # Retrive data "Date Value" from Text Input - In empty do nothing
-        DateValue = self.ids["DateValue"].text.strip().upper()
-        if not DateValue: string = string + '\nERROR: Empty date value FIELD'
-
         # Retrive data "Price Value" from Text Input - In empty do nothing
-        PriceValue = self.ids["PriceValue"].text.strip().upper()
+        PriceValue = self.ids['ScreenManagerSection'].current_screen.ids.PricePerCoinValue.text
         if not PriceValue: string = string + '\nERROR: Empty price value FIELD'
 
         # Retrive data "Quantity Value" from Text Input - In empty do nothing
-        QuantityValue = self.ids["QuantityValue"].text.strip().upper()
+        QuantityValue = self.ids['ScreenManagerSection'].current_screen.ids.QuantityValue.text
         if not QuantityValue: string = string + '\nERROR: Empty quantity value FIELD'
 
-        FeesValue = self.Fees
-        NoteValue = self.Note
+        FeesValue = self.fee
+        if not FeesValue: string = string + '\nERROR: Empty fee value FIELD'
+
+        NoteValue = self.note
+
+        # Retrive data "Date Value" from Text Input - In empty do nothing
+        DateValue = self.ids['ScreenManagerSection'].current_screen.ids.DateTextstr.text
+        if not DateValue: string = string + '\nERROR: Empty date value FIELD'
+
+        # Paying Account
+        if not self.SelectedPayingAccount: string = string + '\nERROR: Empty Paying Account value FIELD'
+        
+        if not self.SelectedStoringAccount: string = string + '\nERROR: Empty Storing Account value FIELD'
+            
 
         if string:
             # If the error message is not empty, display an error
             Pop = Wrn_popup.WarningPopup('WARNING WINDOW', string.upper())
             Pop.open()
         else:
-            # Define Asset To Add
-            TransactiontoAdd = self.DBManager.InitializeTransaction(TypeValue, DateValue, PriceValue, QuantityValue, FeesValue, NoteValue)
+            if not (TypeValue == 'SELL'):
+                # Define Asset To Add
+                TransactiontoAdd = self.DBManager.InitializeTransaction(DateValue, PriceValue, QuantityValue, FeesValue, NoteValue, self.SelectedPayingAccount, self.SelectedStoringAccount)
 
-            # If an item needs to be modified
-            if self.type == 'M':
-                # Substitute the actual item
-                self.DBManager.ModifyTransactionToAsset(PortfolioName = self.PortfolioName, AssetName = self.AssetName, ItemIndex = self.ItemIndex, NewTransaction = TransactiontoAdd)
-            else:
-                self.DBManager.AddTransactionToAsset(self.PortfolioName, self.AssetName, TransactiontoAdd)
+                # If an item needs to be modified
+                if self.type == 'M':
+                    # Substitute the actual item
+                    self.DBManager.ModifyTransactionToAsset(PortfolioName = self.PortfolioName, AssetName = self.AssetName, ItemIndex = self.ItemIndex, NewTransaction = TransactiontoAdd)
+                else:
+                    self.DBManager.AddTransactionToAsset(self.PortfolioName, self.AssetName, TransactiontoAdd)
 
-            # Update Asset Statistics
-            self.DBManager.UpdateAssetStatistics(self.PortfolioName, self.AssetName)
-            
-            # Update the Json and Update the Dashboard Screen
-            ActualScreen = App.root.children[0].children[0].current_screen
-            ActualScreen.UpdateScreen(ActualScreen.AssetName, ActualScreen.PortfolioName, ActualScreen.FromScreenName)
+                # Update Asset Statistics
+                self.DBManager.UpdateAssetStatistics(self.PortfolioName, self.AssetName)
 
-            # Close the popup
-            self.dismiss()
+                # Update Paying account
+
+                # Update Storing account
+                
+                # Update the Json and Update the Dashboard Screen
+                ActualScreen = App.root.children[0].children[0].current_screen
+                ActualScreen.UpdateScreen(ActualScreen.AssetName, ActualScreen.PortfolioName, ActualScreen.FromScreenName)
+
+                # Close the popup
+                self.dismiss()
 
         print('Adding Transactions...')
-        self.dismiss()
 
 class BuySellScreen(Screen):
 

@@ -6,7 +6,7 @@
                               "1": {
                                     "Type": "BUY",
                                     "Date": "16/06/2022",
-                                    "Price": "29300",
+                                    "PricePerCoin": "29300",
                                     "Amount": "0.05",
                                     "Fees": 0,
                                     "Note": ""
@@ -14,7 +14,7 @@
                               "2": {
                                     "Type": "SOLD",
                                     "Date": "13/06/2022",
-                                    "Price": "27000",
+                                    "PricePerCoin": "27000",
                                     "Amount": "0.01",
                                     "Fees": 0,
                                     "Note": ""
@@ -34,7 +34,7 @@
                               "1": {
                                     "Type": "BUY",
                                     "Date": "11/06/2022",
-                                    "Price": "01500",
+                                    "PricePerCoin": "01500",
                                     "Amount": "0.05",
                                     "Fees": 0,
                                     "Note": ""
@@ -42,7 +42,7 @@
                               "2": {
                                     "Type": "BUY",
                                     "Date": "14/06/2022",
-                                    "Price": "250",
+                                    "PricePerCoin": "250",
                                     "Amount": "1",
                                     "Fees": 0,
                                     "Note": ""
@@ -50,7 +50,7 @@
                               "3": {
                                     "Type": "BUY",
                                     "Date": "13/06/2022",
-                                    "Price": "2500",
+                                    "PricePerCoin": "2500",
                                     "Amount": "0.05",
                                     "Fees": 0,
                                     "Note": ""
@@ -70,7 +70,7 @@
                               "1": {
                                     "Type": "BUY",
                                     "Date": "16/08/2022",
-                                    "Price": "5",
+                                    "PricePerCoin": "5",
                                     "Amount": "50",
                                     "Fees": 0,
                                     "Note": ""
@@ -90,7 +90,7 @@
                               "1": {
                                     "Type": "BUY",
                                     "Date": "16/08/2022",
-                                    "Price": "5",
+                                    "PricePerCoin": "5",
                                     "Amount": "50",
                                     "Fees": 0,
                                     "Note": ""
@@ -132,7 +132,7 @@
                               "1": {
                                     "Type": "BUY",
                                     "Date": "01/02/2022",
-                                    "Price": "11.15",
+                                    "PricePerCoin": "11.15",
                                     "Amount": "6.7",
                                     "Fees": 0,
                                     "Note": ""
@@ -140,7 +140,7 @@
                               "2": {
                                     "Type": "BUY",
                                     "Date": "05/02/2022",
-                                    "Price": "13.12",
+                                    "PricePerCoin": "13.12",
                                     "Amount": "8.6",
                                     "Fees": 0,
                                     "Note": ""
@@ -148,7 +148,7 @@
                               "3": {
                                     "Type": "BUY",
                                     "Date": "19/02/2022",
-                                    "Price": "10",
+                                    "PricePerCoin": "10",
                                     "Amount": "6",
                                     "Fees": 0,
                                     "Note": ""
@@ -156,7 +156,7 @@
                               "4": {
                                     "Type": "BUY",
                                     "Date": "15/03/2022",
-                                    "Price": "10",
+                                    "PricePerCoin": "10",
                                     "Amount": "10",
                                     "Fees": 0,
                                     "Note": ""
@@ -164,7 +164,7 @@
                               "5": {
                                     "Type": "BUY",
                                     "Date": "02/04/2022",
-                                    "Price": "0.0001",
+                                    "PricePerCoin": "0.0001",
                                     "Amount": "0.58",
                                     "Fees": 0,
                                     "Note": ""
@@ -172,7 +172,7 @@
                               "6": {
                                     "Type": "SOLD",
                                     "Date": "08/04/2022",
-                                    "Price": "17.85",
+                                    "PricePerCoin": "17.85",
                                     "Amount": "9.05",
                                     "Fees": 0,
                                     "Note": ""
@@ -180,7 +180,7 @@
                               "7": {
                                     "Type": "BUY",
                                     "Date": "10/04/2022",
-                                    "Price": "16.75",
+                                    "PricePerCoin": "16.75",
                                     "Amount": "6.1",
                                     "Fees": 0,
                                     "Note": ""
@@ -188,7 +188,7 @@
                               "8": {
                                     "Type": "BUY",
                                     "Date": "02/04/2022",
-                                    "Price": "11.37",
+                                    "PricePerCoin": "11.37",
                                     "Amount": "9.2",
                                     "Fees": 0,
                                     "Note": ""
@@ -249,7 +249,7 @@
                               "1": {
                                     "Type": "BUY",
                                     "Date": "10/06/2022",
-                                    "Price": "2.3",
+                                    "PricePerCoin": "2.3",
                                     "Amount": "85",
                                     "Fees": 0,
                                     "Note": ""
@@ -257,7 +257,7 @@
                               "2": {
                                     "Type": "BUY",
                                     "Date": "15/06/2022",
-                                    "Price": "1",
+                                    "PricePerCoin": "1",
                                     "Amount": "50",
                                     "Fees": 0,
                                     "Note": ""
@@ -265,10 +265,33 @@
                               "3": {
                                     "Type": "BUY",
                                     "Date": "19/06/2022",
-                                    "Price": "15",
+                                    "PricePerCoin": "15",
                                     "Amount": "5",
                                     "Fees": 0,
                                     "Note": ""
+                              },
+                              "4": {
+                                    "Date": "28 August 2022",
+                                    "PricePerCoin": "2.3",
+                                    "Amount": "1",
+                                    "Fees": "0.0",
+                                    "Note": "",
+                                    "PayingAccount": {
+                                          "Account": "Binance Exchange",
+                                          "SubAccount": "Cash",
+                                          "Currency": "USDC"
+                                    },
+                                    "StoringAccount": {
+                                          "Account": "Binance Exchange",
+                                          "SubAccount": "Assets",
+                                          "Currency": "EVMOS"
+                                    },
+                                    "Status": {
+                                          "Open": "1",
+                                          "Closed": {
+                                                "Transactions": {}
+                                          }
+                                    }
                               }
                         },
                         "Statistics": {
@@ -285,7 +308,7 @@
                               "1": {
                                     "Type": "BUY",
                                     "Date": "18/06/2022",
-                                    "Price": "2.3",
+                                    "PricePerCoin": "2.3",
                                     "Amount": "10",
                                     "Fees": 0,
                                     "Note": ""
@@ -293,10 +316,33 @@
                               "2": {
                                     "Type": "BUY",
                                     "Date": "18/06/2022",
-                                    "Price": "1",
+                                    "PricePerCoin": "1",
                                     "Amount": "52",
                                     "Fees": 0,
                                     "Note": ""
+                              },
+                              "3": {
+                                    "Date": "28 August 2022",
+                                    "PricePerCoin": "3",
+                                    "Amount": "1",
+                                    "Fees": "0.0",
+                                    "Note": "",
+                                    "PayingAccount": {
+                                          "Account": "Binance Exchange",
+                                          "SubAccount": "Cash",
+                                          "Currency": "USDC"
+                                    },
+                                    "StoringAccount": {
+                                          "Account": "Binance Exchange",
+                                          "SubAccount": "Assets",
+                                          "Currency": "JUNO"
+                                    },
+                                    "Status": {
+                                          "Open": "1",
+                                          "Closed": {
+                                                "Transactions": {}
+                                          }
+                                    }
                               }
                         },
                         "Statistics": {
@@ -313,7 +359,7 @@
                               "1": {
                                     "Type": "BUY",
                                     "Date": "02/06/2022",
-                                    "Price": "1.5",
+                                    "PricePerCoin": "1.5",
                                     "Amount": "27",
                                     "Fees": 0,
                                     "Note": ""
@@ -333,7 +379,7 @@
                               "1": {
                                     "Type": "BUY",
                                     "Date": "05/05/2022",
-                                    "Price": "2",
+                                    "PricePerCoin": "2",
                                     "Amount": "22",
                                     "Fees": 0,
                                     "Note": ""
@@ -375,7 +421,7 @@
                               "1": {
                                     "Type": "BUY",
                                     "Date": "17/06/2022",
-                                    "Price": "1",
+                                    "PricePerCoin": "1",
                                     "Amount": "100",
                                     "Fees": 0,
                                     "Note": ""
@@ -395,7 +441,7 @@
                               "1": {
                                     "Type": "BUY",
                                     "Date": "18/06/2022",
-                                    "Price": "1",
+                                    "PricePerCoin": "1",
                                     "Amount": "500",
                                     "Fees": 0,
                                     "Note": ""

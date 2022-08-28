@@ -51,6 +51,7 @@ class FinanceApp(MDApp):
 
         # Define the App configuration Database
         self.Configuration = JsonManager_Class(PathManager_Class.database_path, PathManager_Class.Configuration_path)
+        self.Accounts_DB = JsonManager_Class(PathManager_Class.database_path, PathManager_Class.Accounts_path)
 
         return MainLayout()
 

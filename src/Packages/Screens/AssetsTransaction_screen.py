@@ -150,7 +150,7 @@ class AssetsTransactionScreen(Screen):
         label_params = {}
         label_params.update({'text_size': [textsize, None]})
         label_params.update({'pos_hint': {'x' : 0.05, 'y': 0.2}})
-        label_params.update({'text': TransactionDict['Type'] })
+        label_params.update({'text': 'BUY' })
         label_params.update({'font_name': 'Candarab'})
         label_params.update({'font_size': 25})
         label_params.update({'color': [1,1,1,1]})
@@ -164,7 +164,7 @@ class AssetsTransactionScreen(Screen):
 
         # Add Price Lbl
         label_params.update({'pos_hint': {'x' : 0.25, 'y': 0}})
-        label_params.update({'text': TransactionDict['Price'] + Currency})
+        label_params.update({'text': TransactionDict['PricePerCoin'] + Currency})
         label_params.update({'font_size': 25})
         GraphicToReturn.add_widget(cst_item.TransactionLabel(lbl_parm = label_params))
 

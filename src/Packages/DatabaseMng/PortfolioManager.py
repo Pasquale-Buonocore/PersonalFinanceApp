@@ -414,7 +414,7 @@ class PortfoliosManager_Class():
         self.SaveJsonFile(json_object)
 
     # Initialize a Transaction
-    def InitializeTransaction(self, Type, Date, Price, Amount, Fees, Note):
+    def InitializeTransaction(self, Date, Price, Amount, Fees, Note, PayingAccountDict, StoringAccountDict):
         # List which will store all the transaction for such asset
         TransactionDict = {'Date': Date }
 
@@ -423,6 +423,8 @@ class PortfoliosManager_Class():
         TransactionDict.update({'Amount' : Amount})
         TransactionDict.update({'Fees' : Fees})
         TransactionDict.update({'Note' : Note})
+        TransactionDict.update({'PayingAccount' : PayingAccountDict})
+        TransactionDict.update({'StoringAccount' : StoringAccountDict})
 
         # Initialize Status to consider Open and Closed position
         TransactionDict.update({'Status' : {'Open' : Amount, 'Closed' : {'Transactions' : {}}}})
@@ -453,6 +455,7 @@ class PortfoliosManager_Class():
 
     # Compute asset statistics - # To IMPROVE
     def UpdateAssetStatistics(self, PortfolioName, AssetName):
+        return
         # Read json and get the number opf transaction for such Asset
         json_object = self.ReadJson()
         AssetDictTransaction = json_object[PortfolioName]['Assets'][AssetName]['Transactions']
