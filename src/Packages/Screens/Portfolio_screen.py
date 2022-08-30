@@ -1,5 +1,7 @@
 import Packages.CustomItem.Popup.RemovePortfolioPopup as RemovePortfolioPopup
 import Packages.CustomItem.Popup.AddPortfolioPopup as AddPortfolioPopup
+
+from Packages.CustomItem.Lists.PortfolioListManagement import PortfolioRowBoxLayout, PortfolioLineSeparator, PortfolioRowBoxLayout_Title
 from Packages.DatabaseMng.JsonManager import JsonManager_Class
 from Packages.DatabaseMng.PathManager import PathManager_Class
 import Packages.DatabaseMng.PortfolioManager as db_manager
@@ -33,7 +35,7 @@ class PortfolioScreen(Screen):
         self.DBManager = db_manager.PortfoliosManager_Class(db_manager.path_manager.database_path, self.PortfolioJsonPath)
 
         # Update graphic elements - Continuare da qui
-        if len(self.ids): self.ids[self.ScreenToUpdate].children[-1].children[1].text = ScreenName + ' DASHBOARD'
+        # if len(self.ids): self.ids[self.ScreenToUpdate].children[-1].children[1].text = ScreenName + ' DASHBOARD'
 
     ########################
     #    PORTFOLIO  BOX    #
@@ -43,23 +45,22 @@ class PortfolioScreen(Screen):
     def UpdateListOfPortfolio(self):
         self.DBManager.UpdateAllPortfolioStatistics()
 
-        # Store the first Item containing the screen name
-        First_widget = self.ids[self.ScreenToUpdate].children[-1]
-
-        # Store the BoxLayout containg the portfolios Relative layout
-        Second_widget = self.ids[self.ScreenToUpdate].children[-2]
-        Second_widget.clear_widgets()
-
         # Clear the Item inside the BoxLayout (Keep the first element only)
         self.ids[self.ScreenToUpdate].clear_widgets()
-
-        # Add the first and second item again
-        self.ids[self.ScreenToUpdate].add_widget(First_widget)
-        self.ids[self.ScreenToUpdate].add_widget(Second_widget)
-
+        
+        self.ids[self.ScreenToUpdate].add_widget(PortfolioLineSeparator())
+        self.ids[self.ScreenToUpdate].add_widget(PortfolioRowBoxLayout_Title())
+        
         # Then, for each portfolio in the json add a New Portfolio in the self.ids[self.ScreenToUpdate]
         Portfolios_json = self.DBManager.ReadJson()
+        for portfolio in Portfolios_json.keys():
+                # Compute the graphic element to Add given the PortfolioName and its statistics
+                self.ids[self.ScreenToUpdate].add_widget(PortfolioLineSeparator())
+                self.ids[self.ScreenToUpdate].add_widget(PortfolioRowBoxLayout())
+        
+        self.ids[self.ScreenToUpdate].add_widget(PortfolioLineSeparator())
 
+        return
         # Size dello ScreenManager
         ScreenManagerSize_x = self.parent.size[0]
         BoxLayoutPadding_ls= self.children[0].children[0].padding[0]

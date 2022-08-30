@@ -1,59 +1,135 @@
 #:kivy 1.0.9
 
-<PortfolioScreen>:
+<PortfolioScreen>: 
     id: PortfolioScreenName
     name: app.Configuration.GetElementValue('ScreenNameDictionary')["PortfolioScreenName"]
     
-    # Scroll View Transaction
-    ScrollView:
-		bar_inactive_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
-        bar_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
-        id: PortfolioScrollView
+    # Main Box Layout
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: "20dp"
+        padding: ("0dp", "0dp", "0dp", "0dp")
 
-        # Box containing Box Layout
+        # First Box Layout containg the Portfolio Resume
         BoxLayout:
-            id: PortfolioHeader
+            id: PortfolioDashboardBoxLayout
             orientation: 'vertical'
-            size_hint: 1, None
-            height: self.minimum_height
-            padding: ("0dp", "0dp", "0dp", "0dp")
-            spacing: "20dp"
+            size_hint: 1, 0.35
+
+            canvas:
+                Color:
+                    rgba: app.Configuration.GetElementValue('CanvasBackgroundColor') 
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [(30, 30), (30, 30), (30, 30), (30, 30)]
+
+        # Second Box Layout containg the Portfolio lists
+        BoxLayout:
+            id: PortfolioMainListBoxLayout
+            orientation: 'vertical'
+            size_hint: 1, 0.65
+
+            canvas:
+                Color:
+                    rgba: app.Configuration.GetElementValue('CanvasBackgroundColor') 
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [(30, 30), (30, 30), (30, 30), (30, 30)]
 
             # First row box layout
             BoxLayout:
                 id: FirstRow
                 orientation: 'horizontal'
-                size_hint: 1, None
-                height: self.minimum_height
-                padding: ("0dp", "0dp", "0dp", "0dp")
+                size_hint: 1, 0.12
+                padding: ("20dp", "15dp", "20dp", "15dp")
 
                 Label:
-                    text: 'CRYPTO DASHBOARD'
-                    size_hint: 0.8, None
+                    text: 'PORTFOLIOS LIST'
+                    size_hint: 0.8, 1
                     font_name: 'Candarab'
-                    font_size: 28
-                    height: "40dp" 
+                    text_size: self.width, None
+                    size: self.texture_size
+                    font_size: 25
                     halign: 'left'
                 
                 Button:
                     text: 'ADD NEW PORTFOLIO'
-                    size_hint: 0.2, None
-                    height: "40dp" 
+                    size_hint: 0.2, 1
                     background_color: 0,0,0,0
                     on_release: root.AddNewPortfolioPopup()
                     font_name: 'Candarab'
                     font_size: 16
+
                     canvas.before:
                         Color:
-                            rgba: 0.1,0.1,0.9,0.7
+                            rgba: app.Configuration.GetElementValue('MenuButtonSelectedBackgroundColor') 
                         RoundedRectangle:
                             pos: self.pos
                             size: self.size
                             radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
-
+            
+            # Box Layout containg the ScrollView
             BoxLayout:
-                id: PortfoliosContainer
-                orientation: 'vertical'
-                size_hint: 1, None
-                spacing: "20dp"
-                height: self.minimum_height
+                id: ScrollViewCointainerBoxLayout
+                orientation: 'horizontal'
+                size_hint: 1, 0.88
+                padding: ("0dp", "0dp", "0dp", "20dp")
+
+                # Scroll View Transaction
+                ScrollView:
+                	bar_inactive_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
+                    bar_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
+                    id: PortfolioScrollView
+
+                    # Main portfolio Box Layout containing everything. Each ScrollView can contains one child maximum
+                    BoxLayout:
+                        id: PortfolioHeader
+                        orientation: 'vertical'
+                        size_hint: 1, None
+                        height: self.minimum_height
+                        padding: ("20dp", "0dp", "20dp", "0dp")
+                        spacing: "0dp"
+
+    #         # First row box layout
+    #         BoxLayout:
+    #             id: FirstRow
+    #             orientation: 'horizontal'
+    #             size_hint: 1, None
+    #             height: self.minimum_height
+    #             padding: ("0dp", "0dp", "0dp", "0dp")
+
+    #             Label:
+    #                 text: 'CRYPTO DASHBOARD'
+    #                 size_hint: 0.8, None
+    #                 font_name: 'Candarab'
+    #                 text_size: self.width, None
+    #                 size: self.texture_size
+    #                 font_size: 28
+    #                 height: "40dp" 
+    #                 halign: 'left'
+                
+    #             Button:
+    #                 text: 'ADD NEW PORTFOLIO'
+    #                 size_hint: 0.2, None
+    #                 height: "40dp" 
+    #                 background_color: 0,0,0,0
+    #                 on_release: root.AddNewPortfolioPopup()
+    #                 font_name: 'Candarab'
+    #                 font_size: 16
+
+    #                 canvas.before:
+    #                     Color:
+    #                         rgba: app.Configuration.GetElementValue('MenuButtonSelectedBackgroundColor') 
+    #                     RoundedRectangle:
+    #                         pos: self.pos
+    #                         size: self.size
+    #                         radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+    #         BoxLayout:
+                # id: PortfoliosContainer
+                # orientation: 'vertical'
+                # size_hint: 1, None
+                # spacing: "20dp"
+                # height: self.minimum_height

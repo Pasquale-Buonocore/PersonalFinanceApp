@@ -1,0 +1,147 @@
+#:kivy 1.0.9
+
+<PortfolioLineSeparator>:
+    orientation: 'vertical'
+    size_hint: 1, None
+    height: app.Configuration.GetElementValue('PortfolioRowLineHeight') 
+    canvas:
+        Color:
+            rgba: app.Configuration.GetElementValue('WhiteLineBackgroundColor') 
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<PortfolioRowBoxLayout>:
+    size_hint: 1, None
+    height: self.minimum_height
+
+    # Button to enter the Asset Screen
+    Button:
+        size_hint: 1, None
+        height: app.Configuration.GetElementValue('PortfolioRowBoxLayoutHeight') 
+        text: 'Ciao'
+        on_release: print('Entering Portfolio')
+        background_color: 0,0,0,0
+    
+    # Box Layout with portfolio infos
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint: 1, None
+        height: app.Configuration.GetElementValue('PortfolioRowBoxLayoutHeight') 
+
+        canvas:
+            Color:
+                rgba: root.Background_color
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        # Portfolio Name - x: 0.225
+        Label: 
+            text: root.PortfolioName
+            size_hint: 0.225, 1
+            font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+            font_size: app.Configuration.GetElementValue('PortfolioNameElementFontSize')
+        
+        # Portfolio Number of Asset - x: 0.15
+        Label: 
+            text: root.NumberOfAsset
+            size_hint: 0.15, 1 
+            font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+            font_size: app.Configuration.GetElementValue('ElementInListFontSize')
+
+        # Portfolio Value - x: 0.15
+        Label: 
+            text: root.PortfolioValue
+            size_hint: 0.225, 1
+            font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+            font_size: app.Configuration.GetElementValue('ElementInListFontSize')
+
+        # Portfolio Profit - x: 0.15
+        Label: 
+            text: root.TotalProfit
+            size_hint: 0.15, 1
+            font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+            font_size: app.Configuration.GetElementValue('ElementInListFontSize')
+
+        # ToCountInAllocation - x: 0.15
+        Label: 
+            text: root.ToCountInAllocation
+            size_hint: 0.15, 1
+            font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+            font_size: app.Configuration.GetElementValue('ElementInListFontSize')
+
+        # Box Layout containing buttons x: 0.10
+        BoxLayout:
+            size_hint: 0.1, 1
+            orientation: 'horizontal'
+            padding: ("20dp","10dp","20dp","10dp")
+
+            Button: 
+                text: 'M'
+                size_hint: 0.5, 1
+                # on_release: root.ExpandAccount()
+                font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+                font_size: app.Configuration.GetElementValue('ElementInListFontSize')
+
+            Button: 
+                text: 'R'
+                size_hint: 0.5, 1
+                # on_release: root.ExpandAccount()
+                font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+                font_size: app.Configuration.GetElementValue('ElementInListFontSize')
+
+
+<PortfolioRowBoxLayout_Title>:
+    orientation: 'horizontal'
+    size_hint: 1, None
+    height: app.Configuration.GetElementValue('PortfolioRowBoxLayoutHeight_Title') 
+
+    canvas:
+        Color:
+            rgba: app.Configuration.GetElementValue('PortfolioTitleRowBackgroundColor') 
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    # Portfolio Name - x: 0.225
+    Label: 
+        text: 'Portfolio Name'
+        size_hint: 0.225, 1
+        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration.GetElementValue('ElementInListFontSize')
+    
+    # Portfolio Number of Asset - x: 0.15
+    Label: 
+        text: 'Number of asset'
+        size_hint: 0.15, 1 
+        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration.GetElementValue('ElementInListFontSize')
+
+    # Portfolio Value - x: 0.15
+    Label: 
+        text: 'Total value'
+        size_hint: 0.225, 1
+        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration.GetElementValue('ElementInListFontSize')
+
+    # Portfolio Profit - x: 0.15
+    Label: 
+        text: 'Total profit'
+        size_hint: 0.15, 1
+        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration.GetElementValue('ElementInListFontSize')
+
+    # ToCountInAllocation - x: 0.15
+    Label: 
+        text: 'To count in allocation'
+        size_hint: 0.15, 1
+        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration.GetElementValue('ElementInListFontSize')
+
+    # Action - x: 0.1
+    Label: 
+        text: 'Action'
+        size_hint: 0.10, 1
+        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration.GetElementValue('ElementInListFontSize')

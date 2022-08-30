@@ -1,8 +1,4 @@
-from kivy.properties import StringProperty
-from kivy.properties import BooleanProperty
-from kivy.properties import NumericProperty
 from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.button import Button
 from kivy.lang import Builder
 
 # Designate Out .kv design file
