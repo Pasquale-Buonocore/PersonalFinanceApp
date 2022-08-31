@@ -1,0 +1,213 @@
+#:kivy 1.0.9
+
+<AssetTransactionRowBoxLayout_Empty>:
+    size_hint: 1, None
+    height: app.Configuration.GetElementValue('AssetRowBoxLayoutHeight')
+    orientation: 'horizontal'
+
+    Label: 
+        text: 'THIS PORTFOLIO HAS NOT ASSETS! ADD HERE!'
+        text_size: self.width, None
+        size: self.texture_size
+        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration.GetElementValue('AssetNameElementFontSize')
+        halign: 'center'
+
+<AssetTransactionLineSeparator>:
+    orientation: 'vertical'
+    size_hint: 1, None
+    height: app.Configuration.GetElementValue('AssetRowLineHeight') 
+    canvas:
+        Color:
+            rgba: app.Configuration.GetElementValue('WhiteLineBackgroundColor') 
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<AssetTransactionRowButton>:
+    size_hint: 1, None
+    height: app.Configuration.GetElementValue('AssetRowBoxLayoutHeight')
+    background_color: [0, 0, 0, 0]
+
+<AssetTransactionRowBoxLayout>:
+    size_hint: 1, None
+    height: app.Configuration.GetElementValue('AssetRowBoxLayoutHeight')
+    orientation: 'horizontal'
+
+    canvas:
+        Color:
+            rgba: root.Background_color
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    # AssetName and AssetSymbol - x: 0.2
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint: 0.2, 1  
+        spacing: "5dp"
+        # padding: ("40dp","0dp","0dp","0dp")
+
+        # Box Layout with Image - x: 0.2
+        BoxLayout:
+            size_hint: 0.2, 1  
+            orientation: 'horizontal'
+
+            Image:
+                size_hint: 0.5, 0.5
+                pos_hint: {'x' : 0.25, 'y' : 0.25}
+                id: AssetImage
+                size:  self.size
+                source: './images/crypto/bitcoin.png'
+
+        # Box Layout with AssetName and AssetSymbol - x: 0.8
+        BoxLayout:
+            size_hint: 0.8, 1  
+            orientation: 'vertical'
+            padding: ("0dp","10dp","0dp","10dp")
+        
+            Label: 
+                size_hint: 1, 0.5
+                id: AssetName
+                text: root.AssetName
+                text_size: self.width, None
+                size: self.texture_size
+                font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+                font_size: app.Configuration.GetElementValue('AssetNameElementFontSize')
+                halign: 'left'
+
+            Label: 
+                size_hint: 1, 0.5
+                id: AssetSymbol
+                text: root.AssetSymbol
+                text_size: self.width, None
+                size: self.texture_size
+                font_name: app.Configuration.GetElementValue('AssetSymbolElementFontName')
+                font_size: app.Configuration.GetElementValue('AssetSymbolElementFontSize')
+                halign: 'left'
+        
+    # Current Price - x: 0.14
+    Label: 
+        text: root.CurrentPrice
+        size_hint: 0.14, 1 
+        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration.GetElementValue('ElementInAssetListFontSize')
+
+    # Holding - x: 0.14
+    Label: 
+        text: root.Holding
+        size_hint: 0.14, 1
+        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration.GetElementValue('ElementInAssetListFontSize')
+
+    # Average Price - x: 0.14
+    Label: 
+        text: root.AveragePrice
+        size_hint: 0.14, 1
+        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration.GetElementValue('ElementInAssetListFontSize')
+
+    # Total Value - x: 0.14
+    Label: 
+        text: root.TotalValue
+        size_hint: 0.14, 1
+        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration.GetElementValue('ElementInAssetListFontSize')
+
+    # Total Profit - x: 0.14
+    Label: 
+        text: root.TotalProfit
+        size_hint: 0.14, 1
+        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration.GetElementValue('ElementInAssetListFontSize')
+
+    # Box Layout containing buttons x: 0.10
+    BoxLayout:
+        size_hint: 0.1, 1
+        orientation: 'horizontal'
+        spacing: "20dp"
+        padding: ("30dp","25dp","30dp","25dp")
+
+        Button: 
+            id: ModifyAssetButton
+            on_release: print('Modifing ' + root.AssetName)
+            background_color: [0, 0, 0, 0]
+
+            canvas.after:
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                    source: './images/button/modify.png'
+
+        Button: 
+            on_release: print('Removing ' + root.AssetName)
+            id: RemoveAssetButton
+            background_color: [0, 0, 0, 0]
+            
+            canvas.after:
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                    source: './images/button/remove.png'
+
+
+<AssetTransactionRowBoxLayout_Title>:
+    orientation: 'horizontal'
+    size_hint: 1, None
+    height: app.Configuration.GetElementValue('AssetRowBoxLayoutHeight_Title') 
+
+    canvas:
+        Color:
+            rgba: app.Configuration.GetElementValue('AssetTitleRowBackgroundColor') 
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    # Asset Name - x: 0.2
+    Label: 
+        text: 'Asset Name'
+        size_hint: 0.2, 1
+        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration.GetElementValue('ElementInAssetListFontSize')
+    
+    # Current Price - x: 0.14
+    Label: 
+        text: 'Current Price'
+        size_hint: 0.14, 1 
+        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration.GetElementValue('ElementInAssetListFontSize')
+
+    # Holding - x: 0.14
+    Label: 
+        text: 'Holding'
+        size_hint: 0.14, 1
+        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration.GetElementValue('ElementInAssetListFontSize')
+
+    # Average Price - x: 0.14
+    Label: 
+        text: 'Average Price'
+        size_hint: 0.14, 1
+        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration.GetElementValue('ElementInAssetListFontSize')
+
+    # Total Value - x: 0.14
+    Label: 
+        text: 'Total Value'
+        size_hint: 0.14, 1
+        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration.GetElementValue('ElementInAssetListFontSize')
+
+    # Total Profit - x: 0.14
+    Label: 
+        text: 'Total Profit'
+        size_hint: 0.14, 1
+        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration.GetElementValue('ElementInAssetListFontSize')
+
+    # Action - x: 0.1
+    Label: 
+        text: 'Action'
+        size_hint: 0.1, 1
+        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration.GetElementValue('ElementInAssetListFontSize')

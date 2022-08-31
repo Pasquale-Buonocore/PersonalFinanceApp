@@ -4,279 +4,132 @@
     id: AssetsTransactionScreenName
     name: app.Configuration.GetElementValue('ScreenNameDictionary')["AssetsTransactionScreenName"] 
 
-    # Scroll View Transaction
-    ScrollView:
-		bar_inactive_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
-        bar_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
-        id: AssetsTransactionScrollView
-
-        # Box containing Box Layout
+    # Main Stack Layout
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: "20dp"
+        padding: ("0dp", "0dp", "0dp", "0dp")
+    
+         # First Box Layout containg the Transaction Resume 
         BoxLayout:
-            id: AssetsTransactionHeader
+            id: AssetTransactionDashboardBoxLayoutResume
             orientation: 'vertical'
-            size_hint: 1, None
-            height: self.minimum_height
-            padding: ("0dp", "0dp", "0dp", "0dp")
-            spacing: "0dp"
+            size_hint: 1, 0.3
 
-            # First row box layout
+            canvas:
+                Color:
+                    rgba: app.Configuration.GetElementValue('CanvasBackgroundColor') 
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [(30, 30), (30, 30), (30, 30), (30, 30)]
+
+            # First Box Layout containg the Portfolio Resume title and buttons - y: 0.15
             BoxLayout:
                 id: FirstRow
                 orientation: 'horizontal'
-                size_hint: 1, None
-                height: self.minimum_height
-                padding: ("0dp", "0dp", "0dp", "20dp")
+                size_hint: 1, 0.25
+                padding: ("15dp", "15dp", "15dp", "15dp")
+                spacing: "5dp"
                 
+                # Back to portfolio button
                 Button:
-                    text: 'BACK TO ASSET'
-                    size_hint: 0.15, None
-                    height: "40dp" 
+                    text: 'BACK'
+                    size_hint: 0.05, 1
                     background_color: 0,0,0,0
                     on_release: root.ReturnBack()
                     font_name: 'Candarab'
                     font_size: 16
                     canvas.before:
                         Color:
-                            rgba: app.Configuration.GetElementValue('CanvasBackgroundColor')                              
+                            rgba: app.Configuration.GetElementValue('WindowBackgroundColor')                           
                         RoundedRectangle:
                             pos: self.pos
                             size: self.size
                             radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
 
+                # Dashboard Title 
                 Label:
-                    id: FirstRowLabel
-                    size_hint: 0.85, None
+                    id: DashboardTitle
+                    size_hint: 0.69, 1
+                    halign: 'center'
                     font_name: 'Candarab'
-                    font_size: 28
-                    height: "40dp" 
-                    halign: 'left'
+                    text_size: self.width, None
+                    size: self.texture_size
+                    font_size: 25
 
-            ########################
-            # DASHBOARD BOX LAYOUT #
-            ########################
-            # Second element containg the column titles
+            # Second Box Layout containg the Portfolio Resume - y: 0.85
+            BoxLayout:
+                id: GraphCanvas
+                orientation: 'horizontal'
+                size_hint: 1, 0.75
+                padding: ("0dp", "10dp", "0dp", "0dp")
+                spacing: "20dp"
+
+
+        # Second Box Layout containg the Asset Transaction lists
+        BoxLayout:
+            id: AssetMainListBoxLayout
+            orientation: 'vertical'
+            size_hint: 1, 0.7
+
+            canvas:
+                Color:
+                    rgba: app.Configuration.GetElementValue('CanvasBackgroundColor') 
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [(30, 30), (30, 30), (30, 30), (30, 30)]
 
             BoxLayout:
-                orientation: 'vertical'
-                id: DashboardContainer
-                size_hint: 1, None
-                height: self.minimum_height
-                spacing: "20dp"
-                padding: ("0dp", "20dp", "0dp", "20dp")
+                orientation: 'horizontal'
+                size_hint: 1, 0.13
+                padding: ("15dp", "15dp", "15dp", "15dp")
+                
+                # Lable Title 
+                Label:
+                    text: 'ASSET LIST'
+                    size_hint: 0.85, 1
+                    halign: 'left'
+                    valign: 'center'
+                    font_name: 'Candarab'
+                    text_size: self.width, None
+                    size: self.texture_size
+                    font_size: 25
 
-                BoxLayout:
-                    id: DashboardLabel
-                    size_hint: 1, None
-                    pos_hint: {'x' : 0.04}
-                    height: self.minimum_height
-                    padding: ("0dp", "0dp", "0dp", "20dp")
-
-                    Label:
-                        font_name: 'Candarab'
-                        font_size: 28
-                        text_size: root.width, None
-                        size: self.texture_size
-                        text:'Dashboard'
-
-                BoxLayout:
-                    orientation: 'vertical'
-                    id: DashboardCanvas
-                    size_hint: 1, None
-                    height: "200dp"
-                    spacing: "20dp"
-                    padding: ("0dp", "0dp", "0dp", "0dp")
-
-                    canvas:
+                # Add new asset button
+                Button:
+                    text: 'ADD NEW ASSET'
+                    size_hint: 0.15, 1
+                    background_color: 0,0,0,0
+                    on_release: root.AddNewAssetPopup()
+                    font_name: 'Candarab'
+                    font_size: 16
+                    canvas.before:
                         Color:
-                            rgba: app.Configuration.GetElementValue('CanvasBackgroundColor') 
+                            rgba: app.Configuration.GetElementValue('WindowBackgroundColor')  
                         RoundedRectangle:
                             pos: self.pos
                             size: self.size
                             radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
-                    
-                    RelativeLayout:
-                        size_hint: 1, None
-                        height: "200dp"
 
-                        Label:
-                            id: BalanceLabel
-                            text_size: root.width, None
-                            size: self.texture_size
-                            font_name: 'Candara'
-                            font_size: 25
-                            pos_hint: {'x' : 0.06, 'y' : 0.3}
-                            text: 'Bitcoin (BTC) Balance'
-
-                        BoxLayout:
-                            orientation: 'horizontal'
-                            pos_hint: {'x' : 0.06, 'y' : 0.6}
-                            size_hint: 1, None
-                            height: self.minimum_height
-                                
-                            Label:
-                                id: TotalValue
-                                text_size: root.width, None
-                                size: self.texture_size
-                                font_name: 'Candarab'
-                                font_size: 30
-                                text: '1450$'
-
-                        Label:
-                            id: QuantityLabel
-                            pos_hint: {'x' : 0.06, 'y' : - 0.15}
-                            text_size: root.width, None
-                            size: self.texture_size
-                            font_name: 'Candara'
-                            font_size: 20
-                            text: 'Quantity'
-
-                        Label:
-                            id: AvarageBuyLabel
-                            pos_hint: {'x' : 0.16, 'y' : - 0.15}
-                            text_size: root.width, None
-                            size: self.texture_size
-                            font_name: 'Candara'
-                            font_size: 20
-                            text: 'Avg. buy price'
-
-                        Label:
-                            id: TotalProfitLabel
-                            pos_hint: {'x' : 0.3, 'y' : - 0.15}
-                            text_size: root.width, None
-                            size: self.texture_size
-                            font_name: 'Candara'
-                            font_size: 20
-                            text: 'Total profit / loss'
-
-                        Label:
-                            id: QuantityValue
-                            pos_hint: {'x' : 0.06, 'y' : - 0.35}
-                            text_size: root.width, None
-                            size: self.texture_size
-                            font_name: 'Candarab'
-                            font_size: 30
-                            text: '0.1'
-
-                        Label:
-                            id: AvarageBuyValue
-                            pos_hint: {'x' : 0.16, 'y' : - 0.35}
-                            text_size: root.width, None
-                            size: self.texture_size
-                            font_name: 'Candarab'
-                            font_size: 30
-                            text: '25623$'
-
-                        Label:
-                            id: TotalProfitValue
-                            pos_hint: {'x' : 0.3, 'y' : - 0.35}
-                            text_size: root.width, None
-                            size: self.texture_size
-                            font_name: 'Candarab'
-                            font_size: 30
-                            color: 1,0,0,1
-                            text: ' - 1685$ (-30%)'
-            
-                BoxLayout:
-                    id: AssetLabel
-                    size_hint: 1, None
-                    height: self.minimum_height
-                    padding: ("0dp", "5dp", "0dp", "0dp")
-
-                    BoxLayout:
-                        size_hint: 0.85, None
-                        height: 40
-                        orientation: 'vertical'
-
-                        Label:
-                            font_name: 'Candarab'
-                            font_size: 28
-                            pos_hint: {'x' : -0.43}
-                            text:'Transactions'
-                    
-                    Button:
-                        text: 'ADD NEW TRANSACTION'
-                        size_hint: 0.15, None
-                        height: "40dp" 
-                        background_color: 0,0,0,0
-                        on_release: root.AddNewAssetTransactionPopup()
-                        font_name: 'Candarab'
-                        font_size: 16
-                        canvas.before:
-                            Color:
-                                rgba: app.Configuration.GetElementValue('CanvasBackgroundColor')  
-                            RoundedRectangle:
-                                pos: self.pos
-                                size: self.size
-                                radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
-                                
-            ##########################
-            # TRANSACTION BOX LAYOUT #
-            ##########################
             BoxLayout:
+                id: ScrollViewCointainerBoxLayout
                 orientation: 'vertical'
-                id: TransactionBoxLayout
-                size_hint: 1, None
-                height: self.minimum_height
-                spacing: "20dp"
-                padding: ("0dp", "20dp", "0dp", "20dp")
-
-                canvas.before:
-                    Color:
-                        #rgba: app.Configuration.GetElementValue('CanvasBackgroundColor') 
-                        rgba: app.Configuration.GetElementValue('CanvasBackgroundColor')   
-                    RoundedRectangle:
-                        pos: self.pos
-                        size: self.size
-                        radius: [(10, 10), (10, 10), (0, 0), (0, 0)]
+                size_hint: 1, 0.87
+                padding: ("0dp", "0dp", "0dp", "20dp")
                 
-                GridLayout:
-                    id: Transaction_NameRow
-                    size_hint: 1, None
-                    height: "20dp"
-                    padding: ("30dp", "0dp", "0dp", "0dp")
-                    cols: 6
-                    rows: 1
+                ScrollView:
+                    bar_inactive_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
+                    bar_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
+                    id: AssetsScrollView
 
-                    Label: 
-                        text: 'TYPE'
-                        size_hint: 0.2, 1
-                        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                        font_size: 20
-                        
-                    Label: 
-                        text: 'PRICE'
-                        size_hint: 0.15, 1
-                        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                        font_size: 20
+                    # ASSETS BOX LAYOUT #
+                    BoxLayout:
+                        id: AssetsHeader
+                        orientation: 'vertical'
+                        size_hint: 1, None
+                        height: self.minimum_height
+                        padding: ("30dp", "0dp", "30dp", "0dp")
+                        spacing: "0dp"
 
-                    Label: 
-                        text: 'AMOUNT'
-                        size_hint: 0.15, 1
-                        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                        font_size: 20
-
-                    Label: 
-                        text: 'FEES'
-                        size_hint: 0.1, 1
-                        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                        font_size: 20
-
-                    Label: 
-                        text: 'NOTES'
-                        size_hint: 0.3, 1
-                        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                        font_size: 20
-
-                    Label: 
-                        text: 'ACTIONS'
-                        size_hint: 0.1, 1
-                        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                        font_size: 20
-            
-            BoxLayout:
-                id: AssetsContainer
-                orientation: 'vertical'
-                size_hint: 1, None
-                spacing: "0dp"
-                height: self.minimum_height
-            

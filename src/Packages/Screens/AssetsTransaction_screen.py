@@ -27,13 +27,13 @@ class AssetsTransactionScreen(Screen):
         self.DBManager = db_manager.PortfoliosManager_Class(db_manager.path_manager.database_path, self.PortfolioJsonPath)
 
         # Update String
-        self.ids['FirstRowLabel'].text = self.AssetName.upper() + ' TRANSACTION HISTORY IN ' + self.PortfolioName.upper() + ' [' + self.FromScreenName.upper() + ']'
+        self.ids['DashboardTitle'].text = self.AssetName.upper() + ' TRANSACTION HISTORY IN ' + self.PortfolioName.upper() + ' [' + self.FromScreenName.upper() + ']'
 
         # Update Screen
-        self.UpdateListOfTransaction()
+        # self.UpdateListOfTransaction()
 
         # Update Dashboard
-        self.UpdateDashboard()
+        # self.UpdateDashboard()
 
     def ReturnBack(self):
         # Return to Asset screen
