@@ -1,11 +1,7 @@
 import Packages.CustomItem.Popup.RemovePortfolioPopup as RemovePortfolioPopup
 import Packages.CustomItem.Popup.AddPortfolioPopup as AddPortfolioPopup
-
-from Packages.CustomItem.Lists.PortfolioListManagement import PortfolioRowBoxLayout_Empty, PortfolioRowBoxLayout, PortfolioLineSeparator, PortfolioRowBoxLayout_Title, PortfolioRowButton
-from Packages.DatabaseMng.JsonManager import JsonManager_Class
-from Packages.DatabaseMng.PathManager import PathManager_Class
+from Packages.CustomItem.Lists.PortfolioListManagement import *
 import Packages.DatabaseMng.PortfolioManager as db_manager
-import Packages.CustomItem.CustomGraphicItem as cst_item
 from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.screenmanager import Screen
 from kivymd.app import MDApp
@@ -56,6 +52,7 @@ class PortfolioScreen(Screen):
         
         # Then, for each portfolio in the json add a New Portfolio in the self.ids[self.ScreenToUpdate]
         Portfolios_json = self.DBManager.ReadJson()
+        
         # If there are portfolios defined for such category, populate it
         if len(Portfolios_json.keys()):
             for portfolio in Portfolios_json.keys():

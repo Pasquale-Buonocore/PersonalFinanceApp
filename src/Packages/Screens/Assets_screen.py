@@ -2,7 +2,7 @@ from Packages.CustomFunction.CustomFunction import ReturnJsonPathGivenScreenName
 from Packages.CustomFunction.AssetDistributionGraph import AssetDistributionGraph
 import Packages.CustomItem.Popup.RemoveAssetPopup as RemoveAssetPopup
 import Packages.CustomItem.Popup.AddAssetPopup as AddAssetPopup
-import Packages.CustomItem.CustomGraphicItem as cst_item
+from Packages.CustomItem.Lists.AssetListManagement import *
 import Packages.DatabaseMng.PortfolioManager as db_manager
 from Packages.DatabaseMng.JsonManager import JsonManager_Class
 from Packages.DatabaseMng.PathManager import PathManager_Class
@@ -11,10 +11,7 @@ from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import Screen
 from kivy.uix.label import Label
-from kivy.uix.widget import Widget
 from kivy.uix.button import Button
-from kivy.graphics import Color, RoundedRectangle
-
 
 class AssetsScreen(Screen):
     def __init__(self, **kwargs):
@@ -37,7 +34,7 @@ class AssetsScreen(Screen):
         self.Configuration = JsonManager_Class(PathManager_Class.database_path, PathManager_Class.Configuration_path)
 
         # Update the Label of the String
-        self.ids['FirstRowLabel'].text = 'ASSETS IN ' + self.PortfolioName.upper() + ' PORTFOLIO [' + self.FromScreenName.upper() + ']'
+        self.ids['DashboardTitle'].text = 'DASHBOARD - ASSET IN PORTFOLIO ' + self.PortfolioName.upper() + ' [' + self.FromScreenName.upper() + ']'
 
         # Update graphic elements
         self.UpdateListOfAssets()
@@ -57,9 +54,8 @@ class AssetsScreen(Screen):
     # Function to call when "Back" button is pressed
     def ReturnBack(self):
         print('Returnig back to ' + self.FromScreenName)
-        ScreenManager = self.parent
-        ScreenManager.current = 'PORTFOLIO'
-        ScreenManager.current_screen.UpdateScreen(ScreenName = self.FromScreenName, PortfolioJsonPath = ReturnJsonPathGivenScreenName(self.FromScreenName))
+        self.parent.current = 'PORTFOLIO'
+        self.parent.current_screen.UpdateScreen(ScreenName = self.FromScreenName, PortfolioJsonPath = ReturnJsonPathGivenScreenName(self.FromScreenName))
     
     #####################
     #    ASSETS  BOX    #
@@ -69,165 +65,38 @@ class AssetsScreen(Screen):
     def UpdateListOfAssets(self):
         self.DBManager.UpdateAllAssetStatistics(self.PortfolioName)
 
-        # Store the first Item containing the screen name
-        First_widget = self.ids[self.ScreenToUpdate].children[-1]
-        Second_widget = self.ids[self.ScreenToUpdate].children[-2]
-
-        # Store the BoxLayout containg the portfolios Relative layout
-        Third_widget = self.ids[self.ScreenToUpdate].children[-3]
-        Third_widget.clear_widgets()
-
         # Clear the Item inside the BoxLayout (Keep the first element only)
         self.ids[self.ScreenToUpdate].clear_widgets()
 
-        # Add the first and second item again
-        self.ids[self.ScreenToUpdate].add_widget(First_widget)
-        self.ids[self.ScreenToUpdate].add_widget(Second_widget)
-        self.ids[self.ScreenToUpdate].add_widget(Third_widget)
+        self.ids[self.ScreenToUpdate].add_widget(AssetLineSeparator())
+        self.ids[self.ScreenToUpdate].add_widget(AssetRowBoxLayout_Title())
 
-        # Then, for each portfolio in the json add a New Portfolio in the self.ids[self.ScreenToUpdate]
         Assets_json = self.DBManager.ReadJson()[self.PortfolioName]['Assets']
         Currency_str = self.DBManager.ReadJson()[self.PortfolioName]['Statistics']['Currency']
 
-        # Size dello ScreenManager
-        ScreenManagerSize_x = self.parent.size[0]
-        BoxLayoutPadding_ls= self.children[0].children[0].padding[0]
-        BoxLayoutPadding_rs = self.children[0].children[0].padding[2]
-        text_size = ScreenManagerSize_x - BoxLayoutPadding_ls - BoxLayoutPadding_rs
 
         if len(Assets_json.keys()):
             # Add an item for each portfolio
             for asset in Assets_json.keys():
-                # Compute the graphic element to Add given the AssetName and its statistics
-                self.ids[self.ScreenToUpdate].children[-3].add_widget(self.DefineCryptoAsset(AssetName = asset, AssetDict_Stats = Assets_json[asset]['Statistics'], textsize = text_size, Currency = Currency_str))
+                # Compute the graphic element to Add given the PortfolioName and its statistics
+                self.ids[self.ScreenToUpdate].add_widget(AssetLineSeparator())
+
+                RelLayout = RelativeLayout()
+                RelLayout.size_hint = [1, None]
+                RelLayout.height = MDApp.get_running_app().Configuration.GetElementValue('AssetRowBoxLayoutHeight')
+                RelLayout.add_widget(AssetRowButton())
+                AssetProperties = Assets_json[asset]['Statistics']
+                AssetProperties.update({'AssetName' : asset})
+                AssetProperties.update({'Currency' : Currency_str})
+                RelLayout.add_widget(AssetRowBoxLayout(Properties = AssetProperties))
+                
+                self.ids[self.ScreenToUpdate].add_widget(RelLayout)
+            
+            # Append the last line
+            self.ids[self.ScreenToUpdate].add_widget(AssetLineSeparator())
         else:
             # Add empty item
-            self.ids[self.ScreenToUpdate].children[-3].add_widget(self.DefineEmptyAsset(textsize = text_size))
-
-    # Define an empty assets with the "EMPTY" label inside
-    def DefineEmptyAsset(self, textsize = 0):
-        # Get the necessary information from the AssetDictionary
-        GraphicToReturn = RelativeLayout()
-        GraphicToReturn.size_hint = [1, None]
-        GraphicToReturn.height = "120dp"
-
-        # Add the button with its canvas at base
-        GraphicToReturn.add_widget(cst_item.EmptyPortfolioButton(size_x = textsize))
-
-        # Add AssetName label - First initialize the dict
-        label_params = {}
-        label_params.update({'text_size': [textsize, None]})
-        label_params.update({'pos_hint': {'x' : 0.5, 'y': 0}})
-        label_params.update({'text': 'EMPTY'})
-        label_params.update({'font_name': 'Candarab'})
-        label_params.update({'font_size': 20})
-        label_params.update({'color': [1,1,1,1]})
-        GraphicToReturn.add_widget(cst_item.AssetLabel(lbl_parm = label_params))
-
-        # Return relative layout
-        return GraphicToReturn
-
-    # Define the asset given in input a dictionary 
-    def DefineCryptoAsset(self, AssetName = '', AssetDict_Stats = {}, textsize = 0, Currency = '€'):
-        # Get the necessary information from the AssetDictionary
-        GraphicToReturn = RelativeLayout()
-        GraphicToReturn.size_hint = [1, None]
-        GraphicToReturn.height = "120dp"
-        GraphicToReturn.id = AssetName
-
-        # Add the button with its canvas at base
-        GraphicToReturn.add_widget(cst_item.AssetButton(size_x = textsize, FromScreenName = self.FromScreenName, PortfolioName = self.PortfolioName, AssetName = AssetName))
-
-        # Add AssetName label - First initialize the dict
-        label_params = {}
-        label_params.update({'text_size': [textsize, None]})
-        label_params.update({'pos_hint': {'x' : 0.025, 'y': 0.2}})
-        label_params.update({'text': 'ASSET NAME'})
-        label_params.update({'font_name': 'Candarab'})
-        label_params.update({'font_size': 20})
-        label_params.update({'color': [1,1,1,1]})
-        GraphicToReturn.add_widget(cst_item.AssetLabel(lbl_parm = label_params))
-
-        # # Add AssetName str
-        label_params.update({'pos_hint': {'x' : 0.025, 'y': -0.2}})
-        label_params.update({'text': AssetName + ' [' + str(AssetDict_Stats['Symbol']) + ']'})
-        label_params.update({'font_size': 23})
-        GraphicToReturn.add_widget(cst_item.AssetLabel(lbl_parm = label_params))
-
-        # Add Quantity Asset Lbl
-        label_params.update({'pos_hint': {'x' : 0.35, 'y': 0.2}})
-        label_params.update({'text': 'CUR PRICE'})
-        label_params.update({'font_size': 20})
-        GraphicToReturn.add_widget(cst_item.AssetLabel(lbl_parm = label_params))
-
-        # Add Quantity Value
-        label_params.update({'pos_hint': {'x' : 0.35, 'y': -0.2}})
-        label_params.update({'text':  str(AssetDict_Stats['CurrentPrice']) + Currency})
-        label_params.update({'font_size': 25})
-        GraphicToReturn.add_widget(cst_item.AssetLabel(lbl_parm = label_params))
-
-        # Add Quantity Asset Lbl
-        label_params.update({'pos_hint': {'x' : 0.45, 'y': 0.2}})
-        label_params.update({'text': 'HOLDING'})
-        label_params.update({'font_size': 20})
-        GraphicToReturn.add_widget(cst_item.AssetLabel(lbl_parm = label_params))
-
-        # Add Quantity Value
-        label_params.update({'pos_hint': {'x' : 0.45, 'y': -0.2}})
-        label_params.update({'text': str(AssetDict_Stats['Quantity'])})
-        label_params.update({'font_size': 25})
-        GraphicToReturn.add_widget(cst_item.AssetLabel(lbl_parm = label_params))
-
-        # Add Avarage Price lbl
-        label_params.update({'pos_hint': {'x' : 0.55, 'y': 0.2}})
-        label_params.update({'text': 'AVG PRICE'})
-        label_params.update({'font_size': 20})
-        GraphicToReturn.add_widget(cst_item.AssetLabel(lbl_parm = label_params))
-
-        # Add Avarage Price Value
-        label_params.update({'pos_hint': {'x' : 0.55, 'y': -0.2}})
-        label_params.update({'text': str(AssetDict_Stats['AveragePrice']) + Currency})
-        label_params.update({'font_size': 25})
-        GraphicToReturn.add_widget(cst_item.AssetLabel(lbl_parm = label_params))
-
-        # Add Total value lbl
-        label_params.update({'pos_hint': {'x' : 0.65, 'y': 0.2}})
-        label_params.update({'text': 'TOTAL VALUE'})
-        label_params.update({'font_size': 20})
-        GraphicToReturn.add_widget(cst_item.AssetLabel(lbl_parm = label_params))
-
-        # Add Avarage Price Value
-        label_params.update({'pos_hint': {'x' : 0.65, 'y': -0.2}})
-        label_params.update({'text': str(AssetDict_Stats['TotalValue']) + Currency})
-        label_params.update({'font_size': 25})
-        GraphicToReturn.add_widget(cst_item.AssetLabel(lbl_parm = label_params))
-
-        # Add Total value lbl
-        label_params.update({'pos_hint': {'x' : 0.75, 'y': 0.2}})
-        label_params.update({'text': 'TOTAL PROFIT'})
-        label_params.update({'font_size': 20})
-        GraphicToReturn.add_widget(cst_item.AssetLabel(lbl_parm = label_params))
-
-        # Add Portfolio Asset
-        color = [0,1,0,1] if int(AssetDict_Stats['TotalProfit']) >= 0 else [1,0,0,1]
-        label_params.update({'pos_hint': {'x' : 0.75, 'y': -0.2}})
-        label_params.update({'text': str(AssetDict_Stats['TotalProfit']) + Currency})
-        label_params.update({'font_size': 25})
-        label_params.update({'color': color})
-        GraphicToReturn.add_widget(cst_item.AssetLabel(lbl_parm = label_params))
-
-        # # Define remove button
-        Btn_size = [GraphicToReturn.size[0]/2.5, GraphicToReturn.size[1]/2.5]
-        box_pos_hint = {'x' : 0.9, 'y': 0.5 - (Btn_size[1]/(2*GraphicToReturn.size[1])) }
-
-        ModifyPopup = AddAssetPopup.AddAssetPopup(title_str = 'MODIFY ASSET', type = 'M', Database = self.DBManager, PortfolioName = self.PortfolioName, itemToMod = {AssetName : AssetDict_Stats})
-        RemovePopup = RemoveAssetPopup.RemoveAssetPopup('REMOVE PORTFOLIO',self.PortfolioName, AssetName, self.DBManager, self, self.FromScreenName )
-
-        Box = cst_item.ModifyRemoveButtonBox(Btn_size = Btn_size, box_pos_hint = box_pos_hint, ModifyPopup = ModifyPopup, RemovePopup = RemovePopup)
-        GraphicToReturn.add_widget(Box)
-
-        # Return relative layout
-        return GraphicToReturn
+            self.ids[self.ScreenToUpdate].add_widget(AssetRowBoxLayout_Empty())
 
     # When the Add New Asset button is pressed
     def AddNewAssetPopup(self):
@@ -240,6 +109,10 @@ class AssetsScreen(Screen):
     #######################
     #    DASHBOARD BOX    #
     #######################
+
+    def OpenAssetTransactionScreen(self, AssetName):
+        self.parent.current = 'ASSETS TRANSACTION'
+        self.parent.current_screen.UpdateScreen(AssetName = AssetName, PortfolioName = self.PortfolioName, FromScreenName = self.FromScreenName)
 
     # The function generates a picture of the allocation, which is the loaded in the GUI
     def UpdateGraph(self):

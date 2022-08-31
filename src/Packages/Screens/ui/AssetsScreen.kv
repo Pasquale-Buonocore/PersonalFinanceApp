@@ -4,247 +4,245 @@
     id: AssetsScreenName
     name: app.Configuration.GetElementValue('ScreenNameDictionary')["AssetsScreenName"]
 
-    # Scroll View Transaction
-    ScrollView:
-		bar_inactive_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
-        bar_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
-        id: AssetsScrollView
+    # Main Stack Layout
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: "20dp"
+        padding: ("0dp", "0dp", "0dp", "0dp")
 
-        # Box containing Box Layout
+        # First Box Layout containg the Portfolio Resume 
         BoxLayout:
-            id: AssetsHeader
+            id: AssetDashboardBoxLayoutResume
             orientation: 'vertical'
-            size_hint: 1, None
-            height: self.minimum_height
-            padding: ("0dp", "0dp", "0dp", "0dp")
-            spacing: "0dp"
+            size_hint: 1, 0.45
 
-            # First row box layout
+            canvas:
+                Color:
+                    rgba: app.Configuration.GetElementValue('CanvasBackgroundColor') 
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [(30, 30), (30, 30), (30, 30), (30, 30)]
+
+        
+            # First Box Layout containg the Portfolio Resume title and buttons - y: 0.15
             BoxLayout:
                 id: FirstRow
                 orientation: 'horizontal'
-                size_hint: 1, None
-                height: self.minimum_height
-                padding: ("0dp", "0dp", "0dp", "20dp")
+                size_hint: 1, 0.15
+                padding: ("15dp", "15dp", "15dp", "15dp")
                 spacing: "5dp"
                 
+                # Back to portfolio button
                 Button:
-                    text: 'BACK TO PORTFOLIO'
-                    size_hint: 0.14, None
-                    height: "40dp" 
+                    text: 'BACK'
+                    size_hint: 0.05, 1
                     background_color: 0,0,0,0
                     on_release: root.ReturnBack()
                     font_name: 'Candarab'
                     font_size: 16
                     canvas.before:
                         Color:
-                            rgba: app.Configuration.GetElementValue('CanvasBackgroundColor')                           
+                            rgba: app.Configuration.GetElementValue('WindowBackgroundColor')                           
                         RoundedRectangle:
                             pos: self.pos
                             size: self.size
                             radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
 
+                # Dashboard Title 
                 Label:
-                    id: FirstRowLabel
-                    size_hint: 0.6, None
+                    id: DashboardTitle
+                    size_hint: 0.69, 1
+                    halign: 'center'
                     font_name: 'Candarab'
-                    font_size: 28
-                    height: "40dp" 
-                    halign: 'left'
+                    text_size: self.width, None
+                    size: self.texture_size
+                    font_size: 25
 
+                # Modify allocation Button
                 Button:
                     text: 'MODIFY ALLOCATION'
-                    size_hint: 0.13, None
-                    height: "40dp" 
+                    size_hint: 0.13, 1
                     background_color: 0,0,0,0
                     on_release: root.ModifyAllocation()
                     font_name: 'Candarab'
                     font_size: 16
                     canvas.before:
                         Color:
-                            rgba: app.Configuration.GetElementValue('CanvasBackgroundColor')                           
+                            rgba: app.Configuration.GetElementValue('WindowBackgroundColor')                           
                         RoundedRectangle:
                             pos: self.pos
                             size: self.size
                             radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
                 
+                # Rebalance popup button
                 Button:
                     text: 'REBALANCE POPUP'
-                    size_hint: 0.13, None
-                    height: "40dp" 
+                    size_hint: 0.13, 1
                     background_color: 0,0,0,0
                     on_release: root.ModifyAllocation()
                     font_name: 'Candarab'
                     font_size: 16
                     canvas.before:
                         Color:
-                            rgba: app.Configuration.GetElementValue('CanvasBackgroundColor')                           
+                            rgba: app.Configuration.GetElementValue('WindowBackgroundColor')                           
                         RoundedRectangle:
                             pos: self.pos
                             size: self.size
                             radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
-                        
             
-            ########################
-            # DASHBOARD BOX LAYOUT #
-            ########################
-            # Second element containg the column titles
-
+            # Second Box Layout containg the Portfolio Resume - y: 0.85
             BoxLayout:
-                orientation: 'vertical'
-                id: DashboardContainer
-                size_hint: 1, None
-                height: self.minimum_height
+                id: GraphCanvas
+                orientation: 'horizontal'
+                size_hint: 1, 0.85
+                padding: ("0dp", "10dp", "0dp", "0dp")
                 spacing: "20dp"
-                padding: ("0dp", "20dp", "0dp", "20dp")
 
+                # Box Layout containg the graph                        
                 BoxLayout:
-                    id: DashboardLabel
-                    size_hint: 1, None
-                    pos_hint: {'x' : 0.04}
-                    height: self.minimum_height
-                    padding: ("0dp", "0dp", "0dp", "20dp")
+                    orientation: 'vertical'
+                    size_hint: 0.5, 1
+                    id: Graph
 
-                    Label:
-                        font_name: 'Candarab'
-                        font_size: 28
-                        text_size: root.width, None
-                        size: self.texture_size
-                        text:'Dashboard'
+                    Image:
+                        id: GraphImage
+                        size:  self.size
 
+                # Box Layout containg the table
                 BoxLayout:
-                    orientation: 'horizontal'
-                    id: GraphCanvas
-                    size_hint: 1, None
+                    orientation: 'vertical'
+                    size_hint: 0.5, None
                     height: "400dp"
-                    spacing: "20dp"
                     padding: ("0dp", "0dp", "0dp", "0dp")
+                    spacing: "10dp"
 
-                    canvas:
-                        Color:
-                            rgba: app.Configuration.GetElementValue('CanvasBackgroundColor') 
-                        RoundedRectangle:
-                            pos: self.pos
-                            size: self.size
-                            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
-                    
-                    BoxLayout:
-                        orientation: 'vertical'
-                        size_hint: 0.5, 1
-                        id: Graph
+                    # Scroll View dashboard
+                    ScrollView:
+                        bar_inactive_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
+                        bar_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
+                        id: DistributionTableScreenView
 
-                        Image:
-                            id: GraphImage
-                            size:  self.size
-
-                    BoxLayout:
-                        orientation: 'vertical'
-                        size_hint: 0.5, None
-                        height: "400dp"
-                        padding: ("0dp", "0dp", "0dp", "0dp")
-                        spacing: "10dp"
-
-                        # Scroll View dashboard
-                        ScrollView:
-                            id: DistributionTableScreenView
-
-                            # Box containing assets distribution
+                        # Box containing assets distribution
+                        BoxLayout:
+                            id: DistributionTableBoxLayout
+                            orientation: 'vertical'
+                            size_hint: 1, None
+                            height: self.minimum_height
+                            padding: ("30dp", "40dp", "20dp", "20dp")
+                            spacing: "5dp"
+                            
+                            # First children containg the table title
                             BoxLayout:
-                                id: DistributionTableBoxLayout
+                                orientation: 'horizontal'
+                                size_hint: 1, None
+                                height: "40dp"
+
+                                Label:
+                                    size_hint: 0.4, None
+                                    font_name: 'Candarab'
+                                    font_size: 20
+                                    height: "40dp" 
+                                    text: 'ASSET NAME'
+
+                                Label:
+                                    size_hint: 0.3, None
+                                    font_name: 'Candarab'
+                                    font_size: 20
+                                    height: "40dp" 
+                                    text: 'DESIRED'
+
+                                Label:
+                                    size_hint: 0.3, None
+                                    font_name: 'Candarab'
+                                    font_size: 20
+                                    height: "40dp" 
+                                    text: 'ACTUAL'
+                            
+                            BoxLayout:
+                                orientation: 'vertical'
+                                size_hint: 1, None
+                                height: "2dp"
+
+                                canvas.before:
+                                    Color:
+                                        rgba: 1,1,1,1     
+                                    Rectangle:
+                                        pos: self.pos
+                                        size: self.size
+                            
+                            BoxLayout:
+                                id: AssetAllocationTable
                                 orientation: 'vertical'
                                 size_hint: 1, None
                                 height: self.minimum_height
-                                padding: ("30dp", "20dp", "20dp", "20dp")
-                                spacing: "0dp"
-                                
-                                # First children containg the table title
-                                BoxLayout:
-                                    orientation: 'horizontal'
-                                    size_hint: 1, None
-                                    height: "40dp"
+                                padding: ("20dp", "20dp", "20dp", "20dp")
+                                spacing: "10dp"
+        
 
-                                    Label:
-                                        size_hint: 0.4, None
-                                        font_name: 'Candarab'
-                                        font_size: 20
-                                        height: "40dp" 
-                                        text: 'ASSET NAME'
+        # Second Box Layout containg the Asset lists
+        BoxLayout:
+            id: AssetMainListBoxLayout
+            orientation: 'vertical'
+            size_hint: 1, 0.55
 
-                                    Label:
-                                        size_hint: 0.3, None
-                                        font_name: 'Candarab'
-                                        font_size: 20
-                                        height: "40dp" 
-                                        text: 'DESIRED'
-
-                                    Label:
-                                        size_hint: 0.3, None
-                                        font_name: 'Candarab'
-                                        font_size: 20
-                                        height: "40dp" 
-                                        text: 'ACTUAL'
-                                
-                                BoxLayout:
-                                    orientation: 'vertical'
-                                    size_hint: 1, None
-                                    height: "2dp"
-
-                                    canvas.before:
-                                        Color:
-                                            rgba: 1,1,1,1     
-                                        Rectangle:
-                                            pos: self.pos
-                                            size: self.size
-                                
-                                BoxLayout:
-                                    id: AssetAllocationTable
-                                    orientation: 'vertical'
-                                    size_hint: 1, None
-                                    height: self.minimum_height
-                                    padding: ("20dp", "20dp", "20dp", "20dp")
-                                    spacing: "20dp"
-                        
-                BoxLayout:
-                    id: AssetLabel
-                    orientation: 'horizontal'
-                    size_hint: 1, None
-                    height: self.minimum_height
-                    padding: ("0dp", "0dp", "0dp", "0dp")
-
-                    BoxLayout:
-                        size_hint: 0.85, None
-                        height: 40
-                        orientation: 'vertical'
-
-                        Label:
-                            font_name: 'Candarab'
-                            font_size: 28
-                            pos_hint: {'x' : -0.46}
-                            text:'Assets'
-
-                    Button:
-                        text: 'ADD NEW ASSET'
-                        size_hint: 0.15, None
-                        height: "40dp" 
-                        background_color: 0,0,0,0
-                        on_release: root.AddNewAssetPopup()
-                        font_name: 'Candarab'
-                        font_size: 16
-                        canvas.before:
-                            Color:
-                                rgba: app.Configuration.GetElementValue('CanvasBackgroundColor')  
-                            RoundedRectangle:
-                                pos: self.pos
-                                size: self.size
-                                radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
-
-            #####################
-            # ASSETS BOX LAYOUT #
-            #####################
+            canvas:
+                Color:
+                    rgba: app.Configuration.GetElementValue('CanvasBackgroundColor') 
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [(30, 30), (30, 30), (30, 30), (30, 30)]
 
             BoxLayout:
-                id: AssetsContainer
+                orientation: 'horizontal'
+                size_hint: 1, 0.13
+                padding: ("15dp", "15dp", "15dp", "15dp")
+                
+                # Lable Title 
+                Label:
+                    text: 'ASSET LIST'
+                    size_hint: 0.85, 1
+                    halign: 'left'
+                    valign: 'center'
+                    font_name: 'Candarab'
+                    text_size: self.width, None
+                    size: self.texture_size
+                    font_size: 25
+
+                # Add new asset button
+                Button:
+                    text: 'ADD NEW ASSET'
+                    size_hint: 0.15, 1
+                    background_color: 0,0,0,0
+                    on_release: root.AddNewAssetPopup()
+                    font_name: 'Candarab'
+                    font_size: 16
+                    canvas.before:
+                        Color:
+                            rgba: app.Configuration.GetElementValue('WindowBackgroundColor')  
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+            BoxLayout:
+                id: ScrollViewCointainerBoxLayout
                 orientation: 'vertical'
-                size_hint: 1, None
-                spacing: "20dp"
-                height: self.minimum_height
+                size_hint: 1, 0.87
+                padding: ("0dp", "0dp", "0dp", "20dp")
+                
+                ScrollView:
+                    bar_inactive_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
+                    bar_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
+                    id: AssetsScrollView
+
+                    # ASSETS BOX LAYOUT #
+                    BoxLayout:
+                        id: AssetsHeader
+                        orientation: 'vertical'
+                        size_hint: 1, None
+                        height: self.minimum_height
+                        padding: ("30dp", "0dp", "30dp", "0dp")
+                        spacing: "0dp"
+
