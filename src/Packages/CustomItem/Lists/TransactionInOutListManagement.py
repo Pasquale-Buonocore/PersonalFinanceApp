@@ -6,23 +6,23 @@ from kivy.lang import Builder
 from kivy.properties import ColorProperty
 
 # Designate Out .kv design file
-Builder.load_file('Packages/CustomItem/ui/AssetTransactionListManagement.kv')
+Builder.load_file('Packages/CustomItem/ui/TransactionInOutListManagement.kv')
 
 # When no Asset is in the category selected, it will be shown!
-class AssetTransactionRowBoxLayout_Empty(BoxLayout):
+class TransactionInOutRowBoxLayout_Empty(BoxLayout):
     pass
 
 # Line separator used to populate the list
-class AssetTransactionLineSeparator(BoxLayout):
+class TransactionInOutLineSeparator(BoxLayout):
     pass
 
 # Button to use together with AssetRowBoxLayout to populate the ScrollView list
-class AssetTransactionRowButton(Button):
+class TransactionInOutRowButton(Button):
     def __init__(self):
         super().__init__()
     
 # class to use for each row of the Asset list
-class AssetTransactionRowBoxLayout(BoxLayout, HoverBehavior):
+class TransactionInOutRowBoxLayout(BoxLayout, HoverBehavior):
     Background_color = ColorProperty([0,0,0,1])
 
     def __init__(self, Properties = {}):        
@@ -72,6 +72,6 @@ class AssetTransactionRowBoxLayout(BoxLayout, HoverBehavior):
         self.Background_color = MDApp.get_running_app().Configuration.GetElementValue('CanvasBackgroundColor')
 
 # class to use for each row of the Asset list title
-class AssetTransactionRowBoxLayout_Title(BoxLayout):
+class TransactionInOutRowBoxLayout_Title(BoxLayout):
     def __init__(self,**kwargs):
         super().__init__()

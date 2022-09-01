@@ -2,6 +2,7 @@ import Packages.CustomItem.Popup.RemoveTransactionInOutPopup as RemoveTransactio
 import Packages.CustomItem.Popup.AddTransactionInOutPopup as TransInOut_Popup
 from Packages.DatabaseMng.JsonManager import JsonManager_Class
 from Packages.DatabaseMng.PathManager import PathManager_Class
+from Packages.CustomItem.Lists.TransactionInOutListManagement import *
 import Packages.CustomItem.CustomGraphicItem as cst_item
 from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.screenmanager import Screen
@@ -13,7 +14,7 @@ class TransactionListScreen(Screen):
         super().__init__(**kwargs)
 
         # Store info of the Box Layout to fill in
-        self.ScreenToUpdate = 'AssetsTransactionHeader'
+        self.ScreenToUpdate = 'TransactionListBoxLayout'
     
     # Function to call when moving towards that page
     def UpdateScreen(self, portfolio, Database):
@@ -28,15 +29,6 @@ class TransactionListScreen(Screen):
     # Update the list of transaction given the portafolio name
     def UpdateListOfTransaction(self):
         json_file = self.DBManager.ReadJson()
-        
-        # Clear the Item inside the BoxLayout (Keep the first element only)
-        self.ids[self.ScreenToUpdate].clear_widgets()
-
-        # Size dello ScreenManager
-        ScreenManagerSize_x = self.parent.size[0]
-        BoxLayoutPadding_ls= self.children[0].children[0].padding[0]
-        BoxLayoutPadding_rs = self.children[0].children[0].padding[2]
-        text_size = ScreenManagerSize_x - BoxLayoutPadding_ls - BoxLayoutPadding_rs
 
         for asset in json_file[self.portfolio]['Assets'].keys():
             for transaction_idx in json_file[self.portfolio]['Assets'][asset]['Transactions']:
@@ -50,100 +42,18 @@ class TransactionListScreen(Screen):
         if not len(self.ids[self.ScreenToUpdate].children):
             # Add empty item to the widget
             self.ids[self.ScreenToUpdate].add_widget(self.DefineEmptyTransaction(textsize = text_size))
+                
 
- # Define and empty transaction with "EMPTY" Label
-    def DefineEmptyTransaction(self, textsize):
-        # Get the necessary information from the AssetDictionary
-        GraphicToReturn = RelativeLayout()
-        GraphicToReturn.size_hint = [1, None]
-        GraphicToReturn.height = "70dp"
+    ####################
+    # MOVE SCREEN BACK #
+    ####################
 
-        # Add the button with its canvas at base
-        GraphicToReturn.add_widget(cst_item.EmptyTransactionButton(size_x = textsize))
-
-        # Add AssetName label - First initialize the dict
-        label_params = {}
-        label_params.update({'text_size': [textsize, None]})
-        label_params.update({'pos_hint': {'x' : 0.5, 'y': 0}})
-        label_params.update({'text': 'EMPTY'})
-        label_params.update({'font_name': 'Candarab'})
-        label_params.update({'font_size': 20})
-        label_params.update({'color': [1,1,1,1]})
-        GraphicToReturn.add_widget(cst_item.PortfolioLabel(lbl_parm = label_params))
-
-        # Return relative layout
-        return GraphicToReturn
-
-    # Define the transaction in input at the Box Layout
-    def DefineFullTransaction(self, textsize, asset, TransactionDict, Index, Currency):
-        self.TransactionDictIndex = Index
-
-         # Get the necessary information from the AssetDictionary
-        GraphicToReturn = RelativeLayout()
-        GraphicToReturn.size_hint = [1, None]
-        GraphicToReturn.height = "70dp"
-
-        BoxLayoutToAdd = BoxLayout()
-        BoxLayoutToAdd.size_hint = [1, None]
-        BoxLayoutToAdd.height = "70dp"
-        BoxLayoutToAdd.orientation = "horizontal"
-        
-
-        # Add the button with its canvas at base
-        GraphicToReturn.add_widget(cst_item.TransactionButton(size_x = textsize, height = GraphicToReturn.height))
-
-        # Add Date
-        label_params = {}
-        label_params.update({'text_size': [textsize, None]})
-        label_params.update({'pos_hint': {'x' : 0.045, 'y': 0}})
-        label_params.update({'text': TransactionDict['Date'] })
-        label_params.update({'font_name': self.Configuration.GetElementValue('ElementInListFontName')})
-        label_params.update({'font_size': self.Configuration.GetElementValue('ElementInListFontSize')})
-        label_params.update({'color': [1,1,1,1]})
-        GraphicToReturn.add_widget(cst_item.TransactionLabel(lbl_parm = label_params))
-
-        # Add Amount
-        label_params.update({'pos_hint': {'x' : 0.2, 'y': 0}})
-        label_params.update({'text': str(TransactionDict['Amount']) + Currency})
-        GraphicToReturn.add_widget(cst_item.TransactionLabel(lbl_parm = label_params))
-
-        # Add Description
-        label_params.update({'pos_hint': {'x' : 0.36, 'y': 0}})
-        label_params.update({'text': TransactionDict['Note']})
-        GraphicToReturn.add_widget(cst_item.TransactionLabel(lbl_parm = label_params))
-
-        # Add Category
-        label_params.update({'pos_hint': {'x' : 0.64, 'y': 0}})
-        label_params.update({'text': TransactionDict['Category'] })
-        GraphicToReturn.add_widget(cst_item.TransactionLabel(lbl_parm = label_params))
-
-        # Add Paid with
-        label_params.update({'pos_hint': {'x' : 0.79, 'y': 0}})
-        label_params.update({'text': str(TransactionDict['Paid with'])})
-        GraphicToReturn.add_widget(cst_item.TransactionLabel(lbl_parm = label_params))
-
-        # # Define remove button
-        Btn_size = [GraphicToReturn.size[0]/2.5, GraphicToReturn.size[1]/2.5]
-        box_pos_hint = {'x' : 0.92, 'y': 0.5 - (Btn_size[1]/(2*GraphicToReturn.size[1])) }
-
-        ModifyPopup = TransInOut_Popup.AddTransactionInOutPopup(title_str = 'MODIFY TRANSACTION ' + self.portfolio, type = 'M', PortfolioName = self.portfolio, Database = self.DBManager, ItemToMod = {self.TransactionDictIndex: TransactionDict})
-        RemovePopup = RemoveTransactionInOutPopup.RemoveTransactionInOutPopup(title_str = 'REMOVE TRANSACTION', PortfolioName = self.portfolio, AssetName = asset, TransactionIndex = Index, DBManager = self.DBManager, ManagerOfScreen = self )
-
-        Box = cst_item.ModifyRemoveButtonBox(Btn_size = Btn_size, box_pos_hint = box_pos_hint, ModifyPopup = ModifyPopup, RemovePopup = RemovePopup)
-        GraphicToReturn.add_widget(Box)
-
-        # Return relative layout
-        return GraphicToReturn
-                 
     # At the "Add Transaction" or Modify Transaction 
     def OpenAddTransactionPopup(self):
         # Define Popup and open it
         Popup = TransInOut_Popup.AddTransactionInOutPopup(title_str = 'ADD TRANSACTION ' + self.portfolio, type = 'A', PortfolioName = self.portfolio, Database = self.DBManager)
         Popup.open()
 
-    ####################
-    # MOVE SCREEN BACK #
-    ####################
     def ReturnBack(self):
         ScreenManager = self.parent
         ScreenManager.current = 'TRANSACTION'

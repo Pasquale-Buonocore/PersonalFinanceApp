@@ -71,10 +71,13 @@ class AssetsTransactionScreen(Screen):
                 RelLayout.size_hint = [1, None]
                 RelLayout.height = MDApp.get_running_app().Configuration.GetElementValue('AssetRowBoxLayoutHeight')
                 RelLayout.add_widget(AssetTransactionRowButton())
-                # AssetProperties = Assets_json[asset]['Statistics']
+                AssetTransactionProperties = Transactions_json[TransactionKey]
+                AssetTransactionProperties.update({'TransactionNumber': str(TransactionKey)})
+                AssetTransactionProperties.update({'Currency' : Currency_str})
+
                 # AssetProperties.update({'AssetName' : asset})
-                # AssetProperties.update({'Currency' : Currency_str})
-                RelLayout.add_widget(AssetTransactionRowBoxLayout())
+                # AssetProperties.update
+                RelLayout.add_widget(AssetTransactionRowBoxLayout(Properties = AssetTransactionProperties))
                 self.ids[self.ScreenToUpdate].add_widget((RelLayout))
             
             self.ids[self.ScreenToUpdate].add_widget(AssetTransactionLineSeparator())

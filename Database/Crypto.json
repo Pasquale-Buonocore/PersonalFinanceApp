@@ -18,6 +18,29 @@
                                     "Amount": "0.01",
                                     "Fees": 0,
                                     "Note": ""
+                              },
+                              "3": {
+                                    "Date": "01 September 2022",
+                                    "PricePerCoin": "20300",
+                                    "Amount": "0.0025",
+                                    "Fees": "0.0",
+                                    "Note": "",
+                                    "PayingAccount": {
+                                          "Account": "Unicredit Bank",
+                                          "SubAccount": "Cash",
+                                          "Currency": "USD"
+                                    },
+                                    "StoringAccount": {
+                                          "Account": "Binance Exchange",
+                                          "SubAccount": "Assets",
+                                          "Currency": "BITCOIN"
+                                    },
+                                    "Status": {
+                                          "Open": "0.0025",
+                                          "Closed": {
+                                                "Transactions": {}
+                                          }
+                                    }
                               }
                         },
                         "Statistics": {

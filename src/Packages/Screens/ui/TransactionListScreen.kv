@@ -4,138 +4,130 @@
     id: TransactionListScreenName
     name: app.Configuration.GetElementValue('ScreenNameDictionary')["TransactionListScreenName"] 
     
-    # Scroll View Transaction
-    ScrollView:
-		bar_inactive_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
-        bar_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
-        id: TransactionScrollView
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: "10dp"
+        padding: ("15dp","15dp","15dp","15dp")
 
-        # Box containing Box Layout
+        canvas:
+            Color:
+                rgba: app.Configuration.GetElementValue('CanvasBackgroundColor') 
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                radius: [(30, 30), (30, 30), (30, 30), (30, 30)]
+        
+        # Box Layout containg title
         BoxLayout:
-            id: MainBoxLayout
-            orientation: 'vertical'
+            id: TransactionListRow
+            orientation: 'horizontal'
             size_hint: 1, None
             height: self.minimum_height
-            padding: ("0dp", "0dp", "0dp", "0dp")
-            spacing: "0dp"
+            padding: ("0dp", "0dp", "0dp", "20dp")
+            spacing: "20dp"
 
-            ##############################
-            #      TRANSACTION LIST      #
-            ##############################
-            BoxLayout:
-                id: TransactionListRow
-                orientation: 'horizontal'
-                size_hint: 1, None
-                height: self.minimum_height
-                padding: ("0dp", "0dp", "0dp", "20dp")
-                spacing: "20dp"
-
-                Button:
-                    text: 'RETURN TO TRANSACTION'
-                    size_hint: 0.15, None
-                    height: "45dp" 
-                    background_color: 0,0,0,0
-                    on_release: root.ReturnBack()
-                    font_name: 'Candarab'
-                    font_size: 16
-                    canvas.before:
-                        Color:
-                            rgba: app.Configuration.GetElementValue('CanvasBackgroundColor') 
-                        RoundedRectangle:
-                            pos: self.pos
-                            size: self.size
-                            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
-                
-                Label:
-                    id: TransactionListLabel
-                    size_hint: 0.6, None
-                    font_name: 'Candarab'
-                    font_size: 25
-                    height: "45dp" 
-                    halign: 'left'
-                    text: 'TRANSACTION IN'
-
-                Button:
-                    text: 'ADD TRANSACTION'
-                    size_hint: 0.15, None
-                    height: "45dp" 
-                    background_color: 0,0,0,0
-                    on_release: root.OpenAddTransactionPopup()
-                    font_name: 'Candarab'
-                    font_size: 16
-                    canvas.before:
-                        Color:
-                            rgba: app.Configuration.GetElementValue('CanvasBackgroundColor') 
-                        RoundedRectangle:
-                            pos: self.pos
-                            size: self.size
-                            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
-
-            ##########################
-            # TRANSACTION BOX LAYOUT #
-            ##########################
-            BoxLayout:
-                orientation: 'vertical'
-                id: TransactionBoxLayout
-                size_hint: 1, None
-                height: self.minimum_height
-                spacing: "20dp"
-                padding: ("0dp", "20dp", "0dp", "20dp")
-
+            Button:
+                text: 'RETURN TO TRANSACTION'
+                size_hint: 0.15, None
+                height: "40dp" 
+                background_color: 0,0,0,0
+                on_release: root.ReturnBack()
+                font_name: 'Candarab'
+                font_size: 16
                 canvas.before:
                     Color:
-                        rgba: app.Configuration.GetElementValue('CanvasBackgroundColor') 
+                        rgba: app.Configuration.GetElementValue('WindowBackgroundColor') 
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
-                        radius: [(10, 10), (10, 10), (0, 0), (0, 0)]
-                
-                BoxLayout:
-                    id: Transaction_NameRow
-                    orientation: 'horizontal'
-                    size_hint: 1, None
-                    height: "15dp"
-
-                    Label: 
-                        text: 'DATE'
-                        size_hint: 0.15, 1
-                        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                        font_size: app.Configuration.GetElementValue('ElementInListFontSize')
-                        
-                    Label: 
-                        text: 'AMOUNT'
-                        size_hint: 0.15, 1
-                        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                        font_size: app.Configuration.GetElementValue('ElementInListFontSize')
-
-                    Label: 
-                        text: 'DESCRIPTION'
-                        size_hint: 0.3, 1
-                        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                        font_size: app.Configuration.GetElementValue('ElementInListFontSize')
-
-                    Label: 
-                        text: 'CATEGORY'
-                        size_hint: 0.15, 1
-                        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                        font_size: app.Configuration.GetElementValue('ElementInListFontSize')
-
-                    Label: 
-                        text: 'PAID WITH'
-                        size_hint: 0.15, 1
-                        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                        font_size: app.Configuration.GetElementValue('ElementInListFontSize')
-
-                    Label: 
-                        text: 'ACTIONS'
-                        size_hint: 0.1, 1
-                        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                        font_size: app.Configuration.GetElementValue('ElementInListFontSize')
+                        radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
             
+            Label:
+                id: TransactionListLabel
+                size_hint: 0.6, None
+                font_name: 'Candarab'
+                font_size: 25
+                height: "40dp" 
+                halign: 'left'
+                text: 'TRANSACTION IN'
+
+            Button:
+                text: 'ADD TRANSACTION'
+                size_hint: 0.15, None
+                height: "40dp" 
+                background_color: 0,0,0,0
+                on_release: root.OpenAddTransactionPopup()
+                font_name: 'Candarab'
+                font_size: 16
+                canvas.before:
+                    Color:
+                        rgba: app.Configuration.GetElementValue('WindowBackgroundColor') 
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+
+        # Scroll View Transaction
+        ScrollView:
+            bar_inactive_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
+            bar_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
+            id: TransactionScrollView
+
+            # Box containing Box Layout
             BoxLayout:
-                id: AssetsTransactionHeader
+                id: TransactionListBoxLayout
                 orientation: 'vertical'
                 size_hint: 1, None
-                spacing: "0dp"
                 height: self.minimum_height
+                padding: ("0dp", "0dp", "0dp", "0dp")
+                spacing: "0dp"
+   
+
+        # # Menu Buttons for navigation
+        # BoxLayout:
+        #     orientation: 'horizontal' 
+        #     size_hint: 0.2, None
+        #     pos_hint: {'x' : 0.4}
+        #     height: self.minimum_height
+
+        #     Button:
+        #         text: '<'
+        #         size_hint: 0.15, None
+        #         height: "40dp" 
+        #         background_color: 0,0,0,0
+        #         font_name: 'Candarab'
+        #         font_size: 16
+        #         canvas.before:
+        #             Color:
+        #                 rgba: app.Configuration.GetElementValue('WindowBackgroundColor') 
+        #             RoundedRectangle:
+        #                 pos: self.pos
+        #                 size: self.size
+        #                 radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+            
+        #     Label:
+        #         size_hint: 0.6, None
+        #         font_name: 'Candarab'
+        #         font_size: 25
+        #         height: "40dp" 
+        #         halign: 'left'
+        #         text: 'PAGE 1'
+
+        #     Button:
+        #         text: '>'
+        #         size_hint: 0.15, None
+        #         height: "40dp" 
+        #         background_color: 0,0,0,0
+        #         font_name: 'Candarab'
+        #         font_size: 16
+        #         canvas.before:
+        #             Color:
+        #                 rgba: app.Configuration.GetElementValue('WindowBackgroundColor') 
+        #             RoundedRectangle:
+        #                 pos: self.pos
+        #                 size: self.size
+        #                 radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+        
             
