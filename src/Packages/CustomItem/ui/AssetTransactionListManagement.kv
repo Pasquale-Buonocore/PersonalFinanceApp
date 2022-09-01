@@ -6,7 +6,7 @@
     orientation: 'horizontal'
 
     Label: 
-        text: 'THIS PORTFOLIO HAS NOT ASSETS! ADD HERE!'
+        text: 'THIS ASSET HAS NOT TRANSACTION!'
         text_size: self.width, None
         size: self.texture_size
         font_name: app.Configuration.GetElementValue('PopupTitleFontName')
@@ -163,45 +163,52 @@
             pos: self.pos
             size: self.size
 
-    # Asset Name - x: 0.2
+    # Date - x: 0.2
     Label: 
-        text: 'Asset Name'
+        text: 'Date'
         size_hint: 0.2, 1
         font_name: app.Configuration.GetElementValue('PopupTitleFontName')
         font_size: app.Configuration.GetElementValue('ElementInAssetListFontSize')
     
-    # Current Price - x: 0.14
+    # Price Per Coin - x: 0.1
     Label: 
-        text: 'Current Price'
-        size_hint: 0.14, 1 
+        text: 'Price Per Coin'
+        size_hint: 0.1, 1 
         font_name: app.Configuration.GetElementValue('PopupTitleFontName')
         font_size: app.Configuration.GetElementValue('ElementInAssetListFontSize')
 
-    # Holding - x: 0.14
+    # Amount - x: 0.1
     Label: 
-        text: 'Holding'
-        size_hint: 0.14, 1
+        text: 'Amount'
+        size_hint: 0.1, 1
         font_name: app.Configuration.GetElementValue('PopupTitleFontName')
         font_size: app.Configuration.GetElementValue('ElementInAssetListFontSize')
 
-    # Average Price - x: 0.14
+    # Paying Account - x: 0.1
     Label: 
-        text: 'Average Price'
-        size_hint: 0.14, 1
+        text: 'Paying Account'
+        size_hint: 0.1, 1
         font_name: app.Configuration.GetElementValue('PopupTitleFontName')
         font_size: app.Configuration.GetElementValue('ElementInAssetListFontSize')
 
-    # Total Value - x: 0.14
+    # Storing Account - x: 0.1
     Label: 
-        text: 'Total Value'
-        size_hint: 0.14, 1
+        text: 'Storing Account'
+        size_hint: 0.1, 1
         font_name: app.Configuration.GetElementValue('PopupTitleFontName')
         font_size: app.Configuration.GetElementValue('ElementInAssetListFontSize')
 
-    # Total Profit - x: 0.14
+    # Fees - x: 0.1
     Label: 
-        text: 'Total Profit'
-        size_hint: 0.14, 1
+        text: 'Fees'
+        size_hint: 0.1, 1
+        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration.GetElementValue('ElementInAssetListFontSize')
+        
+    # Note - x: 0.2
+    Label: 
+        text: 'Note'
+        size_hint: 0.1, 1
         font_name: app.Configuration.GetElementValue('PopupTitleFontName')
         font_size: app.Configuration.GetElementValue('ElementInAssetListFontSize')
 

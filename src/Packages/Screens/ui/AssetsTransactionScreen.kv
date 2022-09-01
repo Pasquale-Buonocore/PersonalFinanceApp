@@ -14,7 +14,7 @@
         BoxLayout:
             id: AssetTransactionDashboardBoxLayoutResume
             orientation: 'vertical'
-            size_hint: 1, 0.3
+            size_hint: 1, 0.35
 
             canvas:
                 Color:
@@ -71,7 +71,7 @@
         BoxLayout:
             id: AssetMainListBoxLayout
             orientation: 'vertical'
-            size_hint: 1, 0.7
+            size_hint: 1, 0.65
 
             canvas:
                 Color:
@@ -84,7 +84,7 @@
             BoxLayout:
                 orientation: 'horizontal'
                 size_hint: 1, 0.13
-                padding: ("15dp", "15dp", "15dp", "15dp")
+                padding: ("40dp", "15dp", "15dp", "15dp")
                 
                 # Lable Title 
                 Label:
@@ -126,7 +126,7 @@
 
                     # ASSETS BOX LAYOUT #
                     BoxLayout:
-                        id: AssetsHeader
+                        id: AssetsTransactionHeader
                         orientation: 'vertical'
                         size_hint: 1, None
                         height: self.minimum_height

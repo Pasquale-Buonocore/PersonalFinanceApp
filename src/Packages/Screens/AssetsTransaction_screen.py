@@ -3,6 +3,7 @@ import Packages.CustomItem.Popup.AddAssetTransactionPopup as AddAssetTransaction
 import Packages.CustomItem.Popup.RemoveTransactionPopup as RemoveTransactionPopup
 import Packages.CustomItem.CustomGraphicItem as cst_item
 import Packages.DatabaseMng.PortfolioManager as db_manager
+from Packages.CustomItem.Lists.AssetTransactionListManagement import *
 from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.screenmanager import Screen
 
@@ -30,7 +31,7 @@ class AssetsTransactionScreen(Screen):
         self.ids['DashboardTitle'].text = self.AssetName.upper() + ' TRANSACTION HISTORY IN ' + self.PortfolioName.upper() + ' [' + self.FromScreenName.upper() + ']'
 
         # Update Screen
-        # self.UpdateListOfTransaction()
+        self.UpdateListOfTransaction()
 
         # Update Dashboard
         # self.UpdateDashboard()
@@ -49,44 +50,37 @@ class AssetsTransactionScreen(Screen):
     
     # Update list of transaction
     def UpdateListOfTransaction(self):
-        # Store the first Item and second Item containing:
-        First_widget = self.ids[self.ScreenToUpdate].children[-1] # contains the first row of Return to Asset, Title, Add new Transaction
-        Second_widget = self.ids[self.ScreenToUpdate].children[-2] # Contains dashboard
-        Third_widget = self.ids[self.ScreenToUpdate].children[-3] # Contains the label of title 
-
-        # Store the BoxLayout containg the portfolios Relative layout
-        Fourth_widget = self.ids[self.ScreenToUpdate].children[-4]  
-        Fourth_widget.clear_widgets()
-
         # Clear the Item inside the BoxLayout (Keep the first element only)
         self.ids[self.ScreenToUpdate].clear_widgets()
 
-        # Add the first and second item again
-        self.ids[self.ScreenToUpdate].add_widget(First_widget)
-        self.ids[self.ScreenToUpdate].add_widget(Second_widget)
-        self.ids[self.ScreenToUpdate].add_widget(Third_widget)
-        self.ids[self.ScreenToUpdate].add_widget(Fourth_widget)
+        self.ids[self.ScreenToUpdate].add_widget(AssetTransactionLineSeparator())
+        self.ids[self.ScreenToUpdate].add_widget(AssetTransactionRowBoxLayout_Title())
+    
 
         # Then, known the PortfolioName, AssetName and having the DB, let's get all transactions
         Transactions_json = self.DBManager.ReadJson()[self.PortfolioName]['Assets'][self.AssetName]['Transactions']
-
-        # Get the Currency of such Portfolio
         Currency_str = self.DBManager.ReadJson()[self.PortfolioName]['Statistics']['Currency']
-
-        # Size dello ScreenManager
-        ScreenManagerSize_x = self.parent.size[0]
-        BoxLayoutPadding_ls= self.children[0].children[0].padding[0]
-        BoxLayoutPadding_rs = self.children[0].children[0].padding[2]
-        text_size = ScreenManagerSize_x - BoxLayoutPadding_ls - BoxLayoutPadding_rs
 
         if len(Transactions_json.keys()):
             # Add an item for each portfolio
             for TransactionKey in list(Transactions_json.keys())[::-1]:
-                # Compute the graphic element to Add given the AssetName and its statistics
-                self.ids[self.ScreenToUpdate].children[0].add_widget(self.DefineFullTransaction(textsize = text_size, TransactionDict = Transactions_json[TransactionKey], Index = TransactionKey , Currency = Currency_str))
+                self.ids[self.ScreenToUpdate].add_widget(AssetTransactionLineSeparator())
+
+                # Compute the graphic element to Add given the PortfolioName and its statistics
+                RelLayout = RelativeLayout()
+                RelLayout.size_hint = [1, None]
+                RelLayout.height = MDApp.get_running_app().Configuration.GetElementValue('AssetRowBoxLayoutHeight')
+                RelLayout.add_widget(AssetTransactionRowButton())
+                # AssetProperties = Assets_json[asset]['Statistics']
+                # AssetProperties.update({'AssetName' : asset})
+                # AssetProperties.update({'Currency' : Currency_str})
+                RelLayout.add_widget(AssetTransactionRowBoxLayout())
+                self.ids[self.ScreenToUpdate].add_widget((RelLayout))
+            
+            self.ids[self.ScreenToUpdate].add_widget(AssetTransactionLineSeparator())
         else:
             # Add empty item
-            self.ids[self.ScreenToUpdate].children[0].add_widget(self.DefineEmptyTransaction(textsize = text_size))
+            self.ids[self.ScreenToUpdate].add_widget(AssetTransactionRowBoxLayout_Empty())
 
     # Update the dashboard
     def UpdateDashboard(self):
