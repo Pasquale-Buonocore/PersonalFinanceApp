@@ -1,0 +1,53 @@
+{
+      "IN": {
+            "Assets": {
+                  "Stipendio": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0.0
+                        }
+                  },
+                  "Ripetizioni": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0.0
+                        }
+                  },
+                  "Defi Elrond": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  },
+                  "De Fi Cosmos": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  }
+            },
+            "Statistics": {
+                  "Currency": "\u20ac",
+                  "NumberOfTransaction": 0,
+                  "TotalValue": 0.0,
+                  "ActualAssetAllocation": {
+                        "Stipendio": 0.0,
+                        "Ripetizioni": 0.0,
+                        "Defi Elrond": 0.0,
+                        "De Fi Cosmos": 0.0
+                  },
+                  "DesiredAssetAllocation": {
+                        "Stipendio": 0,
+                        "Ripetizioni": 100,
+                        "Defi Elrond": 50,
+                        "De Fi Cosmos": 10
+                  }
+            }
+      },
+      "IN_LIST": {
+            "Transactions": {},
+            "Statistics": {
+                  "Total": {}
+            }
+      }
+}

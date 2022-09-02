@@ -3,29 +3,39 @@
             "SubAccount": {
                   "Cash": {
                         "USD": {
-                              "Amount": 200,
-                              "Currency": "$"
+                              "TotalAmount": 200,
+                              "Currency": "$",
+                              "Base": 200,
+                              "Contributors": {}
                         },
                         "USDT": {
-                              "Amount": 200,
-                              "Currency": "$"
+                              "TotalAmount": 200,
+                              "Currency": "$",
+                              "Base": 200,
+                              "Contributors": {}
                         },
                         "USDC": {
-                              "Amount": 200,
-                              "Currency": "$"
+                              "TotalAmount": 200,
+                              "Currency": "$",
+                              "Base": 200,
+                              "Contributors": {}
                         },
                         "EURO": {
-                              "Amount": 150,
-                              "Currency": "\u20ac"
+                              "TotalAmount": 150,
+                              "Currency": "\u20ac",
+                              "Base": 150,
+                              "Contributors": {}
                         },
                         "RUBLO": {
-                              "Amount": 1900,
-                              "Currency": "R"
+                              "TotalAmount": 1900,
+                              "Currency": "R",
+                              "Base": 190,
+                              "Contributors": {}
                         }
                   },
                   "Assets": {
                         "APPL Stock": {
-                              "Amount": 5,
+                              "TotalAmount": 5,
                               "TotalValue": 1300,
                               "Symbol": "APPL",
                               "Currency": "$"
@@ -37,12 +47,16 @@
                   "LastMonthSubAccount": {
                         "Cash": {
                               "USD": {
-                                    "Amount": 200,
-                                    "Currency": "$"
+                                    "TotalAmount": 200,
+                                    "Currency": "$",
+                                    "Base": 200,
+                                    "Contributors": {}
                               },
                               "EURO": {
-                                    "Amount": 150,
-                                    "Currency": "\u20ac"
+                                    "TotalAmount": 150,
+                                    "Currency": "\u20ac",
+                                    "Base": 200,
+                                    "Contributors": {}
                               }
                         },
                         "Assets": {}
@@ -56,17 +70,21 @@
             "SubAccount": {
                   "Cash": {
                         "DAI": {
-                              "Amount": 200,
-                              "Currency": "$"
+                              "TotalAmount": 200,
+                              "Currency": "$",
+                              "Base": 200,
+                              "Contributors": {}
                         },
                         "USDC": {
-                              "Amount": 200,
-                              "Currency": "$"
+                              "TotalAmount": 200,
+                              "Currency": "$",
+                              "Base": 200,
+                              "Contributors": {}
                         }
                   },
                   "Assets": {                        
                         "Bitcoin": {
-                              "Amount": 5,
+                              "TotalAmount": 5,
                               "TotalValue": 1300,
                               "Symbol": "APPL",
                               "Currency": "$"
@@ -77,12 +95,16 @@
                   "LastMonthSubAccount": {
                         "Cash": {
                               "USD": {
-                                    "Amount": 200,
-                                    "Currency": "$"
+                                    "TotalAmount": 200,
+                                    "Currency": "$",
+                                    "Base": 200,
+                                    "Contributors": {}
                               },
                               "EURO": {
-                                    "Amount": 150,
-                                    "Currency": "\u20ac"
+                                    "TotalAmount": 150,
+                                    "Currency": "\u20ac",
+                                    "Base": 200,
+                                    "Contributors": {}
                               }
                         },
                         "Assets": {}

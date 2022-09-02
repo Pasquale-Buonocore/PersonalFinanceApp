@@ -139,7 +139,7 @@ class PortfoliosManager_Class():
         # Save new Json file
         self.SaveJsonFile(json_object)
     
-    # Initialize a new portfolio structure - TESTED
+    # Initialize a new portfolio structure used in investment- TESTED
     def InitializeNewPortfolio(self, PortfolioName, PortfolioInitList = ['$', 1000, 8, 230]): 
         # A new portfolio will contains two dictionary 1) Assets and Statistics
         Asset = {'Assets': {}}
@@ -159,7 +159,7 @@ class PortfoliosManager_Class():
         NewPortfolioDict[PortfolioName].update(Statistic)
         return NewPortfolioDict
 
-    # Initialize a new portfolio for transaction
+    # Initialize a new portfolio for transaction divided by category used to track expences and earning
     def InitializeTransactionPortfolio(self, PortfolioName, PortfolioInitList):
         Asset = {'Assets': {}}
 
@@ -174,6 +174,16 @@ class PortfoliosManager_Class():
         NewPortfolioDict = {PortfolioName : {}}
         NewPortfolioDict[PortfolioName].update(Asset)
         NewPortfolioDict[PortfolioName].update(Statistic)
+        return NewPortfolioDict
+    
+    # Initialize a new portfolio for transaction list used to track expences and earning
+    def InitializeTransactionListPortfolio(self, PortfolioName):
+        Statistics = {'Total' : {}}
+
+        NewPortfolioDict = {PortfolioName : {}}
+        NewPortfolioDict[PortfolioName].update({'Transactions' : {}})
+        NewPortfolioDict[PortfolioName].update({'Statistics' : Statistics})
+
         return NewPortfolioDict
 
     # Read Portfolio - TESTED 

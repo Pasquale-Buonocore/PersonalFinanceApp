@@ -13,9 +13,11 @@ class TransactionScreen(Screen):
         super().__init__(**kwargs)
 
         # Initialize the manager of the json manager
-        self.DBManager = db_manager.PortfoliosManager_Class(db_manager.path_manager.database_path,db_manager.path_manager.Transaction_path)
+        self.TransactionIn = db_manager.PortfoliosManager_Class(db_manager.path_manager.database_path,db_manager.path_manager.TransactionIn_path)
+        self.TransactionOut = db_manager.PortfoliosManager_Class(db_manager.path_manager.database_path,db_manager.path_manager.TransactionOut_path)
         self.Image_path_manager = path_manager.PathImage_Class()
-        self.CheckTransactionPortfolio()
+        self.CheckTransactionPortfolio(Database = self.TransactionIn, Name = "IN")
+        self.CheckTransactionPortfolio(Database = self.TransactionOut, Name = "OUT")
 
         # Define portfolios images name
         self.TransactionInImagePath = self.Image_path_manager.TransactionIn_imagepath
@@ -23,10 +25,12 @@ class TransactionScreen(Screen):
 
     def UpdateScreen(self):
         # Update statistics for all portfolios
-        self.DBManager.UpdateAllTransactionPortfolioStatistics()
+        self.TransactionIn.UpdateTransactionPortfolio("IN")
+        self.TransactionOut.UpdateTransactionPortfolio("OUT")
 
         # Update graph for output and inpuy transaction
-        self.color_list = self.UpdateGraphs()
+        self.color_list_IN = self.UpdateGraphs({"IN" : self.TransactionIn.ReadJson()["IN"]}, self.TransactionInImagePath)
+        self.color_list_OUT = self.UpdateGraphs({ "OUT" : self.TransactionOut.ReadJson()["OUT"]}, self.TransactionOutImagePath)
 
         # Assign the correct image of graphs
         self.ids.GraphTransactionIn.source = self.Image_path_manager.image_basepath + self.Image_path_manager.TransactionIn_imagepath + '.png'
@@ -37,47 +41,54 @@ class TransactionScreen(Screen):
         self.ids.GraphTransactionIn.reload()
 
         # Update tables
-        self.UpdateAssetAllocationTable(color_list = self.color_list)
+        # self.UpdateAssetAllocationTable(color_list = [self.color_list_IN, self.color_list_OUT])
 
     ####################
     # CLASS MANAGEMENT #
     ####################
 
     # Check if portfolios "TRANSACTION IN" and  "TRANSACTION OUT" exist in the database
-    def CheckTransactionPortfolio(self):
-        # Future update will consider the possibility to have multiple transaction portfolio
-        for PortfolioName in ["IN", "OUT"]:
-            if PortfolioName not in self.DBManager.ReadJson().keys():
-                NewPftl = self.DBManager.InitializeTransactionPortfolio(PortfolioName, ['€', 0])
-                self.DBManager.AddPortfolio(NewPftl)
+    def CheckTransactionPortfolio(self, Database, Name):
+        # Define boolean
+        Is_present = False
+        LIST_is_present = False
+
+        for PortfolioName in Database.ReadJson().keys():
+            # Check if it is the portfolio whose entry are the caterogy of transaction
+            if PortfolioName == Name: Is_present = True
+            # Check if it is the portfolio whose entry are the transaction
+            elif PortfolioName == (Name + "_LIST"): LIST_is_present = True
+            # Otherwise remove it
+            else: Database.RemovePortfolio(PortfolioName)
+
+        if not Is_present: Database.AddPortfolio(Database.InitializeTransactionPortfolio(Name, ['€', 0]))
+        if not LIST_is_present: Database.AddPortfolio(Database.InitializeTransactionListPortfolio(Name + "_LIST"))
 
     # Move to the transaction list
-    def MoveToTransactionScreen(self, direction = 'IN'):
+    def MoveToTransactionScreen(self, direction = 'IN', Database = {}):
         ScreenManager = self.parent
         ScreenManager.current = 'TRANSACTION LIST'
-        ScreenManager.current_screen.UpdateScreen(portfolio = direction, Database = self.DBManager)
+        ScreenManager.current_screen.UpdateScreen(portfolio = direction, Database = Database)
 
     # Open to popup which allows to see and modify the class of transaction
-    def ModifyCategory(self, type = 'IN'):
+    def ModifyCategory(self, type = 'IN', Database = ''):
         # Open the popup that will allow to Modify the category      
-        ModifyClassesPopup = trans_popup.TransactionCategoryListPopup(transaction_type = type, DBManager = self.DBManager)
+        ModifyClassesPopup = trans_popup.TransactionCategoryListPopup(transaction_type = type, DBManager = Database)
         ModifyClassesPopup.open()
 
     # Updates graph
-    def UpdateGraphs(self):
-        Portfolios = self.DBManager.ReadJson()
+    def UpdateGraphs(self, Portfolio, Image_path):
         color_list = []
-        Image_path_list = [self.TransactionOutImagePath, self.TransactionInImagePath]
 
         # Update transaction In graph
-        for type in Portfolios.keys():
-            ListOfAssetsPass = list(Portfolios[type]['Assets'].keys())
+        for type in Portfolio.keys():
+            ListOfAssetsPass = list(Portfolio[type]['Assets'].keys())
             ListOfAssetValuePass = []
 
             for Asset in ListOfAssetsPass:
-                ListOfAssetValuePass.append(Portfolios[type]['Assets'][Asset]['Statistics']['TotalValue'])
+                ListOfAssetValuePass.append(Portfolio[type]['Assets'][Asset]['Statistics']['TotalValue'])
 
-            color_list.append(AssetDistributionGraph(ListOfAssets = ListOfAssetsPass, ListOfAssetValue = ListOfAssetValuePass, image_name = Image_path_list.pop()))
+            color_list.append(AssetDistributionGraph(ListOfAssets = ListOfAssetsPass, ListOfAssetValue = ListOfAssetValuePass, image_name = Image_path))
 
         # return color of the graphs
         return color_list

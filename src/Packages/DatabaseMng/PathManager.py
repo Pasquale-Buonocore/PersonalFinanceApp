@@ -6,7 +6,8 @@ class PathManager_Class():
     database_path = 'Database/'
 
     ### path ###
-    Transaction_path = 'Transaction.json'
+    TransactionIn_path = 'TransactionIn.json'
+    TransactionOut_path = 'TransactionOut.json'
     ETF_ETC_path = 'ETF_ETC.json'
     Stocks_path = 'Stocks.json'
     Bonds_path = 'Bonds.json'

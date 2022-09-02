@@ -47,7 +47,7 @@
                     text: 'MODIFY CATEGORY'
                     size_hint: 0.15, 1
                     background_color: 0,0,0,0
-                    on_release: root.ModifyCategory('IN')
+                    on_release: root.ModifyCategory('IN', root.TransactionIn)
                     font_name: 'Candarab'
                     font_size: 16
                     
@@ -63,7 +63,7 @@
                     text: 'VIEW TRANSACTIONS'
                     size_hint: 0.15, 1
                     background_color: 0,0,0,0
-                    on_release: root.MoveToTransactionScreen('IN')
+                    on_release: root.MoveToTransactionScreen('IN', root.TransactionIn)
                     font_name: 'Candarab'
                     font_size: 16
                     canvas.before:
@@ -191,7 +191,7 @@
                     text: 'MODIFY CATEGORY'
                     size_hint: 0.15, 1
                     background_color: 0,0,0,0
-                    on_release: root.ModifyCategory('OUT')
+                    on_release: root.ModifyCategory('OUT', root.TransactionOut)
                     font_name: 'Candarab'
                     font_size: 16
                     canvas.before:
@@ -206,7 +206,7 @@
                     text: 'VIEW TRANSACTIONS'
                     size_hint: 0.15, 1
                     background_color: 0,0,0,0
-                    on_release: root.MoveToTransactionScreen('OUT')
+                    on_release: root.MoveToTransactionScreen('OUT', root.TransactionOut)
                     font_name: 'Candarab'
                     font_size: 16
                     canvas.before:

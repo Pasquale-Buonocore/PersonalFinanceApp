@@ -104,8 +104,7 @@ class AccountsManager_Class():
 
     # Return a dict with "cash" and "Asset" subaccount - TESTED
     def InitializeNewSubAccount(self, LastMonthSubAccount = {}):
-        if LastMonthSubAccount:
-            return LastMonthSubAccount
+        if LastMonthSubAccount: return LastMonthSubAccount
 
         return {'Cash': {}, 'Assets': {}}
 
@@ -128,7 +127,7 @@ class AccountsManager_Class():
     ###########################
 
     # Add a cash subaccount category - TESTED
-    def AddCashSubAccountCategory(self, AccountName, CashCategory, Amount, Currency):
+    def AddCashSubAccountCategory(self, AccountName, CashCategory, Amount, Symbol):
         # Read json
         json_object = self.ReadJson()
         
@@ -140,7 +139,7 @@ class AccountsManager_Class():
             print('The '+ CashCategory + ' cash category already exist. Use the "UpdateCashSubAccount" function to modify it. Exiting...')
             return
  
-        json_object[AccountName]['SubAccount']['Cash'].update({CashCategory: {'Amount' : Amount, 'Currency' : Currency}})
+        json_object[AccountName]['SubAccount']['Cash'].update({CashCategory: {'TotalAmount' : Amount, 'Symbol' : Symbol, 'TotalValue' : 0, 'Base': Amount , 'Contributors': {}}})
 
         # Save new json file
         self.SaveJsonFile(json_object)
@@ -168,7 +167,7 @@ class AccountsManager_Class():
         self.SaveJsonFile(json_object)
 
     # Add an Asset category - TESTED
-    def AddAssetSubAccountCategory(self, AccountName, AssetCategory, Amount, TotalValue, Symbol, Currency):
+    def AddAssetSubAccountCategory(self, AccountName, AssetCategory, Amount, TotalValue, Symbol):
         # Read json
         json_object = self.ReadJson()
         
@@ -180,7 +179,7 @@ class AccountsManager_Class():
             print('The '+ AssetCategory + ' cash category already exist. Use the "UpdateAssetSubAccount" function to modify it. Exiting...')
             return
  
-        json_object[AccountName]['SubAccount']['Assets'].update({AssetCategory: {'Amount' : Amount, 'TotalValue': TotalValue, 'Symbol' : Symbol,'Currency' : Currency}})
+        json_object[AccountName]['SubAccount']['Assets'].update({AssetCategory: {'TotalAmount' : Amount, 'Symbol' : Symbol, 'TotalValue': TotalValue, 'Base' : Amount, 'Contributors' : {}}})
 
         # Save new json file
         self.SaveJsonFile(json_object)

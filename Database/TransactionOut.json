@@ -1,0 +1,61 @@
+{
+      "OUT": {
+            "Assets": {
+                  "Bollette": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  },
+                  "Benzina": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  },
+                  "Alimenti": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  },
+                  "Regali": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  },
+                  "Uscite Fuori": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  }
+            },
+            "Statistics": {
+                  "Currency": "\u20ac",
+                  "NumberOfTransaction": 0,
+                  "TotalValue": 0.0,
+                  "ActualAssetAllocation": {
+                        "Bollette": 0.0,
+                        "Benzina": 0.0,
+                        "Alimenti": 0.0,
+                        "Regali": 0.0,
+                        "Uscite Fuori": 0.0
+                  },
+                  "DesiredAssetAllocation": {
+                        "Bollette": 100,
+                        "Benzina": 120,
+                        "Alimenti": 5,
+                        "Regali": 50,
+                        "Uscite Fuori": 50
+                  }
+            }
+      },
+      "OUT_LIST": {
+            "Transactions": {},
+            "Statistics": {
+                  "Total": {}
+            }
+      }
+}

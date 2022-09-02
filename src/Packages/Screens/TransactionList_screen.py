@@ -28,6 +28,7 @@ class TransactionListScreen(Screen):
 
     # Update the list of transaction given the portafolio name
     def UpdateListOfTransaction(self):
+        return
         json_file = self.DBManager.ReadJson()
 
         for asset in json_file[self.portfolio]['Assets'].keys():
