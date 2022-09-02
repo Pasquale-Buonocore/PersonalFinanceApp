@@ -22,27 +22,36 @@ class TransactionListScreen(Screen):
         self.ids.TransactionListLabel.text = 'TRANSACTION ' + portfolio.upper()
         self.DBManager = Database
         self.portfolio = portfolio
+        self.portfolio_list = portfolio + '_LIST'
 
         # Update Screen
         self.UpdateListOfTransaction()
 
     # Update the list of transaction given the portafolio name
     def UpdateListOfTransaction(self):
-        return
         json_file = self.DBManager.ReadJson()
 
-        for asset in json_file[self.portfolio]['Assets'].keys():
-            for transaction_idx in json_file[self.portfolio]['Assets'][asset]['Transactions']:
-                transaction = json_file[self.portfolio]['Assets'][asset]['Transactions'][transaction_idx]
-                # Get the Currency of such transaction
-                Currency_str = transaction['Currency']
+        self.ids[self.ScreenToUpdate].clear_widgets()
 
-                # Append to the transaction list
-                self.ids[self.ScreenToUpdate].add_widget(self.DefineFullTransaction(textsize = text_size, asset = asset, TransactionDict = transaction, Index = transaction_idx , Currency = Currency_str))
-    
-        if not len(self.ids[self.ScreenToUpdate].children):
-            # Add empty item to the widget
-            self.ids[self.ScreenToUpdate].add_widget(self.DefineEmptyTransaction(textsize = text_size))
+        self.ids[self.ScreenToUpdate].add_widget(TransactionInOutLineSeparator())
+        self.ids[self.ScreenToUpdate].add_widget(TransactionInOutRowBoxLayout_Title())
+
+        for transaction_idx in json_file[self.portfolio_list]['Transactions'].keys():
+            self.ids[self.ScreenToUpdate].add_widget(TransactionInOutLineSeparator())
+            # Extract the transaction to show
+            transaction = json_file[self.portfolio_list]['Transactions'][transaction_idx]
+            
+            # Get the Currency of such transaction
+            Currency_str = transaction['Currency']
+
+            # Append to the transaction list
+            self.ids[self.ScreenToUpdate].add_widget()
+
+        # Add final separator
+        self.ids[self.ScreenToUpdate].add_widget(TransactionInOutLineSeparator())
+
+        # Add empty item to the widget
+        if not len(self.ids[self.ScreenToUpdate].children): self.ids[self.ScreenToUpdate].add_widget(TransactionInOutRowBoxLayout_Empty)
                 
 
     ####################

@@ -5,6 +5,7 @@ from Packages.DatabaseMng.JsonManager import JsonManager_Class
 from Packages.DatabaseMng.PathManager import PathManager_Class
 from Packages.CustomItem.Popup.AddFeePopup import AddFeePopup
 from Packages.CustomItem.Popup.AddNotePopup import AddNotePopup
+from Packages.CustomFunction.CustomFunction import verify_numeric_float_string
 from kivy.lang import Builder
 from kivy.uix.screenmanager import Screen
 from Packages.CustomFunction.HoverClass import *
@@ -13,7 +14,6 @@ from kivy.properties import ColorProperty
 from Packages.CustomItem.DataPicker.CustomDataPickerItem import CustomMDDatePicker
 from Packages.CustomItem.Popup.SelectAccountPopup import SelectAccountPopup
 import datetime as dt
-from kivymd.app import MDApp
 
 # Designate Out .kv design file
 Builder.load_file('Packages/CustomItem/ui/AddAssetTransactionPopup.kv')
@@ -275,14 +275,12 @@ class BuySellScreen(Screen):
         # Extract Quantity 
         if ('%s' % self.ids['QuantityValue'].text).replace('.','').replace(',','').isnumeric():
             # Check correctness
-            Quantity = self.ids['QuantityValue'].text.replace(',','.')
+            Quantity = verify_numeric_float_string(self.ids['QuantityValue'].text)
 
-            counter = Quantity.count('.')
-            while counter > 1:
-                Quantity = Quantity.replace('.','',1)
-                counter = Quantity.count('.')
-                self.ids['QuantityValue'].text = Quantity
-    
+            # Update string in GUI
+            self.ids['QuantityValue'].text = Quantity
+
+            # Convert into float
             Quantity = float(Quantity)
         else:
             self.ids['QuantityValue'].text = '0.0'
@@ -290,13 +288,13 @@ class BuySellScreen(Screen):
 
         # Extract Prince Per Coint
         if ('%s' % self.ids['PricePerCoinValue'].text).replace('.','').replace(',','').isnumeric():
-            PricePerCoin = self.ids['PricePerCoinValue'].text.replace(',','.')
+            # Check correctness
+            PricePerCoin = verify_numeric_float_string(self.ids['PricePerCoinValue'].text)
 
-            counter = PricePerCoin.count('.')
-            while counter > 1:
-                PricePerCoin = PricePerCoin.replace('.','',1)
-                counter = PricePerCoin.count('.')
-                self.ids['PricePerCoinValue'].text = PricePerCoin
+            # Update string in GUI
+            self.ids['PricePerCoinValue'].text = PricePerCoin
+
+            # Convert into float
             PricePerCoin = float(PricePerCoin)
         else:
             self.ids['PricePerCoinValue'].text = '0.0' + self.parent.parent.parent.parent.Currency

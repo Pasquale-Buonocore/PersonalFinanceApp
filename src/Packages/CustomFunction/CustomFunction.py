@@ -12,3 +12,15 @@ def ReturnJsonPathGivenScreenName(ScreenName):
         return db_manager.path_manager.Commodities_path
     if ScreenName == 'CRYPTO':
         return db_manager.path_manager.Crypto_path
+
+
+def verify_numeric_float_string(numeric_string):
+    # first substitute ',' with '.'
+    numeric_string = numeric_string.replace(',','.')
+
+    counter = numeric_string.count('.')
+    while counter > 1:
+        numeric_string = numeric_string.replace('.','',1)
+        counter = numeric_string.count('.')
+    
+    return numeric_string
