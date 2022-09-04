@@ -9,7 +9,8 @@ from Packages.CustomFunction.HoverClass import *
 from kivy.uix.button import Button
 from Packages.CustomFunction.CustomFunction import verify_numeric_float_string
 from Packages.CustomItem.DataPicker.CustomDataPickerItem import CustomMDDatePicker
-from Packages.CustomItem.Popup.SelectAccountPopup import SelectAccountPopup
+from Packages.CustomItem.Popup.SelectAccountPopup import SelectAccountPopupTransaction
+from Packages.CustomItem.Popup.SelectTransactionCategory import SelectTransactionCategory
 from kivy.properties import ColorProperty
 
 # Designate Out .kv design file
@@ -53,10 +54,12 @@ class AddTransactionInOutPopup(ModalView):
         # Define popup internal signals
         self.title = title_str
         self.SelectedPayingAccount = {}
+        self.SelectedCategory = ''
         self.DBManager = Database
         self.note = ''
         self.date = dt.datetime.now()
         self.Amount = '0.0'
+        self.PortfolioName = PortfolioName
 
         # Initialize the super class
         super().__init__(size_hint = (0.3,0.6))
@@ -87,9 +90,16 @@ class AddTransactionInOutPopup(ModalView):
         self.ids["PaidWithValue"].text = self.itemToMod['Paid with']
         self.ids["NoteValue"].text = self.itemToMod['Note']
 
-    def open_select_account_popup(self, title_str, type_str):
+    def open_select_category_popup(self):
+        Popup = SelectTransactionCategory(AvailableCategory = ['a','b','c'])
+        Popup.open()
 
-        Popup = SelectAccountPopup(title_str = title_str, CurrentAsset = 'USD', PortfolioCurrency = '$', type = type_str)
+    def open_select_account_popup(self):
+        # Define popup and open it
+        title_str = 'SELECT PAYING ACCOUNT' if self.PortfolioName == 'OUT' else 'SELECT EARNING ACCOUNT'
+        type_str = 'expense' if self.PortfolioName == 'OUT' else 'earning'
+
+        Popup = SelectAccountPopupTransaction(title_str = title_str, type_str = type_str)
         Popup.open()
 
     def CheckQuantityValue(self):
@@ -99,7 +109,7 @@ class AddTransactionInOutPopup(ModalView):
         # Update string in GUI
         self.ids['QuantityValue'].text = Quantity
         
-    def Confirm(self, App):
+    def AddTransaction(self, App):
         # Keep the boolean error
         string = ''
 

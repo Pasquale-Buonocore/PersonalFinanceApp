@@ -12,7 +12,7 @@ from Packages.CustomFunction.HoverClass import *
 from kivy.uix.button import Button
 from kivy.properties import ColorProperty
 from Packages.CustomItem.DataPicker.CustomDataPickerItem import CustomMDDatePicker
-from Packages.CustomItem.Popup.SelectAccountPopup import SelectAccountPopup
+from Packages.CustomItem.Popup.SelectAccountPopup import SelectAccountPopup, SelectAccountPopupInvestment
 import datetime as dt
 
 # Designate Out .kv design file
@@ -261,8 +261,7 @@ class AddAssetTransactionPopup(ModalView):
 class BuySellScreen(Screen):
 
     def open_select_account_popup(self, title_str, type_str):
-
-        Popup = SelectAccountPopup(title_str = title_str, CurrentAsset = self.parent.parent.parent.parent.AssetName, PortfolioCurrency = self.parent.parent.parent.parent.Currency, type = type_str)
+        Popup = SelectAccountPopupInvestment(title_str = title_str, CurrentAsset = self.parent.parent.parent.parent.AssetName, PortfolioCurrency = self.parent.parent.parent.parent.Currency, type = type_str)
         Popup.open()
 
     def compute_value_spent(self):
@@ -282,7 +281,7 @@ class BuySellScreen(Screen):
         self.ids['QuantityValue'].text = Quantity
 
         # Convert into float
-        Quantity = float(Quantity)
+        Quantity = float(Quantity) if Quantity else float('0.0')
 
         ##########################
         # Extract Price Per Coin #
@@ -294,7 +293,7 @@ class BuySellScreen(Screen):
         self.ids['PricePerCoinValue'].text = PricePerCoin
 
         # Convert into float
-        PricePerCoin = float(PricePerCoin)
+        PricePerCoin = float(PricePerCoin) if PricePerCoin else float('0.0')
     
         self.ids['TotalSpentValue'].text = self.parent.parent.parent.parent.Currency + str(round((Quantity * PricePerCoin), 5)) 
 

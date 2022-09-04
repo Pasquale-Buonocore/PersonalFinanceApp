@@ -62,12 +62,13 @@ class CustomScrollViewButton(Button, HoverBehavior):
         if not self.SelectedStatus:
             self.BackgroundColor = self.Configuration.GetElementValue('MenuButtonNotSelectedBackgroundColor') 
 
+# It can only be used as SUPERCLASS
 class SelectAccountPopup(ModalView):
     ##################
     # INITIALIZATION #
     ##################
     
-    def __init__(self, title_str = '', CurrentAsset = 'Bitcoin', PortfolioCurrency = '$', type = 'storing'):
+    def __init__(self, title_str = ''):
         self.Configuration = JsonManager_Class(PathManager_Class.database_path, PathManager_Class.Configuration_path)
         self.DBManager = AccountsManager_Class(PathManager_Class.database_path, PathManager_Class.Accounts_path)
         self.AvailableAccounts = list(self.DBManager.ReadJson().keys())
@@ -76,10 +77,7 @@ class SelectAccountPopup(ModalView):
         self.SubAccountScrollViewBoxLayout = 'SelectSubAccountScrollViewBoxLayout'
         self.CurrencyScrollViewBoxLayout = 'SelectCurrencyScrollViewBoxLayout'
         self.title = title_str
-        self.CurrentAsset = CurrentAsset
         self.SelectedAccount = {}
-        self.PortfolioCurrency = PortfolioCurrency
-        self.type = type
         super().__init__(size_hint = (0.4,0.4))
 
         # Initialize popup
@@ -115,8 +113,30 @@ class SelectAccountPopup(ModalView):
         # Update the SubAccountScrollView
         self.PopulateScrollView(ScrollViewId = self.SubAccountScrollViewBoxLayout, ScrollViewButtonList = list(self.DBManager.ReadJson()[AccountName]["SubAccount"].keys()))
         
-        # Update the CurrencyScrollView
+        # Update the CurrencyScrollView - Need to be initialized outside!
         self.UpdateCurrencyScrollView(SubAccountName = list(self.DBManager.ReadJson()[AccountName]["SubAccount"].keys())[0])
+
+    def UpdateSelectedCurrency(self, Currency):
+        # Update the selected SubAccount
+        self.SelectedAccount.update({'Currency': Currency})
+        self.ids['update_message'].text = 'Correct selection! Account: ' + self.SelectedAccount['Account'] + ' - Subaccount: ' + self.SelectedAccount['SubAccount'] + ' - Currency: ' + self.SelectedAccount['Currency']
+        self.ids['Confirm'].disabled = False
+
+    #####################
+    # CLOSING FUNCTIONS #
+    #####################
+    def Cancel(self):
+        # Close popup at the end
+        self.dismiss()
+
+# Class instanciated to be son of the SelectAccountPopup Superclass 
+class SelectAccountPopupInvestment(SelectAccountPopup):
+
+    def __init__(self, title_str = '', CurrentAsset = 'Bitcoin', PortfolioCurrency = '$', type = 'storing'):
+        self.PortfolioCurrency = PortfolioCurrency
+        self.CurrentAsset = CurrentAsset
+        self.type = type
+        super().__init__(title_str = title_str)
 
     def UpdateCurrencyScrollView(self, SubAccountName):
         
@@ -161,19 +181,6 @@ class SelectAccountPopup(ModalView):
         self.ids['Confirm'].disabled = False
         self.ids['update_message'].text = 'Correct selection! Account: ' + self.SelectedAccount['Account'] + ' - Subaccount: ' + self.SelectedAccount['SubAccount'] + ' - Currency: ' + self.SelectedAccount['Currency']
         
-    def UpdateSelectedCurrency(self, Currency):
-        # Update the selected SubAccount
-        self.SelectedAccount.update({'Currency': Currency})
-        self.ids['update_message'].text = 'Correct selection! Account: ' + self.SelectedAccount['Account'] + ' - Subaccount: ' + self.SelectedAccount['SubAccount'] + ' - Currency: ' + self.SelectedAccount['Currency']
-        self.ids['Confirm'].disabled = False
-
-    #####################
-    # CLOSING FUNCTIONS #
-    #####################
-    def Cancel(self):
-        # Close popup at the end
-        self.dismiss()
-    
     def ConfirmAccount(self):
         # Save the SelectedAccount in the Popup
         if self.type == 'paying':
@@ -186,5 +193,39 @@ class SelectAccountPopup(ModalView):
         # Close popup at the end
         self.dismiss()
 
-class SelectAccountPopupInvestment(SelectAccountPopup):
-    
+# Class instanciated to be son of the SelectAccountPopup Superclass
+class SelectAccountPopupTransaction(SelectAccountPopup):
+    def __init__(self, title_str = '', type_str = ''):
+        self.type = type_str
+        super().__init__(title_str = title_str)
+
+    def UpdateCurrencyScrollView(self, SubAccountName):
+        ##################################
+        # Update the selected SubAccount #
+        ##################################
+        self.SelectedAccount.update({'SubAccount': SubAccountName})
+
+        ##################################
+        # Update the Currency ScrollView #
+        ##################################
+        CurrenciesFromDB = self.DBManager.ReadJson()[self.SelectedAccount['Account']]["SubAccount"][self.SelectedAccount['SubAccount']]
+        ListOfCurrencies = list(CurrenciesFromDB.keys())
+
+        # Operation for both
+        self.PopulateScrollView(ScrollViewId = self.CurrencyScrollViewBoxLayout, ScrollViewButtonList = ListOfCurrencies)
+
+        if not ListOfCurrencies:
+            self.ids['update_message'].text = 'There is not available ' + self.PortfolioCurrency + ' for the selected subaccount. Please choose another one!'
+            self.ids['Confirm'].disabled = True
+            return
+        
+        self.SelectedAccount.update({'Currency': ListOfCurrencies[0]})
+        self.ids['Confirm'].disabled = False
+        self.ids['update_message'].text = 'Correct selection! Account: ' + self.SelectedAccount['Account'] + ' - Subaccount: ' + self.SelectedAccount['SubAccount'] + ' - Currency: ' + self.SelectedAccount['Currency']
+        
+    def ConfirmAccount(self):
+        self.parent.children[1].ids['PayingAccountString'].text = self.SelectedAccount['Account'] + ' - ' + self.SelectedAccount['SubAccount'] + ' - ' +self.SelectedAccount['Currency']
+        self.parent.children[1].SelectedPayingAccount = self.SelectedAccount
+
+        # Close popup at the end
+        self.dismiss()

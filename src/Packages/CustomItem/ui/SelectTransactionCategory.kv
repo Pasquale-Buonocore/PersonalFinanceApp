@@ -1,0 +1,124 @@
+#:kivy 1.0.9
+
+<CustomCategoryViewButton>:
+    id: ButtonToPress
+    font_name: app.Configuration.GetElementValue('ProfileNameFontName')
+    font_size: app.Configuration.GetElementValue('ProfileNameFontSize')
+    background_color: app.Configuration.GetElementValue('TransparentBackgroundColor') 
+    canvas.before:
+        Color:
+            rgba: root.BackgroundColor
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+
+<SelectTransactionCategory>:
+    background_color: 0,0,0,0
+    overlay_color: 0,0,0,0
+    padding: app.Configuration.GetElementValue('PopupBorderWidth')
+    spacing: "10dp"
+    
+    # Canvas for the poup background background
+    canvas.before:
+        Color:
+            rgba: [1,1,1,1]
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+    BoxLayout:
+        orientation: 'vertical'
+        # Canvas for the poup background background
+        canvas.before:
+            Color:
+                rgba: app.Configuration.GetElementValue('WindowBackgroundColor')
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+        # Main Box Layout
+        BoxLayout:
+            orientation: 'vertical'
+            padding: ("30dp","20dp","30dp","20dp")
+            spacing: "10dp"
+
+            # First row with title and X button - y: 0.05
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint: 1, 0.05
+
+                BoxLayout:
+                    id: CanvasLabelIdentifier
+                    orientation: 'horizontal'
+
+                    Label:
+                        text: root.title
+                        text_size: self.width, None
+                        size: self.texture_size
+                        halign: 'center'
+                        font_name: 'Candarab'
+                        font_size: 25
+
+            # ScrollView containting Account, SubAccount, Currency - y: 0.78
+            ScrollView:
+                id: SelectAccountScrollView
+                size_hint: 1, 0.78
+                bar_inactive_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
+                bar_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
+
+                canvas.before:
+                    Color:
+                        rgba: app.Configuration.GetElementValue('CanvasBackgroundColor')
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+                # Box containing Buttons
+                BoxLayout:
+                    id: SelectCategoryScrollViewBoxLayout
+                    orientation: 'vertical'
+                    size_hint: 1, None
+                    height: self.minimum_height
+                    padding: ("10dp", "10dp", "10dp", "10dp")
+                    spacing: "0dp" 
+            # Box Layout containg the Confirmation button - y : 0.17
+            BoxLayout:
+                orientation: 'horizontal'
+                spacing: "10dp"
+                size_hint: 1, 0.17
+                pos_hint: {'x': 0, 'y': 1}
+
+                Button:
+                    background_color: 0,0,0,0
+                    canvas.before:
+                        Color:
+                            rgba: 0.1,0.1,0.9,0.7
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+                    id: Confirm
+                    font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+                    font_size: app.Configuration.GetElementValue('PopupInnerFontSize')
+                    text: 'Confirm Category'
+                    on_release: root.ConfirmAccount()
+
+                Button:
+                    background_color: 0,0,0,0
+                    canvas.before:
+                        Color:
+                            rgba: 0.9,0.1,0.1,0.7
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+                    id: Cancel
+                    font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+                    font_size: app.Configuration.GetElementValue('PopupInnerFontSize')
+                    text:'Cancel'
+                    on_release: root.Cancel()

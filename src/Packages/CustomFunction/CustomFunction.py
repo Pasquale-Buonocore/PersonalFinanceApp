@@ -26,4 +26,4 @@ def verify_numeric_float_string(numeric_string):
         numeric_string = numeric_string.replace('.','',1)
         counter = numeric_string.count('.')
     
-    return numeric_string if numeric_string else '0.0'
+    return numeric_string

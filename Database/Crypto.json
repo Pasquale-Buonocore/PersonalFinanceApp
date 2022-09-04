@@ -41,6 +41,29 @@
                                                 "Transactions": {}
                                           }
                                     }
+                              },
+                              "4": {
+                                    "Date": "04 September 2022",
+                                    "PricePerCoin": "0.0",
+                                    "Amount": "0.0",
+                                    "Fees": "0.0",
+                                    "Note": "",
+                                    "PayingAccount": {
+                                          "Account": "Binance Exchange",
+                                          "SubAccount": "Cash",
+                                          "Currency": "DAI"
+                                    },
+                                    "StoringAccount": {
+                                          "Account": "Binance Exchange",
+                                          "SubAccount": "Assets",
+                                          "Currency": "BITCOIN"
+                                    },
+                                    "Status": {
+                                          "Open": "0.0",
+                                          "Closed": {
+                                                "Transactions": {}
+                                          }
+                                    }
                               }
                         },
                         "Statistics": {

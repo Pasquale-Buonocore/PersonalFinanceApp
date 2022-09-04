@@ -216,7 +216,7 @@
                 CustomDateFeeDateSquareButton:
                     id: PayingAccountString
                     size_hint: 0.7, 1
-                    on_release: root.open_select_account_popup('SELECT PAYING ACCOUNT', type ='paying')
+                    on_release: root.open_select_account_popup(title_str = 'SELECT PAYING ACCOUNT', type_str ='paying')
                     text: '---'
                     text_size: self.width, None
                     size: self.texture_size

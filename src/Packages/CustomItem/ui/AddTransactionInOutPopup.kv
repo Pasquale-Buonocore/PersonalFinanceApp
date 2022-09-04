@@ -209,7 +209,7 @@
                             pos_hint: {'y': 0.4}
 
                             CustomeDateSquareButton:
-                                # on_release: self.show_date_picker(root.parent.parent.parent.parent.date)
+                                on_release: root.open_select_category_popup()
                                 
                             Label:
                                 id: CategoryValue
@@ -249,16 +249,16 @@
                             pos_hint: {'y': 0.4}
 
                             CustomeDateSquareButton:
-                                on_release: root.open_select_account_popup(title_str = 'SELECT PAYING ACCOUNT', type_str ='paying')
+                                on_release: root.open_select_account_popup()
                                 
                             Label:
-                                id: PayingWithLabel
-                                text: 'Unicredit'
+                                id: PayingAccountString
+                                text: '---'
                                 text_size: self.width, None
                                 size: self.texture_size
                                 font_name: 'Candarab'
                                 halign: 'center'
-                                font_size: 20
+                                font_size: 15
 
 
             # Box Layout containg the Description space - y: 0.2

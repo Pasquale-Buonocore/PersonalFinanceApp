@@ -423,14 +423,11 @@ class CustomDatePickerBaseTooltip(MDTooltip):
     owner = ObjectProperty()
     hint_text = StringProperty()
 
-
 class CustomDatePickerIconTooltipButton(MDIconButton, CustomDatePickerBaseTooltip):
     pass
 
-
 class CustomDatePickerWeekdayLabel(MDLabel, CustomDatePickerBaseTooltip):
     pass
-
 
 class CustomDatePickerTypeDateError(Exception):
     pass
@@ -656,6 +653,8 @@ class CustomDatePickerYearSelectableItem(RecycleDataViewBehavior, MDLabel):
 # TODO: Add the feature to embed the `CustomMDDatePicker` class in other layouts
 #  and not use it as a modal dialog.
 class CustomMDDatePicker(CustomBaseDialogPicker):
+    overlay_color = [0,0,0,0]
+    
     text_weekday_color = ColorProperty(None)
     """
     Text color of weekday names.
