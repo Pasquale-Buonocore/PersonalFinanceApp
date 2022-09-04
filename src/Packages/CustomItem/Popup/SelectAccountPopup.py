@@ -167,7 +167,6 @@ class SelectAccountPopup(ModalView):
         self.ids['update_message'].text = 'Correct selection! Account: ' + self.SelectedAccount['Account'] + ' - Subaccount: ' + self.SelectedAccount['SubAccount'] + ' - Currency: ' + self.SelectedAccount['Currency']
         self.ids['Confirm'].disabled = False
 
-
     #####################
     # CLOSING FUNCTIONS #
     #####################
@@ -186,3 +185,6 @@ class SelectAccountPopup(ModalView):
         
         # Close popup at the end
         self.dismiss()
+
+class SelectAccountPopupInvestment(SelectAccountPopup):
+    

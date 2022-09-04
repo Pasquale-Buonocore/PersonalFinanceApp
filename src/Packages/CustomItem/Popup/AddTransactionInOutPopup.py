@@ -1,16 +1,69 @@
 from kivy.lang import Builder
 from kivy.uix.popup import Popup
-import Packages.CustomItem.Popup.WarningPopup as Wrn_popup
+from kivy.uix.modalview import ModalView
+import Packages.CustomItem.Popup.WarningPopup as Wrn_popup 
+from Packages.DatabaseMng.JsonManager import JsonManager_Class
+from Packages.DatabaseMng.PathManager import PathManager_Class
+import datetime as dt
+from Packages.CustomFunction.HoverClass import *
+from kivy.uix.button import Button
+from Packages.CustomFunction.CustomFunction import verify_numeric_float_string
+from Packages.CustomItem.DataPicker.CustomDataPickerItem import CustomMDDatePicker
+from Packages.CustomItem.Popup.SelectAccountPopup import SelectAccountPopup
+from kivy.properties import ColorProperty
 
 # Designate Out .kv design file
 Builder.load_file('Packages/CustomItem/ui/AddTransactionInOutPopup.kv')
 
-class AddTransactionInOutPopup(Popup):
+class CustomeDateSquareButton(Button, HoverBehavior):
+    Configuration = JsonManager_Class(PathManager_Class.database_path, PathManager_Class.Configuration_path)
+    BackgroundColor = ColorProperty(Configuration.GetElementValue('WindowBackgroundColor'))
+    SelectedStatus = BooleanProperty(False)
+    
+    ###############
+    # DATE PICKER #
+    ###############
+     
+    # Click OK
+    def on_save(self, instance, value, date_range):
+        self.parent.parent.parent.parent.parent.parent.parent.date = dt.datetime(value.year, value.month, value.day)
+        self.parent.parent.parent.parent.parent.parent.parent.ids['DateTextstr'].text = dt.date(value.year, value.month, value.day).strftime("%d %B %Y")
+        
+    # Show Data Picker
+    def show_date_picker(self, date_str):
+        date_dialog = CustomMDDatePicker(mode="picker", primary_color= self.Configuration.GetElementValue('WindowBackgroundColor') , selector_color = [0.1,0.1,0.9,0.7], text_button_color = [0.1,0.1,0.9,0.7])
+        date_dialog.bind(on_save = self.on_save)
+        date_dialog.open()
+
+    ##########################
+    # HOVER BEHAVIOUR PICKER #
+    ##########################
+    
+    # Change Background color at entry
+    def on_enter(self, *args):
+        self.BackgroundColor = self.Configuration.GetElementValue('LightCanvasBackgroundColor') 
+    
+    # Change Background color at leaving
+    def on_leave(self, *args):
+        if not self.SelectedStatus:
+            self.BackgroundColor = self.Configuration.GetElementValue('WindowBackgroundColor') 
+
+class AddTransactionInOutPopup(ModalView):
     def __init__(self, title_str = '', type = 'A', PortfolioName = '', Database = '', ItemToMod = {}):
-        # Initialize the super class
-        super().__init__(title = title_str, size_hint = (0.4,0.6))
-        # Save important infos
+        # Define popup internal signals
+        self.title = title_str
+        self.SelectedPayingAccount = {}
         self.DBManager = Database
+        self.note = ''
+        self.date = dt.datetime.now()
+        self.Amount = '0.0'
+
+        # Initialize the super class
+        super().__init__(size_hint = (0.3,0.6))
+        
+        # Set the current date on the button
+        self.ids['DateTextstr'].text = dt.date(self.date.year, self.date.month, self.date.day).strftime("%d %B %Y")
+        return
 
         # Define inner attributes - direction
         self.PortfolioName = PortfolioName if PortfolioName in ['IN', 'OUT'] else 'IN'
@@ -34,7 +87,18 @@ class AddTransactionInOutPopup(Popup):
         self.ids["PaidWithValue"].text = self.itemToMod['Paid with']
         self.ids["NoteValue"].text = self.itemToMod['Note']
 
+    def open_select_account_popup(self, title_str, type_str):
 
+        Popup = SelectAccountPopup(title_str = title_str, CurrentAsset = 'USD', PortfolioCurrency = '$', type = type_str)
+        Popup.open()
+
+    def CheckQuantityValue(self):
+        # Check correctness
+        Quantity = verify_numeric_float_string(self.ids['QuantityValue'].text)
+
+        # Update string in GUI
+        self.ids['QuantityValue'].text = Quantity
+        
     def Confirm(self, App):
         # Keep the boolean error
         string = ''

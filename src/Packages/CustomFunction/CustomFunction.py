@@ -1,4 +1,5 @@
 import Packages.DatabaseMng.PortfolioManager as db_manager
+import re
 
 # Return the database to use according to the Screen selected
 def ReturnJsonPathGivenScreenName(ScreenName):
@@ -15,12 +16,14 @@ def ReturnJsonPathGivenScreenName(ScreenName):
 
 
 def verify_numeric_float_string(numeric_string):
+    non_decimal = re.compile(r'[^\d.]+')
+
     # first substitute ',' with '.'
-    numeric_string = numeric_string.replace(',','.')
+    numeric_string = non_decimal.sub('', numeric_string)
 
     counter = numeric_string.count('.')
     while counter > 1:
         numeric_string = numeric_string.replace('.','',1)
         counter = numeric_string.count('.')
     
-    return numeric_string
+    return numeric_string if numeric_string else '0.0'

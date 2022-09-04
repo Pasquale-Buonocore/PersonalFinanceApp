@@ -272,36 +272,29 @@ class BuySellScreen(Screen):
         skipComputation = 0
         if self.ids['QuantityValue'].text == '' or self.ids['PricePerCoinValue'].text == '': return
 
-        # Extract Quantity 
-        if ('%s' % self.ids['QuantityValue'].text).replace('.','').replace(',','').isnumeric():
-            # Check correctness
-            Quantity = verify_numeric_float_string(self.ids['QuantityValue'].text)
+        ####################
+        # Extract Quantity #
+        ####################
+        # Check correctness
+        Quantity = verify_numeric_float_string(self.ids['QuantityValue'].text)
 
-            # Update string in GUI
-            self.ids['QuantityValue'].text = Quantity
+        # Update string in GUI
+        self.ids['QuantityValue'].text = Quantity
 
-            # Convert into float
-            Quantity = float(Quantity)
-        else:
-            self.ids['QuantityValue'].text = '0.0'
-            skipComputation = 1
+        # Convert into float
+        Quantity = float(Quantity)
 
-        # Extract Prince Per Coint
-        if ('%s' % self.ids['PricePerCoinValue'].text).replace('.','').replace(',','').isnumeric():
-            # Check correctness
-            PricePerCoin = verify_numeric_float_string(self.ids['PricePerCoinValue'].text)
+        ##########################
+        # Extract Price Per Coin #
+        ##########################
+        # Check correctness
+        PricePerCoin = verify_numeric_float_string(self.ids['PricePerCoinValue'].text)
 
-            # Update string in GUI
-            self.ids['PricePerCoinValue'].text = PricePerCoin
+        # Update string in GUI
+        self.ids['PricePerCoinValue'].text = PricePerCoin
 
-            # Convert into float
-            PricePerCoin = float(PricePerCoin)
-        else:
-            self.ids['PricePerCoinValue'].text = '0.0' + self.parent.parent.parent.parent.Currency
-            skipComputation = 1
-
-        # Compute 
-        if skipComputation: return
+        # Convert into float
+        PricePerCoin = float(PricePerCoin)
     
         self.ids['TotalSpentValue'].text = self.parent.parent.parent.parent.Currency + str(round((Quantity * PricePerCoin), 5)) 
 

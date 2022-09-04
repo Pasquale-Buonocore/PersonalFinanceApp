@@ -6,6 +6,7 @@ from Packages.DatabaseMng.PathManager import PathManager_Class
 from kivy.core.window import Window
 from kivy.lang import Builder
 from Packages.CustomItem.Popup.AddAssetTransactionPopup import AddAssetTransactionPopup
+from Packages.CustomItem.Popup.AddTransactionInOutPopup import AddTransactionInOutPopup
 import datetime as dt
 
 # Designate Out .kv design file
@@ -29,7 +30,8 @@ class MyApp(MDApp):
 def show_popup():
     show = P()
 
-    popupWindow = AddAssetTransactionPopup(title_str = 'ADD TRANSACTION')
+    # popupWindow = AddAssetTransactionPopup(title_str = 'ADD TRANSACTION')
+    popupWindow = AddTransactionInOutPopup(title_str = 'ADD TRANSACTION')
     popupWindow.open()
 
 

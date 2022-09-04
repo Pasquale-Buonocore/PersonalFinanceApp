@@ -1,16 +1,25 @@
 #:kivy 1.0.9
+<CustomeDateSquareButton>:
+    id: DateButton
+    font_name: app.Configuration.GetElementValue('ProfileNameFontName')
+    font_size: app.Configuration.GetElementValue('ProfileNameFontSize')
+    background_color: app.Configuration.GetElementValue('TransparentBackgroundColor') 
+    canvas.before:
+        Color:
+            rgba: root.BackgroundColor
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
 
 <AddTransactionInOutPopup>:
     background_color: 0,0,0,0
-    separator_color: 0,0,0,0
     overlay_color: 0,0,0,0
-    title_align: 'center'
-    title_size: app.Configuration.GetElementValue('PopupTitleFontSize')
-    title_font: app.Configuration.GetElementValue('PopupTitleFontName') 
+    padding: app.Configuration.GetElementValue('PopupBorderWidth')
 
+    # Canvas for the poup background background
     canvas.before:
         Color:
-            rgba: 0.5,0.5,0.5,1
+            rgba: [1,1,1,1]
         RoundedRectangle:
             pos: self.pos
             size: self.size
@@ -18,175 +27,338 @@
 
     BoxLayout:
         orientation: 'vertical'
-        spacing: "20dp"
-        padding: ("20dp", "10dp", "20dp", "10dp")
-        
+
+        canvas.before:
+            Color:
+                rgba: app.Configuration.GetElementValue('WindowBackgroundColor')
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+        # Main Box Layout
         BoxLayout:
-            size_hint: 1, 0.75
             orientation: 'vertical'
+            padding: ("30dp","30dp","30dp","30dp")
+            spacing: "20dp"
 
-            RelativeLayout:
-
-                # Transaction date
-                Label:
-                    id: Date_lbl
-                    text: 'Date '
-                    pos_hint: {'x':-0.3, 'y' : 0}
-                    text_size: root.width, None
-                    size: self.texture_size
-                    font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                    font_size: app.Configuration.GetElementValue('PopupTitleFontSize')
-                    halign: 'center'
-
-                TextInput: 
-                    id: DateValue
-                    pos_hint: {'x': 0.05, 'y' : 0.35}
-                    size_hint: 0.3, None
-                    height: self.minimum_height
-                    width: self.height
-                    multiline: 0
-                    background_color: 0.5,0.5,0.5,0.7
-                    foreground_color: 1,1,1,1
-                    cursor_color: 1,1,1,1
-                    font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                    font_size: app.Configuration.GetElementValue('PopupTitleFontSize')
-                    halign: 'center'
+            # First row with title - y: 0.075
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint: 1, 0.075
 
                 Label:
-                    pos_hint: {'x':-0.3, 'y' : 0.3}
-                    id: Category_lbl
-                    text: 'Category'
-                    text_size: root.width, None
+                    text: root.title
+                    text_size: self.width, None
                     size: self.texture_size
-                    font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                    font_size: app.Configuration.GetElementValue('PopupTitleFontSize')
                     halign: 'center'
+                    font_name: 'Candarab'
+                    font_size: 22
 
-                TextInput: 
-                    id: CategoryValue
-                    pos_hint: {'x': 0.05, 'y' : 0.65}
-                    size_hint: 0.3, None
-                    height: self.minimum_height
-                    width: self.height
-                    multiline: 0
-                    background_color: 0.5,0.5,0.5,0.7
-                    foreground_color: 1,1,1,1
-                    cursor_color: 1,1,1,1
-                    font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                    font_size: app.Configuration.GetElementValue('PopupTitleFontSize')
-                    halign: 'center'
+            # Box Layout containg the body of the popup (Date, Total Spent, Category, Paying with) - y: 0.55
+            GridLayout:
+                rows: 2
+                cols: 2
+                size_hint: 1, 0.55
+                padding: ("10dp","35dp","10dp","10dp")
 
-                # Asset Price
-                Label:
-                    id: Amount_lbl
-                    text: 'Amount'
-                    pos_hint: {'x': 0.3, 'y' : 0.3}
-                    text_size: root.width, None
-                    size: self.texture_size
-                    font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                    font_size: app.Configuration.GetElementValue('PopupTitleFontSize')
-                    halign: 'center'
-
-                TextInput: 
-                    id: AmountValue
-                    pos_hint: {'x': 0.65, 'y' : 0.65}
-                    size_hint: 0.3, None
-                    height: self.minimum_height
-                    width: self.height
-                    multiline: 0
-                    background_color: 0.5,0.5,0.5,0.7
-                    foreground_color: 1,1,1,1
-                    cursor_color: 1,1,1,1
-                    font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                    font_size: app.Configuration.GetElementValue('PopupTitleFontSize')
-                    halign: 'center'
+                canvas:
+                    Color:
+                        rgba: app.Configuration.GetElementValue('CanvasBackgroundColor')
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
                 
-                # Type date
-                Label:
-                    id: PaidWith_lbl
-                    text: 'Paid with '
-                    pos_hint: {'x':0.3, 'y' : 0}
-                    text_size: root.width, None
-                    size: self.texture_size
-                    font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                    font_size: app.Configuration.GetElementValue('PopupTitleFontSize')
-                    halign: 'center'
+                # Data Picker
+                BoxLayout:
+                    orientation: 'vertical'
+                    padding: ("10dp","0dp","10dp","0dp")
+                    spacing: "5dp"
 
-                TextInput: 
-                    id: PaidWithValue
-                    pos_hint: {'x': 0.65, 'y' : 0.35}
-                    size_hint: 0.3, None
-                    height: self.minimum_height
-                    width: self.height
-                    multiline: 0
-                    background_color: 0.5,0.5,0.5,0.7
-                    foreground_color: 1,1,1,1
-                    cursor_color: 1,1,1,1
-                    font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                    font_size: app.Configuration.GetElementValue('PopupTitleFontSize')
-                    halign: 'center'
+                    # Date Title
+                    BoxLayout:
+                        orientation: 'vertical'
+                        size_hint: 1, 0.25
 
-                # Type date
-                Label:
-                    id: Note_lbl
-                    text: 'Note '
-                    pos_hint: {'x': - 0.3, 'y' : - 0.35}
-                    text_size: root.width, None
-                    size: self.texture_size
-                    font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                    font_size: app.Configuration.GetElementValue('PopupTitleFontSize')
-                    halign: 'center'
+                        Label:
+                            id: Date Title
+                            text: 'Date'
+                            text_size: self.width, None
+                            size: self.texture_size
+                            font_name: 'Candarab'
+                            halign: 'left'
+                            font_size: 22
+                    
+                    # Date Picker Button
+                    BoxLayout:
+                        size_hint: 1, 0.75
 
-                TextInput: 
-                    id: NoteValue
-                    pos_hint: {'x': 0.3, 'y' : 0.1}
-                    size_hint: 0.65, None
-                    height: self.minimum_height
-                    width: self.height
-                    multiline: 0
-                    background_color: 0.5,0.5,0.5,0.7
-                    foreground_color: 1,1,1,1
-                    cursor_color: 1,1,1,1
-                    font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                    font_size: app.Configuration.GetElementValue('PopupTitleFontSize')
-                    halign: 'center'
+                        RelativeLayout:
+                            size_hint: 1, 0.6
+                            pos_hint: {'y': 0.4}
+
+                            CustomeDateSquareButton:
+                                on_release: self.show_date_picker(root.date)
+                                
+                            # Date Button
+                            BoxLayout:
+                                id: DateBoxLayoutButton
+                                orientation: 'horizontal'
+                                background_color: app.Configuration.GetElementValue('TransparentBackgroundColor') 
+                                spacing: "0dp"
+                                padding: ("10dp","0dp","10dp","0dp")
+
+                                BoxLayout:
+                                    size_hint: 0.15, 1
+
+                                    Image:
+                                        size_hint: 0.5, 0.5
+                                        pos_hint: {'x' : 0.25, 'y' : 0.25}
+                                        id: ButtonImage
+                                        size:  self.size
+                                        source: './images/button/Date.png'
+
+                                Label:
+                                    id: DateTextstr
+                                    text: '20 August 2022'
+                                    size_hint: 0.85, 1
+                                    text_size: self.width, None
+                                    size: self.texture_size
+                                    font_name: 'Candarab'
+                                    halign: 'center'
+                                    font_size: 20
                 
+                # Total Spent
+                BoxLayout:
+                    orientation: 'vertical'
+                    padding: ("10dp","0dp","10dp","0dp")
+                    spacing: "5dp"
+
+                    # Quantity BoxLayout
+                    BoxLayout:
+                        orientation: 'vertical'
+                        size_hint: 1, 0.25
+
+                        Label:
+                            text: 'Total Spent'
+                            text_size: self.width, None
+                            size: self.texture_size
+                            font_name: 'Candarab'
+                            halign: 'left'
+                            font_size: 22
+
+                    # Box Layout containg the Text Input to add the Quantity
+                    BoxLayout:
+                        orientation: 'horizontal'
+                        size_hint: 1 , 0.8
                         
-            
-        BoxLayout:
-            orientation: 'vertical'
-            spacing: "10dp"
-            size_hint: 1, 0.25
-            pos_hint: {'x': 0, 'y': 1}
+                        BoxLayout:
+                            size_hint: 1, 0.6
+                            pos_hint: {'y': 0.4}
 
-            Button:
-                background_color: 0,0,0,0
-                canvas.before:
-                    Color:
-                        rgba: 0.1,0.1,0.9,0.7
-                    RoundedRectangle:
-                        pos: self.pos
-                        size: self.size
-                        radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+                            # Canvas for the poup background background
+                            canvas.before:
+                                Color:
+                                    rgba: app.Configuration.GetElementValue('WindowBackgroundColor')
+                                RoundedRectangle:
+                                    pos: self.pos
+                                    size: self.size
+                                    radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
 
-                id: Confirm
-                font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                font_size: app.Configuration.GetElementValue('PopupInnerFontSize')
-                text:'Add Transaction'
-                on_release: root.Confirm(app)
+                            TextInput: 
+                                id: QuantityValue
+                                multiline: 0
+                                on_text: root.CheckQuantityValue()
+                                text: root.Amount
+                                pos_hint: {'y': - 0.1}
+                                background_color: 0,0,0,0
+                                foreground_color: 1,1,1,1
+                                cursor_color: 1,1,1,1
+                                font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+                                font_size: app.Configuration.GetElementValue('PopupTextFieldFontSize')
+                                halign: 'center'
+                                valign: 'center'
 
-            Button:
-                background_color: 0,0,0,0
-                canvas.before:
-                    Color:
-                        rgba: 0.9,0.1,0.1,0.7
-                    RoundedRectangle:
-                        pos: self.pos
-                        size: self.size
-                        radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+                # Category
+                BoxLayout:
+                    orientation: 'vertical'
+                    padding: ("10dp","0dp","10dp","0dp")
+                    spacing: "5dp"
 
-                id: Cancel
-                font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                font_size: app.Configuration.GetElementValue('PopupInnerFontSize')
-                text:'Cancel'
-                on_release: root.Cancel()
+                    # Category 
+                    BoxLayout:
+                        orientation: 'vertical'
+                        size_hint: 1, 0.25
+
+                        Label:
+                            id: Category
+                            text: 'Category'
+                            text_size: self.width, None
+                            size: self.texture_size
+                            font_name: 'Candarab'
+                            halign: 'left'
+                            font_size: 22
+                    
+                    # Category Button
+                    BoxLayout:
+                        size_hint: 1, 0.75
+
+                        RelativeLayout:
+                            size_hint: 1, 0.6
+                            pos_hint: {'y': 0.4}
+
+                            CustomeDateSquareButton:
+                                # on_release: self.show_date_picker(root.parent.parent.parent.parent.date)
+                                
+                            Label:
+                                id: CategoryValue
+                                text: 'Stipendio'
+                                text_size: self.width, None
+                                size: self.texture_size
+                                font_name: 'Candarab'
+                                halign: 'center'
+                                font_size: 20
+
+                # Paying with
+                BoxLayout:
+                    orientation: 'vertical'
+                    padding: ("10dp","0dp","10dp","0dp")
+                    spacing: "5dp"
+
+                    # Paying with 
+                    BoxLayout:
+                        orientation: 'vertical'
+                        size_hint: 1, 0.25
+
+                        Label:
+                            id: PayingWith
+                            text: 'Paying with'
+                            text_size: self.width, None
+                            size: self.texture_size
+                            font_name: 'Candarab'
+                            halign: 'left'
+                            font_size: 22
+                    
+                    # Date Picker Button
+                    BoxLayout:
+                        size_hint: 1, 0.75
+
+                        RelativeLayout:
+                            size_hint: 1, 0.6
+                            pos_hint: {'y': 0.4}
+
+                            CustomeDateSquareButton:
+                                on_release: root.open_select_account_popup(title_str = 'SELECT PAYING ACCOUNT', type_str ='paying')
+                                
+                            Label:
+                                id: PayingWithLabel
+                                text: 'Unicredit'
+                                text_size: self.width, None
+                                size: self.texture_size
+                                font_name: 'Candarab'
+                                halign: 'center'
+                                font_size: 20
+
+
+            # Box Layout containg the Description space - y: 0.2
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint: 1, 0.2
+                spacing: "10dp"
+
+                Label:
+                    id: Description
+                    text: 'Description'
+                    size_hint: 1, 0.25
+                    text_size: self.width, None
+                    size: self.texture_size
+                    font_name: 'Candarab'
+                    halign: 'left'
+                    font_size: 20
+
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint: 1, 0.75
+                    padding: ("5dp","5dp","5dp","5dp")
+
+                    canvas.before:
+                        Color:
+                            rgba: app.Configuration.GetElementValue('CanvasBackgroundColor')
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+                    TextInput: 
+                        id: DescriptionValue
+                        multiline: 1
+                        text: ''
+                        background_color: 0,0,0,0
+                        foreground_color: 1,1,1,1
+                        cursor_color: 1,1,1,1
+                        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+                        font_size: 18
+                        halign: 'left'
+            # Box Layout containg the Taxable Event Checkbox - y: 0.025
+            BoxLayout:
+                id: SwitchingBoxLayout
+                orientation: 'horizontal'
+                size_hint: 1, 0.025
+                padding: ("0dp","0dp","0dp","0dp")
+                spacing: "5dp"
+
+                MDCheckbox:
+                    id: SwitchValue
+                    size_hint: 0.1, 1 
+                    active: True
+                    disabled: False
+
+                Label:
+                    text: 'Taxable event'
+                    size_hint: 0.9, 1
+                    text_size: self.width, None
+                    size: self.texture_size
+                    font_name: 'Candarab'
+                    halign: 'left'
+                    font_size: 18
+            # Box Layout containg the Confirmation button - y : 0.15
+            BoxLayout:
+                orientation: 'horizontal'
+                spacing: "10dp"
+                size_hint: 1, 0.15
+                pos_hint: {'x': 0, 'y': 1}
+
+                Button:
+                    background_color: 0,0,0,0
+                    canvas.before:
+                        Color:
+                            rgba: app.Configuration.GetElementValue('ConfirmationBtnBackgroundColor')
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+                    id: Confirm
+                    font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+                    font_size: app.Configuration.GetElementValue('PopupInnerFontSize')
+                    text:'Add Transaction'
+                    on_release: root.AddTransaction(app)
+
+                Button:
+                    background_color: 0,0,0,0
+                    canvas.before:
+                        Color:
+                            rgba: app.Configuration.GetElementValue('CancelBtnBackgroundColor')
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+                    id: Cancel
+                    font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+                    font_size: app.Configuration.GetElementValue('PopupInnerFontSize')
+                    text:'Cancel'
+                    on_release: root.Cancel()
+
+
