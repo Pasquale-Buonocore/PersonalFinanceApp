@@ -181,7 +181,7 @@ class PortfoliosManager_Class():
         Statistics = {'Total' : {}}
 
         NewPortfolioDict = {PortfolioName : {}}
-        NewPortfolioDict[PortfolioName].update({'Transactions' : {"Transactions" : {} }})
+        NewPortfolioDict[PortfolioName].update({'Assets' : {'Transactions' : {'Transactions' : {}} }})
         NewPortfolioDict[PortfolioName].update({'Statistics' : Statistics})
 
         return NewPortfolioDict

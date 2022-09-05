@@ -20,9 +20,18 @@
                         }
                   },
                   "Regali": {
-                        "Transactions": {},
+                        "Transactions": {
+                              "1": {
+                                    "Date": "06 SEPTEMBER 2022",
+                                    "Amount": 10.0,
+                                    "Currency": "$",
+                                    "Category": "Regali",
+                                    "Paid with": "UNICREDIT BANK - CASH - USDC",
+                                    "Note": "NFMV"
+                              }
+                        },
                         "Statistics": {
-                              "TotalValue": 0
+                              "TotalValue": 10.0
                         }
                   },
                   "Uscite Fuori": {
@@ -34,13 +43,13 @@
             },
             "Statistics": {
                   "Currency": "\u20ac",
-                  "NumberOfTransaction": 0,
-                  "TotalValue": 0.0,
+                  "NumberOfTransaction": 1,
+                  "TotalValue": 10.0,
                   "ActualAssetAllocation": {
                         "Bollette": 0.0,
                         "Benzina": 0.0,
                         "Alimenti": 0.0,
-                        "Regali": 0.0,
+                        "Regali": 10.0,
                         "Uscite Fuori": 0.0
                   },
                   "DesiredAssetAllocation": {
@@ -53,8 +62,19 @@
             }
       },
       "OUT_LIST": {
-            "Transactions": {
-                  "Transactions": {}
+            "Assets": {
+                  "Transactions": {
+                        "Transactions": {
+                              "1": {
+                                    "Date": "06 SEPTEMBER 2022",
+                                    "Amount": 10.0,
+                                    "Currency": "$",
+                                    "Category": "Regali",
+                                    "Paid with": "UNICREDIT BANK - CASH - USDC",
+                                    "Note": "NFMV"
+                              }
+                        }
+                  }
             },
             "Statistics": {
                   "Total": {}

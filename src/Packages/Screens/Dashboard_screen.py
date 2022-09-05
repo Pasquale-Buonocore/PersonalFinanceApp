@@ -239,7 +239,7 @@ class DashboardScreen(Screen):
         self.ids[self.AccountsBoxLayout].add_widget(AccountRowBoxLayout_Title(kwargs = InfoDict))
 
         for account in json_file.keys():
-            InfoDict = {'Currency': json_file[account]['Statistics']['Currency']}
+            InfoDict = {'Currency': json_file[account]['Statistics']['Symbol']}
             InfoDict.update({'AccountName' : account})
             InfoDict.update({'Category' : json_file[account]['Statistics']['Category']})
             InfoDict.update({'LastMonthValue' : json_file[account]['Statistics']['LastMonthValue']})

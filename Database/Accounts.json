@@ -4,31 +4,31 @@
                   "Cash": {
                         "USD": {
                               "TotalAmount": 200,
-                              "Currency": "$",
+                              "Symbol": "$",
                               "Base": 200,
                               "Contributors": {}
                         },
                         "USDT": {
                               "TotalAmount": 200,
-                              "Currency": "$",
+                              "Symbol": "$",
                               "Base": 200,
                               "Contributors": {}
                         },
                         "USDC": {
                               "TotalAmount": 200,
-                              "Currency": "$",
+                              "Symbol": "$",
                               "Base": 200,
                               "Contributors": {}
                         },
                         "EURO": {
                               "TotalAmount": 150,
-                              "Currency": "\u20ac",
+                              "Symbol": "\u20ac",
                               "Base": 150,
                               "Contributors": {}
                         },
                         "RUBLO": {
                               "TotalAmount": 1900,
-                              "Currency": "R",
+                              "Symbol": "R",
                               "Base": 190,
                               "Contributors": {}
                         }
@@ -37,8 +37,7 @@
                         "APPL Stock": {
                               "TotalAmount": 5,
                               "TotalValue": 1300,
-                              "Symbol": "APPL",
-                              "Currency": "$"
+                              "Symbol": "APPL"
                         }
                   }
             },
@@ -48,13 +47,13 @@
                         "Cash": {
                               "USD": {
                                     "TotalAmount": 200,
-                                    "Currency": "$",
+                                    "Symbol": "$",
                                     "Base": 200,
                                     "Contributors": {}
                               },
                               "EURO": {
                                     "TotalAmount": 150,
-                                    "Currency": "\u20ac",
+                                    "Symbol": "\u20ac",
                                     "Base": 200,
                                     "Contributors": {}
                               }
@@ -63,7 +62,7 @@
                   },
                   "LastMonthValue": 350,
                   "ActualMonthValue": 350,
-                  "Currency": "\u20ac"
+                  "Symbol": "\u20ac"
             }
       },
       "Binance Exchange": {
@@ -71,13 +70,13 @@
                   "Cash": {
                         "DAI": {
                               "TotalAmount": 200,
-                              "Currency": "$",
+                              "Symbol": "$",
                               "Base": 200,
                               "Contributors": {}
                         },
                         "USDC": {
                               "TotalAmount": 200,
-                              "Currency": "$",
+                              "Symbol": "$",
                               "Base": 200,
                               "Contributors": {}
                         }
@@ -86,8 +85,7 @@
                         "Bitcoin": {
                               "TotalAmount": 5,
                               "TotalValue": 1300,
-                              "Symbol": "APPL",
-                              "Currency": "$"
+                              "Symbol": "APPL"
                   }}
             },
             "Statistics": {
@@ -96,13 +94,13 @@
                         "Cash": {
                               "USD": {
                                     "TotalAmount": 200,
-                                    "Currency": "$",
+                                    "Symbol": "$",
                                     "Base": 200,
                                     "Contributors": {}
                               },
                               "EURO": {
                                     "TotalAmount": 150,
-                                    "Currency": "\u20ac",
+                                    "Symbol": "\u20ac",
                                     "Base": 200,
                                     "Contributors": {}
                               }
@@ -111,7 +109,7 @@
                   },
                   "LastMonthValue": 450,
                   "ActualMonthValue": 150,
-                  "Currency": "\u20ac"
+                  "Symbol": "\u20ac"
             }
       }
 }

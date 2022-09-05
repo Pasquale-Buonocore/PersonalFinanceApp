@@ -65,14 +65,14 @@ class AccountsManager_Class():
     #######################
 
     # Add Account to the Json File - TESTED
-    def AddAccount(self, dictionary):
+    def AddAccount(self, NewAccount):
         # Read json
         json_object = self.ReadJson()
             
         # Add items in dictionary if not already present
-        for key in dictionary.keys():
+        for key in NewAccount.keys():
             if key not in json_object.keys():
-                json_object.update({key : dictionary[key]})            
+                json_object.update({key : NewAccount[key]})            
         
         # Save new json file
         self.SaveJsonFile(json_object)

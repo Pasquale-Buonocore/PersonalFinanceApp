@@ -36,16 +36,16 @@ class TransactionListScreen(Screen):
         self.ids[self.ScreenToUpdate].add_widget(TransactionInOutLineSeparator())
         self.ids[self.ScreenToUpdate].add_widget(TransactionInOutRowBoxLayout_Title())
 
-        for transaction_idx in json_file[self.portfolio_list]['Transactions']['Transactions'].keys():
+        for transaction_idx in json_file[self.portfolio_list]['Assets']['Transactions']['Transactions'].keys():
             self.ids[self.ScreenToUpdate].add_widget(TransactionInOutLineSeparator())
             # Extract the transaction to show
-            transaction = json_file[self.portfolio_list]['Transactions'][transaction_idx]
+            transaction = json_file[self.portfolio_list]['Assets']['Transactions']['Transactions'][transaction_idx]
             
             # Get the Currency of such transaction
             Currency_str = transaction['Currency']
 
             # Append to the transaction list
-            self.ids[self.ScreenToUpdate].add_widget()
+            # self.ids[self.ScreenToUpdate].add_widget()
 
         # Add final separator
         self.ids[self.ScreenToUpdate].add_widget(TransactionInOutLineSeparator())

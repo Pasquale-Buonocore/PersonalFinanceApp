@@ -20,21 +20,30 @@
                         }
                   },
                   "De Fi Cosmos": {
-                        "Transactions": {},
+                        "Transactions": {
+                              "1": {
+                                    "Date": "06 SEPTEMBER 2022",
+                                    "Amount": 10.0,
+                                    "Currency": "\u20ac",
+                                    "Category": "De Fi Cosmos",
+                                    "Paid with": "UNICREDIT BANK - CASH - EURO",
+                                    "Note": "TEST TRANSACTION"
+                              }
+                        },
                         "Statistics": {
-                              "TotalValue": 0
+                              "TotalValue": 10.0
                         }
                   }
             },
             "Statistics": {
                   "Currency": "\u20ac",
-                  "NumberOfTransaction": 0,
-                  "TotalValue": 0.0,
+                  "NumberOfTransaction": 1,
+                  "TotalValue": 10.0,
                   "ActualAssetAllocation": {
                         "Stipendio": 0.0,
                         "Ripetizioni": 0.0,
                         "Defi Elrond": 0.0,
-                        "De Fi Cosmos": 0.0
+                        "De Fi Cosmos": 10.0
                   },
                   "DesiredAssetAllocation": {
                         "Stipendio": 0,
@@ -45,8 +54,19 @@
             }
       },
       "IN_LIST": {
-            "Transactions": {
-                  "Transactions": {}
+            "Assets": {
+                  "Transactions": {
+                        "Transactions": {
+                              "1": {
+                                    "Date": "06 SEPTEMBER 2022",
+                                    "Amount": 10.0,
+                                    "Currency": "\u20ac",
+                                    "Category": "De Fi Cosmos",
+                                    "Paid with": "UNICREDIT BANK - CASH - EURO",
+                                    "Note": "TEST TRANSACTION"
+                              }
+                        }
+                  }
             },
             "Statistics": {
                   "Total": {}
