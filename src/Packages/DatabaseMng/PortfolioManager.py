@@ -181,7 +181,7 @@ class PortfoliosManager_Class():
         Statistics = {'Total' : {}}
 
         NewPortfolioDict = {PortfolioName : {}}
-        NewPortfolioDict[PortfolioName].update({'Transactions' : {}})
+        NewPortfolioDict[PortfolioName].update({'Transactions' : {"Transactions" : {} }})
         NewPortfolioDict[PortfolioName].update({'Statistics' : Statistics})
 
         return NewPortfolioDict
@@ -442,15 +442,15 @@ class PortfoliosManager_Class():
         return TransactionDict 
 
     # Initialize transaction for the type income and outcome
-    def InitializeNewTransactionInOut(self, List):
+    def InitializeNewTransactionInOut(self, Date, Quantity, Currency, Category, PaidWith, Description):
 
         # Dict which will store all the statistics of such asset
-        TransactionDict = {'Date': List[0]}
-        TransactionDict.update({'Amount' : List[1]})
-        TransactionDict.update({'Currency' : List[2]})
-        TransactionDict.update({'Category' : List[3]})
-        TransactionDict.update({'Paid with' : List[4]})
-        TransactionDict.update({'Note' : List[5]})
+        TransactionDict = {'Date': Date}
+        TransactionDict.update({'Amount' : Quantity})
+        TransactionDict.update({'Currency' : Currency})
+        TransactionDict.update({'Category' : Category})
+        TransactionDict.update({'Paid with' : PaidWith})
+        TransactionDict.update({'Note' : Description})
 
         return TransactionDict
 

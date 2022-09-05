@@ -6,7 +6,6 @@ from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.screenmanager import Screen
 from kivymd.app import MDApp
 
-
 class PortfolioScreen(Screen):
     def __init__(self, ScreenName = 'CRYPTO', PortfolioJsonPath = db_manager.path_manager.Crypto_path , **kwargs):
         # Call superclass

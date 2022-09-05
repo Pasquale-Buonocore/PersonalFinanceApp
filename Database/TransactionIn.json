@@ -45,7 +45,9 @@
             }
       },
       "IN_LIST": {
-            "Transactions": {},
+            "Transactions": {
+                  "Transactions": {}
+            },
             "Statistics": {
                   "Total": {}
             }

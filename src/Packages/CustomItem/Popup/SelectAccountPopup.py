@@ -26,19 +26,19 @@ class CustomScrollViewButton(Button, HoverBehavior):
             # If Account:
             # 1. Update the SubAccount ScrollView and the Currency ScrollView
             # 2. Update the button current state
-            self.parent.parent.parent.parent.parent.parent.UpdateSubAccountScrollViewCurrencyScrollView(AccountName = self.text)
+            self.parent.parent.parent.parent.parent.parent.parent.UpdateSubAccountScrollViewCurrencyScrollView(AccountName = self.text)
         
         if self.ScrollViewBoxLayoutID == 'SelectSubAccountScrollViewBoxLayout':
             # If SubAccount:
             # 1. Update the Currency ScrollView
             # 2. Update the button current state
-            self.parent.parent.parent.parent.parent.parent.UpdateCurrencyScrollView(SubAccountName = self.text)
+            self.parent.parent.parent.parent.parent.parent.parent.UpdateCurrencyScrollView(SubAccountName = self.text)
             
         if self.ScrollViewBoxLayoutID == 'SelectCurrencyScrollViewBoxLayout':
             # If Currency:
             # 1. Update the Currency
             # 2. Update the button current state
-            self.parent.parent.parent.parent.parent.parent.UpdateSelectedCurrency(Currency = self.text)
+            self.parent.parent.parent.parent.parent.parent.parent.UpdateSelectedCurrency(Currency = self.text)
             
         # Update button state
         self.UpdateButtonState()

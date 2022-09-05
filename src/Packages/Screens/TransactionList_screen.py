@@ -36,7 +36,7 @@ class TransactionListScreen(Screen):
         self.ids[self.ScreenToUpdate].add_widget(TransactionInOutLineSeparator())
         self.ids[self.ScreenToUpdate].add_widget(TransactionInOutRowBoxLayout_Title())
 
-        for transaction_idx in json_file[self.portfolio_list]['Transactions'].keys():
+        for transaction_idx in json_file[self.portfolio_list]['Transactions']['Transactions'].keys():
             self.ids[self.ScreenToUpdate].add_widget(TransactionInOutLineSeparator())
             # Extract the transaction to show
             transaction = json_file[self.portfolio_list]['Transactions'][transaction_idx]
@@ -53,7 +53,6 @@ class TransactionListScreen(Screen):
         # Add empty item to the widget
         if not len(self.ids[self.ScreenToUpdate].children): self.ids[self.ScreenToUpdate].add_widget(TransactionInOutRowBoxLayout_Empty)
                 
-
     ####################
     # MOVE SCREEN BACK #
     ####################

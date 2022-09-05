@@ -12,6 +12,7 @@ from Packages.CustomItem.DataPicker.CustomDataPickerItem import CustomMDDatePick
 from Packages.CustomItem.Popup.SelectAccountPopup import SelectAccountPopupTransaction
 from Packages.CustomItem.Popup.SelectTransactionCategory import SelectTransactionCategory
 from kivy.properties import ColorProperty
+from kivymd.app import MDApp
 
 # Designate Out .kv design file
 Builder.load_file('Packages/CustomItem/ui/AddTransactionInOutPopup.kv')
@@ -60,13 +61,16 @@ class AddTransactionInOutPopup(ModalView):
         self.date = dt.datetime.now()
         self.Amount = '0.0'
         self.PortfolioName = PortfolioName
+        self.AvailableCategory = list(self.DBManager.ReadJson()[self.PortfolioName]['Assets'].keys())
 
         # Initialize the super class
         super().__init__(size_hint = (0.3,0.6))
         
         # Set the current date on the button
         self.ids['DateTextstr'].text = dt.date(self.date.year, self.date.month, self.date.day).strftime("%d %B %Y")
-        return
+
+        # Set the first category of the transactions
+        self.ids.CategoryValue.text = self.AvailableCategory[0] if self.AvailableCategory else '---'
 
         # Define inner attributes - direction
         self.PortfolioName = PortfolioName if PortfolioName in ['IN', 'OUT'] else 'IN'
@@ -91,7 +95,7 @@ class AddTransactionInOutPopup(ModalView):
         self.ids["NoteValue"].text = self.itemToMod['Note']
 
     def open_select_category_popup(self):
-        Popup = SelectTransactionCategory(AvailableCategory = ['a','b','c'])
+        Popup = SelectTransactionCategory(AvailableCategory = self.AvailableCategory)
         Popup.open()
 
     def open_select_account_popup(self):
@@ -118,35 +122,39 @@ class AddTransactionInOutPopup(ModalView):
         if not CategoryValue: string = string + 'ERROR: Empty category value FIELD'
 
         # Retrive data "Date Value" from Text Input - In empty do nothing
-        DateValue = self.ids["DateValue"].text.strip().upper()
+        DateValue = self.ids["DateTextstr"].text.strip().upper()
         if not DateValue: string = string + '\nERROR: Empty date value FIELD'
 
         # Retrive data "Amount Value" from Text Input - In empty do nothing
-        AmountValue = self.ids["AmountValue"].text.strip().upper()
+        AmountValue = self.ids["QuantityValue"].text.strip().upper()
         if not AmountValue: string = string + '\nERROR: Empty amount value FIELD'
 
         # Retrive data "Quantity Value" from Text Input - In empty do nothing
-        PaidWithValue = self.ids["PaidWithValue"].text.strip().upper()
+        PaidWithValue = self.ids["PayingAccountString"].text.strip().upper()
         if not PaidWithValue: string = string + '\nERROR: Empty PaidWith value FIELD'
 
         # Retrive data "Note Value" from Text Input - In empty do nothing
-        NoteValue = self.ids["NoteValue"].text.strip().upper()
+        NoteValue = self.ids["DescriptionValue"].text.strip().upper()
         if not NoteValue: string = string + '\nERROR: Empty note value FIELD'
+
+        # Define the currency with is the symbol of the value selected as paying account
+        Currency = MDApp.get_running_app().Accounts_DB.ReadJson()[self.SelectedPayingAccount['Account']]['SubAccount'][self.SelectedPayingAccount['SubAccount']][self.SelectedPayingAccount['Currency']]['Symbol']
 
         if string:
             # If the error message is not empty, display an error
             Pop = Wrn_popup.WarningPopup('WARNING WINDOW', string.upper())
             Pop.open()
         else:
-            # Define Asset To Add
-            TransactiontoAdd = self.DBManager.InitializeNewTransactionInOut([DateValue, round(float(AmountValue),2), '€', CategoryValue, PaidWithValue, NoteValue])
-
+            # Define Asset To Add in <self.portfolio> portfolio
+            TransactiontoAdd = self.DBManager.InitializeNewTransactionInOut(DateValue, round(float(AmountValue),2), Currency, CategoryValue, PaidWithValue, NoteValue)
+            
             # If an item needs to be modified
             if self.type == 'M':
                 # Substitute the actual item
                 self.DBManager.ModifyTransactionToAsset(PortfolioName = self.PortfolioName, AssetName = CategoryValue, ItemIndex = self.ItemIndex, NewTransaction = TransactiontoAdd)
             else:
                 self.DBManager.AddTransactionToAsset(self.PortfolioName, CategoryValue, TransactiontoAdd)
+                self.DBManager.AddTransactionToAsset(self.PortfolioName + '_LIST', "Transactions", TransactiontoAdd)
 
             # Update Asset Statistics
             self.DBManager.UpdateAssetInTransactionStatistics(self.PortfolioName, CategoryValue)
