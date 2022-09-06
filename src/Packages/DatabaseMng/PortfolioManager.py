@@ -449,7 +449,7 @@ class PortfoliosManager_Class():
         TransactionDict.update({'Amount' : Quantity})
         TransactionDict.update({'Currency' : Currency})
         TransactionDict.update({'Category' : Category})
-        TransactionDict.update({'Paid with' : PaidWith})
+        TransactionDict.update({'PayingAccount' : PaidWith})
         TransactionDict.update({'Note' : Description})
 
         return TransactionDict

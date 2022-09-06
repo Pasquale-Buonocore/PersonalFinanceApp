@@ -41,11 +41,9 @@ class TransactionListScreen(Screen):
             # Extract the transaction to show
             transaction = json_file[self.portfolio_list]['Assets']['Transactions']['Transactions'][transaction_idx]
             
-            # Get the Currency of such transaction
-            Currency_str = transaction['Currency']
-
             # Append to the transaction list
-            # self.ids[self.ScreenToUpdate].add_widget()
+            transaction.update({'TransactionNumber': str(transaction_idx)})
+            self.ids[self.ScreenToUpdate].add_widget(TransactionInOutRowBoxLayout(transaction))
 
         # Add final separator
         self.ids[self.ScreenToUpdate].add_widget(TransactionInOutLineSeparator())

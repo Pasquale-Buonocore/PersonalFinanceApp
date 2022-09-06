@@ -14,9 +14,18 @@
                         }
                   },
                   "Defi Elrond": {
-                        "Transactions": {},
+                        "Transactions": {
+                              "1": {
+                                    "Date": "06 SEPTEMBER 2022",
+                                    "Amount": 50.0,
+                                    "Currency": "$",
+                                    "Category": "Defi Elrond",
+                                    "PayingAccount": "UNICREDIT BANK - CASH - USDT",
+                                    "Note": ""
+                              }
+                        },
                         "Statistics": {
-                              "TotalValue": 0
+                              "TotalValue": 50.0
                         }
                   },
                   "De Fi Cosmos": {
@@ -26,7 +35,7 @@
                                     "Amount": 10.0,
                                     "Currency": "\u20ac",
                                     "Category": "De Fi Cosmos",
-                                    "Paid with": "UNICREDIT BANK - CASH - EURO",
+                                    "PayingAccount": "UNICREDIT BANK - CASH - EURO",
                                     "Note": "TEST TRANSACTION"
                               }
                         },
@@ -37,12 +46,12 @@
             },
             "Statistics": {
                   "Currency": "\u20ac",
-                  "NumberOfTransaction": 1,
-                  "TotalValue": 10.0,
+                  "NumberOfTransaction": 2,
+                  "TotalValue": 60.0,
                   "ActualAssetAllocation": {
                         "Stipendio": 0.0,
                         "Ripetizioni": 0.0,
-                        "Defi Elrond": 0.0,
+                        "Defi Elrond": 50.0,
                         "De Fi Cosmos": 10.0
                   },
                   "DesiredAssetAllocation": {
@@ -62,8 +71,16 @@
                                     "Amount": 10.0,
                                     "Currency": "\u20ac",
                                     "Category": "De Fi Cosmos",
-                                    "Paid with": "UNICREDIT BANK - CASH - EURO",
+                                    "PayingAccount": "UNICREDIT BANK - CASH - EURO",
                                     "Note": "TEST TRANSACTION"
+                              },
+                              "2": {
+                                    "Date": "06 SEPTEMBER 2022",
+                                    "Amount": 50.0,
+                                    "Currency": "$",
+                                    "Category": "Defi Elrond",
+                                    "PayingAccount": "UNICREDIT BANK - CASH - USDT",
+                                    "Note": ""
                               }
                         }
                   }

@@ -45,6 +45,7 @@
     "PopupInnerFontName": "Candara",
     "PopupInnerFontSize": "20dp",
     "AddNotedFontSize": "17",
+    "ElementInTransactionListFontSize": "17",
     "MenuDataLayoutPadding": ["20dp","20dp","20dp","20dp"],
     "MenuDataLayoutSpacing": "20dp",
     "MenuLayoutSizeHint": [0.23, 1],

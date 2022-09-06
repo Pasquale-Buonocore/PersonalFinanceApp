@@ -60,7 +60,7 @@ class AddTransactionInOutPopup(ModalView):
         self.note = ''
         self.date = dt.datetime.now()
         self.Amount = '0.0'
-        self.PortfolioName = PortfolioName
+        self.PortfolioName = PortfolioName if PortfolioName in ['IN', 'OUT'] else 'IN'
         self.AvailableCategory = list(self.DBManager.ReadJson()[self.PortfolioName]['Assets'].keys())
 
         # Initialize the super class
@@ -71,9 +71,8 @@ class AddTransactionInOutPopup(ModalView):
 
         # Set the first category of the transactions
         self.ids.CategoryValue.text = self.AvailableCategory[0] if self.AvailableCategory else '---'
-
-        # Define inner attributes - direction
-        self.PortfolioName = PortfolioName if PortfolioName in ['IN', 'OUT'] else 'IN'
+        
+        self.ids.PayingWithLabel.text = 'Earning Account' if (self.PortfolioName == 'IN') else 'Paying Account'
 
         # Define inner attributes - type
         self.type = type if type in ['A','M'] else 'A'
@@ -135,7 +134,6 @@ class AddTransactionInOutPopup(ModalView):
 
         # Retrive data "Note Value" from Text Input - In empty do nothing
         NoteValue = self.ids["DescriptionValue"].text.strip().upper()
-        if not NoteValue: string = string + '\nERROR: Empty note value FIELD'
 
         # Define the currency with is the symbol of the value selected as paying account
         Currency = MDApp.get_running_app().Accounts_DB.ReadJson()[self.SelectedPayingAccount['Account']]['SubAccount'][self.SelectedPayingAccount['SubAccount']][self.SelectedPayingAccount['Currency']]['Symbol']

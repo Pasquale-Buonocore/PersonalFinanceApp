@@ -39,30 +39,21 @@ class TransactionInOutRowBoxLayout(BoxLayout, HoverBehavior):
         # Define Currency
         self.Currency = Properties['Currency'] if 'Currency' in list(Properties.keys()) else ''
 
-        # Define PricePerCoin
-        self.PricePerCoin = str(Properties['PricePerCoin']) if 'PricePerCoin' in list(Properties.keys()) else ''
-        self.PricePerCoin += self.Currency
+        # Define Category
+        self.Category = str(Properties['Category']) if 'Category' in list(Properties.keys()) else ''
 
         # Define Amount
         self.Amount = str(Properties['Amount']) if 'Amount' in list(Properties.keys()) else ''
-        self.OpenPosition = (str(Properties['Status']['Open']) if 'Status' in list(Properties.keys()) else '')
+        self.Amount += self.Currency
 
         # Define Paying Account
-        self.PayingAccount_Account = 'Account: ' + str(Properties['PayingAccount']['Account']) if 'PayingAccount' in list(Properties.keys()) else ''
-        self.PayingAccount_SubAccount = 'Sub: ' + str(Properties['PayingAccount']['SubAccount']) if 'PayingAccount' in list(Properties.keys()) else ''
-        self.PayingAccount_Asset = 'Asset: ' + str(Properties['PayingAccount']['Currency']) if 'PayingAccount' in list(Properties.keys()) else ''
+        # self.PayingAccount_Account = 'Account: ' + str(Properties['PayingAccount']['Account']) if 'PayingAccount' in list(Properties.keys()) else ''
+        # self.PayingAccount_SubAccount = 'Sub: ' + str(Properties['PayingAccount']['SubAccount']) if 'PayingAccount' in list(Properties.keys()) else ''
+        #self.PayingAccount_Asset = 'Asset: ' + str(Properties['PayingAccount']['Currency']) if 'PayingAccount' in list(Properties.keys()) else ''
+        self.PayingAccount = str(Properties['PayingAccount']) if 'PayingAccount' in list(Properties.keys()) else '---'
         
-        # Define Storing Account
-        self.StoringAccount_Account = 'Account: ' + str(Properties['StoringAccount']['Account']) if 'StoringAccount' in list(Properties.keys()) else ''
-        self.StoringAccount_SubAccount = 'Sub: ' + str(Properties['StoringAccount']['SubAccount']) if 'StoringAccount' in list(Properties.keys()) else ''
-        self.StoringAccount_Asset = 'Asset: ' + str(Properties['StoringAccount']['Currency']) if 'StoringAccount' in list(Properties.keys()) else ''
-        
-        # Define fee
-        self.Fee = str(Properties['Fees']) if 'Fees' in list(Properties.keys()) else '--'
-        if self.Fee and self.Fee != '--': self.Fee += self.Currency
-
         # Define Note
-        self.Note = str(Properties['Note']) if 'Note' in list(Properties.keys()) else '--'
+        self.Description = str(Properties['Note']) if ('Note' in list(Properties.keys()) and Properties["Note"])  else '---'
 
         super().__init__()
     

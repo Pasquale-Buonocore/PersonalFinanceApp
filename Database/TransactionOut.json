@@ -2,9 +2,18 @@
       "OUT": {
             "Assets": {
                   "Bollette": {
-                        "Transactions": {},
+                        "Transactions": {
+                              "1": {
+                                    "Date": "06 SEPTEMBER 2022",
+                                    "Amount": 1000.0,
+                                    "Currency": "R",
+                                    "Category": "Bollette",
+                                    "PayingAccount": "UNICREDIT BANK - CASH - RUBLO",
+                                    "Note": ""
+                              }
+                        },
                         "Statistics": {
-                              "TotalValue": 0
+                              "TotalValue": 1000.0
                         }
                   },
                   "Benzina": {
@@ -26,8 +35,8 @@
                                     "Amount": 10.0,
                                     "Currency": "$",
                                     "Category": "Regali",
-                                    "Paid with": "UNICREDIT BANK - CASH - USDC",
-                                    "Note": "NFMV"
+                                    "PayingAccount": "UNICREDIT BANK - CASH - USDC",
+                                    "Note": ""
                               }
                         },
                         "Statistics": {
@@ -43,10 +52,10 @@
             },
             "Statistics": {
                   "Currency": "\u20ac",
-                  "NumberOfTransaction": 1,
-                  "TotalValue": 10.0,
+                  "NumberOfTransaction": 2,
+                  "TotalValue": 1010.0,
                   "ActualAssetAllocation": {
-                        "Bollette": 0.0,
+                        "Bollette": 1000.0,
                         "Benzina": 0.0,
                         "Alimenti": 0.0,
                         "Regali": 10.0,
@@ -70,8 +79,16 @@
                                     "Amount": 10.0,
                                     "Currency": "$",
                                     "Category": "Regali",
-                                    "Paid with": "UNICREDIT BANK - CASH - USDC",
+                                    "PayingAccount": "UNICREDIT BANK - CASH - USDC",
                                     "Note": "NFMV"
+                              },
+                              "2": {
+                                    "Date": "06 SEPTEMBER 2022",
+                                    "Amount": 1000.0,
+                                    "Currency": "R",
+                                    "Category": "Bollette",
+                                    "PayingAccount": "UNICREDIT BANK - CASH - RUBLO",
+                                    "Note": ""
                               }
                         }
                   }
