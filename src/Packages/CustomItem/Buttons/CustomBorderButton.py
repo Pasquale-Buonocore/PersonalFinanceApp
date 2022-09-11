@@ -9,7 +9,7 @@ from kivy.lang import Builder
 Builder.load_file('Packages/CustomItem/ui/CustomBorderButton.kv')
 
 class CustomBorderButton(BoxLayout, HoverBehavior):
-    Configuration = JsonManager_Class(PathManager_Class.database_path, PathManager_Class.Configuration_path)
+    Configuration = JsonManager_Class(PathManager_Class.database_configuration_path, PathManager_Class.Configuration_path)
     canvas_background_color = ColorProperty([0.1, 0.1, 0.1,1])
     canvas_background_color_on_enter = ColorProperty([0.5, 0.5, 0.5,1])
     canvas_background_color_on_leave = ColorProperty([0.1, 0.1, 0.1,1])

@@ -31,7 +31,7 @@ class AssetRowBoxLayout(BoxLayout, HoverBehavior):
 
     def __init__(self, Properties = {}):        
         # Define background color
-        self.Background_color = MDApp.get_running_app().Configuration.GetElementValue('CanvasBackgroundColor')
+        self.Background_color = MDApp.get_running_app().Configuration_DB.GetElementValue('CanvasBackgroundColor')
 
         # Define Asset Name
         self.AssetName = Properties['AssetName'] if 'AssetName' in list(Properties.keys()) else ''
@@ -62,10 +62,10 @@ class AssetRowBoxLayout(BoxLayout, HoverBehavior):
         super().__init__()
     
     def on_enter(self):
-        self.Background_color = MDApp.get_running_app().Configuration.GetElementValue('AssetRowBackgroundColor_on_enter')
+        self.Background_color = MDApp.get_running_app().Configuration_DB.GetElementValue('AssetRowBackgroundColor_on_enter')
 
     def on_leave(self):
-        self.Background_color = MDApp.get_running_app().Configuration.GetElementValue('CanvasBackgroundColor')
+        self.Background_color = MDApp.get_running_app().Configuration_DB.GetElementValue('CanvasBackgroundColor')
 
 # class to use for each row of the Asset list title
 class AssetRowBoxLayout_Title(BoxLayout):

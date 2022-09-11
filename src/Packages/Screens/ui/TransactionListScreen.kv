@@ -2,7 +2,7 @@
 
 <TransactionListScreen>:
     id: TransactionListScreenName
-    name: app.Configuration.GetElementValue('ScreenNameDictionary')["TransactionListScreenName"] 
+    name: app.Configuration_DB.GetElementValue('ScreenNameDictionary')["TransactionListScreenName"] 
     
     BoxLayout:
         orientation: 'vertical'
@@ -11,7 +11,7 @@
 
         canvas:
             Color:
-                rgba: app.Configuration.GetElementValue('CanvasBackgroundColor') 
+                rgba: app.Configuration_DB.GetElementValue('CanvasBackgroundColor') 
             RoundedRectangle:
                 pos: self.pos
                 size: self.size
@@ -36,7 +36,7 @@
                 font_size: 16
                 canvas.before:
                     Color:
-                        rgba: app.Configuration.GetElementValue('WindowBackgroundColor') 
+                        rgba: app.Configuration_DB.GetElementValue('WindowBackgroundColor') 
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
@@ -61,7 +61,7 @@
                 font_size: 16
                 canvas.before:
                     Color:
-                        rgba: app.Configuration.GetElementValue('WindowBackgroundColor') 
+                        rgba: app.Configuration_DB.GetElementValue('WindowBackgroundColor') 
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
@@ -70,8 +70,8 @@
 
         # Scroll View Transaction
         ScrollView:
-            bar_inactive_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
-            bar_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
+            bar_inactive_color: app.Configuration_DB.GetElementValue('ScrollViewBarBackgroundColor')
+            bar_color: app.Configuration_DB.GetElementValue('ScrollViewBarBackgroundColor')
             id: TransactionScrollView
 
             # Box containing Box Layout
@@ -100,7 +100,7 @@
         #         font_size: 16
         #         canvas.before:
         #             Color:
-        #                 rgba: app.Configuration.GetElementValue('WindowBackgroundColor') 
+        #                 rgba: app.Configuration_DB.GetElementValue('WindowBackgroundColor') 
         #             RoundedRectangle:
         #                 pos: self.pos
         #                 size: self.size
@@ -123,7 +123,7 @@
         #         font_size: 16
         #         canvas.before:
         #             Color:
-        #                 rgba: app.Configuration.GetElementValue('WindowBackgroundColor') 
+        #                 rgba: app.Configuration_DB.GetElementValue('WindowBackgroundColor') 
         #             RoundedRectangle:
         #                 pos: self.pos
         #                 size: self.size

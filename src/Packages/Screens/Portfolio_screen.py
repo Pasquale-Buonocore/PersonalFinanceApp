@@ -1,5 +1,7 @@
 import Packages.CustomItem.Popup.RemovePortfolioPopup as RemovePortfolioPopup
+from Packages.CustomFunction.DefineJsonDatapath import return_updated_data_path
 import Packages.CustomItem.Popup.AddPortfolioPopup as AddPortfolioPopup
+from Packages.DatabaseMng.PathManager import PathManager_Class
 from Packages.CustomItem.Lists.PortfolioListManagement import *
 import Packages.DatabaseMng.PortfolioManager as db_manager
 from kivy.uix.relativelayout import RelativeLayout
@@ -33,7 +35,7 @@ class PortfolioScreen(Screen):
         # Update signals
         self.ScreenName = ScreenName
         self.PortfolioJsonPath = PortfolioJsonPath
-        self.DBManager = db_manager.PortfoliosManager_Class(db_manager.path_manager.database_path, self.PortfolioJsonPath)
+        self.DBManager = db_manager.PortfoliosManager_Class(return_updated_data_path(PathManager_Class.database_path), self.PortfolioJsonPath)
 
     ########################
     #    PORTFOLIO  BOX    #
@@ -60,7 +62,7 @@ class PortfolioScreen(Screen):
 
                 RelLayout = RelativeLayout()
                 RelLayout.size_hint = [1, None]
-                RelLayout.height = MDApp.get_running_app().Configuration.GetElementValue('PortfolioRowBoxLayoutHeight')
+                RelLayout.height = MDApp.get_running_app().Configuration_DB.GetElementValue('PortfolioRowBoxLayoutHeight')
                 RelLayout.add_widget(PortfolioRowButton())
                 PortfolioProperties = Portfolios_json[portfolio]['Statistics']
                 PortfolioProperties.update({'PortfolioName' : portfolio})

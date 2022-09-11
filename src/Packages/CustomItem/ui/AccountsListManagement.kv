@@ -15,41 +15,41 @@
 
     canvas:
         Color:
-            rgba: app.Configuration.GetElementValue('WindowBackgroundColor') 
+            rgba: app.Configuration_DB.GetElementValue('WindowBackgroundColor') 
         RoundedRectangle:
             pos: self.pos
             size: self.size
-            radius: [(app.Configuration.GetElementValue('AccountRowBoxCanvasRadius'), app.Configuration.GetElementValue('AccountRowBoxCanvasRadius'))] *4
+            radius: [(app.Configuration_DB.GetElementValue('AccountRowBoxCanvasRadius'), app.Configuration_DB.GetElementValue('AccountRowBoxCanvasRadius'))] *4
                 
     Label: 
         text: root.AccountName
         size_hint: 0.225, 1
-        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-        font_size: app.Configuration.GetElementValue('ElementInListFontSize')
+        font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration_DB.GetElementValue('ElementInListFontSize')
         
     Label: 
         text: root.Category
         size_hint: 0.225, 1
-        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-        font_size: app.Configuration.GetElementValue('ElementInListFontSize')
+        font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration_DB.GetElementValue('ElementInListFontSize')
 
     Label: 
         text: root.LastMonthValue
         size_hint: 0.15, 1
-        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-        font_size: app.Configuration.GetElementValue('ElementInListFontSize')
+        font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration_DB.GetElementValue('ElementInListFontSize')
 
     Label: 
         text: root.ActualMonthValue
         size_hint: 0.15, 1
-        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-        font_size: app.Configuration.GetElementValue('ElementInListFontSize')
+        font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration_DB.GetElementValue('ElementInListFontSize')
 
     Label: 
         text: root.DifferenceValue
         size_hint: 0.15, 1
-        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-        font_size: app.Configuration.GetElementValue('ElementInListFontSize')
+        font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration_DB.GetElementValue('ElementInListFontSize')
 
     BoxLayout:
         size_hint: 0.1, 0.5
@@ -63,8 +63,8 @@
             text: '<'
             size_hint: 0.5, 1
             on_release: root.ExpandAccount()
-            font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-            font_size: app.Configuration.GetElementValue('ElementInListFontSize')
+            font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+            font_size: app.Configuration_DB.GetElementValue('ElementInListFontSize')
         
         BoxLayout:
             size_hint: 0.25, 1
@@ -78,38 +78,38 @@
     Label: 
         text: root.AccountName
         size_hint: 0.225, 1
-        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-        font_size: app.Configuration.GetElementValue('ElementInListFontSize')
+        font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration_DB.GetElementValue('ElementInListFontSize')
         
     Label: 
         text: root.Category
         size_hint: 0.225, 1
-        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-        font_size: app.Configuration.GetElementValue('ElementInListFontSize')
+        font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration_DB.GetElementValue('ElementInListFontSize')
 
     Label: 
         text: root.LastMonthValue
         size_hint: 0.15, 1
-        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-        font_size: app.Configuration.GetElementValue('ElementInListFontSize')
+        font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration_DB.GetElementValue('ElementInListFontSize')
 
     Label: 
         text: root.ActualMonthValue
         size_hint: 0.15, 1
-        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-        font_size: app.Configuration.GetElementValue('ElementInListFontSize')
+        font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration_DB.GetElementValue('ElementInListFontSize')
 
     Label: 
         text: root.DifferenceValue
         size_hint: 0.15, 1
-        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-        font_size: app.Configuration.GetElementValue('ElementInListFontSize')
+        font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration_DB.GetElementValue('ElementInListFontSize')
 
     Label: 
         text: ''
         size_hint: 0.1, 1
-        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-        font_size: app.Configuration.GetElementValue('ElementInListFontSize')
+        font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration_DB.GetElementValue('ElementInListFontSize')
 
 <AddNewAccountBoxLayout>:
     orientation: 'horizontal'

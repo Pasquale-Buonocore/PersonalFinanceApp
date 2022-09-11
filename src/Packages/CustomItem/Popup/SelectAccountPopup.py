@@ -11,7 +11,7 @@ from kivy.lang import Builder
 Builder.load_file('Packages/CustomItem/ui/SelectAccountPopup.kv')
 
 class CustomScrollViewButton(Button, HoverBehavior):
-    Configuration = JsonManager_Class(PathManager_Class.database_path, PathManager_Class.Configuration_path)
+    Configuration = JsonManager_Class(PathManager_Class.database_configuration_path, PathManager_Class.Configuration_path)
     BackgroundColor = ColorProperty(Configuration.GetElementValue('MenuButtonNotSelectedBackgroundColor'))
     SelectedStatus = BooleanProperty(False)
 
@@ -69,7 +69,7 @@ class SelectAccountPopup(ModalView):
     ##################
     
     def __init__(self, title_str = ''):
-        self.Configuration = JsonManager_Class(PathManager_Class.database_path, PathManager_Class.Configuration_path)
+        self.Configuration = JsonManager_Class(PathManager_Class.database_configuration_path, PathManager_Class.Configuration_path)
         self.DBManager = AccountsManager_Class(PathManager_Class.database_path, PathManager_Class.Accounts_path)
         self.AvailableAccounts = list(self.DBManager.ReadJson().keys())
         self.AvailableSubAccounts = list(self.DBManager.ReadJson()[self.AvailableAccounts[0]]["SubAccount"].keys())

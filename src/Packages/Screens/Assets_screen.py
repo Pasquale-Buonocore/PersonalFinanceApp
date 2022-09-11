@@ -1,5 +1,6 @@
 from Packages.CustomFunction.CustomFunction import ReturnJsonPathGivenScreenName
 from Packages.CustomFunction.AssetDistributionGraph import AssetDistributionGraph
+from Packages.CustomFunction.DefineJsonDatapath import return_updated_data_path
 import Packages.CustomItem.Popup.RemoveAssetPopup as RemoveAssetPopup
 import Packages.CustomItem.Popup.AddAssetPopup as AddAssetPopup
 from Packages.CustomItem.Lists.AssetListManagement import *
@@ -30,8 +31,7 @@ class AssetsScreen(Screen):
         self.FromScreenName = FromScreenName # contains the screen from which the assets screen has been opened 
         self.PortfolioName = PortfolioName # contains the portfolio that has been clicked in the FromScreen 
         self.PortfolioJsonPath = ReturnJsonPathGivenScreenName(self.FromScreenName)
-        self.DBManager = db_manager.PortfoliosManager_Class(db_manager.path_manager.database_path, self.PortfolioJsonPath)
-        self.Configuration = JsonManager_Class(PathManager_Class.database_path, PathManager_Class.Configuration_path)
+        self.DBManager = db_manager.PortfoliosManager_Class(return_updated_data_path(PathManager_Class.database_path), self.PortfolioJsonPath)
 
         # Update the Label of the String
         self.ids['DashboardTitle'].text = 'DASHBOARD - ASSET IN PORTFOLIO ' + self.PortfolioName.upper() + ' [' + self.FromScreenName.upper() + ']'
@@ -83,7 +83,7 @@ class AssetsScreen(Screen):
 
                 RelLayout = RelativeLayout()
                 RelLayout.size_hint = [1, None]
-                RelLayout.height = MDApp.get_running_app().Configuration.GetElementValue('AssetRowBoxLayoutHeight')
+                RelLayout.height = MDApp.get_running_app().Configuration_DB.GetElementValue('AssetRowBoxLayoutHeight')
                 RelLayout.add_widget(AssetRowButton())
                 AssetProperties = Assets_json[asset]['Statistics']
                 AssetProperties.update({'AssetName' : asset})

@@ -31,8 +31,8 @@
                 background_color: [0,0,0,0]
                 text: '<'
                 on_release: root.Cancel()
-                font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                font_size: app.Configuration.GetElementValue('PopupTextFieldFontSize')
+                font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+                font_size: app.Configuration_DB.GetElementValue('PopupTextFieldFontSize')
 
                 # Canvas for the poup background background
                 canvas.before:
@@ -52,8 +52,8 @@
                     text_size: self.width, None
                     size: self.texture_size
                     halign: 'left'
-                    font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                    font_size: app.Configuration.GetElementValue('PopupTextFieldFontSize')
+                    font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+                    font_size: app.Configuration_DB.GetElementValue('PopupTextFieldFontSize')
     
         BoxLayout:
             orientation: 'horizontal'
@@ -75,8 +75,8 @@
                 background_color: 0,0,0,0
                 foreground_color: 1,1,1,1
                 cursor_color: 1,1,1,1
-                font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                font_size: app.Configuration.GetElementValue('AddNotedFontSize')
+                font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+                font_size: app.Configuration_DB.GetElementValue('AddNotedFontSize')
                 halign: 'left'
                 valign: 'center'
         
@@ -92,8 +92,8 @@
                     radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
 
             id: Confirm
-            font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-            font_size: app.Configuration.GetElementValue('PopupInnerFontSize')
+            font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+            font_size: app.Configuration_DB.GetElementValue('PopupInnerFontSize')
             text:'Confirm'
             on_release: root.Confirm()        
 

@@ -2,7 +2,7 @@
 
 <AssetsScreen>:
     id: AssetsScreenName
-    name: app.Configuration.GetElementValue('ScreenNameDictionary')["AssetsScreenName"]
+    name: app.Configuration_DB.GetElementValue('ScreenNameDictionary')["AssetsScreenName"]
 
     # Main Stack Layout
     BoxLayout:
@@ -18,7 +18,7 @@
 
             canvas:
                 Color:
-                    rgba: app.Configuration.GetElementValue('CanvasBackgroundColor') 
+                    rgba: app.Configuration_DB.GetElementValue('CanvasBackgroundColor') 
                 RoundedRectangle:
                     pos: self.pos
                     size: self.size
@@ -43,7 +43,7 @@
                     font_size: 16
                     canvas.before:
                         Color:
-                            rgba: app.Configuration.GetElementValue('WindowBackgroundColor')                           
+                            rgba: app.Configuration_DB.GetElementValue('WindowBackgroundColor')                           
                         RoundedRectangle:
                             pos: self.pos
                             size: self.size
@@ -69,7 +69,7 @@
                     font_size: 16
                     canvas.before:
                         Color:
-                            rgba: app.Configuration.GetElementValue('WindowBackgroundColor')                           
+                            rgba: app.Configuration_DB.GetElementValue('WindowBackgroundColor')                           
                         RoundedRectangle:
                             pos: self.pos
                             size: self.size
@@ -85,7 +85,7 @@
                     font_size: 16
                     canvas.before:
                         Color:
-                            rgba: app.Configuration.GetElementValue('WindowBackgroundColor')                           
+                            rgba: app.Configuration_DB.GetElementValue('WindowBackgroundColor')                           
                         RoundedRectangle:
                             pos: self.pos
                             size: self.size
@@ -119,8 +119,8 @@
 
                     # Scroll View dashboard
                     ScrollView:
-                        bar_inactive_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
-                        bar_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
+                        bar_inactive_color: app.Configuration_DB.GetElementValue('ScrollViewBarBackgroundColor')
+                        bar_color: app.Configuration_DB.GetElementValue('ScrollViewBarBackgroundColor')
                         id: DistributionTableScreenView
 
                         # Box containing assets distribution
@@ -188,7 +188,7 @@
 
             canvas:
                 Color:
-                    rgba: app.Configuration.GetElementValue('CanvasBackgroundColor') 
+                    rgba: app.Configuration_DB.GetElementValue('CanvasBackgroundColor') 
                 RoundedRectangle:
                     pos: self.pos
                     size: self.size
@@ -220,7 +220,7 @@
                     font_size: 16
                     canvas.before:
                         Color:
-                            rgba: app.Configuration.GetElementValue('WindowBackgroundColor')  
+                            rgba: app.Configuration_DB.GetElementValue('WindowBackgroundColor')  
                         RoundedRectangle:
                             pos: self.pos
                             size: self.size
@@ -233,8 +233,8 @@
                 padding: ("0dp", "0dp", "0dp", "20dp")
                 
                 ScrollView:
-                    bar_inactive_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
-                    bar_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
+                    bar_inactive_color: app.Configuration_DB.GetElementValue('ScrollViewBarBackgroundColor')
+                    bar_color: app.Configuration_DB.GetElementValue('ScrollViewBarBackgroundColor')
                     id: AssetsScrollView
 
                     # ASSETS BOX LAYOUT #

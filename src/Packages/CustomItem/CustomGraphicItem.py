@@ -18,7 +18,7 @@ Builder.load_file('Packages/CustomItem/ui/CustomGraphicItem.kv')
 # CUSTOM DEFINITION #
 #####################
 class CustomMenuSquareButton(Button, HoverBehavior):
-    Configuration = JsonManager_Class(PathManager_Class.database_path, PathManager_Class.Configuration_path)
+    Configuration = JsonManager_Class(PathManager_Class.database_configuration_path, PathManager_Class.Configuration_path)
     BackgroundColor = ColorProperty(Configuration.GetElementValue('TransparentBackgroundColor'))
     SelectedStatus = BooleanProperty(False)
     

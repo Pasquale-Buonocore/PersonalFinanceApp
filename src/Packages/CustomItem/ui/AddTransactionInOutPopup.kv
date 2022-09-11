@@ -1,9 +1,9 @@
 #:kivy 1.0.9
 <CustomeDateSquareButton>:
     id: DateButton
-    font_name: app.Configuration.GetElementValue('ProfileNameFontName')
-    font_size: app.Configuration.GetElementValue('ProfileNameFontSize')
-    background_color: app.Configuration.GetElementValue('TransparentBackgroundColor') 
+    font_name: app.Configuration_DB.GetElementValue('ProfileNameFontName')
+    font_size: app.Configuration_DB.GetElementValue('ProfileNameFontSize')
+    background_color: app.Configuration_DB.GetElementValue('TransparentBackgroundColor') 
     canvas.before:
         Color:
             rgba: root.BackgroundColor
@@ -14,7 +14,7 @@
 <AddTransactionInOutPopup>:
     background_color: 0,0,0,0
     overlay_color: 0,0,0,0
-    padding: app.Configuration.GetElementValue('PopupBorderWidth')
+    padding: app.Configuration_DB.GetElementValue('PopupBorderWidth')
 
     # Canvas for the poup background background
     canvas.before:
@@ -30,7 +30,7 @@
 
         canvas.before:
             Color:
-                rgba: app.Configuration.GetElementValue('WindowBackgroundColor')
+                rgba: app.Configuration_DB.GetElementValue('WindowBackgroundColor')
             RoundedRectangle:
                 pos: self.pos
                 size: self.size
@@ -64,7 +64,7 @@
 
                 canvas:
                     Color:
-                        rgba: app.Configuration.GetElementValue('CanvasBackgroundColor')
+                        rgba: app.Configuration_DB.GetElementValue('CanvasBackgroundColor')
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
@@ -105,7 +105,7 @@
                             BoxLayout:
                                 id: DateBoxLayoutButton
                                 orientation: 'horizontal'
-                                background_color: app.Configuration.GetElementValue('TransparentBackgroundColor') 
+                                background_color: app.Configuration_DB.GetElementValue('TransparentBackgroundColor') 
                                 spacing: "0dp"
                                 padding: ("10dp","0dp","10dp","0dp")
 
@@ -160,7 +160,7 @@
                             # Canvas for the poup background background
                             canvas.before:
                                 Color:
-                                    rgba: app.Configuration.GetElementValue('WindowBackgroundColor')
+                                    rgba: app.Configuration_DB.GetElementValue('WindowBackgroundColor')
                                 RoundedRectangle:
                                     pos: self.pos
                                     size: self.size
@@ -175,8 +175,8 @@
                                 background_color: 0,0,0,0
                                 foreground_color: 1,1,1,1
                                 cursor_color: 1,1,1,1
-                                font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                                font_size: app.Configuration.GetElementValue('PopupTextFieldFontSize')
+                                font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+                                font_size: app.Configuration_DB.GetElementValue('PopupTextFieldFontSize')
                                 halign: 'center'
                                 valign: 'center'
 
@@ -284,7 +284,7 @@
 
                     canvas.before:
                         Color:
-                            rgba: app.Configuration.GetElementValue('CanvasBackgroundColor')
+                            rgba: app.Configuration_DB.GetElementValue('CanvasBackgroundColor')
                         RoundedRectangle:
                             pos: self.pos
                             size: self.size
@@ -297,7 +297,7 @@
                         background_color: 0,0,0,0
                         foreground_color: 1,1,1,1
                         cursor_color: 1,1,1,1
-                        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
+                        font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
                         font_size: 18
                         halign: 'left'
             # Box Layout containg the Taxable Event Checkbox - y: 0.025
@@ -333,15 +333,15 @@
                     background_color: 0,0,0,0
                     canvas.before:
                         Color:
-                            rgba: app.Configuration.GetElementValue('ConfirmationBtnBackgroundColor')
+                            rgba: app.Configuration_DB.GetElementValue('ConfirmationBtnBackgroundColor')
                         RoundedRectangle:
                             pos: self.pos
                             size: self.size
                             radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
 
                     id: Confirm
-                    font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                    font_size: app.Configuration.GetElementValue('PopupInnerFontSize')
+                    font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+                    font_size: app.Configuration_DB.GetElementValue('PopupInnerFontSize')
                     text:'Add Transaction'
                     on_release: root.AddTransaction(app)
 
@@ -349,15 +349,15 @@
                     background_color: 0,0,0,0
                     canvas.before:
                         Color:
-                            rgba: app.Configuration.GetElementValue('CancelBtnBackgroundColor')
+                            rgba: app.Configuration_DB.GetElementValue('CancelBtnBackgroundColor')
                         RoundedRectangle:
                             pos: self.pos
                             size: self.size
                             radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
 
                     id: Cancel
-                    font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                    font_size: app.Configuration.GetElementValue('PopupInnerFontSize')
+                    font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+                    font_size: app.Configuration_DB.GetElementValue('PopupInnerFontSize')
                     text:'Cancel'
                     on_release: root.Cancel()
 

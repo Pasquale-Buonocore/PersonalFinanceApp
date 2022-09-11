@@ -2,7 +2,7 @@
 
 <PortfolioScreen>: 
     id: PortfolioScreenName
-    name: app.Configuration.GetElementValue('ScreenNameDictionary')["PortfolioScreenName"]
+    name: app.Configuration_DB.GetElementValue('ScreenNameDictionary')["PortfolioScreenName"]
     
     # Main Box Layout
     BoxLayout:
@@ -18,7 +18,7 @@
 
             canvas:
                 Color:
-                    rgba: app.Configuration.GetElementValue('CanvasBackgroundColor') 
+                    rgba: app.Configuration_DB.GetElementValue('CanvasBackgroundColor') 
                 RoundedRectangle:
                     pos: self.pos
                     size: self.size
@@ -32,7 +32,7 @@
 
             canvas:
                 Color:
-                    rgba: app.Configuration.GetElementValue('CanvasBackgroundColor') 
+                    rgba: app.Configuration_DB.GetElementValue('CanvasBackgroundColor') 
                 RoundedRectangle:
                     pos: self.pos
                     size: self.size
@@ -65,7 +65,7 @@
 
                     canvas.before:
                         Color:
-                            rgba: app.Configuration.GetElementValue('MenuButtonSelectedBackgroundColor') 
+                            rgba: app.Configuration_DB.GetElementValue('MenuButtonSelectedBackgroundColor') 
                         RoundedRectangle:
                             pos: self.pos
                             size: self.size
@@ -80,8 +80,8 @@
 
                 # Scroll View Transaction
                 ScrollView:
-                	bar_inactive_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
-                    bar_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
+                	bar_inactive_color: app.Configuration_DB.GetElementValue('ScrollViewBarBackgroundColor')
+                    bar_color: app.Configuration_DB.GetElementValue('ScrollViewBarBackgroundColor')
                     id: PortfolioScrollView
 
                     # Main portfolio Box Layout containing everything. Each ScrollView can contains one child maximum

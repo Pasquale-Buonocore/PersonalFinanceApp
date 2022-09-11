@@ -2,12 +2,12 @@
 
 <DashboardScreen>:
     id: DashboardScreen
-    name: app.Configuration.GetElementValue('ScreenNameDictionary')["DashboardScreenName"]
+    name: app.Configuration_DB.GetElementValue('ScreenNameDictionary')["DashboardScreenName"]
     
     # Scroll View
     ScrollView:
-        bar_inactive_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
-        bar_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
+        bar_inactive_color: app.Configuration_DB.GetElementValue('ScrollViewBarBackgroundColor')
+        bar_color: app.Configuration_DB.GetElementValue('ScrollViewBarBackgroundColor')
         id: MainScrollView
 
         # Box containing Box Layout
@@ -35,11 +35,11 @@
 
                     canvas:
                         Color:
-                            rgba: app.Configuration.GetElementValue('CanvasBackgroundColor') 
+                            rgba: app.Configuration_DB.GetElementValue('CanvasBackgroundColor') 
                         RoundedRectangle:
                             pos: self.pos
                             size: self.size
-                            radius: [(app.Configuration.GetElementValue('DashboardBoxCanvasRadius'), app.Configuration.GetElementValue('DashboardBoxCanvasRadius'))] *4
+                            radius: [(app.Configuration_DB.GetElementValue('DashboardBoxCanvasRadius'), app.Configuration_DB.GetElementValue('DashboardBoxCanvasRadius'))] *4
             
 
                 # Box Layout containg the month resume
@@ -56,11 +56,11 @@
                         spacing: "10dp"
                         canvas:
                             Color:
-                                rgba: app.Configuration.GetElementValue('CanvasBackgroundColor') 
+                                rgba: app.Configuration_DB.GetElementValue('CanvasBackgroundColor') 
                             RoundedRectangle:
                                 pos: self.pos
                                 size: self.size
-                                radius: [(app.Configuration.GetElementValue('DashboardBoxCanvasRadius'), app.Configuration.GetElementValue('DashboardBoxCanvasRadius'))] *4
+                                radius: [(app.Configuration_DB.GetElementValue('DashboardBoxCanvasRadius'), app.Configuration_DB.GetElementValue('DashboardBoxCanvasRadius'))] *4
 
                                             # Box Layout per space
                         BoxLayout:
@@ -108,11 +108,11 @@
                         spacing: "10dp"
                         canvas:
                             Color:
-                                rgba: app.Configuration.GetElementValue('CanvasBackgroundColor') 
+                                rgba: app.Configuration_DB.GetElementValue('CanvasBackgroundColor') 
                             RoundedRectangle:
                                 pos: self.pos
                                 size: self.size
-                                radius: [(app.Configuration.GetElementValue('DashboardBoxCanvasRadius'), app.Configuration.GetElementValue('DashboardBoxCanvasRadius'))] *4
+                                radius: [(app.Configuration_DB.GetElementValue('DashboardBoxCanvasRadius'), app.Configuration_DB.GetElementValue('DashboardBoxCanvasRadius'))] *4
                         
                         # Box Layout per space
                         BoxLayout:
@@ -162,11 +162,11 @@
 
                 canvas.before:
                     Color:
-                        rgba: app.Configuration.GetElementValue('CanvasBackgroundColor') 
+                        rgba: app.Configuration_DB.GetElementValue('CanvasBackgroundColor') 
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
-                        radius: [(app.Configuration.GetElementValue('DashboardBoxCanvasRadius'), app.Configuration.GetElementValue('DashboardBoxCanvasRadius'))] *4
+                        radius: [(app.Configuration_DB.GetElementValue('DashboardBoxCanvasRadius'), app.Configuration_DB.GetElementValue('DashboardBoxCanvasRadius'))] *4
                 
                 BoxLayout:
                     id: CanvasLabelIdentifier
@@ -200,11 +200,11 @@
 
                 canvas:
                     Color:
-                        rgba: app.Configuration.GetElementValue('CanvasBackgroundColor') 
+                        rgba: app.Configuration_DB.GetElementValue('CanvasBackgroundColor') 
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
-                        radius: [(app.Configuration.GetElementValue('DashboardBoxCanvasRadius'), app.Configuration.GetElementValue('DashboardBoxCanvasRadius'))] *4
+                        radius: [(app.Configuration_DB.GetElementValue('DashboardBoxCanvasRadius'), app.Configuration_DB.GetElementValue('DashboardBoxCanvasRadius'))] *4
                 
                 BoxLayout:
                     id: CanvasLabelIdentifier
@@ -239,8 +239,8 @@
                 
                     # Scroll View dashboard
                     ScrollView:
-                        bar_inactive_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
-                        bar_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
+                        bar_inactive_color: app.Configuration_DB.GetElementValue('ScrollViewBarBackgroundColor')
+                        bar_color: app.Configuration_DB.GetElementValue('ScrollViewBarBackgroundColor')
                         id: AssetAllocationScreenView
                         size_hint: 0.6, 1
 
@@ -303,11 +303,11 @@
 
                 canvas:
                     Color:
-                        rgba: app.Configuration.GetElementValue('CanvasBackgroundColor') 
+                        rgba: app.Configuration_DB.GetElementValue('CanvasBackgroundColor') 
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
-                        radius: [(app.Configuration.GetElementValue('DashboardBoxCanvasRadius'), app.Configuration.GetElementValue('DashboardBoxCanvasRadius'))] *4
+                        radius: [(app.Configuration_DB.GetElementValue('DashboardBoxCanvasRadius'), app.Configuration_DB.GetElementValue('DashboardBoxCanvasRadius'))] *4
                 
                 BoxLayout:
                     id: CanvasLabelIdentifier
@@ -342,8 +342,8 @@
                 
                     # Scroll View dashboard
                     ScrollView:
-                        bar_inactive_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
-                        bar_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
+                        bar_inactive_color: app.Configuration_DB.GetElementValue('ScrollViewBarBackgroundColor')
+                        bar_color: app.Configuration_DB.GetElementValue('ScrollViewBarBackgroundColor')
                         id: AssetAllocationScreenView
                         size_hint: 0.6, 1
 

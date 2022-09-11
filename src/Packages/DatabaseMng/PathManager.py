@@ -4,6 +4,7 @@
 class PathManager_Class():
     ### Root path ###
     database_path = 'Database/'
+    database_configuration_path = 'Database/Configurations/'
 
     ### path ###
     TransactionIn_path = 'TransactionIn.json'
@@ -14,7 +15,7 @@ class PathManager_Class():
     Commodities_path = 'Commodities.json'
     Crypto_path = 'Crypto.json'
     Category_path = 'Category.json'
-    Configuration_path = 'Configuration.json'
+    Configuration_path = 'Configuration_default.json'
     Accounts_path = 'Accounts.json'
 
 class PathImage_Class():

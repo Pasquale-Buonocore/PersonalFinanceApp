@@ -1,4 +1,5 @@
 import Packages.DatabaseMng.JsonManager as json_manager
+from kivymd.app import MDApp
 import Packages.CustomItem.CustomPopup as cst_popup
 import Packages.CustomItem.CustomGraphicItem as cst_item
 import Packages.CustomItem.Popup.WarningPopup as Wrn_popup
@@ -24,10 +25,6 @@ class DashboardScreen(Screen):
         
     # Function to call when the screen is changed to Dashboard
     def UpdateScreen(self):
-        # Update the database of accounts
-        self.Configuration = JsonManager_Class(PathManager_Class.database_path, PathManager_Class.Configuration_path)
-        self.DBManager = AccountsManager_Class(PathManager_Class.database_path, PathManager_Class.Accounts_path)
-
         self.ids.GraphPortfolioAllocation.source = 'images/Support/AssetsInPortfolio.png'
         self.ids.GraphPortfolioAllocation.reload()
 
@@ -222,7 +219,7 @@ class DashboardScreen(Screen):
     
     # Update the list of accounts
     def Update_AccountBoxLayout(self):
-        json_file = self.DBManager.ReadJson()
+        json_file = MDApp.get_running_app().Accounts_DB.ReadJson()
 
         # Clear the Item inside the BoxLayout (Keep the first element only)
         self.ids[self.AccountsBoxLayout].clear_widgets()

@@ -1,6 +1,8 @@
 from Packages.CustomFunction.AssetDistributionGraph import AssetDistributionGraph
+from Packages.CustomFunction.DefineJsonDatapath import return_updated_data_path
 import Packages.CustomItem.Popup.TransactionCategoryListPopup as trans_popup
 import Packages.DatabaseMng.PortfolioManager as db_manager
+from Packages.DatabaseMng.PathManager import PathManager_Class
 import Packages.DatabaseMng.PathManager as path_manager
 from kivy.uix.screenmanager import Screen
 from kivy.uix.boxlayout import BoxLayout
@@ -13,8 +15,8 @@ class TransactionScreen(Screen):
         super().__init__(**kwargs)
 
         # Initialize the manager of the json manager
-        self.TransactionIn = db_manager.PortfoliosManager_Class(db_manager.path_manager.database_path,db_manager.path_manager.TransactionIn_path)
-        self.TransactionOut = db_manager.PortfoliosManager_Class(db_manager.path_manager.database_path,db_manager.path_manager.TransactionOut_path)
+        self.TransactionIn = db_manager.PortfoliosManager_Class(return_updated_data_path(PathManager_Class.database_path),db_manager.path_manager.TransactionIn_path)
+        self.TransactionOut = db_manager.PortfoliosManager_Class(return_updated_data_path(PathManager_Class.database_path),db_manager.path_manager.TransactionOut_path)
         self.Image_path_manager = path_manager.PathImage_Class()
         self.CheckTransactionPortfolio(Database = self.TransactionIn, Name = "IN")
         self.CheckTransactionPortfolio(Database = self.TransactionOut, Name = "OUT")

@@ -14,9 +14,9 @@
             
 <CustomMenuSquareButton>:
     id: ButtonToPress
-    font_name: app.Configuration.GetElementValue('ProfileNameFontName')
-    font_size: app.Configuration.GetElementValue('ProfileNameFontSize')
-    background_color: app.Configuration.GetElementValue('TransparentBackgroundColor') 
+    font_name: app.Configuration_DB.GetElementValue('ProfileNameFontName')
+    font_size: app.Configuration_DB.GetElementValue('ProfileNameFontSize')
+    background_color: app.Configuration_DB.GetElementValue('TransparentBackgroundColor') 
     canvas:
         Color:
             rgba: root.BackgroundColor

@@ -5,8 +5,8 @@
     separator_color: 0,0,0,0
     overlay_color: 0,0,0,0
     title_align: 'center'
-    title_size: app.Configuration.GetElementValue('PopupTitleFontSize')
-    title_font: app.Configuration.GetElementValue('PopupTitleFontName') 
+    title_size: app.Configuration_DB.GetElementValue('PopupTitleFontSize')
+    title_font: app.Configuration_DB.GetElementValue('PopupTitleFontName') 
 
     canvas.before:
         Color:
@@ -30,8 +30,8 @@
                 text: 'Do you really want to remove the element?\nThe operation is not reversable!'
                 text_size: root.width, None
                 size: self.texture_size
-                font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                font_size: app.Configuration.GetElementValue('PopupTitleFontSize')
+                font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+                font_size: app.Configuration_DB.GetElementValue('PopupTitleFontSize')
                 halign: 'center'
 
         BoxLayout:
@@ -51,8 +51,8 @@
                         radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
 
                 id: Remove_portfolio
-                font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                font_size: app.Configuration.GetElementValue('PopupInnerFontSize')
+                font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+                font_size: app.Configuration_DB.GetElementValue('PopupInnerFontSize')
                 text: 'Remove Portfolio'
                 on_release: root.RemoveIt()
 
@@ -67,8 +67,8 @@
                         radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
 
                 id: Cancel
-                font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                font_size: app.Configuration.GetElementValue('PopupInnerFontSize')
+                font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+                font_size: app.Configuration_DB.GetElementValue('PopupInnerFontSize')
                 text: 'Cancel'
                 on_release: root.dismiss()
 

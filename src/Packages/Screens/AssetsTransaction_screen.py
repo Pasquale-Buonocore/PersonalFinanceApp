@@ -1,4 +1,6 @@
 from Packages.CustomFunction.CustomFunction import ReturnJsonPathGivenScreenName
+from Packages.CustomFunction.DefineJsonDatapath import return_updated_data_path
+from Packages.DatabaseMng.PathManager import PathManager_Class
 import Packages.CustomItem.Popup.AddAssetTransactionPopup as AddAssetTransactionPopup
 import Packages.CustomItem.Popup.RemoveTransactionPopup as RemoveTransactionPopup
 import Packages.CustomItem.CustomGraphicItem as cst_item
@@ -25,7 +27,7 @@ class AssetsTransactionScreen(Screen):
         self.FromScreenName = FromScreenName
         self.PortfolioName = PortfolioName
         self.AssetName = AssetName
-        self.DBManager = db_manager.PortfoliosManager_Class(db_manager.path_manager.database_path, self.PortfolioJsonPath)
+        self.DBManager = db_manager.PortfoliosManager_Class(return_updated_data_path(PathManager_Class.database_path), self.PortfolioJsonPath)
 
         # Update String
         self.ids['DashboardTitle'].text = self.AssetName.upper() + ' TRANSACTION HISTORY IN ' + self.PortfolioName.upper() + ' [' + self.FromScreenName.upper() + ']'
@@ -69,7 +71,7 @@ class AssetsTransactionScreen(Screen):
                 # Compute the graphic element to Add given the PortfolioName and its statistics
                 RelLayout = RelativeLayout()
                 RelLayout.size_hint = [1, None]
-                RelLayout.height = MDApp.get_running_app().Configuration.GetElementValue('AssetRowBoxLayoutHeight')
+                RelLayout.height = MDApp.get_running_app().Configuration_DB.GetElementValue('AssetRowBoxLayoutHeight')
                 RelLayout.add_widget(AssetTransactionRowButton())
                 AssetTransactionProperties = Transactions_json[TransactionKey]
                 AssetTransactionProperties.update({'TransactionNumber': str(TransactionKey)})

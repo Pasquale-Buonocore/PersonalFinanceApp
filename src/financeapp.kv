@@ -9,12 +9,12 @@
 <MenuDataLayout@BoxLayout>:
     id: MenuDataLayout
     orientation: 'horizontal'
-    padding: app.Configuration.GetElementValue('MenuDataLayoutPadding') 
-    spacing: app.Configuration.GetElementValue('MenuDataLayoutSpacing') 
+    padding: app.Configuration_DB.GetElementValue('MenuDataLayoutPadding') 
+    spacing: app.Configuration_DB.GetElementValue('MenuDataLayoutSpacing') 
 
 <DataLayout@BoxLayout>:
     id: DataLayout
-    size_hint: app.Configuration.GetElementValue('DataLayoutSizeHint') 
+    size_hint: app.Configuration_DB.GetElementValue('DataLayoutSizeHint') 
     Label:
         text: 'Data'
 
@@ -25,7 +25,7 @@
 
     canvas:
         Color:
-            rgba: app.Configuration.GetElementValue('WindowBackgroundColor')
+            rgba: app.Configuration_DB.GetElementValue('WindowBackgroundColor')
         Rectangle:
             pos: self.pos
             size: self.size

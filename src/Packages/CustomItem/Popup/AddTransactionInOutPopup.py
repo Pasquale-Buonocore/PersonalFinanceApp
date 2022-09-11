@@ -18,7 +18,7 @@ from kivymd.app import MDApp
 Builder.load_file('Packages/CustomItem/ui/AddTransactionInOutPopup.kv')
 
 class CustomeDateSquareButton(Button, HoverBehavior):
-    Configuration = JsonManager_Class(PathManager_Class.database_path, PathManager_Class.Configuration_path)
+    Configuration = JsonManager_Class(PathManager_Class.database_configuration_path, PathManager_Class.Configuration_path)
     BackgroundColor = ColorProperty(Configuration.GetElementValue('WindowBackgroundColor'))
     SelectedStatus = BooleanProperty(False)
     

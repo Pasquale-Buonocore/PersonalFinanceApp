@@ -40,7 +40,7 @@ class PortfolioRowBoxLayout(BoxLayout, HoverBehavior):
         # self.ToCountInAllocation = Properties['ToCountInAllocation']
         # self.RowHeight = Properties['RowHeight']
         # Define background color
-        self.Background_color = MDApp.get_running_app().Configuration.GetElementValue('CanvasBackgroundColor')
+        self.Background_color = MDApp.get_running_app().Configuration_DB.GetElementValue('CanvasBackgroundColor')
 
         # Define portfolio Name
         self.PortfolioName = Properties['PortfolioName'] if 'PortfolioName' in list(Properties.keys()) else ''
@@ -65,10 +65,10 @@ class PortfolioRowBoxLayout(BoxLayout, HoverBehavior):
         super().__init__()
     
     def on_enter(self):
-        self.Background_color = MDApp.get_running_app().Configuration.GetElementValue('PortfolioRowBackgroundColor_on_enter')
+        self.Background_color = MDApp.get_running_app().Configuration_DB.GetElementValue('PortfolioRowBackgroundColor_on_enter')
 
     def on_leave(self):
-        self.Background_color = MDApp.get_running_app().Configuration.GetElementValue('CanvasBackgroundColor')
+        self.Background_color = MDApp.get_running_app().Configuration_DB.GetElementValue('CanvasBackgroundColor')
 
 # class to use for each row of the portfolio list title
 class PortfolioRowBoxLayout_Title(BoxLayout):

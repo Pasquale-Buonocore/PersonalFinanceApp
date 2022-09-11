@@ -2,9 +2,9 @@
 
 <CustomCategoryViewButton>:
     id: ButtonToPress
-    font_name: app.Configuration.GetElementValue('ProfileNameFontName')
-    font_size: app.Configuration.GetElementValue('ProfileNameFontSize')
-    background_color: app.Configuration.GetElementValue('TransparentBackgroundColor') 
+    font_name: app.Configuration_DB.GetElementValue('ProfileNameFontName')
+    font_size: app.Configuration_DB.GetElementValue('ProfileNameFontSize')
+    background_color: app.Configuration_DB.GetElementValue('TransparentBackgroundColor') 
     canvas.before:
         Color:
             rgba: root.BackgroundColor
@@ -15,7 +15,7 @@
 <SelectTransactionCategory>:
     background_color: 0,0,0,0
     overlay_color: 0,0,0,0
-    padding: app.Configuration.GetElementValue('PopupBorderWidth')
+    padding: app.Configuration_DB.GetElementValue('PopupBorderWidth')
     spacing: "10dp"
     
     # Canvas for the poup background background
@@ -32,7 +32,7 @@
         # Canvas for the poup background background
         canvas.before:
             Color:
-                rgba: app.Configuration.GetElementValue('WindowBackgroundColor')
+                rgba: app.Configuration_DB.GetElementValue('WindowBackgroundColor')
             RoundedRectangle:
                 pos: self.pos
                 size: self.size
@@ -65,12 +65,12 @@
             ScrollView:
                 id: SelectAccountScrollView
                 size_hint: 1, 0.78
-                bar_inactive_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
-                bar_color: app.Configuration.GetElementValue('ScrollViewBarBackgroundColor')
+                bar_inactive_color: app.Configuration_DB.GetElementValue('ScrollViewBarBackgroundColor')
+                bar_color: app.Configuration_DB.GetElementValue('ScrollViewBarBackgroundColor')
 
                 canvas.before:
                     Color:
-                        rgba: app.Configuration.GetElementValue('CanvasBackgroundColor')
+                        rgba: app.Configuration_DB.GetElementValue('CanvasBackgroundColor')
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
@@ -102,8 +102,8 @@
                             radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
 
                     id: Confirm
-                    font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                    font_size: app.Configuration.GetElementValue('PopupInnerFontSize')
+                    font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+                    font_size: app.Configuration_DB.GetElementValue('PopupInnerFontSize')
                     text: 'Confirm Category'
                     on_release: root.ConfirmAccount()
 
@@ -118,7 +118,7 @@
                             radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
 
                     id: Cancel
-                    font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                    font_size: app.Configuration.GetElementValue('PopupInnerFontSize')
+                    font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+                    font_size: app.Configuration_DB.GetElementValue('PopupInnerFontSize')
                     text:'Cancel'
                     on_release: root.Cancel()

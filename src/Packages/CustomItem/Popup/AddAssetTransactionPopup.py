@@ -23,7 +23,7 @@ Builder.load_file('Packages/CustomItem/ui/AddAssetTransactionPopup.kv')
 #################
 
 class CustomTransactionMenuSquareButton(Button, HoverBehavior):
-    Configuration = JsonManager_Class(PathManager_Class.database_path, PathManager_Class.Configuration_path)
+    Configuration = JsonManager_Class(PathManager_Class.database_configuration_path, PathManager_Class.Configuration_path)
     BackgroundColor = ColorProperty(Configuration.GetElementValue('TransparentBackgroundColor'))
     SelectedStatus = BooleanProperty(False)
 
@@ -64,7 +64,7 @@ class CustomTransactionMenuSquareButton(Button, HoverBehavior):
             self.BackgroundColor = self.Configuration.GetElementValue('CanvasBackgroundColor') 
 
 class CustomDateFeeDateSquareButton(Button, HoverBehavior):
-    Configuration = JsonManager_Class(PathManager_Class.database_path, PathManager_Class.Configuration_path)
+    Configuration = JsonManager_Class(PathManager_Class.database_configuration_path, PathManager_Class.Configuration_path)
     BackgroundColor = ColorProperty(Configuration.GetElementValue('WindowBackgroundColor'))
     SelectedStatus = BooleanProperty(False)
     

@@ -2,36 +2,36 @@
 
 <AssetTransactionRowBoxLayout_Empty>:
     size_hint: 1, None
-    height: app.Configuration.GetElementValue('AssetRowBoxLayoutHeight')
+    height: app.Configuration_DB.GetElementValue('AssetRowBoxLayoutHeight')
     orientation: 'horizontal'
 
     Label: 
         text: 'THIS ASSET HAS NOT TRANSACTION!'
         text_size: self.width, None
         size: self.texture_size
-        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-        font_size: app.Configuration.GetElementValue('AssetNameElementFontSize')
+        font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration_DB.GetElementValue('AssetNameElementFontSize')
         halign: 'center'
 
 <AssetTransactionLineSeparator>:
     orientation: 'vertical'
     size_hint: 1, None
-    height: app.Configuration.GetElementValue('AssetRowLineHeight') 
+    height: app.Configuration_DB.GetElementValue('AssetRowLineHeight') 
     canvas:
         Color:
-            rgba: app.Configuration.GetElementValue('WhiteLineBackgroundColor') 
+            rgba: app.Configuration_DB.GetElementValue('WhiteLineBackgroundColor') 
         Rectangle:
             pos: self.pos
             size: self.size
 
 <AssetTransactionRowButton>:
     size_hint: 1, None
-    height: app.Configuration.GetElementValue('AssetRowBoxLayoutHeight')
+    height: app.Configuration_DB.GetElementValue('AssetRowBoxLayoutHeight')
     background_color: [0, 0, 0, 0]
 
 <AssetTransactionRowBoxLayout>:
     size_hint: 1, None
-    height: app.Configuration.GetElementValue('AssetRowBoxLayoutHeight')
+    height: app.Configuration_DB.GetElementValue('AssetRowBoxLayoutHeight')
     orientation: 'horizontal'
 
     canvas:
@@ -48,8 +48,8 @@
         text: root.TransactionNumber
         text_size: self.width, None
         size: self.texture_size
-        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-        font_size: app.Configuration.GetElementValue('AssetNameElementFontSize')
+        font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration_DB.GetElementValue('AssetNameElementFontSize')
         halign: 'center'
 
     # Date x: 0.1
@@ -59,16 +59,16 @@
         text: root.Date
         text_size: self.width, None
         size: self.texture_size
-        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-        font_size: app.Configuration.GetElementValue('AssetSymbolElementFontSize')
+        font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration_DB.GetElementValue('AssetSymbolElementFontSize')
         halign: 'center'
 
     # Price Per Coin - x: 0.1
     Label: 
         text: root.PricePerCoin
         size_hint: 0.1, 1
-        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-        font_size: app.Configuration.GetElementValue('ElementInAssetTransactionListFontSize')
+        font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration_DB.GetElementValue('ElementInAssetTransactionListFontSize')
 
     # Amount - x: 0.1
     BoxLayout:
@@ -80,16 +80,16 @@
         Label: 
             size_hint: 1, 0.5 
             text: root.Amount
-            font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-            font_size: app.Configuration.GetElementValue('ElementInAssetTransactionListFontSize')
+            font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+            font_size: app.Configuration_DB.GetElementValue('ElementInAssetTransactionListFontSize')
 
         # Open position - x: 0.1
         Label: 
             size_hint: 1, 0.5 
             text: '(' + root.OpenPosition + ')'
             color: [0, 1, 0, 1]
-            font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-            font_size: app.Configuration.GetElementValue('ElementInAssetTransactionListFontSize')
+            font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+            font_size: app.Configuration_DB.GetElementValue('ElementInAssetTransactionListFontSize')
 
     #   Paying Account - x: 0.15
     GridLayout:
@@ -105,8 +105,8 @@
             text_size: self.width, None
             size: self.texture_size
             halign: 'left'
-            font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-            font_size: app.Configuration.GetElementValue('PayingStoringElementInAssetTransactionListFontSize')
+            font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+            font_size: app.Configuration_DB.GetElementValue('PayingStoringElementInAssetTransactionListFontSize')
 
         # SubAccount Value
         Label: 
@@ -114,8 +114,8 @@
             text_size: self.width, None
             size: self.texture_size
             halign: 'left'
-            font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-            font_size: app.Configuration.GetElementValue('PayingStoringElementInAssetTransactionListFontSize')
+            font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+            font_size: app.Configuration_DB.GetElementValue('PayingStoringElementInAssetTransactionListFontSize')
         
         # Asset Value
         Label: 
@@ -123,8 +123,8 @@
             text_size: self.width, None
             size: self.texture_size
             halign: 'left'
-            font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-            font_size: app.Configuration.GetElementValue('PayingStoringElementInAssetTransactionListFontSize')
+            font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+            font_size: app.Configuration_DB.GetElementValue('PayingStoringElementInAssetTransactionListFontSize')
     
     #   Storing Account - x: 0.15
     GridLayout:
@@ -140,8 +140,8 @@
             text_size: self.width, None
             size: self.texture_size
             halign: 'left'
-            font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-            font_size: app.Configuration.GetElementValue('PayingStoringElementInAssetTransactionListFontSize')
+            font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+            font_size: app.Configuration_DB.GetElementValue('PayingStoringElementInAssetTransactionListFontSize')
 
         # SubAccount Value
         Label: 
@@ -149,8 +149,8 @@
             text_size: self.width, None
             size: self.texture_size
             halign: 'left'
-            font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-            font_size: app.Configuration.GetElementValue('PayingStoringElementInAssetTransactionListFontSize')
+            font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+            font_size: app.Configuration_DB.GetElementValue('PayingStoringElementInAssetTransactionListFontSize')
 
         # Asset Value
         Label: 
@@ -158,22 +158,22 @@
             text_size: self.width, None
             size: self.texture_size
             halign: 'left'
-            font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-            font_size: app.Configuration.GetElementValue('PayingStoringElementInAssetTransactionListFontSize')
+            font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+            font_size: app.Configuration_DB.GetElementValue('PayingStoringElementInAssetTransactionListFontSize')
 
     # Fee - x: 0.05
     Label: 
         text: root.Fee
         size_hint: 0.05, 1
-        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-        font_size: app.Configuration.GetElementValue('ElementInAssetTransactionListFontSize')
+        font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration_DB.GetElementValue('ElementInAssetTransactionListFontSize')
 
     # Note - x: 0.2
     Label: 
         text: root.Note
         size_hint: 0.2, 1
-        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-        font_size: app.Configuration.GetElementValue('ElementInAssetTransactionListFontSize')
+        font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration_DB.GetElementValue('ElementInAssetTransactionListFontSize')
 
     # Box Layout containing buttons x: 0.1
     BoxLayout:
@@ -208,11 +208,11 @@
 <AssetTransactionRowBoxLayout_Title>:
     orientation: 'horizontal'
     size_hint: 1, None
-    height: app.Configuration.GetElementValue('AssetRowBoxLayoutHeight_Title') 
+    height: app.Configuration_DB.GetElementValue('AssetRowBoxLayoutHeight_Title') 
 
     canvas:
         Color:
-            rgba: app.Configuration.GetElementValue('AssetTitleRowBackgroundColor') 
+            rgba: app.Configuration_DB.GetElementValue('AssetTitleRowBackgroundColor') 
         Rectangle:
             pos: self.pos
             size: self.size
@@ -221,61 +221,61 @@
     Label: 
         text: 'N°'
         size_hint: 0.05, 1
-        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-        font_size: app.Configuration.GetElementValue('ElementInAssetTransactionListFontSize')
+        font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration_DB.GetElementValue('ElementInAssetTransactionListFontSize')
 
     # Date - x: 0.1
     Label: 
         text: 'Date'
         size_hint: 0.1, 1
-        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-        font_size: app.Configuration.GetElementValue('ElementInAssetTransactionListFontSize')
+        font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration_DB.GetElementValue('ElementInAssetTransactionListFontSize')
     
     # Price Per Coin - x: 0.1
     Label: 
         text: 'Price Per Coin'
         size_hint: 0.1, 1 
-        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-        font_size: app.Configuration.GetElementValue('ElementInAssetTransactionListFontSize')
+        font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration_DB.GetElementValue('ElementInAssetTransactionListFontSize')
 
     # Amount - x: 0.1
     Label: 
         text: 'Amount'
         size_hint: 0.1, 1
-        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-        font_size: app.Configuration.GetElementValue('ElementInAssetTransactionListFontSize')
+        font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration_DB.GetElementValue('ElementInAssetTransactionListFontSize')
 
     # Paying Account - x: 0.15
     Label: 
         text: 'Paying Account'
         size_hint: 0.15, 1
-        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-        font_size: app.Configuration.GetElementValue('ElementInAssetTransactionListFontSize')
+        font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration_DB.GetElementValue('ElementInAssetTransactionListFontSize')
 
     # Storing Account - x: 0.15
     Label: 
         text: 'Storing Account'
         size_hint: 0.15, 1
-        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-        font_size: app.Configuration.GetElementValue('ElementInAssetTransactionListFontSize')
+        font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration_DB.GetElementValue('ElementInAssetTransactionListFontSize')
 
     # Fees - x: 0.05
     Label: 
         text: 'Fees'
         size_hint: 0.05, 1
-        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-        font_size: app.Configuration.GetElementValue('ElementInAssetTransactionListFontSize')
+        font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration_DB.GetElementValue('ElementInAssetTransactionListFontSize')
         
     # Note - x: 0.2
     Label: 
         text: 'Note'
         size_hint: 0.2, 1
-        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-        font_size: app.Configuration.GetElementValue('ElementInAssetTransactionListFontSize')
+        font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration_DB.GetElementValue('ElementInAssetTransactionListFontSize')
 
     # Action - x: 0.1
     Label: 
         text: 'Action'
         size_hint: 0.1, 1
-        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-        font_size: app.Configuration.GetElementValue('ElementInAssetTransactionListFontSize')
+        font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+        font_size: app.Configuration_DB.GetElementValue('ElementInAssetTransactionListFontSize')

@@ -18,7 +18,6 @@ class TransactionListScreen(Screen):
     
     # Function to call when moving towards that page
     def UpdateScreen(self, portfolio, Database):
-        self.Configuration = JsonManager_Class(PathManager_Class.database_path, PathManager_Class.Configuration_path)
         self.ids.TransactionListLabel.text = 'TRANSACTION ' + portfolio.upper()
         self.DBManager = Database
         self.portfolio = portfolio

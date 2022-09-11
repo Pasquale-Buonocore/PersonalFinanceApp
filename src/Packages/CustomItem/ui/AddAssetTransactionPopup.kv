@@ -2,9 +2,9 @@
 # Button used for the swap of screens
 <CustomTransactionMenuSquareButton>:
     id: ButtonToPress
-    font_name: app.Configuration.GetElementValue('ProfileNameFontName')
-    font_size: app.Configuration.GetElementValue('ProfileNameFontSize')
-    background_color: app.Configuration.GetElementValue('TransparentBackgroundColor') 
+    font_name: app.Configuration_DB.GetElementValue('ProfileNameFontName')
+    font_size: app.Configuration_DB.GetElementValue('ProfileNameFontSize')
+    background_color: app.Configuration_DB.GetElementValue('TransparentBackgroundColor') 
     canvas.before:
         Color:
             rgba: root.BackgroundColor
@@ -14,9 +14,9 @@
 
 <CustomDateFeeDateSquareButton>:
     id: DateFeeNoteButton
-    font_name: app.Configuration.GetElementValue('ProfileNameFontName')
-    font_size: app.Configuration.GetElementValue('ProfileNameFontSize')
-    background_color: app.Configuration.GetElementValue('TransparentBackgroundColor') 
+    font_name: app.Configuration_DB.GetElementValue('ProfileNameFontName')
+    font_size: app.Configuration_DB.GetElementValue('ProfileNameFontSize')
+    background_color: app.Configuration_DB.GetElementValue('TransparentBackgroundColor') 
     canvas.before:
         Color:
             rgba: root.BackgroundColor
@@ -26,7 +26,7 @@
 
 
 <BuySellScreen>:
-    name: app.Configuration.GetElementValue('AssetTransactionPopupScreenDictionary')["BUY"] 
+    name: app.Configuration_DB.GetElementValue('AssetTransactionPopupScreenDictionary')["BUY"] 
 
     BoxLayout:
         orientation: 'vertical'
@@ -34,7 +34,7 @@
 
         canvas:
             Color:
-                rgba: app.Configuration.GetElementValue('CanvasBackgroundColor')
+                rgba: app.Configuration_DB.GetElementValue('CanvasBackgroundColor')
             RoundedRectangle:
                 pos: self.pos
                 size: self.size
@@ -64,7 +64,7 @@
                     # Asset And Button BoxLayout
                     BoxLayout:
                         orientation: 'horizontal'
-                        background_color: app.Configuration.GetElementValue('TransparentBackgroundColor') 
+                        background_color: app.Configuration_DB.GetElementValue('TransparentBackgroundColor') 
                         # padding: ("0dp","0dp","0dp","0dp")
 
                         BoxLayout:
@@ -116,7 +116,7 @@
                             # Canvas for the poup background background
                             canvas.before:
                                 Color:
-                                    rgba: app.Configuration.GetElementValue('WindowBackgroundColor')
+                                    rgba: app.Configuration_DB.GetElementValue('WindowBackgroundColor')
                                 RoundedRectangle:
                                     pos: self.pos
                                     size: self.size
@@ -131,8 +131,8 @@
                                 background_color: 0,0,0,0
                                 foreground_color: 1,1,1,1
                                 cursor_color: 1,1,1,1
-                                font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                                font_size: app.Configuration.GetElementValue('PopupTextFieldFontSize')
+                                font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+                                font_size: app.Configuration_DB.GetElementValue('PopupTextFieldFontSize')
                                 halign: 'center'
                                 valign: 'center'
 
@@ -161,7 +161,7 @@
                             # Canvas for the poup background background
                             canvas.before:
                                 Color:
-                                    rgba: app.Configuration.GetElementValue('WindowBackgroundColor')
+                                    rgba: app.Configuration_DB.GetElementValue('WindowBackgroundColor')
                                 RoundedRectangle:
                                     pos: self.pos
                                     size: self.size
@@ -179,8 +179,8 @@
                                         text_size: self.width, None
                                         size: self.texture_size
                                         halign: 'left'
-                                        font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                                        font_size: app.Configuration.GetElementValue('PopupTextFieldFontSize')
+                                        font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+                                        font_size: app.Configuration_DB.GetElementValue('PopupTextFieldFontSize')
                                 
                                 TextInput: 
                                     id: PricePerCoinValue
@@ -192,8 +192,8 @@
                                     background_color: 0,0,0,0
                                     foreground_color: 1,1,1,1
                                     cursor_color: 1,1,1,1
-                                    font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                                    font_size: app.Configuration.GetElementValue('PopupTextFieldFontSize')
+                                    font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+                                    font_size: app.Configuration_DB.GetElementValue('PopupTextFieldFontSize')
                                     halign: 'center'
                                     valign: 'center'
 
@@ -268,7 +268,7 @@
                     BoxLayout:
                         id: DateBoxLayoutButton
                         orientation: 'horizontal'
-                        background_color: app.Configuration.GetElementValue('TransparentBackgroundColor') 
+                        background_color: app.Configuration_DB.GetElementValue('TransparentBackgroundColor') 
                         spacing: "0dp"
                         padding: ("10dp","0dp","10dp","0dp")
 
@@ -302,7 +302,7 @@
                     BoxLayout:
                         id: FeeBoxLayoutButton
                         orientation: 'horizontal'
-                        background_color: app.Configuration.GetElementValue('TransparentBackgroundColor') 
+                        background_color: app.Configuration_DB.GetElementValue('TransparentBackgroundColor') 
                         spacing: "0dp"
                         padding: ("10dp","0dp","10dp","0dp")
 
@@ -335,7 +335,7 @@
                     BoxLayout:
                         id: NoteBoxLayoutButton
                         orientation: 'horizontal'
-                        background_color: app.Configuration.GetElementValue('TransparentBackgroundColor') 
+                        background_color: app.Configuration_DB.GetElementValue('TransparentBackgroundColor') 
                         spacing: "0dp"
                         padding: ("10dp","0dp","10dp","0dp")
 
@@ -363,13 +363,13 @@
                 id: TotalSpentBoxLayoutButton
                 orientation: 'horizontal'
                 size_hint: 1, 0.1375
-                background_color: app.Configuration.GetElementValue('TransparentBackgroundColor') 
+                background_color: app.Configuration_DB.GetElementValue('TransparentBackgroundColor') 
                 spacing: "0dp"
                 padding: ("10dp","0dp","10dp","0dp")
 
                 canvas:
                     Color:
-                        rgba: app.Configuration.GetElementValue('WindowBackgroundColor')
+                        rgba: app.Configuration_DB.GetElementValue('WindowBackgroundColor')
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
@@ -418,14 +418,14 @@
                     font_size: 18
 
 <SwapScreen>:
-    name: app.Configuration.GetElementValue('AssetTransactionPopupScreenDictionary')["SWAP"] 
+    name: app.Configuration_DB.GetElementValue('AssetTransactionPopupScreenDictionary')["SWAP"] 
     Label:
         text: 'SwapScreen'
 
 <AddAssetTransactionPopup>:
     background_color: 0,0,0,0
     overlay_color: 0,0,0,0
-    padding: app.Configuration.GetElementValue('PopupBorderWidth')
+    padding: app.Configuration_DB.GetElementValue('PopupBorderWidth')
     
     # Canvas for the poup background background
     canvas.before:
@@ -441,7 +441,7 @@
 
         canvas.before:
             Color:
-                rgba: app.Configuration.GetElementValue('WindowBackgroundColor')
+                rgba: app.Configuration_DB.GetElementValue('WindowBackgroundColor')
             RoundedRectangle:
                 pos: self.pos
                 size: self.size
@@ -485,7 +485,7 @@
 
                     canvas.before:
                         Color:
-                            rgba: app.Configuration.GetElementValue('CanvasBackgroundColor')
+                            rgba: app.Configuration_DB.GetElementValue('CanvasBackgroundColor')
                         RoundedRectangle:
                             pos: self.pos
                             size: self.size
@@ -525,15 +525,15 @@
                     background_color: 0,0,0,0
                     canvas.before:
                         Color:
-                            rgba: app.Configuration.GetElementValue('ConfirmationBtnBackgroundColor')
+                            rgba: app.Configuration_DB.GetElementValue('ConfirmationBtnBackgroundColor')
                         RoundedRectangle:
                             pos: self.pos
                             size: self.size
                             radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
 
                     id: Confirm
-                    font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                    font_size: app.Configuration.GetElementValue('PopupInnerFontSize')
+                    font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+                    font_size: app.Configuration_DB.GetElementValue('PopupInnerFontSize')
                     text:'Add Transaction'
                     on_release: root.AddTransaction(app)
 
@@ -541,14 +541,14 @@
                     background_color: 0,0,0,0
                     canvas.before:
                         Color:
-                            rgba: app.Configuration.GetElementValue('CancelBtnBackgroundColor')
+                            rgba: app.Configuration_DB.GetElementValue('CancelBtnBackgroundColor')
                         RoundedRectangle:
                             pos: self.pos
                             size: self.size
                             radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
 
                     id: Cancel
-                    font_name: app.Configuration.GetElementValue('PopupTitleFontName')
-                    font_size: app.Configuration.GetElementValue('PopupInnerFontSize')
+                    font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+                    font_size: app.Configuration_DB.GetElementValue('PopupInnerFontSize')
                     text:'Cancel'
                     on_release: root.Cancel()

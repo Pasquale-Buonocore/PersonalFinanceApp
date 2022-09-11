@@ -1,4 +1,5 @@
 from kivy.uix.stacklayout import StackLayout
+from kivymd.app import MDApp
 import datetime as dt
 
 class MenuLayout(StackLayout):
@@ -29,7 +30,6 @@ class MenuLayout(StackLayout):
         self.SelectedMonth = self.GetMonthNameFromNumber(self.month)
         self.ids.MonthStringValue.text = self.SelectedMonth
 
-
     def Btn_Year(self, sign):
         if sign == '-':
             self.year-= 1
@@ -40,4 +40,4 @@ class MenuLayout(StackLayout):
         self.ids.YearStringValue.text = self.SelectedYear
 
     def UpdateAppToSelectedMonthYear(self):
-        pass
+        MDApp.get_running_app().update_database_class_on_month_change()

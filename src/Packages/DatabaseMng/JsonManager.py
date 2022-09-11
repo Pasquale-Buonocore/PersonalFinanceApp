@@ -20,7 +20,6 @@ class JsonManager_Class():
     #################
     # CLASS METHODS #
     #################
-
     # Initialize the json file
     def Initialize_json(self):
         if not exists(self.database_path + self.json_path):

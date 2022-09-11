@@ -24,7 +24,7 @@ class MyApp(MDApp):
     def build(self):
         Window.maximize()
         # Define the App configuration Database
-        self.Configuration = JsonManager_Class(PathManager_Class.database_path, PathManager_Class.Configuration_path)
+        self.Configuration = JsonManager_Class(PathManager_Class.database_configuration_path, PathManager_Class.Configuration_path)
 
         return Widgets()
         

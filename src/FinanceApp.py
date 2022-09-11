@@ -8,6 +8,7 @@ kivy.require('1.0.9')
 # IMPORTS FROM CUSTOM LIB #
 ###########################
 import Packages.Configuration.WinConfiguration as WinConf
+from Packages.CustomFunction.DefineJsonDatapath import return_updated_data_path
 from Packages.DatabaseMng.JsonManager import JsonManager_Class
 from Packages.DatabaseMng.PathManager import PathManager_Class
 from Packages.Screens.Dashboard_screen import *
@@ -21,6 +22,7 @@ from Packages.Screens.Empty_screen import *
 from Packages.Screens.AssetsTransaction_screen import *
 from Packages.Screens.Assets_screen import *
 from Packages.Screens.MenuLayout import * 
+import datetime as dt 
 
 #####################
 # IMPORTS FROM KIVY #
@@ -49,18 +51,39 @@ class FinanceApp(MDApp):
         # WinConf.SetWindowSize()
         Window.maximize()
 
-        # Define the App configuration Database
-        self.Configuration = JsonManager_Class(PathManager_Class.database_path, PathManager_Class.Configuration_path)
-        self.Accounts_DB = JsonManager_Class(PathManager_Class.database_path, PathManager_Class.Accounts_path)
+        # Internal App data
+        self.UserSelectedCurrency = {'Name': 'EUR', 'Symbol' : '€'}
+        self.TodayDate_day = dt.datetime.now().strftime("%d") 
+        self.TodayDate_month = dt.datetime.now().strftime("%B") 
+        self.TodayDate_year = dt.datetime.now().strftime("%Y")
+
+        # Variables used to move among months
+        self.VisualizedDate_month = self.TodayDate_month
+        self.VisualizedDate_year = self.TodayDate_year
+
+        # Variables to monitor the portfolio under management
+        
+        # Define the App configuration and Account Database
+        self.Configuration_DB = JsonManager_Class(PathManager_Class.database_configuration_path, PathManager_Class.Configuration_path)
+        self.Accounts_DB = JsonManager_Class(return_updated_data_path(PathManager_Class.database_path), PathManager_Class.Accounts_path)
 
         return MainLayout()
 
+    def update_database_class_on_month_change(self):
+        self.VisualizedDate_month = self.root.children[0].children[1].ids.MonthStringValue.text
+        self.VisualizedDate_year = self.root.children[0].children[1].ids.YearStringValue.text
+
+        # Work on databases to unite them
+
+        # Update referenced database
+        print('Updating month information')
+    
     def on_start(self):
         # Initialize the Dashboard page
         self.root.children[0].children[0].children[0].UpdateScreen()
 
         # Set the Dashboard button selected
         self.root.children[0].children[1].ids.Dashboard_btn.SelectedStatus = True
-        self.root.children[0].children[1].ids.Dashboard_btn.BackgroundColor= self.Configuration.GetElementValue('MenuButtonSelectedBackgroundColor')
+        self.root.children[0].children[1].ids.Dashboard_btn.BackgroundColor= self.Configuration_DB.GetElementValue('MenuButtonSelectedBackgroundColor')
 
 

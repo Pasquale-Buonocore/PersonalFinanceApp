@@ -11,7 +11,7 @@ from kivy.lang import Builder
 Builder.load_file('Packages/CustomItem/ui/SelectTransactionCategory.kv')
 
 class CustomCategoryViewButton(Button, HoverBehavior):
-    Configuration = JsonManager_Class(PathManager_Class.database_path, PathManager_Class.Configuration_path)
+    Configuration = JsonManager_Class(PathManager_Class.database_configuration_path, PathManager_Class.Configuration_path)
     BackgroundColor = ColorProperty(Configuration.GetElementValue('MenuButtonNotSelectedBackgroundColor'))
     SelectedStatus = BooleanProperty(False)
 
@@ -51,7 +51,7 @@ class SelectTransactionCategory(ModalView):
     ##################
     
     def __init__(self, AvailableCategory = []):
-        self.Configuration = JsonManager_Class(PathManager_Class.database_path, PathManager_Class.Configuration_path)
+        self.Configuration = JsonManager_Class(PathManager_Class.database_configuration_path, PathManager_Class.Configuration_path)
         self.CategoryScrollViewBoxLayout = 'SelectCategoryScrollViewBoxLayout'
         self.AvailableCategory = AvailableCategory
         self.title = 'SELECT CATEGORY'

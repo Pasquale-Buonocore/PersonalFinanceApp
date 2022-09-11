@@ -90,13 +90,13 @@ class AccountsManager_Class():
         self.SaveJsonFile(json_object)
 
     # Initialize a New Account returning a dict - TESTED
-    def InitializeNewAccount(self, AccountName, Category, Currency = '$', LastMonthValue = 0, LastMonthSubAccount = {}):
+    def InitializeNewAccount(self, AccountName, Category, LastMonthValue = 0, LastMonthSubAccount = {}):
         NewAccountDict = {}
 
         # Add the SubAccount section
         NewAccountDict.update({'SubAccount': self.InitializeNewSubAccount(LastMonthSubAccount)})
         # Add the Statistics section
-        NewAccountDict.update({'Statistics': self.InitializeNewAccountStatistics(Category, Currency, LastMonthSubAccount, LastMonthValue)})
+        NewAccountDict.update({'Statistics': self.InitializeNewAccountStatistics(Category, LastMonthSubAccount, LastMonthValue)})
 
         self.UpdateActualMonthAccountValue(AccountName)
 
@@ -109,12 +109,11 @@ class AccountsManager_Class():
         return {'Cash': {}, 'Assets': {}}
 
     # Initialize a dict with new account statistics
-    def InitializeNewAccountStatistics(self, Category, Currency, LastMonthSubAccount, LastMonthValue):
+    def InitializeNewAccountStatistics(self, Category, LastMonthSubAccount, LastMonthValue):
         StatisticsDict =  {'Category': Category}
         StatisticsDict.update({'LastMonthSubAccount' : LastMonthSubAccount})
         StatisticsDict.update({'LastMonthValue' : LastMonthValue})
         StatisticsDict.update({'ActualMonthValue' : LastMonthValue})
-        StatisticsDict.update({'Currency' : Currency})
         
         return StatisticsDict
 
@@ -139,7 +138,7 @@ class AccountsManager_Class():
             print('The '+ CashCategory + ' cash category already exist. Use the "UpdateCashSubAccount" function to modify it. Exiting...')
             return
  
-        json_object[AccountName]['SubAccount']['Cash'].update({CashCategory: {'TotalAmount' : Amount, 'Symbol' : Symbol, 'TotalValue' : 0, 'Base': Amount , 'Contributors': {}}})
+        json_object[AccountName]['SubAccount']['Cash'].update({CashCategory: {'TotalAmount' : Amount, 'Symbol' : Symbol, 'TotalValue' : 0, 'Liquidity': Amount , 'Investiment_OpenPosition': {}}})
 
         # Save new json file
         self.SaveJsonFile(json_object)
@@ -179,7 +178,7 @@ class AccountsManager_Class():
             print('The '+ AssetCategory + ' cash category already exist. Use the "UpdateAssetSubAccount" function to modify it. Exiting...')
             return
  
-        json_object[AccountName]['SubAccount']['Assets'].update({AssetCategory: {'TotalAmount' : Amount, 'Symbol' : Symbol, 'TotalValue': TotalValue, 'Base' : Amount, 'Contributors' : {}}})
+        json_object[AccountName]['SubAccount']['Assets'].update({AssetCategory: {'TotalAmount' : Amount, 'Symbol' : Symbol, 'TotalValue': TotalValue, 'Liquidity' : Amount, 'Investiment_OpenPosition' : {}}})
 
         # Save new json file
         self.SaveJsonFile(json_object)
