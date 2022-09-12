@@ -1,3 +1,5 @@
+from Packages.CustomItem.Popup.AddAccountPopup import AddAccountPopup
+from Packages.CustomItem.Popup.AddAccountCashAssetPopup import AddAccountCashAssetPopup
 from kivy.uix.boxlayout import BoxLayout
 from kivy.lang import Builder
 
@@ -19,6 +21,10 @@ class AccountRowBoxLayout(BoxLayout):
 
         super().__init__()
     
+    def Add_Initialize_Cash_Asset(self, cash_or_asset: str) -> None:
+        AddAccountCashAssetPopup(self.AccountName, cash_or_asset).open()
+
+
     def ExpandAccount(self):
         # Update the Expanded property
         self.ToExpand = not self.ToExpand
@@ -33,9 +39,9 @@ class AccountRowBoxLayout_Title(BoxLayout):
         # Initialize internal data
         self.AccountName = kwargs['kwargs']['AccountName']
         self.Category = kwargs['kwargs']['Category']
-        self.LastMonthValue = str(kwargs['kwargs']['LastMonthValue']) + str(kwargs['kwargs']['Currency'])
-        self.ActualMonthValue = str(kwargs['kwargs']['ActualMonthValue']) + str(kwargs['kwargs']['Currency'])
-        self.DifferenceValue = str(kwargs['kwargs']['ValueDifference']) + str(kwargs['kwargs']['Currency'])
+        self.LastMonthValue = str(kwargs['kwargs']['LastMonthValue'])
+        self.ActualMonthValue = str(kwargs['kwargs']['ActualMonthValue'])
+        self.DifferenceValue = str(kwargs['kwargs']['ValueDifference'])
         self.ToExpand = False
         self.RowHeight = kwargs['kwargs']['RowHeight']
 
@@ -48,7 +54,8 @@ class AddNewAccountBoxLayout(BoxLayout):
         super().__init__(**kwargs)
     
     def AddAccount(self):
-        print('Adding account....')
+        popupWindow = AddAccountPopup(title_str = 'ADD ACCOUNT')
+        popupWindow.open()
 
 # Box Layout containg information of the account expanded
 class AccountRowExpandedBoxLayout(BoxLayout):

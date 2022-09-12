@@ -126,7 +126,7 @@ class AccountsManager_Class():
     ###########################
 
     # Add a cash subaccount category - TESTED
-    def AddCashSubAccountCategory(self, AccountName, CashCategory, Amount, Symbol):
+    def AddCashSubAccountCategory(self, AccountName, CashCategory, Symbol, BasedCarrency, InitialLiquidity = 0):
         # Read json
         json_object = self.ReadJson()
         
@@ -137,36 +137,21 @@ class AccountsManager_Class():
         if CashCategory in json_object[AccountName]['SubAccount']['Cash'].keys():
             print('The '+ CashCategory + ' cash category already exist. Use the "UpdateCashSubAccount" function to modify it. Exiting...')
             return
- 
-        json_object[AccountName]['SubAccount']['Cash'].update({CashCategory: {'TotalAmount' : Amount, 'Symbol' : Symbol, 'TotalValue' : 0, 'Liquidity': Amount , 'Investiment_OpenPosition': {}}})
 
-        # Save new json file
-        self.SaveJsonFile(json_object)
+        CashDictionary = {'TotalValue' : InitialLiquidity}
+        CashDictionary.update({'Symbol' : Symbol})
+        CashDictionary.update({'BasedCurrency' : BasedCarrency})
+        CashDictionary.update({'LiquidityContribution' : float(InitialLiquidity)})
+        CashDictionary.update({'InvestmentContribution' : float(0)})
+        CashDictionary.update({'MonthlyTransactions' : {}})
 
-    # Update the an asset in the cash subaccount - TESTED
-    def UpdateCashSubAccountCategory(self, AccountName, CashCategory, DictOfParameters):
-        # Read json
-        json_object = self.ReadJson()
+        json_object[AccountName]['SubAccount']['Cash'].update({CashCategory : CashDictionary})
 
-        if AccountName not in json_object.keys(): 
-            print('The '+ AccountName + ' account does not exist and it is not possible to update its assets. Exiting...')
-            return
-
-        if CashCategory not in json_object[AccountName]['SubAccount']['Cash'].keys():
-            print('The '+ CashCategory + ' cash category does not exist and it is not possible to be updated. Exiting...')
-            return
-        
-        for parameter in DictOfParameters.keys():
-            if parameter in json_object[AccountName]['SubAccount']['Cash'][CashCategory].keys():
-                json_object[AccountName]['SubAccount']['Cash'][CashCategory][parameter] = DictOfParameters[parameter]
-            else:
-                print('The ' + parameter + ' parameter passed does not exist and cannot be updated.')
- 
         # Save new json file
         self.SaveJsonFile(json_object)
 
     # Add an Asset category - TESTED
-    def AddAssetSubAccountCategory(self, AccountName, AssetCategory, Amount, TotalValue, Symbol):
+    def AddAssetSubAccountCategory(self, AccountName, AssetCategory, Symbol, InitialLiquidity = 0):
         # Read json
         json_object = self.ReadJson()
         
@@ -177,31 +162,39 @@ class AccountsManager_Class():
         if AssetCategory in json_object[AccountName]['SubAccount']['Assets'].keys():
             print('The '+ AssetCategory + ' cash category already exist. Use the "UpdateAssetSubAccount" function to modify it. Exiting...')
             return
- 
-        json_object[AccountName]['SubAccount']['Assets'].update({AssetCategory: {'TotalAmount' : Amount, 'Symbol' : Symbol, 'TotalValue': TotalValue, 'Liquidity' : Amount, 'Investiment_OpenPosition' : {}}})
+    
+        AssetDictionary = {'TotalValue' : InitialLiquidity}
+        AssetDictionary.update({'Symbol' : Symbol})
+        AssetDictionary.update({'LiquidityContribution' : float(InitialLiquidity)})
+        AssetDictionary.update({'InvestmentContribution' : float(0)})
+        AssetDictionary.update({'MonthlyTransactions' : {}})
+        json_object[AccountName]['SubAccount']['Assets'].update({AssetCategory: AssetDictionary})
 
         # Save new json file
         self.SaveJsonFile(json_object)
 
-    # Update ad Asset category 
-    def UpdateAssetSubAccountCategory(self, AccountName, AssetCategory, DictOfParameters):
+    # Append a transaction in the transaction list of the AccountName, [Cash, Asset], Asset  - TESTED
+    def AppendTransactionToList(self, AccountName, cash_or_asset, AssetName, TransactionToAppendDict) -> int:
         # Read json
         json_object = self.ReadJson()
 
         if AccountName not in json_object.keys(): 
             print('The '+ AccountName + ' account does not exist and it is not possible to update its assets. Exiting...')
-            return
+            return -1
 
-        if AssetCategory not in json_object[AccountName]['SubAccount']['Assets'].keys():
-            print('The '+ AssetCategory + ' cash category does not exist and it is not possible to be updated. Exiting...')
-            return
+        if cash_or_asset not in json_object[AccountName]['SubAccount'].keys():
+            print('Neither Cash not Asset was added. Exiting...')
+            return -1
+
+        if AssetName not in json_object[AccountName]['SubAccount'][cash_or_asset].keys():
+            print('The '+ AssetName + ' cash category does not exist and it is not possible to be updated. Exiting...')
+            return -1
         
-        for parameter in DictOfParameters.keys():
-            if parameter in json_object[AccountName]['SubAccount']['Assets'][AssetCategory].keys():
-                json_object[AccountName]['SubAccount']['Assets'][AssetCategory][parameter] = DictOfParameters[parameter]
-            else:
-                print('The ' + parameter + ' parameter passed does not exist and cannot be updated.')
+        if list(TransactionToAppendDict.keys())[0] in json_object[AccountName]['SubAccount'][cash_or_asset][AssetName]['MonthlyTransactions']:
+            print('This code already exist and the transaction cannot be added. Exiting...')
+            return 1
         
+        json_object[AccountName]['SubAccount'][cash_or_asset][AssetName]['MonthlyTransactions'].update(TransactionToAppendDict)
+ 
         # Save new json file
         self.SaveJsonFile(json_object)
-

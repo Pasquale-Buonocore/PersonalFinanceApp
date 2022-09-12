@@ -1,0 +1,191 @@
+#:kivy 1.0.9
+
+<AddAccountPopup>:
+    background_color: 0,0,0,0
+    overlay_color: 0,0,0,0
+    padding: app.Configuration_DB.GetElementValue('PopupBorderWidth')
+
+    # Canvas for the poup background background
+    canvas.before:
+        Color:
+            rgba: [1,1,1,1]
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+    BoxLayout:
+        orientation: 'vertical'
+
+        canvas.before:
+            Color:
+                rgba: app.Configuration_DB.GetElementValue('WindowBackgroundColor')
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+        # Main Box Layout
+        BoxLayout:
+            orientation: 'vertical'
+            padding: ("30dp","30dp","30dp","30dp")
+            spacing: "20dp"
+
+            # First row with title - y: 0.075
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint: 1, 0.075
+
+                Label:
+                    text: root.title
+                    text_size: self.width, None
+                    size: self.texture_size
+                    halign: 'center'
+                    font_name: 'Candarab'
+                    font_size: 22
+
+            # Box Layout containg the body of the popup (Date, Total Spent, Category, Paying with) - y: 0.7
+            GridLayout:
+                rows: 2
+                cols: 1
+                size_hint: 1, 0.775
+                padding: ("10dp","35dp","10dp","10dp")
+
+                canvas:
+                    Color:
+                        rgba: app.Configuration_DB.GetElementValue('CanvasBackgroundColor')
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+                               
+                # Account Name
+                BoxLayout:
+                    orientation: 'vertical'
+                    padding: ("10dp","0dp","10dp","0dp")
+                    spacing: "5dp"
+
+                    # Quantity BoxLayout
+                    BoxLayout:
+                        orientation: 'vertical'
+                        size_hint: 1, 0.25
+
+                        Label:
+                            text: 'Account Name'
+                            text_size: self.width, None
+                            size: self.texture_size
+                            font_name: 'Candarab'
+                            halign: 'left'
+                            font_size: 22
+
+                    # Box Layout containg the Text Input to add the Quantity
+                    BoxLayout:
+                        orientation: 'horizontal'
+                        size_hint: 1 , 0.8
+                        
+                        BoxLayout:
+                            size_hint: 1, 0.6
+                            pos_hint: {'y': 0.4}
+
+                            # Canvas for the poup background background
+                            canvas.before:
+                                Color:
+                                    rgba: app.Configuration_DB.GetElementValue('WindowBackgroundColor')
+                                RoundedRectangle:
+                                    pos: self.pos
+                                    size: self.size
+                                    radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+                            TextInput: 
+                                id: AccountValue
+                                multiline: 0
+                                text: ''
+                                pos_hint: {'y': - 0.1}
+                                background_color: 0,0,0,0
+                                foreground_color: 1,1,1,1
+                                cursor_color: 1,1,1,1
+                                font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+                                font_size: app.Configuration_DB.GetElementValue('PopupTextFieldFontSize')
+                                halign: 'center'
+                                valign: 'center'
+
+                # Category
+                BoxLayout:
+                    orientation: 'vertical'
+                    padding: ("10dp","0dp","10dp","0dp")
+                    spacing: "5dp"
+
+                    # Category 
+                    BoxLayout:
+                        orientation: 'vertical'
+                        size_hint: 1, 0.25
+
+                        Label:
+                            id: Category
+                            text: 'Category'
+                            text_size: self.width, None
+                            size: self.texture_size
+                            font_name: 'Candarab'
+                            halign: 'left'
+                            font_size: 22
+                    
+                    # Category Button
+                    BoxLayout:
+                        size_hint: 1, 0.75
+
+                        RelativeLayout:
+                            size_hint: 1, 0.6
+                            pos_hint: {'y': 0.4}
+
+                            CustomeDateSquareButton:
+                                on_release: root.open_select_category_popup()
+                                
+                            Label:
+                                id: CategoryValue
+                                text: 'Stipendio'
+                                text_size: self.width, None
+                                size: self.texture_size
+                                font_name: 'Candarab'
+                                halign: 'center'
+                                font_size: 20
+            
+            # Box Layout containg the Confirmation button - y : 0.225
+            BoxLayout:
+                orientation: 'horizontal'
+                spacing: "10dp"
+                size_hint: 1, 0.15
+                pos_hint: {'x': 0, 'y': 1}
+
+                Button:
+                    background_color: 0,0,0,0
+                    canvas.before:
+                        Color:
+                            rgba: app.Configuration_DB.GetElementValue('ConfirmationBtnBackgroundColor')
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+                    id: Confirm
+                    font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+                    font_size: app.Configuration_DB.GetElementValue('PopupInnerFontSize')
+                    text:'Add Account'
+                    on_release: root.AddAccount()
+
+                Button:
+                    background_color: 0,0,0,0
+                    canvas.before:
+                        Color:
+                            rgba: app.Configuration_DB.GetElementValue('CancelBtnBackgroundColor')
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [(10, 10), (10, 10), (10, 10), (10, 10)]
+
+                    id: Cancel
+                    font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+                    font_size: app.Configuration_DB.GetElementValue('PopupInnerFontSize')
+                    text:'Cancel'
+                    on_release: root.Cancel()
+
+

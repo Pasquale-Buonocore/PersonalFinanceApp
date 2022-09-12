@@ -33,7 +33,7 @@ class AddTransactionClassPopup(Popup):
         else:
             # Instantiate Screen and Json manager
             ActualScreen = App.root.children[0].children[0].children[0]
-            DBManager = ActualScreen.DBManager
+            DBManager = ActualScreen.TransactionIn if self.direction == 'IN' else ActualScreen.TransactionOut
 
             # Check first if the actual class name already exist
             if ClassName in DBManager.ReadJson()[self.direction]['Assets'].keys():

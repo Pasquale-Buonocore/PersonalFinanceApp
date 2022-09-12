@@ -42,6 +42,12 @@
                         "Statistics": {
                               "TotalValue": 10.0
                         }
+                  },
+                  "De Fi Avalanche": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
                   }
             },
             "Statistics": {
@@ -52,13 +58,15 @@
                         "Stipendio": 0.0,
                         "Ripetizioni": 0.0,
                         "Defi Elrond": 50.0,
-                        "De Fi Cosmos": 10.0
+                        "De Fi Cosmos": 10.0,
+                        "De Fi Avalanche": 0.0
                   },
                   "DesiredAssetAllocation": {
                         "Stipendio": 0,
                         "Ripetizioni": 100,
                         "Defi Elrond": 50,
-                        "De Fi Cosmos": 10
+                        "De Fi Cosmos": 10,
+                        "De Fi Avalanche": 0
                   }
             }
       },

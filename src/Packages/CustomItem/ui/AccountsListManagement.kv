@@ -52,22 +52,29 @@
         font_size: app.Configuration_DB.GetElementValue('ElementInListFontSize')
 
     BoxLayout:
-        size_hint: 0.1, 0.5
-        pos_hint: {'y': 0.25}
+        size_hint: 0.1, 0.6
+        pos_hint: {'y': 0.2}
         orientation: 'horizontal'
-
-        BoxLayout:
-            size_hint: 0.25, 1
+        spacing: "5dp"
+        padding: ("0dp","0dp","10dp","0dp")
 
         Button: 
-            text: '<'
-            size_hint: 0.5, 1
-            on_release: root.ExpandAccount()
+            text: '+C'
+            on_release: root.Add_Initialize_Cash_Asset('cash')
+            font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+            font_size: app.Configuration_DB.GetElementValue('ElementInListFontSize')
+
+        Button: 
+            text: '+A'
+            on_release: root.Add_Initialize_Cash_Asset('asset')
             font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
             font_size: app.Configuration_DB.GetElementValue('ElementInListFontSize')
         
-        BoxLayout:
-            size_hint: 0.25, 1
+        Button: 
+            text: '<'
+            on_release: root.ExpandAccount()
+            font_name: app.Configuration_DB.GetElementValue('PopupTitleFontName')
+            font_size: app.Configuration_DB.GetElementValue('ElementInListFontSize')
 
 
 <AccountRowBoxLayout_Title>:

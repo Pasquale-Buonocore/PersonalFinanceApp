@@ -6,6 +6,7 @@ from Packages.CustomFunction.HoverClass import HoverBehavior
 from kivy.properties import BooleanProperty, ColorProperty
 from kivy.uix.button import Button
 from kivy.lang import Builder
+from kivymd.app import MDApp
 
 # Designate Out .kv design file
 Builder.load_file('Packages/CustomItem/ui/SelectAccountPopup.kv')
@@ -48,19 +49,19 @@ class CustomScrollViewButton(Button, HoverBehavior):
         # Update button background button of all buttons
         for element in self.parent.children:
             element.SelectedStatus = False
-            element.BackgroundColor = self.Configuration.GetElementValue('MenuButtonNotSelectedBackgroundColor') 
+            element.BackgroundColor = MDApp.get_running_app().Configuration_DB.GetElementValue('MenuButtonNotSelectedBackgroundColor') 
 
         self.SelectedStatus = True
-        self.BackgroundColor = self.Configuration.GetElementValue('MenuButtonSelectedBackgroundColor') 
+        self.BackgroundColor = MDApp.get_running_app().Configuration_DB.GetElementValue('MenuButtonSelectedBackgroundColor') 
 
     # Change Background color at entry
     def on_enter(self, *args):
-        self.BackgroundColor = self.Configuration.GetElementValue('MenuButtonSelectedBackgroundColor') 
+        self.BackgroundColor = MDApp.get_running_app().Configuration_DB.GetElementValue('MenuButtonSelectedBackgroundColor') 
     
     # Change Background color at leaving
     def on_leave(self, *args):
         if not self.SelectedStatus:
-            self.BackgroundColor = self.Configuration.GetElementValue('MenuButtonNotSelectedBackgroundColor') 
+            self.BackgroundColor = MDApp.get_running_app().Configuration_DB.GetElementValue('MenuButtonNotSelectedBackgroundColor') 
 
 # It can only be used as SUPERCLASS
 class SelectAccountPopup(ModalView):
@@ -69,8 +70,7 @@ class SelectAccountPopup(ModalView):
     ##################
     
     def __init__(self, title_str = ''):
-        self.Configuration = JsonManager_Class(PathManager_Class.database_configuration_path, PathManager_Class.Configuration_path)
-        self.DBManager = AccountsManager_Class(PathManager_Class.database_path, PathManager_Class.Accounts_path)
+        self.DBManager = MDApp.get_running_app().Accounts_DB
         self.AvailableAccounts = list(self.DBManager.ReadJson().keys())
         self.AvailableSubAccounts = list(self.DBManager.ReadJson()[self.AvailableAccounts[0]]["SubAccount"].keys())
         self.AccountScrollViewBoxLayout = 'SelectAccountScrollViewBoxLayout'
@@ -104,7 +104,7 @@ class SelectAccountPopup(ModalView):
         
         if len(self.ids[ScrollViewId].children):
             self.ids[ScrollViewId].children[-1].SelectedStatus = True
-            self.ids[ScrollViewId].children[-1].BackgroundColor = self.Configuration.GetElementValue('MenuButtonSelectedBackgroundColor')
+            self.ids[ScrollViewId].children[-1].BackgroundColor = MDApp.get_running_app().Configuration_DB.GetElementValue('MenuButtonSelectedBackgroundColor')
     
     def UpdateSubAccountScrollViewCurrencyScrollView(self, AccountName):
         # Update the Selected Account
@@ -156,7 +156,7 @@ class SelectAccountPopupInvestment(SelectAccountPopup):
             if SubAccountName == 'Cash':
                 # Show all the currencies that are self.PortfolioCurrency Equivalent
                 for currency in list(CurrenciesFromDB.keys()):
-                    if not (CurrenciesFromDB[currency]['Currency'] == self.PortfolioCurrency):
+                    if not (CurrenciesFromDB[currency]['Symbol'] == self.PortfolioCurrency):
                         ListOfCurrencies.remove(currency)
 
             # TO IMPLEMENT: If I want to by with currencies not STABLECOINS
@@ -215,7 +215,8 @@ class SelectAccountPopupTransaction(SelectAccountPopup):
         self.PopulateScrollView(ScrollViewId = self.CurrencyScrollViewBoxLayout, ScrollViewButtonList = ListOfCurrencies)
 
         if not ListOfCurrencies:
-            self.ids['update_message'].text = 'There is not available ' + self.PortfolioCurrency + ' for the selected subaccount. Please choose another one!'
+            # self.ids['update_message'].text = 'There is not available ' + self.PortfolioCurrency + ' for the selected subaccount. Please choose another one!'
+            self.ids['update_message'].text = 'No available currencies for the selected subaccount. Please choose another one!'
             self.ids['Confirm'].disabled = True
             return
         

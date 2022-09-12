@@ -2,114 +2,106 @@
       "Unicredit Bank": {
             "SubAccount": {
                   "Cash": {
-                        "USD": {
-                              "TotalAmount": 200,
-                              "Symbol": "$",
-                              "Base": 200,
-                              "Contributors": {}
-                        },
-                        "USDT": {
-                              "TotalAmount": 200,
-                              "Symbol": "$",
-                              "Base": 200,
-                              "Contributors": {}
-                        },
-                        "USDC": {
-                              "TotalAmount": 200,
-                              "Symbol": "$",
-                              "Base": 200,
-                              "Contributors": {}
-                        },
-                        "EURO": {
-                              "TotalAmount": 150,
+                        "EUR": {
+                              "TotalValue": 0,
                               "Symbol": "\u20ac",
-                              "Base": 150,
-                              "Contributors": {}
-                        },
-                        "RUBLO": {
-                              "TotalAmount": 1900,
-                              "Symbol": "R",
-                              "Base": 190,
-                              "Contributors": {}
+                              "BasedCurrency": "EUR",
+                              "LiquidityContribution": 0.0,
+                              "InvestmentContribution": 0.0,
+                              "MonthlyTransactions": {}
                         }
                   },
-                  "Assets": {
-                        "APPL Stock": {
-                              "TotalAmount": 5,
-                              "TotalValue": 1300,
-                              "Symbol": "APPL"
-                        }
-                  }
+                  "Assets": {}
             },
             "Statistics": {
                   "Category": "Bank Account",
-                  "LastMonthSubAccount": {
-                        "Cash": {
-                              "USD": {
-                                    "TotalAmount": 200,
-                                    "Symbol": "$",
-                                    "Base": 200,
-                                    "Contributors": {}
-                              },
-                              "EURO": {
-                                    "TotalAmount": 150,
-                                    "Symbol": "\u20ac",
-                                    "Base": 200,
-                                    "Contributors": {}
-                              }
-                        },
-                        "Assets": {}
+                  "LastMonthSubAccount": {},
+                  "LastMonthValue": 0,
+                  "ActualMonthValue": 0
+            }
+      },
+      "Degiro": {
+            "SubAccount": {
+                  "Cash": {
+                        "EUR": {
+                              "TotalValue": 0,
+                              "Symbol": "\u20ac",
+                              "BasedCurrency": "EUR",
+                              "LiquidityContribution": 0.0,
+                              "InvestmentContribution": 0.0,
+                              "MonthlyTransactions": {}
+                        }
                   },
-                  "LastMonthValue": 350,
-                  "ActualMonthValue": 350,
-                  "Symbol": "\u20ac"
+                  "Assets": {}
+            },
+            "Statistics": {
+                  "Category": "Traditional Broker",
+                  "LastMonthSubAccount": {},
+                  "LastMonthValue": 0,
+                  "ActualMonthValue": 0
             }
       },
       "Binance Exchange": {
             "SubAccount": {
                   "Cash": {
-                        "DAI": {
-                              "TotalAmount": 200,
-                              "Symbol": "$",
-                              "Base": 200,
-                              "Contributors": {}
-                        },
-                        "USDC": {
-                              "TotalAmount": 200,
-                              "Symbol": "$",
-                              "Base": 200,
-                              "Contributors": {}
+                        "USDT": {
+                              "TotalValue": 0,
+                              "Symbol": "USDT",
+                              "BasedCurrency": "$",
+                              "LiquidityContribution": 0.0,
+                              "InvestmentContribution": 0.0,
+                              "MonthlyTransactions": {}
                         }
                   },
-                  "Assets": {                        
-                        "Bitcoin": {
-                              "TotalAmount": 5,
-                              "TotalValue": 1300,
-                              "Symbol": "APPL"
-                  }}
+                  "Assets": {}
             },
             "Statistics": {
                   "Category": "Crypto Exchange",
-                  "LastMonthSubAccount": {
-                        "Cash": {
-                              "USD": {
-                                    "TotalAmount": 200,
-                                    "Symbol": "$",
-                                    "Base": 200,
-                                    "Contributors": {}
-                              },
-                              "EURO": {
-                                    "TotalAmount": 150,
-                                    "Symbol": "\u20ac",
-                                    "Base": 200,
-                                    "Contributors": {}
-                              }
-                        },
-                        "Assets": {}
+                  "LastMonthSubAccount": {},
+                  "LastMonthValue": 0,
+                  "ActualMonthValue": 0
+            }
+      },
+      "FTX Exchange": {
+            "SubAccount": {
+                  "Cash": {
+                        "USDT": {
+                              "TotalValue": 0,
+                              "Symbol": "USDT",
+                              "BasedCurrency": "$",
+                              "LiquidityContribution": 0.0,
+                              "InvestmentContribution": 0.0,
+                              "MonthlyTransactions": {}
+                        }
                   },
-                  "LastMonthValue": 450,
-                  "ActualMonthValue": 150,
-                  "Symbol": "\u20ac"
+                  "Assets": {}
+            },
+            "Statistics": {
+                  "Category": "Crypto Exchange",
+                  "LastMonthSubAccount": {},
+                  "LastMonthValue": 0,
+                  "ActualMonthValue": 0
+            }
+      },
+      "Findomestic": {
+            "SubAccount": {
+                  "Cash": {
+                        "EUR": {
+                              "TotalValue": 0,
+                              "Symbol": "\u20ac",
+                              "BasedCurrency": "EUR",
+                              "LiquidityContribution": 0.0,
+                              "InvestmentContribution": 0.0,
+                              "MonthlyTransactions": {}
+                        }
+                  },
+                  "Assets": {}
+            },
+            "Statistics": {
+                  "Category": "Deposit Account",
+                  "LastMonthSubAccount": {},
+                  "LastMonthValue": 0,
+                  "ActualMonthValue": 0
             }
       }
 }

@@ -11,6 +11,7 @@ from Packages.CustomFunction.CustomFunction import verify_numeric_float_string
 from Packages.CustomItem.DataPicker.CustomDataPickerItem import CustomMDDatePicker
 from Packages.CustomItem.Popup.SelectAccountPopup import SelectAccountPopupTransaction
 from Packages.CustomItem.Popup.SelectTransactionCategory import SelectTransactionCategory
+from Packages.CustomFunction.GenerateTransactionLinkingCode import generate_transaction_linking_code
 from kivy.properties import ColorProperty
 from kivymd.app import MDApp
 
@@ -61,7 +62,11 @@ class AddTransactionInOutPopup(ModalView):
         self.date = dt.datetime.now()
         self.Amount = '0.0'
         self.PortfolioName = PortfolioName if PortfolioName in ['IN', 'OUT'] else 'IN'
-        self.AvailableCategory = list(self.DBManager.ReadJson()[self.PortfolioName]['Assets'].keys())
+
+        self.AvailableCategory = list(self.DBManager.ReadJson()[self.PortfolioName]['Assets'].keys()) + ['Internal Transaction']
+        if self.PortfolioName == 'IN': self.AvailableCategory += ['Account Initialization']
+
+        self.Linking_code_first_char = 'S' if self.PortfolioName == 'IN' else 'B'
 
         # Initialize the super class
         super().__init__(size_hint = (0.3,0.6))
@@ -142,27 +147,45 @@ class AddTransactionInOutPopup(ModalView):
             # If the error message is not empty, display an error
             Pop = Wrn_popup.WarningPopup('WARNING WINDOW', string.upper())
             Pop.open()
+            return
+
+        # Define Asset To Add in <self.portfolio> portfolio
+        TransactiontoAdd = self.DBManager.InitializeNewTransactionInOut(DateValue, round(float(AmountValue),2), Currency, CategoryValue, PaidWithValue, NoteValue)
+        
+        # If an item needs to be modified
+        if self.type == 'M':
+            # Substitute the actual item
+            self.DBManager.ModifyTransactionToAsset(PortfolioName = self.PortfolioName, AssetName = CategoryValue, ItemIndex = self.ItemIndex, NewTransaction = TransactiontoAdd)
         else:
-            # Define Asset To Add in <self.portfolio> portfolio
-            TransactiontoAdd = self.DBManager.InitializeNewTransactionInOut(DateValue, round(float(AmountValue),2), Currency, CategoryValue, PaidWithValue, NoteValue)
-            
-            # If an item needs to be modified
-            if self.type == 'M':
-                # Substitute the actual item
-                self.DBManager.ModifyTransactionToAsset(PortfolioName = self.PortfolioName, AssetName = CategoryValue, ItemIndex = self.ItemIndex, NewTransaction = TransactiontoAdd)
-            else:
-                self.DBManager.AddTransactionToAsset(self.PortfolioName, CategoryValue, TransactiontoAdd)
-                self.DBManager.AddTransactionToAsset(self.PortfolioName + '_LIST', "Transactions", TransactiontoAdd)
 
-            # Update Asset Statistics
-            self.DBManager.UpdateAssetInTransactionStatistics(self.PortfolioName, CategoryValue)
-            
-            # Update the Json and Update the Dashboard Screen
-            ActualScreen = App.root.children[0].children[0].current_screen
-            ActualScreen.UpdateScreen(self.PortfolioName, self.DBManager)
+            # Add transaction to Account database
+            Result = 1
+            while Result:
+                # Generate a code to link the transaction among Account and Transaction Json
+                LinkingCode = generate_transaction_linking_code(first_char = self.Linking_code_first_char, second_char = 'S')
 
-            # Close the popup
-            self.dismiss()
+                # Try to add the transaction until a random number is picked
+                Result = MDApp.get_running_app().Accounts_DB.AppendTransactionToList(AccountName = self.SelectedPayingAccount['Account'],
+                                                                                        cash_or_asset = self.SelectedPayingAccount['SubAccount'],
+                                                                                        AssetName = self.SelectedPayingAccount['Currency'],
+                                                                                        TransactionToAppendDict = {'LinkingCode' : TransactiontoAdd})
+
+            # Add transaction to Transaction List
+            self.DBManager.AddTransactionToAsset(self.PortfolioName, CategoryValue, TransactiontoAdd.update({'LinkingCode' : LinkingCode}))
+            self.DBManager.AddTransactionToAsset(self.PortfolioName + '_LIST', "Transactions", TransactiontoAdd.update({'LinkingCode' : LinkingCode}))
+
+        
+        # Update statistics in the Account Database
+
+        # Update Asset Statistics in transaction list
+        self.DBManager.UpdateAssetInTransactionStatistics(self.PortfolioName, CategoryValue)
+        
+        # Update the Json and Update the Dashboard Screen
+        ActualScreen = App.root.children[0].children[0].current_screen
+        ActualScreen.UpdateScreen(self.PortfolioName, self.DBManager)
+
+        # Close the popup
+        self.dismiss()
 
     def Cancel(self):
         # Close the popup

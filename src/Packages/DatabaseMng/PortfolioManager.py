@@ -2,8 +2,6 @@ from Packages.CustomFunction.GetCryptoValue import GetCryptoValue
 from Packages.DatabaseMng.PathManager import *
 from os.path import exists
 import json
-import os
-
 
 ###################
 # CUSTOM FUNCTION #

@@ -13,7 +13,9 @@ from kivy.uix.relativelayout import RelativeLayout
 from Packages.DatabaseMng.AccountsManager import AccountsManager_Class
 from Packages.DatabaseMng.PathManager import PathManager_Class
 from Packages.DatabaseMng.JsonManager import JsonManager_Class
-from Packages.CustomItem.Lists.AccountsListManagement import AccountRowBoxLayout, AccountRowBoxLayout_Title, AddNewAccountBoxLayout, AccountRowExpandedBoxLayout
+from Packages.CustomItem.Lists.AccountsListManagement import  AddNewAccountBoxLayout, AccountRowExpandedBoxLayout
+from Packages.CustomItem.Lists.AccountsListManagement import AccountRowBoxLayout, AccountRowBoxLayout_Title
+
 
 class DashboardScreen(Screen):
     image_source = StringProperty('images/Support/AssetsInPortfolio.png')
@@ -224,8 +226,7 @@ class DashboardScreen(Screen):
         # Clear the Item inside the BoxLayout (Keep the first element only)
         self.ids[self.AccountsBoxLayout].clear_widgets()
         
-        InfoDict = {'Currency': ''}
-        InfoDict.update({'AccountName' : 'ACCOUNT NAME'})
+        InfoDict = {'AccountName' : 'ACCOUNT NAME'}
         InfoDict.update({'Category' : 'CATEGORY'})
         InfoDict.update({'LastMonthValue' : 'LAST MONTH VALUE'})
         InfoDict.update({'ActualMonthValue' : 'CURRENT VALUE'})
@@ -236,7 +237,7 @@ class DashboardScreen(Screen):
         self.ids[self.AccountsBoxLayout].add_widget(AccountRowBoxLayout_Title(kwargs = InfoDict))
 
         for account in json_file.keys():
-            InfoDict = {'Currency': json_file[account]['Statistics']['Symbol']}
+            InfoDict = {'Currency': MDApp.get_running_app().UserSelectedCurrency['Symbol'] }
             InfoDict.update({'AccountName' : account})
             InfoDict.update({'Category' : json_file[account]['Statistics']['Category']})
             InfoDict.update({'LastMonthValue' : json_file[account]['Statistics']['LastMonthValue']})
