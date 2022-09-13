@@ -130,11 +130,11 @@ class AddTransactionInOutPopup(ModalView):
         if not DateValue: string = string + '\nERROR: Empty date value FIELD'
 
         # Retrive data "Amount Value" from Text Input - In empty do nothing
-        AmountValue = self.ids["QuantityValue"].text.strip().upper()
+        AmountValue = self.ids["QuantityValue"].text.strip()
         if not AmountValue: string = string + '\nERROR: Empty amount value FIELD'
 
         # Retrive data "Quantity Value" from Text Input - In empty do nothing
-        PaidWithValue = self.ids["PayingAccountString"].text.strip().upper()
+        PaidWithValue = self.ids["PayingAccountString"].text.strip()
         if not PaidWithValue: string = string + '\nERROR: Empty PaidWith value FIELD'
 
         # Retrive data "Note Value" from Text Input - In empty do nothing
@@ -168,11 +168,12 @@ class AddTransactionInOutPopup(ModalView):
                 Result = MDApp.get_running_app().Accounts_DB.AppendTransactionToList(AccountName = self.SelectedPayingAccount['Account'],
                                                                                         cash_or_asset = self.SelectedPayingAccount['SubAccount'],
                                                                                         AssetName = self.SelectedPayingAccount['Currency'],
-                                                                                        TransactionToAppendDict = {'LinkingCode' : TransactiontoAdd})
+                                                                                        TransactionToAppendDict = {LinkingCode : TransactiontoAdd})
 
             # Add transaction to Transaction List
-            self.DBManager.AddTransactionToAsset(self.PortfolioName, CategoryValue, TransactiontoAdd.update({'LinkingCode' : LinkingCode}))
-            self.DBManager.AddTransactionToAsset(self.PortfolioName + '_LIST', "Transactions", TransactiontoAdd.update({'LinkingCode' : LinkingCode}))
+            TransactiontoAdd.update({'LinkingCode' : LinkingCode})
+            self.DBManager.AddTransactionToAsset(self.PortfolioName, CategoryValue, TransactiontoAdd)
+            self.DBManager.AddTransactionToAsset(self.PortfolioName + '_LIST', "Transactions", TransactiontoAdd)
 
         
         # Update statistics in the Account Database

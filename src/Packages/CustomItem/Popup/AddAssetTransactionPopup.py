@@ -14,6 +14,8 @@ from kivy.properties import ColorProperty
 from Packages.CustomItem.DataPicker.CustomDataPickerItem import CustomMDDatePicker
 from Packages.CustomItem.Popup.SelectAccountPopup import SelectAccountPopup, SelectAccountPopupInvestment
 import datetime as dt
+from kivymd.app import MDApp
+from Packages.CustomFunction.GenerateTransactionLinkingCode import generate_transaction_linking_code
 
 # Designate Out .kv design file
 Builder.load_file('Packages/CustomItem/ui/AddAssetTransactionPopup.kv')
@@ -209,7 +211,11 @@ class AddAssetTransactionPopup(ModalView):
 
         # Retrive data "Quantity Value" from Text Input - In empty do nothing
         QuantityValue = self.ids['ScreenManagerSection'].current_screen.ids.QuantityValue.text
+        QuantityValue = self.ids['ScreenManagerSection'].current_screen.ids.TotalSpentValue.text
         if not QuantityValue: string = string + '\nERROR: Empty quantity value FIELD'
+
+        # Retrieve total spent value
+        TotalSpentValue = self.ids['ScreenManagerSection'].current_screen.ids.TotalSpentValue.text
 
         FeesValue = self.fee
         if not FeesValue: string = string + '\nERROR: Empty fee value FIELD'
@@ -230,31 +236,79 @@ class AddAssetTransactionPopup(ModalView):
             # If the error message is not empty, display an error
             Pop = Wrn_popup.WarningPopup('WARNING WINDOW', string.upper())
             Pop.open()
-        else:
-            if not (TypeValue == 'SELL'):
-                # Define Asset To Add
-                TransactiontoAdd = self.DBManager.InitializeTransaction(DateValue, PriceValue, QuantityValue, FeesValue, NoteValue, self.SelectedPayingAccount, self.SelectedStoringAccount)
+            return
+            
+        if not (TypeValue == 'SELL'):
 
-                # If an item needs to be modified
-                if self.type == 'M':
-                    # Substitute the actual item
-                    self.DBManager.ModifyTransactionToAsset(PortfolioName = self.PortfolioName, AssetName = self.AssetName, ItemIndex = self.ItemIndex, NewTransaction = TransactiontoAdd)
-                else:
-                    self.DBManager.AddTransactionToAsset(self.PortfolioName, self.AssetName, TransactiontoAdd)
+            # Define Asset To Add
+            TransactiontoAdd = self.DBManager.InitializeTransaction(DateValue, PriceValue, QuantityValue, FeesValue, NoteValue, self.SelectedPayingAccount, self.SelectedStoringAccount)
+            
+            # Define Transaction to add to paying account
+            CurrencyPayingAccount = MDApp.get_running_app().Accounts_DB.ReadJson()[self.SelectedPayingAccount['Account']]['SubAccount'][self.SelectedPayingAccount['SubAccount']][self.SelectedPayingAccount['Currency']]['Symbol']
+            PayingAccountString = self.SelectedPayingAccount['Account'] + '-' + self.SelectedPayingAccount['SubAccount'] + '-' + self.SelectedPayingAccount['Currency']
+            TransactiontoAddPayingAccount = self.DBManager.InitializeNewTransactionInOut(DateValue, round(float(TotalSpentValue),3), CurrencyPayingAccount, 'Paying investment', PayingAccountString, NoteValue)
+            
+            # Define Transaction to add to storing account
+            CurrencyStoringAccount = MDApp.get_running_app().Accounts_DB.ReadJson()[self.SelectedStoringAccount['Account']]['SubAccount'][self.SelectedStoringAccount['SubAccount']][self.SelectedStoringAccount['Currency']]['Symbol']
+            StoringAccountString = self.SelectedStoringAccount['Account'] + '-' + self.SelectedStoringAccount['SubAccount'] + '-' + self.SelectedStoringAccount['Currency']
+            TransactiontoAddStoringAccount = self.DBManager.InitializeNewTransactionInOut(DateValue, round(float(QuantityValue),5), CurrencyStoringAccount, 'Storing investment', StoringAccountString, NoteValue)
+        
 
-                # Update Asset Statistics
-                self.DBManager.UpdateAssetStatistics(self.PortfolioName, self.AssetName)
-
-                # Update Paying account
-
-                # Update Storing account
+            # If an item needs to be modified
+            if self.type == 'M':
+                # Substitute the actual item
+                self.DBManager.ModifyTransactionToAsset(PortfolioName = self.PortfolioName, AssetName = self.AssetName, ItemIndex = self.ItemIndex, NewTransaction = TransactiontoAdd)
+            else:
                 
-                # Update the Json and Update the Dashboard Screen
-                ActualScreen = App.root.children[0].children[0].current_screen
-                ActualScreen.UpdateScreen(ActualScreen.AssetName, ActualScreen.PortfolioName, ActualScreen.FromScreenName)
+                ##########################
+                #  Update Paying account #
+                ##########################
+                Result = 1
+                self.Linking_code_first_char = 'B' 
 
-                # Close the popup
-                self.dismiss()
+                while Result:
+                    # Generate a code to link the transaction among Account and Transaction Json
+                    LinkingCode = generate_transaction_linking_code(first_char = self.Linking_code_first_char, second_char = 'I')
+
+                    # Try to add the transaction until a random number is picked
+                    Result = MDApp.get_running_app().Accounts_DB.AppendTransactionToList(AccountName = self.SelectedPayingAccount['Account'],
+                                                                                        cash_or_asset = self.SelectedPayingAccount['SubAccount'],
+                                                                                        AssetName = self.SelectedPayingAccount['Currency'],
+                                                                                        TransactionToAppendDict = {LinkingCode : TransactiontoAddPayingAccount})
+                TransactiontoAdd.update({'PayingAccountLinkingCode' : LinkingCode})
+
+                ###########################
+                #  Update Storing account #
+                ###########################
+                Result = 1
+                self.Linking_code_first_char = 'S' 
+
+                while Result:
+                    # Generate a code to link the transaction among Account and Transaction Json
+                    LinkingCode = generate_transaction_linking_code(first_char = self.Linking_code_first_char, second_char = 'I')
+
+                    # Try to add the transaction until a random number is picked
+                    Result = MDApp.get_running_app().Accounts_DB.AppendTransactionToList(AccountName = self.SelectedStoringAccount['Account'],
+                                                                                        cash_or_asset = self.SelectedStoringAccount['SubAccount'],
+                                                                                        AssetName = self.SelectedStoringAccount['Currency'],
+                                                                                        TransactionToAppendDict = {LinkingCode : TransactiontoAddStoringAccount})
+                TransactiontoAdd.update({'StoringAccountLinkingCode' : LinkingCode})
+
+                ##########################################
+                #  Update investment transaction account #
+                ##########################################
+                
+                self.DBManager.AddTransactionToAsset(self.PortfolioName, self.AssetName, TransactiontoAdd)
+
+            # Update Asset Statistics
+            self.DBManager.UpdateAssetStatistics(self.PortfolioName, self.AssetName)
+            
+            # Update the Json and Update the Dashboard Screen
+            ActualScreen = App.root.children[0].children[0].current_screen
+            ActualScreen.UpdateScreen(ActualScreen.AssetName, ActualScreen.PortfolioName, ActualScreen.FromScreenName)
+
+            # Close the popup
+            self.dismiss()
 
         print('Adding Transactions...')
 

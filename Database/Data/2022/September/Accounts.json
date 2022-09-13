@@ -8,7 +8,24 @@
                               "BasedCurrency": "EUR",
                               "LiquidityContribution": 0.0,
                               "InvestmentContribution": 0.0,
-                              "MonthlyTransactions": {}
+                              "MonthlyTransactions": {
+                                    "SS#5404735148": {
+                                          "Date": "12 SEPTEMBER 2022",
+                                          "Amount": 150.0,
+                                          "Currency": "\u20ac",
+                                          "Category": "Account Initialization",
+                                          "PayingAccount": "Unicredit Bank - Cash - EUR",
+                                          "Note": "UNICREDIT ACCOUNT INITIALIZATION"
+                                    },
+                                    "BS#6436945832": {
+                                          "Date": "12 SEPTEMBER 2022",
+                                          "Amount": 35.0,
+                                          "Currency": "\u20ac",
+                                          "Category": "Alimenti",
+                                          "PayingAccount": "Unicredit Bank - Cash - EUR",
+                                          "Note": "SPESA ALIMENTI"
+                                    }
+                              }
                         }
                   },
                   "Assets": {}
@@ -44,7 +61,7 @@
       "Binance Exchange": {
             "SubAccount": {
                   "Cash": {
-                        "USDT": {
+                        "USDT": { 
                               "TotalValue": 0,
                               "Symbol": "USDT",
                               "BasedCurrency": "$",

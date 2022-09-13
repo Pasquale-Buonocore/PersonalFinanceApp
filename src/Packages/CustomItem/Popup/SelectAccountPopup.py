@@ -156,7 +156,7 @@ class SelectAccountPopupInvestment(SelectAccountPopup):
             if SubAccountName == 'Cash':
                 # Show all the currencies that are self.PortfolioCurrency Equivalent
                 for currency in list(CurrenciesFromDB.keys()):
-                    if not (CurrenciesFromDB[currency]['Symbol'] == self.PortfolioCurrency):
+                    if not (CurrenciesFromDB[currency]['BasedCurrency'] == self.PortfolioCurrency):
                         ListOfCurrencies.remove(currency)
 
             # TO IMPLEMENT: If I want to by with currencies not STABLECOINS

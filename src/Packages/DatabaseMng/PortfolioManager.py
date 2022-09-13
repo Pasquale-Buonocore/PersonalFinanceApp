@@ -377,6 +377,10 @@ class PortfoliosManager_Class():
     def AddTransactionToAsset(self, PortfolioName, AssetName, TransactionElement):
         # Read json
         json_object = self.ReadJson()
+        
+        if AssetName not in json_object[PortfolioName]['Assets'].keys():
+            self.AddAssetToPortfolio(PortfolioName, self.InitializeNewTransactionAsset(AssetName))
+            json_object = self.ReadJson()
 
         # Add Item independetly of the type
         self.ElementCounter = self.GetTransactionCounter(PortfolioName, AssetName) + 1
