@@ -90,7 +90,7 @@ class AccountsManager_Class():
         self.SaveJsonFile(json_object)
 
     # Initialize a New Account returning a dict - TESTED
-    def InitializeNewAccount(self, AccountName, Category, LastMonthValue = 0, LastMonthSubAccount = {}):
+    def InitializeNewAccount(self, AccountName, Category, LastMonthValue = 0, LastMonthSubAccount = {'Cash': {}, 'Assets' : {}}):
         NewAccountDict = {}
 
         # Add the SubAccount section
@@ -196,5 +196,57 @@ class AccountsManager_Class():
         
         json_object[AccountName]['SubAccount'][cash_or_asset][AssetName]['MonthlyTransactions'].update(TransactionToAppendDict)
  
+        # Save new json file
+        self.SaveJsonFile(json_object)
+
+    
+    ###################
+    # Statistic Value #
+    ###################
+    def Update_liquid_investing_balance(self, Account, SubAccount, Currency) -> None:
+        '''This function uses the transaction in the monthly transaction dictionary to update liquidity and investiment.
+        It is defined to update them for a currency only'''
+
+        # Read json
+        json_object = self.ReadJson()
+
+        if Account not in json_object.keys(): 
+            print('The '+ Account + ' account does not exist and it is not possible to update its assets. Exiting...')
+            return -1
+
+        if SubAccount not in ['Cash', 'Assets']:
+            print('The '+ SubAccount + ' account does not exist and it is not possible to update its assets. Exiting...')
+            return -1
+
+        if Currency not in json_object[Account]['SubAccount'][SubAccount].keys(): 
+            print('The '+ Currency + ' account does not exist and it is not possible to update its assets. Exiting...')
+            return -1
+
+        # Extract the last month end value for Liquidity and Investment contribution
+        Liquidity_Contribution_init = float(json_object[Account]['Statistics']['LastMonthSubAccount'][SubAccount][Currency]['LiquidityContribution']) if (Currency in json_object[Account]['Statistics']['LastMonthSubAccount'][SubAccount].keys()) else 0.0
+        Investment_Contribution_init = float(json_object[Account]['Statistics']['LastMonthSubAccount'][SubAccount][Currency]['InvestmentContribution']) if (Currency in json_object[Account]['Statistics']['LastMonthSubAccount'][SubAccount].keys()) else 0.0
+        
+        for transaction_key in json_object[Account]['SubAccount'][SubAccount][Currency]['MonthlyTransactions']:
+
+            # The transaction key respects a certain format and needs to be understood!
+            transaction = json_object[Account]['SubAccount'][SubAccount][Currency]['MonthlyTransactions'][transaction_key]
+
+            # BI -> Buy Investment (the Investment Contribution amount needs to be detracted of the current amount)
+            # BS -> Buy standard (the Liquidity Contribution amount needs to be detracted of the current amount)
+            # SI -> Sell Investment (the Investment Contribution amount needs to be added of the current amount)
+            # SS -> Sell standard (the Liquidity Contribution amount needs to be added of the current amount)
+
+            if transaction_key[0] == 'B':
+                if transaction_key[1] == 'I': Investment_Contribution_init -= transaction['Amount']
+                if transaction_key[1] == 'S': Liquidity_Contribution_init -= transaction['Amount']
+
+            elif transaction_key[0] == 'S':
+                if transaction_key[1] == 'I': Investment_Contribution_init += transaction['Amount']
+                if transaction_key[1] == 'S': Liquidity_Contribution_init += transaction['Amount']
+
+        # Once all the transactions for that currency has been transacted, update the json and save it
+        json_object[Account]['SubAccount'][SubAccount][Currency]['LiquidityContribution'] = Liquidity_Contribution_init
+        json_object[Account]['SubAccount'][SubAccount][Currency]['InvestmentContribution'] = Investment_Contribution_init
+
         # Save new json file
         self.SaveJsonFile(json_object)

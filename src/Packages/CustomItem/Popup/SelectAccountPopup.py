@@ -167,7 +167,7 @@ class SelectAccountPopupInvestment(SelectAccountPopup):
         else:
             # if storing, I would love to store everywhere the asset, according to the USER desire.
             # At least there will be the one we are buying.
-            ListOfCurrencies = [self.CurrentAsset]
+            ListOfCurrencies = [self.CurrentAsset] if (self.CurrentAsset in ListOfCurrencies) else []
 
         # Operation for both
         self.PopulateScrollView(ScrollViewId = self.CurrencyScrollViewBoxLayout, ScrollViewButtonList = ListOfCurrencies)
@@ -180,7 +180,8 @@ class SelectAccountPopupInvestment(SelectAccountPopup):
         self.SelectedAccount.update({'Currency': ListOfCurrencies[0]})
         self.ids['Confirm'].disabled = False
         self.ids['update_message'].text = 'Correct selection! Account: ' + self.SelectedAccount['Account'] + ' - Subaccount: ' + self.SelectedAccount['SubAccount'] + ' - Currency: ' + self.SelectedAccount['Currency']
-        
+        self.ids['update_message'].text += '\nAvailable balance: ' + str(MDApp.get_running_app().Accounts_DB.ReadJson()[self.SelectedAccount['Account']]['SubAccount'][self.SelectedAccount['SubAccount']][self.SelectedAccount['Currency']]['LiquidityContribution']) + ' ' +self.SelectedAccount['Currency']
+    
     def ConfirmAccount(self):
         # Save the SelectedAccount in the Popup
         if self.type == 'paying':
@@ -223,7 +224,8 @@ class SelectAccountPopupTransaction(SelectAccountPopup):
         self.SelectedAccount.update({'Currency': ListOfCurrencies[0]})
         self.ids['Confirm'].disabled = False
         self.ids['update_message'].text = 'Correct selection! Account: ' + self.SelectedAccount['Account'] + ' - Subaccount: ' + self.SelectedAccount['SubAccount'] + ' - Currency: ' + self.SelectedAccount['Currency']
-        
+        self.ids['update_message'].text += '\nAvailable balance: ' + str(MDApp.get_running_app().Accounts_DB.ReadJson()[self.SelectedAccount['Account']]['SubAccount'][self.SelectedAccount['SubAccount']][self.SelectedAccount['Currency']]['LiquidityContribution']) + ' ' + self.SelectedAccount['Currency']
+    
     def ConfirmAccount(self):
         self.parent.children[1].ids['PayingAccountString'].text = self.SelectedAccount['Account'] + ' - ' + self.SelectedAccount['SubAccount'] + ' - ' +self.SelectedAccount['Currency']
         self.parent.children[1].SelectedPayingAccount = self.SelectedAccount

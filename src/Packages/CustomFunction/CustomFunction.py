@@ -1,3 +1,4 @@
+from xmlrpc.client import boolean
 import Packages.DatabaseMng.PortfolioManager as db_manager
 import re
 
@@ -27,3 +28,8 @@ def verify_numeric_float_string(numeric_string):
         counter = numeric_string.count('.')
     
     return numeric_string
+
+
+def check_if_balance_is_not_enough(available_amount: float, transaction_amount: float) -> boolean:
+    ''' return 1 if available balance is smaller then transaction value'''
+    return 1 if float(available_amount) < float(transaction_amount) else 0

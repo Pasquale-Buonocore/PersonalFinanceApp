@@ -10,10 +10,19 @@
                                     "Category": "Bollette",
                                     "PayingAccount": "UNICREDIT BANK - CASH - RUBLO",
                                     "Note": ""
+                              },
+                              "2": {
+                                    "Date": "14 SEPTEMBER 2022",
+                                    "Amount": 15.0,
+                                    "Currency": "\u20ac",
+                                    "Category": "Bollette",
+                                    "PayingAccount": "Unicredit Bank - Cash - EUR",
+                                    "Note": "",
+                                    "LinkingCode": "BS#5931529872"
                               }
                         },
                         "Statistics": {
-                              "TotalValue": 1000.0
+                              "TotalValue": 1015.0
                         }
                   },
                   "Benzina": {
@@ -62,10 +71,10 @@
             },
             "Statistics": {
                   "Currency": "\u20ac",
-                  "NumberOfTransaction": 3,
-                  "TotalValue": 1045.0,
+                  "NumberOfTransaction": 4,
+                  "TotalValue": 1060.0,
                   "ActualAssetAllocation": {
-                        "Bollette": 1000.0,
+                        "Bollette": 1015.0,
                         "Benzina": 0.0,
                         "Alimenti": 35.0,
                         "Regali": 10.0,
@@ -108,6 +117,15 @@
                                     "PayingAccount": "Unicredit Bank - Cash - EUR",
                                     "Note": "SPESA ALIMENTI",
                                     "LinkingCode": "BS#6436945832"
+                              },
+                              "4": {
+                                    "Date": "14 SEPTEMBER 2022",
+                                    "Amount": 15.0,
+                                    "Currency": "\u20ac",
+                                    "Category": "Bollette",
+                                    "PayingAccount": "Unicredit Bank - Cash - EUR",
+                                    "Note": "",
+                                    "LinkingCode": "BS#5931529872"
                               }
                         }
                   }

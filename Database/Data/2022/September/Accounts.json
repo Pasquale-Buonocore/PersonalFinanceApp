@@ -6,7 +6,7 @@
                               "TotalValue": 0,
                               "Symbol": "\u20ac",
                               "BasedCurrency": "EUR",
-                              "LiquidityContribution": 0.0,
+                              "LiquidityContribution": 50.0,
                               "InvestmentContribution": 0.0,
                               "MonthlyTransactions": {
                                     "SS#5404735148": {
@@ -24,6 +24,14 @@
                                           "Category": "Alimenti",
                                           "PayingAccount": "Unicredit Bank - Cash - EUR",
                                           "Note": "SPESA ALIMENTI"
+                                    },
+                                    "BS#5931529872": {
+                                          "Date": "14 SEPTEMBER 2022",
+                                          "Amount": 15.0,
+                                          "Currency": "\u20ac",
+                                          "Category": "Bollette",
+                                          "PayingAccount": "Unicredit Bank - Cash - EUR",
+                                          "Note": ""
                                     }
                               }
                         }
@@ -32,7 +40,10 @@
             },
             "Statistics": {
                   "Category": "Bank Account",
-                  "LastMonthSubAccount": {},
+                  "LastMonthSubAccount": {
+                        "Cash": {},
+                        "Assets": {}
+                  },
                   "LastMonthValue": 0,
                   "ActualMonthValue": 0
             }
@@ -53,7 +64,10 @@
             },
             "Statistics": {
                   "Category": "Traditional Broker",
-                  "LastMonthSubAccount": {},
+                  "LastMonthSubAccount": {
+                        "Cash": {},
+                        "Assets": {}
+                  },
                   "LastMonthValue": 0,
                   "ActualMonthValue": 0
             }
@@ -61,20 +75,85 @@
       "Binance Exchange": {
             "SubAccount": {
                   "Cash": {
-                        "USDT": { 
-                              "TotalValue": 0,
+                        "USDT": {
+                              "TotalValue": 200,
                               "Symbol": "USDT",
                               "BasedCurrency": "$",
-                              "LiquidityContribution": 0.0,
+                              "LiquidityContribution": 200.0,
                               "InvestmentContribution": 0.0,
-                              "MonthlyTransactions": {}
+                              "MonthlyTransactions": {
+                                    "BI#6369904069": {
+                                          "Date": "13 September 2022",
+                                          "Amount": 130.0,
+                                          "Currency": "USDT",
+                                          "Category": "Paying investment",
+                                          "PayingAccount": "Binance Exchange-Cash-USDT",
+                                          "Note": ""
+                                    },
+                                    "BI#9405868579": {
+                                          "Date": "13 September 2022",
+                                          "Amount": 12.5,
+                                          "Currency": "USDT",
+                                          "Category": "Paying investment",
+                                          "PayingAccount": "Binance Exchange-Cash-USDT",
+                                          "Note": ""
+                                    },
+                                    "BI#8892383129": {
+                                          "Date": "14 September 2022",
+                                          "Amount": 100.0,
+                                          "Currency": "USDT",
+                                          "Category": "Paying investment",
+                                          "PayingAccount": "Binance Exchange-Cash-USDT",
+                                          "Note": ""
+                                    },
+                                    "BI#4855876335": {
+                                          "Date": "14 September 2022",
+                                          "Amount": 1.0,
+                                          "Currency": "USDT",
+                                          "Category": "Paying investment",
+                                          "PayingAccount": "Binance Exchange-Cash-USDT",
+                                          "Note": ""
+                                    },
+                                    "BI#3710004098": {
+                                          "Date": "14 September 2022",
+                                          "Amount": 0.02,
+                                          "Currency": "USDT",
+                                          "Category": "Paying investment",
+                                          "PayingAccount": "Binance Exchange-Cash-USDT",
+                                          "Note": ""
+                                    },
+                                    "BI#3600005543": {
+                                          "Date": "14 September 2022",
+                                          "Amount": 0.5,
+                                          "Currency": "USDT",
+                                          "Category": "Paying investment",
+                                          "PayingAccount": "Binance Exchange-Cash-USDT",
+                                          "Note": ""
+                                    },
+                                    "BI#6321750370": {
+                                          "Date": "14 September 2022",
+                                          "Amount": 0.0,
+                                          "Currency": "USDT",
+                                          "Category": "Paying investment",
+                                          "PayingAccount": "Binance Exchange-Cash-USDT",
+                                          "Note": ""
+                                    }
+                              }
                         }
                   },
                   "Assets": {}
             },
             "Statistics": {
                   "Category": "Crypto Exchange",
-                  "LastMonthSubAccount": {},
+                  "LastMonthSubAccount": {
+                        "Cash": {
+                              "USDT": {
+                                    "LiquidityContribution": 200.0,
+                                    "InvestmentContribution": 100.0
+                              }
+                        },
+                        "Assets": {}
+                  },
                   "LastMonthValue": 0,
                   "ActualMonthValue": 0
             }
@@ -91,11 +170,63 @@
                               "MonthlyTransactions": {}
                         }
                   },
-                  "Assets": {}
+                  "Assets": {
+                        "ALEPH ZERO": {
+                              "TotalValue": 0,
+                              "Symbol": "AZERO",
+                              "LiquidityContribution": 0.0,
+                              "InvestmentContribution": 0.0,
+                              "MonthlyTransactions": {
+                                    "SI#0271573558": {
+                                          "Date": "13 September 2022",
+                                          "Amount": 100.0,
+                                          "Currency": "AZERO",
+                                          "Category": "Storing investment",
+                                          "PayingAccount": "FTX Exchange-Assets-ALEPH ZERO",
+                                          "Note": ""
+                                    },
+                                    "SI#9826637956": {
+                                          "Date": "13 September 2022",
+                                          "Amount": 25.0,
+                                          "Currency": "AZERO",
+                                          "Category": "Storing investment",
+                                          "PayingAccount": "FTX Exchange-Assets-ALEPH ZERO",
+                                          "Note": ""
+                                    },
+                                    "SI#5733335841": {
+                                          "Date": "14 September 2022",
+                                          "Amount": 1.0,
+                                          "Currency": "AZERO",
+                                          "Category": "Storing investment",
+                                          "PayingAccount": "FTX Exchange-Assets-ALEPH ZERO",
+                                          "Note": ""
+                                    },
+                                    "SI#6040614238": {
+                                          "Date": "14 September 2022",
+                                          "Amount": 0.5,
+                                          "Currency": "AZERO",
+                                          "Category": "Storing investment",
+                                          "PayingAccount": "FTX Exchange-Assets-ALEPH ZERO",
+                                          "Note": ""
+                                    },
+                                    "SI#8946045104": {
+                                          "Date": "14 September 2022",
+                                          "Amount": 0.01,
+                                          "Currency": "AZERO",
+                                          "Category": "Storing investment",
+                                          "PayingAccount": "FTX Exchange-Assets-ALEPH ZERO",
+                                          "Note": ""
+                                    }
+                              }
+                        }
+                  }
             },
             "Statistics": {
                   "Category": "Crypto Exchange",
-                  "LastMonthSubAccount": {},
+                  "LastMonthSubAccount": {
+                        "Cash": {},
+                        "Assets": {}
+                  },
                   "LastMonthValue": 0,
                   "ActualMonthValue": 0
             }
@@ -116,7 +247,50 @@
             },
             "Statistics": {
                   "Category": "Deposit Account",
-                  "LastMonthSubAccount": {},
+                  "LastMonthSubAccount": {
+                        "Cash": {},
+                        "Assets": {}
+                  },
+                  "LastMonthValue": 0,
+                  "ActualMonthValue": 0
+            }
+      },
+      "Ledger": {
+            "SubAccount": {
+                  "Cash": {},
+                  "Assets": {
+                        "BITCOIN": {
+                              "TotalValue": 0,
+                              "Symbol": "BTC",
+                              "LiquidityContribution": 0.0,
+                              "InvestmentContribution": 0.0,
+                              "MonthlyTransactions": {
+                                    "SI#4561122003": {
+                                          "Date": "14 September 2022",
+                                          "Amount": 0.005,
+                                          "Currency": "BTC",
+                                          "Category": "Storing investment",
+                                          "PayingAccount": "Ledger-Assets-BITCOIN",
+                                          "Note": ""
+                                    },
+                                    "SI#9586764151": {
+                                          "Date": "14 September 2022",
+                                          "Amount": 0.01,
+                                          "Currency": "BTC",
+                                          "Category": "Storing investment",
+                                          "PayingAccount": "Ledger-Assets-BITCOIN",
+                                          "Note": ""
+                                    }
+                              }
+                        }
+                  }
+            },
+            "Statistics": {
+                  "Category": "Crypto Portfolio",
+                  "LastMonthSubAccount": {
+                        "Cash": {},
+                        "Assets": {}
+                  },
                   "LastMonthValue": 0,
                   "ActualMonthValue": 0
             }

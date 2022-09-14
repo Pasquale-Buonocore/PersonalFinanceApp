@@ -16,6 +16,7 @@ from Packages.CustomItem.Popup.SelectAccountPopup import SelectAccountPopup, Sel
 import datetime as dt
 from kivymd.app import MDApp
 from Packages.CustomFunction.GenerateTransactionLinkingCode import generate_transaction_linking_code
+from Packages.CustomFunction.CustomFunction import check_if_balance_is_not_enough
 
 # Designate Out .kv design file
 Builder.load_file('Packages/CustomItem/ui/AddAssetTransactionPopup.kv')
@@ -211,11 +212,10 @@ class AddAssetTransactionPopup(ModalView):
 
         # Retrive data "Quantity Value" from Text Input - In empty do nothing
         QuantityValue = self.ids['ScreenManagerSection'].current_screen.ids.QuantityValue.text
-        QuantityValue = self.ids['ScreenManagerSection'].current_screen.ids.TotalSpentValue.text
         if not QuantityValue: string = string + '\nERROR: Empty quantity value FIELD'
 
         # Retrieve total spent value
-        TotalSpentValue = self.ids['ScreenManagerSection'].current_screen.ids.TotalSpentValue.text
+        TotalSpentValue = float(QuantityValue) * float(PriceValue)
 
         FeesValue = self.fee
         if not FeesValue: string = string + '\nERROR: Empty fee value FIELD'
@@ -253,13 +253,21 @@ class AddAssetTransactionPopup(ModalView):
             StoringAccountString = self.SelectedStoringAccount['Account'] + '-' + self.SelectedStoringAccount['SubAccount'] + '-' + self.SelectedStoringAccount['Currency']
             TransactiontoAddStoringAccount = self.DBManager.InitializeNewTransactionInOut(DateValue, round(float(QuantityValue),5), CurrencyStoringAccount, 'Storing investment', StoringAccountString, NoteValue)
         
-
             # If an item needs to be modified
             if self.type == 'M':
                 # Substitute the actual item
                 self.DBManager.ModifyTransactionToAsset(PortfolioName = self.PortfolioName, AssetName = self.AssetName, ItemIndex = self.ItemIndex, NewTransaction = TransactiontoAdd)
             else:
                 
+                # Before adding the transaction, in case of spending transaction, if the balance is enough
+                Paying_account_available_balance = MDApp.get_running_app().Accounts_DB.ReadJson()[self.SelectedPayingAccount['Account']]['SubAccount'][self.SelectedPayingAccount['SubAccount']][self.SelectedPayingAccount['Currency']]['LiquidityContribution']
+                if check_if_balance_is_not_enough(available_amount = Paying_account_available_balance, transaction_amount = TotalSpentValue):
+                    # If the error message is not empty, display an error
+                    message = 'Available balance is not enough. \n Transaction cannot be added'
+                    Pop = Wrn_popup.WarningPopup('WARNING WINDOW', message)
+                    Pop.open()
+                    return
+
                 ##########################
                 #  Update Paying account #
                 ##########################
@@ -302,7 +310,13 @@ class AddAssetTransactionPopup(ModalView):
 
             # Update Asset Statistics
             self.DBManager.UpdateAssetStatistics(self.PortfolioName, self.AssetName)
-            
+
+            # Update Paying Account statistics
+            MDApp.get_running_app().Accounts_DB.Update_liquid_investing_balance(self.SelectedPayingAccount['Account'], self.SelectedPayingAccount['SubAccount'], self.SelectedPayingAccount['Currency'])
+
+            # Update Storing Account statistics
+            MDApp.get_running_app().Accounts_DB.Update_liquid_investing_balance(self.SelectedStoringAccount['Account'], self.SelectedStoringAccount['SubAccount'], self.SelectedStoringAccount['Currency'])
+
             # Update the Json and Update the Dashboard Screen
             ActualScreen = App.root.children[0].children[0].current_screen
             ActualScreen.UpdateScreen(ActualScreen.AssetName, ActualScreen.PortfolioName, ActualScreen.FromScreenName)

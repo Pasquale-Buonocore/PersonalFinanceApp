@@ -89,5 +89,5 @@
     "AssetTransactionPopupScreenDictionary": {"BUY" : "BuySellScreen",
         "SELL": "BuySellScreen",
         "SWAP": "SwapScreen"},
-    "AccountAvailableCategory" : ["Crypto Exchange", "Traditional Broker", "Bank Account", "Deposit Account"]
+    "AccountAvailableCategory" : ["Crypto Exchange", "Traditional Broker", "Bank Account", "Deposit Account", "Crypto Portfolio"]
 }

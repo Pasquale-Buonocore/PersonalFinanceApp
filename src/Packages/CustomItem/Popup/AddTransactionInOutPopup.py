@@ -12,6 +12,7 @@ from Packages.CustomItem.DataPicker.CustomDataPickerItem import CustomMDDatePick
 from Packages.CustomItem.Popup.SelectAccountPopup import SelectAccountPopupTransaction
 from Packages.CustomItem.Popup.SelectTransactionCategory import SelectTransactionCategory
 from Packages.CustomFunction.GenerateTransactionLinkingCode import generate_transaction_linking_code
+from Packages.CustomFunction.CustomFunction import check_if_balance_is_not_enough
 from kivy.properties import ColorProperty
 from kivymd.app import MDApp
 
@@ -149,6 +150,15 @@ class AddTransactionInOutPopup(ModalView):
             Pop.open()
             return
 
+        # Before adding the transaction, in case of spending transaction, if the balance is enough
+        Paying_account_available_balance = MDApp.get_running_app().Accounts_DB.ReadJson()[self.SelectedPayingAccount['Account']]['SubAccount'][self.SelectedPayingAccount['SubAccount']][self.SelectedPayingAccount['Currency']]['LiquidityContribution']
+        if self.PortfolioName == 'OUT' and check_if_balance_is_not_enough(available_amount = Paying_account_available_balance, transaction_amount = AmountValue):
+            # If the error message is not empty, display an error
+            message = 'Available balance is not enough. \n Transaction cannot be added'
+            Pop = Wrn_popup.WarningPopup('WARNING WINDOW', message)
+            Pop.open()
+            return
+
         # Define Asset To Add in <self.portfolio> portfolio
         TransactiontoAdd = self.DBManager.InitializeNewTransactionInOut(DateValue, round(float(AmountValue),2), Currency, CategoryValue, PaidWithValue, NoteValue)
         
@@ -175,8 +185,8 @@ class AddTransactionInOutPopup(ModalView):
             self.DBManager.AddTransactionToAsset(self.PortfolioName, CategoryValue, TransactiontoAdd)
             self.DBManager.AddTransactionToAsset(self.PortfolioName + '_LIST', "Transactions", TransactiontoAdd)
 
-        
-        # Update statistics in the Account Database
+        # Update Paying Account statistics
+        MDApp.get_running_app().Accounts_DB.Update_liquid_investing_balance(self.SelectedPayingAccount['Account'], self.SelectedPayingAccount['SubAccount'], self.SelectedPayingAccount['Currency'])
 
         # Update Asset Statistics in transaction list
         self.DBManager.UpdateAssetInTransactionStatistics(self.PortfolioName, CategoryValue)
