@@ -26,10 +26,11 @@ class AssetsScreen(Screen):
     #########################
 
     # Function to call tu update the Asset screen
-    def UpdateScreen(self, FromScreenName, PortfolioName):
+    def UpdateScreen(self, FromScreenName, PortfolioName, PortfolioCurrency):
         # Save the father name
         self.FromScreenName = FromScreenName # contains the screen from which the assets screen has been opened 
-        self.PortfolioName = PortfolioName # contains the portfolio that has been clicked in the FromScreen 
+        self.PortfolioName = PortfolioName # contains the portfolio that has been clicked in the FromScreen
+        self.PortfolioCurrency = PortfolioCurrency
         self.PortfolioJsonPath = ReturnJsonPathGivenScreenName(self.FromScreenName)
         self.DBManager = db_manager.PortfoliosManager_Class(return_updated_data_path(PathManager_Class.database_path), self.PortfolioJsonPath)
 
@@ -112,7 +113,7 @@ class AssetsScreen(Screen):
 
     def OpenAssetTransactionScreen(self, AssetName):
         self.parent.current = 'ASSETS TRANSACTION'
-        self.parent.current_screen.UpdateScreen(AssetName = AssetName, PortfolioName = self.PortfolioName, FromScreenName = self.FromScreenName)
+        self.parent.current_screen.UpdateScreen(AssetName = AssetName, PortfolioName = self.PortfolioName, PortfolioCurrency = self.PortfolioCurrency, FromScreenName = self.FromScreenName)
 
     # The function generates a picture of the allocation, which is the loaded in the GUI
     def UpdateGraph(self):

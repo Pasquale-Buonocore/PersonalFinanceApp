@@ -22,11 +22,12 @@ class AssetsTransactionScreen(Screen):
     #########################
 
     # Initialize at the asset push
-    def UpdateScreen(self, AssetName, PortfolioName, FromScreenName):
+    def UpdateScreen(self, AssetName, PortfolioName, PortfolioCurrency, FromScreenName):
         self.PortfolioJsonPath = ReturnJsonPathGivenScreenName(FromScreenName)
         self.FromScreenName = FromScreenName
         self.PortfolioName = PortfolioName
         self.AssetName = AssetName
+        self.Currency = PortfolioCurrency
         self.DBManager = db_manager.PortfoliosManager_Class(return_updated_data_path(PathManager_Class.database_path), self.PortfolioJsonPath)
 
         # Update String
@@ -202,6 +203,6 @@ class AssetsTransactionScreen(Screen):
     def AddNewAssetTransactionPopup(self):
         print('Add new transaction to the asset Popup')
         # Initialize the popup
-        AddAssetPop = AddAssetTransactionPopup.AddAssetTransactionPopup(title_str = 'ADD NEW TRANSACTION', type = 'A', AssetName = self.AssetName, PortfolioName =  self.PortfolioName, Database = self.DBManager)
+        AddAssetPop = AddAssetTransactionPopup.AddAssetTransactionPopup(title_str = 'ADD NEW TRANSACTION', type = 'A', AssetName = self.AssetName, PortfolioName =  self.PortfolioName, Database = self.DBManager, Currency = self.Currency)
         # Open the Popup
         AddAssetPop.open()

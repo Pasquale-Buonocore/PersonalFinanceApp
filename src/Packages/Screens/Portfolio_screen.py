@@ -79,7 +79,7 @@ class PortfolioScreen(Screen):
 
     def OpenAssetPortfolioScreen(self, PortfolioName):
         self.parent.current = 'ASSETS'
-        self.parent.current_screen.UpdateScreen(FromScreenName = self.ScreenName, PortfolioName = PortfolioName)
+        self.parent.current_screen.UpdateScreen(FromScreenName = self.ScreenName, PortfolioName = PortfolioName, PortfolioCurrency = self.DBManager.ReadJson()[PortfolioName]['Statistics']['Currency'])
 
     # When the Add New Portfolio button is pressed
     def AddNewPortfolioPopup(self):
