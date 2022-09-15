@@ -272,11 +272,10 @@ class AddAssetTransactionPopup(ModalView):
                 #  Update Paying account #
                 ##########################
                 Result = 1
-                self.Linking_code_first_char = 'B' 
 
                 while Result:
                     # Generate a code to link the transaction among Account and Transaction Json
-                    LinkingCode = generate_transaction_linking_code(first_char = self.Linking_code_first_char, second_char = 'I')
+                    LinkingCode = generate_transaction_linking_code(first_char = 'O', second_char = 'I')
 
                     # Try to add the transaction until a random number is picked
                     Result = MDApp.get_running_app().Accounts_DB.AppendTransactionToList(AccountName = self.SelectedPayingAccount['Account'],
@@ -289,11 +288,10 @@ class AddAssetTransactionPopup(ModalView):
                 #  Update Storing account #
                 ###########################
                 Result = 1
-                self.Linking_code_first_char = 'S' 
 
                 while Result:
                     # Generate a code to link the transaction among Account and Transaction Json
-                    LinkingCode = generate_transaction_linking_code(first_char = self.Linking_code_first_char, second_char = 'I')
+                    LinkingCode = generate_transaction_linking_code(first_char = 'S', second_char = 'I')
 
                     # Try to add the transaction until a random number is picked
                     Result = MDApp.get_running_app().Accounts_DB.AppendTransactionToList(AccountName = self.SelectedStoringAccount['Account'],
@@ -321,8 +319,12 @@ class AddAssetTransactionPopup(ModalView):
             ActualScreen = App.root.children[0].children[0].current_screen
             ActualScreen.UpdateScreen(ActualScreen.AssetName, ActualScreen.PortfolioName, ActualScreen.FromScreenName)
 
-            # Close the popup
-            self.dismiss()
+        else:
+            self.paying_account_char = 'CI'
+            self.storing_account_Char = 'DI'
+            
+        # Close the popup
+        self.dismiss()
 
         print('Adding Transactions...')
 

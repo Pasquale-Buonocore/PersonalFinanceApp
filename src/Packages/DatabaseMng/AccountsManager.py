@@ -231,18 +231,37 @@ class AccountsManager_Class():
             # The transaction key respects a certain format and needs to be understood!
             transaction = json_object[Account]['SubAccount'][SubAccount][Currency]['MonthlyTransactions'][transaction_key]
 
-            # BI -> Buy Investment (the Investment Contribution amount needs to be detracted of the current amount)
-            # BS -> Buy standard (the Liquidity Contribution amount needs to be detracted of the current amount)
-            # SI -> Sell Investment (the Investment Contribution amount needs to be added of the current amount)
-            # SS -> Sell standard (the Liquidity Contribution amount needs to be added of the current amount)
+            #############################
+            # TRANSACTION IN OUT SCREEN #
+            #############################
+            # SS -> Spent standard (the Liquidity Contribution amount needs to be detracted of the current amount)
+            if transaction_key[0:2] == 'SS': Liquidity_Contribution_init -= transaction['Amount']
 
-            if transaction_key[0] == 'B':
-                if transaction_key[1] == 'I': Investment_Contribution_init -= transaction['Amount']
-                if transaction_key[1] == 'S': Liquidity_Contribution_init -= transaction['Amount']
+            # ES -> Earning standard (the Liquidity Contribution amount needs to be added of the current amount)
+            if transaction_key[0:2] == 'ES': Liquidity_Contribution_init += transaction['Amount']
 
-            elif transaction_key[0] == 'S':
-                if transaction_key[1] == 'I': Investment_Contribution_init += transaction['Amount']
-                if transaction_key[1] == 'S': Liquidity_Contribution_init += transaction['Amount']
+            #####################
+            # INVESTMENT SCREEN #
+            #####################
+
+            # OI -> Open Investment position (the Liquidity Contribution amount needs to be detracted of the current amount)
+            # I can create a portfolio using as base curreny cash or asset. The constraint is that only Liquid cash/asset can be used.
+            # This constraint must be set in the GUI (as it is now)
+            if transaction_key[0:2] == 'OP': Liquidity_Contribution_init -= transaction['Amount']
+
+            # CI -> Close Investment position (the Liquidity Contribution amount needs to be added of the current amount)
+            # When an investment position is closed, the liquidity obtained must be store somewhere.
+            # It can be stored both in cash/asset with the constraint to store it in the liquidity part
+            if transaction_key[0:2] == 'CP': Liquidity_Contribution_init += transaction['Amount']
+
+            # SI -> Store Investment (the Investment Contribution amount needs to be added to the current amount)
+            # When a new position is open, what it is bought must bne stored. It can be stored as cash/asset but in the investment section. 
+            if transaction_key[1] == 'SI': Investment_Contribution_init += transaction['Amount']
+
+            # DI -> Destore Investment (the Investment Contribution amount needs to be detracted to the current amount)
+            # When a position is closed, the amount stored in the investment part must be removed.
+            if transaction_key[1] == 'DI': Investment_Contribution_init -= transaction['Amount']
+
 
         # Once all the transactions for that currency has been transacted, update the json and save it
         json_object[Account]['SubAccount'][SubAccount][Currency]['LiquidityContribution'] = Liquidity_Contribution_init
