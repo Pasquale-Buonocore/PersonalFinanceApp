@@ -1,68 +1,13 @@
 {
       "OUT": {
             "Assets": {
-                  "Bollette": {
-                        "Transactions": {
-                              "1": {
-                                    "Date": "06 SEPTEMBER 2022",
-                                    "Amount": 1000.0,
-                                    "Currency": "R",
-                                    "Category": "Bollette",
-                                    "PayingAccount": "UNICREDIT BANK - CASH - RUBLO",
-                                    "Note": ""
-                              },
-                              "2": {
-                                    "Date": "14 SEPTEMBER 2022",
-                                    "Amount": 15.0,
-                                    "Currency": "\u20ac",
-                                    "Category": "Bollette",
-                                    "PayingAccount": "Unicredit Bank - Cash - EUR",
-                                    "Note": "",
-                                    "LinkingCode": "BS#5931529872"
-                              }
-                        },
-                        "Statistics": {
-                              "TotalValue": 1015.0
-                        }
-                  },
-                  "Benzina": {
+                  "Alimentazione": {
                         "Transactions": {},
                         "Statistics": {
                               "TotalValue": 0
                         }
                   },
-                  "Alimenti": {
-                        "Transactions": {
-                              "1": {
-                                    "Date": "12 SEPTEMBER 2022",
-                                    "Amount": 35.0,
-                                    "Currency": "\u20ac",
-                                    "Category": "Alimenti",
-                                    "PayingAccount": "Unicredit Bank - Cash - EUR",
-                                    "Note": "SPESA ALIMENTI",
-                                    "LinkingCode": "BS#6436945832"
-                              }
-                        },
-                        "Statistics": {
-                              "TotalValue": 35.0
-                        }
-                  },
-                  "Regali": {
-                        "Transactions": {
-                              "1": {
-                                    "Date": "06 SEPTEMBER 2022",
-                                    "Amount": 10.0,
-                                    "Currency": "$",
-                                    "Category": "Regali",
-                                    "PayingAccount": "UNICREDIT BANK - CASH - USDC",
-                                    "Note": ""
-                              }
-                        },
-                        "Statistics": {
-                              "TotalValue": 10.0
-                        }
-                  },
-                  "Uscite Fuori": {
+                  "Bollette": {
                         "Transactions": {},
                         "Statistics": {
                               "TotalValue": 0
@@ -71,63 +16,22 @@
             },
             "Statistics": {
                   "Currency": "\u20ac",
-                  "NumberOfTransaction": 4,
-                  "TotalValue": 1060.0,
+                  "NumberOfTransaction": 0,
+                  "TotalValue": 0.0,
                   "ActualAssetAllocation": {
-                        "Bollette": 1015.0,
-                        "Benzina": 0.0,
-                        "Alimenti": 35.0,
-                        "Regali": 10.0,
-                        "Uscite Fuori": 0.0
+                        "Alimentazione": 0.0,
+                        "Bollette": 0.0
                   },
                   "DesiredAssetAllocation": {
-                        "Bollette": 100,
-                        "Benzina": 120,
-                        "Alimenti": 5,
-                        "Regali": 50,
-                        "Uscite Fuori": 50
+                        "Alimentazione": 200,
+                        "Bollette": 150
                   }
             }
       },
       "OUT_LIST": {
             "Assets": {
                   "Transactions": {
-                        "Transactions": {
-                              "1": {
-                                    "Date": "06 SEPTEMBER 2022",
-                                    "Amount": 10.0,
-                                    "Currency": "$",
-                                    "Category": "Regali",
-                                    "PayingAccount": "UNICREDIT BANK - CASH - USDC",
-                                    "Note": "NFMV"
-                              },
-                              "2": {
-                                    "Date": "06 SEPTEMBER 2022",
-                                    "Amount": 1000.0,
-                                    "Currency": "R",
-                                    "Category": "Bollette",
-                                    "PayingAccount": "UNICREDIT BANK - CASH - RUBLO",
-                                    "Note": ""
-                              },
-                              "3": {
-                                    "Date": "12 SEPTEMBER 2022",
-                                    "Amount": 35.0,
-                                    "Currency": "\u20ac",
-                                    "Category": "Alimenti",
-                                    "PayingAccount": "Unicredit Bank - Cash - EUR",
-                                    "Note": "SPESA ALIMENTI",
-                                    "LinkingCode": "BS#6436945832"
-                              },
-                              "4": {
-                                    "Date": "14 SEPTEMBER 2022",
-                                    "Amount": 15.0,
-                                    "Currency": "\u20ac",
-                                    "Category": "Bollette",
-                                    "PayingAccount": "Unicredit Bank - Cash - EUR",
-                                    "Note": "",
-                                    "LinkingCode": "BS#5931529872"
-                              }
-                        }
+                        "Transactions": {}
                   }
             },
             "Statistics": {
