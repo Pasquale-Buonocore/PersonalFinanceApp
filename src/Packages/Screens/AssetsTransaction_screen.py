@@ -45,7 +45,7 @@ class AssetsTransactionScreen(Screen):
         ScreenManager = self.parent
         ScreenManager.current = 'ASSETS'
         # Update Asset Transaction screen
-        ScreenManager.current_screen.UpdateScreen(FromScreenName = self.FromScreenName, PortfolioName = self.PortfolioName)
+        ScreenManager.current_screen.UpdateScreen(FromScreenName = self.FromScreenName, PortfolioName = self.PortfolioName, PortfolioCurrency = self.Currency)
 
     ##########################
     #    TRANSACTION  BOX    #

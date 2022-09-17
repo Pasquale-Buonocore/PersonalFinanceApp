@@ -247,25 +247,28 @@ class AccountsManager_Class():
             # OI -> Open Investment position (the Liquidity Contribution amount needs to be detracted of the current amount)
             # I can create a portfolio using as base curreny cash or asset. The constraint is that only Liquid cash/asset can be used.
             # This constraint must be set in the GUI (as it is now)
-            if transaction_key[0:2] == 'OP': Liquidity_Contribution_init -= transaction['Amount']
+            if transaction_key[0:2] == 'OI': Liquidity_Contribution_init -= transaction['Amount']
 
             # CI -> Close Investment position (the Liquidity Contribution amount needs to be added of the current amount)
             # When an investment position is closed, the liquidity obtained must be store somewhere.
             # It can be stored both in cash/asset with the constraint to store it in the liquidity part
-            if transaction_key[0:2] == 'CP': Liquidity_Contribution_init += transaction['Amount']
+            if transaction_key[0:2] == 'CI': Liquidity_Contribution_init += transaction['Amount']
 
             # SI -> Store Investment (the Investment Contribution amount needs to be added to the current amount)
             # When a new position is open, what it is bought must bne stored. It can be stored as cash/asset but in the investment section. 
-            if transaction_key[1] == 'SI': Investment_Contribution_init += transaction['Amount']
+            if transaction_key[0:2] == 'SI': Investment_Contribution_init += transaction['Amount']
 
             # DI -> Destore Investment (the Investment Contribution amount needs to be detracted to the current amount)
             # When a position is closed, the amount stored in the investment part must be removed.
-            if transaction_key[1] == 'DI': Investment_Contribution_init -= transaction['Amount']
+            if transaction_key[0:2] == 'DI': Investment_Contribution_init -= transaction['Amount']
 
 
         # Once all the transactions for that currency has been transacted, update the json and save it
         json_object[Account]['SubAccount'][SubAccount][Currency]['LiquidityContribution'] = Liquidity_Contribution_init
         json_object[Account]['SubAccount'][SubAccount][Currency]['InvestmentContribution'] = Investment_Contribution_init
 
+        # Then update the Total value for such asset/cash
+        json_object[Account]['SubAccount'][SubAccount][Currency]['TotalValue'] = Liquidity_Contribution_init + Investment_Contribution_init
+        
         # Save new json file
         self.SaveJsonFile(json_object)

@@ -12,26 +12,89 @@
                         "Statistics": {
                               "TotalValue": 0
                         }
+                  },
+                  "Spese personali": {
+                        "Transactions": {
+                              "1": {
+                                    "Date": "17 SEPTEMBER 2022",
+                                    "Amount": 100.0,
+                                    "Currency": "\u20ac",
+                                    "Category": "Spese personali",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "SPESA PER LA FESTA IN GIARDINO",
+                                    "LinkingCode": "SS#6199327055"
+                              }
+                        },
+                        "Statistics": {
+                              "TotalValue": 100.0
+                        }
+                  },
+                  "Benzina": {
+                        "Transactions": {
+                              "1": {
+                                    "Date": "17 SEPTEMBER 2022",
+                                    "Amount": 60.0,
+                                    "Currency": "\u20ac",
+                                    "Category": "Benzina",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "",
+                                    "LinkingCode": "SS#5572872626"
+                              }
+                        },
+                        "Statistics": {
+                              "TotalValue": 60.0
+                        }
+                  },
+                  "Spesa casa": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
                   }
             },
             "Statistics": {
                   "Currency": "\u20ac",
-                  "NumberOfTransaction": 0,
-                  "TotalValue": 0.0,
+                  "NumberOfTransaction": 2,
+                  "TotalValue": 160.0,
                   "ActualAssetAllocation": {
                         "Alimentazione": 0.0,
-                        "Bollette": 0.0
+                        "Bollette": 0.0,
+                        "Spese personali": 100.0,
+                        "Benzina": 60.0,
+                        "Spesa casa": 0.0
                   },
                   "DesiredAssetAllocation": {
                         "Alimentazione": 200,
-                        "Bollette": 150
+                        "Bollette": 150,
+                        "Spese personali": 50,
+                        "Benzina": 150,
+                        "Spesa casa": 50
                   }
             }
       },
       "OUT_LIST": {
             "Assets": {
                   "Transactions": {
-                        "Transactions": {}
+                        "Transactions": {
+                              "1": {
+                                    "Date": "17 SEPTEMBER 2022",
+                                    "Amount": 100.0,
+                                    "Currency": "\u20ac",
+                                    "Category": "Spese personali",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "SPESA PER LA FESTA IN GIARDINO",
+                                    "LinkingCode": "SS#6199327055"
+                              },
+                              "2": {
+                                    "Date": "17 SEPTEMBER 2022",
+                                    "Amount": 60.0,
+                                    "Currency": "\u20ac",
+                                    "Category": "Benzina",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "",
+                                    "LinkingCode": "SS#5572872626"
+                              }
+                        }
                   }
             },
             "Statistics": {

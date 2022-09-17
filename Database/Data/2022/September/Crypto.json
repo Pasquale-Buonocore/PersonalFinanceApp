@@ -1,29 +1,232 @@
 {
       "MAIN": {
             "Assets": {
-                  "BITCOIN": {
+                  "Bitcoin": {
+                        "Transactions": {
+                              "1": {
+                                    "Date": "16 September 2022",
+                                    "PricePerCoin": "200",
+                                    "Amount": "0.1",
+                                    "Fees": "0.0",
+                                    "Note": "",
+                                    "PayingAccount": {
+                                          "Account": "Binance Exchange",
+                                          "SubAccount": "Cash",
+                                          "Currency": "USDT"
+                                    },
+                                    "StoringAccount": {
+                                          "Account": "Ledger",
+                                          "SubAccount": "Assets",
+                                          "Currency": "Bitcoin"
+                                    },
+                                    "Status": {
+                                          "Open": "0.1",
+                                          "Closed": {
+                                                "Transactions": {}
+                                          }
+                                    },
+                                    "PayingAccountLinkingCode": "OI#2524262593",
+                                    "StoringAccountLinkingCode": "SI#1828473758"
+                              },
+                              "2": {
+                                    "Date": "16 September 2022",
+                                    "PricePerCoin": "1",
+                                    "Amount": "1",
+                                    "Fees": "0.0",
+                                    "Note": "",
+                                    "PayingAccount": {
+                                          "Account": "Binance Exchange",
+                                          "SubAccount": "Cash",
+                                          "Currency": "USDT"
+                                    },
+                                    "StoringAccount": {
+                                          "Account": "Ledger",
+                                          "SubAccount": "Assets",
+                                          "Currency": "Bitcoin"
+                                    },
+                                    "Status": {
+                                          "Open": "1",
+                                          "Closed": {
+                                                "Transactions": {}
+                                          }
+                                    },
+                                    "PayingAccountLinkingCode": "OI#4983905280",
+                                    "StoringAccountLinkingCode": "SI#0797110168"
+                              },
+                              "3": {
+                                    "Date": "16 September 2022",
+                                    "PricePerCoin": "1",
+                                    "Amount": "1",
+                                    "Fees": "0.0",
+                                    "Note": "",
+                                    "PayingAccount": {
+                                          "Account": "Binance Exchange",
+                                          "SubAccount": "Cash",
+                                          "Currency": "USDT"
+                                    },
+                                    "StoringAccount": {
+                                          "Account": "Ledger",
+                                          "SubAccount": "Assets",
+                                          "Currency": "Bitcoin"
+                                    },
+                                    "Status": {
+                                          "Open": "1",
+                                          "Closed": {
+                                                "Transactions": {}
+                                          }
+                                    },
+                                    "PayingAccountLinkingCode": "OI#0185605287",
+                                    "StoringAccountLinkingCode": "SI#1720902357"
+                              },
+                              "4": {
+                                    "Date": "16 September 2022",
+                                    "PricePerCoin": "1",
+                                    "Amount": "1",
+                                    "Fees": "0.0",
+                                    "Note": "",
+                                    "PayingAccount": {
+                                          "Account": "Binance Exchange",
+                                          "SubAccount": "Cash",
+                                          "Currency": "USDT"
+                                    },
+                                    "StoringAccount": {
+                                          "Account": "Ledger",
+                                          "SubAccount": "Assets",
+                                          "Currency": "Bitcoin"
+                                    },
+                                    "Status": {
+                                          "Open": "1",
+                                          "Closed": {
+                                                "Transactions": {}
+                                          }
+                                    },
+                                    "PayingAccountLinkingCode": "OI#7829074021",
+                                    "StoringAccountLinkingCode": "SI#4648920313"
+                              },
+                              "5": {
+                                    "Date": "16 September 2022",
+                                    "PricePerCoin": "0.1",
+                                    "Amount": "1",
+                                    "Fees": "0.0",
+                                    "Note": "",
+                                    "PayingAccount": {
+                                          "Account": "Binance Exchange",
+                                          "SubAccount": "Cash",
+                                          "Currency": "USDT"
+                                    },
+                                    "StoringAccount": {
+                                          "Account": "Ledger",
+                                          "SubAccount": "Assets",
+                                          "Currency": "Bitcoin"
+                                    },
+                                    "Status": {
+                                          "Open": "1",
+                                          "Closed": {
+                                                "Transactions": {}
+                                          }
+                                    },
+                                    "PayingAccountLinkingCode": "OI#7169655755",
+                                    "StoringAccountLinkingCode": "SI#0794957665"
+                              },
+                              "6": {
+                                    "Date": "17 September 2022",
+                                    "PricePerCoin": "1",
+                                    "Amount": "0.5",
+                                    "Fees": "0.0",
+                                    "Note": "",
+                                    "PayingAccount": {
+                                          "Account": "Binance Exchange",
+                                          "SubAccount": "Cash",
+                                          "Currency": "USDT"
+                                    },
+                                    "StoringAccount": {
+                                          "Account": "Ledger",
+                                          "SubAccount": "Assets",
+                                          "Currency": "Bitcoin"
+                                    },
+                                    "Status": {
+                                          "Open": "0.5",
+                                          "Closed": {
+                                                "Transactions": {}
+                                          }
+                                    },
+                                    "PayingAccountLinkingCode": "OI#6747369611",
+                                    "StoringAccountLinkingCode": "SI#1323790299"
+                              }
+                        },
+                        "Statistics": {
+                              "Quantity": 4.6,
+                              "Symbol": "BTC",
+                              "CurrentPrice": 5,
+                              "AveragePrice": 5.13,
+                              "TotalValue": 23.0,
+                              "TotalProfit": -0.6
+                        }
+                  },
+                  "Avalanche": {
+                        "Transactions": {
+                              "1": {
+                                    "Date": "17 September 2022",
+                                    "PricePerCoin": "5",
+                                    "Amount": "10",
+                                    "Fees": "0.0",
+                                    "Note": "",
+                                    "PayingAccount": {
+                                          "Account": "Binance Exchange",
+                                          "SubAccount": "Cash",
+                                          "Currency": "USDT"
+                                    },
+                                    "StoringAccount": {
+                                          "Account": "Ledger",
+                                          "SubAccount": "Assets",
+                                          "Currency": "Avalanche"
+                                    },
+                                    "Status": {
+                                          "Open": "10",
+                                          "Closed": {
+                                                "Transactions": {}
+                                          }
+                                    },
+                                    "PayingAccountLinkingCode": "OI#5357883270",
+                                    "StoringAccountLinkingCode": "SI#6977457561"
+                              }
+                        },
+                        "Statistics": {
+                              "Quantity": 10.0,
+                              "Symbol": "AVAX",
+                              "CurrentPrice": 5,
+                              "AveragePrice": 5.0,
+                              "TotalValue": 50.0,
+                              "TotalProfit": 0.0
+                        }
+                  },
+                  "Elrond": {
                         "Transactions": {},
                         "Statistics": {
                               "Quantity": 0,
-                              "Symbol": "BTC",
-                              "CurrentPrice": 0,
+                              "Symbol": "EGLD",
+                              "CurrentPrice": 5,
                               "AveragePrice": 0,
-                              "TotalValue": 0,
+                              "TotalValue": 0.0,
                               "TotalProfit": 0
                         }
                   }
             },
             "Statistics": {
                   "Currency": "USD",
-                  "TotalValue": 0,
-                  "NumberOfAssets": 1,
-                  "TotalProfit": 0,
+                  "TotalValue": 73.0,
+                  "NumberOfAssets": 3,
+                  "TotalProfit": -0.6,
                   "ToCountInAllocation": true,
                   "ActualAssetAllocation": {
-                        "BITCOIN": 0.0
+                        "Bitcoin": 31.1,
+                        "Avalanche": 67.6,
+                        "Elrond": 0.0
                   },
                   "DesiredAssetAllocation": {
-                        "BITCOIN": 0
+                        "Bitcoin": 0,
+                        "Avalanche": 0,
+                        "Elrond": 0
                   }
             }
       }

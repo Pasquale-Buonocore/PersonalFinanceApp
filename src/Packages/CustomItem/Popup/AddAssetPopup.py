@@ -30,7 +30,7 @@ class AddAssetPopup(Popup):
         string = ''
 
         # Retrive data "Asset Name" from Text Input - In empty do nothing
-        AssetName = self.ids["AssetName"].text.strip().upper()
+        AssetName = self.ids["AssetName"].text.strip().title()
         if not AssetName: string = string + 'ERROR: Empty asset name FIELD'
 
         # Retrive data "Currency Value" from Text Input - In empty do nothing
@@ -64,7 +64,7 @@ class AddAssetPopup(Popup):
 
             # Update the Json and Update the Dashboard Screen
             ActualScreen = App.root.children[0].children[0].current_screen
-            ActualScreen.UpdateScreen(ActualScreen.FromScreenName, ActualScreen.PortfolioName)
+            ActualScreen.UpdateScreen(ActualScreen.FromScreenName, ActualScreen.PortfolioName, ActualScreen.PortfolioCurrency)
 
             # Close the popup
             self.dismiss()

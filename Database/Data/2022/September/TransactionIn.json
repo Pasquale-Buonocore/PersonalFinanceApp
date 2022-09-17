@@ -29,10 +29,19 @@
                                     "PayingAccount": "Binance Exchange - Cash - USDT",
                                     "Note": "",
                                     "LinkingCode": "ES#3590216582"
+                              },
+                              "4": {
+                                    "Date": "17 SEPTEMBER 2022",
+                                    "Amount": 10.0,
+                                    "Currency": "\u20ac",
+                                    "Category": "Stipendio",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "",
+                                    "LinkingCode": "ES#3862261522"
                               }
                         },
                         "Statistics": {
-                              "TotalValue": 1500.0
+                              "TotalValue": 1510.0
                         }
                   },
                   "Ripetizioni": {
@@ -44,10 +53,10 @@
             },
             "Statistics": {
                   "Currency": "\u20ac",
-                  "NumberOfTransaction": 3,
-                  "TotalValue": 1500.0,
+                  "NumberOfTransaction": 4,
+                  "TotalValue": 1510.0,
                   "ActualAssetAllocation": {
-                        "Stipendio": 1500.0,
+                        "Stipendio": 1510.0,
                         "Ripetizioni": 0.0
                   },
                   "DesiredAssetAllocation": {
@@ -86,6 +95,15 @@
                                     "PayingAccount": "Binance Exchange - Cash - USDT",
                                     "Note": "",
                                     "LinkingCode": "ES#3590216582"
+                              },
+                              "4": {
+                                    "Date": "17 SEPTEMBER 2022",
+                                    "Amount": 10.0,
+                                    "Currency": "\u20ac",
+                                    "Category": "Stipendio",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "",
+                                    "LinkingCode": "ES#3862261522"
                               }
                         }
                   }

@@ -3,10 +3,10 @@
             "SubAccount": {
                   "Cash": {
                         "EUR": {
-                              "TotalValue": 0,
+                              "TotalValue": 850.0,
                               "Symbol": "\u20ac",
                               "BasedCurrency": "EUR",
-                              "LiquidityContribution": 1000.0,
+                              "LiquidityContribution": 850.0,
                               "InvestmentContribution": 0.0,
                               "MonthlyTransactions": {
                                     "ES#3650414941": {
@@ -22,6 +22,30 @@
                                           "Amount": 1000.0,
                                           "Currency": "\u20ac",
                                           "Category": "Stipendio",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": ""
+                                    },
+                                    "ES#3862261522": {
+                                          "Date": "17 SEPTEMBER 2022",
+                                          "Amount": 10.0,
+                                          "Currency": "\u20ac",
+                                          "Category": "Stipendio",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": ""
+                                    },
+                                    "SS#6199327055": {
+                                          "Date": "17 SEPTEMBER 2022",
+                                          "Amount": 100.0,
+                                          "Currency": "\u20ac",
+                                          "Category": "Spese personali",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "SPESA PER LA FESTA IN GIARDINO"
+                                    },
+                                    "SS#5572872626": {
+                                          "Date": "17 SEPTEMBER 2022",
+                                          "Amount": 60.0,
+                                          "Currency": "\u20ac",
+                                          "Category": "Benzina",
                                           "PayingAccount": "Unicredit - Cash - EUR",
                                           "Note": ""
                                     }
@@ -44,10 +68,10 @@
             "SubAccount": {
                   "Cash": {
                         "USDT": {
-                              "TotalValue": 0,
+                              "TotalValue": 426.4,
                               "Symbol": "USDT",
                               "BasedCurrency": "USD",
-                              "LiquidityContribution": 500.0,
+                              "LiquidityContribution": 426.4,
                               "InvestmentContribution": 0.0,
                               "MonthlyTransactions": {
                                     "ES#3590216582": {
@@ -56,6 +80,62 @@
                                           "Currency": "USDT",
                                           "Category": "Stipendio",
                                           "PayingAccount": "Binance Exchange - Cash - USDT",
+                                          "Note": ""
+                                    },
+                                    "OI#2524262593": {
+                                          "Date": "16 September 2022",
+                                          "Amount": 20.0,
+                                          "Currency": "USDT",
+                                          "Category": "Paying investment",
+                                          "PayingAccount": "Binance Exchange-Cash-USDT",
+                                          "Note": ""
+                                    },
+                                    "OI#4983905280": {
+                                          "Date": "16 September 2022",
+                                          "Amount": 1.0,
+                                          "Currency": "USDT",
+                                          "Category": "Paying investment",
+                                          "PayingAccount": "Binance Exchange-Cash-USDT",
+                                          "Note": ""
+                                    },
+                                    "OI#0185605287": {
+                                          "Date": "16 September 2022",
+                                          "Amount": 1.0,
+                                          "Currency": "USDT",
+                                          "Category": "Paying investment",
+                                          "PayingAccount": "Binance Exchange-Cash-USDT",
+                                          "Note": ""
+                                    },
+                                    "OI#7829074021": {
+                                          "Date": "16 September 2022",
+                                          "Amount": 1.0,
+                                          "Currency": "USDT",
+                                          "Category": "Paying investment",
+                                          "PayingAccount": "Binance Exchange-Cash-USDT",
+                                          "Note": ""
+                                    },
+                                    "OI#7169655755": {
+                                          "Date": "16 September 2022",
+                                          "Amount": 0.1,
+                                          "Currency": "USDT",
+                                          "Category": "Paying investment",
+                                          "PayingAccount": "Binance Exchange-Cash-USDT",
+                                          "Note": ""
+                                    },
+                                    "OI#6747369611": {
+                                          "Date": "17 September 2022",
+                                          "Amount": 0.5,
+                                          "Currency": "USDT",
+                                          "Category": "Paying investment",
+                                          "PayingAccount": "Binance Exchange-Cash-USDT",
+                                          "Note": ""
+                                    },
+                                    "OI#5357883270": {
+                                          "Date": "17 September 2022",
+                                          "Amount": 50.0,
+                                          "Currency": "USDT",
+                                          "Category": "Paying investment",
+                                          "PayingAccount": "Binance Exchange-Cash-USDT",
                                           "Note": ""
                                     }
                               }
@@ -78,11 +158,76 @@
                   "Cash": {},
                   "Assets": {
                         "Bitcoin": {
-                              "TotalValue": 0,
+                              "TotalValue": 4.6,
                               "Symbol": "BTC",
                               "LiquidityContribution": 0.0,
-                              "InvestmentContribution": 0.0,
-                              "MonthlyTransactions": {}
+                              "InvestmentContribution": 4.6,
+                              "MonthlyTransactions": {
+                                    "SI#1828473758": {
+                                          "Date": "16 September 2022",
+                                          "Amount": 0.1,
+                                          "Currency": "BTC",
+                                          "Category": "Storing investment",
+                                          "PayingAccount": "Ledger-Assets-Bitcoin",
+                                          "Note": ""
+                                    },
+                                    "SI#0797110168": {
+                                          "Date": "16 September 2022",
+                                          "Amount": 1.0,
+                                          "Currency": "BTC",
+                                          "Category": "Storing investment",
+                                          "PayingAccount": "Ledger-Assets-Bitcoin",
+                                          "Note": ""
+                                    },
+                                    "SI#1720902357": {
+                                          "Date": "16 September 2022",
+                                          "Amount": 1.0,
+                                          "Currency": "BTC",
+                                          "Category": "Storing investment",
+                                          "PayingAccount": "Ledger-Assets-Bitcoin",
+                                          "Note": ""
+                                    },
+                                    "SI#4648920313": {
+                                          "Date": "16 September 2022",
+                                          "Amount": 1.0,
+                                          "Currency": "BTC",
+                                          "Category": "Storing investment",
+                                          "PayingAccount": "Ledger-Assets-Bitcoin",
+                                          "Note": ""
+                                    },
+                                    "SI#0794957665": {
+                                          "Date": "16 September 2022",
+                                          "Amount": 1.0,
+                                          "Currency": "BTC",
+                                          "Category": "Storing investment",
+                                          "PayingAccount": "Ledger-Assets-Bitcoin",
+                                          "Note": ""
+                                    },
+                                    "SI#1323790299": {
+                                          "Date": "17 September 2022",
+                                          "Amount": 0.5,
+                                          "Currency": "BTC",
+                                          "Category": "Storing investment",
+                                          "PayingAccount": "Ledger-Assets-Bitcoin",
+                                          "Note": ""
+                                    }
+                              }
+                        },
+                        "Avalanche": {
+                              "TotalValue": 10.0,
+                              "Symbol": "AVAX",
+                              "LiquidityContribution": 0.0,
+                              "InvestmentContribution": 10.0,
+                              "MonthlyTransactions": {
+                                    "SI#6977457561": {
+                                          "Date": "17 September 2022",
+                                          "Amount": 10.0,
+                                          "Currency": "AVAX",
+                                          "Category": "Storing investment",
+                                          "PayingAccount": "Ledger-Assets-Avalanche",
+                                          "Note": ""
+                                    }
+                              }
                         }
                   }
             },

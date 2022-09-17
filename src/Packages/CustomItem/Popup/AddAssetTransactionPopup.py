@@ -317,7 +317,7 @@ class AddAssetTransactionPopup(ModalView):
 
             # Update the Json and Update the Dashboard Screen
             ActualScreen = App.root.children[0].children[0].current_screen
-            ActualScreen.UpdateScreen(ActualScreen.AssetName, ActualScreen.PortfolioName, ActualScreen.FromScreenName)
+            ActualScreen.UpdateScreen(ActualScreen.AssetName, ActualScreen.PortfolioName, self.Currency, ActualScreen.FromScreenName)
 
         else:
             self.paying_account_char = 'CI'

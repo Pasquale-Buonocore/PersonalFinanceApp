@@ -467,7 +467,7 @@ class PortfoliosManager_Class():
 
     # Compute asset statistics - # To IMPROVE
     def UpdateAssetStatistics(self, PortfolioName, AssetName):
-        return
+
         # Read json and get the number opf transaction for such Asset
         json_object = self.ReadJson()
         AssetDictTransaction = json_object[PortfolioName]['Assets'][AssetName]['Transactions']
@@ -482,13 +482,13 @@ class PortfoliosManager_Class():
             # Update Holding 
 
             # If BUY -> SUM 
-            if AssetDictTransaction[transactionIndex]['Type'] == 'BUY':
+            if AssetDictTransaction[transactionIndex]['PayingAccountLinkingCode'][0:2] == 'OI':
                 AssetDictStatistics['Quantity'] += float(AssetDictTransaction[transactionIndex]['Amount'])
-                AssetDictStatistics['AveragePrice'] += float(AssetDictTransaction[transactionIndex]['Amount']) * float(AssetDictTransaction[transactionIndex]['Price'])
+                AssetDictStatistics['AveragePrice'] += float(AssetDictTransaction[transactionIndex]['Amount']) * float(AssetDictTransaction[transactionIndex]['PricePerCoin'])
             # If SELL -> SUBTRACT
-            else:
+            if AssetDictTransaction[transactionIndex]['PayingAccountLinkingCode'][0:2] == 'CI':
                 AssetDictStatistics['Quantity'] -= float(AssetDictTransaction[transactionIndex]['Amount'])
-                AssetDictStatistics['AveragePrice'] -= float(AssetDictTransaction[transactionIndex]['Amount']) * float(AssetDictTransaction[transactionIndex]['Price'])
+                AssetDictStatistics['AveragePrice'] -= float(AssetDictTransaction[transactionIndex]['Amount']) * float(AssetDictTransaction[transactionIndex]['PricePerCoin'])
 
         # Update Total Value
         AssetDictStatistics['Quantity'] = round(AssetDictStatistics['Quantity'], 4)

@@ -28,7 +28,7 @@ class AddPortfolioPopup(Popup):
         string = ''
 
         # Retrive data "Portfolio Name" from Text Input - In empty do nothing
-        PortfolioName = self.ids["PortfolioName"].text.strip().upper()
+        PortfolioName = self.ids["PortfolioName"].text.strip().title()
         if not PortfolioName: string = string + 'ERROR: Empty asset name FIELD'
 
         # Retrive data "Currency Value" from Text Input - In empty do nothing

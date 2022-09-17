@@ -38,11 +38,11 @@ class AddAccountPopup(ModalView):
         string = ''
 
         # Retrive data "Account Name" from Text Input - In empty do nothing
-        CategoryValue = self.ids["CategoryValue"].text.strip()
+        CategoryValue = self.ids["CategoryValue"].text.strip().title()
         if not CategoryValue: string = string + 'ERROR: Empty category value FIELD'
 
         # Retrive data "Account Value" from Text Input - In empty do nothing
-        AccountValue = self.ids["AccountValue"].text.strip()
+        AccountValue = self.ids["AccountValue"].text.strip().title()
         if not AccountValue: string = string + '\nERROR: Empty account value FIELD'
 
         if string:
