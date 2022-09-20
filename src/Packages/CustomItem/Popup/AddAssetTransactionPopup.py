@@ -243,16 +243,24 @@ class AddAssetTransactionPopup(ModalView):
             # Define Asset To Add
             TransactiontoAdd = self.DBManager.InitializeTransaction(DateValue, PriceValue, QuantityValue, FeesValue, NoteValue, self.SelectedPayingAccount, self.SelectedStoringAccount)
             
+            
+            PortfolioAccountString = {'json_file' : self.DBManager.json_path}
+            PortfolioAccountString.update({'PortfolioName': self.PortfolioName})
+            PortfolioAccountString.update({'AssetName': self.AssetName})
+            
             # Define Transaction to add to paying account
-            CurrencyPayingAccount = MDApp.get_running_app().Accounts_DB.ReadJson()[self.SelectedPayingAccount['Account']]['SubAccount'][self.SelectedPayingAccount['SubAccount']][self.SelectedPayingAccount['Currency']]['Symbol']
-            PayingAccountString = self.SelectedPayingAccount['Account'] + '-' + self.SelectedPayingAccount['SubAccount'] + '-' + self.SelectedPayingAccount['Currency']
-            TransactiontoAddPayingAccount = self.DBManager.InitializeNewTransactionInOut(DateValue, round(float(TotalSpentValue),3), CurrencyPayingAccount, 'Paying investment', PayingAccountString, NoteValue)
+            TransactiontoAddPayingAccount = MDApp.get_running_app().Accounts_DB.Initialize_investiment_transaction_to_store_into_account(DateValue, 
+                                                                                                                                         round(float(TotalSpentValue),3),
+                                                                                                                                         'Paying investment',
+                                                                                                                                         PortfolioAccountString,
+                                                                                                                                         NoteValue)
             
             # Define Transaction to add to storing account
-            CurrencyStoringAccount = MDApp.get_running_app().Accounts_DB.ReadJson()[self.SelectedStoringAccount['Account']]['SubAccount'][self.SelectedStoringAccount['SubAccount']][self.SelectedStoringAccount['Currency']]['Symbol']
-            StoringAccountString = self.SelectedStoringAccount['Account'] + '-' + self.SelectedStoringAccount['SubAccount'] + '-' + self.SelectedStoringAccount['Currency']
-            TransactiontoAddStoringAccount = self.DBManager.InitializeNewTransactionInOut(DateValue, round(float(QuantityValue),5), CurrencyStoringAccount, 'Storing investment', StoringAccountString, NoteValue)
-        
+            TransactiontoAddStoringAccount = MDApp.get_running_app().Accounts_DB.Initialize_investiment_transaction_to_store_into_account(DateValue,
+                                                                                                                                          round(float(QuantityValue),5),
+                                                                                                                                          'Storing investment',
+                                                                                                                                          PortfolioAccountString,
+                                                                                                                                          NoteValue)
             # If an item needs to be modified
             if self.type == 'M':
                 # Substitute the actual item

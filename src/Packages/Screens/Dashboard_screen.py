@@ -262,3 +262,14 @@ class DashboardScreen(Screen):
             self.ids[self.AccountsBoxLayout].add_widget(children)
             if children.ToExpand:
                 self.ids[self.AccountsBoxLayout].add_widget(AccountRowExpandedBoxLayout())
+
+    ###############################
+    # INCOME - OUTCOME MANAGEMENT #
+    ###############################
+
+    def Update_total_income_string(self) -> None:
+        '''This string update'''
+        pass
+
+    def Update_total_outcome_string(self):
+        pass

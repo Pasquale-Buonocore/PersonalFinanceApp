@@ -201,22 +201,48 @@
                         }
                   },
                   "Elrond": {
-                        "Transactions": {},
+                        "Transactions": {
+                              "1": {
+                                    "Date": "20 September 2022",
+                                    "PricePerCoin": "48",
+                                    "Amount": "1",
+                                    "Fees": "0.0",
+                                    "Note": "",
+                                    "PayingAccount": {
+                                          "Account": "Binance Exchange",
+                                          "SubAccount": "Cash",
+                                          "Currency": "USDT"
+                                    },
+                                    "StoringAccount": {
+                                          "Account": "Ledger",
+                                          "SubAccount": "Assets",
+                                          "Currency": "Elrond"
+                                    },
+                                    "Status": {
+                                          "Open": "1",
+                                          "Closed": {
+                                                "Transactions": {}
+                                          }
+                                    },
+                                    "PayingAccountLinkingCode": "OI#8683394530",
+                                    "StoringAccountLinkingCode": "SI#0569133076"
+                              }
+                        },
                         "Statistics": {
-                              "Quantity": 0,
+                              "Quantity": 1.0,
                               "Symbol": "EGLD",
                               "CurrentPrice": 5,
-                              "AveragePrice": 0,
-                              "TotalValue": 0.0,
-                              "TotalProfit": 0
+                              "AveragePrice": 48.0,
+                              "TotalValue": 5.0,
+                              "TotalProfit": -43.0
                         }
                   }
             },
             "Statistics": {
                   "Currency": "USD",
-                  "TotalValue": 73.0,
+                  "TotalValue": 78.0,
                   "NumberOfAssets": 3,
-                  "TotalProfit": -0.6,
+                  "TotalProfit": -43.6,
                   "ToCountInAllocation": true,
                   "ActualAssetAllocation": {
                         "Bitcoin": 31.1,

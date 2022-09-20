@@ -68,10 +68,10 @@
             "SubAccount": {
                   "Cash": {
                         "USDT": {
-                              "TotalValue": 426.4,
+                              "TotalValue": 378.4,
                               "Symbol": "USDT",
                               "BasedCurrency": "USD",
-                              "LiquidityContribution": 426.4,
+                              "LiquidityContribution": 378.4,
                               "InvestmentContribution": 0.0,
                               "MonthlyTransactions": {
                                     "ES#3590216582": {
@@ -136,6 +136,17 @@
                                           "Currency": "USDT",
                                           "Category": "Paying investment",
                                           "PayingAccount": "Binance Exchange-Cash-USDT",
+                                          "Note": ""
+                                    },
+                                    "OI#8683394530": {
+                                          "Date": "20 September 2022",
+                                          "Amount": 48.0,
+                                          "Category": "Paying investment",
+                                          "Portfolio": {
+                                                "json_file": "Crypto.json",
+                                                "PortfolioName": "MAIN",
+                                                "AssetName": "Elrond"
+                                          },
                                           "Note": ""
                                     }
                               }
@@ -225,6 +236,25 @@
                                           "Currency": "AVAX",
                                           "Category": "Storing investment",
                                           "PayingAccount": "Ledger-Assets-Avalanche",
+                                          "Note": ""
+                                    }
+                              }
+                        },
+                        "Elrond": {
+                              "TotalValue": 1.0,
+                              "Symbol": "EGLD",
+                              "LiquidityContribution": 0.0,
+                              "InvestmentContribution": 1.0,
+                              "MonthlyTransactions": {
+                                    "SI#0569133076": {
+                                          "Date": "20 September 2022",
+                                          "Amount": 1.0,
+                                          "Category": "Storing investment",
+                                          "Portfolio": {
+                                                "json_file": "Crypto.json",
+                                                "PortfolioName": "MAIN",
+                                                "AssetName": "Elrond"
+                                          },
                                           "Note": ""
                                     }
                               }

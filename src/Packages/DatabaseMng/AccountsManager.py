@@ -203,6 +203,18 @@ class AccountsManager_Class():
     ###################
     # Statistic Value #
     ###################
+    # Initialize transaction for the type income and outcome
+    def Initialize_investiment_transaction_to_store_into_account(self, Date, Quantity, Category, Portfolio, Description):
+
+        # Dict which will store all the statistics of such asset
+        TransactionDict = {'Date': Date}
+        TransactionDict.update({'Amount' : Quantity})
+        TransactionDict.update({'Category' : Category})
+        TransactionDict.update({'Investment_location' : Portfolio})
+        TransactionDict.update({'Note' : Description})
+
+        return TransactionDict
+
     def Update_liquid_investing_balance(self, Account, SubAccount, Currency) -> None:
         '''This function uses the transaction in the monthly transaction dictionary to update liquidity and investiment.
         It is defined to update them for a currency only'''
