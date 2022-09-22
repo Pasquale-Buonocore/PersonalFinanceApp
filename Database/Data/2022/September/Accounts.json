@@ -3,10 +3,10 @@
             "SubAccount": {
                   "Cash": {
                         "EUR": {
-                              "TotalValue": 850.0,
+                              "TotalValue": 700.0,
                               "Symbol": "\u20ac",
                               "BasedCurrency": "EUR",
-                              "LiquidityContribution": 850.0,
+                              "LiquidityContribution": 700.0,
                               "InvestmentContribution": 0.0,
                               "MonthlyTransactions": {
                                     "ES#3650414941": {
@@ -48,6 +48,22 @@
                                           "Category": "Benzina",
                                           "PayingAccount": "Unicredit - Cash - EUR",
                                           "Note": ""
+                                    },
+                                    "ES#6094886452": {
+                                          "Date": "22 SEPTEMBER 2022",
+                                          "Amount": 50.0,
+                                          "Currency": "\u20ac",
+                                          "Category": "Ripetizioni",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": ""
+                                    },
+                                    "SS#3005487942": {
+                                          "Date": "22 SEPTEMBER 2022",
+                                          "Amount": 200.0,
+                                          "Currency": "\u20ac",
+                                          "Category": "Spese personali",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "ACQUISTO CORSO PYTHON - ARJAN"
                                     }
                               }
                         }

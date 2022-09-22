@@ -199,7 +199,6 @@ class AccountsManager_Class():
         # Save new json file
         self.SaveJsonFile(json_object)
 
-    
     ###################
     # Statistic Value #
     ###################

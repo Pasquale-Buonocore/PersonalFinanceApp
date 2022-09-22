@@ -23,10 +23,19 @@
                                     "PayingAccount": "Unicredit - Cash - EUR",
                                     "Note": "SPESA PER LA FESTA IN GIARDINO",
                                     "LinkingCode": "SS#6199327055"
+                              },
+                              "2": {
+                                    "Date": "22 SEPTEMBER 2022",
+                                    "Amount": 200.0,
+                                    "Currency": "\u20ac",
+                                    "Category": "Spese personali",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "ACQUISTO CORSO PYTHON - ARJAN",
+                                    "LinkingCode": "SS#3005487942"
                               }
                         },
                         "Statistics": {
-                              "TotalValue": 100.0
+                              "TotalValue": 300.0
                         }
                   },
                   "Benzina": {
@@ -54,12 +63,12 @@
             },
             "Statistics": {
                   "Currency": "\u20ac",
-                  "NumberOfTransaction": 2,
-                  "TotalValue": 160.0,
+                  "NumberOfTransaction": 3,
+                  "TotalValue": 360.0,
                   "ActualAssetAllocation": {
                         "Alimentazione": 0.0,
                         "Bollette": 0.0,
-                        "Spese personali": 100.0,
+                        "Spese personali": 300.0,
                         "Benzina": 60.0,
                         "Spesa casa": 0.0
                   },
@@ -93,6 +102,15 @@
                                     "PayingAccount": "Unicredit - Cash - EUR",
                                     "Note": "",
                                     "LinkingCode": "SS#5572872626"
+                              },
+                              "3": {
+                                    "Date": "22 SEPTEMBER 2022",
+                                    "Amount": 200.0,
+                                    "Currency": "\u20ac",
+                                    "Category": "Spese personali",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "ACQUISTO CORSO PYTHON - ARJAN",
+                                    "LinkingCode": "SS#3005487942"
                               }
                         }
                   }

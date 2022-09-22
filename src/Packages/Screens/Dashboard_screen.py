@@ -15,7 +15,8 @@ from Packages.DatabaseMng.PathManager import PathManager_Class
 from Packages.DatabaseMng.JsonManager import JsonManager_Class
 from Packages.CustomItem.Lists.AccountsListManagement import  AddNewAccountBoxLayout, AccountRowExpandedBoxLayout
 from Packages.CustomItem.Lists.AccountsListManagement import AccountRowBoxLayout, AccountRowBoxLayout_Title
-
+import Packages.DatabaseMng.PortfolioManager as db_manager
+from Packages.CustomFunction.DefineJsonDatapath import return_updated_data_path
 
 class DashboardScreen(Screen):
     image_source = StringProperty('images/Support/AssetsInPortfolio.png')
@@ -36,6 +37,8 @@ class DashboardScreen(Screen):
         # Update the dashboard screen
         self.Update_AccountBoxLayout()
         self.Update_InFlowBoxLayout()
+        self.Update_total_income_string()
+        self.Update_total_outcome_string()
         self.Update_ExpencesBoxLayout()
         self.Update_EarningsBoxLayout()
 
@@ -268,8 +271,17 @@ class DashboardScreen(Screen):
     ###############################
 
     def Update_total_income_string(self) -> None:
-        '''This string update'''
-        pass
+        '''This string update the total earned in such month'''
+        self.TransactionIn = db_manager.PortfoliosManager_Class(return_updated_data_path(PathManager_Class.database_path),db_manager.path_manager.TransactionIn_path)
+        
+        Total_earned = self.TransactionIn.ReadJson()['IN']['Statistics']['TotalValue']
 
-    def Update_total_outcome_string(self):
-        pass
+
+        self.ids.IncomeBoxLayout_label.text = str(Total_earned) + ' ' + MDApp.get_running_app().UserSelectedCurrency['Symbol']
+
+    def Update_total_outcome_string(self) -> None:
+        '''This string update the total spent in such month'''
+        self.TransactionOut = db_manager.PortfoliosManager_Class(return_updated_data_path(PathManager_Class.database_path),db_manager.path_manager.TransactionOut_path)
+        Total_spent = self.TransactionOut.ReadJson()['OUT']['Statistics']['TotalValue']
+
+        self.ids.OutcomeBoxLayout_label.text = str(Total_spent) + ' ' + MDApp.get_running_app().UserSelectedCurrency['Symbol']

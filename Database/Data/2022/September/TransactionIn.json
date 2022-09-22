@@ -45,19 +45,29 @@
                         }
                   },
                   "Ripetizioni": {
-                        "Transactions": {},
+                        "Transactions": {
+                              "1": {
+                                    "Date": "22 SEPTEMBER 2022",
+                                    "Amount": 50.0,
+                                    "Currency": "\u20ac",
+                                    "Category": "Ripetizioni",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "",
+                                    "LinkingCode": "ES#6094886452"
+                              }
+                        },
                         "Statistics": {
-                              "TotalValue": 0
+                              "TotalValue": 50.0
                         }
                   }
             },
             "Statistics": {
                   "Currency": "\u20ac",
-                  "NumberOfTransaction": 4,
-                  "TotalValue": 1510.0,
+                  "NumberOfTransaction": 5,
+                  "TotalValue": 1560.0,
                   "ActualAssetAllocation": {
                         "Stipendio": 1510.0,
-                        "Ripetizioni": 0.0
+                        "Ripetizioni": 50.0
                   },
                   "DesiredAssetAllocation": {
                         "Stipendio": 750,
@@ -104,6 +114,15 @@
                                     "PayingAccount": "Unicredit - Cash - EUR",
                                     "Note": "",
                                     "LinkingCode": "ES#3862261522"
+                              },
+                              "5": {
+                                    "Date": "22 SEPTEMBER 2022",
+                                    "Amount": 50.0,
+                                    "Currency": "\u20ac",
+                                    "Category": "Ripetizioni",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "",
+                                    "LinkingCode": "ES#6094886452"
                               }
                         }
                   }
