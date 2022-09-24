@@ -80,7 +80,7 @@ class TransactionInOutRowBoxLayout(BoxLayout, HoverBehavior):
         Transaction_database.RemoveTransactionFromAssetList(PortfolioName = Portfolio_list_name, AssetName = 'Transactions', ItemIndex = Transaction_Index)
         
         # Then Remove Transaction from the <IN> json based on Linking Code
-        Transaction_database.RemoveTransactionFromAssetListBasedOnLikingCode(PortfolioName = Portfolio_list_name, AssetName = Transaction_Category, Linking_Code = Transaction_Linking_code)
+        Transaction_database.RemoveTransactionFromAssetListBasedOnLikingCode(PortfolioName = Portfolio_name, AssetName = Transaction_Category, LinkingCode = Transaction_Linking_code)
         
         # Then Remove Transaction from Account
         MDApp.get_running_app().Accounts_DB.RemoveMonthlyTransactionBasedOnLinkingCode(AccountName = Transaction_PayingAccount_dict['Account'],
@@ -93,6 +93,9 @@ class TransactionInOutRowBoxLayout(BoxLayout, HoverBehavior):
         # Update Asset Statistics in transaction list
         Transaction_database.UpdateAssetInTransactionStatistics(Portfolio_name, Transaction_Category)
 
+        # Update the Json and Update the Dashboard Screen
+        ActualScreen = MDApp.get_running_app().root.children[0].children[0].current_screen
+        ActualScreen.UpdateListOfTransaction()
 
     def on_enter(self):
         self.Background_color = MDApp.get_running_app().Configuration_DB.GetElementValue('AssetRowBackgroundColor_on_enter')

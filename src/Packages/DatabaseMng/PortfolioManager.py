@@ -414,12 +414,13 @@ class PortfoliosManager_Class():
         json_object = self.ReadJson()
         new_AssetTransaction = {}
         new_Transactioncounter = 1
-        for Transaction in json_object[PortfolioName]["Assets"][AssetName]["Transactions"]:
-            if Transaction['LinkingCode'] != LinkingCode:
-                new_AssetTransaction.update({str(new_Transactioncounter) : json_object[PortfolioName]["Assets"][AssetName]["Transactions"]})
+
+        for Transaction_idx in json_object[PortfolioName]["Assets"][AssetName]["Transactions"]:
+            if json_object[PortfolioName]["Assets"][AssetName]["Transactions"][Transaction_idx]['LinkingCode'] != LinkingCode:
+                new_AssetTransaction.update({str(new_Transactioncounter) : json_object[PortfolioName]["Assets"][AssetName]["Transactions"][Transaction_idx]})
             
-            # Update transaction counter
-            new_Transactioncounter = new_Transactioncounter + 1
+                # Update transaction counter
+                new_Transactioncounter = new_Transactioncounter + 1
 
         # Save Json
         json_object[PortfolioName]["Assets"][AssetName]["Transactions"] = new_AssetTransaction
@@ -436,8 +437,8 @@ class PortfoliosManager_Class():
             if TransactionNumber != ItemIndex:
                 new_AssetTransaction.update({str(new_Transactioncounter) : json_object[PortfolioName]["Assets"][AssetName]["Transactions"][TransactionNumber]})
             
-            # Update transaction counter
-            new_Transactioncounter = new_Transactioncounter + 1
+                # Update transaction counter
+                new_Transactioncounter = new_Transactioncounter + 1
 
         # Save Json
         json_object[PortfolioName]["Assets"][AssetName]["Transactions"] = new_AssetTransaction
