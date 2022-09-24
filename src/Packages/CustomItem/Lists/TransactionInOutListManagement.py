@@ -1,4 +1,5 @@
 from Packages.CustomItem.Lists.TransactionInOutListManagement import *
+from Packages.CustomFunction.CustomFunction import return_account_dict_given_account_element_list
 from Packages.CustomFunction.HoverClass import *
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
@@ -8,6 +9,8 @@ from kivy.properties import ColorProperty
 
 # Designate Out .kv design file
 Builder.load_file('Packages/CustomItem/ui/TransactionInOutListManagement.kv')
+
+
 
 # When no Asset is in the category selected, it will be shown!
 class TransactionInOutRowBoxLayout_Empty(BoxLayout):
@@ -57,6 +60,40 @@ class TransactionInOutRowBoxLayout(BoxLayout, HoverBehavior):
 
         super().__init__()
     
+    def Modify_transaction(self) -> None:
+        print('Modify transaction')
+
+    def Remove_transaction(self) -> None:
+
+        # Define connection to databases and portfolio name
+        Transaction_database = self.parent.parent.parent.parent.DBManager
+        Portfolio_name = self.parent.parent.parent.parent.portfolio
+        Portfolio_list_name = self.parent.parent.parent.parent.portfolio_list
+
+        # Extract info from current transaction
+        Transaction_Linking_code = Transaction_database.ReadJson()[Portfolio_list_name]['Assets']['Transactions']['Transactions'][self.TransactionNumber]['LinkingCode']
+        Transaction_Index = self.TransactionNumber
+        Transaction_Category = self.Category
+        Transaction_PayingAccount_dict = return_account_dict_given_account_element_list(self.PayingAccount)
+
+        # First Remove transaction from the <IN_OUT>_LIST json
+        Transaction_database.RemoveTransactionFromAssetList(PortfolioName = Portfolio_list_name, AssetName = 'Transactions', ItemIndex = Transaction_Index)
+        
+        # Then Remove Transaction from the <IN> json based on Linking Code
+        Transaction_database.RemoveTransactionFromAssetListBasedOnLikingCode(PortfolioName = Portfolio_list_name, AssetName = Transaction_Category, Linking_Code = Transaction_Linking_code)
+        
+        # Then Remove Transaction from Account
+        MDApp.get_running_app().Accounts_DB.RemoveMonthlyTransactionBasedOnLinkingCode(AccountName = Transaction_PayingAccount_dict['Account'],
+                                                                                       SubAccountName = Transaction_PayingAccount_dict['SubAccount'],
+                                                                                       CurrencyName = Transaction_PayingAccount_dict['Currency'], 
+                                                                                       LinkingCode = Transaction_Linking_code)
+        # Update Paying Account statistics
+        MDApp.get_running_app().Accounts_DB.Update_liquid_investing_balance(Transaction_PayingAccount_dict['Account'], Transaction_PayingAccount_dict['SubAccount'], Transaction_PayingAccount_dict['Currency'])
+
+        # Update Asset Statistics in transaction list
+        Transaction_database.UpdateAssetInTransactionStatistics(Portfolio_name, Transaction_Category)
+
+
     def on_enter(self):
         self.Background_color = MDApp.get_running_app().Configuration_DB.GetElementValue('AssetRowBackgroundColor_on_enter')
 

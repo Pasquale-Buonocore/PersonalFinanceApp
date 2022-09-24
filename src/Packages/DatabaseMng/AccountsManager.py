@@ -199,6 +199,17 @@ class AccountsManager_Class():
         # Save new json file
         self.SaveJsonFile(json_object)
 
+    # Remove transaction knowing Account, SubAccount and Currency based on Linking Code
+    def RemoveMonthlyTransactionBasedOnLinkingCode(self, AccountName = '', SubAccountName = '', CurrencyName = '', LinkingCode = '') -> None:
+        # Read json
+        json_object = self.ReadJson()
+
+        if LinkingCode in json_object[AccountName]["SubAccount"][SubAccountName][CurrencyName]['MonthlyTransactions'].keys(): 
+            json_object[AccountName]["SubAccount"][SubAccountName][CurrencyName]['MonthlyTransactions'].pop(LinkingCode)
+        
+        # Save json
+        self.SaveJsonFile(json_object)
+
     ###################
     # Statistic Value #
     ###################

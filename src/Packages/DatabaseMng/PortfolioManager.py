@@ -408,6 +408,24 @@ class PortfoliosManager_Class():
         json_object[PortfolioName]["Assets"][AssetName]["Transactions"] = new_AssetTransaction
         self.SaveJsonFile(json_object)
 
+    # Remove a transaction in the list of transaction base on linking code
+    def RemoveTransactionFromAssetListBasedOnLikingCode(self, PortfolioName = '', AssetName = '', LinkingCode = '') -> None:
+        # Read json
+        json_object = self.ReadJson()
+        new_AssetTransaction = {}
+        new_Transactioncounter = 1
+        for Transaction in json_object[PortfolioName]["Assets"][AssetName]["Transactions"]:
+            if Transaction['LinkingCode'] != LinkingCode:
+                new_AssetTransaction.update({str(new_Transactioncounter) : json_object[PortfolioName]["Assets"][AssetName]["Transactions"]})
+            
+            # Update transaction counter
+            new_Transactioncounter = new_Transactioncounter + 1
+
+        # Save Json
+        json_object[PortfolioName]["Assets"][AssetName]["Transactions"] = new_AssetTransaction
+        self.SaveJsonFile(json_object)
+
+
     # Remove a transaction in the list of transaction of a list
     def RemoveTransactionFromAssetList(self, PortfolioName = '', AssetName = '', ItemIndex = "0"):
         # Read json

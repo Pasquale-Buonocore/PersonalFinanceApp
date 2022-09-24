@@ -54,20 +54,29 @@
                                     "PayingAccount": "Unicredit - Cash - EUR",
                                     "Note": "",
                                     "LinkingCode": "ES#6094886452"
+                              },
+                              "2": {
+                                    "Date": "24 SEPTEMBER 2022",
+                                    "Amount": 100.0,
+                                    "Currency": "EUR",
+                                    "Category": "Ripetizioni",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "",
+                                    "LinkingCode": "ES#0559277286"
                               }
                         },
                         "Statistics": {
-                              "TotalValue": 50.0
+                              "TotalValue": 150.0
                         }
                   }
             },
             "Statistics": {
                   "Currency": "\u20ac",
-                  "NumberOfTransaction": 5,
-                  "TotalValue": 1560.0,
+                  "NumberOfTransaction": 6,
+                  "TotalValue": 1660.0,
                   "ActualAssetAllocation": {
                         "Stipendio": 1510.0,
-                        "Ripetizioni": 50.0
+                        "Ripetizioni": 150.0
                   },
                   "DesiredAssetAllocation": {
                         "Stipendio": 750,
@@ -123,6 +132,15 @@
                                     "PayingAccount": "Unicredit - Cash - EUR",
                                     "Note": "",
                                     "LinkingCode": "ES#6094886452"
+                              },
+                              "6": {
+                                    "Date": "24 SEPTEMBER 2022",
+                                    "Amount": 100.0,
+                                    "Currency": "EUR",
+                                    "Category": "Ripetizioni",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "",
+                                    "LinkingCode": "ES#0559277286"
                               }
                         }
                   }

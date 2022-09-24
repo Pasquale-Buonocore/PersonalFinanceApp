@@ -2,6 +2,9 @@ from xmlrpc.client import boolean
 import Packages.DatabaseMng.PortfolioManager as db_manager
 import re
 
+# Constant
+PAYING_ACCOUNT_LIST_ELEMENT_MAX_LENGTH = 3
+
 # Return the database to use according to the Screen selected
 def ReturnJsonPathGivenScreenName(ScreenName):
     if ScreenName == 'ETF - ETC':
@@ -33,3 +36,11 @@ def verify_numeric_float_string(numeric_string):
 def check_if_balance_is_not_enough(available_amount: float, transaction_amount: float) -> boolean:
     ''' return 1 if available balance is smaller then transaction value'''
     return 1 if float(available_amount) < float(transaction_amount) else 0
+
+
+def return_account_dict_given_account_element_list(three_element_list: list) -> dict:
+    Transaction_PayingAccountKey = ['Account', 'SubAccount', 'Currency']
+    Transaction_PayingAccountValue = [element.strip() for element in three_element_list.split('-')]
+
+    if len(Transaction_PayingAccountValue) > PAYING_ACCOUNT_LIST_ELEMENT_MAX_LENGTH: return
+    return dict(zip(Transaction_PayingAccountKey,Transaction_PayingAccountValue))

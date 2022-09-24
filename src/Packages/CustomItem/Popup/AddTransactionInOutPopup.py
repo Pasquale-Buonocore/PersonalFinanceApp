@@ -142,7 +142,8 @@ class AddTransactionInOutPopup(ModalView):
         NoteValue = self.ids["DescriptionValue"].text.strip().upper()
 
         # Define the currency with is the symbol of the value selected as paying account
-        Currency = MDApp.get_running_app().Accounts_DB.ReadJson()[self.SelectedPayingAccount['Account']]['SubAccount'][self.SelectedPayingAccount['SubAccount']][self.SelectedPayingAccount['Currency']]['Symbol']
+        # Currency = MDApp.get_running_app().Accounts_DB.ReadJson()[self.SelectedPayingAccount['Account']]['SubAccount'][self.SelectedPayingAccount['SubAccount']][self.SelectedPayingAccount['Currency']]['Symbol']
+        Currency = self.SelectedPayingAccount['Currency']
 
         if string:
             # If the error message is not empty, display an error

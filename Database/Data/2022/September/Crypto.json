@@ -245,9 +245,9 @@
                   "TotalProfit": -43.6,
                   "ToCountInAllocation": true,
                   "ActualAssetAllocation": {
-                        "Bitcoin": 31.1,
-                        "Avalanche": 67.6,
-                        "Elrond": 0.0
+                        "Bitcoin": 29.1,
+                        "Avalanche": 63.3,
+                        "Elrond": 6.3
                   },
                   "DesiredAssetAllocation": {
                         "Bitcoin": 0,
