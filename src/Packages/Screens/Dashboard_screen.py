@@ -274,14 +274,22 @@ class DashboardScreen(Screen):
         '''This string update the total earned in such month'''
         self.TransactionIn = db_manager.PortfoliosManager_Class(return_updated_data_path(PathManager_Class.database_path),db_manager.path_manager.TransactionIn_path)
         
-        Total_earned = self.TransactionIn.ReadJson()['IN']['Statistics']['TotalValue']
+        # Iterate over all transactions and add only if the transaction is not an "INTERNAL TRANSACTION" or "Account Initialization"
+        Total_earned = 0.0
 
+        for transactionIdx in self.TransactionIn.ReadJson()['IN_LIST']['Assets']['Transactions']['Transactions']:
+            if self.TransactionIn.ReadJson()['IN_LIST']['Assets']['Transactions']['Transactions'][transactionIdx]['Category'] not in ['Account Initialization', 'Internal Transaction']:
+                Total_earned += float(self.TransactionIn.ReadJson()['IN_LIST']['Assets']['Transactions']['Transactions'][transactionIdx]['Amount'])
 
         self.ids.IncomeBoxLayout_label.text = str(Total_earned) + ' ' + MDApp.get_running_app().UserSelectedCurrency['Symbol']
 
     def Update_total_outcome_string(self) -> None:
         '''This string update the total spent in such month'''
         self.TransactionOut = db_manager.PortfoliosManager_Class(return_updated_data_path(PathManager_Class.database_path),db_manager.path_manager.TransactionOut_path)
-        Total_spent = self.TransactionOut.ReadJson()['OUT']['Statistics']['TotalValue']
+        Total_spent = 0.0
+
+        for transactionIdx in self.TransactionOut.ReadJson()['OUT_LIST']['Assets']['Transactions']['Transactions']:
+            if self.TransactionOut.ReadJson()['OUT_LIST']['Assets']['Transactions']['Transactions'][transactionIdx]['Category'] not in ['Account Initialization', 'Internal Transaction']:
+                Total_spent += float(self.TransactionOut.ReadJson()['OUT_LIST']['Assets']['Transactions']['Transactions'][transactionIdx]['Amount'])
 
         self.ids.OutcomeBoxLayout_label.text = str(Total_spent) + ' ' + MDApp.get_running_app().UserSelectedCurrency['Symbol']

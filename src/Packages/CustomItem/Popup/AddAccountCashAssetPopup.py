@@ -44,6 +44,8 @@ class AddAccountCashAssetPopup(ModalView):
 
         # Retrive data "Account Name" from Text Input - In empty do nothing
         CurrencyNameValue = self.ids["CurrencyNameValue"].text.strip().title()
+        if self.cash_or_asset == 'cash': CurrencyNameValue = CurrencyNameValue.upper()
+        
         if not CurrencyNameValue: string = string + 'ERROR: Empty Currency Name FIELD'
 
         # Retrive data "Symbol Value" from Text Input - In empty do nothing

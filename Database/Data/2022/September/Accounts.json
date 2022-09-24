@@ -274,7 +274,7 @@
       "Degiro": {
             "SubAccount": {
                   "Cash": {
-                        "Eur": {
+                        "EUR": {
                               "TotalValue": 0,
                               "Symbol": "\u20ac",
                               "BasedCurrency": "EUR",
@@ -298,10 +298,18 @@
       "Revolut Card": {
             "SubAccount": {
                   "Cash": {
-                        "Eur": {
+                        "EUR": {
                               "TotalValue": 0,
                               "Symbol": "\u20ac",
                               "BasedCurrency": "EUR",
+                              "LiquidityContribution": 0.0,
+                              "InvestmentContribution": 0.0,
+                              "MonthlyTransactions": {}
+                        },
+                        "USD": {
+                              "TotalValue": 0,
+                              "Symbol": "$",
+                              "BasedCurrency": "USD",
                               "LiquidityContribution": 0.0,
                               "InvestmentContribution": 0.0,
                               "MonthlyTransactions": {}
