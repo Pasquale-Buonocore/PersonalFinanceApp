@@ -50,19 +50,37 @@
                         "Statistics": {
                               "TotalValue": 150.0
                         }
+                  },
+                  "Internal Transaction": {
+                        "Transactions": {
+                              "1": {
+                                    "Date": "24 SEPTEMBER 2022",
+                                    "Amount": 350.0,
+                                    "Currency": "EUR",
+                                    "Category": "Internal Transaction",
+                                    "PayingAccount": "Revolut Card - Cash - EUR",
+                                    "Note": "MOVIMENTAZIONE VERSO REVOLUT DA UNICREDIT",
+                                    "LinkingCode": "ES#7744692902"
+                              }
+                        },
+                        "Statistics": {
+                              "TotalValue": 350.0
+                        }
                   }
             },
             "Statistics": {
                   "Currency": "\u20ac",
-                  "NumberOfTransaction": 4,
-                  "TotalValue": 1160.0,
+                  "NumberOfTransaction": 5,
+                  "TotalValue": 1510.0,
                   "ActualAssetAllocation": {
                         "Stipendio": 1010.0,
-                        "Ripetizioni": 150.0
+                        "Ripetizioni": 150.0,
+                        "Internal Transaction": 350.0
                   },
                   "DesiredAssetAllocation": {
                         "Stipendio": 750,
-                        "Ripetizioni": 500
+                        "Ripetizioni": 500,
+                        "Internal Transaction": 0
                   }
             }
       },
@@ -105,6 +123,15 @@
                                     "PayingAccount": "Unicredit - Cash - EUR",
                                     "Note": "",
                                     "LinkingCode": "ES#0559277286"
+                              },
+                              "5": {
+                                    "Date": "24 SEPTEMBER 2022",
+                                    "Amount": 350.0,
+                                    "Currency": "EUR",
+                                    "Category": "Internal Transaction",
+                                    "PayingAccount": "Revolut Card - Cash - EUR",
+                                    "Note": "MOVIMENTAZIONE VERSO REVOLUT DA UNICREDIT",
+                                    "LinkingCode": "ES#7744692902"
                               }
                         }
                   }

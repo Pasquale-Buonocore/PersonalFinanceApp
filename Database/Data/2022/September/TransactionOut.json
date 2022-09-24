@@ -50,25 +50,43 @@
                         "Statistics": {
                               "TotalValue": 0
                         }
+                  },
+                  "Internal Transaction": {
+                        "Transactions": {
+                              "1": {
+                                    "Date": "24 SEPTEMBER 2022",
+                                    "Amount": 350.0,
+                                    "Currency": "EUR",
+                                    "Category": "Internal Transaction",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "MOVIMENTAZIONE DA UNICREDIT VERSO REVOLUT",
+                                    "LinkingCode": "SS#0695693513"
+                              }
+                        },
+                        "Statistics": {
+                              "TotalValue": 350.0
+                        }
                   }
             },
             "Statistics": {
                   "Currency": "\u20ac",
-                  "NumberOfTransaction": 2,
-                  "TotalValue": 160.0,
+                  "NumberOfTransaction": 3,
+                  "TotalValue": 510.0,
                   "ActualAssetAllocation": {
                         "Alimentazione": 0.0,
                         "Bollette": 0.0,
                         "Spese personali": 100.0,
                         "Benzina": 60.0,
-                        "Spesa casa": 0.0
+                        "Spesa casa": 0.0,
+                        "Internal Transaction": 350.0
                   },
                   "DesiredAssetAllocation": {
                         "Alimentazione": 200,
                         "Bollette": 150,
                         "Spese personali": 50,
                         "Benzina": 150,
-                        "Spesa casa": 50
+                        "Spesa casa": 50,
+                        "Internal Transaction": 0
                   }
             }
       },
@@ -93,6 +111,15 @@
                                     "PayingAccount": "Unicredit - Cash - EUR",
                                     "Note": "",
                                     "LinkingCode": "SS#5572872626"
+                              },
+                              "3": {
+                                    "Date": "24 SEPTEMBER 2022",
+                                    "Amount": 350.0,
+                                    "Currency": "EUR",
+                                    "Category": "Internal Transaction",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "MOVIMENTAZIONE DA UNICREDIT VERSO REVOLUT",
+                                    "LinkingCode": "SS#0695693513"
                               }
                         }
                   }

@@ -3,10 +3,10 @@
             "SubAccount": {
                   "Cash": {
                         "EUR": {
-                              "TotalValue": 1000.0,
+                              "TotalValue": 650.0,
                               "Symbol": "\u20ac",
                               "BasedCurrency": "EUR",
-                              "LiquidityContribution": 1000.0,
+                              "LiquidityContribution": 650.0,
                               "InvestmentContribution": 0.0,
                               "MonthlyTransactions": {
                                     "ES#9155605642": {
@@ -56,6 +56,14 @@
                                           "Category": "Ripetizioni",
                                           "PayingAccount": "Unicredit - Cash - EUR",
                                           "Note": ""
+                                    },
+                                    "SS#0695693513": {
+                                          "Date": "24 SEPTEMBER 2022",
+                                          "Amount": 350.0,
+                                          "Currency": "EUR",
+                                          "Category": "Internal Transaction",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "MOVIMENTAZIONE DA UNICREDIT VERSO REVOLUT"
                                     }
                               }
                         }
@@ -299,12 +307,21 @@
             "SubAccount": {
                   "Cash": {
                         "EUR": {
-                              "TotalValue": 0,
+                              "TotalValue": 350.0,
                               "Symbol": "\u20ac",
                               "BasedCurrency": "EUR",
-                              "LiquidityContribution": 0.0,
+                              "LiquidityContribution": 350.0,
                               "InvestmentContribution": 0.0,
-                              "MonthlyTransactions": {}
+                              "MonthlyTransactions": {
+                                    "ES#7744692902": {
+                                          "Date": "24 SEPTEMBER 2022",
+                                          "Amount": 350.0,
+                                          "Currency": "EUR",
+                                          "Category": "Internal Transaction",
+                                          "PayingAccount": "Revolut Card - Cash - EUR",
+                                          "Note": "MOVIMENTAZIONE VERSO REVOLUT DA UNICREDIT"
+                                    }
+                              }
                         },
                         "USD": {
                               "TotalValue": 0,
