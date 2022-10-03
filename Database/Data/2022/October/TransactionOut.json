@@ -1,0 +1,139 @@
+{
+      "OUT": {
+            "Assets": {
+                  "Bollette": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  },
+                  "Uscite fuori": {
+                        "Transactions": {
+                              "1": {
+                                    "Date": "01 OCTOBER 2022",
+                                    "Amount": 35.0,
+                                    "Currency": "EUR",
+                                    "Category": "Uscite fuori",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "USCITA IRISH PUB",
+                                    "LinkingCode": "SS#5116687868"
+                              }
+                        },
+                        "Statistics": {
+                              "TotalValue": 35.0
+                        }
+                  },
+                  "Affitto": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  },
+                  "Carburante": {
+                        "Transactions": {
+                              "1": {
+                                    "Date": "02 OCTOBER 2022",
+                                    "Amount": 10.0,
+                                    "Currency": "EUR",
+                                    "Category": "Carburante",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "",
+                                    "LinkingCode": "SS#4952352476"
+                              }
+                        },
+                        "Statistics": {
+                              "TotalValue": 10.0
+                        }
+                  },
+                  "Spesa alimentare": {
+                        "Transactions": {
+                              "1": {
+                                    "Date": "03 OCTOBER 2022",
+                                    "Amount": 3.5,
+                                    "Currency": "EUR",
+                                    "Category": "Spesa alimentare",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "PANINO PER PRANZO",
+                                    "LinkingCode": "SS#9059459239"
+                              }
+                        },
+                        "Statistics": {
+                              "TotalValue": 3.5
+                        }
+                  },
+                  "Spese personali": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  },
+                  "Spesa casa": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  }
+            },
+            "Statistics": {
+                  "Currency": "\u20ac",
+                  "NumberOfTransaction": 3,
+                  "TotalValue": 48.5,
+                  "ActualAssetAllocation": {
+                        "Bollette": 0.0,
+                        "Uscite fuori": 35.0,
+                        "Affitto": 0.0,
+                        "Carburante": 10.0,
+                        "Spesa alimentare": 3.5,
+                        "Spese personali": 0.0,
+                        "Spesa casa": 0.0
+                  },
+                  "DesiredAssetAllocation": {
+                        "Bollette": 150,
+                        "Uscite fuori": 150,
+                        "Affitto": 350,
+                        "Carburante": 150,
+                        "Spesa alimentare": 200,
+                        "Spese personali": 50,
+                        "Spesa casa": 50
+                  }
+            }
+      },
+      "OUT_LIST": {
+            "Assets": {
+                  "Transactions": {
+                        "Transactions": {
+                              "1": {
+                                    "Date": "01 OCTOBER 2022",
+                                    "Amount": 35.0,
+                                    "Currency": "EUR",
+                                    "Category": "Uscite fuori",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "USCITA IRISH PUB",
+                                    "LinkingCode": "SS#5116687868"
+                              },
+                              "2": {
+                                    "Date": "02 OCTOBER 2022",
+                                    "Amount": 10.0,
+                                    "Currency": "EUR",
+                                    "Category": "Carburante",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "",
+                                    "LinkingCode": "SS#4952352476"
+                              },
+                              "3": {
+                                    "Date": "03 OCTOBER 2022",
+                                    "Amount": 3.5,
+                                    "Currency": "EUR",
+                                    "Category": "Spesa alimentare",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "PANINO PER PRANZO",
+                                    "LinkingCode": "SS#9059459239"
+                              }
+                        }
+                  }
+            },
+            "Statistics": {
+                  "Total": {}
+            }
+      }
+}

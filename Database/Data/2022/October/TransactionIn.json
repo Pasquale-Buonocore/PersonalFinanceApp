@@ -1,0 +1,106 @@
+{
+      "IN": {
+            "Assets": {
+                  "Account Initialization": {
+                        "Transactions": {
+                              "1": {
+                                    "Date": "01 OCTOBER 2022",
+                                    "Amount": 135.0,
+                                    "Currency": "EUR",
+                                    "Category": "Account Initialization",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "INIZIALIZZAZIONE CONTANTI MESE DI OTTOBRE",
+                                    "LinkingCode": "ES#5321603417"
+                              },
+                              "2": {
+                                    "Date": "01 OCTOBER 2022",
+                                    "Amount": 3200.0,
+                                    "Currency": "EUR",
+                                    "Category": "Account Initialization",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "INIZIALIZZAZIONE UNICREDIT",
+                                    "LinkingCode": "ES#6769350873"
+                              }
+                        },
+                        "Statistics": {
+                              "TotalValue": 3335.0
+                        }
+                  },
+                  "Stipendio": {
+                        "Transactions": {
+                              "1": {
+                                    "Date": "03 OCTOBER 2022",
+                                    "Amount": 2008.0,
+                                    "Currency": "EUR",
+                                    "Category": "Stipendio",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "",
+                                    "LinkingCode": "ES#1248272767"
+                              }
+                        },
+                        "Statistics": {
+                              "TotalValue": 2008.0
+                        }
+                  },
+                  "Ripetizioni": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  }
+            },
+            "Statistics": {
+                  "Currency": "\u20ac",
+                  "NumberOfTransaction": 3,
+                  "TotalValue": 5343.0,
+                  "ActualAssetAllocation": {
+                        "Account Initialization": 3335.0,
+                        "Stipendio": 2008.0,
+                        "Ripetizioni": 0.0
+                  },
+                  "DesiredAssetAllocation": {
+                        "Account Initialization": 0,
+                        "Stipendio": 1650,
+                        "Ripetizioni": 50
+                  }
+            }
+      },
+      "IN_LIST": {
+            "Assets": {
+                  "Transactions": {
+                        "Transactions": {
+                              "1": {
+                                    "Date": "01 OCTOBER 2022",
+                                    "Amount": 135.0,
+                                    "Currency": "EUR",
+                                    "Category": "Account Initialization",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "INIZIALIZZAZIONE CONTANTI MESE DI OTTOBRE",
+                                    "LinkingCode": "ES#5321603417"
+                              },
+                              "2": {
+                                    "Date": "01 OCTOBER 2022",
+                                    "Amount": 3200.0,
+                                    "Currency": "EUR",
+                                    "Category": "Account Initialization",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "INIZIALIZZAZIONE UNICREDIT",
+                                    "LinkingCode": "ES#6769350873"
+                              },
+                              "3": {
+                                    "Date": "03 OCTOBER 2022",
+                                    "Amount": 2008.0,
+                                    "Currency": "EUR",
+                                    "Category": "Stipendio",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "",
+                                    "LinkingCode": "ES#1248272767"
+                              }
+                        }
+                  }
+            },
+            "Statistics": {
+                  "Total": {}
+            }
+      }
+}
