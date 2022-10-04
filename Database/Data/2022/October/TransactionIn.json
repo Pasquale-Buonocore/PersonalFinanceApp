@@ -20,10 +20,28 @@
                                     "PayingAccount": "Unicredit - Cash - EUR",
                                     "Note": "INIZIALIZZAZIONE UNICREDIT",
                                     "LinkingCode": "ES#6769350873"
+                              },
+                              "3": {
+                                    "Date": "04 OCTOBER 2022",
+                                    "Amount": 63.0,
+                                    "Currency": "EUR",
+                                    "Category": "Account Initialization",
+                                    "PayingAccount": "Revolut - Cash - EUR",
+                                    "Note": "INIZIALIZZAZIONE REVOLUT",
+                                    "LinkingCode": "ES#7121489123"
+                              },
+                              "4": {
+                                    "Date": "01 OCTOBER 2022",
+                                    "Amount": 132.0,
+                                    "Currency": "EUR",
+                                    "Category": "Account Initialization",
+                                    "PayingAccount": "De Giro - Cash - EUR",
+                                    "Note": "DE GIRO INITIALIZATION",
+                                    "LinkingCode": "ES#9757678949"
                               }
                         },
                         "Statistics": {
-                              "TotalValue": 3335.0
+                              "TotalValue": 3530.0
                         }
                   },
                   "Stipendio": {
@@ -47,21 +65,48 @@
                         "Statistics": {
                               "TotalValue": 0
                         }
+                  },
+                  "Internal Transaction": {
+                        "Transactions": {
+                              "1": {
+                                    "Date": "04 OCTOBER 2022",
+                                    "Amount": 300.0,
+                                    "Currency": "EUR",
+                                    "Category": "Internal Transaction",
+                                    "PayingAccount": "Revolut - Cash - EUR",
+                                    "Note": "MUOVO FONDI DA UNICREDIT VERSO REVOLUT",
+                                    "LinkingCode": "ES#1864627121"
+                              },
+                              "2": {
+                                    "Date": "04 OCTOBER 2022",
+                                    "Amount": 500.0,
+                                    "Currency": "EUR",
+                                    "Category": "Internal Transaction",
+                                    "PayingAccount": "De Giro - Cash - EUR",
+                                    "Note": "MOVIMENTO A DE GIRO DA UNICREDIT",
+                                    "LinkingCode": "ES#3166224224"
+                              }
+                        },
+                        "Statistics": {
+                              "TotalValue": 800.0
+                        }
                   }
             },
             "Statistics": {
                   "Currency": "\u20ac",
-                  "NumberOfTransaction": 3,
-                  "TotalValue": 5343.0,
+                  "NumberOfTransaction": 7,
+                  "TotalValue": 6338.0,
                   "ActualAssetAllocation": {
-                        "Account Initialization": 3335.0,
+                        "Account Initialization": 3530.0,
                         "Stipendio": 2008.0,
-                        "Ripetizioni": 0.0
+                        "Ripetizioni": 0.0,
+                        "Internal Transaction": 800.0
                   },
                   "DesiredAssetAllocation": {
                         "Account Initialization": 0,
                         "Stipendio": 1650,
-                        "Ripetizioni": 50
+                        "Ripetizioni": 50,
+                        "Internal Transaction": 0
                   }
             }
       },
@@ -95,6 +140,42 @@
                                     "PayingAccount": "Unicredit - Cash - EUR",
                                     "Note": "",
                                     "LinkingCode": "ES#1248272767"
+                              },
+                              "4": {
+                                    "Date": "04 OCTOBER 2022",
+                                    "Amount": 300.0,
+                                    "Currency": "EUR",
+                                    "Category": "Internal Transaction",
+                                    "PayingAccount": "Revolut - Cash - EUR",
+                                    "Note": "MUOVO FONDI DA UNICREDIT VERSO REVOLUT",
+                                    "LinkingCode": "ES#1864627121"
+                              },
+                              "5": {
+                                    "Date": "04 OCTOBER 2022",
+                                    "Amount": 63.0,
+                                    "Currency": "EUR",
+                                    "Category": "Account Initialization",
+                                    "PayingAccount": "Revolut - Cash - EUR",
+                                    "Note": "INIZIALIZZAZIONE REVOLUT",
+                                    "LinkingCode": "ES#7121489123"
+                              },
+                              "6": {
+                                    "Date": "04 OCTOBER 2022",
+                                    "Amount": 500.0,
+                                    "Currency": "EUR",
+                                    "Category": "Internal Transaction",
+                                    "PayingAccount": "De Giro - Cash - EUR",
+                                    "Note": "MOVIMENTO A DE GIRO DA UNICREDIT",
+                                    "LinkingCode": "ES#3166224224"
+                              },
+                              "7": {
+                                    "Date": "01 OCTOBER 2022",
+                                    "Amount": 132.0,
+                                    "Currency": "EUR",
+                                    "Category": "Account Initialization",
+                                    "PayingAccount": "De Giro - Cash - EUR",
+                                    "Note": "DE GIRO INITIALIZATION",
+                                    "LinkingCode": "ES#9757678949"
                               }
                         }
                   }

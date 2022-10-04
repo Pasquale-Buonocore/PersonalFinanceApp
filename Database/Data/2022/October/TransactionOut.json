@@ -24,9 +24,19 @@
                         }
                   },
                   "Affitto": {
-                        "Transactions": {},
+                        "Transactions": {
+                              "1": {
+                                    "Date": "04 OCTOBER 2022",
+                                    "Amount": 350.0,
+                                    "Currency": "EUR",
+                                    "Category": "Affitto",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "AFFITTO MESE DI OTTOBRE 2022",
+                                    "LinkingCode": "SS#7723324652"
+                              }
+                        },
                         "Statistics": {
-                              "TotalValue": 0
+                              "TotalValue": 350.0
                         }
                   },
                   "Carburante": {
@@ -72,20 +82,46 @@
                         "Statistics": {
                               "TotalValue": 0
                         }
+                  },
+                  "Internal Transaction": {
+                        "Transactions": {
+                              "1": {
+                                    "Date": "04 OCTOBER 2022",
+                                    "Amount": 300.0,
+                                    "Currency": "EUR",
+                                    "Category": "Internal Transaction",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "MUOVO FONDI VERSO REVOLUT",
+                                    "LinkingCode": "SS#6263881730"
+                              },
+                              "2": {
+                                    "Date": "04 OCTOBER 2022",
+                                    "Amount": 500.0,
+                                    "Currency": "EUR",
+                                    "Category": "Internal Transaction",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "MOVIMETO DA UNICREDIT A DE GIRO",
+                                    "LinkingCode": "SS#1044862422"
+                              }
+                        },
+                        "Statistics": {
+                              "TotalValue": 800.0
+                        }
                   }
             },
             "Statistics": {
                   "Currency": "\u20ac",
-                  "NumberOfTransaction": 3,
-                  "TotalValue": 48.5,
+                  "NumberOfTransaction": 6,
+                  "TotalValue": 1198.5,
                   "ActualAssetAllocation": {
                         "Bollette": 0.0,
                         "Uscite fuori": 35.0,
-                        "Affitto": 0.0,
+                        "Affitto": 350.0,
                         "Carburante": 10.0,
                         "Spesa alimentare": 3.5,
                         "Spese personali": 0.0,
-                        "Spesa casa": 0.0
+                        "Spesa casa": 0.0,
+                        "Internal Transaction": 800.0
                   },
                   "DesiredAssetAllocation": {
                         "Bollette": 150,
@@ -94,7 +130,8 @@
                         "Carburante": 150,
                         "Spesa alimentare": 200,
                         "Spese personali": 50,
-                        "Spesa casa": 50
+                        "Spesa casa": 50,
+                        "Internal Transaction": 0
                   }
             }
       },
@@ -128,6 +165,33 @@
                                     "PayingAccount": "Contante - Cash - EUR",
                                     "Note": "PANINO PER PRANZO",
                                     "LinkingCode": "SS#9059459239"
+                              },
+                              "4": {
+                                    "Date": "04 OCTOBER 2022",
+                                    "Amount": 350.0,
+                                    "Currency": "EUR",
+                                    "Category": "Affitto",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "AFFITTO MESE DI OTTOBRE 2022",
+                                    "LinkingCode": "SS#7723324652"
+                              },
+                              "5": {
+                                    "Date": "04 OCTOBER 2022",
+                                    "Amount": 300.0,
+                                    "Currency": "EUR",
+                                    "Category": "Internal Transaction",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "MUOVO FONDI VERSO REVOLUT",
+                                    "LinkingCode": "SS#6263881730"
+                              },
+                              "6": {
+                                    "Date": "04 OCTOBER 2022",
+                                    "Amount": 500.0,
+                                    "Currency": "EUR",
+                                    "Category": "Internal Transaction",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "MOVIMETO DA UNICREDIT A DE GIRO",
+                                    "LinkingCode": "SS#1044862422"
                               }
                         }
                   }

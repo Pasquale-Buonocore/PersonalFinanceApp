@@ -3,10 +3,10 @@
             "SubAccount": {
                   "Cash": {
                         "EUR": {
-                              "TotalValue": 5208.0,
+                              "TotalValue": 4058.0,
                               "Symbol": "\u20ac",
                               "BasedCurrency": "EUR",
-                              "LiquidityContribution": 5208.0,
+                              "LiquidityContribution": 4058.0,
                               "InvestmentContribution": 0.0,
                               "MonthlyTransactions": {
                                     "ES#6769350873": {
@@ -24,6 +24,30 @@
                                           "Category": "Stipendio",
                                           "PayingAccount": "Unicredit - Cash - EUR",
                                           "Note": ""
+                                    },
+                                    "SS#7723324652": {
+                                          "Date": "04 OCTOBER 2022",
+                                          "Amount": 350.0,
+                                          "Currency": "EUR",
+                                          "Category": "Affitto",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "AFFITTO MESE DI OTTOBRE 2022"
+                                    },
+                                    "SS#6263881730": {
+                                          "Date": "04 OCTOBER 2022",
+                                          "Amount": 300.0,
+                                          "Currency": "EUR",
+                                          "Category": "Internal Transaction",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "MUOVO FONDI VERSO REVOLUT"
+                                    },
+                                    "SS#1044862422": {
+                                          "Date": "04 OCTOBER 2022",
+                                          "Amount": 500.0,
+                                          "Currency": "EUR",
+                                          "Category": "Internal Transaction",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "MOVIMETO DA UNICREDIT A DE GIRO"
                                     }
                               }
                         }
@@ -44,12 +68,29 @@
             "SubAccount": {
                   "Cash": {
                         "EUR": {
-                              "TotalValue": 0,
+                              "TotalValue": 632.0,
                               "Symbol": "\u20ac",
                               "BasedCurrency": "EUR",
-                              "LiquidityContribution": 0.0,
+                              "LiquidityContribution": 632.0,
                               "InvestmentContribution": 0.0,
-                              "MonthlyTransactions": {}
+                              "MonthlyTransactions": {
+                                    "ES#3166224224": {
+                                          "Date": "04 OCTOBER 2022",
+                                          "Amount": 500.0,
+                                          "Currency": "EUR",
+                                          "Category": "Internal Transaction",
+                                          "PayingAccount": "De Giro - Cash - EUR",
+                                          "Note": "MOVIMENTO A DE GIRO DA UNICREDIT"
+                                    },
+                                    "ES#9757678949": {
+                                          "Date": "01 OCTOBER 2022",
+                                          "Amount": 132.0,
+                                          "Currency": "EUR",
+                                          "Category": "Account Initialization",
+                                          "PayingAccount": "De Giro - Cash - EUR",
+                                          "Note": "DE GIRO INITIALIZATION"
+                                    }
+                              }
                         }
                   },
                   "Assets": {}
@@ -123,7 +164,33 @@
       },
       "Revolut": {
             "SubAccount": {
-                  "Cash": {},
+                  "Cash": {
+                        "EUR": {
+                              "TotalValue": 363.0,
+                              "Symbol": "\u20ac",
+                              "BasedCurrency": "EUR",
+                              "LiquidityContribution": 363.0,
+                              "InvestmentContribution": 0.0,
+                              "MonthlyTransactions": {
+                                    "ES#1864627121": {
+                                          "Date": "04 OCTOBER 2022",
+                                          "Amount": 300.0,
+                                          "Currency": "EUR",
+                                          "Category": "Internal Transaction",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": "MUOVO FONDI DA UNICREDIT VERSO REVOLUT"
+                                    },
+                                    "ES#7121489123": {
+                                          "Date": "04 OCTOBER 2022",
+                                          "Amount": 63.0,
+                                          "Currency": "EUR",
+                                          "Category": "Account Initialization",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": "INIZIALIZZAZIONE REVOLUT"
+                                    }
+                              }
+                        }
+                  },
                   "Assets": {}
             },
             "Statistics": {
