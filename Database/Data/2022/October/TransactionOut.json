@@ -2,9 +2,19 @@
       "OUT": {
             "Assets": {
                   "Bollette": {
-                        "Transactions": {},
+                        "Transactions": {
+                              "1": {
+                                    "Date": "05 OCTOBER 2022",
+                                    "Amount": 53.8,
+                                    "Currency": "EUR",
+                                    "Category": "Bollette",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "BOLLETTA LINKEM",
+                                    "LinkingCode": "SS#3488737134"
+                              }
+                        },
                         "Statistics": {
-                              "TotalValue": 0
+                              "TotalValue": 53.8
                         }
                   },
                   "Uscite fuori": {
@@ -17,10 +27,19 @@
                                     "PayingAccount": "Contante - Cash - EUR",
                                     "Note": "USCITA IRISH PUB",
                                     "LinkingCode": "SS#5116687868"
+                              },
+                              "2": {
+                                    "Date": "05 OCTOBER 2022",
+                                    "Amount": 15.3,
+                                    "Currency": "EUR",
+                                    "Category": "Uscite fuori",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "MC DONALD",
+                                    "LinkingCode": "SS#6548985155"
                               }
                         },
                         "Statistics": {
-                              "TotalValue": 35.0
+                              "TotalValue": 50.3
                         }
                   },
                   "Affitto": {
@@ -49,10 +68,19 @@
                                     "PayingAccount": "Contante - Cash - EUR",
                                     "Note": "",
                                     "LinkingCode": "SS#4952352476"
+                              },
+                              "2": {
+                                    "Date": "05 OCTOBER 2022",
+                                    "Amount": 30.0,
+                                    "Currency": "EUR",
+                                    "Category": "Carburante",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "",
+                                    "LinkingCode": "SS#6276946736"
                               }
                         },
                         "Statistics": {
-                              "TotalValue": 10.0
+                              "TotalValue": 40.0
                         }
                   },
                   "Spesa alimentare": {
@@ -65,10 +93,19 @@
                                     "PayingAccount": "Contante - Cash - EUR",
                                     "Note": "PANINO PER PRANZO",
                                     "LinkingCode": "SS#9059459239"
+                              },
+                              "2": {
+                                    "Date": "05 OCTOBER 2022",
+                                    "Amount": 3.0,
+                                    "Currency": "EUR",
+                                    "Category": "Spesa alimentare",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "PRANZO PANINO",
+                                    "LinkingCode": "SS#4065243232"
                               }
                         },
                         "Statistics": {
-                              "TotalValue": 3.5
+                              "TotalValue": 6.5
                         }
                   },
                   "Spese personali": {
@@ -111,14 +148,14 @@
             },
             "Statistics": {
                   "Currency": "\u20ac",
-                  "NumberOfTransaction": 6,
-                  "TotalValue": 1198.5,
+                  "NumberOfTransaction": 10,
+                  "TotalValue": 1300.6,
                   "ActualAssetAllocation": {
-                        "Bollette": 0.0,
-                        "Uscite fuori": 35.0,
+                        "Bollette": 53.8,
+                        "Uscite fuori": 50.3,
                         "Affitto": 350.0,
-                        "Carburante": 10.0,
-                        "Spesa alimentare": 3.5,
+                        "Carburante": 40.0,
+                        "Spesa alimentare": 6.5,
                         "Spese personali": 0.0,
                         "Spesa casa": 0.0,
                         "Internal Transaction": 800.0
@@ -192,6 +229,42 @@
                                     "PayingAccount": "Unicredit - Cash - EUR",
                                     "Note": "MOVIMETO DA UNICREDIT A DE GIRO",
                                     "LinkingCode": "SS#1044862422"
+                              },
+                              "7": {
+                                    "Date": "05 OCTOBER 2022",
+                                    "Amount": 3.0,
+                                    "Currency": "EUR",
+                                    "Category": "Spesa alimentare",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "PRANZO PANINO",
+                                    "LinkingCode": "SS#4065243232"
+                              },
+                              "8": {
+                                    "Date": "05 OCTOBER 2022",
+                                    "Amount": 30.0,
+                                    "Currency": "EUR",
+                                    "Category": "Carburante",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "",
+                                    "LinkingCode": "SS#6276946736"
+                              },
+                              "9": {
+                                    "Date": "05 OCTOBER 2022",
+                                    "Amount": 15.3,
+                                    "Currency": "EUR",
+                                    "Category": "Uscite fuori",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "MC DONALD",
+                                    "LinkingCode": "SS#6548985155"
+                              },
+                              "10": {
+                                    "Date": "05 OCTOBER 2022",
+                                    "Amount": 53.8,
+                                    "Currency": "EUR",
+                                    "Category": "Bollette",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "BOLLETTA LINKEM",
+                                    "LinkingCode": "SS#3488737134"
                               }
                         }
                   }

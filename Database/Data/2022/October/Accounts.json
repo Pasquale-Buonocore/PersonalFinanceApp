@@ -3,10 +3,10 @@
             "SubAccount": {
                   "Cash": {
                         "EUR": {
-                              "TotalValue": 4058.0,
+                              "TotalValue": 3988.8999999999996,
                               "Symbol": "\u20ac",
                               "BasedCurrency": "EUR",
-                              "LiquidityContribution": 4058.0,
+                              "LiquidityContribution": 3988.8999999999996,
                               "InvestmentContribution": 0.0,
                               "MonthlyTransactions": {
                                     "ES#6769350873": {
@@ -48,6 +48,22 @@
                                           "Category": "Internal Transaction",
                                           "PayingAccount": "Unicredit - Cash - EUR",
                                           "Note": "MOVIMETO DA UNICREDIT A DE GIRO"
+                                    },
+                                    "SS#6548985155": {
+                                          "Date": "05 OCTOBER 2022",
+                                          "Amount": 15.3,
+                                          "Currency": "EUR",
+                                          "Category": "Uscite fuori",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "MC DONALD"
+                                    },
+                                    "SS#3488737134": {
+                                          "Date": "05 OCTOBER 2022",
+                                          "Amount": 53.8,
+                                          "Currency": "EUR",
+                                          "Category": "Bollette",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "BOLLETTA LINKEM"
                                     }
                               }
                         }
@@ -109,10 +125,10 @@
             "SubAccount": {
                   "Cash": {
                         "EUR": {
-                              "TotalValue": 86.5,
+                              "TotalValue": 53.5,
                               "Symbol": "\u20ac",
                               "BasedCurrency": "EUR",
-                              "LiquidityContribution": 86.5,
+                              "LiquidityContribution": 53.5,
                               "InvestmentContribution": 0.0,
                               "MonthlyTransactions": {
                                     "ES#5321603417": {
@@ -146,6 +162,22 @@
                                           "Category": "Spesa alimentare",
                                           "PayingAccount": "Contante - Cash - EUR",
                                           "Note": "PANINO PER PRANZO"
+                                    },
+                                    "SS#4065243232": {
+                                          "Date": "05 OCTOBER 2022",
+                                          "Amount": 3.0,
+                                          "Currency": "EUR",
+                                          "Category": "Spesa alimentare",
+                                          "PayingAccount": "Contante - Cash - EUR",
+                                          "Note": "PRANZO PANINO"
+                                    },
+                                    "SS#6276946736": {
+                                          "Date": "05 OCTOBER 2022",
+                                          "Amount": 30.0,
+                                          "Currency": "EUR",
+                                          "Category": "Carburante",
+                                          "PayingAccount": "Contante - Cash - EUR",
+                                          "Note": ""
                                     }
                               }
                         }
