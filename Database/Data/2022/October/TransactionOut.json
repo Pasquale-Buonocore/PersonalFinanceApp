@@ -36,10 +36,19 @@
                                     "PayingAccount": "Unicredit - Cash - EUR",
                                     "Note": "MC DONALD",
                                     "LinkingCode": "SS#6548985155"
+                              },
+                              "3": {
+                                    "Date": "08 OCTOBER 2022",
+                                    "Amount": 21.0,
+                                    "Currency": "EUR",
+                                    "Category": "Uscite fuori",
+                                    "PayingAccount": "Revolut - Cash - EUR",
+                                    "Note": "DOLCI AL BAR CAVA - USCITA CON GIOVANNI",
+                                    "LinkingCode": "SS#8063733460"
                               }
                         },
                         "Statistics": {
-                              "TotalValue": 50.3
+                              "TotalValue": 71.3
                         }
                   },
                   "Affitto": {
@@ -77,10 +86,28 @@
                                     "PayingAccount": "Contante - Cash - EUR",
                                     "Note": "",
                                     "LinkingCode": "SS#6276946736"
+                              },
+                              "3": {
+                                    "Date": "08 OCTOBER 2022",
+                                    "Amount": 20.0,
+                                    "Currency": "EUR",
+                                    "Category": "Carburante",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "",
+                                    "LinkingCode": "SS#1022559538"
+                              },
+                              "4": {
+                                    "Date": "05 OCTOBER 2022",
+                                    "Amount": 20.0,
+                                    "Currency": "EUR",
+                                    "Category": "Carburante",
+                                    "PayingAccount": "Revolut - Cash - EUR",
+                                    "Note": "",
+                                    "LinkingCode": "SS#3491252908"
                               }
                         },
                         "Statistics": {
-                              "TotalValue": 40.0
+                              "TotalValue": 80.0
                         }
                   },
                   "Spesa alimentare": {
@@ -102,16 +129,35 @@
                                     "PayingAccount": "Contante - Cash - EUR",
                                     "Note": "PRANZO PANINO",
                                     "LinkingCode": "SS#4065243232"
+                              },
+                              "3": {
+                                    "Date": "07 OCTOBER 2022",
+                                    "Amount": 6.66,
+                                    "Currency": "EUR",
+                                    "Category": "Spesa alimentare",
+                                    "PayingAccount": "Revolut - Cash - EUR",
+                                    "Note": "SURGELANDIA",
+                                    "LinkingCode": "SS#6126763474"
                               }
                         },
                         "Statistics": {
-                              "TotalValue": 6.5
+                              "TotalValue": 13.16
                         }
                   },
                   "Spese personali": {
-                        "Transactions": {},
+                        "Transactions": {
+                              "1": {
+                                    "Date": "07 OCTOBER 2022",
+                                    "Amount": 14.9,
+                                    "Currency": "EUR",
+                                    "Category": "Spese personali",
+                                    "PayingAccount": "Revolut - Cash - EUR",
+                                    "Note": "FOTOCOPIE BARONISSI",
+                                    "LinkingCode": "SS#4029202766"
+                              }
+                        },
                         "Statistics": {
-                              "TotalValue": 0
+                              "TotalValue": 14.9
                         }
                   },
                   "Spesa casa": {
@@ -144,21 +190,38 @@
                         "Statistics": {
                               "TotalValue": 800.0
                         }
+                  },
+                  "Donazioni": {
+                        "Transactions": {
+                              "1": {
+                                    "Date": "07 OCTOBER 2022",
+                                    "Amount": 15.0,
+                                    "Currency": "EUR",
+                                    "Category": "Donazioni",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "DONAZIONE SAVE THE CHILDREN",
+                                    "LinkingCode": "SS#1243604839"
+                              }
+                        },
+                        "Statistics": {
+                              "TotalValue": 15.0
+                        }
                   }
             },
             "Statistics": {
                   "Currency": "\u20ac",
-                  "NumberOfTransaction": 10,
-                  "TotalValue": 1300.6,
+                  "NumberOfTransaction": 16,
+                  "TotalValue": 1398.1599999999999,
                   "ActualAssetAllocation": {
                         "Bollette": 53.8,
-                        "Uscite fuori": 50.3,
+                        "Uscite fuori": 71.3,
                         "Affitto": 350.0,
-                        "Carburante": 40.0,
-                        "Spesa alimentare": 6.5,
-                        "Spese personali": 0.0,
+                        "Carburante": 80.0,
+                        "Spesa alimentare": 13.16,
+                        "Spese personali": 14.9,
                         "Spesa casa": 0.0,
-                        "Internal Transaction": 800.0
+                        "Internal Transaction": 800.0,
+                        "Donazioni": 15.0
                   },
                   "DesiredAssetAllocation": {
                         "Bollette": 150,
@@ -168,7 +231,8 @@
                         "Spesa alimentare": 200,
                         "Spese personali": 50,
                         "Spesa casa": 50,
-                        "Internal Transaction": 0
+                        "Internal Transaction": 0,
+                        "Donazioni": 15
                   }
             }
       },
@@ -265,6 +329,60 @@
                                     "PayingAccount": "Unicredit - Cash - EUR",
                                     "Note": "BOLLETTA LINKEM",
                                     "LinkingCode": "SS#3488737134"
+                              },
+                              "11": {
+                                    "Date": "07 OCTOBER 2022",
+                                    "Amount": 6.66,
+                                    "Currency": "EUR",
+                                    "Category": "Spesa alimentare",
+                                    "PayingAccount": "Revolut - Cash - EUR",
+                                    "Note": "SURGELANDIA",
+                                    "LinkingCode": "SS#6126763474"
+                              },
+                              "12": {
+                                    "Date": "08 OCTOBER 2022",
+                                    "Amount": 20.0,
+                                    "Currency": "EUR",
+                                    "Category": "Carburante",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "",
+                                    "LinkingCode": "SS#1022559538"
+                              },
+                              "13": {
+                                    "Date": "08 OCTOBER 2022",
+                                    "Amount": 21.0,
+                                    "Currency": "EUR",
+                                    "Category": "Uscite fuori",
+                                    "PayingAccount": "Revolut - Cash - EUR",
+                                    "Note": "DOLCI AL BAR CAVA - USCITA CON GIOVANNI",
+                                    "LinkingCode": "SS#8063733460"
+                              },
+                              "14": {
+                                    "Date": "07 OCTOBER 2022",
+                                    "Amount": 14.9,
+                                    "Currency": "EUR",
+                                    "Category": "Spese personali",
+                                    "PayingAccount": "Revolut - Cash - EUR",
+                                    "Note": "FOTOCOPIE BARONISSI",
+                                    "LinkingCode": "SS#4029202766"
+                              },
+                              "15": {
+                                    "Date": "05 OCTOBER 2022",
+                                    "Amount": 20.0,
+                                    "Currency": "EUR",
+                                    "Category": "Carburante",
+                                    "PayingAccount": "Revolut - Cash - EUR",
+                                    "Note": "",
+                                    "LinkingCode": "SS#3491252908"
+                              },
+                              "16": {
+                                    "Date": "07 OCTOBER 2022",
+                                    "Amount": 15.0,
+                                    "Currency": "EUR",
+                                    "Category": "Donazioni",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "DONAZIONE SAVE THE CHILDREN",
+                                    "LinkingCode": "SS#1243604839"
                               }
                         }
                   }

@@ -3,10 +3,10 @@
             "SubAccount": {
                   "Cash": {
                         "EUR": {
-                              "TotalValue": 3988.8999999999996,
+                              "TotalValue": 3973.8999999999996,
                               "Symbol": "\u20ac",
                               "BasedCurrency": "EUR",
-                              "LiquidityContribution": 3988.8999999999996,
+                              "LiquidityContribution": 3973.8999999999996,
                               "InvestmentContribution": 0.0,
                               "MonthlyTransactions": {
                                     "ES#6769350873": {
@@ -64,6 +64,14 @@
                                           "Category": "Bollette",
                                           "PayingAccount": "Unicredit - Cash - EUR",
                                           "Note": "BOLLETTA LINKEM"
+                                    },
+                                    "SS#1243604839": {
+                                          "Date": "07 OCTOBER 2022",
+                                          "Amount": 15.0,
+                                          "Currency": "EUR",
+                                          "Category": "Donazioni",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "DONAZIONE SAVE THE CHILDREN"
                                     }
                               }
                         }
@@ -125,10 +133,10 @@
             "SubAccount": {
                   "Cash": {
                         "EUR": {
-                              "TotalValue": 53.5,
+                              "TotalValue": 133.5,
                               "Symbol": "\u20ac",
                               "BasedCurrency": "EUR",
-                              "LiquidityContribution": 53.5,
+                              "LiquidityContribution": 133.5,
                               "InvestmentContribution": 0.0,
                               "MonthlyTransactions": {
                                     "ES#5321603417": {
@@ -178,6 +186,22 @@
                                           "Category": "Carburante",
                                           "PayingAccount": "Contante - Cash - EUR",
                                           "Note": ""
+                                    },
+                                    "ES#1711366829": {
+                                          "Date": "10 OCTOBER 2022",
+                                          "Amount": 100.0,
+                                          "Currency": "EUR",
+                                          "Category": "Regali",
+                                          "PayingAccount": "Contante - Cash - EUR",
+                                          "Note": "100"
+                                    },
+                                    "SS#1022559538": {
+                                          "Date": "08 OCTOBER 2022",
+                                          "Amount": 20.0,
+                                          "Currency": "EUR",
+                                          "Category": "Carburante",
+                                          "PayingAccount": "Contante - Cash - EUR",
+                                          "Note": ""
                                     }
                               }
                         }
@@ -198,10 +222,10 @@
             "SubAccount": {
                   "Cash": {
                         "EUR": {
-                              "TotalValue": 363.0,
+                              "TotalValue": 300.44,
                               "Symbol": "\u20ac",
                               "BasedCurrency": "EUR",
-                              "LiquidityContribution": 363.0,
+                              "LiquidityContribution": 300.44,
                               "InvestmentContribution": 0.0,
                               "MonthlyTransactions": {
                                     "ES#1864627121": {
@@ -219,6 +243,38 @@
                                           "Category": "Account Initialization",
                                           "PayingAccount": "Revolut - Cash - EUR",
                                           "Note": "INIZIALIZZAZIONE REVOLUT"
+                                    },
+                                    "SS#6126763474": {
+                                          "Date": "07 OCTOBER 2022",
+                                          "Amount": 6.66,
+                                          "Currency": "EUR",
+                                          "Category": "Spesa alimentare",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": "SURGELANDIA"
+                                    },
+                                    "SS#8063733460": {
+                                          "Date": "08 OCTOBER 2022",
+                                          "Amount": 21.0,
+                                          "Currency": "EUR",
+                                          "Category": "Uscite fuori",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": "DOLCI AL BAR CAVA - USCITA CON GIOVANNI"
+                                    },
+                                    "SS#4029202766": {
+                                          "Date": "07 OCTOBER 2022",
+                                          "Amount": 14.9,
+                                          "Currency": "EUR",
+                                          "Category": "Spese personali",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": "FOTOCOPIE BARONISSI"
+                                    },
+                                    "SS#3491252908": {
+                                          "Date": "05 OCTOBER 2022",
+                                          "Amount": 20.0,
+                                          "Currency": "EUR",
+                                          "Category": "Carburante",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": ""
                                     }
                               }
                         }

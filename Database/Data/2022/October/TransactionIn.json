@@ -90,23 +90,41 @@
                         "Statistics": {
                               "TotalValue": 800.0
                         }
+                  },
+                  "Regali": {
+                        "Transactions": {
+                              "1": {
+                                    "Date": "10 OCTOBER 2022",
+                                    "Amount": 100.0,
+                                    "Currency": "EUR",
+                                    "Category": "Regali",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "REGALO NONNA",
+                                    "LinkingCode": "ES#1711366829"
+                              }
+                        },
+                        "Statistics": {
+                              "TotalValue": 100.0
+                        }
                   }
             },
             "Statistics": {
                   "Currency": "\u20ac",
-                  "NumberOfTransaction": 7,
-                  "TotalValue": 6338.0,
+                  "NumberOfTransaction": 8,
+                  "TotalValue": 6438.0,
                   "ActualAssetAllocation": {
                         "Account Initialization": 3530.0,
                         "Stipendio": 2008.0,
                         "Ripetizioni": 0.0,
-                        "Internal Transaction": 800.0
+                        "Internal Transaction": 800.0,
+                        "Regali": 100.0
                   },
                   "DesiredAssetAllocation": {
                         "Account Initialization": 0,
                         "Stipendio": 1650,
                         "Ripetizioni": 50,
-                        "Internal Transaction": 0
+                        "Internal Transaction": 0,
+                        "Regali": 0
                   }
             }
       },
@@ -176,6 +194,15 @@
                                     "PayingAccount": "De Giro - Cash - EUR",
                                     "Note": "DE GIRO INITIALIZATION",
                                     "LinkingCode": "ES#9757678949"
+                              },
+                              "8": {
+                                    "Date": "10 OCTOBER 2022",
+                                    "Amount": 100.0,
+                                    "Currency": "EUR",
+                                    "Category": "Regali",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "REGALO NONNA",
+                                    "LinkingCode": "ES#1711366829"
                               }
                         }
                   }
