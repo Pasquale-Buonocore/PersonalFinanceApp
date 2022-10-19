@@ -3,10 +3,10 @@
             "SubAccount": {
                   "Cash": {
                         "EUR": {
-                              "TotalValue": 3973.8999999999996,
+                              "TotalValue": 3515.8999999999996,
                               "Symbol": "\u20ac",
                               "BasedCurrency": "EUR",
-                              "LiquidityContribution": 3973.8999999999996,
+                              "LiquidityContribution": 3515.8999999999996,
                               "InvestmentContribution": 0.0,
                               "MonthlyTransactions": {
                                     "ES#6769350873": {
@@ -72,6 +72,38 @@
                                           "Category": "Donazioni",
                                           "PayingAccount": "Unicredit - Cash - EUR",
                                           "Note": "DONAZIONE SAVE THE CHILDREN"
+                                    },
+                                    "SS#3334915870": {
+                                          "Date": "19 OCTOBER 2022",
+                                          "Amount": 135.0,
+                                          "Currency": "EUR",
+                                          "Category": "Internal Transaction",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "PAGAMENTO BOLLETTE PAP\u00c0"
+                                    },
+                                    "SS#2007604420": {
+                                          "Date": "18 OCTOBER 2022",
+                                          "Amount": 83.0,
+                                          "Currency": "EUR",
+                                          "Category": "Autovettura",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "ASSICURAZIONE MESE OTTOBRE"
+                                    },
+                                    "SS#3455138488": {
+                                          "Date": "15 OCTOBER 2022",
+                                          "Amount": 225.0,
+                                          "Currency": "EUR",
+                                          "Category": "Vacanza",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "PAGAMENTO B&B SIENA"
+                                    },
+                                    "SS#1631715467": {
+                                          "Date": "17 OCTOBER 2022",
+                                          "Amount": 15.0,
+                                          "Currency": "EUR",
+                                          "Category": "Spese personali",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "RICARICA CELLULARE TIM"
                                     }
                               }
                         }
@@ -133,10 +165,10 @@
             "SubAccount": {
                   "Cash": {
                         "EUR": {
-                              "TotalValue": 133.5,
+                              "TotalValue": 284.0,
                               "Symbol": "\u20ac",
                               "BasedCurrency": "EUR",
-                              "LiquidityContribution": 133.5,
+                              "LiquidityContribution": 284.0,
                               "InvestmentContribution": 0.0,
                               "MonthlyTransactions": {
                                     "ES#5321603417": {
@@ -202,6 +234,30 @@
                                           "Category": "Carburante",
                                           "PayingAccount": "Contante - Cash - EUR",
                                           "Note": ""
+                                    },
+                                    "SS#0143764616": {
+                                          "Date": "14 OCTOBER 2022",
+                                          "Amount": 6.5,
+                                          "Currency": "EUR",
+                                          "Category": "Regali",
+                                          "PayingAccount": "Contante - Cash - EUR",
+                                          "Note": "ACQUISTO CALZE ED EVIDENZIATORE AMORE"
+                                    },
+                                    "ES#3872764392": {
+                                          "Date": "18 OCTOBER 2022",
+                                          "Amount": 22.0,
+                                          "Currency": "EUR",
+                                          "Category": "Internal Transaction",
+                                          "PayingAccount": "Contante - Cash - EUR",
+                                          "Note": "TALES PUB ALESSIA"
+                                    },
+                                    "ES#0581465466": {
+                                          "Date": "19 OCTOBER 2022",
+                                          "Amount": 135.0,
+                                          "Currency": "EUR",
+                                          "Category": "Internal Transaction",
+                                          "PayingAccount": "Contante - Cash - EUR",
+                                          "Note": "PAGAMENTO BOLLETTE PAP\u00c0"
                                     }
                               }
                         }
@@ -222,10 +278,10 @@
             "SubAccount": {
                   "Cash": {
                         "EUR": {
-                              "TotalValue": 300.44,
+                              "TotalValue": 143.78,
                               "Symbol": "\u20ac",
                               "BasedCurrency": "EUR",
-                              "LiquidityContribution": 300.44,
+                              "LiquidityContribution": 143.78,
                               "InvestmentContribution": 0.0,
                               "MonthlyTransactions": {
                                     "ES#1864627121": {
@@ -275,6 +331,86 @@
                                           "Category": "Carburante",
                                           "PayingAccount": "Revolut - Cash - EUR",
                                           "Note": ""
+                                    },
+                                    "SS#0946809784": {
+                                          "Date": "14 OCTOBER 2022",
+                                          "Amount": 30.0,
+                                          "Currency": "EUR",
+                                          "Category": "Regali",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": "BENZINA AMORE"
+                                    },
+                                    "SS#6302386307": {
+                                          "Date": "19 OCTOBER 2022",
+                                          "Amount": 13.53,
+                                          "Currency": "EUR",
+                                          "Category": "Spesa alimentare",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": ""
+                                    },
+                                    "SS#5266681790": {
+                                          "Date": "19 OCTOBER 2022",
+                                          "Amount": 13.0,
+                                          "Currency": "EUR",
+                                          "Category": "Spese personali",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": "ABBONAMENTO NETFLIX"
+                                    },
+                                    "SS#8946059261": {
+                                          "Date": "18 OCTOBER 2022",
+                                          "Amount": 22.0,
+                                          "Currency": "EUR",
+                                          "Category": "Uscite fuori",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": "TALES PUB"
+                                    },
+                                    "SS#1896696204": {
+                                          "Date": "19 OCTOBER 2022",
+                                          "Amount": 22.0,
+                                          "Currency": "EUR",
+                                          "Category": "Internal Transaction",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": "TALES PUB ALESSIA"
+                                    },
+                                    "SS#2735956513": {
+                                          "Date": "19 OCTOBER 2022",
+                                          "Amount": 12.3,
+                                          "Currency": "EUR",
+                                          "Category": "Spesa alimentare",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": "SUPERMERCATO DEGA"
+                                    },
+                                    "SS#0390894520": {
+                                          "Date": "19 OCTOBER 2022",
+                                          "Amount": 6.83,
+                                          "Currency": "EUR",
+                                          "Category": "Carburante",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": "DIESEL"
+                                    },
+                                    "SS#5375126303": {
+                                          "Date": "19 OCTOBER 2022",
+                                          "Amount": 6.0,
+                                          "Currency": "EUR",
+                                          "Category": "Spesa alimentare",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": "SPESA PER PRANZO LAVORO"
+                                    },
+                                    "SS#2474801104": {
+                                          "Date": "11 OCTOBER 2022",
+                                          "Amount": 22.0,
+                                          "Currency": "EUR",
+                                          "Category": "Bollette",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": "SPESA ALIMENTARE"
+                                    },
+                                    "SS#2150923315": {
+                                          "Date": "17 OCTOBER 2022",
+                                          "Amount": 9.0,
+                                          "Currency": "EUR",
+                                          "Category": "Spesa alimentare",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": "SURGELANDIA"
                                     }
                               }
                         }

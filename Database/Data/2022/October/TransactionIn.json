@@ -85,10 +85,28 @@
                                     "PayingAccount": "De Giro - Cash - EUR",
                                     "Note": "MOVIMENTO A DE GIRO DA UNICREDIT",
                                     "LinkingCode": "ES#3166224224"
+                              },
+                              "3": {
+                                    "Date": "18 OCTOBER 2022",
+                                    "Amount": 22.0,
+                                    "Currency": "EUR",
+                                    "Category": "Internal Transaction",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "TALES PUB ALESSIA",
+                                    "LinkingCode": "ES#3872764392"
+                              },
+                              "4": {
+                                    "Date": "19 OCTOBER 2022",
+                                    "Amount": 135.0,
+                                    "Currency": "EUR",
+                                    "Category": "Internal Transaction",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "PAGAMENTO BOLLETTE PAP\u00c0",
+                                    "LinkingCode": "ES#0581465466"
                               }
                         },
                         "Statistics": {
-                              "TotalValue": 800.0
+                              "TotalValue": 957.0
                         }
                   },
                   "Regali": {
@@ -110,13 +128,13 @@
             },
             "Statistics": {
                   "Currency": "\u20ac",
-                  "NumberOfTransaction": 8,
-                  "TotalValue": 6438.0,
+                  "NumberOfTransaction": 10,
+                  "TotalValue": 6595.0,
                   "ActualAssetAllocation": {
                         "Account Initialization": 3530.0,
                         "Stipendio": 2008.0,
                         "Ripetizioni": 0.0,
-                        "Internal Transaction": 800.0,
+                        "Internal Transaction": 957.0,
                         "Regali": 100.0
                   },
                   "DesiredAssetAllocation": {
@@ -203,6 +221,24 @@
                                     "PayingAccount": "Contante - Cash - EUR",
                                     "Note": "REGALO NONNA",
                                     "LinkingCode": "ES#1711366829"
+                              },
+                              "9": {
+                                    "Date": "18 OCTOBER 2022",
+                                    "Amount": 22.0,
+                                    "Currency": "EUR",
+                                    "Category": "Internal Transaction",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "TALES PUB ALESSIA",
+                                    "LinkingCode": "ES#3872764392"
+                              },
+                              "10": {
+                                    "Date": "19 OCTOBER 2022",
+                                    "Amount": 135.0,
+                                    "Currency": "EUR",
+                                    "Category": "Internal Transaction",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "PAGAMENTO BOLLETTE PAP\u00c0",
+                                    "LinkingCode": "ES#0581465466"
                               }
                         }
                   }
