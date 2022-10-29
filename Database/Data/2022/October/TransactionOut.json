@@ -20,10 +20,19 @@
                                     "PayingAccount": "Revolut - Cash - EUR",
                                     "Note": "SPESA ALIMENTARE",
                                     "LinkingCode": "SS#2474801104"
+                              },
+                              "3": {
+                                    "Date": "21 OCTOBER 2022",
+                                    "Amount": 37.0,
+                                    "Currency": "EUR",
+                                    "Category": "Vacanza",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "BENZINA ANDATA SIENA",
+                                    "LinkingCode": "SS#3791595108"
                               }
                         },
                         "Statistics": {
-                              "TotalValue": 75.8
+                              "TotalValue": 112.8
                         }
                   },
                   "Uscite fuori": {
@@ -201,10 +210,28 @@
                                     "PayingAccount": "Revolut - Cash - EUR",
                                     "Note": "SURGELANDIA",
                                     "LinkingCode": "SS#2150923315"
+                              },
+                              "8": {
+                                    "Date": "25 OCTOBER 2022",
+                                    "Amount": 31.18,
+                                    "Currency": "EUR",
+                                    "Category": "Spesa alimentare",
+                                    "PayingAccount": "Revolut - Cash - EUR",
+                                    "Note": "SPESA ALIMENTARE PER AVELLINO",
+                                    "LinkingCode": "SS#0623028497"
+                              },
+                              "9": {
+                                    "Date": "23 OCTOBER 2022",
+                                    "Amount": 10.0,
+                                    "Currency": "EUR",
+                                    "Category": "Spesa alimentare",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "PRANZO AVELLINO",
+                                    "LinkingCode": "SS#8117266674"
                               }
                         },
                         "Statistics": {
-                              "TotalValue": 53.989999999999995
+                              "TotalValue": 95.16999999999999
                         }
                   },
                   "Spese personali": {
@@ -235,16 +262,35 @@
                                     "PayingAccount": "Unicredit - Cash - EUR",
                                     "Note": "RICARICA CELLULARE TIM",
                                     "LinkingCode": "SS#1631715467"
+                              },
+                              "4": {
+                                    "Date": "23 OCTOBER 2022",
+                                    "Amount": 10.0,
+                                    "Currency": "EUR",
+                                    "Category": "Spese personali",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "CAPELLI",
+                                    "LinkingCode": "SS#1809056686"
                               }
                         },
                         "Statistics": {
-                              "TotalValue": 42.9
+                              "TotalValue": 52.9
                         }
                   },
                   "Spesa casa": {
-                        "Transactions": {},
+                        "Transactions": {
+                              "1": {
+                                    "Date": "23 OCTOBER 2022",
+                                    "Amount": 16.47,
+                                    "Currency": "EUR",
+                                    "Category": "Spesa casa",
+                                    "PayingAccount": "Revolut - Cash - EUR",
+                                    "Note": "SPESA CINESI PER CASA",
+                                    "LinkingCode": "SS#3924178523"
+                              }
+                        },
                         "Statistics": {
-                              "TotalValue": 0
+                              "TotalValue": 16.47
                         }
                   },
                   "Internal Transaction": {
@@ -325,10 +371,28 @@
                                     "PayingAccount": "Revolut - Cash - EUR",
                                     "Note": "BENZINA AMORE",
                                     "LinkingCode": "SS#0946809784"
+                              },
+                              "3": {
+                                    "Date": "21 OCTOBER 2022",
+                                    "Amount": 5.21,
+                                    "Currency": "EUR",
+                                    "Category": "Regali",
+                                    "PayingAccount": "Revolut - Cash - EUR",
+                                    "Note": "PARCHEGGIO 2.54\u20ac + 2,67\u20ac PER RITIRO PASSAPORTO",
+                                    "LinkingCode": "SS#5229540567"
+                              },
+                              "4": {
+                                    "Date": "29 OCTOBER 2022",
+                                    "Amount": 5.8,
+                                    "Currency": "EUR",
+                                    "Category": "Regali",
+                                    "PayingAccount": "Revolut - Cash - EUR",
+                                    "Note": "SURGELANDIA - CENA FISCIANO",
+                                    "LinkingCode": "SS#6562506987"
                               }
                         },
                         "Statistics": {
-                              "TotalValue": 36.5
+                              "TotalValue": 47.51
                         }
                   },
                   "Autovettura": {
@@ -357,30 +421,129 @@
                                     "PayingAccount": "Unicredit - Cash - EUR",
                                     "Note": "PAGAMENTO B&B SIENA",
                                     "LinkingCode": "SS#3455138488"
+                              },
+                              "2": {
+                                    "Date": "21 OCTOBER 2022",
+                                    "Amount": 10.5,
+                                    "Currency": "EUR",
+                                    "Category": "Vacanza",
+                                    "PayingAccount": "Revolut - Cash - EUR",
+                                    "Note": "PANINI PER VIAGGIO - SIENA",
+                                    "LinkingCode": "SS#5601986199"
+                              },
+                              "3": {
+                                    "Date": "21 OCTOBER 2022",
+                                    "Amount": 3.68,
+                                    "Currency": "EUR",
+                                    "Category": "Vacanza",
+                                    "PayingAccount": "Revolut - Cash - EUR",
+                                    "Note": "SPESA PATATINE E BISCOTTI - SIENA",
+                                    "LinkingCode": "SS#9728928807"
+                              },
+                              "4": {
+                                    "Date": "22 OCTOBER 2022",
+                                    "Amount": 19.0,
+                                    "Currency": "EUR",
+                                    "Category": "Vacanza",
+                                    "PayingAccount": "Revolut - Cash - EUR",
+                                    "Note": "PRANZO PIZZICHERIA CHIGIANA",
+                                    "LinkingCode": "SS#8850961191"
+                              },
+                              "5": {
+                                    "Date": "22 OCTOBER 2022",
+                                    "Amount": 1.95,
+                                    "Currency": "EUR",
+                                    "Category": "Vacanza",
+                                    "PayingAccount": "Revolut - Cash - EUR",
+                                    "Note": "ACQUISTO ACQUA PER VIAGGIO - SIENA",
+                                    "LinkingCode": "SS#2737442962"
+                              },
+                              "6": {
+                                    "Date": "22 OCTOBER 2022",
+                                    "Amount": 42.0,
+                                    "Currency": "EUR",
+                                    "Category": "Vacanza",
+                                    "PayingAccount": "Revolut - Cash - EUR",
+                                    "Note": "CENA RISTORANTE - SIENA",
+                                    "LinkingCode": "SS#3735663097"
+                              },
+                              "7": {
+                                    "Date": "23 OCTOBER 2022",
+                                    "Amount": 7.9,
+                                    "Currency": "EUR",
+                                    "Category": "Vacanza",
+                                    "PayingAccount": "Revolut - Cash - EUR",
+                                    "Note": "ACQUISTO PER PRANZO - RITORNO SIENA",
+                                    "LinkingCode": "SS#7083091978"
+                              },
+                              "8": {
+                                    "Date": "22 OCTOBER 2022",
+                                    "Amount": 30.0,
+                                    "Currency": "EUR",
+                                    "Category": "Vacanza",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "PAGAMENTO AUTOSTRADA VERSO SIENA",
+                                    "LinkingCode": "SS#7830195620"
+                              },
+                              "9": {
+                                    "Date": "23 OCTOBER 2022",
+                                    "Amount": 8.0,
+                                    "Currency": "EUR",
+                                    "Category": "Vacanza",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "TASSA DI SOGGIORNO SIENA",
+                                    "LinkingCode": "SS#0776706243"
+                              },
+                              "10": {
+                                    "Date": "23 OCTOBER 2022",
+                                    "Amount": 40.0,
+                                    "Currency": "EUR",
+                                    "Category": "Vacanza",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "BENZINA RITORNO - SIENA",
+                                    "LinkingCode": "SS#3840924295"
+                              },
+                              "11": {
+                                    "Date": "23 OCTOBER 2022",
+                                    "Amount": 8.0,
+                                    "Currency": "EUR",
+                                    "Category": "Vacanza",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "PIZZE CENA RITORNO - SIENA",
+                                    "LinkingCode": "SS#8199996415"
+                              },
+                              "12": {
+                                    "Date": "23 OCTOBER 2022",
+                                    "Amount": 40.0,
+                                    "Currency": "EUR",
+                                    "Category": "Vacanza",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "SPESE A SIENA",
+                                    "LinkingCode": "SS#4474823726"
                               }
                         },
                         "Statistics": {
-                              "TotalValue": 225.0
+                              "TotalValue": 436.03
                         }
                   }
             },
             "Statistics": {
                   "Currency": "\u20ac",
-                  "NumberOfTransaction": 31,
-                  "TotalValue": 2019.3200000000002,
+                  "NumberOfTransaction": 49,
+                  "TotalValue": 2346.01,
                   "ActualAssetAllocation": {
-                        "Bollette": 75.8,
+                        "Bollette": 112.8,
                         "Uscite fuori": 93.3,
                         "Affitto": 350.0,
                         "Carburante": 86.83,
-                        "Spesa alimentare": 53.989999999999995,
-                        "Spese personali": 42.9,
-                        "Spesa casa": 0.0,
+                        "Spesa alimentare": 95.16999999999999,
+                        "Spese personali": 52.9,
+                        "Spesa casa": 16.47,
                         "Internal Transaction": 957.0,
                         "Donazioni": 15.0,
-                        "Regali": 36.5,
+                        "Regali": 47.51,
                         "Autovettura": 83.0,
-                        "Vacanza": 225.0
+                        "Vacanza": 436.03
                   },
                   "DesiredAssetAllocation": {
                         "Bollette": 150,
@@ -680,6 +843,168 @@
                                     "PayingAccount": "Unicredit - Cash - EUR",
                                     "Note": "RICARICA CELLULARE TIM",
                                     "LinkingCode": "SS#1631715467"
+                              },
+                              "32": {
+                                    "Date": "21 OCTOBER 2022",
+                                    "Amount": 5.21,
+                                    "Currency": "EUR",
+                                    "Category": "Regali",
+                                    "PayingAccount": "Revolut - Cash - EUR",
+                                    "Note": "PARCHEGGIO 2.54\u20ac + 2,67\u20ac PER RITIRO PASSAPORTO",
+                                    "LinkingCode": "SS#5229540567"
+                              },
+                              "33": {
+                                    "Date": "21 OCTOBER 2022",
+                                    "Amount": 10.5,
+                                    "Currency": "EUR",
+                                    "Category": "Vacanza",
+                                    "PayingAccount": "Revolut - Cash - EUR",
+                                    "Note": "PANINI PER VIAGGIO - SIENA",
+                                    "LinkingCode": "SS#5601986199"
+                              },
+                              "34": {
+                                    "Date": "21 OCTOBER 2022",
+                                    "Amount": 3.68,
+                                    "Currency": "EUR",
+                                    "Category": "Vacanza",
+                                    "PayingAccount": "Revolut - Cash - EUR",
+                                    "Note": "SPESA PATATINE E BISCOTTI - SIENA",
+                                    "LinkingCode": "SS#9728928807"
+                              },
+                              "35": {
+                                    "Date": "22 OCTOBER 2022",
+                                    "Amount": 19.0,
+                                    "Currency": "EUR",
+                                    "Category": "Vacanza",
+                                    "PayingAccount": "Revolut - Cash - EUR",
+                                    "Note": "PRANZO PIZZICHERIA CHIGIANA",
+                                    "LinkingCode": "SS#8850961191"
+                              },
+                              "36": {
+                                    "Date": "22 OCTOBER 2022",
+                                    "Amount": 1.95,
+                                    "Currency": "EUR",
+                                    "Category": "Vacanza",
+                                    "PayingAccount": "Revolut - Cash - EUR",
+                                    "Note": "ACQUISTO ACQUA PER VIAGGIO - SIENA",
+                                    "LinkingCode": "SS#2737442962"
+                              },
+                              "37": {
+                                    "Date": "22 OCTOBER 2022",
+                                    "Amount": 42.0,
+                                    "Currency": "EUR",
+                                    "Category": "Vacanza",
+                                    "PayingAccount": "Revolut - Cash - EUR",
+                                    "Note": "CENA RISTORANTE - SIENA",
+                                    "LinkingCode": "SS#3735663097"
+                              },
+                              "38": {
+                                    "Date": "23 OCTOBER 2022",
+                                    "Amount": 7.9,
+                                    "Currency": "EUR",
+                                    "Category": "Vacanza",
+                                    "PayingAccount": "Revolut - Cash - EUR",
+                                    "Note": "ACQUISTO PER PRANZO - RITORNO SIENA",
+                                    "LinkingCode": "SS#7083091978"
+                              },
+                              "39": {
+                                    "Date": "23 OCTOBER 2022",
+                                    "Amount": 16.47,
+                                    "Currency": "EUR",
+                                    "Category": "Spesa casa",
+                                    "PayingAccount": "Revolut - Cash - EUR",
+                                    "Note": "SPESA CINESI PER CASA",
+                                    "LinkingCode": "SS#3924178523"
+                              },
+                              "40": {
+                                    "Date": "25 OCTOBER 2022",
+                                    "Amount": 31.18,
+                                    "Currency": "EUR",
+                                    "Category": "Spesa alimentare",
+                                    "PayingAccount": "Revolut - Cash - EUR",
+                                    "Note": "SPESA ALIMENTARE PER AVELLINO",
+                                    "LinkingCode": "SS#0623028497"
+                              },
+                              "41": {
+                                    "Date": "29 OCTOBER 2022",
+                                    "Amount": 5.8,
+                                    "Currency": "EUR",
+                                    "Category": "Regali",
+                                    "PayingAccount": "Revolut - Cash - EUR",
+                                    "Note": "SURGELANDIA - CENA FISCIANO",
+                                    "LinkingCode": "SS#6562506987"
+                              },
+                              "42": {
+                                    "Date": "22 OCTOBER 2022",
+                                    "Amount": 30.0,
+                                    "Currency": "EUR",
+                                    "Category": "Vacanza",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "PAGAMENTO AUTOSTRADA VERSO SIENA",
+                                    "LinkingCode": "SS#7830195620"
+                              },
+                              "43": {
+                                    "Date": "23 OCTOBER 2022",
+                                    "Amount": 8.0,
+                                    "Currency": "EUR",
+                                    "Category": "Vacanza",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "TASSA DI SOGGIORNO SIENA",
+                                    "LinkingCode": "SS#0776706243"
+                              },
+                              "44": {
+                                    "Date": "21 OCTOBER 2022",
+                                    "Amount": 37.0,
+                                    "Currency": "EUR",
+                                    "Category": "Vacanza",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "BENZINA ANDATA SIENA",
+                                    "LinkingCode": "SS#3791595108"
+                              },
+                              "45": {
+                                    "Date": "23 OCTOBER 2022",
+                                    "Amount": 40.0,
+                                    "Currency": "EUR",
+                                    "Category": "Vacanza",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "BENZINA RITORNO - SIENA",
+                                    "LinkingCode": "SS#3840924295"
+                              },
+                              "46": {
+                                    "Date": "23 OCTOBER 2022",
+                                    "Amount": 8.0,
+                                    "Currency": "EUR",
+                                    "Category": "Vacanza",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "PIZZE CENA RITORNO - SIENA",
+                                    "LinkingCode": "SS#8199996415"
+                              },
+                              "47": {
+                                    "Date": "23 OCTOBER 2022",
+                                    "Amount": 10.0,
+                                    "Currency": "EUR",
+                                    "Category": "Spesa alimentare",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "PRANZO AVELLINO",
+                                    "LinkingCode": "SS#8117266674"
+                              },
+                              "48": {
+                                    "Date": "23 OCTOBER 2022",
+                                    "Amount": 10.0,
+                                    "Currency": "EUR",
+                                    "Category": "Spese personali",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "CAPELLI",
+                                    "LinkingCode": "SS#1809056686"
+                              },
+                              "49": {
+                                    "Date": "23 OCTOBER 2022",
+                                    "Amount": 40.0,
+                                    "Currency": "EUR",
+                                    "Category": "Vacanza",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "SPESE A SIENA",
+                                    "LinkingCode": "SS#4474823726"
                               }
                         }
                   }

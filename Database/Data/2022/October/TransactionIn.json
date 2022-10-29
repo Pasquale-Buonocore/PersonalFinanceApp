@@ -38,10 +38,19 @@
                                     "PayingAccount": "De Giro - Cash - EUR",
                                     "Note": "DE GIRO INITIALIZATION",
                                     "LinkingCode": "ES#9757678949"
+                              },
+                              "5": {
+                                    "Date": "27 OCTOBER 2022",
+                                    "Amount": 77.0,
+                                    "Currency": "EUR",
+                                    "Category": "Account Initialization",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "RIMBORSO SPESE BATTERIA PC",
+                                    "LinkingCode": "ES#9979505596"
                               }
                         },
                         "Statistics": {
-                              "TotalValue": 3530.0
+                              "TotalValue": 3607.0
                         }
                   },
                   "Stipendio": {
@@ -128,10 +137,10 @@
             },
             "Statistics": {
                   "Currency": "\u20ac",
-                  "NumberOfTransaction": 10,
-                  "TotalValue": 6595.0,
+                  "NumberOfTransaction": 11,
+                  "TotalValue": 6672.0,
                   "ActualAssetAllocation": {
-                        "Account Initialization": 3530.0,
+                        "Account Initialization": 3607.0,
                         "Stipendio": 2008.0,
                         "Ripetizioni": 0.0,
                         "Internal Transaction": 957.0,
@@ -239,6 +248,15 @@
                                     "PayingAccount": "Contante - Cash - EUR",
                                     "Note": "PAGAMENTO BOLLETTE PAP\u00c0",
                                     "LinkingCode": "ES#0581465466"
+                              },
+                              "11": {
+                                    "Date": "27 OCTOBER 2022",
+                                    "Amount": 77.0,
+                                    "Currency": "EUR",
+                                    "Category": "Account Initialization",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "RIMBORSO SPESE BATTERIA PC",
+                                    "LinkingCode": "ES#9979505596"
                               }
                         }
                   }
