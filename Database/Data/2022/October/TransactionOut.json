@@ -72,10 +72,19 @@
                                     "PayingAccount": "Revolut - Cash - EUR",
                                     "Note": "TALES PUB",
                                     "LinkingCode": "SS#8946059261"
+                              },
+                              "5": {
+                                    "Date": "30 OCTOBER 2022",
+                                    "Amount": 21.0,
+                                    "Currency": "EUR",
+                                    "Category": "Uscite fuori",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "CENA DI HALLOWEEN",
+                                    "LinkingCode": "SS#3727398863"
                               }
                         },
                         "Statistics": {
-                              "TotalValue": 93.3
+                              "TotalValue": 114.3
                         }
                   },
                   "Affitto": {
@@ -389,10 +398,19 @@
                                     "PayingAccount": "Revolut - Cash - EUR",
                                     "Note": "SURGELANDIA - CENA FISCIANO",
                                     "LinkingCode": "SS#6562506987"
+                              },
+                              "5": {
+                                    "Date": "28 OCTOBER 2022",
+                                    "Amount": 22.0,
+                                    "Currency": "EUR",
+                                    "Category": "Regali",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "SPESA ALESSIA",
+                                    "LinkingCode": "SS#1816927623"
                               }
                         },
                         "Statistics": {
-                              "TotalValue": 47.51
+                              "TotalValue": 69.50999999999999
                         }
                   },
                   "Autovettura": {
@@ -514,11 +532,11 @@
                               },
                               "12": {
                                     "Date": "23 OCTOBER 2022",
-                                    "Amount": 40.0,
+                                    "Amount": 50.0,
                                     "Currency": "EUR",
                                     "Category": "Vacanza",
                                     "PayingAccount": "Contante - Cash - EUR",
-                                    "Note": "SPESE A SIENA",
+                                    "Note": "PARCHEGGIO A SIENA",
                                     "LinkingCode": "SS#4474823726"
                               }
                         },
@@ -529,11 +547,11 @@
             },
             "Statistics": {
                   "Currency": "\u20ac",
-                  "NumberOfTransaction": 49,
-                  "TotalValue": 2346.01,
+                  "NumberOfTransaction": 51,
+                  "TotalValue": 2389.01,
                   "ActualAssetAllocation": {
                         "Bollette": 112.8,
-                        "Uscite fuori": 93.3,
+                        "Uscite fuori": 114.3,
                         "Affitto": 350.0,
                         "Carburante": 86.83,
                         "Spesa alimentare": 95.16999999999999,
@@ -541,7 +559,7 @@
                         "Spesa casa": 16.47,
                         "Internal Transaction": 957.0,
                         "Donazioni": 15.0,
-                        "Regali": 47.51,
+                        "Regali": 69.50999999999999,
                         "Autovettura": 83.0,
                         "Vacanza": 436.03
                   },
@@ -999,12 +1017,30 @@
                               },
                               "49": {
                                     "Date": "23 OCTOBER 2022",
-                                    "Amount": 40.0,
+                                    "Amount": 50.0,
                                     "Currency": "EUR",
                                     "Category": "Vacanza",
                                     "PayingAccount": "Contante - Cash - EUR",
-                                    "Note": "SPESE A SIENA",
+                                    "Note": "PARCHEGGIO A SIENA",
                                     "LinkingCode": "SS#4474823726"
+                              },
+                              "50": {
+                                    "Date": "28 OCTOBER 2022",
+                                    "Amount": 22.0,
+                                    "Currency": "EUR",
+                                    "Category": "Regali",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "SPESA ALESSIA",
+                                    "LinkingCode": "SS#1816927623"
+                              },
+                              "51": {
+                                    "Date": "30 OCTOBER 2022",
+                                    "Amount": 21.0,
+                                    "Currency": "EUR",
+                                    "Category": "Uscite fuori",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "CENA DI HALLOWEEN",
+                                    "LinkingCode": "SS#3727398863"
                               }
                         }
                   }

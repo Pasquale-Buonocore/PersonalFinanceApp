@@ -3,10 +3,10 @@
             "SubAccount": {
                   "Cash": {
                         "EUR": {
-                              "TotalValue": 3592.8999999999996,
+                              "TotalValue": 3570.8999999999996,
                               "Symbol": "\u20ac",
                               "BasedCurrency": "EUR",
-                              "LiquidityContribution": 3592.8999999999996,
+                              "LiquidityContribution": 3570.8999999999996,
                               "InvestmentContribution": 0.0,
                               "MonthlyTransactions": {
                                     "ES#6769350873": {
@@ -112,6 +112,14 @@
                                           "Category": "Account Initialization",
                                           "PayingAccount": "Unicredit - Cash - EUR",
                                           "Note": "RIMBORSO SPESE BATTERIA PC"
+                                    },
+                                    "SS#1816927623": {
+                                          "Date": "28 OCTOBER 2022",
+                                          "Amount": 22.0,
+                                          "Currency": "EUR",
+                                          "Category": "Regali",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "SPESA ALESSIA"
                                     }
                               }
                         }
@@ -173,10 +181,10 @@
             "SubAccount": {
                   "Cash": {
                         "EUR": {
-                              "TotalValue": 101.0,
+                              "TotalValue": 70.0,
                               "Symbol": "\u20ac",
                               "BasedCurrency": "EUR",
-                              "LiquidityContribution": 101.0,
+                              "LiquidityContribution": 70.0,
                               "InvestmentContribution": 0.0,
                               "MonthlyTransactions": {
                                     "ES#5321603417": {
@@ -325,11 +333,19 @@
                                     },
                                     "SS#4474823726": {
                                           "Date": "23 OCTOBER 2022",
-                                          "Amount": 40.0,
+                                          "Amount": 50.0,
                                           "Currency": "EUR",
                                           "Category": "Vacanza",
                                           "PayingAccount": "Contante - Cash - EUR",
-                                          "Note": "SPESE A SIENA"
+                                          "Note": "PARCHEGGIO A SIENA"
+                                    },
+                                    "SS#3727398863": {
+                                          "Date": "30 OCTOBER 2022",
+                                          "Amount": 21.0,
+                                          "Currency": "EUR",
+                                          "Category": "Uscite fuori",
+                                          "PayingAccount": "Contante - Cash - EUR",
+                                          "Note": "CENA DI HALLOWEEN"
                                     }
                               }
                         }
