@@ -1,0 +1,163 @@
+{
+      "Unicredit": {
+            "SubAccount": {
+                  "Cash": {
+                        "EUR": {
+                              "TotalValue": 5235.9,
+                              "Symbol": "\u20ac",
+                              "BasedCurrency": "EUR",
+                              "LiquidityContribution": 5235.9,
+                              "InvestmentContribution": 0.0,
+                              "MonthlyTransactions": {
+                                    "ES#5456789476": {
+                                          "Date": "01 NOVEMBER 2022",
+                                          "Amount": 2245.0,
+                                          "Currency": "EUR",
+                                          "Category": "Stipendio",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "STIPENDI ITALSYSTEM"
+                                    },
+                                    "SS#1081789195": {
+                                          "Date": "07 NOVEMBER 2022",
+                                          "Amount": 350.0,
+                                          "Currency": "EUR",
+                                          "Category": "Affitto",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "AFFITTO CASA"
+                                    },
+                                    "SS#1864179175": {
+                                          "Date": "08 NOVEMBER 2022",
+                                          "Amount": 180.0,
+                                          "Currency": "EUR",
+                                          "Category": "Bollette",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "BOLLETTE LUGLIO - OTTOBRE"
+                                    },
+                                    "SS#6170417704": {
+                                          "Date": "08 NOVEMBER 2022",
+                                          "Amount": 50.0,
+                                          "Currency": "EUR",
+                                          "Category": "Bollette",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "REGISTRO CONTRATTO CASA AVELLINO"
+                                    }
+                              }
+                        }
+                  },
+                  "Assets": {}
+            },
+            "Statistics": {
+                  "Category": "Bank Account",
+                  "LastMonthSubAccount": {
+                        "Cash": {
+                              "EUR": {
+                                    "TotalValue": 3570.8999999999996,
+                                    "Symbol": "\u20ac",
+                                    "BasedCurrency": "EUR",
+                                    "LiquidityContribution": 3570.8999999999996,
+                                    "InvestmentContribution": 0.0
+                              }
+                        },
+                        "Assets": {}
+                  },
+                  "LastMonthValue": 0,
+                  "ActualMonthValue": 0
+            }
+      },
+      "De Giro": {
+            "SubAccount": {
+                  "Cash": {
+                        "EUR": {
+                              "TotalValue": 632.0,
+                              "Symbol": "\u20ac",
+                              "BasedCurrency": "EUR",
+                              "LiquidityContribution": 632.0,
+                              "InvestmentContribution": 0.0,
+                              "MonthlyTransactions": {}
+                        }
+                  },
+                  "Assets": {}
+            },
+            "Statistics": {
+                  "Category": "Traditional Broker",
+                  "LastMonthSubAccount": {
+                        "Cash": {
+                              "EUR": {
+                                    "TotalValue": 632.0,
+                                    "Symbol": "\u20ac",
+                                    "BasedCurrency": "EUR",
+                                    "LiquidityContribution": 632.0,
+                                    "InvestmentContribution": 0.0
+                              }
+                        },
+                        "Assets": {}
+                  },
+                  "LastMonthValue": 0,
+                  "ActualMonthValue": 0
+            }
+      },
+      "Contante": {
+            "SubAccount": {
+                  "Cash": {
+                        "EUR": {
+                              "TotalValue": 70.0,
+                              "Symbol": "\u20ac",
+                              "BasedCurrency": "EUR",
+                              "LiquidityContribution": 70.0,
+                              "InvestmentContribution": 0.0,
+                              "MonthlyTransactions": {}
+                        }
+                  },
+                  "Assets": {}
+            },
+            "Statistics": {
+                  "Category": "Cash",
+                  "LastMonthSubAccount": {
+                        "Cash": {
+                              "EUR": {
+                                    "TotalValue": 70.0,
+                                    "Symbol": "\u20ac",
+                                    "BasedCurrency": "EUR",
+                                    "LiquidityContribution": 70.0,
+                                    "InvestmentContribution": 0.0
+                              }
+                        },
+                        "Assets": {}
+                  },
+                  "LastMonthValue": 0,
+                  "ActualMonthValue": 0
+            }
+      },
+      "Revolut": {
+            "SubAccount": {
+                  "Cash": {
+                        "EUR": {
+                              "TotalValue": 0.08999999999998654,
+                              "Symbol": "\u20ac",
+                              "BasedCurrency": "EUR",
+                              "LiquidityContribution": 0.08999999999998654,
+                              "InvestmentContribution": 0.0,
+                              "MonthlyTransactions": {}
+                        }
+                  },
+                  "Assets": {}
+            },
+            "Statistics": {
+                  "Category": "Bank Account",
+                  "LastMonthSubAccount": {
+                        "Cash": {
+                              "EUR": {
+                                    "TotalValue": 0.08999999999998654,
+                                    "Symbol": "\u20ac",
+                                    "BasedCurrency": "EUR",
+                                    "LiquidityContribution": 0.08999999999998654,
+                                    "InvestmentContribution": 0.0
+                              }
+                        },
+                        "Assets": {}
+                  },
+                  "LastMonthValue": 0,
+                  "ActualMonthValue": 0
+            }
+      }
+}

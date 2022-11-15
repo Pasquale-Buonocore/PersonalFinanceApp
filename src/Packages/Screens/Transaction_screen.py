@@ -26,6 +26,10 @@ class TransactionScreen(Screen):
         self.TransactionOutImagePath = self.Image_path_manager.TransactionOut_imagepath
 
     def UpdateScreen(self):
+        # Update Database in case the month has changed
+        self.TransactionIn = db_manager.PortfoliosManager_Class(return_updated_data_path(PathManager_Class.database_path),db_manager.path_manager.TransactionIn_path)
+        self.TransactionOut = db_manager.PortfoliosManager_Class(return_updated_data_path(PathManager_Class.database_path),db_manager.path_manager.TransactionOut_path)
+
         # Update statistics for all portfolios
         self.TransactionIn.UpdateTransactionPortfolio("IN")
         self.TransactionOut.UpdateTransactionPortfolio("OUT")

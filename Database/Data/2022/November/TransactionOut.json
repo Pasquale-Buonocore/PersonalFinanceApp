@@ -1,0 +1,178 @@
+{
+      "OUT": {
+            "Assets": {
+                  "Bollette": {
+                        "Transactions": {
+                              "1": {
+                                    "Date": "08 NOVEMBER 2022",
+                                    "Amount": 180.0,
+                                    "Currency": "EUR",
+                                    "Category": "Bollette",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "BOLLETTE LUGLIO - OTTOBRE",
+                                    "LinkingCode": "SS#1864179175"
+                              },
+                              "2": {
+                                    "Date": "08 NOVEMBER 2022",
+                                    "Amount": 50.0,
+                                    "Currency": "EUR",
+                                    "Category": "Bollette",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "REGISTRO CONTRATTO CASA AVELLINO",
+                                    "LinkingCode": "SS#6170417704"
+                              }
+                        },
+                        "Statistics": {
+                              "TotalValue": 230.0
+                        }
+                  },
+                  "Uscite fuori": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  },
+                  "Affitto": {
+                        "Transactions": {
+                              "1": {
+                                    "Date": "07 NOVEMBER 2022",
+                                    "Amount": 350.0,
+                                    "Currency": "EUR",
+                                    "Category": "Affitto",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "AFFITTO CASA",
+                                    "LinkingCode": "SS#1081789195"
+                              }
+                        },
+                        "Statistics": {
+                              "TotalValue": 350.0
+                        }
+                  },
+                  "Carburante": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  },
+                  "Spesa alimentare": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  },
+                  "Spese personali": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  },
+                  "Spesa casa": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  },
+                  "Internal Transaction": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  },
+                  "Donazioni": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  },
+                  "Regali": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  },
+                  "Autovettura": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  },
+                  "Vacanza": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  }
+            },
+            "Statistics": {
+                  "Currency": "\u20ac",
+                  "NumberOfTransaction": 3,
+                  "TotalValue": 580.0,
+                  "ActualAssetAllocation": {
+                        "Bollette": 230.0,
+                        "Uscite fuori": 0.0,
+                        "Affitto": 350.0,
+                        "Carburante": 0.0,
+                        "Spesa alimentare": 0.0,
+                        "Spese personali": 0.0,
+                        "Spesa casa": 0.0,
+                        "Internal Transaction": 0.0,
+                        "Donazioni": 0.0,
+                        "Regali": 0.0,
+                        "Autovettura": 0.0,
+                        "Vacanza": 0.0
+                  },
+                  "DesiredAssetAllocation": {
+                        "Bollette": 150,
+                        "Uscite fuori": 150,
+                        "Affitto": 350,
+                        "Carburante": 150,
+                        "Spesa alimentare": 200,
+                        "Spese personali": 50,
+                        "Spesa casa": 50,
+                        "Internal Transaction": 0,
+                        "Donazioni": 15,
+                        "Regali": 50,
+                        "Autovettura": 83,
+                        "Vacanza": 0
+                  }
+            }
+      },
+      "OUT_LIST": {
+            "Assets": {
+                  "Transactions": {
+                        "Transactions": {
+                              "1": {
+                                    "Date": "07 NOVEMBER 2022",
+                                    "Amount": 350.0,
+                                    "Currency": "EUR",
+                                    "Category": "Affitto",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "AFFITTO CASA",
+                                    "LinkingCode": "SS#1081789195"
+                              },
+                              "2": {
+                                    "Date": "08 NOVEMBER 2022",
+                                    "Amount": 180.0,
+                                    "Currency": "EUR",
+                                    "Category": "Bollette",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "BOLLETTE LUGLIO - OTTOBRE",
+                                    "LinkingCode": "SS#1864179175"
+                              },
+                              "3": {
+                                    "Date": "08 NOVEMBER 2022",
+                                    "Amount": 50.0,
+                                    "Currency": "EUR",
+                                    "Category": "Bollette",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "REGISTRO CONTRATTO CASA AVELLINO",
+                                    "LinkingCode": "SS#6170417704"
+                              }
+                        }
+                  }
+            },
+            "Statistics": {
+                  "Total": {}
+            }
+      }
+}

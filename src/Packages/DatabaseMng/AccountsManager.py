@@ -62,7 +62,7 @@ class AccountsManager_Class():
 
     #######################
     # ACCOUNTS MANAGEMENT #
-    #######################
+    ####################### 
 
     # Add Account to the Json File - TESTED
     def AddAccount(self, NewAccount):
@@ -120,7 +120,7 @@ class AccountsManager_Class():
     # Update the current Value of the Account
     def UpdateActualMonthAccountValue(self, AccountName):
         pass
-
+    
     ###########################
     # SUBACCOUNTS MANAGEMENTS #
     ###########################

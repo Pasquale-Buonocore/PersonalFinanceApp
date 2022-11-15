@@ -70,10 +70,19 @@ class FinanceApp(MDApp):
         return MainLayout()
 
     def update_database_class_on_month_change(self):
+        # Update the month and year selected
         self.VisualizedDate_month = self.root.children[0].children[1].ids.MonthStringValue.text
         self.VisualizedDate_year = self.root.children[0].children[1].ids.YearStringValue.text
 
-        # Work on databases to unite them
+        # Update the App configuration and Account Database
+        self.Configuration_DB = JsonManager_Class(PathManager_Class.database_configuration_path, PathManager_Class.Configuration_path)
+        self.Accounts_DB = AccountsManager_Class(return_updated_data_path(PathManager_Class.database_path), PathManager_Class.Accounts_path)
+
+        # Let's make sure the new month initial value are the previous month last value
+
+
+        # Update the current screen
+        MDApp.get_running_app().root.children[0].children[0].current_screen.UpdateScreen()
 
         # Update referenced database
         print('Updating month information')
@@ -87,3 +96,4 @@ class FinanceApp(MDApp):
         self.root.children[0].children[1].ids.Dashboard_btn.BackgroundColor= self.Configuration_DB.GetElementValue('MenuButtonSelectedBackgroundColor')
 
 
+    
