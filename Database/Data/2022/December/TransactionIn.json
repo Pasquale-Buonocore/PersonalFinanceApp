@@ -1,0 +1,65 @@
+{
+      "IN": {
+            "Assets": {
+                  "Account Initialization": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  },
+                  "Stipendio": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  },
+                  "Ripetizioni": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  },
+                  "Internal Transaction": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  },
+                  "Regali": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  }
+            },
+            "Statistics": {
+                  "Currency": "\u20ac",
+                  "NumberOfTransaction": 0,
+                  "TotalValue": 0.0,
+                  "ActualAssetAllocation": {
+                        "Account Initialization": 0.0,
+                        "Stipendio": 0.0,
+                        "Ripetizioni": 0.0,
+                        "Internal Transaction": 0.0,
+                        "Regali": 0.0
+                  },
+                  "DesiredAssetAllocation": {
+                        "Account Initialization": 0,
+                        "Stipendio": 1650,
+                        "Ripetizioni": 50,
+                        "Internal Transaction": 0,
+                        "Regali": 0
+                  }
+            }
+      },
+      "IN_LIST": {
+            "Assets": {
+                  "Transactions": {
+                        "Transactions": {}
+                  }
+            },
+            "Statistics": {
+                  "Total": {}
+            }
+      }
+}

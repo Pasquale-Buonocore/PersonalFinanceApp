@@ -35,27 +35,30 @@ def Update_account_database_month_year_transition(requested_month: str, requeste
             AccountToAdd = requested_month_database_object.InitializeNewAccount(AccountName = account, Category = old_month_database_json[account]['Statistics']['Category'])
             requested_month_database_object.AddAccount(AccountToAdd)
 
-            requested_month_database_json = requested_month_database_object.ReadJson()
-            LastMonthSubAccountDict = {'Cash': {}, 'Assets' : {}}
+        requested_month_database_json = requested_month_database_object.ReadJson()
+        LastMonthSubAccountDict = {'Cash': {}, 'Assets' : {}}
 
-            # Fill the new account with old statistics
-            for subaccount in old_month_database_json[account]['SubAccount'].keys():
-                for category in old_month_database_json[account]['SubAccount'][subaccount]:
-                    # Copy the one of the last month
-                    SubaccountToAdd = old_month_database_json[account]['SubAccount'][subaccount][category]
-                    SubaccountToAdd['MonthlyTransactions'] = {}
-                    requested_month_database_json[account]['SubAccount'][subaccount].update({category: SubaccountToAdd.copy()})
+        # Fill the new account with old statistics
+        for subaccount in old_month_database_json[account]['SubAccount'].keys():
+            for category in old_month_database_json[account]['SubAccount'][subaccount]:
+                # Copy the one of the last month
+                SubaccountToAdd = old_month_database_json[account]['SubAccount'][subaccount][category]
 
-                    # Update LastMontheSubAccountDict
-                    SubaccountToAdd.pop('MonthlyTransactions')
-                    LastMonthSubAccountDict[subaccount].update({category: SubaccountToAdd})
-            
-            requested_month_database_json[account]['Statistics']['LastMonthSubAccount'] = LastMonthSubAccountDict
-            requested_month_database_object.SaveJsonFile(requested_month_database_json)
+                SubaccountToAdd['MonthlyTransactions'] = {}
+                if category in requested_month_database_json[account]['SubAccount'][subaccount].keys():
+                    SubaccountToAdd['MonthlyTransactions'] = requested_month_database_json[account]['SubAccount'][subaccount][category]['MonthlyTransactions']
+                requested_month_database_json[account]['SubAccount'][subaccount].update({category: SubaccountToAdd.copy()})
 
-        else:
-            # Update just the Old month statistics in case they changed
-            pass
+                # Update LastMontheSubAccountDict
+                SubaccountToAdd.pop('MonthlyTransactions')
+                LastMonthSubAccountDict[subaccount].update({category: SubaccountToAdd})
+        
+        requested_month_database_json[account]['Statistics']['LastMonthSubAccount'] = LastMonthSubAccountDict
+        requested_month_database_object.SaveJsonFile(requested_month_database_json)
+
+    # Update all account values before exiting
+    requested_month_database_object.Update_accountDB_accounts_total_value()
+
 
 def Update_transactions_database_month_year_transition(requested_month: str, requested_year: str):
     ''' This function recovers the type of earning and expences in the transition databases'''
@@ -75,7 +78,8 @@ def Update_transactions_database_month_year_transition(requested_month: str, req
     for json_database_file in json_transactions_files:
         requested_month_database_object = PtflMng.PortfoliosManager_Class(requested_month_database_path, json_database_file)
         old_month_database_object = PtflMng.PortfoliosManager_Class(old_month_database_path, json_database_file)
-
+        requested_month_database_object.CheckTransactionPortfolio(Database = requested_month_database_object, Name = PortfoliosMap[json_database_file])
+        
         # Get the json
         requested_month_database_json = requested_month_database_object.ReadJson()
         old_month_database_json = old_month_database_object.ReadJson()
@@ -90,7 +94,6 @@ def Update_transactions_database_month_year_transition(requested_month: str, req
         if not requested_month_database_json[PortfoliosMap[json_database_file]]['Statistics']['DesiredAssetAllocation']:
             old_month_database_json_statistics = old_month_database_json[PortfoliosMap[json_database_file]]['Statistics']['DesiredAssetAllocation']
             requested_month_database_object.UpdatePortfolioDesiredAssetAllocation(PortfoliosMap[json_database_file], old_month_database_json_statistics)
-
 
 #################
 ###  UTILITY  ###

@@ -70,9 +70,19 @@
                         }
                   },
                   "Ripetizioni": {
-                        "Transactions": {},
+                        "Transactions": {
+                              "1": {
+                                    "Date": "15 OCTOBER 2022",
+                                    "Amount": 100.0,
+                                    "Currency": "EUR",
+                                    "Category": "Ripetizioni",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "",
+                                    "LinkingCode": "ES#5991692468"
+                              }
+                        },
                         "Statistics": {
-                              "TotalValue": 0
+                              "TotalValue": 100.0
                         }
                   },
                   "Internal Transaction": {
@@ -137,12 +147,12 @@
             },
             "Statistics": {
                   "Currency": "\u20ac",
-                  "NumberOfTransaction": 11,
-                  "TotalValue": 6672.0,
+                  "NumberOfTransaction": 12,
+                  "TotalValue": 6772.0,
                   "ActualAssetAllocation": {
                         "Account Initialization": 3607.0,
                         "Stipendio": 2008.0,
-                        "Ripetizioni": 0.0,
+                        "Ripetizioni": 100.0,
                         "Internal Transaction": 957.0,
                         "Regali": 100.0
                   },
@@ -257,6 +267,15 @@
                                     "PayingAccount": "Unicredit - Cash - EUR",
                                     "Note": "RIMBORSO SPESE BATTERIA PC",
                                     "LinkingCode": "ES#9979505596"
+                              },
+                              "12": {
+                                    "Date": "15 OCTOBER 2022",
+                                    "Amount": 100.0,
+                                    "Currency": "EUR",
+                                    "Category": "Ripetizioni",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "",
+                                    "LinkingCode": "ES#5991692468"
                               }
                         }
                   }

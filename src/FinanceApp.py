@@ -4,11 +4,15 @@
 import kivy
 kivy.require('1.0.9')
 
+DATABASE_PATH = './Database/Data/'
+
 ###########################
 # IMPORTS FROM CUSTOM LIB #
 ###########################
 import Packages.Configuration.WinConfiguration as WinConf
 from Packages.CustomFunction.DefineJsonDatapath import return_updated_data_path
+from Packages.DatabaseMng.TransitionManager import Update_account_database_month_year_transition
+from Packages.DatabaseMng.TransitionManager import Update_transactions_database_month_year_transition
 from Packages.DatabaseMng.JsonManager import JsonManager_Class
 from Packages.DatabaseMng.PathManager import PathManager_Class
 from Packages.Screens.Dashboard_screen import *
@@ -23,6 +27,7 @@ from Packages.Screens.AssetsTransaction_screen import *
 from Packages.Screens.Assets_screen import *
 from Packages.Screens.MenuLayout import * 
 import datetime as dt 
+import os
 
 #####################
 # IMPORTS FROM KIVY #
@@ -61,6 +66,9 @@ class FinanceApp(MDApp):
         self.VisualizedDate_month = self.TodayDate_month
         self.VisualizedDate_year = self.TodayDate_year
 
+        # Update database to re-check it
+        self.check_if_year_month_folder_exists(year = self.VisualizedDate_year, month = self.VisualizedDate_month)
+
         # Variables to monitor the portfolio under management
         
         # Define the App configuration and Account Database
@@ -69,10 +77,24 @@ class FinanceApp(MDApp):
 
         return MainLayout()
 
+    def check_if_year_month_folder_exists(self, year: str, month: str):
+        # Check if folders exists Data/self.VisualizedDate_year
+        if not os.path.exists(DATABASE_PATH + year):
+            os.mkdir(DATABASE_PATH + year)
+
+        # Check if folders exists Data/self.VisualizedDate_month
+        if not os.path.exists(DATABASE_PATH + year + '/' + month):
+            os.mkdir(DATABASE_PATH + year + '/' + month)
+
     def update_database_class_on_month_change(self):
         # Update the month and year selected
         self.VisualizedDate_month = self.root.children[0].children[1].ids.MonthStringValue.text
         self.VisualizedDate_year = self.root.children[0].children[1].ids.YearStringValue.text
+
+        self.check_if_year_month_folder_exists(year = self.VisualizedDate_year, month = self.VisualizedDate_month)
+
+        Update_account_database_month_year_transition(self.VisualizedDate_month, self.VisualizedDate_year)
+        Update_transactions_database_month_year_transition(self.VisualizedDate_month, self.VisualizedDate_year)
 
         # Update the App configuration and Account Database
         self.Configuration_DB = JsonManager_Class(PathManager_Class.database_configuration_path, PathManager_Class.Configuration_path)

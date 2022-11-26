@@ -18,8 +18,8 @@ class TransactionScreen(Screen):
         self.TransactionIn = db_manager.PortfoliosManager_Class(return_updated_data_path(PathManager_Class.database_path),db_manager.path_manager.TransactionIn_path)
         self.TransactionOut = db_manager.PortfoliosManager_Class(return_updated_data_path(PathManager_Class.database_path),db_manager.path_manager.TransactionOut_path)
         self.Image_path_manager = path_manager.PathImage_Class()
-        self.CheckTransactionPortfolio(Database = self.TransactionIn, Name = "IN")
-        self.CheckTransactionPortfolio(Database = self.TransactionOut, Name = "OUT")
+        self.TransactionIn.CheckTransactionPortfolio(Database = self.TransactionIn, Name = "IN")
+        self.TransactionOut.CheckTransactionPortfolio(Database = self.TransactionOut, Name = "OUT")
 
         # Define portfolios images name
         self.TransactionInImagePath = self.Image_path_manager.TransactionIn_imagepath
@@ -52,23 +52,6 @@ class TransactionScreen(Screen):
     ####################
     # CLASS MANAGEMENT #
     ####################
-
-    # Check if portfolios "TRANSACTION IN" and  "TRANSACTION OUT" exist in the database
-    def CheckTransactionPortfolio(self, Database, Name):
-        # Define boolean
-        Is_present = False
-        LIST_is_present = False
-
-        for PortfolioName in Database.ReadJson().keys():
-            # Check if it is the portfolio whose entry are the caterogy of transaction
-            if PortfolioName == Name: Is_present = True
-            # Check if it is the portfolio whose entry are the transaction
-            elif PortfolioName == (Name + "_LIST"): LIST_is_present = True
-            # Otherwise remove it
-            else: Database.RemovePortfolio(PortfolioName)
-
-        if not Is_present: Database.AddPortfolio(Database.InitializeTransactionPortfolio(Name, ['€', 0]))
-        if not LIST_is_present: Database.AddPortfolio(Database.InitializeTransactionListPortfolio(Name + "_LIST"))
 
     # Move to the transaction list
     def MoveToTransactionScreen(self, direction = 'IN', Database = {}):

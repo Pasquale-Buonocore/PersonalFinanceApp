@@ -348,6 +348,22 @@ class PortfoliosManager_Class():
         JsonFile[PortfolioName]['Statistics'] = NewStatistics
         self.SaveJsonFile(JsonFile)
 
+    # Check if portfolios "TRANSACTION IN" and  "TRANSACTION OUT" exist in the database
+    def CheckTransactionPortfolio(self, Database, Name):
+        # Define boolean
+        Is_present = False
+        LIST_is_present = False
+
+        for PortfolioName in Database.ReadJson().keys():
+            # Check if it is the portfolio whose entry are the caterogy of transaction
+            if PortfolioName == Name: Is_present = True
+            # Check if it is the portfolio whose entry are the transaction
+            elif PortfolioName == (Name + "_LIST"): LIST_is_present = True
+            # Otherwise remove it
+            else: Database.RemovePortfolio(PortfolioName)
+
+        if not Is_present: Database.AddPortfolio(Database.InitializeTransactionPortfolio(Name, ['€', 0]))
+        if not LIST_is_present: Database.AddPortfolio(Database.InitializeTransactionListPortfolio(Name + "_LIST"))
     ##########################
     # TRANSACTION MANAGEMENT #
     ##########################
@@ -425,7 +441,6 @@ class PortfoliosManager_Class():
         # Save Json
         json_object[PortfolioName]["Assets"][AssetName]["Transactions"] = new_AssetTransaction
         self.SaveJsonFile(json_object)
-
 
     # Remove a transaction in the list of transaction of a list
     def RemoveTransactionFromAssetList(self, PortfolioName = '', AssetName = '', ItemIndex = "0"):

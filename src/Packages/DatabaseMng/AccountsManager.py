@@ -116,7 +116,7 @@ class AccountsManager_Class():
         StatisticsDict.update({'ActualMonthValue' : LastMonthValue})
         
         return StatisticsDict
-
+ 
     # Update the current Value of the Account
     def UpdateActualMonthAccountValue(self, AccountName):
         pass
@@ -224,6 +224,16 @@ class AccountsManager_Class():
         TransactionDict.update({'Note' : Description})
 
         return TransactionDict
+
+    def Update_accountDB_accounts_total_value(self):
+        ''' This function iterates over all the account in the accountDB and update'''
+        # Read json
+        json_object = self.ReadJson()
+
+        for account in json_object:
+            for subaccount in json_object[account]['SubAccount']:
+                for currency in json_object[account]['SubAccount'][subaccount]:
+                    self.Update_liquid_investing_balance(account, subaccount, currency)
 
     def Update_liquid_investing_balance(self, Account, SubAccount, Currency) -> None:
         '''This function uses the transaction in the monthly transaction dictionary to update liquidity and investiment.
