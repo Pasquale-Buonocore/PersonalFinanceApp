@@ -70,16 +70,16 @@ def Update_transactions_database_month_year_transition(requested_month: str, req
     # Retrieve requested and old months database path
     requested_month_database_path, old_month_database_path = compute_requested_and_old_month_database_path(requested_month, requested_year) 
 
-    # if the old month does not exist, exit.
-    if not os.path.exists(old_month_database_path + 'Accounts.json'): return
-
 
     # Iterate over the json files
     for json_database_file in json_transactions_files:
         requested_month_database_object = PtflMng.PortfoliosManager_Class(requested_month_database_path, json_database_file)
-        old_month_database_object = PtflMng.PortfoliosManager_Class(old_month_database_path, json_database_file)
         requested_month_database_object.CheckTransactionPortfolio(Database = requested_month_database_object, Name = PortfoliosMap[json_database_file])
         
+        # if the old month does not exist, exit.
+        if not os.path.exists(old_month_database_path + json_database_file): continue
+        old_month_database_object = PtflMng.PortfoliosManager_Class(old_month_database_path, json_database_file)
+
         # Get the json
         requested_month_database_json = requested_month_database_object.ReadJson()
         old_month_database_json = old_month_database_object.ReadJson()

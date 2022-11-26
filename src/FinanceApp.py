@@ -102,7 +102,6 @@ class FinanceApp(MDApp):
 
         # Let's make sure the new month initial value are the previous month last value
 
-
         # Update the current screen
         MDApp.get_running_app().root.children[0].children[0].current_screen.UpdateScreen()
 

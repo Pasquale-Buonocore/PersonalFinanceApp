@@ -1,0 +1,121 @@
+{
+      "OUT": {
+            "Assets": {
+                  "Bollette": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  },
+                  "Uscite fuori": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  },
+                  "Affitto": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  },
+                  "Carburante": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  },
+                  "Spesa alimentare": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  },
+                  "Spese personali": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  },
+                  "Spesa casa": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  },
+                  "Internal Transaction": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  },
+                  "Donazioni": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  },
+                  "Regali": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  },
+                  "Autovettura": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  },
+                  "Vacanza": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  }
+            },
+            "Statistics": {
+                  "Currency": "\u20ac",
+                  "NumberOfTransaction": 0,
+                  "TotalValue": 0.0,
+                  "ActualAssetAllocation": {
+                        "Bollette": 0.0,
+                        "Uscite fuori": 0.0,
+                        "Affitto": 0.0,
+                        "Carburante": 0.0,
+                        "Spesa alimentare": 0.0,
+                        "Spese personali": 0.0,
+                        "Spesa casa": 0.0,
+                        "Internal Transaction": 0.0,
+                        "Donazioni": 0.0,
+                        "Regali": 0.0,
+                        "Autovettura": 0.0,
+                        "Vacanza": 0.0
+                  },
+                  "DesiredAssetAllocation": {
+                        "Bollette": 150,
+                        "Uscite fuori": 150,
+                        "Affitto": 350,
+                        "Carburante": 150,
+                        "Spesa alimentare": 200,
+                        "Spese personali": 50,
+                        "Spesa casa": 50,
+                        "Internal Transaction": 0,
+                        "Donazioni": 15,
+                        "Regali": 50,
+                        "Autovettura": 83,
+                        "Vacanza": 0
+                  }
+            }
+      },
+      "OUT_LIST": {
+            "Assets": {
+                  "Transactions": {
+                        "Transactions": {}
+                  }
+            },
+            "Statistics": {
+                  "Total": {}
+            }
+      }
+}

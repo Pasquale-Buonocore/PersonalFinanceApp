@@ -3,10 +3,10 @@
             "SubAccount": {
                   "Cash": {
                         "EUR": {
-                              "TotalValue": 5335.9,
+                              "TotalValue": 5235.9,
                               "Symbol": "\u20ac",
                               "BasedCurrency": "EUR",
-                              "LiquidityContribution": 5335.9,
+                              "LiquidityContribution": 5235.9,
                               "InvestmentContribution": 0.0,
                               "MonthlyTransactions": {
                                     "ES#5456789476": {
@@ -51,10 +51,10 @@
                   "LastMonthSubAccount": {
                         "Cash": {
                               "EUR": {
-                                    "TotalValue": 3670.8999999999996,
+                                    "TotalValue": 3570.8999999999996,
                                     "Symbol": "\u20ac",
                                     "BasedCurrency": "EUR",
-                                    "LiquidityContribution": 3670.8999999999996,
+                                    "LiquidityContribution": 3570.8999999999996,
                                     "InvestmentContribution": 0.0
                               }
                         },

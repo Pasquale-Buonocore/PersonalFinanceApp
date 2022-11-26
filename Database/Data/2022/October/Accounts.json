@@ -3,10 +3,10 @@
             "SubAccount": {
                   "Cash": {
                         "EUR": {
-                              "TotalValue": 3670.8999999999996,
+                              "TotalValue": 3570.8999999999996,
                               "Symbol": "\u20ac",
                               "BasedCurrency": "EUR",
-                              "LiquidityContribution": 3670.8999999999996,
+                              "LiquidityContribution": 3570.8999999999996,
                               "InvestmentContribution": 0.0,
                               "MonthlyTransactions": {
                                     "ES#6769350873": {
@@ -120,14 +120,6 @@
                                           "Category": "Regali",
                                           "PayingAccount": "Unicredit - Cash - EUR",
                                           "Note": "SPESA ALESSIA"
-                                    },
-                                    "ES#5991692468": {
-                                          "Date": "15 OCTOBER 2022",
-                                          "Amount": 100.0,
-                                          "Currency": "EUR",
-                                          "Category": "Ripetizioni",
-                                          "PayingAccount": "Unicredit - Cash - EUR",
-                                          "Note": ""
                                     }
                               }
                         }
