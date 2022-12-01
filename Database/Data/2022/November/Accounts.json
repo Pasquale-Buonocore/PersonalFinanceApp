@@ -3,10 +3,10 @@
             "SubAccount": {
                   "Cash": {
                         "EUR": {
-                              "TotalValue": 5235.9,
+                              "TotalValue": 4681.26,
                               "Symbol": "\u20ac",
                               "BasedCurrency": "EUR",
-                              "LiquidityContribution": 5235.9,
+                              "LiquidityContribution": 4681.26,
                               "InvestmentContribution": 0.0,
                               "MonthlyTransactions": {
                                     "ES#5456789476": {
@@ -40,6 +40,94 @@
                                           "Category": "Bollette",
                                           "PayingAccount": "Unicredit - Cash - EUR",
                                           "Note": "REGISTRO CONTRATTO CASA AVELLINO"
+                                    },
+                                    "SS#9834940481": {
+                                          "Date": "02 NOVEMBER 2022",
+                                          "Amount": 20.9,
+                                          "Currency": "EUR",
+                                          "Category": "Regali",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "REGALO COMPLEANNO SERENA"
+                                    },
+                                    "SS#6233745493": {
+                                          "Date": "04 NOVEMBER 2022",
+                                          "Amount": 2.41,
+                                          "Currency": "EUR",
+                                          "Category": "Spesa alimentare",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "PANINO PRANZO"
+                                    },
+                                    "SS#4230847717": {
+                                          "Date": "07 NOVEMBER 2022",
+                                          "Amount": 45.0,
+                                          "Currency": "EUR",
+                                          "Category": "Uscite fuori",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "CENA GEMELLI"
+                                    },
+                                    "SS#4730762754": {
+                                          "Date": "07 NOVEMBER 2022",
+                                          "Amount": 2.09,
+                                          "Currency": "EUR",
+                                          "Category": "Spesa alimentare",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "PANINO PRANZO"
+                                    },
+                                    "SS#3071460823": {
+                                          "Date": "07 NOVEMBER 2022",
+                                          "Amount": 12.5,
+                                          "Currency": "EUR",
+                                          "Category": "Uscite fuori",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "PARTITA DI PADEL"
+                                    },
+                                    "SS#8800967896": {
+                                          "Date": "09 NOVEMBER 2022",
+                                          "Amount": 24.24,
+                                          "Currency": "EUR",
+                                          "Category": "Spesa alimentare",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "SPESA CIBO SETTIMANALE"
+                                    },
+                                    "SS#9066814369": {
+                                          "Date": "14 NOVEMBER 2022",
+                                          "Amount": 15.0,
+                                          "Currency": "EUR",
+                                          "Category": "Donazioni",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "DONAZIONE SAVE THE CHILDREN"
+                                    },
+                                    "SS#3480928178": {
+                                          "Date": "01 NOVEMBER 2022",
+                                          "Amount": 15.0,
+                                          "Currency": "EUR",
+                                          "Category": "Regali",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "REGALO GIOVANNI"
+                                    },
+                                    "SS#9150681978": {
+                                          "Date": "14 NOVEMBER 2022",
+                                          "Amount": 15.0,
+                                          "Currency": "EUR",
+                                          "Category": "Internal Transaction",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "REGALO GIOVANNI - DA UNICREDIT A CONTANTE"
+                                    },
+                                    "SS#7358469579": {
+                                          "Date": "15 NOVEMBER 2022",
+                                          "Amount": 82.5,
+                                          "Currency": "EUR",
+                                          "Category": "Autovettura",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "PAGAMENTO ASSICURAZIONE"
+                                    },
+                                    "SS#9923807562": {
+                                          "Date": "29 NOVEMBER 2022",
+                                          "Amount": 320.0,
+                                          "Currency": "EUR",
+                                          "Category": "Bollette",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "DOLCI SAL DE RISO"
                                     }
                               }
                         }
@@ -100,12 +188,21 @@
             "SubAccount": {
                   "Cash": {
                         "EUR": {
-                              "TotalValue": 70.0,
+                              "TotalValue": 85.0,
                               "Symbol": "\u20ac",
                               "BasedCurrency": "EUR",
-                              "LiquidityContribution": 70.0,
+                              "LiquidityContribution": 85.0,
                               "InvestmentContribution": 0.0,
-                              "MonthlyTransactions": {}
+                              "MonthlyTransactions": {
+                                    "ES#1144558643": {
+                                          "Date": "14 NOVEMBER 2022",
+                                          "Amount": 15.0,
+                                          "Currency": "EUR",
+                                          "Category": "Internal Transaction",
+                                          "PayingAccount": "Contante - Cash - EUR",
+                                          "Note": "REGALO GIOVANNI - DA UNICREDIT A CONTANTE"
+                                    }
+                              }
                         }
                   },
                   "Assets": {}
@@ -132,12 +229,117 @@
             "SubAccount": {
                   "Cash": {
                         "EUR": {
-                              "TotalValue": 0.08999999999998654,
+                              "TotalValue": 25.910000000000018,
                               "Symbol": "\u20ac",
                               "BasedCurrency": "EUR",
-                              "LiquidityContribution": 0.08999999999998654,
+                              "LiquidityContribution": 25.910000000000018,
                               "InvestmentContribution": 0.0,
-                              "MonthlyTransactions": {}
+                              "MonthlyTransactions": {
+                                    "ES#4330313454": {
+                                          "Date": "01 NOVEMBER 2022",
+                                          "Amount": 300.0,
+                                          "Currency": "EUR",
+                                          "Category": "Internal Transaction",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": "MOVIMENTAZIONE DA UNICREDIT VERSO REVOLUT"
+                                    },
+                                    "SS#7184271251": {
+                                          "Date": "08 NOVEMBER 2022",
+                                          "Amount": 2.34,
+                                          "Currency": "EUR",
+                                          "Category": "Spesa alimentare",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": "PANINO PRANZO"
+                                    },
+                                    "SS#8653984126": {
+                                          "Date": "08 NOVEMBER 2022",
+                                          "Amount": 1.8,
+                                          "Currency": "EUR",
+                                          "Category": "Spesa casa",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": "SPESE CINESI PER CASA"
+                                    },
+                                    "SS#4459178774": {
+                                          "Date": "11 NOVEMBER 2022",
+                                          "Amount": 7.14,
+                                          "Currency": "EUR",
+                                          "Category": "Spesa alimentare",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": "PANINI PRANZO TRE GIORNI"
+                                    },
+                                    "SS#1895175012": {
+                                          "Date": "14 NOVEMBER 2022",
+                                          "Amount": 9.0,
+                                          "Currency": "EUR",
+                                          "Category": "Spesa alimentare",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": "SPESA CIBO DA PAM"
+                                    },
+                                    "SS#7412644197": {
+                                          "Date": "17 NOVEMBER 2022",
+                                          "Amount": 4.43,
+                                          "Currency": "EUR",
+                                          "Category": "Spesa alimentare",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": "PANINI DUE GIORNI PRANZO"
+                                    },
+                                    "SS#0827313282": {
+                                          "Date": "01 NOVEMBER 2022",
+                                          "Amount": 12.99,
+                                          "Currency": "EUR",
+                                          "Category": "Bollette",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": "ABBONAMENTO NETFLIX"
+                                    },
+                                    "SS#0243339448": {
+                                          "Date": "20 NOVEMBER 2022",
+                                          "Amount": 99.7,
+                                          "Currency": "EUR",
+                                          "Category": "Spese personali",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": "ACQUISTO PANTALONI X4"
+                                    },
+                                    "SS#1319868354": {
+                                          "Date": "01 NOVEMBER 2022",
+                                          "Amount": 17.2,
+                                          "Currency": "EUR",
+                                          "Category": "Uscite fuori",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": "ACQUISTO PIZZETTE"
+                                    },
+                                    "SS#8354303036": {
+                                          "Date": "21 NOVEMBER 2022",
+                                          "Amount": 77.1,
+                                          "Currency": "EUR",
+                                          "Category": "Spesa casa",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": "ACQUISTO OGGETTISTICA CASA"
+                                    },
+                                    "SS#2845618202": {
+                                          "Date": "23 NOVEMBER 2022",
+                                          "Amount": 26.08,
+                                          "Currency": "EUR",
+                                          "Category": "Spesa alimentare",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": "SPESA ALIMENTARE DA PAM"
+                                    },
+                                    "SS#1776221416": {
+                                          "Date": "30 NOVEMBER 2022",
+                                          "Amount": 3.0,
+                                          "Currency": "EUR",
+                                          "Category": "Regali",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": "ACQUISTO CIOCCOLATO ALESSIA"
+                                    },
+                                    "SS#1689906025": {
+                                          "Date": "30 NOVEMBER 2022",
+                                          "Amount": 13.4,
+                                          "Currency": "EUR",
+                                          "Category": "Spesa alimentare",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": "SPESA ALIMENTARE DA PAM"
+                                    }
+                              }
                         }
                   },
                   "Assets": {}

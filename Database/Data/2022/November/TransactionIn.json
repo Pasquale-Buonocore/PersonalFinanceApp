@@ -30,9 +30,28 @@
                         }
                   },
                   "Internal Transaction": {
-                        "Transactions": {},
+                        "Transactions": {
+                              "1": {
+                                    "Date": "01 NOVEMBER 2022",
+                                    "Amount": 300.0,
+                                    "Currency": "EUR",
+                                    "Category": "Internal Transaction",
+                                    "PayingAccount": "Revolut - Cash - EUR",
+                                    "Note": "MOVIMENTAZIONE DA UNICREDIT VERSO REVOLUT",
+                                    "LinkingCode": "ES#4330313454"
+                              },
+                              "2": {
+                                    "Date": "14 NOVEMBER 2022",
+                                    "Amount": 15.0,
+                                    "Currency": "EUR",
+                                    "Category": "Internal Transaction",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "REGALO GIOVANNI - DA UNICREDIT A CONTANTE",
+                                    "LinkingCode": "ES#1144558643"
+                              }
+                        },
                         "Statistics": {
-                              "TotalValue": 0
+                              "TotalValue": 315.0
                         }
                   },
                   "Regali": {
@@ -44,13 +63,13 @@
             },
             "Statistics": {
                   "Currency": "\u20ac",
-                  "NumberOfTransaction": 1,
-                  "TotalValue": 2245.0,
+                  "NumberOfTransaction": 3,
+                  "TotalValue": 2560.0,
                   "ActualAssetAllocation": {
                         "Account Initialization": 0.0,
                         "Stipendio": 2245.0,
                         "Ripetizioni": 0.0,
-                        "Internal Transaction": 0.0,
+                        "Internal Transaction": 315.0,
                         "Regali": 0.0
                   },
                   "DesiredAssetAllocation": {
@@ -74,6 +93,24 @@
                                     "PayingAccount": "Unicredit - Cash - EUR",
                                     "Note": "STIPENDI ITALSYSTEM",
                                     "LinkingCode": "ES#5456789476"
+                              },
+                              "2": {
+                                    "Date": "01 NOVEMBER 2022",
+                                    "Amount": 300.0,
+                                    "Currency": "EUR",
+                                    "Category": "Internal Transaction",
+                                    "PayingAccount": "Revolut - Cash - EUR",
+                                    "Note": "MOVIMENTAZIONE DA UNICREDIT VERSO REVOLUT",
+                                    "LinkingCode": "ES#4330313454"
+                              },
+                              "3": {
+                                    "Date": "14 NOVEMBER 2022",
+                                    "Amount": 15.0,
+                                    "Currency": "EUR",
+                                    "Category": "Internal Transaction",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "REGALO GIOVANNI - DA UNICREDIT A CONTANTE",
+                                    "LinkingCode": "ES#1144558643"
                               }
                         }
                   }

@@ -3,12 +3,21 @@
             "SubAccount": {
                   "Cash": {
                         "EUR": {
-                              "TotalValue": 5235.9,
+                              "TotalValue": 4627.46,
                               "Symbol": "\u20ac",
                               "BasedCurrency": "EUR",
-                              "LiquidityContribution": 5235.9,
+                              "LiquidityContribution": 4627.46,
                               "InvestmentContribution": 0.0,
-                              "MonthlyTransactions": {}
+                              "MonthlyTransactions": {
+                                    "SS#8482613864": {
+                                          "Date": "01 DECEMBER 2022",
+                                          "Amount": 53.8,
+                                          "Currency": "EUR",
+                                          "Category": "Bollette",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "BOLLETTA LINKEM"
+                                    }
+                              }
                         }
                   },
                   "Assets": {}
@@ -18,10 +27,10 @@
                   "LastMonthSubAccount": {
                         "Cash": {
                               "EUR": {
-                                    "TotalValue": 5235.9,
+                                    "TotalValue": 4681.26,
                                     "Symbol": "\u20ac",
                                     "BasedCurrency": "EUR",
-                                    "LiquidityContribution": 5235.9,
+                                    "LiquidityContribution": 4681.26,
                                     "InvestmentContribution": 0.0
                               }
                         },
@@ -67,10 +76,10 @@
             "SubAccount": {
                   "Cash": {
                         "EUR": {
-                              "TotalValue": 70.0,
+                              "TotalValue": 85.0,
                               "Symbol": "\u20ac",
                               "BasedCurrency": "EUR",
-                              "LiquidityContribution": 70.0,
+                              "LiquidityContribution": 85.0,
                               "InvestmentContribution": 0.0,
                               "MonthlyTransactions": {}
                         }
@@ -82,10 +91,10 @@
                   "LastMonthSubAccount": {
                         "Cash": {
                               "EUR": {
-                                    "TotalValue": 70.0,
+                                    "TotalValue": 85.0,
                                     "Symbol": "\u20ac",
                                     "BasedCurrency": "EUR",
-                                    "LiquidityContribution": 70.0,
+                                    "LiquidityContribution": 85.0,
                                     "InvestmentContribution": 0.0
                               }
                         },
@@ -99,12 +108,21 @@
             "SubAccount": {
                   "Cash": {
                         "EUR": {
-                              "TotalValue": 0.08999999999998654,
+                              "TotalValue": 20.01000000000002,
                               "Symbol": "\u20ac",
                               "BasedCurrency": "EUR",
-                              "LiquidityContribution": 0.08999999999998654,
+                              "LiquidityContribution": 20.01000000000002,
                               "InvestmentContribution": 0.0,
-                              "MonthlyTransactions": {}
+                              "MonthlyTransactions": {
+                                    "SS#1373346352": {
+                                          "Date": "01 DECEMBER 2022",
+                                          "Amount": 5.9,
+                                          "Currency": "EUR",
+                                          "Category": "Spesa alimentare",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": "KFC PRANZO"
+                                    }
+                              }
                         }
                   },
                   "Assets": {}
@@ -114,10 +132,10 @@
                   "LastMonthSubAccount": {
                         "Cash": {
                               "EUR": {
-                                    "TotalValue": 0.08999999999998654,
+                                    "TotalValue": 25.910000000000018,
                                     "Symbol": "\u20ac",
                                     "BasedCurrency": "EUR",
-                                    "LiquidityContribution": 0.08999999999998654,
+                                    "LiquidityContribution": 25.910000000000018,
                                     "InvestmentContribution": 0.0
                               }
                         },

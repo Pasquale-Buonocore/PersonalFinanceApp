@@ -2,9 +2,19 @@
       "OUT": {
             "Assets": {
                   "Bollette": {
-                        "Transactions": {},
+                        "Transactions": {
+                              "1": {
+                                    "Date": "01 DECEMBER 2022",
+                                    "Amount": 53.8,
+                                    "Currency": "EUR",
+                                    "Category": "Bollette",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "BOLLETTA LINKEM",
+                                    "LinkingCode": "SS#8482613864"
+                              }
+                        },
                         "Statistics": {
-                              "TotalValue": 0
+                              "TotalValue": 53.8
                         }
                   },
                   "Uscite fuori": {
@@ -26,9 +36,19 @@
                         }
                   },
                   "Spesa alimentare": {
-                        "Transactions": {},
+                        "Transactions": {
+                              "1": {
+                                    "Date": "01 DECEMBER 2022",
+                                    "Amount": 5.9,
+                                    "Currency": "EUR",
+                                    "Category": "Spesa alimentare",
+                                    "PayingAccount": "Revolut - Cash - EUR",
+                                    "Note": "KFC PRANZO",
+                                    "LinkingCode": "SS#1373346352"
+                              }
+                        },
                         "Statistics": {
-                              "TotalValue": 0
+                              "TotalValue": 5.9
                         }
                   },
                   "Spese personali": {
@@ -72,25 +92,32 @@
                         "Statistics": {
                               "TotalValue": 0
                         }
+                  },
+                  "Altro": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
                   }
             },
             "Statistics": {
                   "Currency": "\u20ac",
-                  "NumberOfTransaction": 0,
-                  "TotalValue": 0.0,
+                  "NumberOfTransaction": 2,
+                  "TotalValue": 59.699999999999996,
                   "ActualAssetAllocation": {
-                        "Bollette": 0.0,
+                        "Bollette": 53.8,
                         "Uscite fuori": 0.0,
                         "Affitto": 0.0,
                         "Carburante": 0.0,
-                        "Spesa alimentare": 0.0,
+                        "Spesa alimentare": 5.9,
                         "Spese personali": 0.0,
                         "Spesa casa": 0.0,
                         "Internal Transaction": 0.0,
                         "Donazioni": 0.0,
                         "Regali": 0.0,
                         "Autovettura": 0.0,
-                        "Vacanza": 0.0
+                        "Vacanza": 0.0,
+                        "Altro": 0.0
                   },
                   "DesiredAssetAllocation": {
                         "Bollette": 150,
@@ -104,14 +131,34 @@
                         "Donazioni": 15,
                         "Regali": 50,
                         "Autovettura": 83,
-                        "Vacanza": 0
+                        "Vacanza": 0,
+                        "Altro": 0
                   }
             }
       },
       "OUT_LIST": {
             "Assets": {
                   "Transactions": {
-                        "Transactions": {}
+                        "Transactions": {
+                              "1": {
+                                    "Date": "01 DECEMBER 2022",
+                                    "Amount": 53.8,
+                                    "Currency": "EUR",
+                                    "Category": "Bollette",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "BOLLETTA LINKEM",
+                                    "LinkingCode": "SS#8482613864"
+                              },
+                              "2": {
+                                    "Date": "01 DECEMBER 2022",
+                                    "Amount": 5.9,
+                                    "Currency": "EUR",
+                                    "Category": "Spesa alimentare",
+                                    "PayingAccount": "Revolut - Cash - EUR",
+                                    "Note": "KFC PRANZO",
+                                    "LinkingCode": "SS#1373346352"
+                              }
+                        }
                   }
             },
             "Statistics": {
