@@ -3,10 +3,10 @@
             "SubAccount": {
                   "Cash": {
                         "EUR": {
-                              "TotalValue": 4627.46,
+                              "TotalValue": 6139.2300000000005,
                               "Symbol": "\u20ac",
                               "BasedCurrency": "EUR",
-                              "LiquidityContribution": 4627.46,
+                              "LiquidityContribution": 6139.2300000000005,
                               "InvestmentContribution": 0.0,
                               "MonthlyTransactions": {
                                     "SS#8482613864": {
@@ -16,6 +16,46 @@
                                           "Category": "Bollette",
                                           "PayingAccount": "Unicredit - Cash - EUR",
                                           "Note": "BOLLETTA LINKEM"
+                                    },
+                                    "ES#0387164581": {
+                                          "Date": "02 DECEMBER 2022",
+                                          "Amount": 2061.0,
+                                          "Currency": "EUR",
+                                          "Category": "Stipendio",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "STIPENDIO ITALSYSTEM"
+                                    },
+                                    "SS#9905618031": {
+                                          "Date": "02 DECEMBER 2022",
+                                          "Amount": 90.0,
+                                          "Currency": "EUR",
+                                          "Category": "Spese personali",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "BIGLIETTO VASCO"
+                                    },
+                                    "SS#9148415647": {
+                                          "Date": "02 DECEMBER 2022",
+                                          "Amount": 90.0,
+                                          "Currency": "EUR",
+                                          "Category": "Internal Transaction",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "BIGLIETTI VASCO - DA UNICREDIT A CONTANTE"
+                                    },
+                                    "SS#8484661727": {
+                                          "Date": "02 DECEMBER 2022",
+                                          "Amount": 54.0,
+                                          "Currency": "EUR",
+                                          "Category": "Bollette",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "BOLLETTA LINKEM"
+                                    },
+                                    "SS#6238615149": {
+                                          "Date": "02 DECEMBER 2022",
+                                          "Amount": 15.23,
+                                          "Currency": "EUR",
+                                          "Category": "Regali",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "LIBRO AMORE"
                                     }
                               }
                         }
@@ -27,10 +67,10 @@
                   "LastMonthSubAccount": {
                         "Cash": {
                               "EUR": {
-                                    "TotalValue": 4681.26,
+                                    "TotalValue": 4381.26,
                                     "Symbol": "\u20ac",
                                     "BasedCurrency": "EUR",
-                                    "LiquidityContribution": 4681.26,
+                                    "LiquidityContribution": 4381.26,
                                     "InvestmentContribution": 0.0
                               }
                         },
@@ -76,12 +116,29 @@
             "SubAccount": {
                   "Cash": {
                         "EUR": {
-                              "TotalValue": 85.0,
+                              "TotalValue": 109.0,
                               "Symbol": "\u20ac",
                               "BasedCurrency": "EUR",
-                              "LiquidityContribution": 85.0,
+                              "LiquidityContribution": 109.0,
                               "InvestmentContribution": 0.0,
-                              "MonthlyTransactions": {}
+                              "MonthlyTransactions": {
+                                    "ES#1685824501": {
+                                          "Date": "02 DECEMBER 2022",
+                                          "Amount": 90.0,
+                                          "Currency": "EUR",
+                                          "Category": "Internal Transaction",
+                                          "PayingAccount": "Contante - Cash - EUR",
+                                          "Note": "BIGLIETTI VASCO - DA UNICREDIT A CONTANTE"
+                                    },
+                                    "SS#5498789600": {
+                                          "Date": "02 DECEMBER 2022",
+                                          "Amount": 6.0,
+                                          "Currency": "EUR",
+                                          "Category": "Spesa alimentare",
+                                          "PayingAccount": "Contante - Cash - EUR",
+                                          "Note": "PRANZO FUORI"
+                                    }
+                              }
                         }
                   },
                   "Assets": {}
@@ -91,10 +148,10 @@
                   "LastMonthSubAccount": {
                         "Cash": {
                               "EUR": {
-                                    "TotalValue": 85.0,
+                                    "TotalValue": 25.0,
                                     "Symbol": "\u20ac",
                                     "BasedCurrency": "EUR",
-                                    "LiquidityContribution": 85.0,
+                                    "LiquidityContribution": 25.0,
                                     "InvestmentContribution": 0.0
                               }
                         },

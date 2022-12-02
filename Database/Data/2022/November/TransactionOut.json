@@ -72,10 +72,37 @@
                                     "PayingAccount": "Revolut - Cash - EUR",
                                     "Note": "ACQUISTO PIZZETTE",
                                     "LinkingCode": "SS#1319868354"
+                              },
+                              "4": {
+                                    "Date": "05 NOVEMBER 2022",
+                                    "Amount": 35.0,
+                                    "Currency": "EUR",
+                                    "Category": "Uscite fuori",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "GUSTO ARTIGIANALE",
+                                    "LinkingCode": "SS#5962419713"
+                              },
+                              "5": {
+                                    "Date": "14 NOVEMBER 2022",
+                                    "Amount": 20.0,
+                                    "Currency": "EUR",
+                                    "Category": "Uscite fuori",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "PANINI BELL E BUON",
+                                    "LinkingCode": "SS#0668981486"
+                              },
+                              "6": {
+                                    "Date": "24 NOVEMBER 2022",
+                                    "Amount": 5.0,
+                                    "Currency": "EUR",
+                                    "Category": "Uscite fuori",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "PIZZA",
+                                    "LinkingCode": "SS#8945948227"
                               }
                         },
                         "Statistics": {
-                              "TotalValue": 74.7
+                              "TotalValue": 134.7
                         }
                   },
                   "Affitto": {
@@ -239,10 +266,19 @@
                                     "PayingAccount": "Unicredit - Cash - EUR",
                                     "Note": "REGALO GIOVANNI - DA UNICREDIT A CONTANTE",
                                     "LinkingCode": "SS#9150681978"
+                              },
+                              "2": {
+                                    "Date": "03 NOVEMBER 2022",
+                                    "Amount": 300.0,
+                                    "Currency": "EUR",
+                                    "Category": "Internal Transaction",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "DA UNICREDIT A REVOLUT",
+                                    "LinkingCode": "SS#4351725033"
                               }
                         },
                         "Statistics": {
-                              "TotalValue": 15.0
+                              "TotalValue": 315.0
                         }
                   },
                   "Donazioni": {
@@ -326,17 +362,17 @@
             },
             "Statistics": {
                   "Currency": "\u20ac",
-                  "NumberOfTransaction": 26,
-                  "TotalValue": 1408.8200000000004,
+                  "NumberOfTransaction": 30,
+                  "TotalValue": 1768.8200000000004,
                   "ActualAssetAllocation": {
                         "Bollette": 562.99,
-                        "Uscite fuori": 74.7,
+                        "Uscite fuori": 134.7,
                         "Affitto": 350.0,
                         "Carburante": 0.0,
                         "Spesa alimentare": 91.13,
                         "Spese personali": 99.7,
                         "Spesa casa": 78.89999999999999,
-                        "Internal Transaction": 15.0,
+                        "Internal Transaction": 315.0,
                         "Donazioni": 15.0,
                         "Regali": 38.9,
                         "Autovettura": 82.5,
@@ -597,6 +633,42 @@
                                     "PayingAccount": "Revolut - Cash - EUR",
                                     "Note": "SPESA ALIMENTARE DA PAM",
                                     "LinkingCode": "SS#1689906025"
+                              },
+                              "27": {
+                                    "Date": "05 NOVEMBER 2022",
+                                    "Amount": 35.0,
+                                    "Currency": "EUR",
+                                    "Category": "Uscite fuori",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "GUSTO ARTIGIANALE",
+                                    "LinkingCode": "SS#5962419713"
+                              },
+                              "28": {
+                                    "Date": "14 NOVEMBER 2022",
+                                    "Amount": 20.0,
+                                    "Currency": "EUR",
+                                    "Category": "Uscite fuori",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "PANINI BELL E BUON",
+                                    "LinkingCode": "SS#0668981486"
+                              },
+                              "29": {
+                                    "Date": "24 NOVEMBER 2022",
+                                    "Amount": 5.0,
+                                    "Currency": "EUR",
+                                    "Category": "Uscite fuori",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "PIZZA",
+                                    "LinkingCode": "SS#8945948227"
+                              },
+                              "30": {
+                                    "Date": "03 NOVEMBER 2022",
+                                    "Amount": 300.0,
+                                    "Currency": "EUR",
+                                    "Category": "Internal Transaction",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "DA UNICREDIT A REVOLUT",
+                                    "LinkingCode": "SS#4351725033"
                               }
                         }
                   }

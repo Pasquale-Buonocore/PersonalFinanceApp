@@ -3,10 +3,10 @@
             "SubAccount": {
                   "Cash": {
                         "EUR": {
-                              "TotalValue": 4681.26,
+                              "TotalValue": 4381.26,
                               "Symbol": "\u20ac",
                               "BasedCurrency": "EUR",
-                              "LiquidityContribution": 4681.26,
+                              "LiquidityContribution": 4381.26,
                               "InvestmentContribution": 0.0,
                               "MonthlyTransactions": {
                                     "ES#5456789476": {
@@ -128,6 +128,14 @@
                                           "Category": "Bollette",
                                           "PayingAccount": "Unicredit - Cash - EUR",
                                           "Note": "DOLCI SAL DE RISO"
+                                    },
+                                    "SS#4351725033": {
+                                          "Date": "03 NOVEMBER 2022",
+                                          "Amount": 300.0,
+                                          "Currency": "EUR",
+                                          "Category": "Internal Transaction",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "DA UNICREDIT A REVOLUT"
                                     }
                               }
                         }
@@ -188,10 +196,10 @@
             "SubAccount": {
                   "Cash": {
                         "EUR": {
-                              "TotalValue": 85.0,
+                              "TotalValue": 25.0,
                               "Symbol": "\u20ac",
                               "BasedCurrency": "EUR",
-                              "LiquidityContribution": 85.0,
+                              "LiquidityContribution": 25.0,
                               "InvestmentContribution": 0.0,
                               "MonthlyTransactions": {
                                     "ES#1144558643": {
@@ -201,6 +209,30 @@
                                           "Category": "Internal Transaction",
                                           "PayingAccount": "Contante - Cash - EUR",
                                           "Note": "REGALO GIOVANNI - DA UNICREDIT A CONTANTE"
+                                    },
+                                    "SS#5962419713": {
+                                          "Date": "05 NOVEMBER 2022",
+                                          "Amount": 35.0,
+                                          "Currency": "EUR",
+                                          "Category": "Uscite fuori",
+                                          "PayingAccount": "Contante - Cash - EUR",
+                                          "Note": "GUSTO ARTIGIANALE"
+                                    },
+                                    "SS#0668981486": {
+                                          "Date": "14 NOVEMBER 2022",
+                                          "Amount": 20.0,
+                                          "Currency": "EUR",
+                                          "Category": "Uscite fuori",
+                                          "PayingAccount": "Contante - Cash - EUR",
+                                          "Note": "PANINI BELL E BUON"
+                                    },
+                                    "SS#8945948227": {
+                                          "Date": "24 NOVEMBER 2022",
+                                          "Amount": 5.0,
+                                          "Currency": "EUR",
+                                          "Category": "Uscite fuori",
+                                          "PayingAccount": "Contante - Cash - EUR",
+                                          "Note": "PIZZA"
                                     }
                               }
                         }

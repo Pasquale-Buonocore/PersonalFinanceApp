@@ -11,10 +11,19 @@
                                     "PayingAccount": "Unicredit - Cash - EUR",
                                     "Note": "BOLLETTA LINKEM",
                                     "LinkingCode": "SS#8482613864"
+                              },
+                              "2": {
+                                    "Date": "02 DECEMBER 2022",
+                                    "Amount": 54.0,
+                                    "Currency": "EUR",
+                                    "Category": "Bollette",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "BOLLETTA LINKEM",
+                                    "LinkingCode": "SS#8484661727"
                               }
                         },
                         "Statistics": {
-                              "TotalValue": 53.8
+                              "TotalValue": 107.8
                         }
                   },
                   "Uscite fuori": {
@@ -45,16 +54,35 @@
                                     "PayingAccount": "Revolut - Cash - EUR",
                                     "Note": "KFC PRANZO",
                                     "LinkingCode": "SS#1373346352"
+                              },
+                              "2": {
+                                    "Date": "02 DECEMBER 2022",
+                                    "Amount": 6.0,
+                                    "Currency": "EUR",
+                                    "Category": "Spesa alimentare",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "PRANZO FUORI",
+                                    "LinkingCode": "SS#5498789600"
                               }
                         },
                         "Statistics": {
-                              "TotalValue": 5.9
+                              "TotalValue": 11.9
                         }
                   },
                   "Spese personali": {
-                        "Transactions": {},
+                        "Transactions": {
+                              "1": {
+                                    "Date": "02 DECEMBER 2022",
+                                    "Amount": 90.0,
+                                    "Currency": "EUR",
+                                    "Category": "Spese personali",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "BIGLIETTO VASCO",
+                                    "LinkingCode": "SS#9905618031"
+                              }
+                        },
                         "Statistics": {
-                              "TotalValue": 0
+                              "TotalValue": 90.0
                         }
                   },
                   "Spesa casa": {
@@ -64,9 +92,19 @@
                         }
                   },
                   "Internal Transaction": {
-                        "Transactions": {},
+                        "Transactions": {
+                              "1": {
+                                    "Date": "02 DECEMBER 2022",
+                                    "Amount": 90.0,
+                                    "Currency": "EUR",
+                                    "Category": "Internal Transaction",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "BIGLIETTI VASCO - DA UNICREDIT A CONTANTE",
+                                    "LinkingCode": "SS#9148415647"
+                              }
+                        },
                         "Statistics": {
-                              "TotalValue": 0
+                              "TotalValue": 90.0
                         }
                   },
                   "Donazioni": {
@@ -76,9 +114,19 @@
                         }
                   },
                   "Regali": {
-                        "Transactions": {},
+                        "Transactions": {
+                              "1": {
+                                    "Date": "02 DECEMBER 2022",
+                                    "Amount": 15.23,
+                                    "Currency": "EUR",
+                                    "Category": "Regali",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "LIBRO AMORE",
+                                    "LinkingCode": "SS#6238615149"
+                              }
+                        },
                         "Statistics": {
-                              "TotalValue": 0
+                              "TotalValue": 15.23
                         }
                   },
                   "Autovettura": {
@@ -102,19 +150,19 @@
             },
             "Statistics": {
                   "Currency": "\u20ac",
-                  "NumberOfTransaction": 2,
-                  "TotalValue": 59.699999999999996,
+                  "NumberOfTransaction": 7,
+                  "TotalValue": 314.93,
                   "ActualAssetAllocation": {
-                        "Bollette": 53.8,
+                        "Bollette": 107.8,
                         "Uscite fuori": 0.0,
                         "Affitto": 0.0,
                         "Carburante": 0.0,
-                        "Spesa alimentare": 5.9,
-                        "Spese personali": 0.0,
+                        "Spesa alimentare": 11.9,
+                        "Spese personali": 90.0,
                         "Spesa casa": 0.0,
-                        "Internal Transaction": 0.0,
+                        "Internal Transaction": 90.0,
                         "Donazioni": 0.0,
-                        "Regali": 0.0,
+                        "Regali": 15.23,
                         "Autovettura": 0.0,
                         "Vacanza": 0.0,
                         "Altro": 0.0
@@ -157,6 +205,51 @@
                                     "PayingAccount": "Revolut - Cash - EUR",
                                     "Note": "KFC PRANZO",
                                     "LinkingCode": "SS#1373346352"
+                              },
+                              "3": {
+                                    "Date": "02 DECEMBER 2022",
+                                    "Amount": 90.0,
+                                    "Currency": "EUR",
+                                    "Category": "Spese personali",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "BIGLIETTO VASCO",
+                                    "LinkingCode": "SS#9905618031"
+                              },
+                              "4": {
+                                    "Date": "02 DECEMBER 2022",
+                                    "Amount": 90.0,
+                                    "Currency": "EUR",
+                                    "Category": "Internal Transaction",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "BIGLIETTI VASCO - DA UNICREDIT A CONTANTE",
+                                    "LinkingCode": "SS#9148415647"
+                              },
+                              "5": {
+                                    "Date": "02 DECEMBER 2022",
+                                    "Amount": 54.0,
+                                    "Currency": "EUR",
+                                    "Category": "Bollette",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "BOLLETTA LINKEM",
+                                    "LinkingCode": "SS#8484661727"
+                              },
+                              "6": {
+                                    "Date": "02 DECEMBER 2022",
+                                    "Amount": 6.0,
+                                    "Currency": "EUR",
+                                    "Category": "Spesa alimentare",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "PRANZO FUORI",
+                                    "LinkingCode": "SS#5498789600"
+                              },
+                              "7": {
+                                    "Date": "02 DECEMBER 2022",
+                                    "Amount": 15.23,
+                                    "Currency": "EUR",
+                                    "Category": "Regali",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "LIBRO AMORE",
+                                    "LinkingCode": "SS#6238615149"
                               }
                         }
                   }
