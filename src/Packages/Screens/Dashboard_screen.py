@@ -245,7 +245,7 @@ class DashboardScreen(Screen):
             InfoDict.update({'Category' : json_file[account]['Statistics']['Category']})
             InfoDict.update({'LastMonthValue' : json_file[account]['Statistics']['LastMonthValue']})
             InfoDict.update({'ActualMonthValue' : json_file[account]['Statistics']['ActualMonthValue']})
-            InfoDict.update({'ValueDifference' : float(InfoDict['ActualMonthValue']) - float(InfoDict['LastMonthValue'])})
+            InfoDict.update({'ValueDifference' : round(float(InfoDict['ActualMonthValue']) - float(InfoDict['LastMonthValue']),2)})
             InfoDict.update({'RowHeight': "40dp"})
 
             # Append to the account list
@@ -279,7 +279,7 @@ class DashboardScreen(Screen):
 
         for transactionIdx in self.TransactionIn.ReadJson()['IN_LIST']['Assets']['Transactions']['Transactions']:
             if self.TransactionIn.ReadJson()['IN_LIST']['Assets']['Transactions']['Transactions'][transactionIdx]['Category'] not in ['Account Initialization', 'Internal Transaction']:
-                Total_earned += float(self.TransactionIn.ReadJson()['IN_LIST']['Assets']['Transactions']['Transactions'][transactionIdx]['Amount'])
+                Total_earned += round(float(self.TransactionIn.ReadJson()['IN_LIST']['Assets']['Transactions']['Transactions'][transactionIdx]['Amount']),2)
 
         self.ids.IncomeBoxLayout_label.text = str(Total_earned) + ' ' + MDApp.get_running_app().UserSelectedCurrency['Symbol']
 
@@ -290,6 +290,6 @@ class DashboardScreen(Screen):
 
         for transactionIdx in self.TransactionOut.ReadJson()['OUT_LIST']['Assets']['Transactions']['Transactions']:
             if self.TransactionOut.ReadJson()['OUT_LIST']['Assets']['Transactions']['Transactions'][transactionIdx]['Category'] not in ['Account Initialization', 'Internal Transaction']:
-                Total_spent += float(self.TransactionOut.ReadJson()['OUT_LIST']['Assets']['Transactions']['Transactions'][transactionIdx]['Amount'])
+                Total_spent += round(float(self.TransactionOut.ReadJson()['OUT_LIST']['Assets']['Transactions']['Transactions'][transactionIdx]['Amount']),2)
 
         self.ids.OutcomeBoxLayout_label.text = str(Total_spent) + ' ' + MDApp.get_running_app().UserSelectedCurrency['Symbol']

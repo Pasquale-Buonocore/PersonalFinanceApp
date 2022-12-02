@@ -35,8 +35,16 @@ class TransactionScreen(Screen):
         self.TransactionOut.UpdateTransactionPortfolio("OUT")
 
         # Update graph for output and inpuy transaction
-        self.color_list_IN = self.UpdateGraphs({"IN" : self.TransactionIn.ReadJson()["IN"]}, self.TransactionInImagePath)
-        self.color_list_OUT = self.UpdateGraphs({ "OUT" : self.TransactionOut.ReadJson()["OUT"]}, self.TransactionOutImagePath)
+        TransactionInList = self.TransactionIn.ReadJson()["IN"]
+        if 'Account Initialization' in TransactionInList: TransactionInList['Assets'].pop('Account Initialization')
+        if 'Internal Transaction' in TransactionInList: TransactionInList['Assets'].pop('Internal Transaction')
+
+        TransactionOutList = self.TransactionOut.ReadJson()["OUT"]
+        if 'Account Initialization' in TransactionOutList: TransactionOutList['Assets'].pop('Account Initialization')
+        if 'Internal Transaction' in TransactionOutList: TransactionOutList['Assets'].pop('Internal Transaction')
+
+        self.color_list_IN = self.UpdateGraphs({"IN" : TransactionInList}, self.TransactionInImagePath)
+        self.color_list_OUT = self.UpdateGraphs({ "OUT" : TransactionOutList}, self.TransactionOutImagePath)
 
         # Assign the correct image of graphs
         self.ids.GraphTransactionIn.source = self.Image_path_manager.image_basepath + self.Image_path_manager.TransactionIn_imagepath + '.png'
@@ -47,7 +55,7 @@ class TransactionScreen(Screen):
         self.ids.GraphTransactionIn.reload()
 
         # Update tables
-        # self.UpdateAssetAllocationTable(color_list = [self.color_list_IN, self.color_list_OUT])
+        # self.UpdateAssetAllocationTable(color_list = [self.color_list_IN[0], self.color_list_OUT[0]])
 
     ####################
     # CLASS MANAGEMENT #
@@ -85,12 +93,12 @@ class TransactionScreen(Screen):
     # The function updates the allocation table to compare the two allocation for both Transaction In and Transaction Out
     def UpdateAssetAllocationTable(self, color_list):
         # AssetAllocationTable is the box whose children are the row of the table
-        Json_File = self.DBManager.ReadJson()
 
         ColorToAppend = {'IN': color_list[0], 'OUT' : color_list[1]}
         TableToAppend = {'IN': 'TransactionInTable', 'OUT' : 'TransactionOutTable'}
+        DatabaseToAppend = {'IN': self.TransactionIn.ReadJson(), 'OUT' : self.TransactionOut.ReadJson()}
 
-        for portfolio in Json_File.keys():
+        for portfolio in ['IN', 'OUT']:
             # Clear widget of BoxLayout
             self.ids[TableToAppend[portfolio]].clear_widgets()
 
@@ -98,7 +106,7 @@ class TransactionScreen(Screen):
             ColorIndex = list(ColorToAppend[portfolio].keys())
             ColorIndex.reverse()
 
-            for asset in Json_File[portfolio]['Assets'].keys():
+            for asset in DatabaseToAppend[portfolio][portfolio]['Assets'].keys():
                 # 1. AssetName, 2. DesiredAllocation, 3. ActualAllocation (Green if bigger, Red if lesser)
 
                 Box = BoxLayout(orientation = 'horizontal', size_hint = [1, None], height = "20dp")
@@ -114,14 +122,14 @@ class TransactionScreen(Screen):
                 AssetLabel.halign = 'center'
 
                 # Asset desired allocation Label
-                DesiredAllocationLabel = Label(size_hint = [0.3, None], text = str(Json_File[portfolio]['Statistics']['DesiredAssetAllocation'][asset]) + '€')
+                DesiredAllocationLabel = Label(size_hint = [0.3, None], text = str(DatabaseToAppend[portfolio][portfolio]['Statistics']['DesiredAssetAllocation'][asset]) + '€')
                 DesiredAllocationLabel.text_size = [DesiredAllocationLabel.width, None]
                 DesiredAllocationLabel.size = DesiredAllocationLabel.texture_size 
                 DesiredAllocationLabel.height = "20dp"
                 DesiredAllocationLabel.halign = 'center'
 
                 # Asset Actual allocation Label
-                ActualAllocationLabel = Label(size_hint = [0.3, None], text = str(Json_File[portfolio]['Statistics']['ActualAssetAllocation'][asset]) + "€")
+                ActualAllocationLabel = Label(size_hint = [0.3, None], text = str(DatabaseToAppend[portfolio][portfolio]['Statistics']['ActualAssetAllocation'][asset]) + "€")
                 ActualAllocationLabel.text_size = [ActualAllocationLabel.width, None]
                 ActualAllocationLabel.size = ActualAllocationLabel.texture_size 
                 ActualAllocationLabel.height = "20dp"

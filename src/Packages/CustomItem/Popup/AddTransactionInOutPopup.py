@@ -64,8 +64,10 @@ class AddTransactionInOutPopup(ModalView):
         self.Amount = '0.0'
         self.PortfolioName = PortfolioName if PortfolioName in ['IN', 'OUT'] else 'IN'
 
-        self.AvailableCategory = list(self.DBManager.ReadJson()[self.PortfolioName]['Assets'].keys()) + ['Internal Transaction']
-        if self.PortfolioName == 'IN': self.AvailableCategory += ['Account Initialization']
+        self.AvailableCategory = list(self.DBManager.ReadJson()[self.PortfolioName]['Assets'].keys())
+        if 'Internal Transaction' not in self.DBManager.ReadJson()[self.PortfolioName]['Assets']: self.AvailableCategory +=  ['Internal Transaction']
+
+        if self.PortfolioName == 'IN' and 'Account Initialization' not in self.AvailableCategory: self.AvailableCategory += ['Account Initialization']
 
         self.Linking_code_first_char = 'E' if self.PortfolioName == 'IN' else 'S'
 

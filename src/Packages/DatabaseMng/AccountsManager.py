@@ -225,6 +225,37 @@ class AccountsManager_Class():
 
         return TransactionDict
 
+    def Update_Account_Statistics(self):
+        # Read json
+        json_object = self.ReadJson()
+
+        # Iterate over all account
+        for accounts in json_object:
+            # Iterates over all subaccounts
+            tmp_total_amount = 0.0
+            for subaccounts in json_object[accounts]['SubAccount']:
+                # Iterate over currencies
+                for currency in json_object[accounts]['SubAccount'][subaccounts]:
+                    # Improve such part, there will be a conversion base on the currency
+                    tmp_total_amount += round(float(json_object[accounts]['SubAccount'][subaccounts][currency]['TotalValue']),2)
+                
+            # Once iterate over all the currency in the subaccounts, save ActualMonthValue and LastMonthValue
+            json_object[accounts]['Statistics']['ActualMonthValue'] = tmp_total_amount
+            
+            tmp_total_amount = 0.0
+            for subaccount in json_object[accounts]['Statistics']['LastMonthSubAccount']:
+                for currency in json_object[accounts]['Statistics']['LastMonthSubAccount'][subaccount]:
+                        tmp_total_amount += round(float(json_object[accounts]['Statistics']['LastMonthSubAccount'][subaccount][currency]['TotalValue']),2)
+            
+            json_object[accounts]['Statistics']['LastMonthValue'] = tmp_total_amount
+
+            # Save new json file
+            self.SaveJsonFile(json_object)
+
+            # Read json
+            json_object = self.ReadJson()
+
+
     def Update_accountDB_accounts_total_value(self):
         ''' This function iterates over all the account in the accountDB and update'''
         # Read json
@@ -234,6 +265,8 @@ class AccountsManager_Class():
             for subaccount in json_object[account]['SubAccount']:
                 for currency in json_object[account]['SubAccount'][subaccount]:
                     self.Update_liquid_investing_balance(account, subaccount, currency)
+        
+        self.Update_Account_Statistics()
 
     def Update_liquid_investing_balance(self, Account, SubAccount, Currency) -> None:
         '''This function uses the transaction in the monthly transaction dictionary to update liquidity and investiment.
@@ -259,7 +292,7 @@ class AccountsManager_Class():
         Investment_Contribution_init = float(json_object[Account]['Statistics']['LastMonthSubAccount'][SubAccount][Currency]['InvestmentContribution']) if (Currency in json_object[Account]['Statistics']['LastMonthSubAccount'][SubAccount].keys()) else 0.0
         
         for transaction_key in json_object[Account]['SubAccount'][SubAccount][Currency]['MonthlyTransactions']:
-
+ 
             # The transaction key respects a certain format and needs to be understood!
             transaction = json_object[Account]['SubAccount'][SubAccount][Currency]['MonthlyTransactions'][transaction_key]
 

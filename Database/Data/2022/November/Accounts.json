@@ -156,8 +156,8 @@
                         },
                         "Assets": {}
                   },
-                  "LastMonthValue": 0,
-                  "ActualMonthValue": 0
+                  "LastMonthValue": 3570.9,
+                  "ActualMonthValue": 4381.26
             }
       },
       "De Giro": {
@@ -188,8 +188,8 @@
                         },
                         "Assets": {}
                   },
-                  "LastMonthValue": 0,
-                  "ActualMonthValue": 0
+                  "LastMonthValue": 632.0,
+                  "ActualMonthValue": 632.0
             }
       },
       "Contante": {
@@ -253,8 +253,8 @@
                         },
                         "Assets": {}
                   },
-                  "LastMonthValue": 0,
-                  "ActualMonthValue": 0
+                  "LastMonthValue": 70.0,
+                  "ActualMonthValue": 25.0
             }
       },
       "Revolut": {
@@ -390,8 +390,8 @@
                         },
                         "Assets": {}
                   },
-                  "LastMonthValue": 0,
-                  "ActualMonthValue": 0
+                  "LastMonthValue": 0.09,
+                  "ActualMonthValue": 25.91
             }
       }
 }
