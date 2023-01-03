@@ -3,10 +3,10 @@
             "SubAccount": {
                   "Cash": {
                         "EUR": {
-                              "TotalValue": 2939.2300000000005,
+                              "TotalValue": 3537.890000000001,
                               "Symbol": "\u20ac",
                               "BasedCurrency": "EUR",
-                              "LiquidityContribution": 2939.2300000000005,
+                              "LiquidityContribution": 3537.890000000001,
                               "InvestmentContribution": 0.0,
                               "MonthlyTransactions": {
                                     "SS#8482613864": {
@@ -40,14 +40,6 @@
                                           "Category": "Internal Transaction",
                                           "PayingAccount": "Unicredit - Cash - EUR",
                                           "Note": "BIGLIETTI VASCO - DA UNICREDIT A CONTANTE"
-                                    },
-                                    "SS#8484661727": {
-                                          "Date": "02 DECEMBER 2022",
-                                          "Amount": 54.0,
-                                          "Currency": "EUR",
-                                          "Category": "Bollette",
-                                          "PayingAccount": "Unicredit - Cash - EUR",
-                                          "Note": "BOLLETTA LINKEM"
                                     },
                                     "SS#6238615149": {
                                           "Date": "02 DECEMBER 2022",
@@ -88,6 +80,142 @@
                                           "Category": "Internal Transaction",
                                           "PayingAccount": "Unicredit - Cash - EUR",
                                           "Note": "MOVIMENTO UNICREDIT - FINDOMESTIC"
+                                    },
+                                    "SS#2072231341": {
+                                          "Date": "05 DECEMBER 2022",
+                                          "Amount": 8.5,
+                                          "Currency": "EUR",
+                                          "Category": "Medicine",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "FARMACIA DEL DAINO"
+                                    },
+                                    "SS#2220464604": {
+                                          "Date": "07 DECEMBER 2022",
+                                          "Amount": 350.0,
+                                          "Currency": "EUR",
+                                          "Category": "Affitto",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "PAGAMENTO AFFITTO MESE DICEMBRE"
+                                    },
+                                    "SS#8273582837": {
+                                          "Date": "07 DECEMBER 2022",
+                                          "Amount": 300.0,
+                                          "Currency": "EUR",
+                                          "Category": "Internal Transaction",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "MOVIMENTO VERSO REVOLUT"
+                                    },
+                                    "SS#6095844276": {
+                                          "Date": "09 DECEMBER 2022",
+                                          "Amount": 40.0,
+                                          "Currency": "EUR",
+                                          "Category": "Carburante",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "DIESEL"
+                                    },
+                                    "SS#0798424421": {
+                                          "Date": "09 DECEMBER 2022",
+                                          "Amount": 15.9,
+                                          "Currency": "EUR",
+                                          "Category": "Medicine",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "MEDICINE FARMACIA DEL DAINO"
+                                    },
+                                    "SS#9848113884": {
+                                          "Date": "12 DECEMBER 2022",
+                                          "Amount": 19.88,
+                                          "Currency": "EUR",
+                                          "Category": "Regali",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "REGALO BORSO COMPLEANNO CHIARA"
+                                    },
+                                    "SS#7626318300": {
+                                          "Date": "13 DECEMBER 2022",
+                                          "Amount": 31.11,
+                                          "Currency": "EUR",
+                                          "Category": "Regali",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "REGALO CHIARA - NATALE"
+                                    },
+                                    "SS#9788654023": {
+                                          "Date": "15 DECEMBER 2022",
+                                          "Amount": 82.5,
+                                          "Currency": "EUR",
+                                          "Category": "Autovettura",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "PAGAMENTO ASSICURAZIONE"
+                                    },
+                                    "SS#2924290613": {
+                                          "Date": "15 DECEMBER 2022",
+                                          "Amount": 15.0,
+                                          "Currency": "EUR",
+                                          "Category": "Donazioni",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "SAVE THE CHILDREN"
+                                    },
+                                    "ES#8611322926": {
+                                          "Date": "19 DECEMBER 2022",
+                                          "Amount": 1517.0,
+                                          "Currency": "EUR",
+                                          "Category": "Stipendio",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "TREDICESIMA"
+                                    },
+                                    "SS#7825706738": {
+                                          "Date": "20 DECEMBER 2023",
+                                          "Amount": 30.0,
+                                          "Currency": "EUR",
+                                          "Category": "Spese personali",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "RICARICA CELLULARE"
+                                    },
+                                    "SS#4337906375": {
+                                          "Date": "21 DECEMBER 2022",
+                                          "Amount": 11.7,
+                                          "Currency": "EUR",
+                                          "Category": "Regali",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "ETZY"
+                                    },
+                                    "SS#5890193955": {
+                                          "Date": "22 DECEMBER 2022",
+                                          "Amount": 22.99,
+                                          "Currency": "EUR",
+                                          "Category": "Regali",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "REGALO SERENA - AMAZON"
+                                    },
+                                    "SS#2312768754": {
+                                          "Date": "23 DECEMBER 2022",
+                                          "Amount": 7.77,
+                                          "Currency": "EUR",
+                                          "Category": "Spesa alimentare",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "SPESA"
+                                    },
+                                    "SS#1326831245": {
+                                          "Date": "27 DECEMBER 2022",
+                                          "Amount": 3.49,
+                                          "Currency": "EUR",
+                                          "Category": "Spesa alimentare",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "SPESA"
+                                    },
+                                    "SS#7720851509": {
+                                          "Date": "27 DECEMBER 2022",
+                                          "Amount": 0.0,
+                                          "Currency": "EUR",
+                                          "Category": "Regali",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "REGALO PER ME DA PARTE DI ALESSIA"
+                                    },
+                                    "SS#2386140328": {
+                                          "Date": "28 DECEMBER 2022",
+                                          "Amount": 33.5,
+                                          "Currency": "EUR",
+                                          "Category": "Spesa alimentare",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "SPESA SOLE 365"
                                     }
                               }
                         }
@@ -109,7 +237,7 @@
                         "Assets": {}
                   },
                   "LastMonthValue": 4381.26,
-                  "ActualMonthValue": 2939.23
+                  "ActualMonthValue": 3537.89
             }
       },
       "De Giro": {
@@ -325,10 +453,10 @@
             "SubAccount": {
                   "Cash": {
                         "EUR": {
-                              "TotalValue": 20.01000000000002,
+                              "TotalValue": 26.129999999999963,
                               "Symbol": "\u20ac",
                               "BasedCurrency": "EUR",
-                              "LiquidityContribution": 20.01000000000002,
+                              "LiquidityContribution": 26.129999999999963,
                               "InvestmentContribution": 0.0,
                               "MonthlyTransactions": {
                                     "SS#1373346352": {
@@ -338,6 +466,110 @@
                                           "Category": "Spesa alimentare",
                                           "PayingAccount": "Revolut - Cash - EUR",
                                           "Note": "KFC PRANZO"
+                                    },
+                                    "ES#9352439195": {
+                                          "Date": "07 DECEMBER 2022",
+                                          "Amount": 300.0,
+                                          "Currency": "EUR",
+                                          "Category": "Internal Transaction",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": "MOVIMENTO VERSO REVOLUT"
+                                    },
+                                    "SS#8766230513": {
+                                          "Date": "03 DECEMBER 2022",
+                                          "Amount": 6.0,
+                                          "Currency": "EUR",
+                                          "Category": "Spesa alimentare",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": "SPESA AL PAM"
+                                    },
+                                    "SS#9605682997": {
+                                          "Date": "06 DECEMBER 2022",
+                                          "Amount": 2.57,
+                                          "Currency": "EUR",
+                                          "Category": "Spesa alimentare",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": "PANINO"
+                                    },
+                                    "SS#4039396452": {
+                                          "Date": "15 DECEMBER 2022",
+                                          "Amount": 4.42,
+                                          "Currency": "EUR",
+                                          "Category": "Spesa alimentare",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": "PRANZO FUORI"
+                                    },
+                                    "SS#2550387284": {
+                                          "Date": "17 DECEMBER 2022",
+                                          "Amount": 11.0,
+                                          "Currency": "EUR",
+                                          "Category": "Regali",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": "ACQUISTO DOLCI PER PRANZO DA NONNA"
+                                    },
+                                    "SS#3540085508": {
+                                          "Date": "19 DECEMBER 2022",
+                                          "Amount": 12.99,
+                                          "Currency": "EUR",
+                                          "Category": "Spese personali",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": "PAGAMENTO ABBONAMENTO NETFLIX"
+                                    },
+                                    "SS#8367720291": {
+                                          "Date": "20 DECEMBER 2022",
+                                          "Amount": 7.3,
+                                          "Currency": "EUR",
+                                          "Category": "Regali",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": "PAGAMENTO CAFFE COLLEGHI"
+                                    },
+                                    "SS#8055035105": {
+                                          "Date": "22 DECEMBER 2022",
+                                          "Amount": 30.0,
+                                          "Currency": "EUR",
+                                          "Category": "Carburante",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": "CARBURANTE DIESEL"
+                                    },
+                                    "SS#3312154888": {
+                                          "Date": "22 DECEMBER 2022",
+                                          "Amount": 32.0,
+                                          "Currency": "EUR",
+                                          "Category": "Regali",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": "PANETTONE GENITORI DI ALESSIA"
+                                    },
+                                    "SS#5199785653": {
+                                          "Date": "23 DECEMBER 2022",
+                                          "Amount": 140.0,
+                                          "Currency": "EUR",
+                                          "Category": "Regali",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": "REGALO ALESSIA NATALE"
+                                    },
+                                    "SS#8542949768": {
+                                          "Date": "24 DECEMBER 2022",
+                                          "Amount": 15.0,
+                                          "Currency": "EUR",
+                                          "Category": "Regali",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": "REGALO SERENA"
+                                    },
+                                    "SS#8649639897": {
+                                          "Date": "27 DECEMBER 2022",
+                                          "Amount": 9.9,
+                                          "Currency": "EUR",
+                                          "Category": "Medicine",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": "TAMPONI"
+                                    },
+                                    "SS#0492668332": {
+                                          "Date": "27 DECEMBER 2022",
+                                          "Amount": 22.7,
+                                          "Currency": "EUR",
+                                          "Category": "Medicine",
+                                          "PayingAccount": "Revolut - Cash - EUR",
+                                          "Note": "MEDICINA E TAMPONE RAPIDO"
                                     }
                               }
                         }
@@ -359,7 +591,7 @@
                         "Assets": {}
                   },
                   "LastMonthValue": 25.91,
-                  "ActualMonthValue": 20.01
+                  "ActualMonthValue": 26.13
             }
       },
       "Findomestic": {

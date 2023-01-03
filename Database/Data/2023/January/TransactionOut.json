@@ -26,9 +26,19 @@
                         }
                   },
                   "Spesa alimentare": {
-                        "Transactions": {},
+                        "Transactions": {
+                              "1": {
+                                    "Date": "03 JANUARY 2023",
+                                    "Amount": 50.0,
+                                    "Currency": "EUR",
+                                    "Category": "Spesa alimentare",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "SPESA ALIMENTARE",
+                                    "LinkingCode": "SS#2690439203"
+                              }
+                        },
                         "Statistics": {
-                              "TotalValue": 0
+                              "TotalValue": 50.0
                         }
                   },
                   "Spese personali": {
@@ -72,25 +82,58 @@
                         "Statistics": {
                               "TotalValue": 0
                         }
+                  },
+                  "Altro": {
+                        "Transactions": {},
+                        "Statistics": {
+                              "TotalValue": 0
+                        }
+                  },
+                  "Medicine": {
+                        "Transactions": {
+                              "1": {
+                                    "Date": "02 JANUARY 2023",
+                                    "Amount": 17.0,
+                                    "Currency": "EUR",
+                                    "Category": "Medicine",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "TAMPONE E MEDICINA",
+                                    "LinkingCode": "SS#4869312229"
+                              },
+                              "2": {
+                                    "Date": "03 JANUARY 2023",
+                                    "Amount": 9.9,
+                                    "Currency": "EUR",
+                                    "Category": "Medicine",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "TAMPONI MOLECOLARI",
+                                    "LinkingCode": "SS#1265698807"
+                              }
+                        },
+                        "Statistics": {
+                              "TotalValue": 26.9
+                        }
                   }
             },
             "Statistics": {
                   "Currency": "\u20ac",
-                  "NumberOfTransaction": 0,
-                  "TotalValue": 0.0,
+                  "NumberOfTransaction": 3,
+                  "TotalValue": 76.9,
                   "ActualAssetAllocation": {
                         "Bollette": 0.0,
                         "Uscite fuori": 0.0,
                         "Affitto": 0.0,
                         "Carburante": 0.0,
-                        "Spesa alimentare": 0.0,
+                        "Spesa alimentare": 50.0,
                         "Spese personali": 0.0,
                         "Spesa casa": 0.0,
                         "Internal Transaction": 0.0,
                         "Donazioni": 0.0,
                         "Regali": 0.0,
                         "Autovettura": 0.0,
-                        "Vacanza": 0.0
+                        "Vacanza": 0.0,
+                        "Altro": 0.0,
+                        "Medicine": 26.9
                   },
                   "DesiredAssetAllocation": {
                         "Bollette": 150,
@@ -104,14 +147,44 @@
                         "Donazioni": 15,
                         "Regali": 50,
                         "Autovettura": 83,
-                        "Vacanza": 0
+                        "Vacanza": 0,
+                        "Altro": 0,
+                        "Medicine": 0
                   }
             }
       },
       "OUT_LIST": {
             "Assets": {
                   "Transactions": {
-                        "Transactions": {}
+                        "Transactions": {
+                              "1": {
+                                    "Date": "02 JANUARY 2023",
+                                    "Amount": 17.0,
+                                    "Currency": "EUR",
+                                    "Category": "Medicine",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "TAMPONE E MEDICINA",
+                                    "LinkingCode": "SS#4869312229"
+                              },
+                              "2": {
+                                    "Date": "03 JANUARY 2023",
+                                    "Amount": 9.9,
+                                    "Currency": "EUR",
+                                    "Category": "Medicine",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "TAMPONI MOLECOLARI",
+                                    "LinkingCode": "SS#1265698807"
+                              },
+                              "3": {
+                                    "Date": "03 JANUARY 2023",
+                                    "Amount": 50.0,
+                                    "Currency": "EUR",
+                                    "Category": "Spesa alimentare",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "SPESA ALIMENTARE",
+                                    "LinkingCode": "SS#2690439203"
+                              }
+                        }
                   }
             },
             "Statistics": {

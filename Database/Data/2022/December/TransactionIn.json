@@ -27,10 +27,19 @@
                                     "PayingAccount": "Unicredit - Cash - EUR",
                                     "Note": "STIPENDIO ITALSYSTEM",
                                     "LinkingCode": "ES#0387164581"
+                              },
+                              "2": {
+                                    "Date": "19 DECEMBER 2022",
+                                    "Amount": 1517.0,
+                                    "Currency": "EUR",
+                                    "Category": "Stipendio",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "TREDICESIMA",
+                                    "LinkingCode": "ES#8611322926"
                               }
                         },
                         "Statistics": {
-                              "TotalValue": 2061.0
+                              "TotalValue": 3578.0
                         }
                   },
                   "Ripetizioni": {
@@ -76,10 +85,19 @@
                                     "PayingAccount": "Findomestic - Cash - EURO",
                                     "Note": "MOVIMENTO UNICREDIT - FINDOMESTIC",
                                     "LinkingCode": "ES#7336492220"
+                              },
+                              "5": {
+                                    "Date": "07 DECEMBER 2022",
+                                    "Amount": 300.0,
+                                    "Currency": "EUR",
+                                    "Category": "Internal Transaction",
+                                    "PayingAccount": "Revolut - Cash - EUR",
+                                    "Note": "MOVIMENTO VERSO REVOLUT",
+                                    "LinkingCode": "ES#9352439195"
                               }
                         },
                         "Statistics": {
-                              "TotalValue": 3230.0
+                              "TotalValue": 3530.0
                         }
                   },
                   "Regali": {
@@ -110,13 +128,13 @@
             },
             "Statistics": {
                   "Currency": "\u20ac",
-                  "NumberOfTransaction": 8,
-                  "TotalValue": 12311.0,
+                  "NumberOfTransaction": 10,
+                  "TotalValue": 14128.0,
                   "ActualAssetAllocation": {
                         "Account Initialization": 6720.0,
-                        "Stipendio": 2061.0,
+                        "Stipendio": 3578.0,
                         "Ripetizioni": 0.0,
-                        "Internal Transaction": 3230.0,
+                        "Internal Transaction": 3530.0,
                         "Regali": 300.0
                   },
                   "DesiredAssetAllocation": {
@@ -203,6 +221,24 @@
                                     "PayingAccount": "Findomestic - Cash - EURO",
                                     "Note": "MOVIMENTO UNICREDIT - FINDOMESTIC",
                                     "LinkingCode": "ES#7336492220"
+                              },
+                              "9": {
+                                    "Date": "07 DECEMBER 2022",
+                                    "Amount": 300.0,
+                                    "Currency": "EUR",
+                                    "Category": "Internal Transaction",
+                                    "PayingAccount": "Revolut - Cash - EUR",
+                                    "Note": "MOVIMENTO VERSO REVOLUT",
+                                    "LinkingCode": "ES#9352439195"
+                              },
+                              "10": {
+                                    "Date": "19 DECEMBER 2022",
+                                    "Amount": 1517.0,
+                                    "Currency": "EUR",
+                                    "Category": "Stipendio",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "TREDICESIMA",
+                                    "LinkingCode": "ES#8611322926"
                               }
                         }
                   }

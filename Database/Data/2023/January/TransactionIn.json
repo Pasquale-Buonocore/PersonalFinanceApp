@@ -8,9 +8,19 @@
                         }
                   },
                   "Stipendio": {
-                        "Transactions": {},
+                        "Transactions": {
+                              "1": {
+                                    "Date": "02 JANUARY 2023",
+                                    "Amount": 1821.0,
+                                    "Currency": "EUR",
+                                    "Category": "Stipendio",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "STIPENDIO ITALSYSTEM",
+                                    "LinkingCode": "ES#3300350873"
+                              }
+                        },
                         "Statistics": {
-                              "TotalValue": 0
+                              "TotalValue": 1821.0
                         }
                   },
                   "Ripetizioni": {
@@ -34,11 +44,11 @@
             },
             "Statistics": {
                   "Currency": "\u20ac",
-                  "NumberOfTransaction": 0,
-                  "TotalValue": 0.0,
+                  "NumberOfTransaction": 1,
+                  "TotalValue": 1821.0,
                   "ActualAssetAllocation": {
                         "Account Initialization": 0.0,
-                        "Stipendio": 0.0,
+                        "Stipendio": 1821.0,
                         "Ripetizioni": 0.0,
                         "Internal Transaction": 0.0,
                         "Regali": 0.0
@@ -55,7 +65,17 @@
       "IN_LIST": {
             "Assets": {
                   "Transactions": {
-                        "Transactions": {}
+                        "Transactions": {
+                              "1": {
+                                    "Date": "02 JANUARY 2023",
+                                    "Amount": 1821.0,
+                                    "Currency": "EUR",
+                                    "Category": "Stipendio",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "STIPENDIO ITALSYSTEM",
+                                    "LinkingCode": "ES#3300350873"
+                              }
+                        }
                   }
             },
             "Statistics": {

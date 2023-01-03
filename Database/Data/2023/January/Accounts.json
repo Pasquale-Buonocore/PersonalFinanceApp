@@ -3,12 +3,37 @@
             "SubAccount": {
                   "Cash": {
                         "EUR": {
-                              "TotalValue": 5235.9,
+                              "TotalValue": 5298.990000000002,
                               "Symbol": "\u20ac",
                               "BasedCurrency": "EUR",
-                              "LiquidityContribution": 5235.9,
+                              "LiquidityContribution": 5298.990000000002,
                               "InvestmentContribution": 0.0,
-                              "MonthlyTransactions": {}
+                              "MonthlyTransactions": {
+                                    "ES#3300350873": {
+                                          "Date": "02 JANUARY 2023",
+                                          "Amount": 1821.0,
+                                          "Currency": "EUR",
+                                          "Category": "Stipendio",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "STIPENDIO ITALSYSTEM"
+                                    },
+                                    "SS#1265698807": {
+                                          "Date": "03 JANUARY 2023",
+                                          "Amount": 9.9,
+                                          "Currency": "EUR",
+                                          "Category": "Medicine",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "TAMPONI MOLECOLARI"
+                                    },
+                                    "SS#2690439203": {
+                                          "Date": "03 JANUARY 2023",
+                                          "Amount": 50.0,
+                                          "Currency": "EUR",
+                                          "Category": "Spesa alimentare",
+                                          "PayingAccount": "Unicredit - Cash - EUR",
+                                          "Note": "SPESA ALIMENTARE"
+                                    }
+                              }
                         }
                   },
                   "Assets": {}
@@ -18,17 +43,17 @@
                   "LastMonthSubAccount": {
                         "Cash": {
                               "EUR": {
-                                    "TotalValue": 5235.9,
+                                    "TotalValue": 3537.890000000001,
                                     "Symbol": "\u20ac",
                                     "BasedCurrency": "EUR",
-                                    "LiquidityContribution": 5235.9,
+                                    "LiquidityContribution": 3537.890000000001,
                                     "InvestmentContribution": 0.0
                               }
                         },
                         "Assets": {}
                   },
-                  "LastMonthValue": 0,
-                  "ActualMonthValue": 0
+                  "LastMonthValue": 3537.89,
+                  "ActualMonthValue": 5298.99
             }
       },
       "De Giro": {
@@ -59,20 +84,29 @@
                         },
                         "Assets": {}
                   },
-                  "LastMonthValue": 0,
-                  "ActualMonthValue": 0
+                  "LastMonthValue": 632.0,
+                  "ActualMonthValue": 632.0
             }
       },
       "Contante": {
             "SubAccount": {
                   "Cash": {
                         "EUR": {
-                              "TotalValue": 70.0,
+                              "TotalValue": 324.5,
                               "Symbol": "\u20ac",
                               "BasedCurrency": "EUR",
-                              "LiquidityContribution": 70.0,
+                              "LiquidityContribution": 324.5,
                               "InvestmentContribution": 0.0,
-                              "MonthlyTransactions": {}
+                              "MonthlyTransactions": {
+                                    "SS#4869312229": {
+                                          "Date": "02 JANUARY 2023",
+                                          "Amount": 17.0,
+                                          "Currency": "EUR",
+                                          "Category": "Medicine",
+                                          "PayingAccount": "Contante - Cash - EUR",
+                                          "Note": "TAMPONE E MEDICINA"
+                                    }
+                              }
                         }
                   },
                   "Assets": {}
@@ -82,27 +116,27 @@
                   "LastMonthSubAccount": {
                         "Cash": {
                               "EUR": {
-                                    "TotalValue": 70.0,
+                                    "TotalValue": 341.5,
                                     "Symbol": "\u20ac",
                                     "BasedCurrency": "EUR",
-                                    "LiquidityContribution": 70.0,
+                                    "LiquidityContribution": 341.5,
                                     "InvestmentContribution": 0.0
                               }
                         },
                         "Assets": {}
                   },
-                  "LastMonthValue": 0,
-                  "ActualMonthValue": 0
+                  "LastMonthValue": 341.5,
+                  "ActualMonthValue": 324.5
             }
       },
       "Revolut": {
             "SubAccount": {
                   "Cash": {
                         "EUR": {
-                              "TotalValue": 0.08999999999998654,
+                              "TotalValue": 26.129999999999963,
                               "Symbol": "\u20ac",
                               "BasedCurrency": "EUR",
-                              "LiquidityContribution": 0.08999999999998654,
+                              "LiquidityContribution": 26.129999999999963,
                               "InvestmentContribution": 0.0,
                               "MonthlyTransactions": {}
                         }
@@ -114,17 +148,49 @@
                   "LastMonthSubAccount": {
                         "Cash": {
                               "EUR": {
-                                    "TotalValue": 0.08999999999998654,
+                                    "TotalValue": 26.129999999999963,
                                     "Symbol": "\u20ac",
                                     "BasedCurrency": "EUR",
-                                    "LiquidityContribution": 0.08999999999998654,
+                                    "LiquidityContribution": 26.129999999999963,
                                     "InvestmentContribution": 0.0
                               }
                         },
                         "Assets": {}
                   },
-                  "LastMonthValue": 0,
-                  "ActualMonthValue": 0
+                  "LastMonthValue": 26.13,
+                  "ActualMonthValue": 26.13
+            }
+      },
+      "Findomestic": {
+            "SubAccount": {
+                  "Cash": {
+                        "EURO": {
+                              "TotalValue": 9720.0,
+                              "Symbol": "\u20ac",
+                              "BasedCurrency": "EURO",
+                              "LiquidityContribution": 9720.0,
+                              "InvestmentContribution": 0.0,
+                              "MonthlyTransactions": {}
+                        }
+                  },
+                  "Assets": {}
+            },
+            "Statistics": {
+                  "Category": "Deposit Account",
+                  "LastMonthSubAccount": {
+                        "Cash": {
+                              "EURO": {
+                                    "TotalValue": 9720.0,
+                                    "Symbol": "\u20ac",
+                                    "BasedCurrency": "EURO",
+                                    "LiquidityContribution": 9720.0,
+                                    "InvestmentContribution": 0.0
+                              }
+                        },
+                        "Assets": {}
+                  },
+                  "LastMonthValue": 9720.0,
+                  "ActualMonthValue": 9720.0
             }
       }
 }
