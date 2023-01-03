@@ -27,9 +27,46 @@
                         }
                   },
                   "Uscite fuori": {
-                        "Transactions": {},
+                        "Transactions": {
+                              "1": {
+                                    "Date": "05 DECEMBER 2022",
+                                    "Amount": 40.0,
+                                    "Currency": "EUR",
+                                    "Category": "Uscite fuori",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "CENA FUORI GIAPPONESE",
+                                    "LinkingCode": "SS#9266794584"
+                              },
+                              "2": {
+                                    "Date": "06 DECEMBER 2022",
+                                    "Amount": 18.0,
+                                    "Currency": "EUR",
+                                    "Category": "Uscite fuori",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "PIZZA D'ADDIO - PASQUALE",
+                                    "LinkingCode": "SS#5837012768"
+                              },
+                              "3": {
+                                    "Date": "22 DECEMBER 2022",
+                                    "Amount": 43.0,
+                                    "Currency": "EUR",
+                                    "Category": "Uscite fuori",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "PIZZA DALLA SMORFIA",
+                                    "LinkingCode": "SS#5640108439"
+                              },
+                              "4": {
+                                    "Date": "23 DECEMBER 2022",
+                                    "Amount": 20.0,
+                                    "Currency": "EUR",
+                                    "Category": "Uscite fuori",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "USCITA FUORI CAVA - PICARO",
+                                    "LinkingCode": "SS#8164051149"
+                              }
+                        },
                         "Statistics": {
-                              "TotalValue": 0
+                              "TotalValue": 121.0
                         }
                   },
                   "Affitto": {
@@ -39,9 +76,28 @@
                         }
                   },
                   "Carburante": {
-                        "Transactions": {},
+                        "Transactions": {
+                              "1": {
+                                    "Date": "20 DECEMBER 2022",
+                                    "Amount": 20.0,
+                                    "Currency": "EUR",
+                                    "Category": "Carburante",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "DIESEL MACCHINE",
+                                    "LinkingCode": "SS#0790086753"
+                              },
+                              "2": {
+                                    "Date": "25 DECEMBER 2022",
+                                    "Amount": 20.0,
+                                    "Currency": "EUR",
+                                    "Category": "Carburante",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "DIESEL MACCHINA",
+                                    "LinkingCode": "SS#1671267864"
+                              }
+                        },
                         "Statistics": {
-                              "TotalValue": 0
+                              "TotalValue": 40.0
                         }
                   },
                   "Spesa alimentare": {
@@ -63,10 +119,19 @@
                                     "PayingAccount": "Contante - Cash - EUR",
                                     "Note": "PRANZO FUORI",
                                     "LinkingCode": "SS#5498789600"
+                              },
+                              "3": {
+                                    "Date": "21 DECEMBER 2022",
+                                    "Amount": 5.0,
+                                    "Currency": "EUR",
+                                    "Category": "Spesa alimentare",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "PRANZO FUORI",
+                                    "LinkingCode": "SS#4083851264"
                               }
                         },
                         "Statistics": {
-                              "TotalValue": 11.9
+                              "TotalValue": 16.9
                         }
                   },
                   "Spese personali": {
@@ -79,10 +144,19 @@
                                     "PayingAccount": "Unicredit - Cash - EUR",
                                     "Note": "BIGLIETTO VASCO",
                                     "LinkingCode": "SS#9905618031"
+                              },
+                              "2": {
+                                    "Date": "20 DECEMBER 2022",
+                                    "Amount": 16.0,
+                                    "Currency": "EUR",
+                                    "Category": "Spese personali",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "PRESERVATIVI",
+                                    "LinkingCode": "SS#1379853008"
                               }
                         },
                         "Statistics": {
-                              "TotalValue": 90.0
+                              "TotalValue": 106.0
                         }
                   },
                   "Spesa casa": {
@@ -101,10 +175,37 @@
                                     "PayingAccount": "Unicredit - Cash - EUR",
                                     "Note": "BIGLIETTI VASCO - DA UNICREDIT A CONTANTE",
                                     "LinkingCode": "SS#9148415647"
+                              },
+                              "2": {
+                                    "Date": "09 DECEMBER 2022",
+                                    "Amount": 40.0,
+                                    "Currency": "EUR",
+                                    "Category": "Internal Transaction",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "REGALO MARGHERITA - CHIARA",
+                                    "LinkingCode": "SS#9409878765"
+                              },
+                              "3": {
+                                    "Date": "10 DECEMBER 2022",
+                                    "Amount": 100.0,
+                                    "Currency": "EUR",
+                                    "Category": "Internal Transaction",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "ACQUISTO FONENDOSCOPIO - ALESSIA",
+                                    "LinkingCode": "SS#6143598449"
+                              },
+                              "4": {
+                                    "Date": "09 DECEMBER 2022",
+                                    "Amount": 3000.0,
+                                    "Currency": "EUR",
+                                    "Category": "Internal Transaction",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "MOVIMENTO UNICREDIT - FINDOMESTIC",
+                                    "LinkingCode": "SS#5626000160"
                               }
                         },
                         "Statistics": {
-                              "TotalValue": 90.0
+                              "TotalValue": 3230.0
                         }
                   },
                   "Donazioni": {
@@ -123,10 +224,55 @@
                                     "PayingAccount": "Unicredit - Cash - EUR",
                                     "Note": "LIBRO AMORE",
                                     "LinkingCode": "SS#6238615149"
+                              },
+                              "2": {
+                                    "Date": "09 DECEMBER 2022",
+                                    "Amount": 60.0,
+                                    "Currency": "EUR",
+                                    "Category": "Regali",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "REGALO MARGHERITA - PASQUALE",
+                                    "LinkingCode": "SS#7404019263"
+                              },
+                              "3": {
+                                    "Date": "07 DECEMBER 2022",
+                                    "Amount": 5.0,
+                                    "Currency": "EUR",
+                                    "Category": "Regali",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "OFFERTO CAFFE COLLEGHI",
+                                    "LinkingCode": "SS#3123701705"
+                              },
+                              "4": {
+                                    "Date": "19 DECEMBER 2022",
+                                    "Amount": 10.0,
+                                    "Currency": "EUR",
+                                    "Category": "Regali",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "REGALO EMMA",
+                                    "LinkingCode": "SS#7997848398"
+                              },
+                              "5": {
+                                    "Date": "20 DECEMBER 2022",
+                                    "Amount": 5.5,
+                                    "Currency": "EUR",
+                                    "Category": "Regali",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "REGALO NATALE INGEGNERE",
+                                    "LinkingCode": "SS#1158609269"
+                              },
+                              "6": {
+                                    "Date": "24 DECEMBER 2022",
+                                    "Amount": 5.0,
+                                    "Currency": "EUR",
+                                    "Category": "Regali",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "REGALO ZIA ANTONELLA",
+                                    "LinkingCode": "SS#3436644125"
                               }
                         },
                         "Statistics": {
-                              "TotalValue": 15.23
+                              "TotalValue": 100.73
                         }
                   },
                   "Autovettura": {
@@ -150,19 +296,19 @@
             },
             "Statistics": {
                   "Currency": "\u20ac",
-                  "NumberOfTransaction": 7,
-                  "TotalValue": 314.93,
+                  "NumberOfTransaction": 23,
+                  "TotalValue": 3722.43,
                   "ActualAssetAllocation": {
                         "Bollette": 107.8,
-                        "Uscite fuori": 0.0,
+                        "Uscite fuori": 121.0,
                         "Affitto": 0.0,
-                        "Carburante": 0.0,
-                        "Spesa alimentare": 11.9,
-                        "Spese personali": 90.0,
+                        "Carburante": 40.0,
+                        "Spesa alimentare": 16.9,
+                        "Spese personali": 106.0,
                         "Spesa casa": 0.0,
-                        "Internal Transaction": 90.0,
+                        "Internal Transaction": 3230.0,
                         "Donazioni": 0.0,
-                        "Regali": 15.23,
+                        "Regali": 100.73,
                         "Autovettura": 0.0,
                         "Vacanza": 0.0,
                         "Altro": 0.0
@@ -250,6 +396,150 @@
                                     "PayingAccount": "Unicredit - Cash - EUR",
                                     "Note": "LIBRO AMORE",
                                     "LinkingCode": "SS#6238615149"
+                              },
+                              "8": {
+                                    "Date": "09 DECEMBER 2022",
+                                    "Amount": 40.0,
+                                    "Currency": "EUR",
+                                    "Category": "Internal Transaction",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "REGALO MARGHERITA - CHIARA",
+                                    "LinkingCode": "SS#9409878765"
+                              },
+                              "9": {
+                                    "Date": "09 DECEMBER 2022",
+                                    "Amount": 60.0,
+                                    "Currency": "EUR",
+                                    "Category": "Regali",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "REGALO MARGHERITA - PASQUALE",
+                                    "LinkingCode": "SS#7404019263"
+                              },
+                              "10": {
+                                    "Date": "10 DECEMBER 2022",
+                                    "Amount": 100.0,
+                                    "Currency": "EUR",
+                                    "Category": "Internal Transaction",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "ACQUISTO FONENDOSCOPIO - ALESSIA",
+                                    "LinkingCode": "SS#6143598449"
+                              },
+                              "11": {
+                                    "Date": "05 DECEMBER 2022",
+                                    "Amount": 40.0,
+                                    "Currency": "EUR",
+                                    "Category": "Uscite fuori",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "CENA FUORI GIAPPONESE",
+                                    "LinkingCode": "SS#9266794584"
+                              },
+                              "12": {
+                                    "Date": "06 DECEMBER 2022",
+                                    "Amount": 18.0,
+                                    "Currency": "EUR",
+                                    "Category": "Uscite fuori",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "PIZZA D'ADDIO - PASQUALE",
+                                    "LinkingCode": "SS#5837012768"
+                              },
+                              "13": {
+                                    "Date": "07 DECEMBER 2022",
+                                    "Amount": 5.0,
+                                    "Currency": "EUR",
+                                    "Category": "Regali",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "OFFERTO CAFFE COLLEGHI",
+                                    "LinkingCode": "SS#3123701705"
+                              },
+                              "14": {
+                                    "Date": "19 DECEMBER 2022",
+                                    "Amount": 10.0,
+                                    "Currency": "EUR",
+                                    "Category": "Regali",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "REGALO EMMA",
+                                    "LinkingCode": "SS#7997848398"
+                              },
+                              "15": {
+                                    "Date": "20 DECEMBER 2022",
+                                    "Amount": 5.5,
+                                    "Currency": "EUR",
+                                    "Category": "Regali",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "REGALO NATALE INGEGNERE",
+                                    "LinkingCode": "SS#1158609269"
+                              },
+                              "16": {
+                                    "Date": "20 DECEMBER 2022",
+                                    "Amount": 20.0,
+                                    "Currency": "EUR",
+                                    "Category": "Carburante",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "DIESEL MACCHINE",
+                                    "LinkingCode": "SS#0790086753"
+                              },
+                              "17": {
+                                    "Date": "20 DECEMBER 2022",
+                                    "Amount": 16.0,
+                                    "Currency": "EUR",
+                                    "Category": "Spese personali",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "PRESERVATIVI",
+                                    "LinkingCode": "SS#1379853008"
+                              },
+                              "18": {
+                                    "Date": "21 DECEMBER 2022",
+                                    "Amount": 5.0,
+                                    "Currency": "EUR",
+                                    "Category": "Spesa alimentare",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "PRANZO FUORI",
+                                    "LinkingCode": "SS#4083851264"
+                              },
+                              "19": {
+                                    "Date": "22 DECEMBER 2022",
+                                    "Amount": 43.0,
+                                    "Currency": "EUR",
+                                    "Category": "Uscite fuori",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "PIZZA DALLA SMORFIA",
+                                    "LinkingCode": "SS#5640108439"
+                              },
+                              "20": {
+                                    "Date": "23 DECEMBER 2022",
+                                    "Amount": 20.0,
+                                    "Currency": "EUR",
+                                    "Category": "Uscite fuori",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "USCITA FUORI CAVA - PICARO",
+                                    "LinkingCode": "SS#8164051149"
+                              },
+                              "21": {
+                                    "Date": "24 DECEMBER 2022",
+                                    "Amount": 5.0,
+                                    "Currency": "EUR",
+                                    "Category": "Regali",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "REGALO ZIA ANTONELLA",
+                                    "LinkingCode": "SS#3436644125"
+                              },
+                              "22": {
+                                    "Date": "25 DECEMBER 2022",
+                                    "Amount": 20.0,
+                                    "Currency": "EUR",
+                                    "Category": "Carburante",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "DIESEL MACCHINA",
+                                    "LinkingCode": "SS#1671267864"
+                              },
+                              "23": {
+                                    "Date": "09 DECEMBER 2022",
+                                    "Amount": 3000.0,
+                                    "Currency": "EUR",
+                                    "Category": "Internal Transaction",
+                                    "PayingAccount": "Unicredit - Cash - EUR",
+                                    "Note": "MOVIMENTO UNICREDIT - FINDOMESTIC",
+                                    "LinkingCode": "SS#5626000160"
                               }
                         }
                   }

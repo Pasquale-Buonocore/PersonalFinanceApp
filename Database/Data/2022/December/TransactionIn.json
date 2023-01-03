@@ -2,9 +2,19 @@
       "IN": {
             "Assets": {
                   "Account Initialization": {
-                        "Transactions": {},
+                        "Transactions": {
+                              "1": {
+                                    "Date": "08 DECEMBER 2022",
+                                    "Amount": 6720.0,
+                                    "Currency": "EURO",
+                                    "Category": "Account Initialization",
+                                    "PayingAccount": "Findomestic - Cash - EURO",
+                                    "Note": "INIZIALIZZAZIONE ACCOUNT FINDOMESTIC",
+                                    "LinkingCode": "ES#8563427267"
+                              }
+                        },
                         "Statistics": {
-                              "TotalValue": 0
+                              "TotalValue": 6720.0
                         }
                   },
                   "Stipendio": {
@@ -39,29 +49,75 @@
                                     "PayingAccount": "Contante - Cash - EUR",
                                     "Note": "BIGLIETTI VASCO - DA UNICREDIT A CONTANTE",
                                     "LinkingCode": "ES#1685824501"
+                              },
+                              "2": {
+                                    "Date": "10 DECEMBER 2022",
+                                    "Amount": 40.0,
+                                    "Currency": "EUR",
+                                    "Category": "Internal Transaction",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "CONTANTE CHIARA PER REGALO MARGHERITA",
+                                    "LinkingCode": "ES#5848559688"
+                              },
+                              "3": {
+                                    "Date": "10 DECEMBER 2022",
+                                    "Amount": 100.0,
+                                    "Currency": "EUR",
+                                    "Category": "Internal Transaction",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "ACQUISTO FONENDOSCOPIO",
+                                    "LinkingCode": "ES#9921988010"
+                              },
+                              "4": {
+                                    "Date": "09 DECEMBER 2022",
+                                    "Amount": 3000.0,
+                                    "Currency": "EURO",
+                                    "Category": "Internal Transaction",
+                                    "PayingAccount": "Findomestic - Cash - EURO",
+                                    "Note": "MOVIMENTO UNICREDIT - FINDOMESTIC",
+                                    "LinkingCode": "ES#7336492220"
                               }
                         },
                         "Statistics": {
-                              "TotalValue": 90.0
+                              "TotalValue": 3230.0
                         }
                   },
                   "Regali": {
-                        "Transactions": {},
+                        "Transactions": {
+                              "1": {
+                                    "Date": "15 DECEMBER 2022",
+                                    "Amount": 100.0,
+                                    "Currency": "EUR",
+                                    "Category": "Regali",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "REGALO NONNA MARGHERITA - CONTANTE PER NATALE",
+                                    "LinkingCode": "ES#0946140910"
+                              },
+                              "2": {
+                                    "Date": "10 DECEMBER 2023",
+                                    "Amount": 200.0,
+                                    "Currency": "EUR",
+                                    "Category": "Regali",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "REGALO DI ZIA MENA - NATALE",
+                                    "LinkingCode": "ES#7220416000"
+                              }
+                        },
                         "Statistics": {
-                              "TotalValue": 0
+                              "TotalValue": 300.0
                         }
                   }
             },
             "Statistics": {
                   "Currency": "\u20ac",
-                  "NumberOfTransaction": 2,
-                  "TotalValue": 2151.0,
+                  "NumberOfTransaction": 8,
+                  "TotalValue": 12311.0,
                   "ActualAssetAllocation": {
-                        "Account Initialization": 0.0,
+                        "Account Initialization": 6720.0,
                         "Stipendio": 2061.0,
                         "Ripetizioni": 0.0,
-                        "Internal Transaction": 90.0,
-                        "Regali": 0.0
+                        "Internal Transaction": 3230.0,
+                        "Regali": 300.0
                   },
                   "DesiredAssetAllocation": {
                         "Account Initialization": 0,
@@ -93,6 +149,60 @@
                                     "PayingAccount": "Contante - Cash - EUR",
                                     "Note": "BIGLIETTI VASCO - DA UNICREDIT A CONTANTE",
                                     "LinkingCode": "ES#1685824501"
+                              },
+                              "3": {
+                                    "Date": "10 DECEMBER 2022",
+                                    "Amount": 40.0,
+                                    "Currency": "EUR",
+                                    "Category": "Internal Transaction",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "CONTANTE CHIARA PER REGALO MARGHERITA",
+                                    "LinkingCode": "ES#5848559688"
+                              },
+                              "4": {
+                                    "Date": "15 DECEMBER 2022",
+                                    "Amount": 100.0,
+                                    "Currency": "EUR",
+                                    "Category": "Regali",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "REGALO NONNA MARGHERITA - CONTANTE PER NATALE",
+                                    "LinkingCode": "ES#0946140910"
+                              },
+                              "5": {
+                                    "Date": "10 DECEMBER 2023",
+                                    "Amount": 200.0,
+                                    "Currency": "EUR",
+                                    "Category": "Regali",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "REGALO DI ZIA MENA - NATALE",
+                                    "LinkingCode": "ES#7220416000"
+                              },
+                              "6": {
+                                    "Date": "10 DECEMBER 2022",
+                                    "Amount": 100.0,
+                                    "Currency": "EUR",
+                                    "Category": "Internal Transaction",
+                                    "PayingAccount": "Contante - Cash - EUR",
+                                    "Note": "ACQUISTO FONENDOSCOPIO",
+                                    "LinkingCode": "ES#9921988010"
+                              },
+                              "7": {
+                                    "Date": "08 DECEMBER 2022",
+                                    "Amount": 6720.0,
+                                    "Currency": "EURO",
+                                    "Category": "Account Initialization",
+                                    "PayingAccount": "Findomestic - Cash - EURO",
+                                    "Note": "INIZIALIZZAZIONE ACCOUNT FINDOMESTIC",
+                                    "LinkingCode": "ES#8563427267"
+                              },
+                              "8": {
+                                    "Date": "09 DECEMBER 2022",
+                                    "Amount": 3000.0,
+                                    "Currency": "EURO",
+                                    "Category": "Internal Transaction",
+                                    "PayingAccount": "Findomestic - Cash - EURO",
+                                    "Note": "MOVIMENTO UNICREDIT - FINDOMESTIC",
+                                    "LinkingCode": "ES#7336492220"
                               }
                         }
                   }
