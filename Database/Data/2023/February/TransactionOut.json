@@ -1,0 +1,22 @@
+{
+      "OUT": {
+            "Assets": {},
+            "Statistics": {
+                  "Currency": "\u20ac",
+                  "NumberOfTransaction": 0,
+                  "TotalValue": 0,
+                  "ActualAssetAllocation": {},
+                  "DesiredAssetAllocation": {}
+            }
+      },
+      "OUT_LIST": {
+            "Assets": {
+                  "Transactions": {
+                        "Transactions": {}
+                  }
+            },
+            "Statistics": {
+                  "Total": {}
+            }
+      }
+}

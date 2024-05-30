@@ -1,0 +1,22 @@
+{
+      "IN": {
+            "Assets": {},
+            "Statistics": {
+                  "Currency": "\u20ac",
+                  "NumberOfTransaction": 0,
+                  "TotalValue": 0,
+                  "ActualAssetAllocation": {},
+                  "DesiredAssetAllocation": {}
+            }
+      },
+      "IN_LIST": {
+            "Assets": {
+                  "Transactions": {
+                        "Transactions": {}
+                  }
+            },
+            "Statistics": {
+                  "Total": {}
+            }
+      }
+}
